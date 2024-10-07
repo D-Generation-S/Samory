@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://bnfr8gek24m47"]
+
+[ext_resource type="Script" path="res://src/game/MemoryGame.gd" id="1_13jq5"]
+[ext_resource type="PackedScene" uid="uid://ubmqrubcq2a2" path="res://scenes/game/templates/CardTemplate.tscn" id="3_ihyl6"]
+[ext_resource type="Script" path="res://src/game/CameraController.gd" id="4_4ihyn"]
+[ext_resource type="PackedScene" uid="uid://csamt2tu6hlpo" path="res://scenes/game/overlay/FinishGame.tscn" id="4_6f670"]
+[ext_resource type="Script" path="res://src/game/PlayerManager.gd" id="4_n744t"]
+[ext_resource type="PackedScene" uid="uid://d0vijthhc3d38" path="res://scenes/game/overlay/PlayersOverlay.tscn" id="7_a7rnv"]
+
+[node name="MemoryGame" type="Node2D" node_paths=PackedStringArray("gui_node")]
+script = ExtResource("1_13jq5")
+card_template = ExtResource("3_ihyl6")
+gui_node = NodePath("CanvasLayer")
+finished_game_template = ExtResource("4_6f670")
+
+[node name="Players" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_n744t")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(600, 350)
+script = ExtResource("4_4ihyn")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PlayersOverlay" parent="CanvasLayer" instance=ExtResource("7_a7rnv")]
+
+[connection signal="game_has_endet" from="." to="CanvasLayer/PlayersOverlay" method="game_ended"]
+[connection signal="player_scored" from="." to="Players" method="player_scored"]
+[connection signal="round_end" from="." to="Players" method="next_player"]
+[connection signal="round_end" from="." to="CanvasLayer/PlayersOverlay" method="round_end"]
+[connection signal="player_added" from="Players" to="CanvasLayer/PlayersOverlay" method="add_player"]
+[connection signal="player_changed" from="Players" to="CanvasLayer/PlayersOverlay" method="player_changed"]
+[connection signal="player_score_changed" from="Players" to="CanvasLayer/PlayersOverlay" method="player_scored"]

@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dhujjr84hm1we"]
+
+[ext_resource type="Shader" uid="uid://df08peckcrogm" path="res://assets/shaders/CardShader.tres" id="1_7t678"]
+[ext_resource type="Texture2D" uid="uid://bafmr0fx5c6yl" path="res://assets/sprites/NoiseTexture.png" id="2_fnpjx"]
+
+[resource]
+shader = ExtResource("1_7t678")
+shader_parameter/threshold = 0.0
+shader_parameter/Offset = 0.025
+shader_parameter/BurnColor = Color(0.462745, 0.623529, 0, 1)
+shader_parameter/noise_texture = ExtResource("2_fnpjx")

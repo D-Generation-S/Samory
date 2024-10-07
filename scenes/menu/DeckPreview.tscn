@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3cv1g0a284mq"]
+
+[ext_resource type="Texture2D" uid="uid://d4nvcsyb0ehtb" path="res://assets/sprites/CardDefaultFront.png" id="1_ho3ld"]
+[ext_resource type="Script" path="res://src/menu/DeckPreview.gd" id="1_k0qju"]
+
+[node name="DeckPreview" type="MarginContainer" node_paths=PackedStringArray("deck_name", "card_count", "buildint", "texture_rect")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+script = ExtResource("1_k0qju")
+deck_name = NodePath("HBoxContainer/VBoxContainer/DeckName")
+card_count = NodePath("HBoxContainer/VBoxContainer2/VBoxContainer/CardCounter")
+buildint = NodePath("HBoxContainer/VBoxContainer2/VBoxContainer2/IsBuildIn")
+texture_rect = NodePath("HBoxContainer/VBoxContainer/Control")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Control" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_ho3ld")
+
+[node name="DeckName" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "DECK_NAME"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "DECK_INFO"
+
+[node name="VBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "CARD_COUNT"
+
+[node name="CardCounter" type="RichTextLabel" parent="HBoxContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "0"
+fit_content = true
+
+[node name="VBoxContainer2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+text = "BUILT_IN"
+
+[node name="IsBuildIn" type="RichTextLabel" parent="HBoxContainer/VBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "No"
+fit_content = true

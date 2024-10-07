@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://clwy17ikjqk21"]
+
+[ext_resource type="Script" path="res://src/templates/MemoryCardResource.gd" id="1_6a3u3"]
+[ext_resource type="Texture2D" uid="uid://d4nvcsyb0ehtb" path="res://assets/sprites/CardDefaultFront.png" id="2_ptxbl"]
+
+[resource]
+script = ExtResource("1_6a3u3")
+name = "My Second Card"
+description = "This is my second card"
+texture = ExtResource("2_ptxbl")

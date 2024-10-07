@@ -1,0 +1,55 @@
+[gd_scene load_steps=11 format=3 uid="uid://ubmqrubcq2a2"]
+
+[ext_resource type="Script" path="res://src/game/CardTemplate.gd" id="1_fmo68"]
+[ext_resource type="Script" path="res://src/game/CardText.gd" id="3_4fnc2"]
+[ext_resource type="Texture2D" uid="uid://dpcfrsq40moii" path="res://assets/sprites/CardDefaultBack.png" id="3_xiuu2"]
+[ext_resource type="Texture2D" uid="uid://d4nvcsyb0ehtb" path="res://assets/sprites/CardDefaultFront.png" id="4_e8l51"]
+[ext_resource type="Script" path="res://src/game/CardFrontSize.gd" id="4_kxmgl"]
+[ext_resource type="Material" uid="uid://dhujjr84hm1we" path="res://assets/material/DisolveMaterial.tres" id="5_b0osi"]
+[ext_resource type="Material" uid="uid://d0yxq3hqqpj2p" path="res://assets/material/FocusMaterial.tres" id="8_aoxou"]
+[ext_resource type="Script" path="res://src/game/ToggleCardVisibility.gd" id="8_pw264"]
+[ext_resource type="Script" path="res://src/game/CardHandler.gd" id="9_mu0q4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phkhd"]
+size = Vector2(500, 550)
+
+[node name="CardTemplate" type="Node2D" node_paths=PackedStringArray("front_side", "text_node", "back_side")]
+script = ExtResource("1_fmo68")
+front_side = NodePath("CardFront")
+text_node = NodePath("CardText")
+back_side = NodePath("CardBack")
+
+[node name="CardText" type="RichTextLabel" parent="."]
+offset_top = 500.0
+offset_right = 500.0
+offset_bottom = 550.0
+bbcode_enabled = true
+text = "[center]placeholder[/center]"
+script = ExtResource("3_4fnc2")
+
+[node name="CardFront" type="Sprite2D" parent="."]
+position = Vector2(250, 250)
+texture = ExtResource("4_e8l51")
+script = ExtResource("4_kxmgl")
+
+[node name="CardBack" type="Sprite2D" parent="."]
+material = ExtResource("5_b0osi")
+position = Vector2(250, 275)
+texture = ExtResource("3_xiuu2")
+script = ExtResource("8_pw264")
+threshold_change_step = 0.02
+toggle_material = ExtResource("5_b0osi")
+focus_material = ExtResource("8_aoxou")
+
+[node name="Area2D" type="Area2D" parent="CardBack"]
+visible = false
+script = ExtResource("9_mu0q4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CardBack/Area2D"]
+shape = SubResource("RectangleShape2D_phkhd")
+
+[connection signal="hide_card" from="." to="CardBack" method="toggle_on"]
+[connection signal="clicked" from="CardBack/Area2D" to="." method="card_was_clicked"]
+[connection signal="clicked" from="CardBack/Area2D" to="CardBack" method="toggle_off"]
+[connection signal="mouse_entered" from="CardBack/Area2D" to="CardBack" method="is_focused"]
+[connection signal="mouse_exited" from="CardBack/Area2D" to="CardBack" method="lost_focus"]
