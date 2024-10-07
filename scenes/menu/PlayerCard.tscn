@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://de0if4rovyxsv"]
+
+[ext_resource type="Script" path="res://src/menu/PlayerCard.gd" id="1_ab6rg"]
+
+[node name="PlayerCard" type="MarginContainer" node_paths=PackedStringArray("player_name_field", "player_age_field")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+script = ExtResource("1_ab6rg")
+player_name_field = NodePath("HBoxContainer/GridContainer/Name")
+player_age_field = NodePath("HBoxContainer/GridContainer/Age")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 30
+columns = 2
+
+[node name="PlayerName" type="Label" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+text = "PLAYER_NAME"
+
+[node name="Name" type="Label" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+text = "PLACEHOLDER"
+
+[node name="PlayerAge" type="Label" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+text = "PLAYER_AGE"
+
+[node name="Age" type="Label" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+text = "PLACEHOLDER"
+
+[node name="RemovePlayer" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "DELETE"
+
+[connection signal="pressed" from="HBoxContainer/RemovePlayer" to="." method="delete_card"]
