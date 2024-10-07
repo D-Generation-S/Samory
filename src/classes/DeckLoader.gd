@@ -22,11 +22,10 @@ func get_deck_name(deck_folder: String) -> String:
 		return FileAccess.get_file_as_string(localized_path)
 	return FileAccess.get_file_as_string(fallback_path)
 
-func validate_meta_data(deck_folder: String) -> bool:
+func validate_deck_meta_data(deck_folder: String) -> bool:
 	var path = build_deck_base_path(deck_folder)
 	var fallback_path = path + "/name.txt"
-	var fallback_deck_image = path + "/cover.png"
-	return FileAccess.file_exists(fallback_path) and FileAccess.file_exists(fallback_deck_image)
+	return FileAccess.file_exists(fallback_path)
 
 func list_deck_cards(deck_folder: String) -> Array[String]:
 	var base_path = build_card_base_path(deck_folder)
@@ -59,7 +58,7 @@ func build_card_base_path(deck_directory: String) -> String:
 	return build_deck_base_path(deck_directory) + "/cards" 
 
 func validate_deck(deck_folder: String) -> bool:
-	var meta_valid = validate_meta_data(deck_folder)
+	var meta_valid = validate_deck_meta_data(deck_folder)
 	var cards = list_deck_cards(deck_folder)
 	return meta_valid and cards.size() >= 2
 
@@ -75,23 +74,26 @@ func load_deck(deck_name: String) -> MemoryDeckResource:
 	return_deck.cards = [] as Array[MemoryCardResource]
 	return_deck.file_system_folder = deck_name
 
-	var image_source_path = path + "/cover.png"
-	var localized_cover = path + "/cover." + TranslationServer.get_locale() + ".png"
-
-	if FileAccess.file_exists(localized_cover):
-		image_source_path = localized_cover
-
-
-	var image = Image.load_from_file(image_source_path)
-	var texture = ImageTexture.create_from_image(image)
-	return_deck.card_back = texture as Texture2D
-
+	return_deck.card_back = get_cover_image(deck_name)
 	for card_name in list_deck_cards(deck_name):
 		var card = load_card(deck_name, card_name)
 		if card != null:
 			return_deck.cards.append(card)
 
 	return return_deck
+
+func get_cover_image(deck_name: String) -> Texture2D:
+	var image_source_path = build_deck_base_path(deck_name) + "/cover.png"
+	var localized_cover = build_deck_base_path(deck_name) + "/cover." + TranslationServer.get_locale() + ".png"
+
+	if FileAccess.file_exists(localized_cover):
+		image_source_path = localized_cover
+
+	if FileAccess.file_exists(image_source_path):
+		var image = Image.load_from_file(image_source_path)
+		return ImageTexture.create_from_image(image) as Texture2D
+		
+	return load("res://assets/sprites/CardDefaultBack.png") as Texture2D
 
 func load_card(deck_name: String, card_name: String) -> MemoryCardResource:
 	var base_path = build_card_base_path(deck_name) + "/" + card_name
