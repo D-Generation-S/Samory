@@ -8,6 +8,9 @@ func _ready():
 	disabled = true
 
 func _pressed():
+	validate()
+	if disabled == true:
+		return
 	var game_manager = get_tree().root.get_child(0) as GameManager
 	var deck = deck_manager.current_deck
 	var players: Array[PlayerResource] = Array()
