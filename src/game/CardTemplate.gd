@@ -15,7 +15,6 @@ var was_clicked: bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("Creating Card")
 	var parent_node = get_parent()
 	if parent_node == null:
 		printerr("No parent node was found!")
@@ -30,7 +29,6 @@ func _ready():
 	var real_texture: Texture2D = memory_card.texture
 	front_side.texture = real_texture
 	front_side.scale_now()
-	print(card_deck.card_back)
 	back_side.texture = card_deck.card_back
 	parent_node.connect("round_start", unfreeze_card)
 	parent_node.connect("freeze_round", freeze_card)
