@@ -11,7 +11,6 @@ var system_decks: Array[MemoryDeckResource]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	reload_system_decks()
-	
 	open_menu(main_menu_template)
 
 func close_game():
@@ -19,6 +18,9 @@ func close_game():
 	open_menu(main_menu_template)
 
 func open_menu(scene: PackedScene):
+	if scene == null:
+		printerr("No scene was provided!")
+		return
 	clear_all_nodes()
 	var node = scene.instantiate()
 	add_child(node)

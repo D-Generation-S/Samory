@@ -1,0 +1,89 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxhn5n16onctb"]
+
+[ext_resource type="Script" path="res://src/menu/NewPlayer.gd" id="1_oy8p1"]
+[ext_resource type="Script" path="res://src/menu/PlayerName.gd" id="2_nbrg8"]
+[ext_resource type="Script" path="res://src/menu/ErrorBox.gd" id="3_37146"]
+[ext_resource type="Script" path="res://src/menu/NewPlayerOk.gd" id="4_dgat8"]
+[ext_resource type="Script" path="res://src/menu/PlayerAgeValidation.gd" id="4_f7r2j"]
+
+[node name="NewPlayer" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.5
+offset_top = -60.5
+offset_right = 101.5
+offset_bottom = 60.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oy8p1")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayerName" type="LineEdit" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "PLAYER_NAME"
+script = ExtResource("2_nbrg8")
+
+[node name="PlayerNameError" type="RichTextLabel" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "ERROR"
+fit_content = true
+script = ExtResource("3_37146")
+
+[node name="PlayerAge" type="LineEdit" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "PLAYER_AGE"
+script = ExtResource("4_f7r2j")
+
+[node name="PlayerAgeError" type="RichTextLabel" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "ERROR"
+fit_content = true
+script = ExtResource("3_37146")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="AddPlayer" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer3" node_paths=PackedStringArray("player_name_field", "player_age_field", "fields_for_validation")]
+layout_mode = 2
+text = "OK"
+script = ExtResource("4_dgat8")
+player_name_field = NodePath("../../VBoxContainer/PlayerName")
+player_age_field = NodePath("../../VBoxContainer/PlayerAge")
+fields_for_validation = [NodePath("../../VBoxContainer/PlayerName"), NodePath("../../VBoxContainer/PlayerAge")]
+
+[node name="AbortButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "CANCEL"
+
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/VBoxContainer/PlayerName" to="MarginContainer/VBoxContainer/VBoxContainer/PlayerName" method="_on_text_changed"]
+[connection signal="valid" from="MarginContainer/VBoxContainer/VBoxContainer/PlayerName" to="MarginContainer/VBoxContainer/VBoxContainer/PlayerNameError" method="reset"]
+[connection signal="valid" from="MarginContainer/VBoxContainer/VBoxContainer/PlayerName" to="MarginContainer/VBoxContainer/HBoxContainer3/AddPlayer" method="validate"]
+[connection signal="validation_error" from="MarginContainer/VBoxContainer/VBoxContainer/PlayerName" to="MarginContainer/VBoxContainer/VBoxContainer/PlayerNameError" method="set_error"]
+[connection signal="validation_failed" from="MarginContainer/VBoxContainer/VBoxContainer/PlayerName" to="MarginContainer/VBoxContainer/HBoxContainer3/AddPlayer" method="invalid_data"]
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/VBoxContainer/PlayerAge" to="MarginContainer/VBoxContainer/VBoxContainer/PlayerAge" method="_on_text_changed"]
+[connection signal="valid" from="MarginContainer/VBoxContainer/VBoxContainer/PlayerAge" to="MarginContainer/VBoxContainer/VBoxContainer/PlayerAgeError" method="reset"]
+[connection signal="valid" from="MarginContainer/VBoxContainer/VBoxContainer/PlayerAge" to="MarginContainer/VBoxContainer/HBoxContainer3/AddPlayer" method="validate"]
+[connection signal="validation_error" from="MarginContainer/VBoxContainer/VBoxContainer/PlayerAge" to="MarginContainer/VBoxContainer/VBoxContainer/PlayerAgeError" method="set_error"]
+[connection signal="validation_failed" from="MarginContainer/VBoxContainer/VBoxContainer/PlayerAge" to="MarginContainer/VBoxContainer/HBoxContainer3/AddPlayer" method="invalid_data"]
+[connection signal="player_was_added" from="MarginContainer/VBoxContainer/HBoxContainer3/AddPlayer" to="." method="player_was_added"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer3/AbortButton" to="." method="modal_getting_closed"]

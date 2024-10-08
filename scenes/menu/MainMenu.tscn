@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://src/menu/QuitGameButton.gd" id="1_6c3ib"]
 [ext_resource type="Script" path="res://src/menu/StartQuickGame.gd" id="1_dyfxg"]
-[ext_resource type="Script" path="res://src/menu/OpenGameLobby.gd" id="1_ohfem"]
-[ext_resource type="PackedScene" uid="uid://dkd4cftggpymb" path="res://scenes/menu/GameLobby.tscn" id="2_2v46l"]
+[ext_resource type="Script" path="res://src/menu/OpenSingelScene.gd" id="1_ohfem"]
+[ext_resource type="PackedScene" uid="uid://dkd4cftggpymb" path="res://scenes/menu/GameLobby.tscn" id="2_o3qyg"]
 
 [node name="MainMenu" type="CanvasLayer"]
 
@@ -29,10 +29,9 @@ size_flags_vertical = 6
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-disabled = true
 text = "START_GAME"
 script = ExtResource("1_ohfem")
-game_lobby_template = ExtResource("2_2v46l")
+scene_template = ExtResource("2_o3qyg")
 
 [node name="Quick Game" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
