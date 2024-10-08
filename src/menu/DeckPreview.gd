@@ -9,7 +9,7 @@ signal deck_unchecked()
 @export var deck_name: Label
 @export var card_count: RichTextLabel
 @export var buildint: RichTextLabel
-@export var texture_rect: TextureRect
+@export var texture_rect: DeckPreviewSelection
 @export var deck_description: RichTextLabel
 
 var deck: MemoryDeckResource
@@ -24,8 +24,7 @@ func _ready():
 	if deck.built_in:
 		builtin_text = "Yes"
 	buildint.text = builtin_text
-	texture_rect.texture = deck.card_back
-	pass # Replace with function body.
+	texture_rect.set_image(deck.card_back)
 
 func set_deck(requested_deck: MemoryDeckResource):
 	deck = requested_deck

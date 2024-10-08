@@ -1,48 +1,55 @@
-[gd_scene load_steps=2 format=3 uid="uid://de0if4rovyxsv"]
+[gd_scene load_steps=3 format=3 uid="uid://de0if4rovyxsv"]
 
 [ext_resource type="Script" path="res://src/menu/PlayerCard.gd" id="1_ab6rg"]
 
-[node name="PlayerCard" type="MarginContainer" node_paths=PackedStringArray("player_name_field", "player_age_field")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n7lkl"]
+bg_color = Color(0.337255, 0.196078, 0.196078, 1)
+
+[node name="PlayerCard" type="PanelContainer" node_paths=PackedStringArray("player_name_field", "player_age_field")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+theme_override_styles/panel = SubResource("StyleBoxFlat_n7lkl")
 script = ExtResource("1_ab6rg")
-player_name_field = NodePath("HBoxContainer/GridContainer/Name")
-player_age_field = NodePath("HBoxContainer/GridContainer/Age")
+player_name_field = NodePath("PanelContainer/HBoxContainer/GridContainer/Name")
+player_age_field = NodePath("PanelContainer/HBoxContainer/GridContainer/Age")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="PanelContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="HBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 30
 columns = 2
 
-[node name="PlayerName" type="Label" parent="HBoxContainer/GridContainer"]
+[node name="PlayerName" type="Label" parent="PanelContainer/HBoxContainer/GridContainer"]
 layout_mode = 2
 text = "PLAYER_NAME"
 
-[node name="Name" type="Label" parent="HBoxContainer/GridContainer"]
+[node name="Name" type="Label" parent="PanelContainer/HBoxContainer/GridContainer"]
 layout_mode = 2
 text = "PLACEHOLDER"
 
-[node name="PlayerAge" type="Label" parent="HBoxContainer/GridContainer"]
+[node name="PlayerAge" type="Label" parent="PanelContainer/HBoxContainer/GridContainer"]
 layout_mode = 2
 text = "PLAYER_AGE"
 
-[node name="Age" type="Label" parent="HBoxContainer/GridContainer"]
+[node name="Age" type="Label" parent="PanelContainer/HBoxContainer/GridContainer"]
 layout_mode = 2
 text = "PLACEHOLDER"
 
-[node name="RemovePlayer" type="Button" parent="HBoxContainer"]
+[node name="RemovePlayer" type="Button" parent="PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "DELETE"
 
-[connection signal="pressed" from="HBoxContainer/RemovePlayer" to="." method="delete_card"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/RemovePlayer" to="." method="delete_card"]

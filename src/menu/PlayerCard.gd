@@ -1,4 +1,4 @@
-extends MarginContainer
+extends PanelContainer
 
 class_name PlayerCard
 

@@ -13,12 +13,12 @@ func _pressed():
 		return
 	var game_manager = get_tree().root.get_child(0) as GameManager
 	var deck = deck_manager.current_deck
-	var players: Array[PlayerResource] = Array()
+	var players: Array[PlayerResource] = []
 	for player in player_list.get_children():
 		if player is PlayerCard and player.player_card != null:
 			players.append(player.player_card)
 
-	game_manager.load_game(deck, players)
+	game_manager.play_game(players, deck)
 	
 
 func validate_players() -> bool:
