@@ -1,5 +1,7 @@
 extends Sprite2D
 
+class_name CardFrontSize
+
 @export var max_width = 500.0
 @export var max_heigth = 500.0
 
@@ -8,5 +10,11 @@ extends Sprite2D
 func _ready():
 	pass # Replace with function body.
 
-func scale_now():
-	scale = Vector2(max_width / texture.get_width(), max_heigth / texture.get_height())
+func set_and_scale_texture(new_texture: Texture2D):
+	if new_texture.get_width() <= max_width and new_texture.get_height() < max_heigth:
+		texture = new_texture
+	var ratio = min(max_width / new_texture.get_width(), max_heigth / new_texture.get_height())
+	var new_image_size = Vector2(new_texture.get_width() * ratio, new_texture.get_height() * ratio)
+	var scaled_texture = new_texture.get_image()
+	scaled_texture.resize(new_image_size.x, new_image_size.y)
+	texture = ImageTexture.create_from_image(scaled_texture) as Texture2D

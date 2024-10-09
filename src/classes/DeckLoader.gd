@@ -80,7 +80,14 @@ func load_deck(deck_name: String) -> MemoryDeckResource:
 		if card != null:
 			return_deck.cards.append(card)
 
+	print(return_deck)
 	return return_deck
+
+func load_deck_async(deck_name: String) -> Thread:
+	var thread = Thread.new()
+	thread.start(load_deck.bind(deck_name))
+
+	return thread
 
 func get_cover_image(deck_name: String) -> Texture2D:
 	var image_source_path = build_deck_base_path(deck_name) + "/cover.png"
