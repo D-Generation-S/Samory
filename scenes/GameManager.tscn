@@ -1,21 +1,30 @@
-[gd_scene load_steps=6 format=3 uid="uid://dx6fa55mu3fu0"]
+[gd_scene load_steps=7 format=3 uid="uid://dx6fa55mu3fu0"]
 
 [ext_resource type="Script" path="res://src/game/GameManager.gd" id="1_34dj2"]
 [ext_resource type="PackedScene" uid="uid://co10o6j0oxeep" path="res://scenes/menu/MainMenu.tscn" id="2_yr08t"]
 [ext_resource type="PackedScene" uid="uid://bnfr8gek24m47" path="res://scenes/game/levels/MemoryGameScene.tscn" id="3_u1w4v"]
 [ext_resource type="Script" path="res://src/game/SystemDeckManager.gd" id="4_sriew"]
 [ext_resource type="PackedScene" uid="uid://bv4jg7bjubrrr" path="res://scenes/game/levels/LoadingScreen.tscn" id="4_x4qxi"]
+[ext_resource type="Script" path="res://src/game/SoundManager.gd" id="6_nnukk"]
 
-[node name="GameManager" type="Node2D" node_paths=PackedStringArray("system_deck_manager")]
+[node name="GameManager" type="Node2D" node_paths=PackedStringArray("system_deck_manager", "sound_manager")]
 script = ExtResource("1_34dj2")
 main_menu_template = ExtResource("2_yr08t")
 game_scene = ExtResource("3_u1w4v")
 system_deck_manager = NodePath("GlobalFixedNode/SystemDeckManager")
+sound_manager = NodePath("GlobalFixedNode/SoundManager")
 loading_screen_template = ExtResource("4_x4qxi")
 
 [node name="GlobalFixedNode" type="Node2D" parent="."]
 
 [node name="SystemDeckManager" type="Node2D" parent="GlobalFixedNode"]
 script = ExtResource("4_sriew")
+
+[node name="SoundManager" type="Node2D" parent="GlobalFixedNode"]
+script = ExtResource("6_nnukk")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="GlobalFixedNode/SoundManager"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="GlobalFixedNode/SoundManager"]
 
 [connection signal="loading_system_decks_done" from="GlobalFixedNode/SystemDeckManager" to="." method="loading_data_done"]

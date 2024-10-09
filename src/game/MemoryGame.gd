@@ -1,11 +1,14 @@
 extends Node2D
 
+class_name MemoryGame
+
 signal round_start()
 signal freeze_round()
 signal round_end()
 signal game_has_endet()
 
 signal player_scored(player_id: int)
+signal play_sound(stream: AudioStream)
 
 const CARDS_PER_PLAYER = 2
 
@@ -20,8 +23,12 @@ var player_node: PlayerManager
 var triggered_cards: int
 var removed_cards = 0
 
+var game_manager: GameManager;
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	game_manager = get_tree().root.get_child(0) as GameManager
+	connect("play_sound", game_manager.play_sound_effect)
 	var card_pool = card_deck.cards
 	var additional_cards = card_deck.cards
 	card_pool = numberize_cards_from_pool(card_pool)
@@ -133,3 +140,8 @@ func set_players(players_of_game: Array[PlayerResource]):
 
 func get_current_game_phase() -> int:
 	return current_game_state
+
+func play_game_sound(stream: AudioStream):
+	if stream == null:
+		return
+	play_sound.emit(stream)

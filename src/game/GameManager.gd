@@ -8,6 +8,7 @@ signal loading_message(message: String)
 @export var build_in_decks: Array[MemoryCardResource]
 @export var game_scene: PackedScene
 @export var system_deck_manager: SystemDeckManager
+@export var sound_manager: SoundManager
 @export var loading_screen_template: PackedScene
 
 var inital_menu_shown = false
@@ -50,7 +51,7 @@ func load_game(card_deck: Resource, players: Array[PlayerResource]):
 	for player in players:
 		player.id = current_player_id
 		current_player_id = current_player_id + 1
-	var game_scene_node = game_scene.instantiate()
+	var game_scene_node = game_scene.instantiate() as MemoryGame
 	game_scene_node.card_deck = card_deck
 	add_child(game_scene_node)  
 	game_scene_node.set_players(players)
@@ -71,5 +72,9 @@ func clear_all_nodes():
 func loading_data_done():
 	if inital_menu_shown:
 		return
+	sound_manager.stop_all_sounds()
 	inital_menu_shown = true
 	open_menu(main_menu_template)
+
+func play_sound_effect(stream: AudioStream):
+	sound_manager.play_sound_effect(stream)
