@@ -1,11 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://co10o6j0oxeep"]
+[gd_scene load_steps=7 format=3 uid="uid://co10o6j0oxeep"]
 
 [ext_resource type="Script" path="res://src/menu/QuitGameButton.gd" id="1_6c3ib"]
 [ext_resource type="Script" path="res://src/menu/StartQuickGame.gd" id="1_dyfxg"]
 [ext_resource type="Script" path="res://src/menu/OpenSingelScene.gd" id="1_ohfem"]
+[ext_resource type="Script" path="res://src/menu/MainMenu.gd" id="1_w7od3"]
+[ext_resource type="Texture2D" uid="uid://dmf23xobks0pc" path="res://assets/sprites/wood.png" id="2_4tb54"]
 [ext_resource type="PackedScene" uid="uid://dkd4cftggpymb" path="res://scenes/menu/GameLobby.tscn" id="2_o3qyg"]
 
-[node name="MainMenu" type="CanvasLayer"]
+[node name="MainMenu" type="CanvasLayer" node_paths=PackedStringArray("game_buttons")]
+script = ExtResource("1_w7od3")
+game_buttons = [NodePath("CenterContainer/VBoxContainer/Start Game"), NodePath("CenterContainer/VBoxContainer/Quick Game")]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 2048.0
+offset_bottom = 2048.0
+texture = ExtResource("2_4tb54")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchors_preset = 8

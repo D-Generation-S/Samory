@@ -16,33 +16,27 @@ func toggle_on():
 	toggle_off_now = false
 	if currently_in_focus:
 		set_shader_material(toggle_material)
-	print("Toggle card on")
 
 func freeze_card():
 	collider.visible = false;
-	print("Freeze card")
 	
 func unfreeze_card():
 	collider.visible = true;
-	print("Unreeze card")
 
 func toggle_off():
 	toggle_off_now = true
 	if currently_in_focus:
 		set_shader_material(toggle_material)
-	print("Toggle card off")
 
 func is_focused():
 	if toggle_off_now or toggle_on_now:
 		return
 	currently_in_focus = true
 	set_shader_material(focus_material)
-	print("Got focus")
 
 func lost_focus():
 	currently_in_focus = false
 	set_shader_material(toggle_material)
-	print("lost focus")
 
 func set_shader_material(new_material: Material):
 	material = new_material.duplicate()

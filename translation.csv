@@ -23,3 +23,6 @@
 "NO_AGE_WAS_ENTERED";"The age of a player is required";"Das alter des Spielers wird benötigt"
 "AGE_NEEDS_TO_BE_A_NUMBER";"The age of an player must be a number";"Das alter eines Spielers muss eien Zahl sein"
 "DELETE";"Delete";"Entfernen"
+"LOADING";"Loading";"Lade"
+"LOAD_DECKS";"custom decks";"eigene Kartendecks"
+"ADD_RANDOM_PLAYER";"Add random player";"Zufälligen Spieler hinzufügen"

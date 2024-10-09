@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://ubmqrubcq2a2"]
+[gd_scene load_steps=17 format=3 uid="uid://ubmqrubcq2a2"]
 
 [ext_resource type="Script" path="res://src/game/CardTemplate.gd" id="1_fmo68"]
 [ext_resource type="Script" path="res://src/game/CardText.gd" id="3_4fnc2"]
+[ext_resource type="Texture2D" uid="uid://cdtyie7mnl05w" path="res://assets/textures/ShadowTexture.tres" id="3_uugcj"]
 [ext_resource type="Texture2D" uid="uid://dpcfrsq40moii" path="res://assets/sprites/CardDefaultBack.png" id="3_xiuu2"]
 [ext_resource type="Texture2D" uid="uid://d4nvcsyb0ehtb" path="res://assets/sprites/CardDefaultFront.png" id="4_e8l51"]
 [ext_resource type="Script" path="res://src/game/CardFrontSize.gd" id="4_kxmgl"]
@@ -9,6 +10,30 @@
 [ext_resource type="Material" uid="uid://d0yxq3hqqpj2p" path="res://assets/material/FocusMaterial.tres" id="8_aoxou"]
 [ext_resource type="Script" path="res://src/game/ToggleCardVisibility.gd" id="8_pw264"]
 [ext_resource type="Script" path="res://src/game/CardHandler.gd" id="9_mu0q4"]
+
+[sub_resource type="Gradient" id="Gradient_fwwud"]
+colors = PackedColorArray(0, 0, 0, 1, 0.247059, 0.247059, 0.247059, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b380y"]
+gradient = SubResource("Gradient_fwwud")
+width = 500
+height = 20
+fill_from = Vector2(1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dg1ie"]
+gradient = SubResource("Gradient_fwwud")
+width = 20
+height = 20
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0.521368, 0.388889)
+
+[sub_resource type="Gradient" id="Gradient_0sfg2"]
+colors = PackedColorArray(0.87451, 0.807843, 0.631373, 1, 0.87451, 0.807843, 0.631373, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vp4ck"]
+gradient = SubResource("Gradient_0sfg2")
+width = 500
+height = 550
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phkhd"]
 size = Vector2(500, 550)
@@ -19,12 +44,32 @@ front_side = NodePath("CardFront")
 text_node = NodePath("CardText")
 back_side = NodePath("CardBack")
 
+[node name="Shadow" type="Node2D" parent="."]
+
+[node name="Top" type="Sprite2D" parent="Shadow"]
+position = Vector2(250, -10)
+texture = SubResource("GradientTexture2D_b380y")
+
+[node name="Right" type="Sprite2D" parent="Shadow"]
+position = Vector2(510, 275)
+texture = ExtResource("3_uugcj")
+
+[node name="TopRight" type="Sprite2D" parent="Shadow"]
+position = Vector2(510, -10)
+texture = SubResource("GradientTexture2D_dg1ie")
+
+[node name="CardBackground" type="Sprite2D" parent="."]
+position = Vector2(250, 275)
+texture = SubResource("GradientTexture2D_vp4ck")
+
 [node name="CardText" type="RichTextLabel" parent="."]
 offset_top = 500.0
 offset_right = 500.0
 offset_bottom = 550.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
 text = "[center]placeholder[/center]"
+fit_content = true
 script = ExtResource("3_4fnc2")
 
 [node name="CardFront" type="Sprite2D" parent="."]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://8yxfao2fwwod"]
+
+[ext_resource type="Texture2D" uid="uid://dpcfrsq40moii" path="res://assets/sprites/CardDefaultBack.png" id="1_f7o75"]
+[ext_resource type="Script" path="res://src/game/FallingCardSprite.gd" id="2_hxqwv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ov72a"]
+size = Vector2(50, 50)
+
+[node name="FallingCard" type="RigidBody2D"]
+gravity_scale = 0.2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ov72a")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_f7o75")
+script = ExtResource("2_hxqwv")
