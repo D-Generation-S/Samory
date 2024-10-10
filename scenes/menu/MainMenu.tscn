@@ -9,7 +9,7 @@
 
 [node name="MainMenu" type="CanvasLayer" node_paths=PackedStringArray("game_buttons")]
 script = ExtResource("1_w7od3")
-game_buttons = [NodePath("CenterContainer/VBoxContainer/Start Game"), NodePath("CenterContainer/VBoxContainer/Quick Game")]
+game_buttons = [NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Start Game"), NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quick Game")]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 2048.0
@@ -22,19 +22,29 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -54.5
-offset_top = -33.0
-offset_right = 54.5
-offset_bottom = 33.0
+offset_left = -100.5
+offset_top = -60.5
+offset_right = 100.5
+offset_bottom = 60.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 
-[node name="Start Game" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Start Game" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -42,12 +52,12 @@ text = "START_GAME"
 script = ExtResource("1_ohfem")
 scene_template = ExtResource("2_o3qyg")
 
-[node name="Quick Game" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Quick Game" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "QUICK_GAME"
 script = ExtResource("1_dyfxg")
 
-[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4

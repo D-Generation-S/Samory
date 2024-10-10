@@ -1,8 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3cv1g0a284mq"]
+[gd_scene load_steps=7 format=3 uid="uid://b3cv1g0a284mq"]
 
 [ext_resource type="Script" path="res://src/menu/DeckPreview.gd" id="1_k0qju"]
 [ext_resource type="Script" path="res://src/menu/DeckPreviewSelection.gd" id="3_0x34l"]
+[ext_resource type="Texture2D" uid="uid://bmxqeqo65xwt" path="res://assets/sprites/spritesheet-default.png" id="4_20ys8"]
 [ext_resource type="Material" uid="uid://d0yxq3hqqpj2p" path="res://assets/material/FocusMaterial.tres" id="4_aduyl"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wmik1"]
+texture = ExtResource("4_20ys8")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+region_rect = Rect2(384, 321, 64, 63)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i0pjp"]
+texture = ExtResource("4_20ys8")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+region_rect = Rect2(384, 384, 64, 64)
 
 [node name="DeckPreview" type="MarginContainer" node_paths=PackedStringArray("deck_name", "card_count", "buildint", "texture_rect", "deck_description")]
 anchors_preset = 15
@@ -19,11 +36,11 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 script = ExtResource("1_k0qju")
-deck_name = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/DeckName")
-card_count = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer/CardCounter")
-buildint = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer2/IsBuildIn")
+deck_name = NodePath("PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/DeckName")
+card_count = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/GridContainer/CardCounter")
+buildint = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/GridContainer/IsBuildIn")
 texture_rect = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Control")
-deck_description = NodePath("PanelContainer/MarginContainer/VBoxContainer/DeckDescription")
+deck_description = NodePath("PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/DeckDescription")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
@@ -53,47 +70,60 @@ script = ExtResource("3_0x34l")
 target_size = Vector2(250, 250)
 selection_material = ExtResource("4_aduyl")
 
-[node name="DeckName" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "DECK_NAME"
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_wmik1")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2"]
 layout_mode = 2
+size_flags_horizontal = 4
 text = "DECK_INFO"
 
-[node name="VBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2"]
 layout_mode = 2
+columns = 2
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer"]
-layout_mode = 2
-text = "CARD_COUNT"
-
-[node name="CardCounter" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer"]
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-bbcode_enabled = true
-text = "0"
-fit_content = true
-
-[node name="VBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer2"]
-layout_mode = 2
 text = "BUILT_IN"
 
-[node name="IsBuildIn" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer2"]
+[node name="IsBuildIn" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
 text = "No"
 fit_content = true
 
-[node name="DeckDescription" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "CARD_COUNT"
+
+[node name="CardCounter" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "0"
+fit_content = true
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_i0pjp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="DeckName" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "DECK_NAME"
+
+[node name="DeckDescription" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true

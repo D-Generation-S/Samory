@@ -114,7 +114,7 @@ size_flags_horizontal = 3
 [node name="Decks" type="GridContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-columns = 3
+columns = 2
 script = ExtResource("1_8vavy")
 deck_template = ExtResource("1_uo1dm")
 

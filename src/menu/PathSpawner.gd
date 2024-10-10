@@ -25,7 +25,7 @@ func _process(delta):
 	progress_ratio = new_ratio
 	var node = get_card()
 	node.global_position = global_position
-	node.set_axis_velocity(Vector2.ZERO)
+	node.linear_velocity = Vector2.ZERO
 	node.freeze = false
 
 	if node.get_parent() == null:
@@ -33,12 +33,13 @@ func _process(delta):
 
 func collect_old_cards():
 	for child in spawn_target.get_children():
-		if child is RigidBody2D and child.position.y > lowest_fall_line:
+		if child is RigidBody2D and child.global_position.y > lowest_fall_line:
 			child.freeze = true
 			cards.append(child)
 
 func get_card() -> RigidBody2D:
 	var card = cards.pop_back()
 	if card == null:
+		print("Generate card")
 		card = spawn_template.instantiate() as RigidBody2D
 	return card
