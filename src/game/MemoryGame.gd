@@ -49,7 +49,6 @@ func _ready():
 
 func _process(delta):
 	check_if_still_paused()
-	print(current_game_state)
 	if current_game_state == GameState.ROUND_END:
 		check_if_round_complete()
 	if !is_node_ready() or !is_loading():
@@ -105,7 +104,6 @@ func build_card_layout(deck_of_cards: MemoryDeckResource,
 
 	while row_count * column_count < card_pool.size():
 		column_count = column_count + 1
-		print(column_count)
 
 	for y in range(row_count):
 		for x in range(column_count):
@@ -115,7 +113,6 @@ func build_card_layout(deck_of_cards: MemoryDeckResource,
 				print("exceed pool!")
 				continue
 			card_template_node.memory_card = card_pool[current_card]
-			print(return_cards.size())
 			var height = card_template_node.get_height()
 			var width = card_template_node.get_width()
 			var height_to_set = y * height + y * card_separation
