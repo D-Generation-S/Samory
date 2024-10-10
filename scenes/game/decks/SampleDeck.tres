@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="MemoryDeckResource" load_steps=5 format=3 uid="uid://dgbigggpvj0rk"]
+[gd_resource type="Resource" script_class="MemoryDeckResource" load_steps=7 format=3 uid="uid://dgbigggpvj0rk"]
 
 [ext_resource type="Texture2D" uid="uid://dpcfrsq40moii" path="res://assets/sprites/CardDefaultBack.png" id="1_ukmif"]
 [ext_resource type="Script" path="res://src/templates/MemoryDeckResource.gd" id="2_0bd8r"]
 [ext_resource type="Script" path="res://src/templates/MemoryCardResource.gd" id="2_d84os"]
 [ext_resource type="Resource" uid="uid://clwy17ikjqk21" path="res://scenes/game/cards/ExampleCard.tres" id="3_xm3tl"]
+[ext_resource type="Resource" uid="uid://dtjjkvfhlefdq" path="res://scenes/game/cards/ExampleCard2.tres" id="4_b51vw"]
+[ext_resource type="Resource" uid="uid://bc64rxhnwnvm8" path="res://scenes/game/cards/ExampleCard3.tres" id="5_tgx1r"]
 
 [resource]
 script = ExtResource("2_0bd8r")
@@ -12,4 +14,4 @@ file_system_folder = ""
 name = "Test Deck"
 description = "This deck is for testing purpose"
 card_back = ExtResource("1_ukmif")
-cards = Array[ExtResource("2_d84os")]([ExtResource("3_xm3tl")])
+cards = Array[ExtResource("2_d84os")]([ExtResource("3_xm3tl"), ExtResource("4_b51vw"), ExtResource("5_tgx1r")])

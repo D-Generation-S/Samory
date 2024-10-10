@@ -5,6 +5,8 @@ class_name CardTemplate
 signal hide_card()
 signal card_triggered()
 signal trigger_sound_effect(stream: AudioStream)
+signal card_in_focus()
+signal  card_lost_focus()
 
 @export var card_deck: Resource
 @export var memory_card: Resource
@@ -15,6 +17,8 @@ signal trigger_sound_effect(stream: AudioStream)
 @export var timer_for_hide_delay: Timer
 @export_range(0,0.25) var min_time_delay: float = 0.1
 @export_range(0,0.5) var max_time_delay: float = 0.5
+
+@export var grid_position: Point
 
 var was_clicked: bool
 
@@ -31,7 +35,7 @@ func _ready():
 	back_side.texture = card_deck.card_back
 
 func _enter_tree():
-	var parent_node = get_parent() as MemoryGame
+	var parent_node = get_parent().get_parent() as MemoryGame
 	if parent_node == null:
 		printerr("No parent node was found!")
 		return
@@ -70,6 +74,7 @@ func card_was_clicked():
 	was_clicked = true
 	freeze_card()
 	play_card_turn_sound()
+	back_side.toggle_off()
 
 func play_card_turn_sound():
 	var index = randi() % flip_effects.size()
@@ -89,3 +94,13 @@ func remove_from_board():
 
 func card_is_hidden() -> bool:
 	return back_side.is_hidden()
+
+func got_focus():
+	if was_clicked:
+		return
+	card_in_focus.emit()
+
+func lost_focus():
+	if was_clicked:
+		return
+	card_lost_focus.emit()

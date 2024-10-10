@@ -22,6 +22,8 @@ const CARDS_PER_PLAYER = 2
 @export var finished_game_template: PackedScene
 @export var game_menu_template: PackedScene
 
+@export var card_target_node: Node2D
+
 @export var game_nodes_to_show: Array[Node]
 @export var loading_scene: LoadingScreen
 
@@ -63,7 +65,7 @@ func _process(delta):
 		current_sound_timer = 0
 		var cards = load_thread.wait_to_finish() as Array[CardTemplate]
 		for card in cards:
-			add_child(card)
+			card_target_node.add_child(card)
 			card.connect("card_triggered", card_was_triggered)
 		load_thread = null
 		loading_scene.queue_free()
@@ -118,6 +120,7 @@ func build_card_layout(deck_of_cards: MemoryDeckResource,
 			var height_to_set = y * height + y * card_separation
 			var width_to_set = x * width + x * card_separation
 			card_template_node.position = Vector2(width_to_set, height_to_set)
+			card_template_node.grid_position = Point.new(x, y)
 			
 			return_cards.append(card_template_node)
 			current_card = current_card + 1
@@ -136,7 +139,7 @@ func card_was_triggered():
 		return
 	triggered_cards = triggered_cards + 1
 	if cards_where_identically():
-		for child in get_children():
+		for child in card_target_node.get_children():
 			if child is CardTemplate and child.is_turned():
 				child.remove_from_board()
 		triggered_cards = 0
@@ -150,7 +153,7 @@ func card_was_triggered():
 
 func cards_where_identically() -> bool:
 	var clicked_cards: Array[CardTemplate]
-	for child in get_children():
+	for child in card_target_node.get_children():
 		if child is CardTemplate and child.is_turned():
 			clicked_cards.append(child as CardTemplate)
 
@@ -223,7 +226,7 @@ func continue_game():
 
 func check_if_round_complete():
 	var card_not_hidden = false;
-	for node in get_children():
+	for node in card_target_node.get_children():
 		if node is CardTemplate:
 			if !node.card_is_hidden():
 				card_not_hidden = true

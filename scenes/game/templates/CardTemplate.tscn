@@ -102,9 +102,10 @@ script = ExtResource("9_mu0q4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CardBack/Area2D"]
 shape = SubResource("RectangleShape2D_phkhd")
 
+[connection signal="card_in_focus" from="." to="CardBack" method="is_focused"]
+[connection signal="card_lost_focus" from="." to="CardBack" method="lost_focus"]
 [connection signal="hide_card" from="." to="CardBack" method="toggle_on"]
 [connection signal="timeout" from="TurnDelay" to="." method="hide_card_now"]
 [connection signal="clicked" from="CardBack/Area2D" to="." method="card_was_clicked"]
-[connection signal="clicked" from="CardBack/Area2D" to="CardBack" method="toggle_off"]
 [connection signal="mouse_entered" from="CardBack/Area2D" to="CardBack" method="is_focused"]
 [connection signal="mouse_exited" from="CardBack/Area2D" to="CardBack" method="lost_focus"]

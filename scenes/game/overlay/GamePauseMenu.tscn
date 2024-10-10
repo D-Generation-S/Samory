@@ -52,5 +52,6 @@ is_focused = true
 layout_mode = 2
 text = "CLOSE_MENU"
 script = ExtResource("2_ojomg")
+is_focused = true
 
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/CloseMenu" to="." method="close_menu"]
