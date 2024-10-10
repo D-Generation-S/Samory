@@ -1,5 +1,7 @@
 extends Camera2D
 
+signal game_menu_requested()
+
 @export_range(1,2) var max_zoom: float = 1.8
 @export_range(0.1, 0.2) var min_zoom: float = 0.15
 @export_range(0.01, 0.2) var zoom_step: float = 0.03
@@ -10,6 +12,7 @@ extends Camera2D
 var dragging = false
 var initial_drag = false
 var last_mouse_pos: Vector2
+var paused = false
 
 var parent_node: MemoryGame
 
@@ -18,8 +21,9 @@ func _ready():
 	var screen_size = DisplayServer.screen_get_size()
 	position = Vector2(screen_size.x / 2, screen_size.y / 2)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if paused:
+		return
 	if Input.is_action_just_pressed("zoom_in"):
 		zoom = zoom + Vector2(zoom_step, zoom_step)
 	if Input.is_action_just_pressed("zoom_out"):
@@ -29,6 +33,8 @@ func _process(_delta):
 		initial_drag = true
 	if Input.is_action_just_released("drag"):
 		dragging = false
+	if Input.is_action_just_pressed("back"):
+		game_menu_requested.emit()
 	if Input.is_action_just_pressed("next_round") and parent_node.get_current_game_phase() == GameState.ROUND_FREEZE:
 		parent_node.end_round_now()
 		
@@ -55,3 +61,8 @@ func drag_mouse():
 	offset = offset - Vector2(delta.x * drag_speed, delta.y * drag_speed)
 
 	last_mouse_pos = get_viewport().get_mouse_position()
+
+
+func game_paused(is_paused: bool):
+	paused = is_paused
+	

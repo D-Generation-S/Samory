@@ -5,6 +5,7 @@ var alphanumeric_validation_regex: RegEx
 var last_check_validation: bool = false
 
 func _ready():
+	super()
 	alphanumeric_validation_regex = RegEx.new()
 	alphanumeric_validation_regex.compile("^[a-zA-Z0-9]+$")
 	validation_error.emit("NO_NAME_WAS_ENTERD")

@@ -15,6 +15,7 @@ func _pressed():
 	root_node.add_child(new_player_node)
 	player_adding.emit()
 	new_player_node.connect("new_player_dialog_closed", root_node.enable_all_buttons)
+	new_player_node.connect("new_player_dialog_closed", dialog_was_closed)
 	new_player_node.connect("new_player_added", player_was_added)
 
 func player_was_added(new_player: PlayerResource):
@@ -23,6 +24,10 @@ func player_was_added(new_player: PlayerResource):
 	player_node.add_child(player_card)
 	player_node.connect("getting_deleted", player_was_removed)
 	player_added.emit()
+	dialog_was_closed()
+
+func dialog_was_closed():
+	grab_focus()
 
 func player_was_removed():
 	player_removed.emit();

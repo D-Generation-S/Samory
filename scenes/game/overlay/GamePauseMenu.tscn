@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://cluwm03j8e11p"]
+
+[ext_resource type="Script" path="res://src/overlay/GamePauseMenu.gd" id="1_avng0"]
+[ext_resource type="Script" path="res://src/overlay/FinishGameOk.gd" id="2_00hhe"]
+[ext_resource type="Script" path="res://src/menu/ClickableButton.gd" id="2_ojomg"]
+
+[node name="GamePauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_avng0")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -31.0
+offset_right = 31.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MainMenu" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "MAIN_MENU"
+script = ExtResource("2_00hhe")
+is_focused = true
+
+[node name="CloseMenu" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "CLOSE_MENU"
+script = ExtResource("2_ojomg")
+
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/CloseMenu" to="." method="close_menu"]

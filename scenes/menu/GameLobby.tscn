@@ -93,6 +93,7 @@ root_node = NodePath("../../../../../../../../../..")
 player_node = NodePath("../../ScrollContainer/Players")
 player_template = ExtResource("3_vi7sw")
 player_card_template = ExtResource("4_l5ybk")
+is_focused = true
 
 [node name="AddSavedPlayer" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 visible = false
@@ -159,6 +160,5 @@ script = ExtResource("8_i1lj5")
 [connection signal="player_added" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/AddNewPlayer" to="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/StartGame" method="validate"]
 [connection signal="player_adding" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/AddNewPlayer" to="." method="block_all_buttons"]
 [connection signal="player_removed" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/AddNewPlayer" to="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/StartGame" method="validate"]
-[connection signal="player_selection" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/AddSavedPlayer" to="." method="block_all_buttons"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/QuickAddPlayer" to="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/StartGame" method="validate"]
 [connection signal="deck_selected" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/ScrollContainer/Decks" to="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/StartGame" method="validate"]

@@ -33,9 +33,15 @@ func restore_deck():
 	is_selected = false
 	deck_unchecked.emit()
 
-func _gui_input(event):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+func set_this_deck():
+		is_selected = true
 		deck_selected.emit(deck)
 		deck_activate.emit()
-		is_selected = true
+
+func is_deck_selected():
+	return is_selected
+
+func _gui_input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		set_this_deck()
 		

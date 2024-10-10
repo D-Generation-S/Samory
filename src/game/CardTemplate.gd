@@ -10,8 +10,11 @@ signal trigger_sound_effect(stream: AudioStream)
 @export var memory_card: Resource
 @export var front_side: CardFrontSize
 @export var text_node: Node
-@export var back_side: Sprite2D
+@export var back_side: ToggleCardVisibility
 @export var flip_effects: Array[AudioStream]
+@export var timer_for_hide_delay: Timer
+@export_range(0,0.25) var min_time_delay: float = 0.1
+@export_range(0,0.5) var max_time_delay: float = 0.5
 
 var was_clicked: bool
 
@@ -39,6 +42,14 @@ func _enter_tree():
 	connect("trigger_sound_effect", parent_node.play_game_sound)
 
 func toggle_card_on():
+	var time_range = max_time_delay - min_time_delay
+	var delay = randf() * time_range + min_time_delay
+	timer_for_hide_delay.wait_time = delay
+	timer_for_hide_delay.start()
+
+func hide_card_now():
+	if back_side.is_hidden():
+		return;
 	hide_card.emit()
 	play_card_turn_sound()
 
@@ -75,3 +86,6 @@ func is_turned() -> bool:
 
 func remove_from_board():
 	call_deferred("queue_free")
+
+func card_is_hidden() -> bool:
+	return back_side.is_hidden()

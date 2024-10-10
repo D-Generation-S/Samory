@@ -1,5 +1,7 @@
 extends Sprite2D
 
+class_name ToggleCardVisibility
+
 @export_range(0.01, 0.2) var threshold_change_step: float = 0.01
 @export var toggle_material: Material
 @export var focus_material: Material
@@ -45,6 +47,9 @@ func _ready():
 	collider = get_children()[0]
 	# This makes sure that each instance does get it's own shader instance
 	set_shader_material(toggle_material)
+
+func is_hidden() -> bool:
+	return threshold <= 0
 
 func _process(_delta):
 	var changed = false

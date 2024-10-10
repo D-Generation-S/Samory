@@ -6,6 +6,7 @@ signal round_start()
 signal freeze_round()
 signal round_end()
 signal game_has_endet()
+signal game_paused(is_paused: bool)
 
 signal player_scored(player_id: int)
 
@@ -19,6 +20,7 @@ const CARDS_PER_PLAYER = 2
 @export var card_template: PackedScene
 @export var gui_node: CanvasLayer
 @export var finished_game_template: PackedScene
+@export var game_menu_template: PackedScene
 
 @export var game_nodes_to_show: Array[Node]
 @export var loading_scene: LoadingScreen
@@ -30,6 +32,8 @@ var removed_cards = 0
 
 var load_thread: Thread = null
 var current_sound_timer = 0
+
+var paused: bool = false
 
 var game_manager: GameManager;
 
@@ -44,6 +48,10 @@ func _ready():
 	start_round_now()
 
 func _process(delta):
+	check_if_still_paused()
+	print(current_game_state)
+	if current_game_state == GameState.ROUND_END:
+		check_if_round_complete()
 	if !is_node_ready() or !is_loading():
 		return
 	current_sound_timer = current_sound_timer + delta
@@ -127,6 +135,8 @@ func numberize_cards_from_pool(card_pool) -> Array:
 	return cards
 
 func card_was_triggered():
+	if current_game_state == GameState.ROUND_END:
+		return
 	triggered_cards = triggered_cards + 1
 	if cards_where_identically():
 		for child in get_children():
@@ -137,7 +147,7 @@ func card_was_triggered():
 		var current_player = player_node.get_current_player()
 		player_scored.emit(current_player.id)
 		check_card_state()
-		return
+		return 
 	if triggered_cards >= CARDS_PER_PLAYER:
 		freeze_round_now()
 
@@ -170,7 +180,6 @@ func end_round_now():
 	current_game_state = GameState.ROUND_END
 	print("End Round")
 	round_end.emit()
-	start_round_now()
 
 func check_card_state():
 	if removed_cards >= card_deck.cards.size():
@@ -193,3 +202,35 @@ func play_game_sound(stream: AudioStream):
 	if stream == null:
 		return
 	game_manager.sound_bridge.play_sound(stream)
+
+func show_game_menu():
+	paused = true
+	game_paused.emit(true)
+	var menu = game_menu_template.instantiate() as GamePauseMenu
+	gui_node.add_child(menu)
+
+func check_if_still_paused():
+	if !paused:
+		return
+	var pause_complete = true
+	for node in gui_node.get_children():
+		if node is GamePauseMenu:
+			pause_complete = false
+			break
+	if pause_complete:
+		paused = false
+		continue_game()
+
+func continue_game():
+	game_paused.emit(false)
+
+func check_if_round_complete():
+	var card_not_hidden = false;
+	for node in get_children():
+		if node is CardTemplate:
+			if !node.card_is_hidden():
+				card_not_hidden = true
+				break
+	if card_not_hidden:
+		return
+	start_round_now()
