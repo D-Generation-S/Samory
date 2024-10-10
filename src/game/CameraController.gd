@@ -11,7 +11,7 @@ var dragging = false
 var initial_drag = false
 var last_mouse_pos: Vector2
 
-var parent_node: Node2D
+var parent_node: MemoryGame
 
 func _ready():
 	parent_node = get_parent() as Node2D
@@ -30,7 +30,6 @@ func _process(_delta):
 	if Input.is_action_just_released("drag"):
 		dragging = false
 	if Input.is_action_just_pressed("next_round") and parent_node.get_current_game_phase() == GameState.ROUND_FREEZE:
-		print("Trigger next round")
 		parent_node.end_round_now()
 		
 	var zoom_x = clampf(zoom.x, min_zoom, max_zoom)

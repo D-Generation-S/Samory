@@ -35,7 +35,6 @@ func fill_screen():
 			node.visible = true
 
 func create_new_sprite() -> Sprite2D:
-	print("Creating new sprite!")
 	var sprite = Sprite2D.new()
 	sprite.texture = background_texture
 	sprite.position = Vector2.ZERO

@@ -10,7 +10,6 @@ var players: Array[PlayerResource]
 var current_player_index: int
 
 func add_players(players_to_add: Array[PlayerResource]):
-	print("Player manager add players")
 	players_to_add.sort_custom(player_sort)
 	players = players_to_add
 	current_player_index = -1

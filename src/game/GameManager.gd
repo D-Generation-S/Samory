@@ -9,6 +9,7 @@ signal loading_message(message: String)
 @export var game_scene: PackedScene
 @export var system_deck_manager: SystemDeckManager
 @export var sound_manager: SoundManager
+@export var sound_bridge: SoundBridge
 @export var loading_screen_template: PackedScene
 
 var inital_menu_shown = false

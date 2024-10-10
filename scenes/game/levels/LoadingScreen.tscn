@@ -12,9 +12,10 @@ _data = {
 }
 point_count = 2
 
-[node name="LoadingScreen" type="Node2D" node_paths=PackedStringArray("screen_message")]
+[node name="LoadingScreen" type="Node2D" node_paths=PackedStringArray("screen_message", "static_label")]
 script = ExtResource("1_b8dw1")
 screen_message = NodePath("CanvasLayer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/LoadingMessage")
+static_label = NodePath("CanvasLayer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/LoadingStatic")
 sound_effect = ExtResource("2_b0kc6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

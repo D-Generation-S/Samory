@@ -1,4 +1,4 @@
-extends Button
+extends ClickableButton
 
 signal player_was_added(player: PlayerResource)
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://de0if4rovyxsv"]
+[gd_scene load_steps=5 format=3 uid="uid://de0if4rovyxsv"]
 
 [ext_resource type="Script" path="res://src/menu/PlayerCard.gd" id="1_ab6rg"]
 [ext_resource type="Texture2D" uid="uid://bmxqeqo65xwt" path="res://assets/sprites/spritesheet-default.png" id="1_u8sm3"]
+[ext_resource type="Script" path="res://src/menu/ClickableButton.gd" id="3_4auv0"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vkn4j"]
 texture = ExtResource("1_u8sm3")
@@ -57,5 +58,6 @@ text = "PLACEHOLDER"
 layout_mode = 2
 size_flags_horizontal = 10
 text = "DELETE"
+script = ExtResource("3_4auv0")
 
 [connection signal="pressed" from="PanelContainer/HBoxContainer/RemovePlayer" to="." method="delete_card"]

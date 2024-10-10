@@ -16,7 +16,6 @@ func _ready():
 func set_image(new_texture: Texture2D):
 	texture = new_texture
 	scale = Vector2(target_size.x / new_texture.get_width(), target_size.y / new_texture.get_height())
-	print(scale)
 
 func reset():
 	material = initial_material

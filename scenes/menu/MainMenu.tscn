@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://co10o6j0oxeep"]
+[gd_scene load_steps=7 format=3 uid="uid://co10o6j0oxeep"]
 
 [ext_resource type="Script" path="res://src/menu/QuitGameButton.gd" id="1_6c3ib"]
 [ext_resource type="Script" path="res://src/menu/StartQuickGame.gd" id="1_dyfxg"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://src/menu/MainMenu.gd" id="1_w7od3"]
 [ext_resource type="Texture2D" uid="uid://dmf23xobks0pc" path="res://assets/sprites/wood.png" id="2_4tb54"]
 [ext_resource type="PackedScene" uid="uid://dkd4cftggpymb" path="res://scenes/menu/GameLobby.tscn" id="2_o3qyg"]
-[ext_resource type="AudioStream" uid="uid://cesdmptmtygih" path="res://assets/audio/button-click-1.ogg" id="5_vnrac"]
 
 [node name="MainMenu" type="CanvasLayer" node_paths=PackedStringArray("game_buttons")]
 script = ExtResource("1_w7od3")
@@ -52,7 +51,6 @@ size_flags_vertical = 4
 text = "START_GAME"
 script = ExtResource("1_ohfem")
 scene_template = ExtResource("2_o3qyg")
-click_sound = ExtResource("5_vnrac")
 
 [node name="Quick Game" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -65,5 +63,3 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "QUIT_GAME"
 script = ExtResource("1_6c3ib")
-
-[connection signal="play_sound_effect" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Start Game" to="." method="play_sound_effect"]

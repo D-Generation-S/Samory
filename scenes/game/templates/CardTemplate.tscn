@@ -91,7 +91,6 @@ toggle_material = ExtResource("5_b0osi")
 focus_material = ExtResource("8_aoxou")
 
 [node name="Area2D" type="Area2D" parent="CardBack"]
-visible = false
 script = ExtResource("9_mu0q4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CardBack/Area2D"]

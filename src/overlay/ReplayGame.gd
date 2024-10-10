@@ -1,4 +1,4 @@
-extends Button
+extends ClickableButton
 
 @export var finish_game_node: GameFinished
 

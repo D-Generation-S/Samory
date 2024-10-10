@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxhn5n16onctb"]
+[gd_scene load_steps=7 format=3 uid="uid://dxhn5n16onctb"]
 
 [ext_resource type="Script" path="res://src/menu/NewPlayer.gd" id="1_oy8p1"]
 [ext_resource type="Script" path="res://src/menu/PlayerName.gd" id="2_nbrg8"]
 [ext_resource type="Script" path="res://src/menu/ErrorBox.gd" id="3_37146"]
 [ext_resource type="Script" path="res://src/menu/NewPlayerOk.gd" id="4_dgat8"]
 [ext_resource type="Script" path="res://src/menu/PlayerAgeValidation.gd" id="4_f7r2j"]
+[ext_resource type="Script" path="res://src/menu/ClickableButton.gd" id="6_321yi"]
 
 [node name="NewPlayer" type="PanelContainer"]
 anchors_preset = 8
@@ -74,6 +75,7 @@ fields_for_validation = [NodePath("../../VBoxContainer/PlayerName"), NodePath(".
 layout_mode = 2
 size_flags_horizontal = 10
 text = "CANCEL"
+script = ExtResource("6_321yi")
 
 [connection signal="text_changed" from="MarginContainer/VBoxContainer/VBoxContainer/PlayerName" to="MarginContainer/VBoxContainer/VBoxContainer/PlayerName" method="_on_text_changed"]
 [connection signal="valid" from="MarginContainer/VBoxContainer/VBoxContainer/PlayerName" to="MarginContainer/VBoxContainer/VBoxContainer/PlayerNameError" method="reset"]

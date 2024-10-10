@@ -1,4 +1,4 @@
-extends Button
+extends ClickableButton
 
 @export var player_list: VBoxContainer
 @export var deck_manager: DisplayDecksInGrid
@@ -8,6 +8,7 @@ func _ready():
 	disabled = true
 
 func _pressed():
+	super()
 	validate()
 	if disabled == true:
 		return

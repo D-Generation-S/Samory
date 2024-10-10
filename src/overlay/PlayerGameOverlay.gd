@@ -7,17 +7,14 @@ extends Control
 func _ready():
 	for child in player_target_control.get_children():
 		player_target_control.remove_child(child)
-	pass # Replace with function body.
 
 func add_player(player: PlayerResource):
 	var node = player_template.instantiate()
 	if node is PlayerGameLabel:
-		print("Set player name")
 		node.set_player(player)
 	player_target_control.add_child(node)
 
 func player_changed(player_id: int):
-	print("Player changed " + str(player_id))
 	for child in player_target_control.get_children():
 		if child is PlayerGameLabel:
 			child.player_turn(player_id)

@@ -6,7 +6,6 @@ signal hide_card()
 signal card_triggered()
 signal trigger_sound_effect(stream: AudioStream)
 
-
 @export var card_deck: Resource
 @export var memory_card: Resource
 @export var front_side: CardFrontSize
@@ -16,12 +15,7 @@ signal trigger_sound_effect(stream: AudioStream)
 
 var was_clicked: bool
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	var parent_node = get_parent() as MemoryGame
-	if parent_node == null:
-		printerr("No parent node was found!")
-		return
+func _ready():	
 	if memory_card == null:
 		printerr("No card was set!")
 		return
@@ -32,6 +26,13 @@ func _ready():
 	var real_texture: Texture2D = memory_card.texture
 	front_side.set_and_scale_texture(real_texture)
 	back_side.texture = card_deck.card_back
+
+func _enter_tree():
+	var parent_node = get_parent() as MemoryGame
+	if parent_node == null:
+		printerr("No parent node was found!")
+		return
+
 	parent_node.connect("round_start", unfreeze_card)
 	parent_node.connect("freeze_round", freeze_card)
 	parent_node.connect("round_end", toggle_card_on)

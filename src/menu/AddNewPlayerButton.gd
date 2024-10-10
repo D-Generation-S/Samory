@@ -1,4 +1,4 @@
-extends Button
+extends ClickableButton
 
 signal player_adding()
 signal player_added()
@@ -10,6 +10,7 @@ signal player_removed()
 @export var player_card_template: PackedScene
 
 func _pressed():
+	super()
 	var new_player_node = player_template.instantiate() as NewPlayer
 	root_node.add_child(new_player_node)
 	player_adding.emit()

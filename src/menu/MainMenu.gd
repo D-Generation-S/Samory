@@ -20,6 +20,3 @@ func loading_cards_done():
 func change_button_state(new_disable_state: bool):
 	for button in game_buttons:
 		button.disabled = new_disable_state
-
-func play_sound_effect(stream: AudioStream):
-	pass
