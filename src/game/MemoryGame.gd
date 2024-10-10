@@ -8,7 +8,6 @@ signal round_end()
 signal game_has_endet()
 
 signal player_scored(player_id: int)
-signal play_sound(stream: AudioStream)
 
 const CARDS_PER_PLAYER = 2
 
@@ -36,7 +35,6 @@ var game_manager: GameManager;
 
 func _ready():
 	game_manager = get_tree().root.get_child(0) as GameManager
-	connect("play_sound", game_manager.play_sound_effect)
 	current_sound_timer = seconds_to_lay_cards
 	load_thread = Thread.new()
 	load_thread.start(build_card_layout.bind(card_deck, card_template, separation))
@@ -73,7 +71,7 @@ func _process(delta):
 		return
 
 	var sound_index = randi() % card_lay_sounds.size()
-	play_sound.emit(card_lay_sounds[sound_index])
+	play_game_sound(card_lay_sounds[sound_index])
 
 func is_loading() -> bool:
 	return load_thread != null
@@ -194,4 +192,4 @@ func get_current_game_phase() -> int:
 func play_game_sound(stream: AudioStream):
 	if stream == null:
 		return
-	play_sound.emit(stream)
+	game_manager.sound_bridge.play_sound(stream)

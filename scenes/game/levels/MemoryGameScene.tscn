@@ -21,8 +21,6 @@
 [node name="MemoryGame" type="Node2D" node_paths=PackedStringArray("gui_node", "game_nodes_to_show", "loading_scene")]
 script = ExtResource("1_13jq5")
 card_lay_sounds = Array[AudioStream]([ExtResource("2_2td5d"), ExtResource("3_hm6tj"), ExtResource("4_2dnnm"), ExtResource("5_0pbsf"), ExtResource("6_heint"), ExtResource("7_f7bl6"), ExtResource("8_x5jru"), ExtResource("9_2ngk1")])
-seconds_to_lay_cards = null
-separation = null
 card_template = ExtResource("3_ihyl6")
 gui_node = NodePath("CanvasLayer")
 finished_game_template = ExtResource("4_6f670")

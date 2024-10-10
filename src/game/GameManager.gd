@@ -76,6 +76,3 @@ func loading_data_done():
 	sound_manager.stop_all_sounds()
 	inital_menu_shown = true
 	open_menu(main_menu_template)
-
-func play_sound_effect(stream: AudioStream):
-	sound_manager.play_sound_effect(stream)

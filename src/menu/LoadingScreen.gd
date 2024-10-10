@@ -2,8 +2,6 @@ extends Node2D
 
 class_name LoadingScreen
 
-signal play_sound(stream: AudioStream)
-
 @export var screen_message: Label
 @export var static_label: Label
 @export var sound_effect: AudioStream
@@ -17,13 +15,12 @@ var effect_length: float = 1000000
 func _ready():
 	game_manager = get_tree().root.get_child(0)
 	effect_length = sound_effect.get_length()
-	connect("play_sound", game_manager.play_sound_effect)
 	elapsed_time = effect_length
 	screen_message.text = ""
 
 func _process(delta):
 	if elapsed_time > effect_length and play_effects:
-		play_sound.emit(sound_effect)
+		game_manager.sound_bridge.play_sound(sound_effect)
 		elapsed_time = elapsed_time - effect_length
 	elapsed_time = elapsed_time + delta
 

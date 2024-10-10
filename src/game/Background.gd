@@ -19,8 +19,8 @@ func _ready():
 	fill_screen()
 
 func fill_screen():
-	var x_start_pos = number_x / 2 * background_texture.get_width()
-	var y_start_pos = number_y / 2 * background_texture.get_width()
+	var x_start_pos = number_x / 2.0 * background_texture.get_width()
+	var y_start_pos = number_y / 2.0 * background_texture.get_width()
 	var start_pos = Vector2(-x_start_pos, -y_start_pos)
 	for x in number_x:
 		for y in number_y:
