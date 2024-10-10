@@ -5,7 +5,7 @@ class_name GameManager
 signal loading_message(message: String)
 
 @export var main_menu_template: PackedScene
-@export var build_in_decks: Array[MemoryCardResource]
+@export var build_in_decks: Array[MemoryDeckResource]
 @export var game_scene: PackedScene
 @export var system_deck_manager: SystemDeckManager
 @export var sound_manager: SoundManager

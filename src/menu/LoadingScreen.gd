@@ -28,4 +28,3 @@ func set_screen_message(new_text: String, remove_default_label:bool = false):
 	screen_message.text = new_text
 	if remove_default_label:
 		static_label.visible = false
-

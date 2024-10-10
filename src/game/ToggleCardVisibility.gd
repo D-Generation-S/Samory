@@ -51,6 +51,9 @@ func _ready():
 func is_hidden() -> bool:
 	return threshold <= 0
 
+func is_fully_shown() -> bool:
+	return threshold >= 1
+
 func _process(_delta):
 	var changed = false
 	if toggle_off_now:
