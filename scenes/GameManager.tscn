@@ -17,6 +17,9 @@ loading_screen_template = ExtResource("4_x4qxi")
 
 [node name="GlobalFixedNode" type="Node2D" parent="."]
 
+[node name="AudioListener2D" type="AudioListener2D" parent="GlobalFixedNode"]
+current = true
+
 [node name="SystemDeckManager" type="Node2D" parent="GlobalFixedNode"]
 script = ExtResource("4_sriew")
 

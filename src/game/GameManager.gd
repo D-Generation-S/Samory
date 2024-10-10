@@ -21,7 +21,7 @@ func _ready():
 	system_deck_manager.reload_system_decks()
 
 func close_game():
-	remove_child(get_child(0))
+	clear_all_nodes()
 	open_menu(main_menu_template)
 
 func open_menu(scene: PackedScene):

@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://de0if4rovyxsv"]
+[gd_scene load_steps=4 format=3 uid="uid://de0if4rovyxsv"]
 
 [ext_resource type="Script" path="res://src/menu/PlayerCard.gd" id="1_ab6rg"]
+[ext_resource type="Texture2D" uid="uid://bmxqeqo65xwt" path="res://assets/sprites/spritesheet-default.png" id="1_u8sm3"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n7lkl"]
-bg_color = Color(0.337255, 0.196078, 0.196078, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vkn4j"]
+texture = ExtResource("1_u8sm3")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+region_rect = Rect2(384, 256, 64, 64)
 
 [node name="PlayerCard" type="PanelContainer" node_paths=PackedStringArray("player_name_field", "player_age_field")]
 anchors_preset = 15
@@ -11,7 +17,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_n7lkl")
+theme_override_styles/panel = SubResource("StyleBoxTexture_vkn4j")
 script = ExtResource("1_ab6rg")
 player_name_field = NodePath("PanelContainer/HBoxContainer/GridContainer/Name")
 player_age_field = NodePath("PanelContainer/HBoxContainer/GridContainer/Age")

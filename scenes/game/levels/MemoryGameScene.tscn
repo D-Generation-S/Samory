@@ -26,17 +26,26 @@ script = ExtResource("4_4ihyn")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PlayersOverlay" parent="CanvasLayer" instance=ExtResource("7_a7rnv")]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="PlayersOverlay" parent="CanvasLayer/MarginContainer" instance=ExtResource("7_a7rnv")]
+layout_mode = 2
 
 [node name="Background" type="Node2D" parent="." node_paths=PackedStringArray("camera_node")]
 script = ExtResource("7_kxmqb")
 background_texture = ExtResource("7_35r1o")
 camera_node = NodePath("../Camera2D")
 
-[connection signal="game_has_endet" from="." to="CanvasLayer/PlayersOverlay" method="game_ended"]
+[connection signal="game_has_endet" from="." to="CanvasLayer/MarginContainer/PlayersOverlay" method="game_ended"]
 [connection signal="player_scored" from="." to="Players" method="player_scored"]
 [connection signal="round_end" from="." to="Players" method="next_player"]
-[connection signal="round_end" from="." to="CanvasLayer/PlayersOverlay" method="round_end"]
-[connection signal="player_added" from="Players" to="CanvasLayer/PlayersOverlay" method="add_player"]
-[connection signal="player_changed" from="Players" to="CanvasLayer/PlayersOverlay" method="player_changed"]
-[connection signal="player_score_changed" from="Players" to="CanvasLayer/PlayersOverlay" method="player_scored"]
+[connection signal="round_end" from="." to="CanvasLayer/MarginContainer/PlayersOverlay" method="round_end"]
+[connection signal="player_added" from="Players" to="CanvasLayer/MarginContainer/PlayersOverlay" method="add_player"]
+[connection signal="player_changed" from="Players" to="CanvasLayer/MarginContainer/PlayersOverlay" method="player_changed"]
+[connection signal="player_score_changed" from="Players" to="CanvasLayer/MarginContainer/PlayersOverlay" method="player_scored"]

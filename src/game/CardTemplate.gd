@@ -39,7 +39,7 @@ func _ready():
 
 func toggle_card_on():
 	hide_card.emit()
-	pass
+	play_card_turn_sound()
 
 func get_height() -> float:
 	return back_side.get_rect().size.y
@@ -57,6 +57,9 @@ func get_width() -> float:
 func card_was_clicked():
 	was_clicked = true
 	freeze_card()
+	play_card_turn_sound()
+
+func play_card_turn_sound():
 	var index = randi() % flip_effects.size()
 	var effect = flip_effects[index]
 	trigger_sound_effect.emit(effect)

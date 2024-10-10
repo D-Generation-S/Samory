@@ -22,6 +22,14 @@ func get_deck_name(deck_folder: String) -> String:
 		return FileAccess.get_file_as_string(localized_path)
 	return FileAccess.get_file_as_string(fallback_path)
 
+func get_deck_description(deck_folder: String) -> String:
+	var path = build_deck_base_path(deck_folder)
+	var fallback_path = path + "/description.txt"
+	var localized_path = path + "/description." + TranslationServer.get_locale() + ".txt"
+	if FileAccess.file_exists(localized_path):
+		return FileAccess.get_file_as_string(localized_path)
+	return FileAccess.get_file_as_string(fallback_path)
+
 func validate_deck_meta_data(deck_folder: String) -> bool:
 	var path = build_deck_base_path(deck_folder)
 	var fallback_path = path + "/name.txt"
@@ -70,6 +78,7 @@ func load_deck(deck_name: String) -> MemoryDeckResource:
 		return null
 	var return_deck = MemoryDeckResource.new()
 	return_deck.name = get_deck_name(deck_name)
+	return_deck.description = get_deck_description(deck_name)
 	return_deck.built_in = false
 	return_deck.cards = [] as Array[MemoryCardResource]
 	return_deck.file_system_folder = deck_name
@@ -80,7 +89,6 @@ func load_deck(deck_name: String) -> MemoryDeckResource:
 		if card != null:
 			return_deck.cards.append(card)
 
-	print(return_deck)
 	return return_deck
 
 func load_deck_async(deck_name: String) -> Thread:
