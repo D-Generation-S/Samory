@@ -71,7 +71,7 @@ target_size = Vector2(250, 250)
 selection_material = ExtResource("3_imrd3")
 deck_preview = NodePath("../../../../../..")
 focus_color = Color(4.89971e-05, 0.43067, 0.885304, 0.905882)
-selected_color = Color(0.952941, 0.803922, 0, 0.768627)
+selected_color = Color(0.94902, 0.301961, 0, 0.768627)
 
 [node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2

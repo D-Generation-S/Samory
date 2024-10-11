@@ -1300,6 +1300,7 @@ texture_margin_top = 18.0
 texture_margin_right = 18.0
 texture_margin_bottom = 18.0
 region_rect = Rect2(320, 512, 64, 64)
+modulate_color = Color(0.658824, 0.658824, 0.658824, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8xtr0"]
 texture = ExtResource("1_pdnn8")
@@ -1308,6 +1309,7 @@ texture_margin_top = 18.0
 texture_margin_right = 18.0
 texture_margin_bottom = 18.0
 region_rect = Rect2(320, 512, 64, 64)
+modulate_color = Color(0.658824, 0.658824, 0.658824, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pd0vv"]
 texture = ExtResource("1_pdnn8")
@@ -1324,6 +1326,7 @@ texture_margin_top = 18.0
 texture_margin_right = 18.0
 texture_margin_bottom = 18.0
 region_rect = Rect2(320, 512, 64, 64)
+modulate_color = Color(0.49, 0.49, 0.49, 1)
 
 [sub_resource type="Image" id="Image_ir7bg"]
 data = {
@@ -1378,7 +1381,7 @@ region_rect = Rect2(128, 432, 64, 64)
 Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
-Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.87451, 0.87451, 0.87451, 1)
 Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 Button/colors/font_outline_color = Color(0, 0, 0, 1)
 Button/colors/font_pressed_color = Color(1, 1, 1, 1)
