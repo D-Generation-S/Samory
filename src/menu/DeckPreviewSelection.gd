@@ -31,4 +31,4 @@ func activate():
 		color = selected_color
 
 	material = selection_material.duplicate()
-	material.set("shader_parameter/ColorToUse", color)
+	material.set("shader_parameter/effect_color", color)

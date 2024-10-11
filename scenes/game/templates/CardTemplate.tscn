@@ -10,9 +10,9 @@
 [ext_resource type="Script" path="res://src/game/CardFrontSize.gd" id="4_kxmgl"]
 [ext_resource type="AudioStream" uid="uid://h0louy6yrv3o" path="res://assets/audio/card-turn-3.ogg" id="4_s61ka"]
 [ext_resource type="Material" uid="uid://dhujjr84hm1we" path="res://assets/material/DisolveMaterial.tres" id="5_b0osi"]
-[ext_resource type="Material" uid="uid://d0yxq3hqqpj2p" path="res://assets/material/FocusMaterial.tres" id="8_aoxou"]
 [ext_resource type="Script" path="res://src/game/ToggleCardVisibility.gd" id="8_pw264"]
 [ext_resource type="Script" path="res://src/game/CardHandler.gd" id="9_mu0q4"]
+[ext_resource type="Material" uid="uid://dkl2lojy2u6nx" path="res://assets/material/GlowingFocusMaterialtres.tres" id="12_drvni"]
 
 [sub_resource type="Gradient" id="Gradient_fwwud"]
 colors = PackedColorArray(0, 0, 0, 1, 0.247059, 0.247059, 0.247059, 0)
@@ -94,7 +94,7 @@ texture = ExtResource("3_xiuu2")
 script = ExtResource("8_pw264")
 threshold_change_step = 0.02
 toggle_material = ExtResource("5_b0osi")
-focus_material = ExtResource("8_aoxou")
+focus_material = ExtResource("12_drvni")
 
 [node name="Area2D" type="Area2D" parent="CardBack"]
 script = ExtResource("9_mu0q4")

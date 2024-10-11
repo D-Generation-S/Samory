@@ -9,7 +9,7 @@
 
 [resource]
 script = ExtResource("2_0bd8r")
-built_in = false
+built_in = true
 file_system_folder = ""
 name = "Test Deck"
 description = "This deck is for testing purpose"

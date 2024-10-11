@@ -6,7 +6,7 @@ signal hide_card()
 signal card_triggered()
 signal trigger_sound_effect(stream: AudioStream)
 signal card_in_focus()
-signal  card_lost_focus()
+signal card_lost_focus()
 
 @export var card_deck: Resource
 @export var memory_card: Resource

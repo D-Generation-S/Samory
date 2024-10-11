@@ -23,3 +23,7 @@ func set_y_pos(y: int):
 
 func is_identical(other_point: Point) -> bool:
     return other_point.get_x_pos() == x_pos and other_point.get_y_pos() == y_pos
+
+func get_distance(other_point: Point) -> float:
+    return sqrt(pow(x_pos - other_point.x_pos, 2) + pow(y_pos - other_point.y_pos, 2))
+
