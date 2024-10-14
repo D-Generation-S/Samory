@@ -106,6 +106,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "OK"
 script = ExtResource("5_8dsgm")
+is_focused = true
 
 [node name="ReplayGame" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("finish_game_node")]
 layout_mode = 2

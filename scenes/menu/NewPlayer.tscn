@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxhn5n16onctb"]
+[gd_scene load_steps=8 format=3 uid="uid://dxhn5n16onctb"]
 
 [ext_resource type="Script" path="res://src/menu/NewPlayer.gd" id="1_oy8p1"]
 [ext_resource type="Script" path="res://src/menu/PlayerName.gd" id="2_nbrg8"]
 [ext_resource type="Script" path="res://src/menu/ErrorBox.gd" id="3_37146"]
 [ext_resource type="Script" path="res://src/menu/NewPlayerOk.gd" id="4_dgat8"]
 [ext_resource type="Script" path="res://src/menu/PlayerAgeValidation.gd" id="4_f7r2j"]
+[ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="6_057kb"]
 [ext_resource type="Script" path="res://src/menu/ClickableButton.gd" id="6_321yi"]
 
 [node name="NewPlayer" type="PanelContainer"]
@@ -39,6 +40,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "PLAYER_NAME"
 script = ExtResource("2_nbrg8")
+is_focused = true
 
 [node name="PlayerNameError" type="RichTextLabel" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -74,6 +76,7 @@ fields_for_validation = [NodePath("../../VBoxContainer/PlayerName"), NodePath(".
 [node name="AbortButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 10
+shortcut = ExtResource("6_057kb")
 text = "CANCEL"
 script = ExtResource("6_321yi")
 

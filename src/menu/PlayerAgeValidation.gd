@@ -6,6 +6,7 @@ var last_check_validation: bool = false
 
 
 func _ready():
+	super()
 	number_validation_regex = RegEx.new()
 	number_validation_regex.compile("^[0-9]+$")
 	validation_error.emit("NO_AGE_WAS_ENTERED")

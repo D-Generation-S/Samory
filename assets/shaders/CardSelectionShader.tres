@@ -35,7 +35,7 @@ input_name = "texture"
 
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_6pikt"]
 expanded_output_ports = [0]
-parameter_name = "ColorToUse"
+parameter_name = "effect_color"
 default_value_enabled = true
 default_value = Color(0, 0.0901961, 0.52549, 1)
 
@@ -90,7 +90,7 @@ render_mode blend_mix;
 
 uniform float FloatParameter : hint_range(0.05000000074506, 1) = 0.05000000074506;
 uniform sampler2D Pattern : repeat_enable;
-uniform vec4 ColorToUse : source_color = vec4(0.000000, 0.090196, 0.525490, 1.000000);
+uniform vec4 effect_color : source_color = vec4(0.000000, 0.090196, 0.525490, 1.000000);
 
 
 
@@ -175,7 +175,7 @@ void fragment() {
 
 
 // ColorParameter:21
-	vec4 n_out21p0 = ColorToUse;
+	vec4 n_out21p0 = effect_color;
 
 
 	vec3 n_out24p0;

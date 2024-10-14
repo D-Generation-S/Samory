@@ -2,10 +2,14 @@ extends Button
 
 class_name ClickableButton
 
+@export var is_focused: bool = false
+
 var sound_bridge: SoundBridge = null
 
 func _ready():
 	load_sound_bridge()
+	if is_focused:
+		grab_focus()
 
 func load_sound_bridge() -> bool:
 	if sound_bridge != null:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bafmr0fx5c6yl"
-path="res://.godot/imported/NoiseTexture.png-412b8b3067002637820bd584756137c6.ctex"
+uid="uid://dbyfwjxyhqou1"
+path="res://.godot/imported/animals_square_outline.png-a6635323c64f3de94b1a23d88b1d811e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/NoiseTexture.png"
-dest_files=["res://.godot/imported/NoiseTexture.png-412b8b3067002637820bd584756137c6.ctex"]
+source_file="res://assets/sprites/animals_square_outline.png"
+dest_files=["res://.godot/imported/animals_square_outline.png-a6635323c64f3de94b1a23d88b1d811e.ctex"]
 
 [params]
 

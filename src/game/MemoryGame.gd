@@ -6,6 +6,7 @@ signal round_start()
 signal freeze_round()
 signal round_end()
 signal game_has_endet()
+signal game_paused(is_paused: bool)
 
 signal player_scored(player_id: int)
 
@@ -19,6 +20,9 @@ const CARDS_PER_PLAYER = 2
 @export var card_template: PackedScene
 @export var gui_node: CanvasLayer
 @export var finished_game_template: PackedScene
+@export var game_menu_template: PackedScene
+
+@export var card_target_node: Node2D
 
 @export var game_nodes_to_show: Array[Node]
 @export var loading_scene: LoadingScreen
@@ -30,6 +34,8 @@ var removed_cards = 0
 
 var load_thread: Thread = null
 var current_sound_timer = 0
+
+var paused: bool = false
 
 var game_manager: GameManager;
 
@@ -44,6 +50,9 @@ func _ready():
 	start_round_now()
 
 func _process(delta):
+	check_if_still_paused()
+	if current_game_state == GameState.ROUND_END:
+		check_if_round_complete()
 	if !is_node_ready() or !is_loading():
 		return
 	current_sound_timer = current_sound_timer + delta
@@ -56,7 +65,7 @@ func _process(delta):
 		current_sound_timer = 0
 		var cards = load_thread.wait_to_finish() as Array[CardTemplate]
 		for card in cards:
-			add_child(card)
+			card_target_node.add_child(card)
 			card.connect("card_triggered", card_was_triggered)
 		load_thread = null
 		loading_scene.queue_free()
@@ -97,7 +106,6 @@ func build_card_layout(deck_of_cards: MemoryDeckResource,
 
 	while row_count * column_count < card_pool.size():
 		column_count = column_count + 1
-		print(column_count)
 
 	for y in range(row_count):
 		for x in range(column_count):
@@ -107,12 +115,12 @@ func build_card_layout(deck_of_cards: MemoryDeckResource,
 				print("exceed pool!")
 				continue
 			card_template_node.memory_card = card_pool[current_card]
-			print(return_cards.size())
 			var height = card_template_node.get_height()
 			var width = card_template_node.get_width()
 			var height_to_set = y * height + y * card_separation
 			var width_to_set = x * width + x * card_separation
 			card_template_node.position = Vector2(width_to_set, height_to_set)
+			card_template_node.grid_position = Point.new(x, y)
 			
 			return_cards.append(card_template_node)
 			current_card = current_card + 1
@@ -127,9 +135,11 @@ func numberize_cards_from_pool(card_pool) -> Array:
 	return cards
 
 func card_was_triggered():
+	if current_game_state == GameState.ROUND_END:
+		return
 	triggered_cards = triggered_cards + 1
 	if cards_where_identically():
-		for child in get_children():
+		for child in card_target_node.get_children():
 			if child is CardTemplate and child.is_turned():
 				child.remove_from_board()
 		triggered_cards = 0
@@ -137,13 +147,13 @@ func card_was_triggered():
 		var current_player = player_node.get_current_player()
 		player_scored.emit(current_player.id)
 		check_card_state()
-		return
+		return 
 	if triggered_cards >= CARDS_PER_PLAYER:
 		freeze_round_now()
 
 func cards_where_identically() -> bool:
 	var clicked_cards: Array[CardTemplate]
-	for child in get_children():
+	for child in card_target_node.get_children():
 		if child is CardTemplate and child.is_turned():
 			clicked_cards.append(child as CardTemplate)
 
@@ -170,7 +180,6 @@ func end_round_now():
 	current_game_state = GameState.ROUND_END
 	print("End Round")
 	round_end.emit()
-	start_round_now()
 
 func check_card_state():
 	if removed_cards >= card_deck.cards.size():
@@ -193,3 +202,35 @@ func play_game_sound(stream: AudioStream):
 	if stream == null:
 		return
 	game_manager.sound_bridge.play_sound(stream)
+
+func show_game_menu():
+	paused = true
+	game_paused.emit(true)
+	var menu = game_menu_template.instantiate() as GamePauseMenu
+	gui_node.add_child(menu)
+
+func check_if_still_paused():
+	if !paused:
+		return
+	var pause_complete = true
+	for node in gui_node.get_children():
+		if node is GamePauseMenu:
+			pause_complete = false
+			break
+	if pause_complete:
+		paused = false
+		continue_game()
+
+func continue_game():
+	game_paused.emit(false)
+
+func check_if_round_complete():
+	var card_not_hidden = false;
+	for node in card_target_node.get_children():
+		if node is CardTemplate:
+			if !node.card_is_hidden():
+				card_not_hidden = true
+				break
+	if card_not_hidden:
+		return
+	start_round_now()

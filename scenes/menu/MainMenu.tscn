@@ -51,6 +51,7 @@ size_flags_vertical = 4
 text = "START_GAME"
 script = ExtResource("1_ohfem")
 scene_template = ExtResource("2_o3qyg")
+is_focused = true
 
 [node name="Quick Game" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

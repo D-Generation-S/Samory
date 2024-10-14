@@ -24,9 +24,13 @@ func get_system_decks() -> Array[MemoryDeckResource]:
 func reload_system_decks():
 	if is_loading():
 		return
+	var decks = deck_loader.list_decks()
+	if decks.size() == 0:
+		loading_system_decks_done.emit()
+		return
 	loading_system_decks.emit()
 	system_decks = []
-	for deck in deck_loader.list_decks():
+	for deck in decks:
 		load_threads.append(deck_loader.load_deck_async(deck))
 
 func _process(delta):

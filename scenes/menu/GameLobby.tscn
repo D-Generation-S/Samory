@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dkd4cftggpymb"]
+[gd_scene load_steps=14 format=3 uid="uid://dkd4cftggpymb"]
 
 [ext_resource type="Script" path="res://src/menu/GameLobby.gd" id="1_0oi2l"]
 [ext_resource type="Script" path="res://src/menu/AddNewPlayerButton.gd" id="1_2n3u5"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://src/menu/QuickAddPlayer.gd" id="7_6tvv5"]
 [ext_resource type="Script" path="res://src/menu/StartLobbyGame.gd" id="8_6tuah"]
 [ext_resource type="Script" path="res://src/overlay/FinishGameOk.gd" id="8_i1lj5"]
+[ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="11_eein8"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y3gao"]
 texture = ExtResource("2_6d8gk")
@@ -93,6 +94,7 @@ root_node = NodePath("../../../../../../../../../..")
 player_node = NodePath("../../ScrollContainer/Players")
 player_template = ExtResource("3_vi7sw")
 player_card_template = ExtResource("4_l5ybk")
+is_focused = true
 
 [node name="AddSavedPlayer" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 visible = false
@@ -149,6 +151,7 @@ deck_manager = NodePath("../../../../../HBoxContainer/HSplitContainer/ScrollCont
 [node name="Cancel" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 10
+shortcut = ExtResource("11_eein8")
 text = "CANCEL"
 script = ExtResource("8_i1lj5")
 
@@ -159,6 +162,5 @@ script = ExtResource("8_i1lj5")
 [connection signal="player_added" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/AddNewPlayer" to="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/StartGame" method="validate"]
 [connection signal="player_adding" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/AddNewPlayer" to="." method="block_all_buttons"]
 [connection signal="player_removed" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/AddNewPlayer" to="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/StartGame" method="validate"]
-[connection signal="player_selection" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/AddSavedPlayer" to="." method="block_all_buttons"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/QuickAddPlayer" to="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/StartGame" method="validate"]
 [connection signal="deck_selected" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/ScrollContainer/Decks" to="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/StartGame" method="validate"]

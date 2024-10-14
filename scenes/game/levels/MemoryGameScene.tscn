@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bnfr8gek24m47"]
+[gd_scene load_steps=20 format=3 uid="uid://bnfr8gek24m47"]
 
 [ext_resource type="Script" path="res://src/game/MemoryGame.gd" id="1_13jq5"]
 [ext_resource type="AudioStream" uid="uid://dj5j3cwv0a265" path="res://assets/audio/card-slide-1.ogg" id="2_2td5d"]
@@ -16,14 +16,18 @@
 [ext_resource type="Script" path="res://src/game/Background.gd" id="7_kxmqb"]
 [ext_resource type="AudioStream" uid="uid://dhm4p2ecwyfl3" path="res://assets/audio/card-slide-7.ogg" id="8_x5jru"]
 [ext_resource type="AudioStream" uid="uid://duqacxqgecl83" path="res://assets/audio/card-slide-8.ogg" id="9_2ngk1"]
+[ext_resource type="PackedScene" uid="uid://cluwm03j8e11p" path="res://scenes/game/overlay/GamePauseMenu.tscn" id="12_dfx06"]
 [ext_resource type="PackedScene" uid="uid://bv4jg7bjubrrr" path="res://scenes/game/levels/LoadingScreen.tscn" id="12_v3o3x"]
+[ext_resource type="Script" path="res://src/game/GameCardGrid.gd" id="19_ploi3"]
 
-[node name="MemoryGame" type="Node2D" node_paths=PackedStringArray("gui_node", "game_nodes_to_show", "loading_scene")]
+[node name="MemoryGame" type="Node2D" node_paths=PackedStringArray("gui_node", "card_target_node", "game_nodes_to_show", "loading_scene")]
 script = ExtResource("1_13jq5")
 card_lay_sounds = Array[AudioStream]([ExtResource("2_2td5d"), ExtResource("3_hm6tj"), ExtResource("4_2dnnm"), ExtResource("5_0pbsf"), ExtResource("6_heint"), ExtResource("7_f7bl6"), ExtResource("8_x5jru"), ExtResource("9_2ngk1")])
 card_template = ExtResource("3_ihyl6")
 gui_node = NodePath("CanvasLayer")
 finished_game_template = ExtResource("4_6f670")
+game_menu_template = ExtResource("12_dfx06")
+card_target_node = NodePath("Cards")
 game_nodes_to_show = [NodePath("CanvasLayer"), NodePath("Background")]
 loading_scene = NodePath("LoadingScreen")
 
@@ -58,10 +62,19 @@ script = ExtResource("7_kxmqb")
 background_texture = ExtResource("7_35r1o")
 camera_node = NodePath("../Camera2D")
 
+[node name="Cards" type="Node2D" parent="."]
+script = ExtResource("19_ploi3")
+
+[connection signal="freeze_round" from="." to="Cards" method="round_frozen"]
 [connection signal="game_has_endet" from="." to="CanvasLayer/MarginContainer/PlayersOverlay" method="game_ended"]
+[connection signal="game_paused" from="." to="Camera2D" method="game_paused"]
 [connection signal="player_scored" from="." to="Players" method="player_scored"]
 [connection signal="round_end" from="." to="Players" method="next_player"]
 [connection signal="round_end" from="." to="CanvasLayer/MarginContainer/PlayersOverlay" method="round_end"]
+[connection signal="round_start" from="." to="Cards" method="round_unfrozen"]
 [connection signal="player_added" from="Players" to="CanvasLayer/MarginContainer/PlayersOverlay" method="add_player"]
 [connection signal="player_changed" from="Players" to="CanvasLayer/MarginContainer/PlayersOverlay" method="player_changed"]
 [connection signal="player_score_changed" from="Players" to="CanvasLayer/MarginContainer/PlayersOverlay" method="player_scored"]
+[connection signal="card_movement" from="Camera2D" to="Cards" method="parse_movement"]
+[connection signal="confirm_current_card" from="Camera2D" to="Cards" method="confirm_current_card"]
+[connection signal="game_menu_requested" from="Camera2D" to="." method="show_game_menu"]
