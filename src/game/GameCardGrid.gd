@@ -36,7 +36,6 @@ func get_next_x_pos(start_pos: Point, go_left: bool) -> int:
 				all_x_positions.append(card_x)
 
 	all_x_positions.sort()
-	print(all_x_positions)
 	if go_left:
 		all_x_positions.reverse()
 	if all_x_positions.size() == 0:
@@ -70,7 +69,6 @@ func get_next_y_pos(start_pos: Point, go_up: bool) -> int:
 				all_y_positions.append(card_y)
 
 	all_y_positions.sort()
-	print(all_y_positions)
 	if go_up:
 		all_y_positions.reverse()
 	if all_y_positions.size() == 0:
@@ -108,9 +106,6 @@ func select_closest_card(source_position: Point):
 	for card in get_children():
 		if card is CardTemplate and !card.is_turned():
 			var current_distance = card.grid_position.get_distance(source_position)
-			print(current_distance)
-			print(card.grid_position.get_x_pos())
-			print(card.grid_position.get_y_pos())
 			if current_distance < distance:
 				distance = current_distance
 				return_position = card.grid_position
