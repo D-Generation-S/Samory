@@ -20,6 +20,15 @@ func _ready():
 	open_menu(loading_screen_template)
 	loading_message.emit("LOAD_DECKS")
 	system_deck_manager.reload_system_decks()
+	translate_built_in_decks()
+
+func translate_built_in_decks():
+	for deck in build_in_decks:
+		deck.name = tr(deck.name)
+		deck.description = tr(deck.description)
+		for card in deck.cards:
+			card.name = tr(card.name)
+			card.description = tr(card.description)
 
 func close_game():
 	clear_all_nodes()
