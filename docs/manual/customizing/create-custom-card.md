@@ -39,6 +39,8 @@ first-card/
 
 >:information_source: Translation's are optional, the game will try to find a localized text for the data field, but if nothing was found the default one will be used
 
+>:information_source: Your front image should be 500x500 pixel in size, it will be scaled down if the image is bigger but this could impact the image quality.
+
 As example a card named `My first card` with a description `This is my very first custom card` will have the following content on the given data sets:
 
 >name.txt
