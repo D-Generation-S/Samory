@@ -18,6 +18,8 @@ It will add two players and get you directly into the game.
 
 ### Start Game
 
+![Game Lobby](https://i.imgur.com/PbzDMlq.jpeg)
+
 This option will show you a lobby screen, it does allow you to add players to the player list on the left.
 It also allows you to select a deck on the right side of the screen.
 
@@ -27,6 +29,8 @@ will unlock.
 Press it to get to the game screen
 
 ## Game Play
+
+![Game field](https://i.imgur.com/afx5CKg.jpeg)
 
 This part will explain to you how you actually play the game as soon as it was started.
 
