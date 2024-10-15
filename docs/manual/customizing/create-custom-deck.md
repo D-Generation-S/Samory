@@ -30,6 +30,8 @@ Let's explain the files and directories of this structure down below
 
 >:information_source: Translation's are optional, the game will try to find a localized text for the data field, but if nothing was found the default one will be used
 
+>:information_source: Your cover image must be 500x550 pixel in size, if this is not the case it will not fully cover the card content. Since this is not required you can simple use the default card back.
+
 You deck will also need at least two cards to be valid. To learn how to create cards check the [create custom card][create-custom-cards] documentation. Those cards will be placed insaide the `cards/` directory. So if you want to create a deck named `My first deck` with a description `This is my first custom Samory deck` you will add the following files to the `Samory/decks/your-unique-deck-name/` folder
 
 
