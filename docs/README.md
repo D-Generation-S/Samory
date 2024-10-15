@@ -17,8 +17,8 @@ creating a custom deck.
 
 ## Manuel
 
-- [How to Play][how-to-play]
-- [Customize your Game][customizing]
+- [How to play][how-to-play]
+- [Customize your game][customizing]
 
-[customizing]: ./manuel/customizing/index.md
-[how-to-play]: ./manual/customizing/index.md
+[customizing]: ./manual/customizing/index.md
+[how-to-play]: ./manual/how-to-play/index.md
