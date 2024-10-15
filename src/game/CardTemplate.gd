@@ -95,6 +95,9 @@ func remove_from_board():
 func card_is_hidden() -> bool:
 	return back_side.is_hidden()
 
+func card_is_focused() -> bool:
+	return back_side.is_currently_in_focus()
+
 func got_focus():
 	if was_clicked:
 		return
