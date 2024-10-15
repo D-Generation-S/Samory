@@ -3,6 +3,7 @@ extends Node2D
 var current_card: CardTemplate;
 
 var currently_forzen: bool = false
+var controller_input_was_made: bool = false
 
 func get_current_grid_position() -> Point:
 	if current_card == null:
@@ -116,6 +117,7 @@ func select_closest_card(source_position: Point):
 func parse_movement(information: Point):
 	if currently_forzen:
 		return
+	controller_input_was_made = true;
 	if information.get_x_pos() > 0:
 		move_right()
 	if information.get_x_pos() < 0:
@@ -130,5 +132,7 @@ func round_frozen():
 	current_card = null
 
 func round_unfrozen():
-	select_closest_card(Point.new(0,0))
+	if controller_input_was_made:
+		select_closest_card(Point.new(0,0))
 	currently_forzen = false
+	controller_input_was_made = false
