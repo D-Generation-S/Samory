@@ -1,0 +1,111 @@
+[gd_scene load_steps=20 format=3 uid="uid://ubmqrubcq2a2"]
+
+[ext_resource type="Script" path="res://src/game/CardTemplate.gd" id="1_fmo68"]
+[ext_resource type="AudioStream" uid="uid://dhlalkc173c3p" path="res://assets/audio/card-turn-1.ogg" id="2_7bwi6"]
+[ext_resource type="Script" path="res://src/game/CardText.gd" id="3_4fnc2"]
+[ext_resource type="AudioStream" uid="uid://48iu01xst023" path="res://assets/audio/card-turn-2.ogg" id="3_hh2fg"]
+[ext_resource type="Texture2D" uid="uid://cdtyie7mnl05w" path="res://assets/textures/ShadowTexture.tres" id="3_uugcj"]
+[ext_resource type="Texture2D" uid="uid://dpcfrsq40moii" path="res://assets/sprites/CardDefaultBack.png" id="3_xiuu2"]
+[ext_resource type="Texture2D" uid="uid://d4nvcsyb0ehtb" path="res://assets/sprites/CardDefaultFront.png" id="4_e8l51"]
+[ext_resource type="Script" path="res://src/game/CardFrontSize.gd" id="4_kxmgl"]
+[ext_resource type="AudioStream" uid="uid://h0louy6yrv3o" path="res://assets/audio/card-turn-3.ogg" id="4_s61ka"]
+[ext_resource type="Material" uid="uid://dhujjr84hm1we" path="res://assets/material/DisolveMaterial.tres" id="5_b0osi"]
+[ext_resource type="Script" path="res://src/game/ToggleCardVisibility.gd" id="8_pw264"]
+[ext_resource type="Script" path="res://src/game/CardHandler.gd" id="9_mu0q4"]
+[ext_resource type="Material" uid="uid://dkl2lojy2u6nx" path="res://assets/material/GlowingFocusMaterialtres.tres" id="12_drvni"]
+
+[sub_resource type="Gradient" id="Gradient_fwwud"]
+colors = PackedColorArray(0, 0, 0, 1, 0.247059, 0.247059, 0.247059, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b380y"]
+gradient = SubResource("Gradient_fwwud")
+width = 500
+height = 20
+fill_from = Vector2(1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dg1ie"]
+gradient = SubResource("Gradient_fwwud")
+width = 20
+height = 20
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0.521368, 0.388889)
+
+[sub_resource type="Gradient" id="Gradient_0sfg2"]
+colors = PackedColorArray(0.87451, 0.807843, 0.631373, 1, 0.87451, 0.807843, 0.631373, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vp4ck"]
+gradient = SubResource("Gradient_0sfg2")
+width = 500
+height = 550
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phkhd"]
+size = Vector2(500, 550)
+
+[node name="CardTemplate" type="Node2D" node_paths=PackedStringArray("front_side", "text_node", "back_side", "timer_for_hide_delay")]
+script = ExtResource("1_fmo68")
+front_side = NodePath("CardFront")
+text_node = NodePath("CardText")
+back_side = NodePath("CardBack")
+flip_effects = Array[AudioStream]([ExtResource("2_7bwi6"), ExtResource("3_hh2fg"), ExtResource("4_s61ka")])
+timer_for_hide_delay = NodePath("TurnDelay")
+min_time_delay = 0.05
+max_time_delay = 0.3
+
+[node name="Shadow" type="Node2D" parent="."]
+
+[node name="Top" type="Sprite2D" parent="Shadow"]
+position = Vector2(250, -10)
+texture = SubResource("GradientTexture2D_b380y")
+
+[node name="Right" type="Sprite2D" parent="Shadow"]
+position = Vector2(510, 275)
+texture = ExtResource("3_uugcj")
+
+[node name="TopRight" type="Sprite2D" parent="Shadow"]
+position = Vector2(510, -10)
+texture = SubResource("GradientTexture2D_dg1ie")
+
+[node name="CardBackground" type="Sprite2D" parent="."]
+position = Vector2(250, 275)
+texture = SubResource("GradientTexture2D_vp4ck")
+
+[node name="CardText" type="RichTextLabel" parent="."]
+offset_top = 500.0
+offset_right = 500.0
+offset_bottom = 550.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "[center]placeholder[/center]"
+fit_content = true
+script = ExtResource("3_4fnc2")
+
+[node name="CardFront" type="Sprite2D" parent="."]
+position = Vector2(250, 250)
+texture = ExtResource("4_e8l51")
+script = ExtResource("4_kxmgl")
+
+[node name="TurnDelay" type="Timer" parent="."]
+one_shot = true
+
+[node name="CardBack" type="Sprite2D" parent="."]
+material = ExtResource("5_b0osi")
+position = Vector2(250, 275)
+texture = ExtResource("3_xiuu2")
+script = ExtResource("8_pw264")
+threshold_change_step = 0.02
+toggle_material = ExtResource("5_b0osi")
+focus_material = ExtResource("12_drvni")
+
+[node name="Area2D" type="Area2D" parent="CardBack"]
+script = ExtResource("9_mu0q4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CardBack/Area2D"]
+shape = SubResource("RectangleShape2D_phkhd")
+
+[connection signal="card_in_focus" from="." to="CardBack" method="is_focused"]
+[connection signal="card_lost_focus" from="." to="CardBack" method="lost_focus"]
+[connection signal="hide_card" from="." to="CardBack" method="toggle_on"]
+[connection signal="timeout" from="TurnDelay" to="." method="hide_card_now"]
+[connection signal="clicked" from="CardBack/Area2D" to="." method="card_was_clicked"]
+[connection signal="mouse_entered" from="CardBack/Area2D" to="CardBack" method="is_focused"]
+[connection signal="mouse_exited" from="CardBack/Area2D" to="CardBack" method="lost_focus"]

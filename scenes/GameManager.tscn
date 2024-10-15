@@ -1,0 +1,46 @@
+[gd_scene load_steps=11 format=3 uid="uid://dx6fa55mu3fu0"]
+
+[ext_resource type="Script" path="res://src/game/GameManager.gd" id="1_34dj2"]
+[ext_resource type="PackedScene" uid="uid://co10o6j0oxeep" path="res://scenes/menu/MainMenu.tscn" id="2_yr08t"]
+[ext_resource type="Script" path="res://src/templates/MemoryDeckResource.gd" id="3_b0cgo"]
+[ext_resource type="PackedScene" uid="uid://bnfr8gek24m47" path="res://scenes/game/levels/MemoryGameScene.tscn" id="3_u1w4v"]
+[ext_resource type="Resource" uid="uid://dgbigggpvj0rk" path="res://scenes/game/decks/AnimalDeck.tres" id="4_rticu"]
+[ext_resource type="Script" path="res://src/game/SystemDeckManager.gd" id="4_sriew"]
+[ext_resource type="PackedScene" uid="uid://bv4jg7bjubrrr" path="res://scenes/game/levels/LoadingScreen.tscn" id="4_x4qxi"]
+[ext_resource type="Script" path="res://src/game/SoundManager.gd" id="6_nnukk"]
+[ext_resource type="Script" path="res://src/shared/SoundBridge.gd" id="7_fs4a7"]
+[ext_resource type="AudioStream" uid="uid://cesdmptmtygih" path="res://assets/audio/button-click-1.ogg" id="8_kwdo7"]
+
+[node name="GameManager" type="Node2D" node_paths=PackedStringArray("system_deck_manager", "sound_manager", "sound_bridge")]
+script = ExtResource("1_34dj2")
+main_menu_template = ExtResource("2_yr08t")
+build_in_decks = Array[ExtResource("3_b0cgo")]([ExtResource("4_rticu")])
+game_scene = ExtResource("3_u1w4v")
+system_deck_manager = NodePath("GlobalFixedNode/SystemDeckManager")
+sound_manager = NodePath("GlobalFixedNode/SoundManager")
+sound_bridge = NodePath("GlobalFixedNode/SoundBridge")
+loading_screen_template = ExtResource("4_x4qxi")
+
+[node name="GlobalFixedNode" type="Node2D" parent="."]
+
+[node name="SystemDeckManager" type="Node2D" parent="GlobalFixedNode"]
+script = ExtResource("4_sriew")
+
+[node name="SoundManager" type="Node2D" parent="GlobalFixedNode"]
+script = ExtResource("6_nnukk")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="GlobalFixedNode/SoundManager"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="GlobalFixedNode/SoundManager"]
+
+[node name="AudioListener2D2" type="AudioListener2D" parent="GlobalFixedNode/SoundManager"]
+current = true
+
+[node name="SoundBridge" type="Node2D" parent="GlobalFixedNode" node_paths=PackedStringArray("sound_manager")]
+script = ExtResource("7_fs4a7")
+sound_manager = NodePath("../SoundManager")
+button_click_sound = ExtResource("8_kwdo7")
+
+[connection signal="loading_system_decks_done" from="GlobalFixedNode/SystemDeckManager" to="." method="loading_data_done"]
+[connection signal="play_sound_effect" from="GlobalFixedNode/SoundBridge" to="GlobalFixedNode/SoundManager" method="play_sound_effect"]
+[connection signal="stop_sound_effects" from="GlobalFixedNode/SoundBridge" to="GlobalFixedNode/SoundManager" method="stop_all_sounds"]

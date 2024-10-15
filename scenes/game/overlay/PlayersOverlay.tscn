@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0vijthhc3d38"]
+
+[ext_resource type="Script" path="res://src/overlay/PlayerGameOverlay.gd" id="1_mi4rq"]
+[ext_resource type="PackedScene" uid="uid://cynb8xjpxqa6w" path="res://scenes/game/overlay/PlayerNameOverlay.tscn" id="2_ehytq"]
+
+[node name="PlayersOverlay" type="Control" node_paths=PackedStringArray("player_target_control")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_mi4rq")
+player_template = ExtResource("2_ehytq")
+player_target_control = NodePath("PanelContainer/MarginContainer/PlayerList/PlayerNames")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+offset_right = 150.0
+offset_bottom = 70.0
+tooltip_text = "Players"
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PlayerList" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/PlayerList"]
+layout_mode = 2
+text = "PLAYER_LIST"
+
+[node name="PlayerNames" type="VBoxContainer" parent="PanelContainer/MarginContainer/PlayerList"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/PlayerList/PlayerNames"]
+clip_contents = true
+custom_minimum_size = Vector2(5, 5)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/PlayerList/PlayerNames/MarginContainer"]
+layout_mode = 2
+text = "PLACEHOLDER"
+fit_content = true

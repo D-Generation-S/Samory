@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MemoryCardResource" load_steps=4 format=3 uid="uid://dtjjkvfhlefdq"]
+
+[ext_resource type="Script" path="res://src/templates/MemoryCardResource.gd" id="1_gon5y"]
+[ext_resource type="Texture2D" uid="uid://dbyfwjxyhqou1" path="res://assets/sprites/animals_square_outline.png" id="2_djl1b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8t2mv"]
+atlas = ExtResource("2_djl1b")
+region = Rect2(0, 0, 425, 342)
+
+[resource]
+script = ExtResource("1_gon5y")
+name = "ELEPHANT"
+description = "ELEPHANT"
+texture = SubResource("AtlasTexture_8t2mv")

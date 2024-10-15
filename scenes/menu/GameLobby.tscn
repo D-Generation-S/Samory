@@ -1,0 +1,166 @@
+[gd_scene load_steps=14 format=3 uid="uid://dkd4cftggpymb"]
+
+[ext_resource type="Script" path="res://src/menu/GameLobby.gd" id="1_0oi2l"]
+[ext_resource type="Script" path="res://src/menu/AddNewPlayerButton.gd" id="1_2n3u5"]
+[ext_resource type="Script" path="res://src/menu/DisplayDecksInGrid.gd" id="1_8vavy"]
+[ext_resource type="PackedScene" uid="uid://b3cv1g0a284mq" path="res://scenes/menu/DeckPreview.tscn" id="1_uo1dm"]
+[ext_resource type="Texture2D" uid="uid://dmf23xobks0pc" path="res://assets/sprites/wood.png" id="2_6d8gk"]
+[ext_resource type="Script" path="res://src/menu/SelectSavedPlayerButton.gd" id="3_b76ak"]
+[ext_resource type="PackedScene" uid="uid://dxhn5n16onctb" path="res://scenes/menu/NewPlayer.tscn" id="3_vi7sw"]
+[ext_resource type="PackedScene" uid="uid://de0if4rovyxsv" path="res://scenes/menu/PlayerCard.tscn" id="4_l5ybk"]
+[ext_resource type="Script" path="res://src/menu/QuickAddPlayer.gd" id="7_6tvv5"]
+[ext_resource type="Script" path="res://src/menu/StartLobbyGame.gd" id="8_6tuah"]
+[ext_resource type="Script" path="res://src/overlay/FinishGameOk.gd" id="8_i1lj5"]
+[ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="11_eein8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y3gao"]
+texture = ExtResource("2_6d8gk")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="GameLobby" type="CanvasLayer"]
+script = ExtResource("1_0oi2l")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_y3gao")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HSplitContainer" type="HSplitContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+split_offset = -300
+dragger_visibility = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Playerlist" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "PLAYER_LIST"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Players" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="AddNewPlayer" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("root_node", "player_node")]
+layout_mode = 2
+text = "ADD_NEW_PLAYER"
+script = ExtResource("1_2n3u5")
+root_node = NodePath("../../../../../../../../../..")
+player_node = NodePath("../../ScrollContainer/Players")
+player_template = ExtResource("3_vi7sw")
+player_card_template = ExtResource("4_l5ybk")
+is_focused = true
+
+[node name="AddSavedPlayer" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+text = "SELECT_SAVED_PLAYER"
+script = ExtResource("3_b76ak")
+
+[node name="QuickAddPlayer" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("player_target_node")]
+layout_mode = 2
+text = "ADD_RANDOM_PLAYER"
+script = ExtResource("7_6tvv5")
+player_target_node = NodePath("../../ScrollContainer/Players")
+player_card_template = ExtResource("4_l5ybk")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Decks" type="GridContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+script = ExtResource("1_8vavy")
+deck_template = ExtResource("1_uo1dm")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="StartGame" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2" node_paths=PackedStringArray("player_list", "deck_manager")]
+layout_mode = 2
+text = "START_GAME"
+script = ExtResource("8_6tuah")
+player_list = NodePath("../../../../../HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/Players")
+deck_manager = NodePath("../../../../../HBoxContainer/HSplitContainer/ScrollContainer/Decks")
+
+[node name="Cancel" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 10
+shortcut = ExtResource("11_eein8")
+text = "CANCEL"
+script = ExtResource("8_i1lj5")
+
+[connection signal="block_buttons" from="." to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/AddNewPlayer" method="disable_button"]
+[connection signal="block_buttons" from="." to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/AddSavedPlayer" method="disable_button"]
+[connection signal="enable_buttons" from="." to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/AddNewPlayer" method="enable_button"]
+[connection signal="enable_buttons" from="." to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/AddSavedPlayer" method="enable_button"]
+[connection signal="player_added" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/AddNewPlayer" to="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/StartGame" method="validate"]
+[connection signal="player_adding" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/AddNewPlayer" to="." method="block_all_buttons"]
+[connection signal="player_removed" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/AddNewPlayer" to="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/StartGame" method="validate"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/QuickAddPlayer" to="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/StartGame" method="validate"]
+[connection signal="deck_selected" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/ScrollContainer/Decks" to="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/StartGame" method="validate"]

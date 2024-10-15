@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://de0if4rovyxsv"]
+
+[ext_resource type="Script" path="res://src/menu/PlayerCard.gd" id="1_ab6rg"]
+[ext_resource type="Texture2D" uid="uid://bmxqeqo65xwt" path="res://assets/sprites/spritesheet-default.png" id="1_u8sm3"]
+[ext_resource type="Script" path="res://src/menu/ClickableButton.gd" id="3_4auv0"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vkn4j"]
+texture = ExtResource("1_u8sm3")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+region_rect = Rect2(384, 256, 64, 64)
+
+[node name="PlayerCard" type="PanelContainer" node_paths=PackedStringArray("player_name_field", "player_age_field")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_vkn4j")
+script = ExtResource("1_ab6rg")
+player_name_field = NodePath("PanelContainer/HBoxContainer/GridContainer/Name")
+player_age_field = NodePath("PanelContainer/HBoxContainer/GridContainer/Age")
+
+[node name="PanelContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 30
+columns = 2
+
+[node name="PlayerName" type="Label" parent="PanelContainer/HBoxContainer/GridContainer"]
+layout_mode = 2
+text = "PLAYER_NAME"
+
+[node name="Name" type="Label" parent="PanelContainer/HBoxContainer/GridContainer"]
+layout_mode = 2
+text = "PLACEHOLDER"
+
+[node name="PlayerAge" type="Label" parent="PanelContainer/HBoxContainer/GridContainer"]
+layout_mode = 2
+text = "PLAYER_AGE"
+
+[node name="Age" type="Label" parent="PanelContainer/HBoxContainer/GridContainer"]
+layout_mode = 2
+text = "PLACEHOLDER"
+
+[node name="RemovePlayer" type="Button" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "DELETE"
+script = ExtResource("3_4auv0")
+
+[connection signal="pressed" from="PanelContainer/HBoxContainer/RemovePlayer" to="." method="delete_card"]

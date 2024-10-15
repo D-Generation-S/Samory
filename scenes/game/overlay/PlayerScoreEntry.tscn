@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://pwy03e08f1ov"]
+
+[ext_resource type="Script" path="res://src/overlay/PlayerScoreEntry.gd" id="1_4epdj"]
+
+[node name="MarginContainer" type="MarginContainer" node_paths=PackedStringArray("player_name", "player_score")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("1_4epdj")
+player_name = NodePath("HBoxContainer/PlayerName")
+player_score = NodePath("HBoxContainer/PlayerScore")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="PlayerName" type="RichTextLabel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "PLAYER_NAME"
+fit_content = true
+
+[node name="PlayerScore" type="RichTextLabel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "[right]PLAYER_SCORE"
+fit_content = true

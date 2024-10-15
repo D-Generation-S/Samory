@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cynb8xjpxqa6w"]
+
+[ext_resource type="Script" path="res://src/menu/PlayerGameLabel.gd" id="1_d33rg"]
+
+[node name="MarginContainer" type="MarginContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 10
+script = ExtResource("1_d33rg")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+bbcode_enabled = true
+text = "Placeholder"
+fit_content = true

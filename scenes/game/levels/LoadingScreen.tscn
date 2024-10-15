@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://bv4jg7bjubrrr"]
+
+[ext_resource type="Script" path="res://src/menu/LoadingScreen.gd" id="1_b8dw1"]
+[ext_resource type="Script" path="res://src/menu/PathSpawner.gd" id="2_18x8e"]
+[ext_resource type="AudioStream" uid="uid://lboryp8cbdxe" path="res://assets/audio/card-shuffle.ogg" id="2_b0kc6"]
+[ext_resource type="PackedScene" uid="uid://8yxfao2fwwod" path="res://scenes/game/templates/FallingCard.tscn" id="3_d4esl"]
+[ext_resource type="Texture2D" uid="uid://dmf23xobks0pc" path="res://assets/sprites/wood.png" id="4_vnqec"]
+
+[sub_resource type="Curve2D" id="Curve2D_27oxi"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -50, -350, 0, 0, 0, 0, 1970, -350)
+}
+point_count = 2
+
+[node name="LoadingScreen" type="Node2D" node_paths=PackedStringArray("screen_message", "static_label")]
+script = ExtResource("1_b8dw1")
+screen_message = NodePath("CanvasLayer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/LoadingMessage")
+static_label = NodePath("CanvasLayer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/LoadingStatic")
+sound_effect = ExtResource("2_b0kc6")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 50
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LoadingStatic" type="Label" parent="CanvasLayer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+text = "LOADING"
+
+[node name="LoadingMessage" type="Label" parent="CanvasLayer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 8
+text = "MESSAGE"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1024, 1024)
+texture = ExtResource("4_vnqec")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_27oxi")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" node_paths=PackedStringArray("spawn_target")]
+position = Vector2(-50, -350)
+script = ExtResource("2_18x8e")
+spawn_template = ExtResource("3_d4esl")
+spawn_target = NodePath("../../CardNode")
+
+[node name="CardNode" type="Node2D" parent="."]
