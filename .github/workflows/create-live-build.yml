@@ -7,7 +7,7 @@ on:
 env:
   REF_CHECKOUT_BRANCH: main
   RELEASE_ARTIFACT_FOLDER: artifacts
-  DEBUG: false
+  DEBUG: true
 
 jobs:
   build-version:
