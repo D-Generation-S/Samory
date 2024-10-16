@@ -13,7 +13,7 @@ jobs:
         - name: Linux
           file: samory
         - name: "Windows Desktop"
-          file: samory
+          file: samory.exe
     steps:
       - uses: actions/checkout@v3
         with:
@@ -28,5 +28,5 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Client - ${{ matrix.platform }}
+          name: Samory - ${{ matrix.platform.name }}
           path: ${{ github.workspace }}/${{ steps.build.outputs.build }}
