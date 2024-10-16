@@ -9,7 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        platform: [Linux, "Windows Desktop"]
+        platform:
+        - name: Linux
+          file: samory
+        - name: "Windows Desktop"
+          file: samory
     steps:
       - uses: actions/checkout@v3
         with:
@@ -18,8 +22,8 @@ jobs:
         id: build
         uses: manleydev/build-godot-action@master
         with:
-          name: samory
-          preset: ${{ matrix.platform }}
+          name: ${{ matrix.platform.file }}
+          preset: ${{ matrix.platform.name }}
           debugMode: "true"
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
