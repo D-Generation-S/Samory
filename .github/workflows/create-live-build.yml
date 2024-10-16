@@ -94,3 +94,33 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release upload ${{ GITHUB.REF_NAME }} ${{ env.RELEASE_ARTIFACT_FOLDER }}/*.zip
+  upload-itch:
+    name: Upload to itch
+    runs-on: ubuntu-latest
+    needs: ["upload-release", "build-version"]
+    strategy:
+      matrix:
+        platform:
+        - name: linux
+          file: samory
+        - name: windows
+          file: samory.exe
+    steps:  
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ env.REF_CHECKOUT_BRANCH }}
+          lfs: true      
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with: 
+          name: Samory_${{ needs.build-version.outputs.build-version }}-${{ matrix.platform.name }}
+          path: ${{ env.RELEASE_ARTIFACT_FOLDER }}/Samory_${{ needs.build-version.outputs.build-version }}-${{ matrix.platform.name }}
+      - uses: manleydev/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+          CHANNEL: ${{ matrix.platform.name }}
+          ITCH_GAME: samory
+          ITCH_USER: xanatos
+          VERSION: ${{ github.ref_name }}
+          PACKAGE: ${{ env.RELEASE_ARTIFACT_FOLDER }}/Samory_${{ needs.build-version.outputs.build-version }}-${{ matrix.platform.name }}/
+    
