@@ -59,6 +59,8 @@ jobs:
     name: Upload Artifacts to GitHub Release
     runs-on: ubuntu-latest
     needs: ["build", "build-version"]
+    permissions:
+      contents: write
     strategy:
       matrix:
         platform:
