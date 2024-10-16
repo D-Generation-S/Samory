@@ -14,7 +14,7 @@ func _ready():
 	for deck in decks:
 		var template = deck_template.instantiate() as DeckPreview
 		template.set_deck(deck)
-		template.connect("deck_selected", deck_was_selected)
+		template.deck_selected.connect(deck_was_selected)
 		add_child(template)
 
 func deck_was_selected(deck: MemoryDeckResource):
