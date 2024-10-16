@@ -3,77 +3,74 @@ extends Node2D
 var current_card: CardTemplate;
 
 var currently_forzen: bool = false
+var controller_input_was_made: bool = false
 
 func get_current_grid_position() -> Point:
 	if current_card == null:
 		return Point.new(0,0)
 	return Point.new(current_card.grid_position.get_x_pos(), current_card.grid_position.get_y_pos())
 
-func move_right():
+func move_x_axis(direction: int):
+	var real_direction = clampi(direction, -1, 1)
+	if real_direction == 0:
+		return
 	var grid_position = get_current_grid_position()
-	grid_position.set_x_pos(get_next_x_pos(grid_position, false))
+	var is_left = real_direction < 0
+	grid_position.set_x_pos(get_next_x_pos(grid_position, is_left))
 	if current_card == null:
 		grid_position.set_x_pos(0)
 	if !select_card_at_position(grid_position):
-		grid_position.set_x_pos(grid_position.get_x_pos() - 1)
+		grid_position.set_x_pos(grid_position.get_x_pos() + real_direction)
 
-func move_left():
+func move_y_axis(direction: int):
+	var real_direction = clampi(direction, -1, 1)
+	if real_direction == 0:
+		return
 	var grid_position = get_current_grid_position()
-	grid_position.set_x_pos(get_next_x_pos(grid_position, true))
+	var is_up = real_direction < 0
+	grid_position.set_y_pos(get_next_y_pos(grid_position, is_up))
 	if current_card == null:
-		grid_position.set_x_pos(0)
+		grid_position.set_y_pos(0)
 	if !select_card_at_position(grid_position):
-		grid_position.set_x_pos(grid_position.get_x_pos() + 1)
+		grid_position.set_y_pos(grid_position.get_y_pos() + real_direction)
 
 func get_next_x_pos(start_pos: Point, go_left: bool) -> int:
 	var all_x_positions: Array[int] = []
 	for card in get_children():
-		if card is CardTemplate and card.grid_position.get_y_pos() == start_pos.get_y_pos():
+		if card is CardTemplate and card.grid_position.get_y_pos() == start_pos.get_y_pos() and card.card_is_hidden():
 			var card_x = card.grid_position.get_x_pos()
 			if !go_left and card_x > start_pos.get_x_pos():
 				all_x_positions.append(card_x)
 			if go_left and card_x < start_pos.get_x_pos():
 				all_x_positions.append(card_x)
 
-	all_x_positions.sort()
-	if go_left:
-		all_x_positions.reverse()
-	if all_x_positions.size() == 0:
-		return start_pos.get_x_pos()
-	return all_x_positions.pop_front()
-
-func move_up():
-	var grid_position = get_current_grid_position()
-	grid_position.set_y_pos(get_next_y_pos(grid_position, true))
-	if current_card == null:
-		grid_position.set_y_pos(0)
-	if !select_card_at_position(grid_position):
-		grid_position.set_y_pos(grid_position.get_y_pos() + 1)
-
-func move_down():
-	var grid_position = get_current_grid_position()
-	grid_position.set_y_pos(get_next_y_pos(grid_position, false))
-	if current_card == null:
-		grid_position.set_y_pos(0)
-	if !select_card_at_position(grid_position):
-		grid_position.set_y_pos(grid_position.get_y_pos() - 1)
+	var return_data = get_next_position_from_array(all_x_positions, go_left)
+	if return_data == -1:
+		return_data = start_pos.get_y_pos()
+	return return_data
 
 func get_next_y_pos(start_pos: Point, go_up: bool) -> int:
 	var all_y_positions: Array[int] = []
 	for card in get_children():
-		if card is CardTemplate and card.grid_position.get_x_pos() == start_pos.get_x_pos():
+		if card is CardTemplate and card.grid_position.get_x_pos() == start_pos.get_x_pos() and card.card_is_hidden():
 			var card_y = card.grid_position.get_y_pos()
 			if !go_up and card_y > start_pos.get_y_pos():
 				all_y_positions.append(card_y)
 			if go_up and card_y < start_pos.get_y_pos():
 				all_y_positions.append(card_y)
 
-	all_y_positions.sort()
-	if go_up:
-		all_y_positions.reverse()
-	if all_y_positions.size() == 0:
-		return start_pos.get_y_pos()
-	return all_y_positions.pop_front()
+	var return_data = get_next_position_from_array(all_y_positions, go_up)
+	if return_data == -1:
+		return_data = start_pos.get_y_pos()
+	return return_data
+
+func get_next_position_from_array(data: Array[int], lower: bool) -> int:
+	data.sort()
+	if data.size() == 0:
+		return -1
+	if lower:
+		return data.pop_back()
+	return data.pop_front()
 
 func select_card_at_position(grid_position: Point) -> bool:
 	var found_card = false
@@ -113,22 +110,37 @@ func select_closest_card(source_position: Point):
 	if return_position != null:
 		select_card_at_position(return_position)
 
-func parse_movement(information: Point):
+func parse_movement(information: Vector2):
 	if currently_forzen:
 		return
-	if information.get_x_pos() > 0:
-		move_right()
-	if information.get_x_pos() < 0:
-		move_left()
-	if information.get_y_pos() > 0:
-		move_down()
-	if information.get_y_pos() < 0:
-		move_up()
+	controller_input_was_made = true;
+	if information != Vector2.ZERO:
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	move_x_axis(map_float(information.x))
+	move_y_axis(map_float(information.y))
+
+func map_float(input: float) -> int:
+	if input > 0:
+		return 1
+	if input < 0:
+		return -1
+	return 0
 
 func round_frozen():
 	currently_forzen = true
 	current_card = null
 
 func round_unfrozen():
-	select_closest_card(Point.new(0,0))
+	if controller_input_was_made:
+		select_closest_card(Point.new(0,0))
 	currently_forzen = false
+	controller_input_was_made = false
+
+func card_loading_done():
+	for card in get_children():
+		if card is CardTemplate:
+			card.mouse_was_used.connect(func(): 
+				current_card = null
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			)
+			

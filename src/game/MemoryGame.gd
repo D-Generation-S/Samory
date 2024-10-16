@@ -7,6 +7,7 @@ signal freeze_round()
 signal round_end()
 signal game_has_endet()
 signal game_paused(is_paused: bool)
+signal card_loading_done()
 
 signal player_scored(player_id: int)
 
@@ -47,7 +48,6 @@ func _ready():
 	player_node = get_node("%Players")
 	
 	loading_scene.set_screen_message("PLACING_CARDS", true)
-	start_round_now()
 
 func _process(delta):
 	check_if_still_paused()
@@ -66,8 +66,11 @@ func _process(delta):
 		var cards = load_thread.wait_to_finish() as Array[CardTemplate]
 		for card in cards:
 			card_target_node.add_child(card)
-			card.connect("card_triggered", card_was_triggered)
+			card.card_triggered.connect(card_was_triggered)
 		load_thread = null
+		card_loading_done.emit()
+		start_round_now()
+		
 		loading_scene.queue_free()
 		for node in game_nodes_to_show:
 			if node is Node2D:

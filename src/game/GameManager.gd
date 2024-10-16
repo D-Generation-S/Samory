@@ -45,7 +45,7 @@ func open_menu(scene: PackedScene):
 	
 	for child in get_children():
 		if child is LoadingScreen:
-			connect("loading_message", child.set_screen_message)
+			loading_message.connect(child.set_screen_message)
 
 func play_game(players: Array[PlayerResource], deck: MemoryDeckResource):
 	clear_all_nodes()

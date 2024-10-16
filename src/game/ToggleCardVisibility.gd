@@ -33,6 +33,10 @@ func toggle_off():
 func is_focused():
 	if toggle_off_now or toggle_on_now:
 		return
+	for card in get_parent().get_parent().get_children():
+		if card is CardTemplate and card.card_is_focused():
+			card.lost_focus()
+
 	currently_in_focus = true
 	set_shader_material(focus_material)
 
@@ -53,6 +57,9 @@ func is_hidden() -> bool:
 
 func is_fully_shown() -> bool:
 	return threshold >= 1
+
+func is_currently_in_focus() -> bool:
+	return currently_in_focus
 
 func _process(_delta):
 	var changed = false
