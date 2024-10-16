@@ -1,0 +1,32 @@
+name: Check Pull Request
+
+on:
+  pull_request:
+    branches: [ "main", "develop" ]
+
+jobs:
+  Check-Build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform:
+        - name: Linux
+          file: samory
+        - name: "Windows Desktop"
+          file: samory.exe
+    steps:
+      - uses: actions/checkout@v3
+        with:
+           lfs: true
+      - name: Build
+        id: build
+        uses: manleydev/build-godot-action@master
+        with:
+          name: ${{ matrix.platform.file }}
+          preset: ${{ matrix.platform.name }}
+          debugMode: "true"
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Samory - ${{ matrix.platform.name }}
+          path: ${{ github.workspace }}/${{ steps.build.outputs.build }}
