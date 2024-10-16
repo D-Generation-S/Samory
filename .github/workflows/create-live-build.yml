@@ -76,6 +76,9 @@ jobs:
         with: 
           name: Samory_${{ needs.build-version.outputs.build-version }}-${{ matrix.platform.name }}
           path: ${{ env.RELEASE_ARTIFACT_FOLDER }}
+      - name: Display artifacts folder content
+        if: ${{ env.DEBUG == 'true' }}
+        run: ls -la $RELEASE_ARTIFACT_FOLDER
       - name: Zip Build Files
         run: |
           cd ./$RELEASE_ARTIFACT_FOLDER/Samory_${{ needs.build-version.outputs.build-version }}-${{ matrix.platform.name }}
