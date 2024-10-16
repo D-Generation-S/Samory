@@ -65,6 +65,7 @@ camera_node = NodePath("../Camera2D")
 [node name="Cards" type="Node2D" parent="."]
 script = ExtResource("19_ploi3")
 
+[connection signal="card_loading_done" from="." to="Cards" method="card_loading_done"]
 [connection signal="freeze_round" from="." to="Cards" method="round_frozen"]
 [connection signal="game_has_endet" from="." to="CanvasLayer/MarginContainer/PlayersOverlay" method="game_ended"]
 [connection signal="game_paused" from="." to="Camera2D" method="game_paused"]

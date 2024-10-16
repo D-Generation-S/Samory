@@ -1,7 +1,7 @@
 extends Camera2D
 
 signal game_menu_requested()
-signal card_movement(information: Point)
+signal card_movement(information: Vector2)
 signal confirm_current_card()
 
 @export_range(1,2) var max_zoom: float = 1.8
@@ -38,29 +38,28 @@ func _process(_delta):
 	if Input.is_action_just_released("drag"):
 		dragging = false
 	if Input.is_action_just_pressed("back"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		game_menu_requested.emit()
 	if Input.is_action_just_pressed("next_round") and parent_node.get_current_game_phase() == GameState.ROUND_FREEZE:
 		parent_node.end_round_now()
 
-	var x_movement = 0
-	var y_movement = 0
+	var movement = Vector2.ZERO;
 	if Input.is_action_just_pressed("move_left"):
-		x_movement = -1
+		movement.x = -1
 	if Input.is_action_just_pressed("move_right"):
-		x_movement = 1
+		movement.x = 1
 
 	if Input.is_action_just_pressed("move_up"):
-		y_movement = -1
+		movement.y = -1
 	if Input.is_action_just_pressed("move_down"):
-		y_movement = 1
+		movement.y = 1
 
 	if Input.is_action_just_pressed("confirm"):
 		confirm_current_card.emit()
 
-
-	if x_movement != 0 or y_movement != 0:
+	if movement != Vector2.ZERO:
 		print("movement")
-		card_movement.emit(Point.new(x_movement, y_movement))
+		card_movement.emit(movement)
 		
 	var zoom_x = clampf(zoom.x, min_zoom, max_zoom)
 	zoom = Vector2(zoom_x, zoom_x)
@@ -76,9 +75,6 @@ func _process(_delta):
 		drag_mouse()
 
 	drag_controller(controller_drag_vector)
-		
-
-		
 
 func drag_mouse():
 	if initial_drag:

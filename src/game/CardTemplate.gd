@@ -7,6 +7,7 @@ signal card_triggered()
 signal trigger_sound_effect(stream: AudioStream)
 signal card_in_focus()
 signal card_lost_focus()
+signal mouse_was_used()
 
 @export var card_deck: Resource
 @export var memory_card: Resource
@@ -40,10 +41,10 @@ func _enter_tree():
 		printerr("No parent node was found!")
 		return
 
-	parent_node.connect("round_start", unfreeze_card)
-	parent_node.connect("freeze_round", freeze_card)
-	parent_node.connect("round_end", toggle_card_on)
-	connect("trigger_sound_effect", parent_node.play_game_sound)
+	parent_node.round_start.connect(unfreeze_card)
+	parent_node.freeze_round.connect(freeze_card)
+	parent_node.round_end.connect(toggle_card_on)
+	trigger_sound_effect.connect(parent_node.play_game_sound)
 
 func toggle_card_on():
 	var time_range = max_time_delay - min_time_delay
@@ -95,6 +96,9 @@ func remove_from_board():
 func card_is_hidden() -> bool:
 	return back_side.is_hidden()
 
+func card_is_focused() -> bool:
+	return back_side.is_currently_in_focus()
+
 func got_focus():
 	if was_clicked:
 		return
@@ -104,3 +108,6 @@ func lost_focus():
 	if was_clicked:
 		return
 	card_lost_focus.emit()
+
+func selected_by_mouse():
+	mouse_was_used.emit()

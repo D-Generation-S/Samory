@@ -14,15 +14,17 @@ func _pressed():
 	var new_player_node = player_template.instantiate() as NewPlayer
 	root_node.add_child(new_player_node)
 	player_adding.emit()
-	new_player_node.connect("new_player_dialog_closed", root_node.enable_all_buttons)
-	new_player_node.connect("new_player_dialog_closed", dialog_was_closed)
-	new_player_node.connect("new_player_added", player_was_added)
+
+	new_player_node.new_player_dialog_closed.connect(root_node.enable_all_buttons)
+	new_player_node.new_player_dialog_closed.connect(dialog_was_closed)
+	new_player_node.new_player_added.connect(player_was_added)
+	
 
 func player_was_added(new_player: PlayerResource):
 	var player_card = player_card_template.instantiate() as PlayerCard
 	player_card.player_card = new_player
 	player_node.add_child(player_card)
-	player_node.connect("getting_deleted", player_was_removed)
+	player_card.getting_deleted.connect(player_was_removed)
 	player_added.emit()
 	dialog_was_closed()
 
