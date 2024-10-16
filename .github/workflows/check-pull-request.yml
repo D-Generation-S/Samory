@@ -10,9 +10,9 @@ jobs:
     strategy:
       matrix:
         platform:
-        - name: Linux
+        - name: linux
           file: samory
-        - name: "Windows Desktop"
+        - name: windows
           file: samory.exe
     steps:
       - uses: actions/checkout@v3
