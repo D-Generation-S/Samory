@@ -157,7 +157,7 @@ func card_was_triggered():
 func cards_where_identically() -> bool:
 	var clicked_cards: Array[CardTemplate]
 	for child in card_target_node.get_children():
-		if child is CardTemplate and child.is_turned():
+		if child is CardTemplate and child.is_turned() and !child.is_getting_removed():
 			clicked_cards.append(child as CardTemplate)
 
 	if clicked_cards.size() != 2:
