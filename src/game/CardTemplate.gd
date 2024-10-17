@@ -23,6 +23,7 @@ signal about_to_get_delete()
 @export var grid_position: Point
 
 var was_clicked: bool
+var getting_removed: bool = false;
 
 func _ready():	
 	if memory_card == null:
@@ -96,7 +97,11 @@ func is_turned() -> bool:
 	return was_clicked
 
 func remove_from_board():
-	back_side.queue_free()
+	about_to_get_delete.emit()
+	getting_removed = true
+
+func is_getting_removed():
+	return getting_removed
 
 func destory_now():
 	queue_free();
@@ -123,3 +128,9 @@ func lost_focus():
 
 func selected_by_mouse():
 	mouse_was_used.emit()
+
+func play_sound(audio: AudioStream):
+	if audio == null:
+		return
+	print("Play sound!")
+	trigger_sound_effect.emit(audio)
