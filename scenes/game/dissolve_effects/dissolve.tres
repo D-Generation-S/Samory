@@ -14,4 +14,4 @@ script = ExtResource("1_jacgv")
 rarity = 20
 effect_material = SubResource("ShaderMaterial_m2kse")
 remove_sound = ExtResource("2_lrtja")
-effect_speed_multiplier = 3.0
+effect_speed_multiplier = 25.0

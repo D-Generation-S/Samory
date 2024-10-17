@@ -132,5 +132,4 @@ func selected_by_mouse():
 func play_sound(audio: AudioStream):
 	if audio == null:
 		return
-	print("Play sound!")
 	trigger_sound_effect.emit(audio)

@@ -9,4 +9,4 @@ class_name  DisolveEffectResource
 
 @export var remove_sound: AudioStream;
 
-@export_range(0.01, 10) var effect_speed_multiplier: float = 1
+@export_range(0.01, 30) var effect_speed_multiplier: float = 1
