@@ -1,0 +1,126 @@
+name: Live build
+
+on:
+  release:
+    types: [released]
+
+env:
+  REF_CHECKOUT_BRANCH: main
+  RELEASE_ARTIFACT_FOLDER: artifacts
+  DEBUG: false
+
+jobs:
+  build-version:
+    name: Get version for build
+    runs-on: ubuntu-latest
+    outputs:
+      build-version: ${{ steps.build-version.outputs.build-version }}
+    steps:
+      - name: Get release version
+        id: build-version
+        run: |
+         # Found at https://github.com/orgs/community/discussions/25713
+         # Additional env fix found on https://github.com/actions/runner-images/issues/5251
+         if [ '${{ GITHUB.REF_TYPE }}' == 'branch' ]
+            then
+                echo "Is not running on branch (Check failed)"
+                echo "build-version=0.0.0" >> $GITHUB_OUTPUT
+            else
+                echo "Running on branch (Check successful)"
+                echo "build-version=${{ GITHUB.REF_NAME }}" >> $GITHUB_OUTPUT
+         fi
+  build:
+    name: Build Samory
+    runs-on: ubuntu-latest
+    needs: ["build-version"]
+    strategy:
+      matrix:
+        platform:
+        - name: linux
+          file: samory
+        - name: windows
+          file: samory.exe
+    steps:
+      - uses: actions/checkout@v3
+        with:
+           lfs: true
+      - name: Build
+        id: build
+        uses: manleydev/build-godot-action@master
+        with:
+          name: ${{ matrix.platform.file }}
+          preset: ${{ matrix.platform.name }}
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Samory_${{ needs.build-version.outputs.build-version }}-${{ matrix.platform.name }}
+          path: ${{ github.workspace }}/${{ steps.build.outputs.build }}
+  upload-release:
+    name: Upload Artifacts to GitHub Release
+    runs-on: ubuntu-latest
+    needs: ["build", "build-version"]
+    permissions:
+      contents: write
+    strategy:
+      matrix:
+        platform:
+        - name: linux
+          file: samory
+        - name: windows
+          file: samory.exe
+    steps:      
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ env.REF_CHECKOUT_BRANCH }}
+          lfs: true
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with: 
+          name: Samory_${{ needs.build-version.outputs.build-version }}-${{ matrix.platform.name }}
+          path: ${{ env.RELEASE_ARTIFACT_FOLDER }}
+      - name: Display artifacts folder content
+        if: ${{ env.DEBUG == 'true' }}
+        run: ls -la $RELEASE_ARTIFACT_FOLDER
+      - name: Zip Build Files
+        run: |
+          cd ./$RELEASE_ARTIFACT_FOLDER/
+          zip -r Samory_${{ needs.build-version.outputs.build-version }}-${{ matrix.platform.name }}.zip ./*
+      - name: Display artifacts folder content
+        if: ${{ env.DEBUG == 'true' }}
+        run: ls -la $RELEASE_ARTIFACT_FOLDER
+      - name: Upload artifact
+        if: ${{ env.DEBUG == 'false' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release upload ${{ GITHUB.REF_NAME }} ${{ env.RELEASE_ARTIFACT_FOLDER }}/*.zip
+  upload-itch:
+    name: Upload to itch
+    runs-on: ubuntu-latest
+    needs: ["upload-release", "build-version"]
+    strategy:
+      matrix:
+        platform:
+        - name: linux
+          file: samory
+        - name: windows
+          file: samory.exe
+    steps:  
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ env.REF_CHECKOUT_BRANCH }}
+          lfs: true      
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with: 
+          name: Samory_${{ needs.build-version.outputs.build-version }}-${{ matrix.platform.name }}
+          path: ${{ env.RELEASE_ARTIFACT_FOLDER }}/Samory_${{ needs.build-version.outputs.build-version }}-${{ matrix.platform.name }}
+      - uses: manleydev/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+          CHANNEL: ${{ matrix.platform.name }}
+          ITCH_GAME: samory
+          ITCH_USER: xanatos
+          VERSION: ${{ github.ref_name }}
+          PACKAGE: ${{ env.RELEASE_ARTIFACT_FOLDER }}/Samory_${{ needs.build-version.outputs.build-version }}-${{ matrix.platform.name }}/
+    
