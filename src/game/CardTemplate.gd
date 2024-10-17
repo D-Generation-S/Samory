@@ -8,6 +8,7 @@ signal trigger_sound_effect(stream: AudioStream)
 signal card_in_focus()
 signal card_lost_focus()
 signal mouse_was_used()
+signal about_to_get_delete()
 
 @export var card_deck: Resource
 @export var memory_card: Resource
@@ -53,7 +54,7 @@ func toggle_card_on():
 	timer_for_hide_delay.start()
 
 func hide_card_now():
-	if back_side.is_hidden():
+	if back_side == null or back_side.is_hidden():
 		return;
 	hide_card.emit()
 	play_card_turn_sound()
@@ -62,9 +63,13 @@ func get_height() -> float:
 	return back_side.get_rect().size.y
 
 func freeze_card():
+	if back_side == null:
+		return
 	back_side.freeze_card()
 
 func unfreeze_card():
+	if back_side == null:
+		return
 	was_clicked = false
 	back_side.unfreeze_card()
 
@@ -91,12 +96,19 @@ func is_turned() -> bool:
 	return was_clicked
 
 func remove_from_board():
-	call_deferred("queue_free")
+	back_side.queue_free()
+
+func destory_now():
+	queue_free();
 
 func card_is_hidden() -> bool:
+	if back_side == null:
+		return true
 	return back_side.is_hidden()
 
 func card_is_focused() -> bool:
+	if back_side == null:
+		return true
 	return back_side.is_currently_in_focus()
 
 func got_focus():
