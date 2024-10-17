@@ -1,5 +1,7 @@
 shader_type canvas_item;
 
+
+//Based on: https://www.youtube.com/watch?v=AIGLcHSKgv8
 uniform sampler2D SCREEN_TEXTURE: hint_screen_texture;
 
 uniform sampler2D noise_texture;
@@ -26,19 +28,4 @@ void fragment()
 	COLOR = mix(burn_color, base_color, base_color.a);
 	
 }
-
-/*
-vec4 noise_texture = texture(noise, UV);
-	float line = step(UV.y, progress);
-	float second_line = step(UV.y, progress + remove_area);
-	float percentage_alpha = 1. - distance(UV.y - progress, 0.) * 1. / remove_area;
-	vec4 real_texture = texture(SCREEN_TEXTURE, SCREEN_UV);
-	noise_texture.a *= percentage_alpha * line * real_texture.a;
-	if (UV.y > progress)
-	{
-		noise_texture.a = real_texture.a;
-	}
-	real_texture.a *= noise_texture.a;
-	COLOR = real_texture;
-*/
 
