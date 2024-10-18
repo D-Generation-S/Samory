@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=16 format=4 uid="uid://cc8o60unw6oft"]
+[gd_resource type="Theme" load_steps=17 format=4 uid="uid://cc8o60unw6oft"]
 
 [ext_resource type="Texture2D" uid="uid://bmxqeqo65xwt" path="res://assets/sprites/spritesheet-default.png" id="1_pdnn8"]
 
@@ -1377,6 +1377,14 @@ texture_margin_right = 16.0
 texture_margin_bottom = 16.0
 region_rect = Rect2(128, 432, 64, 64)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3svyc"]
+texture = ExtResource("1_pdnn8")
+texture_margin_left = 18.0
+texture_margin_top = 18.0
+texture_margin_right = 18.0
+texture_margin_bottom = 18.0
+region_rect = Rect2(320, 512, 64, 64)
+
 [resource]
 Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
@@ -1419,3 +1427,4 @@ LineEdit/styles/focus = SubResource("StyleBoxTexture_k7lxt")
 LineEdit/styles/normal = SubResource("StyleBoxTexture_f0pfh")
 LineEdit/styles/read_only = SubResource("StyleBoxFlat_5e3w1")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_i1ke6")
+TooltipPanel/styles/panel = SubResource("StyleBoxTexture_3svyc")
