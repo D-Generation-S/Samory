@@ -19,8 +19,11 @@ var inital_menu_shown = false
 func _ready():
 	open_menu(loading_screen_template)
 	loading_message.emit("LOAD_DECKS")
-	#system_deck_manager.reload_system_decks()
-	loading_data_done()
+	if OS.has_feature("web"):
+		loading_data_done()
+	else:
+		system_deck_manager.reload_system_decks()
+	
 	translate_built_in_decks()
 
 func translate_built_in_decks():
