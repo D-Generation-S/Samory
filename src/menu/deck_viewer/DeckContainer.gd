@@ -24,7 +24,6 @@ func _ready():
 
 func _process(delta):
 	var scroll_vector = Input.get_axis("scroll_up", "scroll_down")
-	print(scroll_vector)
 	is_in_foucus = false
 	for deck in get_valid_decks():
 		if deck is DeckPreview and deck.is_in_focus():
@@ -41,7 +40,6 @@ func place_all_decks():
 	var decks = GlobalGameManagerAccess.game_manager.get_available_decks()
 	decks.sort_custom(sort_by_name)
 	for deck in decks:
-		print("Create preview")
 		var template: DeckPreview = deck_preview_template.instantiate() as DeckPreview
 		template.set_deck(deck)
 		template.deck_selected.connect(deck_was_selected)

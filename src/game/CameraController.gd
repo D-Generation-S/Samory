@@ -65,7 +65,6 @@ func _process(_delta):
 		confirm_current_card.emit()
 
 	if movement != Vector2.ZERO:
-		print("movement")
 		card_movement.emit(movement)
 		
 	var zoom_x = clampf(zoom.x, min_zoom, max_zoom)
