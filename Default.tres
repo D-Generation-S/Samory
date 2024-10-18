@@ -1388,7 +1388,7 @@ texture_margin_bottom = 18.0
 region_rect = Rect2(320, 512, 64, 64)
 modulate_color = Color(0.49, 0.49, 0.49, 1)
 
-[sub_resource type="Image" id="Image_r2kdl"]
+[sub_resource type="Image" id="Image_gq482"]
 data = {
 "data": PackedByteArray("////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///9e////E////wD///8A////AP///wD///8A////AP///xP///9e////AP///wD///8A////AP///wD///9e////5f///7z///8T////AP///wD///8A////AP///xP///+9////5f///17///8A////AP///wD///8A////E////7z////l////vP///xP///8A////AP///xP///+9////5f///7z///8S////AP///wD///8A////AP///wD///8T////vP///+X///+8////E////xP///+9////5f///7z///8S////AP///wD///8A////AP///wD///8A////AP///xP///+8////5f///9D////Q////5f///7z///8S////AP///wD///8A////AP///wD///8A////AP///wD///8A////E////9D////l////5f///8////8S////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///xP////Q////5f///+X////P////E////wD///8A////AP///wD///8A////AP///wD///8A////AP///xP///+9////5f///8/////P////5f///7z///8T////AP///wD///8A////AP///wD///8A////AP///xP///+9////5f///7z///8S////E////7z////l////vP///xP///8A////AP///wD///8A////AP///xP///+9////5f///7z///8S////AP///wD///8T////vP///+X///+8////E////wD///8A////AP///wD///9e////5f///7z///8S////AP///wD///8A////AP///xP///+8////5f///17///8A////AP///wD///8A////AP///17///8S////AP///wD///8A////AP///wD///8A////E////17///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AA=="),
 "format": "RGBA8",
@@ -1398,7 +1398,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_w27er"]
-image = SubResource("Image_r2kdl")
+image = SubResource("Image_gq482")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k7lxt"]
 texture = ExtResource("1_pdnn8")
