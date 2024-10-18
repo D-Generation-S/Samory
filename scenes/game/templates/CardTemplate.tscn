@@ -50,13 +50,14 @@ fill_to = Vector2(0.521368, 0.388889)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phkhd"]
 size = Vector2(500, 550)
 
-[node name="CardTemplate" type="Node2D" node_paths=PackedStringArray("front_side", "text_node", "back_side", "timer_for_hide_delay")]
+[node name="CardTemplate" type="Node2D" node_paths=PackedStringArray("front_side", "text_node", "back_side", "timer_for_hide_delay", "card_id_label")]
 script = ExtResource("1_fmo68")
 front_side = NodePath("CanvasGroup/CardFront")
 text_node = NodePath("CanvasGroup/CardText")
 back_side = NodePath("CardBack")
 flip_effects = Array[AudioStream]([ExtResource("2_7bwi6"), ExtResource("3_hh2fg"), ExtResource("4_s61ka")])
 timer_for_hide_delay = NodePath("TurnDelay")
+card_id_label = NodePath("Label")
 min_time_delay = 0.05
 max_time_delay = 0.3
 
@@ -111,10 +112,21 @@ toggle_material = ExtResource("5_b0osi")
 focus_material = ExtResource("12_drvni")
 
 [node name="Area2D" type="Area2D" parent="CardBack"]
+visible = false
 script = ExtResource("9_mu0q4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CardBack/Area2D"]
 shape = SubResource("RectangleShape2D_phkhd")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 20.0
+offset_top = 390.0
+offset_right = 218.0
+offset_bottom = 527.0
+theme_override_colors/font_color = Color(0, 1, 0.815686, 1)
+theme_override_font_sizes/font_size = 100
+text = "1"
+vertical_alignment = 2
 
 [connection signal="about_to_get_delete" from="." to="CardBack" method="remove_from_board"]
 [connection signal="card_in_focus" from="." to="CardBack" method="is_focused"]
