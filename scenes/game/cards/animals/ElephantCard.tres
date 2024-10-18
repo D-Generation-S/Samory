@@ -10,5 +10,5 @@ region = Rect2(0, 0, 425, 342)
 [resource]
 script = ExtResource("1_gon5y")
 name = "ELEPHANT"
-description = "ELEPHANT"
+description = "ELEPHANT_DESCRIPTION"
 texture = SubResource("AtlasTexture_8t2mv")
