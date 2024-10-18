@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://co10o6j0oxeep"]
+[gd_scene load_steps=8 format=3 uid="uid://co10o6j0oxeep"]
 
 [ext_resource type="Script" path="res://src/menu/QuitGameButton.gd" id="1_6c3ib"]
 [ext_resource type="Script" path="res://src/menu/StartQuickGame.gd" id="1_dyfxg"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://src/menu/MainMenu.gd" id="1_w7od3"]
 [ext_resource type="Texture2D" uid="uid://dmf23xobks0pc" path="res://assets/sprites/wood.png" id="2_4tb54"]
 [ext_resource type="PackedScene" uid="uid://dkd4cftggpymb" path="res://scenes/menu/GameLobby.tscn" id="2_o3qyg"]
+[ext_resource type="PackedScene" uid="uid://scnjjf50me2r" path="res://scenes/menu/DeckViewer.tscn" id="6_7qj6t"]
 
 [node name="MainMenu" type="CanvasLayer" node_paths=PackedStringArray("game_buttons")]
 script = ExtResource("1_w7od3")
@@ -57,6 +58,12 @@ is_focused = true
 layout_mode = 2
 text = "QUICK_GAME"
 script = ExtResource("1_dyfxg")
+
+[node name="Deck Viewer" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "DECK_VIEWER"
+script = ExtResource("1_ohfem")
+scene_template = ExtResource("6_7qj6t")
 
 [node name="Quit" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

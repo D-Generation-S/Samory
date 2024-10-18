@@ -1,3 +1,143 @@
-[gd_scene format=3 uid="uid://scnjjf50me2r"]
+[gd_scene load_steps=11 format=3 uid="uid://scnjjf50me2r"]
+
+[ext_resource type="Texture2D" uid="uid://dmf23xobks0pc" path="res://assets/sprites/wood.png" id="1_4ectf"]
+[ext_resource type="ButtonGroup" uid="uid://68g48rm5eqcv" path="res://assets/button_groups/DeckViewerFilter.tres" id="2_t7m8t"]
+[ext_resource type="Script" path="res://src/menu/deck_viewer/ReloadDecks.gd" id="2_v68ni"]
+[ext_resource type="Script" path="res://src/menu/deck_viewer/DeckViewerFilterBox.gd" id="3_44ipw"]
+[ext_resource type="Script" path="res://src/menu/deck_viewer/CloseDeckViewer.gd" id="4_br1ba"]
+[ext_resource type="Script" path="res://src/menu/deck_viewer/DeckViewCheckbox.gd" id="4_dd2y2"]
+[ext_resource type="Script" path="res://src/menu/deck_viewer/DeckContainer.gd" id="4_m2ntb"]
+[ext_resource type="PackedScene" uid="uid://b3cv1g0a284mq" path="res://scenes/menu/DeckPreview.tscn" id="6_wx8yk"]
+[ext_resource type="Script" path="res://src/menu/deck_viewer/DeckViewerCards.gd" id="7_tnjvp"]
+[ext_resource type="PackedScene" uid="uid://bkpf0f8bvau6t" path="res://scenes/menu/CardPreview.tscn" id="8_51rxv"]
 
 [node name="DeckViewer" type="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 2048.0
+offset_bottom = 2048.0
+texture = ExtResource("1_4ectf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Deck Controls" type="HBoxContainer" parent="VBoxContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Reload Decks" type="Button" parent="VBoxContainer/MarginContainer/PanelContainer/Deck Controls"]
+layout_mode = 2
+text = "RELOAD_CUSTOM_DECKS"
+script = ExtResource("2_v68ni")
+is_focused = true
+
+[node name="Filter Decks" type="LineEdit" parent="VBoxContainer/MarginContainer/PanelContainer/Deck Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "FILTER_DECKS"
+script = ExtResource("3_44ipw")
+
+[node name="Show All" type="CheckButton" parent="VBoxContainer/MarginContainer/PanelContainer/Deck Controls"]
+layout_mode = 2
+button_pressed = true
+button_group = ExtResource("2_t7m8t")
+text = "SHOW_ALL"
+script = ExtResource("4_dd2y2")
+
+[node name="Show Built In" type="CheckButton" parent="VBoxContainer/MarginContainer/PanelContainer/Deck Controls"]
+layout_mode = 2
+button_group = ExtResource("2_t7m8t")
+text = "SHOW_BUILT_IN"
+script = ExtResource("4_dd2y2")
+
+[node name="Show Custom" type="CheckButton" parent="VBoxContainer/MarginContainer/PanelContainer/Deck Controls"]
+layout_mode = 2
+button_group = ExtResource("2_t7m8t")
+text = "SHOW_CUSTOM"
+script = ExtResource("4_dd2y2")
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/PanelContainer2"]
+layout_mode = 2
+
+[node name="Decks" type="ScrollContainer" parent="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+horizontal_scroll_mode = 0
+
+[node name="DeckContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer/Decks"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4_m2ntb")
+deck_preview_template = ExtResource("6_wx8yk")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_scroll_mode = 0
+
+[node name="Cards" type="GridContainer" parent="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer/ScrollContainer" node_paths=PackedStringArray("deck_container")]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+columns = 2
+script = ExtResource("7_tnjvp")
+card_template = ExtResource("8_51rxv")
+deck_container = NodePath("../../Decks/DeckContainer")
+scroll_speed = 15.0
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="PanelContainer3" type="PanelContainer" parent="VBoxContainer/MarginContainer3"]
+layout_mode = 2
+
+[node name="View Controls" type="HBoxContainer" parent="VBoxContainer/MarginContainer3/PanelContainer3"]
+layout_mode = 2
+
+[node name="Close" type="Button" parent="VBoxContainer/MarginContainer3/PanelContainer3/View Controls"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "CLOSE"
+script = ExtResource("4_br1ba")
+
+[connection signal="text_changed" from="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Filter Decks" to="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer/Decks/DeckContainer" method="filter_decks_by_name"]
+[connection signal="toggled" from="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Show All" to="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer/Decks/DeckContainer" method="show_all_decks"]
+[connection signal="toggled" from="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Show Built In" to="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer/Decks/DeckContainer" method="show_only_built_in"]
+[connection signal="toggled" from="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Show Custom" to="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer/Decks/DeckContainer" method="show_only_custom"]
+[connection signal="data_reloaded" from="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer/Decks/DeckContainer" to="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Show All" method="signal_activated"]
+[connection signal="deck_selected" from="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer/Decks/DeckContainer" to="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer/ScrollContainer/Cards" method="show_cards"]
+[connection signal="deck_unselected" from="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer/Decks/DeckContainer" to="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer/ScrollContainer/Cards" method="remove_all_cards"]

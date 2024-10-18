@@ -14,6 +14,7 @@ const BUILT_IN_NO = "NO"
 @export var buildint: RichTextLabel
 @export var texture_rect: DeckPreviewSelection
 @export var deck_description: RichTextLabel
+@export var selection_button: Button
 
 var deck: MemoryDeckResource
 var is_selected: bool = false
@@ -40,6 +41,9 @@ func set_this_deck():
 		is_selected = true
 		deck_selected.emit(deck)
 		deck_activate.emit()
+
+func is_in_focus():
+	return selection_button.has_focus()
 
 func is_deck_selected():
 	return is_selected
