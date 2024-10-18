@@ -6,6 +6,8 @@ func _ready():
 	super()
 	GlobalSystemDeckManager.loading_system_decks_done.connect(loading_done)
 	GlobalSystemDeckManager.loading_system_decks.connect(load_decks)
+	if OS.has_feature("web"):
+		disabled = true
 
 func _pressed():
 	GlobalSystemDeckManager.reload_system_decks()

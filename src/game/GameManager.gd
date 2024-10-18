@@ -19,8 +19,8 @@ func _ready():
 	if OS.has_feature("web"):
 		loading_data_done()
 	else:
-		GlobalSystemDeckManager.reload_system_decks()
 		GlobalSystemDeckManager.loading_system_decks_done.connect(loading_data_done)
+		GlobalSystemDeckManager.reload_system_decks()
 	
 	translate_built_in_decks()
 
