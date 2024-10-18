@@ -1,6 +1,6 @@
 extends Area2D
 
-signal clicked
+signal clicked()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
