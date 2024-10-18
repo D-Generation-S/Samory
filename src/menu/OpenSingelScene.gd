@@ -4,5 +4,4 @@ extends ClickableButton
 
 func _pressed():
 	super()
-	var game_manager = get_tree().root.get_child(0) as GameManager
-	game_manager.open_menu(scene_template)
+	GlobalGameManagerAccess.get_game_manager().open_menu(scene_template)

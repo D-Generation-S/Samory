@@ -2,7 +2,7 @@ extends ClickableButton
 
 func _pressed():
 	super()
-	var game_manager = get_tree().root.get_child(0) as GameManager
+	var game_manager = GlobalGameManagerAccess.get_game_manager()
 	var selected_deck_index = randi() % game_manager.get_available_decks().size()
 	var deck = game_manager.get_available_decks()[selected_deck_index]
 

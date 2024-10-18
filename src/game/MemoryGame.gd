@@ -38,10 +38,7 @@ var current_sound_timer = 0
 
 var paused: bool = false
 
-var game_manager: GameManager;
-
 func _ready():
-	game_manager = get_tree().root.get_child(0) as GameManager
 	current_sound_timer = seconds_to_lay_cards
 	load_thread = Thread.new()
 	load_thread.start(build_card_layout.bind(card_deck, card_template, separation))
@@ -201,10 +198,11 @@ func set_players(players_of_game: Array[PlayerResource]):
 func get_current_game_phase() -> int:
 	return current_game_state
 
+## Deprecated: Use GLobalSoundManager instead
 func play_game_sound(stream: AudioStream):
 	if stream == null:
 		return
-	game_manager.sound_bridge.play_sound(stream)
+	GlobalSoundManager.play_sound_effect(stream)
 
 func show_game_menu():
 	paused = true

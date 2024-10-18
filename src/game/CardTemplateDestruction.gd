@@ -1,7 +1,6 @@
 extends CanvasGroup
 
 signal ready_for_destruction()
-signal play_effect_sound(audio: AudioStream)
 
 @export var possible_effects: Array[DisolveEffectResource] = []
 @export var progress_per_tick: float = 0.2
@@ -38,5 +37,5 @@ func animate_destruction():
 	material = loot.effect_material.duplicate()
 	effect_multiplier = loot.effect_speed_multiplier
 	var effect_sound = loot.remove_sound
-	play_effect_sound.emit(effect_sound)
+	GlobalSoundManager.play_sound_effect(effect_sound)
 

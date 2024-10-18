@@ -10,6 +10,11 @@ var sound_stream_node: Node2D
 func _ready():
 	sound_stream_node = Node2D.new()
 	add_child(sound_stream_node)
+	
+	var listener = AudioListener2D.new()
+	listener.make_current()
+	add_child(listener)
+
 	for i in range(precreated_sound_managers):
 		sound_stream_node.add_child(create_new_audio_stream_player() )
 
