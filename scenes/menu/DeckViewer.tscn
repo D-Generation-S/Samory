@@ -99,6 +99,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("4_m2ntb")
 deck_preview_template = ExtResource("6_wx8yk")
+scroll_speed = 15.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer"]
 layout_mode = 2
