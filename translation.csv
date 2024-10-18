@@ -1,55 +1,55 @@
-"key";"en";"de"
-"CURRENT_PLAYER";"Current player:";"Aktueller Spieler:"
-"GAME_STATISTIC";"[center]Game Statistic[/center]";"[center]Spiele Statistik[/center]"
-"PLAYER_WON";"Player won:";"Gewinnender Spieler:"
-"PLAYER_TITLE";"Player name";"Spielername"
-"PLAYER_SCORE";"[right]Player Score[/right]";"[right]Punktzahl[/right]"
-"OK";"OK";"OK"
-"CANCEL";"Cancel";"Abbrechen"
-"REPLAY";"Replay";"Erneut spielen"
-"QUIT_GAME";"Quit Game";"Spiel schließen"
-"START_GAME";"Start game";"Spiel starten"
-"QUICK_GAME";"Quick Game";"Schnelles Spiel"
-"DECK_INFO";"Deck Info";"Deck Informationen"
-"CARD_COUNT";"Card count:";"Kartenanzahl:"
-"BUILT_IN";"Embedded:";"Eingebettetes:"
-"PLAYER_LIST";"Players";"Spieler"
-"PLAYER_NAME";"Playername";"Spielername"
-"PLAYER_AGE";"Plageage";"Alter des Spielers"
-"ADD_NEW_PLAYER";"Add new player";"Neuen Spieler hinzufügen"
-"SELECT_SAVED_PLAYER";"Select saved player";"Bereits erstellen Spieler auswählen"
-"ONLY_LETTER_AND_NUMBERS_ALLOWED_FOR_PLAYERNAME";"A playername can only contain letters and numbers";"Nur Buchstaben und Zahlen sind für einen Spielernamen erlaubt"
-"NO_NAME_WAS_ENTERD";"A Playername is required";"Der Spielername wird benötigt"
-"NO_AGE_WAS_ENTERED";"The age of a player is required";"Das alter des Spielers wird benötigt"
-"AGE_NEEDS_TO_BE_A_NUMBER";"The age of an player must be a number";"Das alter eines Spielers muss eien Zahl sein"
-"DELETE";"Delete";"Entfernen"
-"LOADING";"Loading";"Lade"
-"LOAD_DECKS";"custom decks";"eigene Kartendecks"
-"ADD_RANDOM_PLAYER";"Add random player";"Zufälligen Spieler hinzufügen"
-"PLACING_CARDS";"Placing cards on table";"Lege Karten auf den Tisch" 
-"CLOSE_MENU";"Close menu";"Menü schließen"
-"MAIN_MENU";"Main Menu";"Hauptmenü"
-"NO";"No";"Nein"
-"YES";"Yes";"Ja"
-"ANIMALS";"Animals";"Tiere"
-"ANIMALS_DESCRIPTION";"A deck containing animal images";"Ein deck welches Tierbilder enthält"
-"ELEPHANT";"Elephant";"Elefant"
-"ELEPHANT_DESCRIPTION";"The Elephant";"Der Elefant"
-"GIRAFFE";"Giraffe";"Giraffe"
-"GIRAFFE_DESCRIPTION";"The Giraffe";"Die Giraffe"
-"HIPPO";"Hippopotamus";"Nilpferd"
-"HIPPO_DESCRIPTION";"The Hippopotamus";"Das Nilpferd"
-"MONKEY";"Monkey";"Affe"
-"MONKEY_DESCRIPTION";"The Monkey";"Der Affe"
-"PANDA";"Panda";"Pandabär"
-"PANDA_DESCRIPTION";"The Panda";"Der Pandabär"
-"PARROT";"Parrot";"Papagei"
-"PARROT_DESCRIPTION";"The Parrot";"Der Papagei"
-"PENGUIN";"Penguin";"Pinguin"
-"PENGUIN_DESCRIPTION";"The Penguin";"Der Pinguin"
-"PIG";"Pig";"Schwein"
-"PIG_DESCRIPTION";"The Pig";"Das Schwein"
-"RABBIT";"Rabbit";"Hase"
-"RABBIT_DESCRIPTION";"The Rabbit";"Der Hase"
-"SNAKE";"Snake";"Schlange"
-"SNAKE_DESCRIPTION";"The Snake";"Die Schlange"
+key;en;de
+CURRENT_PLAYER;Current player:;Aktueller Spieler:
+GAME_STATISTIC;[center]Game Statistic[/center];[center]Spiele Statistik[/center]
+PLAYER_WON;Winning player:;Gewinnender Spieler:
+PLAYER_TITLE;Player name;Spielername
+PLAYER_SCORE;[right]Player Score[/right];[right]Punktzahl[/right]
+OK;OK;OK
+CANCEL;Cancel;Abbrechen
+REPLAY;Replay;Erneut spielen
+QUIT_GAME;Quit Game;Spiel schließen
+START_GAME;Start game;Spiel starten
+QUICK_GAME;Quick Game;Schnelles Spiel
+DECK_INFO;Deck Info;Deck Informationen
+CARD_COUNT;Card count:;Kartenanzahl:
+BUILT_IN;Embedded:;Eingebettetes:
+PLAYER_LIST;Players;Spieler
+PLAYER_NAME;Playername;Spielername
+PLAYER_AGE;Plageage;Alter des Spielers
+ADD_NEW_PLAYER;Add new player;Neuen Spieler hinzufügen
+SELECT_SAVED_PLAYER;Select saved player;Bereits erstellen Spieler auswählen
+ONLY_LETTER_AND_NUMBERS_ALLOWED_FOR_PLAYERNAME;A playername can only contain letters and numbers;Nur Buchstaben und Zahlen sind für einen Spielernamen erlaubt
+NO_NAME_WAS_ENTERD;A Playername is required;Der Spielername wird benötigt
+NO_AGE_WAS_ENTERED;The age of a player is required;Das alter des Spielers wird benötigt
+AGE_NEEDS_TO_BE_A_NUMBER;The age of an player must be a number;Das alter eines Spielers muss eien Zahl sein
+DELETE;Delete;Entfernen
+LOADING;Loading;Lade
+LOAD_DECKS;custom decks;eigene Kartendecks
+ADD_RANDOM_PLAYER;Add random player;Zufälligen Spieler hinzufügen
+PLACING_CARDS;Placing cards on table;Lege Karten auf den Tisch 
+CLOSE_MENU;Close menu;Menü schließen
+MAIN_MENU;Main Menu;Hauptmenü
+NO;No;Nein
+YES;Yes;Ja
+ANIMALS;Animals;Tiere
+ANIMALS_DESCRIPTION;A deck containing animal images;Ein deck welches Tierbilder enthält
+ELEPHANT;Elephant;Elefant
+ELEPHANT_DESCRIPTION;The Elephant;Der Elefant
+GIRAFFE;Giraffe;Giraffe
+GIRAFFE_DESCRIPTION;The Giraffe;Die Giraffe
+HIPPO;Hippopotamus;Nilpferd
+HIPPO_DESCRIPTION;The Hippopotamus;Das Nilpferd
+MONKEY;Monkey;Affe
+MONKEY_DESCRIPTION;The Monkey;Der Affe
+PANDA;Panda;Pandabär
+PANDA_DESCRIPTION;The Panda;Der Pandabär
+PARROT;Parrot;Papagei
+PARROT_DESCRIPTION;The Parrot;Der Papagei
+PENGUIN;Penguin;Pinguin
+PENGUIN_DESCRIPTION;The Penguin;Der Pinguin
+PIG;Pig;Schwein
+PIG_DESCRIPTION;The Pig;Das Schwein
+RABBIT;Rabbit;Hase
+RABBIT_DESCRIPTION;The Rabbit;Der Hase
+SNAKE;Snake;Schlange
+SNAKE_DESCRIPTION;The Snake;Die Schlange

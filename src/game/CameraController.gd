@@ -43,7 +43,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("next_round") and parent_node.get_current_game_phase() == GameState.ROUND_FREEZE:
 		parent_node.end_round_now()
 
-	var movement = Vector2.ZERO;
+	var movement = Vector2.ZERO
 	if Input.is_action_just_pressed("move_left"):
 		movement.x = -1
 	if Input.is_action_just_pressed("move_right"):

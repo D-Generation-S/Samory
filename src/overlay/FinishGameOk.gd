@@ -7,5 +7,4 @@ func _ready():
 
 func _pressed():
 	super()
-	var root_node = get_tree().root.get_child(0) as GameManager
-	root_node.close_game()
+	GlobalGameManagerAccess.get_game_manager().close_game()

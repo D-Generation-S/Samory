@@ -7,9 +7,6 @@ signal loading_message(message: String)
 @export var main_menu_template: PackedScene
 @export var build_in_decks: Array[MemoryDeckResource]
 @export var game_scene: PackedScene
-@export var system_deck_manager: SystemDeckManager
-@export var sound_manager: SoundManager
-@export var sound_bridge: SoundBridge
 @export var loading_screen_template: PackedScene
 
 var inital_menu_shown = false
@@ -22,7 +19,8 @@ func _ready():
 	if OS.has_feature("web"):
 		loading_data_done()
 	else:
-		system_deck_manager.reload_system_decks()
+		GlobalSystemDeckManager.reload_system_decks()
+		GlobalSystemDeckManager.loading_system_decks_done.connect(loading_data_done)
 	
 	translate_built_in_decks()
 
@@ -74,18 +72,18 @@ func load_game(card_deck: Resource, players: Array[PlayerResource]):
 func get_available_decks() -> Array[MemoryDeckResource]:
 	var return_array: Array[MemoryDeckResource] = []
 	return_array.append_array(build_in_decks)
-	return_array.append_array(system_deck_manager.get_system_decks())
+	return_array.append_array(GlobalSystemDeckManager.get_system_decks())
 	return return_array
 
 func clear_all_nodes():
 		for child in get_children():
-			if child.name == "GlobalFixedNode":
+			if child.name == "GlobalFixedNode" or child.is_in_group("static"):
 				continue
 			remove_child(child)
 
 func loading_data_done():
 	if inital_menu_shown:
 		return
-	sound_manager.stop_all_sounds()
+	GlobalSoundManager.stop_all_sounds()
 	inital_menu_shown = true
 	open_menu(main_menu_template)

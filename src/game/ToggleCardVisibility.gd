@@ -29,10 +29,10 @@ func toggle_on():
 		set_shader_material(toggle_material)
 
 func freeze_card():
-	collider.visible = false;
+	collider.visible = false
 	
 func unfreeze_card():
-	collider.visible = true;
+	collider.visible = true
 
 func toggle_off():
 	toggle_off_now = true
@@ -66,7 +66,7 @@ func is_currently_in_focus() -> bool:
 	return currently_in_focus
 
 func remove_from_board():
-	remove_if_possible = true;
+	remove_if_possible = true
 
 func _process(_delta):
 	var changed = false

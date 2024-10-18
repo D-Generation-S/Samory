@@ -4,7 +4,6 @@ class_name CardTemplate
 
 signal hide_card()
 signal card_triggered()
-signal trigger_sound_effect(stream: AudioStream)
 signal card_in_focus()
 signal card_lost_focus()
 signal mouse_was_used()
@@ -23,7 +22,7 @@ signal about_to_get_delete()
 @export var grid_position: Point
 
 var was_clicked: bool
-var getting_removed: bool = false;
+var getting_removed: bool = false
 
 func _ready():	
 	if memory_card == null:
@@ -46,7 +45,6 @@ func _enter_tree():
 	parent_node.round_start.connect(unfreeze_card)
 	parent_node.freeze_round.connect(freeze_card)
 	parent_node.round_end.connect(toggle_card_on)
-	trigger_sound_effect.connect(parent_node.play_game_sound)
 
 func toggle_card_on():
 	var time_range = max_time_delay - min_time_delay
@@ -56,7 +54,7 @@ func toggle_card_on():
 
 func hide_card_now():
 	if back_side == null or back_side.is_hidden():
-		return;
+		return
 	hide_card.emit()
 	play_card_turn_sound()
 
@@ -86,7 +84,7 @@ func card_was_clicked():
 func play_card_turn_sound():
 	var index = randi() % flip_effects.size()
 	var effect = flip_effects[index]
-	trigger_sound_effect.emit(effect)
+	GlobalSoundManager.play_sound_effect(effect)
 	card_triggered.emit()
 
 func get_card_id():
@@ -104,7 +102,7 @@ func is_getting_removed():
 	return getting_removed
 
 func destory_now():
-	queue_free();
+	queue_free()
 
 func card_is_hidden() -> bool:
 	if back_side == null:
@@ -132,4 +130,4 @@ func selected_by_mouse():
 func play_sound(audio: AudioStream):
 	if audio == null:
 		return
-	trigger_sound_effect.emit(audio)
+	GlobalSoundManager.play_sound_effect(audio)

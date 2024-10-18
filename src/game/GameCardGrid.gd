@@ -1,6 +1,6 @@
 extends Node2D
 
-var current_card: CardTemplate;
+var current_card: CardTemplate
 
 var currently_forzen: bool = false
 var controller_input_was_made: bool = false
@@ -113,7 +113,7 @@ func select_closest_card(source_position: Point):
 func parse_movement(information: Vector2):
 	if currently_forzen:
 		return
-	controller_input_was_made = true;
+	controller_input_was_made = true
 	if information != Vector2.ZERO:
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	move_x_axis(map_float(information.x))
