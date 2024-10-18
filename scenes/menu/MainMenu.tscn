@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/menu/QuitGameButton.gd" id="1_6c3ib"]
 [ext_resource type="Script" path="res://src/menu/StartQuickGame.gd" id="1_dyfxg"]
-[ext_resource type="Script" path="res://src/menu/OpenSingelScene.gd" id="1_ohfem"]
+[ext_resource type="Script" path="res://src/menu/OpenSingleScene.gd" id="1_ohfem"]
 [ext_resource type="Script" path="res://src/menu/MainMenu.gd" id="1_w7od3"]
 [ext_resource type="Texture2D" uid="uid://dmf23xobks0pc" path="res://assets/sprites/wood.png" id="2_4tb54"]
 [ext_resource type="PackedScene" uid="uid://dkd4cftggpymb" path="res://scenes/menu/GameLobby.tscn" id="2_o3qyg"]
