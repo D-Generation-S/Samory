@@ -17,7 +17,7 @@ func _ready():
 		add_child(template)
 
 func deck_was_selected(deck: MemoryDeckResource):
-	current_deck = deck;
+	current_deck = deck
 	for child in get_children():
 		if child is DeckPreview and child.deck != current_deck:
 			child.restore_deck()

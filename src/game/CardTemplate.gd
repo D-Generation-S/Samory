@@ -22,7 +22,7 @@ signal about_to_get_delete()
 @export var grid_position: Point
 
 var was_clicked: bool
-var getting_removed: bool = false;
+var getting_removed: bool = false
 
 func _ready():	
 	if memory_card == null:
@@ -54,7 +54,7 @@ func toggle_card_on():
 
 func hide_card_now():
 	if back_side == null or back_side.is_hidden():
-		return;
+		return
 	hide_card.emit()
 	play_card_turn_sound()
 
@@ -102,7 +102,7 @@ func is_getting_removed():
 	return getting_removed
 
 func destory_now():
-	queue_free();
+	queue_free()
 
 func card_is_hidden() -> bool:
 	if back_side == null:

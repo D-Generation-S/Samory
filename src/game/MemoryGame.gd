@@ -99,7 +99,7 @@ func build_card_layout(deck_of_cards: MemoryDeckResource,
 		card_pool.shuffle()
 
 	var current_card = 0
-	var side_length = floor(sqrt(card_pool.size()));
+	var side_length = floor(sqrt(card_pool.size()))
 
 	var row_count = side_length
 	var column_count = side_length
@@ -226,7 +226,7 @@ func continue_game():
 	game_paused.emit(false)
 
 func check_if_round_complete():
-	var card_not_hidden = false;
+	var card_not_hidden = false
 	for node in card_target_node.get_children():
 		if node is CardTemplate:
 			if !node.card_is_hidden():

@@ -43,7 +43,7 @@ func _process(delta):
 		for thread in load_threads:
 			if thread.is_alive():
 				loading_done = false
-				break;
+				break
 		if loading_done:
 			for thread in load_threads:
 				var data = thread.wait_to_finish() as MemoryDeckResource

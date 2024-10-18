@@ -16,4 +16,4 @@ func get_loot():
         return null
     loot_table.shuffle()
     var index = randi() % loot_table.size()
-    return loot_table[index];
+    return loot_table[index]

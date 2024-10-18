@@ -32,8 +32,8 @@ func _process(delta):
 		ready_for_destruction.emit()
 
 func animate_destruction():
-	destroy_now = true;
-	var loot = loot_table.get_loot() as DisolveEffectResource;
+	destroy_now = true
+	var loot = loot_table.get_loot() as DisolveEffectResource
 	material = loot.effect_material.duplicate()
 	effect_multiplier = loot.effect_speed_multiplier
 	var effect_sound = loot.remove_sound

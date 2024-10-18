@@ -32,7 +32,7 @@ func dialog_was_closed():
 	grab_focus()
 
 func player_was_removed():
-	player_removed.emit();
+	player_removed.emit()
 
 func disable_button():
 	disabled = true
