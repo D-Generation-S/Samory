@@ -1,55 +1,62 @@
-"key";"en";"de"
-"CURRENT_PLAYER";"Current player:";"Aktueller Spieler:"
-"GAME_STATISTIC";"[center]Game Statistic[/center]";"[center]Spiele Statistik[/center]"
-"PLAYER_WON";"Player won:";"Gewinnender Spieler:"
-"PLAYER_TITLE";"Player name";"Spielername"
-"PLAYER_SCORE";"[right]Player Score[/right]";"[right]Punktzahl[/right]"
-"OK";"OK";"OK"
-"CANCEL";"Cancel";"Abbrechen"
-"REPLAY";"Replay";"Erneut spielen"
-"QUIT_GAME";"Quit Game";"Spiel schließen"
-"START_GAME";"Start game";"Spiel starten"
-"QUICK_GAME";"Quick Game";"Schnelles Spiel"
-"DECK_INFO";"Deck Info";"Deck Informationen"
-"CARD_COUNT";"Card count:";"Kartenanzahl:"
-"BUILT_IN";"Embedded:";"Eingebettetes:"
-"PLAYER_LIST";"Players";"Spieler"
-"PLAYER_NAME";"Playername";"Spielername"
-"PLAYER_AGE";"Plageage";"Alter des Spielers"
-"ADD_NEW_PLAYER";"Add new player";"Neuen Spieler hinzufügen"
-"SELECT_SAVED_PLAYER";"Select saved player";"Bereits erstellen Spieler auswählen"
-"ONLY_LETTER_AND_NUMBERS_ALLOWED_FOR_PLAYERNAME";"A playername can only contain letters and numbers";"Nur Buchstaben und Zahlen sind für einen Spielernamen erlaubt"
-"NO_NAME_WAS_ENTERD";"A Playername is required";"Der Spielername wird benötigt"
-"NO_AGE_WAS_ENTERED";"The age of a player is required";"Das alter des Spielers wird benötigt"
-"AGE_NEEDS_TO_BE_A_NUMBER";"The age of an player must be a number";"Das alter eines Spielers muss eien Zahl sein"
-"DELETE";"Delete";"Entfernen"
-"LOADING";"Loading";"Lade"
-"LOAD_DECKS";"custom decks";"eigene Kartendecks"
-"ADD_RANDOM_PLAYER";"Add random player";"Zufälligen Spieler hinzufügen"
-"PLACING_CARDS";"Placing cards on table";"Lege Karten auf den Tisch" 
-"CLOSE_MENU";"Close menu";"Menü schließen"
-"MAIN_MENU";"Main Menu";"Hauptmenü"
-"NO";"No";"Nein"
-"YES";"Yes";"Ja"
-"ANIMALS";"Animals";"Tiere"
-"ANIMALS_DESCRIPTION";"A deck containing animal images";"Ein deck welches Tierbilder enthält"
-"ELEPHANT";"Elephant";"Elefant"
-"ELEPHANT_DESCRIPTION";"The Elephant";"Der Elefant"
-"GIRAFFE";"Giraffe";"Giraffe"
-"GIRAFFE_DESCRIPTION";"The Giraffe";"Die Giraffe"
-"HIPPO";"Hippopotamus";"Nilpferd"
-"HIPPO_DESCRIPTION";"The Hippopotamus";"Das Nilpferd"
-"MONKEY";"Monkey";"Affe"
-"MONKEY_DESCRIPTION";"The Monkey";"Der Affe"
-"PANDA";"Panda";"Pandabär"
-"PANDA_DESCRIPTION";"The Panda";"Der Pandabär"
-"PARROT";"Parrot";"Papagei"
-"PARROT_DESCRIPTION";"The Parrot";"Der Papagei"
-"PENGUIN";"Penguin";"Pinguin"
-"PENGUIN_DESCRIPTION";"The Penguin";"Der Pinguin"
-"PIG";"Pig";"Schwein"
-"PIG_DESCRIPTION";"The Pig";"Das Schwein"
-"RABBIT";"Rabbit";"Hase"
-"RABBIT_DESCRIPTION";"The Rabbit";"Der Hase"
-"SNAKE";"Snake";"Schlange"
-"SNAKE_DESCRIPTION";"The Snake";"Die Schlange"
+key;en;de
+CURRENT_PLAYER;Current player:;Aktueller Spieler:
+GAME_STATISTIC;[center]Game Statistic[/center];[center]Spiele Statistik[/center]
+PLAYER_WON;Winning player:;Gewinnender Spieler:
+PLAYER_TITLE;Player name;Spielername
+PLAYER_SCORE;[right]Player Score[/right];[right]Punktzahl[/right]
+OK;OK;OK
+CANCEL;Cancel;Abbrechen
+REPLAY;Replay;Erneut spielen
+QUIT_GAME;Quit Game;Spiel schließen
+START_GAME;Start game;Spiel starten
+QUICK_GAME;Quick Game;Schnelles Spiel
+DECK_INFO;Deck Info;Deck Informationen
+CARD_COUNT;Card count:;Kartenanzahl:
+BUILT_IN;Embedded:;Eingebettetes:
+PLAYER_LIST;Players;Spieler
+PLAYER_NAME;Playername;Spielername
+PLAYER_AGE;Plageage;Alter des Spielers
+ADD_NEW_PLAYER;Add new player;Neuen Spieler hinzufügen
+SELECT_SAVED_PLAYER;Select saved player;Bereits erstellen Spieler auswählen
+ONLY_LETTER_AND_NUMBERS_ALLOWED_FOR_PLAYERNAME;A playername can only contain letters and numbers;Nur Buchstaben und Zahlen sind für einen Spielernamen erlaubt
+NO_NAME_WAS_ENTERD;A Playername is required;Der Spielername wird benötigt
+NO_AGE_WAS_ENTERED;The age of a player is required;Das alter des Spielers wird benötigt
+AGE_NEEDS_TO_BE_A_NUMBER;The age of an player must be a number;Das alter eines Spielers muss eien Zahl sein
+DELETE;Delete;Entfernen
+LOADING;Loading;Lade
+LOAD_DECKS;custom decks;eigene Kartendecks
+ADD_RANDOM_PLAYER;Add random player;Zufälligen Spieler hinzufügen
+PLACING_CARDS;Placing cards on table;Lege Karten auf den Tisch 
+CLOSE_MENU;Close menu;Menü schließen
+MAIN_MENU;Main Menu;Hauptmenü
+NO;No;Nein
+YES;Yes;Ja
+ANIMALS;Animals;Tiere
+ANIMALS_DESCRIPTION;A deck containing animal images;Ein deck welches Tierbilder enthält
+ELEPHANT;The Elephant;Der Elefant
+ELEPHANT_DESCRIPTION;Elephants are the largest land mammals, recognizable by their massive bodies, large ears and long trunks. They live in Africa and Asia and are known for their intelligence and social behavior.;Elefanten sind die größten Landsäugetiere, erkennbar an ihrem massiven Körper, den großen Ohren und dem langen Rüssel. Sie leben in Afrika und Asien und sind bekannt für ihre Intelligenz und ihr soziales Verhalten.
+GIRAFFE;The Giraffe;Die Giraffe
+GIRAFFE_DESCRIPTION;Giraffes are the tallest land-living animals in the world, recognizable by their extremely long neck and long legs. They live in the savannahs of Africa and feed mainly on leaves that they pick from tall trees.;Giraffen sind die höchsten landlebenden Tiere der Welt, erkennbar an ihrem extrem langen Hals und den langen Beinen. Sie leben in den Savannen Afrikas und ernähren sich hauptsächlich von Blättern, die sie von hohen Bäumen pflücken.
+HIPPO;The Hippopotamus;Dar Nilpferd
+HIPPO_DESCRIPTION;Hippos are large, heavyweight mammals that live in sub-Saharan Africa and are characterized by their massive bodies and large heads. They spend a lot of time in the water, are herbivores and are considered one of the most dangerous animals in Africa.;Nilpferde sind große, schwergewichtige Säugetiere, die in Afrika südlich der Sahara leben und sich durch ihre massiven Körper und großen Köpfe auszeichnen. Sie verbringen viel Zeit im Wasser, sind Pflanzenfresser und gelten als eines der gefährlichsten Tiere Afrikas.
+MONKEY;The Monkey;Der Affe
+MONKEY_DESCRIPTION;Monkeys are intelligent and sociable mammals from the primate order that feed mainly on plants and fruit. They usually live in groups and exhibit complex social behaviors.;Affen sind intelligente und gesellige Säugetiere aus der Ordnung der Primaten, die sich hauptsächlich von Pflanzen und Früchten ernähren. Sie leben meist in Gruppen und zeigen komplexe soziale Verhaltensweisen.
+PANDA;The Panda;Der Pandabär
+PANDA_DESCRIPTION;Panda bears are large, black and white bears that live mainly in the bamboo forests of China and feed almost exclusively on bamboo. They are known for their peaceful nature and their rare, endangered population.;Pandabären sind große, schwarz-weiße Bären, die hauptsächlich in den Bambuswäldern Chinas leben und sich fast ausschließlich von Bambus ernähren. Sie sind bekannt für ihr friedliches Wesen und ihre seltene, vom Aussterben bedrohte Population.
+PARROT;The Parrot;Der Papagei
+PARROT_DESCRIPTION;Parrots are colorful birds from the order Psittaciformes, known for their intelligence and ability to mimic human voices. They usually live in tropical and subtropical regions and feed on seeds, fruits and sometimes insects.;Papageien sind farbenfrohe Vögel aus der Ordnung Psittaciformes, die für ihre Intelligenz und ihre Fähigkeit, menschliche Stimmen nachzuahmen, bekannt sind. Sie leben meist in tropischen und subtropischen Regionen und ernähren sich von Samen, Früchten und manchmal auch Insekten.
+PENGUIN;The Penguin;Der Pinguin
+PENGUIN_DESCRIPTION;Penguins are flightless seabirds of the southern hemisphere that are characterized by their black and white colouring and their adaptation to life in the water. They use their wings as flippers for swimming and live mainly in cold marine regions.;Pinguine sind flugunfähige Seevögel der Südhalbkugel, die sich durch ihre schwarz-weiße Färbung und ihre Anpassung an das Leben im Wasser auszeichnen. Sie nutzen ihre Flügel als Flossen zum Schwimmen und leben hauptsächlich in kalten Meeresregionen.
+PIG;The Pig;Das Schwein
+PIG_DESCRIPTION;Pigs are short-legged mammals with a stocky body, a trunk-like snout and usually a curled tail. They are omnivores and are kept worldwide both in the wild and as farm animals.;Schweine sind kurzbeinige Säugetiere mit einem gedrungenen Körper, einer rüsselartigen Schnauze und meist einem geringelten Schwanz. Sie sind Allesfresser und werden weltweit sowohl in freier Wildbahn als auch als Nutztiere gehalten.
+RABBIT;The Rabbit;Der Hase
+RABBIT_DESCRIPTION;Hares/Rabbits are agile mammals from the hare family, which are notable for their long ears and strong hind legs. They live in various habitats around the world and feed mainly on grasses and herbs.;Hasen sind flinke Säugetiere aus der Familie der Hasenartigen, die durch ihre langen Ohren und kräftigen Hinterbeine auffallen. Sie leben in verschiedenen Lebensräumen weltweit und ernähren sich hauptsächlich von Gräsern und Kräutern.
+SNAKE;The Snake;Die Schlange
+SNAKE_DESCRIPTION;Snakes are elongated, legless reptiles from the suborder Serpentes, which are characterized by their scaly skin and their ability to move smoothly. They can be found in various habitats worldwide, except in extremely cold regions such as the Arctic and Antarctic.;Schlangen sind langgestreckte, beinlose Reptilien aus der Unterordnung Serpentes, die sich durch ihre schuppige Haut und ihre Fähigkeit, sich geschmeidig fortzubewegen, auszeichnen. Sie sind weltweit in verschiedenen Lebensräumen anzutreffen, außer in extrem kalten Regionen wie der Arktis und Antarktis.
+DECK_VIEWER;Deck Viewer;Deckbetrachter
+RELOAD_CUSTOM_DECKS;Reload custom decks;Eigene Decks neu laden
+FILTER_DECKS;Filter decks by deck name;Decks anhand ihres Namens filtern
+SHOW_ALL;Show All;Alle Anzeigen
+SHOW_BUILT_IN;Show only built in;Nur eingebaute anzeigen
+SHOW_CUSTOM;Only show custom;Nur eigene anzeigen
+CLOSE;Close;Schließen

@@ -38,10 +38,7 @@ var current_sound_timer = 0
 
 var paused: bool = false
 
-var game_manager: GameManager;
-
 func _ready():
-	game_manager = get_tree().root.get_child(0) as GameManager
 	current_sound_timer = seconds_to_lay_cards
 	load_thread = Thread.new()
 	load_thread.start(build_card_layout.bind(card_deck, card_template, separation))
@@ -102,7 +99,7 @@ func build_card_layout(deck_of_cards: MemoryDeckResource,
 		card_pool.shuffle()
 
 	var current_card = 0
-	var side_length = floor(sqrt(card_pool.size()));
+	var side_length = floor(sqrt(card_pool.size()))
 
 	var row_count = side_length
 	var column_count = side_length
@@ -157,7 +154,7 @@ func card_was_triggered():
 func cards_where_identically() -> bool:
 	var clicked_cards: Array[CardTemplate]
 	for child in card_target_node.get_children():
-		if child is CardTemplate and child.is_turned():
+		if child is CardTemplate and child.is_turned() and !child.is_getting_removed():
 			clicked_cards.append(child as CardTemplate)
 
 	if clicked_cards.size() != 2:
@@ -201,10 +198,11 @@ func set_players(players_of_game: Array[PlayerResource]):
 func get_current_game_phase() -> int:
 	return current_game_state
 
+## Deprecated: Use GLobalSoundManager instead
 func play_game_sound(stream: AudioStream):
 	if stream == null:
 		return
-	game_manager.sound_bridge.play_sound(stream)
+	GlobalSoundManager.play_sound_effect(stream)
 
 func show_game_menu():
 	paused = true
@@ -228,7 +226,7 @@ func continue_game():
 	game_paused.emit(false)
 
 func check_if_round_complete():
-	var card_not_hidden = false;
+	var card_not_hidden = false
 	for node in card_target_node.get_children():
 		if node is CardTemplate:
 			if !node.card_is_hidden():

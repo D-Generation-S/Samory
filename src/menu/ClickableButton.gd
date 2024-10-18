@@ -12,12 +12,7 @@ func _ready():
 		grab_focus()
 
 func load_sound_bridge() -> bool:
-	if sound_bridge != null:
-		return true
-	var game_manager = get_tree().root.get_child(0) as GameManager
-	sound_bridge = game_manager.sound_bridge
-	if sound_bridge == null:
-		printerr("Sound bridge not found")
+	sound_bridge = GlobalGameManagerAccess.get_sound_bridge()
 	return sound_bridge != null
 
 func _pressed():

@@ -6,7 +6,7 @@ signal confirm_current_card()
 
 @export_range(1,2) var max_zoom: float = 1.8
 @export_range(0.1, 0.2) var min_zoom: float = 0.15
-@export_range(0.01, 0.2) var zoom_step: float = 0.03
+@export_range(0.01, 0.2) var zoom_step: float = 0.01
 @export var max_x_range: int = 7000
 @export var max_y_range:int = 3500
 @export var drag_speed:float = 1
@@ -28,10 +28,17 @@ func _process(_delta):
 	if paused:
 		return
 	var controller_drag_vector = Input.get_vector("drag_left", "drag_right", "drag_up", "drag_down")
-	if Input.is_action_just_pressed("zoom_in"):
-		zoom = zoom + Vector2(zoom_step, zoom_step)
-	if Input.is_action_just_pressed("zoom_out"):
-		zoom = zoom - Vector2(zoom_step, zoom_step)
+		
+	var zoom_vector = Input.get_axis("zoom_in", "zoom_out")
+
+	if Input.is_action_just_pressed("stepped_zoom_in"):
+		zoom_vector = 2
+	if Input.is_action_just_pressed("stepped_zoom_out"):
+		zoom_vector = -2
+
+	zoom_vector = zoom_vector *  zoom_step
+	zoom = zoom + Vector2(zoom_vector, zoom_vector)
+
 	if Input.is_action_just_pressed("drag"):
 		dragging = true
 		initial_drag = true
@@ -43,7 +50,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("next_round") and parent_node.get_current_game_phase() == GameState.ROUND_FREEZE:
 		parent_node.end_round_now()
 
-	var movement = Vector2.ZERO;
+	var movement = Vector2.ZERO
 	if Input.is_action_just_pressed("move_left"):
 		movement.x = -1
 	if Input.is_action_just_pressed("move_right"):
@@ -58,7 +65,6 @@ func _process(_delta):
 		confirm_current_card.emit()
 
 	if movement != Vector2.ZERO:
-		print("movement")
 		card_movement.emit(movement)
 		
 	var zoom_x = clampf(zoom.x, min_zoom, max_zoom)

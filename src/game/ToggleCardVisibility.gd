@@ -2,16 +2,25 @@ extends Sprite2D
 
 class_name ToggleCardVisibility
 
+signal ready_for_removal()
+
 @export_range(0.01, 0.2) var threshold_change_step: float = 0.01
 @export var toggle_material: Material
 @export var focus_material: Material
 
-var threshold = 0
-var toggle_off_now = false
-var toggle_on_now = false
-var currently_in_focus = false
+var threshold: float = 0
+var toggle_off_now: bool = false
+var toggle_on_now: bool = false
+var currently_in_focus: bool = false
 
 var collider: Area2D
+var remove_if_possible: bool = false
+
+
+func _ready():
+	collider = get_children()[0]
+	# This makes sure that each instance does get it's own shader instance
+	set_shader_material(toggle_material)
 
 func toggle_on():
 	toggle_on_now = true
@@ -20,10 +29,10 @@ func toggle_on():
 		set_shader_material(toggle_material)
 
 func freeze_card():
-	collider.visible = false;
+	collider.visible = false
 	
 func unfreeze_card():
-	collider.visible = true;
+	collider.visible = true
 
 func toggle_off():
 	toggle_off_now = true
@@ -47,11 +56,6 @@ func lost_focus():
 func set_shader_material(new_material: Material):
 	material = new_material.duplicate()
 
-func _ready():
-	collider = get_children()[0]
-	# This makes sure that each instance does get it's own shader instance
-	set_shader_material(toggle_material)
-
 func is_hidden() -> bool:
 	return threshold <= 0
 
@@ -61,13 +65,16 @@ func is_fully_shown() -> bool:
 func is_currently_in_focus() -> bool:
 	return currently_in_focus
 
+func remove_from_board():
+	remove_if_possible = true
+
 func _process(_delta):
 	var changed = false
 	if toggle_off_now:
 		changed = true
 		threshold = threshold + threshold_change_step
 
-	if toggle_on_now:
+	if toggle_on_now && !remove_if_possible:
 		changed = true
 		threshold = threshold - threshold_change_step
 
@@ -81,3 +88,8 @@ func _process(_delta):
 
 	if changed:
 		material.set("shader_parameter/threshold", threshold)
+
+	if remove_if_possible && threshold >= 1:
+		ready_for_removal.emit()
+		queue_free()
+		
