@@ -15,7 +15,7 @@ jobs:
         - name: windows
           file: samory.exe
         - name: Web
-          file: samory
+          file: index
     steps:
       - uses: actions/checkout@v3
         with:
