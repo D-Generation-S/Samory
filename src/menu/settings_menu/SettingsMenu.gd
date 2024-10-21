@@ -6,3 +6,8 @@ signal settings_loaded(settings: SettingsResource)
 func _ready():
 	settings_loaded.emit(SettingsRepository.load_settings())
 
+func reset_settings():
+	pass
+
+func save_settings():
+	pass
