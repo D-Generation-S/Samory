@@ -18,9 +18,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GlobalSoundManager="*res://src/game/SoundManager.gd"
+GlobalSoundManager="*res://scenes/global/SoundEffectManager.tscn"
 GlobalSystemDeckManager="*res://src/game/SystemDeckManager.gd"
 GlobalGameManagerAccess="*res://src/game/GlobalGameManagerAccess.gd"
+SettingsRepository="*res://scenes/global/SettingsRepository.tscn"
 
 [display]
 

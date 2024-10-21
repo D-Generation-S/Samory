@@ -3,10 +3,11 @@ extends Node2D
 class_name SoundManager
 
 @export var precreated_sound_managers: int = 5
+@export_enum("Master", "sfx", "music") var audio_bus: String = "Master"
 
 var sound_stream_node: Node2D
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	sound_stream_node = Node2D.new()
 	add_child(sound_stream_node)
@@ -19,7 +20,9 @@ func _ready():
 		sound_stream_node.add_child(create_new_audio_stream_player() )
 
 func create_new_audio_stream_player() -> AudioStreamPlayer2D:
-	return AudioStreamPlayer2D.new()
+	var player = AudioStreamPlayer2D.new()
+	player.bus = audio_bus
+	return player
 
 func play_sound_effect(sound: AudioStream):
 	var free_audio_stream = null

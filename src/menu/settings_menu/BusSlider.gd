@@ -1,0 +1,44 @@
+extends HSlider
+
+enum BusNames 
+{
+	Master,
+	Effect,
+	Music
+}
+@export var bus_name: BusNames
+
+var bus_id
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	bus_id = AudioServer.get_bus_index(map_enum_to_name(bus_name))
+	print(map_enum_to_name(bus_name))
+	step = 0.001
+	min_value = 0
+	max_value = 1
+	var volume = AudioServer.get_bus_volume_db(bus_id)
+	value = db_to_linear(volume)
+	connect("value_changed", _on_value_changed)
+
+func map_enum_to_name(bus_name_to_match: BusNames) -> String:
+	match bus_name_to_match:
+		BusNames.Master:
+			return "Master"
+		BusNames.Effect:
+			return "sfx"
+		BusNames.Music:
+			return "music"
+	return "Master"
+
+func _on_value_changed(volume: float):
+	AudioServer.set_bus_volume_db(bus_id, linear_to_db(volume))
+	
+func settings_loaded(settings: SettingsResource):
+	match bus_name:
+		BusNames.Master:
+			value = settings.master_volume
+		BusNames.Effect:
+			value = settings.effect_volume
+		BusNames.Music:
+			value = settings.music_volume

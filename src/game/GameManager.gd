@@ -16,7 +16,8 @@ var inital_menu_shown = false
 func _ready():
 	open_menu(loading_screen_template)
 	loading_message.emit("LOAD_DECKS")
-	if OS.has_feature("web"):
+	var settings = SettingsRepository.load_settings()
+	if OS.has_feature("web") or !settings.load_custom_decks:
 		loading_data_done()
 	else:
 		GlobalSystemDeckManager.loading_system_decks_done.connect(loading_data_done)
