@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://co10o6j0oxeep"]
+[gd_scene load_steps=14 format=3 uid="uid://co10o6j0oxeep"]
 
 [ext_resource type="Script" path="res://src/menu/QuitGameButton.gd" id="1_6c3ib"]
 [ext_resource type="Script" path="res://src/menu/StartQuickGame.gd" id="1_dyfxg"]
@@ -9,6 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://scnjjf50me2r" path="res://scenes/menu/DeckViewer.tscn" id="6_7qj6t"]
 [ext_resource type="Texture2D" uid="uid://cg0l7tvqmtghr" path="res://assets/sprites/sheet_white1x.png" id="8_txxco"]
 [ext_resource type="Script" path="res://src/menu/LinkButton.gd" id="9_my4re"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7otac"]
+atlas = ExtResource("8_txxco")
+region = Rect2(209, 110, 32, 34)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s5sp3"]
 atlas = ExtResource("8_txxco")
@@ -103,9 +107,21 @@ theme_override_constants/margin_bottom = 5
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
+[node name="Stretcher" type="Control" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HowToPlay" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+tooltip_text = "HOW_TO_PLAY"
+icon = SubResource("AtlasTexture_7otac")
+script = ExtResource("9_my4re")
+link = "https://d-generation-s.github.io/Samory/manual/how-to-play/"
+
 [node name="GitHubRepository" type="Button" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 8
 tooltip_text = "GITHUB_REPOSITORY_BUTTON"
 icon = SubResource("AtlasTexture_s5sp3")
 script = ExtResource("9_my4re")
