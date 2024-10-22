@@ -150,7 +150,6 @@ script = ExtResource("19_3ip51")
 [connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Audio Control/Music" method="settings_loaded"]
 [connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/OptionButton" method="settings_loaded"]
 [connection signal="toggled" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/LoadCustomDecks" to="." method="load_custom_deck_changed"]
-[connection signal="language_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/OptionButton" to="." method="language_changed"]
 [connection signal="volume_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Audio Control/Master" to="." method="volume_changed"]
 [connection signal="volume_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Audio Control/Effects" to="." method="volume_changed"]
 [connection signal="volume_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Audio Control/Music" to="." method="volume_changed"]

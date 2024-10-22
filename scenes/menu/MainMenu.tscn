@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://co10o6j0oxeep"]
+[gd_scene load_steps=17 format=3 uid="uid://co10o6j0oxeep"]
 
 [ext_resource type="Script" path="res://src/menu/QuitGameButton.gd" id="1_6c3ib"]
 [ext_resource type="Script" path="res://src/menu/StartQuickGame.gd" id="1_dyfxg"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dkd4cftggpymb" path="res://scenes/menu/GameLobby.tscn" id="2_o3qyg"]
 [ext_resource type="PackedScene" uid="uid://scnjjf50me2r" path="res://scenes/menu/DeckViewer.tscn" id="6_7qj6t"]
 [ext_resource type="Texture2D" uid="uid://cg0l7tvqmtghr" path="res://assets/sprites/sheet_white1x.png" id="8_txxco"]
+[ext_resource type="PackedScene" uid="uid://cn2mtwmpg34g8" path="res://scenes/menu/GameVersion.tscn" id="8_xjhtt"]
 [ext_resource type="PackedScene" uid="uid://ded0xyxbb1om1" path="res://scenes/menu/SettingsMenu.tscn" id="9_87sbi"]
 [ext_resource type="Script" path="res://src/menu/LinkButton.gd" id="9_my4re"]
 
@@ -72,8 +73,8 @@ size_flags_vertical = 6
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-focus_neighbor_top = NodePath("../../../../../TopDock/SettingsButton")
-focus_neighbor_right = NodePath("../../../../../TopDock/SettingsButton")
+focus_neighbor_top = NodePath("../../../../../TopDock/HBoxContainer/SettingsButton")
+focus_neighbor_right = NodePath("../../../../../TopDock/HBoxContainer/SettingsButton")
 text = "START_GAME"
 script = ExtResource("1_ohfem")
 scene_template = ExtResource("2_o3qyg")
@@ -110,17 +111,26 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Control" type="Control" parent="TopDock"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TopDock"]
 layout_mode = 2
 
-[node name="SettingsButton" type="Button" parent="TopDock"]
+[node name="GameVersion" parent="TopDock/HBoxContainer" instance=ExtResource("8_xjhtt")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Control" type="Control" parent="TopDock/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SettingsButton" type="Button" parent="TopDock/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 tooltip_text = "GAME_SETTINGS"
-focus_neighbor_left = NodePath("../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Start Game")
-focus_neighbor_bottom = NodePath("../../BottomDock/HBoxContainer/HowToPlay")
-focus_next = NodePath("../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Start Game")
-focus_previous = NodePath("../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Start Game")
+focus_neighbor_left = NodePath("../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Start Game")
+focus_neighbor_bottom = NodePath("../../../BottomDock/HBoxContainer/HowToPlay")
+focus_next = NodePath("../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Start Game")
+focus_previous = NodePath("../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Start Game")
 icon = SubResource("AtlasTexture_he75x")
 script = ExtResource("1_ohfem")
 scene_template = ExtResource("9_87sbi")
