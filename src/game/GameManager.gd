@@ -8,12 +8,21 @@ signal loading_message(message: String)
 @export var build_in_decks: Array[MemoryDeckResource]
 @export var game_scene: PackedScene
 @export var loading_screen_template: PackedScene
+@export var master_bus: String= "Master"
+@export var effect_bus: String= "sfx"
+@export var music_bus: String= "music"
 
 var inital_menu_shown = false
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	initial_settings_setup()
+	reload_system_decks()
+	translate_built_in_decks()
+
+func reload_system_decks():
+	inital_menu_shown = false
 	open_menu(loading_screen_template)
 	loading_message.emit("LOAD_DECKS")
 	var settings = SettingsRepository.load_settings()
@@ -22,8 +31,23 @@ func _ready():
 	else:
 		GlobalSystemDeckManager.loading_system_decks_done.connect(loading_data_done)
 		GlobalSystemDeckManager.reload_system_decks()
-	
-	translate_built_in_decks()
+
+func initial_settings_setup():
+	var settings: SettingsResource = SettingsRepository.load_settings()
+
+	if settings.fullscreen:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+
+	if settings.vsync_active:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+
+	var master_bus_id = AudioServer.get_bus_index(master_bus)
+	var effect_bus_id = AudioServer.get_bus_index(effect_bus)
+	var music_bus_id = AudioServer.get_bus_index(music_bus)
+
+	AudioServer.set_bus_volume_db(master_bus_id, settings.master_volume)
+	AudioServer.set_bus_volume_db(effect_bus_id, settings.effect_volume)
+	AudioServer.set_bus_volume_db(music_bus_id, settings.music_volume)
 
 func translate_built_in_decks():
 	for deck in build_in_decks:

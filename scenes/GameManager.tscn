@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dx6fa55mu3fu0"]
+[gd_scene load_steps=7 format=3 uid="uid://dx6fa55mu3fu0"]
 
 [ext_resource type="Script" path="res://src/game/GameManager.gd" id="1_34dj2"]
 [ext_resource type="PackedScene" uid="uid://co10o6j0oxeep" path="res://scenes/menu/MainMenu.tscn" id="2_yr08t"]
@@ -6,8 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bnfr8gek24m47" path="res://scenes/game/levels/MemoryGameScene.tscn" id="3_u1w4v"]
 [ext_resource type="Resource" uid="uid://dgbigggpvj0rk" path="res://scenes/game/decks/AnimalDeck.tres" id="4_rticu"]
 [ext_resource type="PackedScene" uid="uid://bv4jg7bjubrrr" path="res://scenes/game/levels/LoadingScreen.tscn" id="4_x4qxi"]
-[ext_resource type="Script" path="res://src/shared/SoundBridge.gd" id="7_fs4a7"]
-[ext_resource type="AudioStream" uid="uid://cesdmptmtygih" path="res://assets/audio/button-click-1.ogg" id="8_kwdo7"]
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_34dj2")
@@ -15,7 +13,3 @@ main_menu_template = ExtResource("2_yr08t")
 build_in_decks = Array[ExtResource("3_b0cgo")]([ExtResource("4_rticu")])
 game_scene = ExtResource("3_u1w4v")
 loading_screen_template = ExtResource("4_x4qxi")
-
-[node name="SoundBridge" type="Node2D" parent="." groups=["static"]]
-script = ExtResource("7_fs4a7")
-button_click_sound = ExtResource("8_kwdo7")

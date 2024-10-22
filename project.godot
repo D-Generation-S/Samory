@@ -22,6 +22,7 @@ GlobalSoundManager="*res://scenes/global/SoundEffectManager.tscn"
 GlobalSystemDeckManager="*res://src/game/SystemDeckManager.gd"
 GlobalGameManagerAccess="*res://src/game/GlobalGameManagerAccess.gd"
 SettingsRepository="*res://scenes/global/SettingsRepository.tscn"
+GlobalSoundBridge="*res://scenes/global/SoundBridge.tscn"
 
 [display]
 

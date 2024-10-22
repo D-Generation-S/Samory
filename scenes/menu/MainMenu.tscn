@@ -33,7 +33,7 @@ region = Rect2(58, 360, 35, 33)
 
 [node name="MainMenu" type="CanvasLayer" node_paths=PackedStringArray("game_buttons")]
 script = ExtResource("1_w7od3")
-game_buttons = [NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Start Game"), NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quick Game")]
+game_buttons = [NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Start Game"), NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quick Game"), NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Deck Viewer")]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 2048.0
@@ -72,6 +72,8 @@ size_flags_vertical = 6
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+focus_neighbor_top = NodePath("../../../../../TopDock/SettingsButton")
+focus_neighbor_right = NodePath("../../../../../TopDock/SettingsButton")
 text = "START_GAME"
 script = ExtResource("1_ohfem")
 scene_template = ExtResource("2_o3qyg")
@@ -92,6 +94,9 @@ scene_template = ExtResource("6_7qj6t")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+focus_neighbor_right = NodePath("../../../../../BottomDock/HBoxContainer/HowToPlay")
+focus_neighbor_bottom = NodePath("../../../../../BottomDock/HBoxContainer/HowToPlay")
+focus_next = NodePath("../Start Game")
 text = "QUIT_GAME"
 script = ExtResource("1_6c3ib")
 
@@ -108,10 +113,14 @@ theme_override_constants/margin_bottom = 10
 [node name="Control" type="Control" parent="TopDock"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="TopDock"]
+[node name="SettingsButton" type="Button" parent="TopDock"]
 layout_mode = 2
 size_flags_horizontal = 8
 tooltip_text = "GAME_SETTINGS"
+focus_neighbor_left = NodePath("../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Start Game")
+focus_neighbor_bottom = NodePath("../../BottomDock/HBoxContainer/HowToPlay")
+focus_next = NodePath("../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Start Game")
+focus_previous = NodePath("../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Start Game")
 icon = SubResource("AtlasTexture_he75x")
 script = ExtResource("1_ohfem")
 scene_template = ExtResource("9_87sbi")
@@ -141,6 +150,11 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 8
 tooltip_text = "HOW_TO_PLAY"
+focus_neighbor_left = NodePath("../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit")
+focus_neighbor_top = NodePath("../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit")
+focus_neighbor_right = NodePath("../GitHubRepository")
+focus_next = NodePath("../GitHubRepository")
+focus_previous = NodePath("../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit")
 icon = SubResource("AtlasTexture_7otac")
 script = ExtResource("9_my4re")
 link = "https://d-generation-s.github.io/Samory/manual/how-to-play/"
@@ -149,6 +163,9 @@ link = "https://d-generation-s.github.io/Samory/manual/how-to-play/"
 layout_mode = 2
 size_flags_horizontal = 8
 tooltip_text = "GITHUB_REPOSITORY_BUTTON"
+focus_neighbor_left = NodePath("../HowToPlay")
+focus_neighbor_top = NodePath("../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit")
+focus_neighbor_right = NodePath("../OpenGameSite")
 icon = SubResource("AtlasTexture_s5sp3")
 script = ExtResource("9_my4re")
 link = "https://github.com/D-Generation-S/Samory"
@@ -156,6 +173,9 @@ link = "https://github.com/D-Generation-S/Samory"
 [node name="OpenGameSite" type="Button" parent="BottomDock/HBoxContainer"]
 layout_mode = 2
 tooltip_text = "GAME_PAGE"
+focus_neighbor_left = NodePath("../GitHubRepository")
+focus_neighbor_top = NodePath("../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit")
+focus_neighbor_right = NodePath("../ReportBug")
 icon = SubResource("AtlasTexture_r6d5d")
 script = ExtResource("9_my4re")
 link = "https://xanatos.itch.io/samory"
@@ -163,6 +183,9 @@ link = "https://xanatos.itch.io/samory"
 [node name="ReportBug" type="Button" parent="BottomDock/HBoxContainer"]
 layout_mode = 2
 tooltip_text = "REPORT_BUG"
+focus_neighbor_left = NodePath("../OpenGameSite")
+focus_neighbor_top = NodePath("../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit")
+focus_neighbor_right = NodePath("../HowToPlay")
 icon = SubResource("AtlasTexture_xm78o")
 script = ExtResource("9_my4re")
 link = "https://github.com/D-Generation-S/Samory/issues"

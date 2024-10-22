@@ -17,8 +17,6 @@ func get_sound_bridge() -> SoundBridge:
 	if sound_bridge != null:
 		return sound_bridge
 
-	for child_node in get_game_manager().get_children():
-		if child_node.is_in_group("static") and child_node is SoundBridge:
-			sound_bridge = child_node
+	sound_bridge = GlobalSoundBridge
 
 	return get_sound_bridge()

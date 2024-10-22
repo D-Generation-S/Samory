@@ -3,6 +3,7 @@ extends CheckButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	grab_focus() 
 	connect("toggled", was_toggled)
 
 func settings_loaded(settings: SettingsResource):

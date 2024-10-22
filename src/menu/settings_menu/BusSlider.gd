@@ -6,6 +6,9 @@ enum BusNames
 	Effect,
 	Music
 }
+
+signal volume_changed(bus_name: int, new_volume: float)
+
 @export var bus_name: BusNames
 
 var bus_id
@@ -31,8 +34,19 @@ func map_enum_to_name(bus_name_to_match: BusNames) -> String:
 			return "music"
 	return "Master"
 
+func map_local_enum_to_global(local: BusNames) -> int:
+	match local:
+		BusNames.Master:
+			return BusType.Master
+		BusNames.Effect:
+			return BusType.Effect
+		BusNames.Music:
+			return BusType.Music
+	return BusType.Master
+
 func _on_value_changed(volume: float):
 	AudioServer.set_bus_volume_db(bus_id, linear_to_db(volume))
+	volume_changed.emit(map_local_enum_to_global(bus_name), volume)
 	
 func settings_loaded(settings: SettingsResource):
 	match bus_name:

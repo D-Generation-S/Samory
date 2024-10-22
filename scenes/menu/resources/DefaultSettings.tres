@@ -5,8 +5,8 @@
 [resource]
 script = ExtResource("1_ivax6")
 fullscreen = false
-vsync_mode = 1
-load_custom_decks = false
+vsync_active = false
+load_custom_decks = true
 master_volume = 1.0
 effect_volume = 1.0
 music_volume = 1.0
