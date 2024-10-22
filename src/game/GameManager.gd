@@ -12,6 +12,7 @@ signal loading_message(message: String)
 @export var effect_bus: String= "sfx"
 @export var music_bus: String= "music"
 
+var translated_build_in_decks: Array[MemoryDeckResource] = []
 var inital_menu_shown = false
 
 
@@ -31,6 +32,8 @@ func reload_system_decks():
 	else:
 		GlobalSystemDeckManager.loading_system_decks_done.connect(loading_data_done)
 		GlobalSystemDeckManager.reload_system_decks()
+	if settings.language == 1:
+		TranslationServer.set_locale("de-DE")
 
 func initial_settings_setup():
 	var settings: SettingsResource = SettingsRepository.load_settings()
@@ -50,12 +53,15 @@ func initial_settings_setup():
 	AudioServer.set_bus_volume_db(music_bus_id, settings.music_volume)
 
 func translate_built_in_decks():
+	translated_build_in_decks = []
 	for deck in build_in_decks:
-		deck.name = tr(deck.name)
-		deck.description = tr(deck.description)
+		var new_deck = deck.duplicate()
+		new_deck.name = tr(deck.name)
+		new_deck.description = tr(deck.description)
 		for card in deck.cards:
 			card.name = tr(card.name)
 			card.description = tr(card.description)
+		translated_build_in_decks.append(new_deck)
 
 func close_game():
 	clear_all_nodes()
@@ -96,7 +102,7 @@ func load_game(card_deck: Resource, players: Array[PlayerResource]):
 
 func get_available_decks() -> Array[MemoryDeckResource]:
 	var return_array: Array[MemoryDeckResource] = []
-	return_array.append_array(build_in_decks)
+	return_array.append_array(translated_build_in_decks)
 	return_array.append_array(GlobalSystemDeckManager.get_system_decks())
 	return return_array
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ded0xyxbb1om1"]
+[gd_scene load_steps=21 format=3 uid="uid://ded0xyxbb1om1"]
 
 [ext_resource type="Texture2D" uid="uid://dmf23xobks0pc" path="res://assets/sprites/wood.png" id="1_xcxnh"]
 [ext_resource type="Script" path="res://src/menu/settings_menu/SettingsMenu.gd" id="2_hfhds"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://src/menu/settings_menu/LoadCustomDecks.gd" id="4_xqb7h"]
 [ext_resource type="AudioStream" uid="uid://dj5j3cwv0a265" path="res://assets/audio/card-slide-1.ogg" id="5_fls2r"]
 [ext_resource type="AudioStream" uid="uid://cihpod1jtdkyn" path="res://assets/audio/card-slide-2.ogg" id="6_0bdhr"]
+[ext_resource type="Script" path="res://src/menu/settings_menu/LanguageSelection.gd" id="6_cw3wv"]
 [ext_resource type="AudioStream" uid="uid://dynepq4bifu2g" path="res://assets/audio/card-slide-3.ogg" id="7_vbnlv"]
 [ext_resource type="AudioStream" uid="uid://dy4vgls6p35ci" path="res://assets/audio/card-slide-4.ogg" id="8_obkpv"]
 [ext_resource type="AudioStream" uid="uid://62algo6uwxwy" path="res://assets/audio/card-slide-5.ogg" id="9_plrjf"]
@@ -73,6 +74,14 @@ script = ExtResource("4_cwx70")
 layout_mode = 2
 text = "LOAD_CUSTOM_DECKS"
 script = ExtResource("4_xqb7h")
+
+[node name="OptionButton" type="OptionButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+item_count = 2
+popup/item_0/text = "ENGLISH"
+popup/item_1/text = "GERMAN"
+popup/item_1/id = 1
+script = ExtResource("6_cw3wv")
 
 [node name="AudioLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -139,7 +148,9 @@ script = ExtResource("19_3ip51")
 [connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Audio Control/Master" method="settings_loaded"]
 [connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Audio Control/Effects" method="settings_loaded"]
 [connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Audio Control/Music" method="settings_loaded"]
+[connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/OptionButton" method="settings_loaded"]
 [connection signal="toggled" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/LoadCustomDecks" to="." method="load_custom_deck_changed"]
+[connection signal="language_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/OptionButton" to="." method="language_changed"]
 [connection signal="volume_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Audio Control/Master" to="." method="volume_changed"]
 [connection signal="volume_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Audio Control/Effects" to="." method="volume_changed"]
 [connection signal="volume_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Audio Control/Music" to="." method="volume_changed"]

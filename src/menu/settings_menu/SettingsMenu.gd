@@ -43,6 +43,9 @@ func volume_changed(bus_name: int, new_volume: float):
 		BusType.Music:
 			current_settings.music_volume = new_volume
 
+func language_changed(new_language_id: int):
+	current_settings.language = new_language_id
+
 func load_custom_deck_changed(toggled: bool):
 	current_settings.load_custom_decks = toggled
 
