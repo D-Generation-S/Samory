@@ -64,3 +64,13 @@ GITHUB_REPOSITORY_BUTTON;GitHub Repository containing game code;GitHub Repositor
 GAME_PAGE;Game page;Spielseite
 REPORT_BUG;Report bug;Fehler melden
 HOW_TO_PLAY;How to play;Spielanleitung
+FULL_SCREEN;Fullscreen;Vollbild
+V_SYNC;VSync;VSync
+LOAD_CUSTOM_DECKS;Load custom decks;Eigene decks laden
+SETTINGS;Settings;Einstellungen
+AUDIO;Audio;Audio
+TEST_EFFECTS;Test effect volume;Effekt Lautstärke testen
+MASTER_VOLUME;Master volume;Gesamtlautstärke
+EFFECT_VOLUME;Effect volume;Effektlautstärke
+MUSIC_VOLUME;Music volume;Musiklautstärke
+APPLY;Apply;Annehmen
