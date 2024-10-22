@@ -15,6 +15,9 @@ var deck_loader: DeckLoader
 func _ready():
 	deck_loader = DeckLoader.new() as DeckLoader
 
+func clear_system_decks():
+	system_decks = []
+
 func is_loading() -> bool:
 	return load_threads.size() > 0
 

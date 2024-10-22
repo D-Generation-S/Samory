@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxp2v4p6avixo"]
+
+[ext_resource type="Script" path="res://src/shared/SoundBridge.gd" id="1_v0nry"]
+[ext_resource type="AudioStream" uid="uid://cesdmptmtygih" path="res://assets/audio/button-click-1.ogg" id="2_kx5n8"]
+
+[node name="SoundBridge" type="Node2D"]
+script = ExtResource("1_v0nry")
+button_click_sound = ExtResource("2_kx5n8")

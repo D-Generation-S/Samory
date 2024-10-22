@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://co10o6j0oxeep"]
+[gd_scene load_steps=17 format=3 uid="uid://co10o6j0oxeep"]
 
 [ext_resource type="Script" path="res://src/menu/QuitGameButton.gd" id="1_6c3ib"]
 [ext_resource type="Script" path="res://src/menu/StartQuickGame.gd" id="1_dyfxg"]
@@ -8,7 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://dkd4cftggpymb" path="res://scenes/menu/GameLobby.tscn" id="2_o3qyg"]
 [ext_resource type="PackedScene" uid="uid://scnjjf50me2r" path="res://scenes/menu/DeckViewer.tscn" id="6_7qj6t"]
 [ext_resource type="Texture2D" uid="uid://cg0l7tvqmtghr" path="res://assets/sprites/sheet_white1x.png" id="8_txxco"]
+[ext_resource type="PackedScene" uid="uid://cn2mtwmpg34g8" path="res://scenes/menu/GameVersion.tscn" id="8_xjhtt"]
+[ext_resource type="PackedScene" uid="uid://ded0xyxbb1om1" path="res://scenes/menu/SettingsMenu.tscn" id="9_87sbi"]
 [ext_resource type="Script" path="res://src/menu/LinkButton.gd" id="9_my4re"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_he75x"]
+atlas = ExtResource("8_txxco")
+region = Rect2(359, 59, 34, 34)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7otac"]
 atlas = ExtResource("8_txxco")
@@ -28,7 +34,7 @@ region = Rect2(58, 360, 35, 33)
 
 [node name="MainMenu" type="CanvasLayer" node_paths=PackedStringArray("game_buttons")]
 script = ExtResource("1_w7od3")
-game_buttons = [NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Start Game"), NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quick Game")]
+game_buttons = [NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Start Game"), NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quick Game"), NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Deck Viewer")]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 2048.0
@@ -67,6 +73,8 @@ size_flags_vertical = 6
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+focus_neighbor_top = NodePath("../../../../../TopDock/HBoxContainer/SettingsButton")
+focus_neighbor_right = NodePath("../../../../../TopDock/HBoxContainer/SettingsButton")
 text = "START_GAME"
 script = ExtResource("1_ohfem")
 scene_template = ExtResource("2_o3qyg")
@@ -87,10 +95,47 @@ scene_template = ExtResource("6_7qj6t")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+focus_neighbor_right = NodePath("../../../../../BottomDock/HBoxContainer/HowToPlay")
+focus_neighbor_bottom = NodePath("../../../../../BottomDock/HBoxContainer/HowToPlay")
+focus_next = NodePath("../Start Game")
 text = "QUIT_GAME"
 script = ExtResource("1_6c3ib")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="TopDock" type="MarginContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 36.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopDock"]
+layout_mode = 2
+
+[node name="GameVersion" parent="TopDock/HBoxContainer" instance=ExtResource("8_xjhtt")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Control" type="Control" parent="TopDock/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SettingsButton" type="Button" parent="TopDock/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+tooltip_text = "GAME_SETTINGS"
+focus_neighbor_left = NodePath("../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Start Game")
+focus_neighbor_bottom = NodePath("../../../BottomDock/HBoxContainer/HowToPlay")
+focus_next = NodePath("../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Start Game")
+focus_previous = NodePath("../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Start Game")
+icon = SubResource("AtlasTexture_he75x")
+script = ExtResource("1_ohfem")
+scene_template = ExtResource("9_87sbi")
+
+[node name="BottomDock" type="MarginContainer" parent="."]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -102,41 +147,55 @@ size_flags_vertical = 10
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_bottom = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="BottomDock"]
 layout_mode = 2
 
-[node name="Stretcher" type="Control" parent="MarginContainer/HBoxContainer"]
+[node name="Stretcher" type="Control" parent="BottomDock/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HowToPlay" type="Button" parent="MarginContainer/HBoxContainer"]
+[node name="HowToPlay" type="Button" parent="BottomDock/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 tooltip_text = "HOW_TO_PLAY"
+focus_neighbor_left = NodePath("../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit")
+focus_neighbor_top = NodePath("../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit")
+focus_neighbor_right = NodePath("../GitHubRepository")
+focus_next = NodePath("../GitHubRepository")
+focus_previous = NodePath("../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit")
 icon = SubResource("AtlasTexture_7otac")
 script = ExtResource("9_my4re")
 link = "https://d-generation-s.github.io/Samory/manual/how-to-play/"
 
-[node name="GitHubRepository" type="Button" parent="MarginContainer/HBoxContainer"]
+[node name="GitHubRepository" type="Button" parent="BottomDock/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 tooltip_text = "GITHUB_REPOSITORY_BUTTON"
+focus_neighbor_left = NodePath("../HowToPlay")
+focus_neighbor_top = NodePath("../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit")
+focus_neighbor_right = NodePath("../OpenGameSite")
 icon = SubResource("AtlasTexture_s5sp3")
 script = ExtResource("9_my4re")
 link = "https://github.com/D-Generation-S/Samory"
 
-[node name="OpenGameSite" type="Button" parent="MarginContainer/HBoxContainer"]
+[node name="OpenGameSite" type="Button" parent="BottomDock/HBoxContainer"]
 layout_mode = 2
 tooltip_text = "GAME_PAGE"
+focus_neighbor_left = NodePath("../GitHubRepository")
+focus_neighbor_top = NodePath("../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit")
+focus_neighbor_right = NodePath("../ReportBug")
 icon = SubResource("AtlasTexture_r6d5d")
 script = ExtResource("9_my4re")
 link = "https://xanatos.itch.io/samory"
 
-[node name="ReportBug" type="Button" parent="MarginContainer/HBoxContainer"]
+[node name="ReportBug" type="Button" parent="BottomDock/HBoxContainer"]
 layout_mode = 2
 tooltip_text = "REPORT_BUG"
+focus_neighbor_left = NodePath("../OpenGameSite")
+focus_neighbor_top = NodePath("../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit")
+focus_neighbor_right = NodePath("../HowToPlay")
 icon = SubResource("AtlasTexture_xm78o")
 script = ExtResource("9_my4re")
 link = "https://github.com/D-Generation-S/Samory/issues"
