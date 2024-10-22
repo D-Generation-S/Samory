@@ -32,8 +32,6 @@ func reload_system_decks():
 	else:
 		GlobalSystemDeckManager.loading_system_decks_done.connect(loading_data_done)
 		GlobalSystemDeckManager.reload_system_decks()
-	if settings.language == 1:
-		TranslationServer.set_locale("de-DE")
 
 func initial_settings_setup():
 	var settings: SettingsResource = SettingsRepository.load_settings()
@@ -51,6 +49,8 @@ func initial_settings_setup():
 	AudioServer.set_bus_volume_db(master_bus_id, settings.master_volume)
 	AudioServer.set_bus_volume_db(effect_bus_id, settings.effect_volume)
 	AudioServer.set_bus_volume_db(music_bus_id, settings.music_volume)
+		
+	TranslationServer.set_locale(settings.language_code)
 
 func translate_built_in_decks():
 	translated_build_in_decks = []
