@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" path="res://assets/shaders/DisolveCard.gdshader" id="1_d6i4b"]
 [ext_resource type="Script" path="res://src/templates/DisolveEffectResource.gd" id="1_jacgv"]
-[ext_resource type="AudioStream" uid="uid://4hh1xtj8ac4j" path="res://assets/audio/card-slide-6.ogg" id="2_lrtja"]
+[ext_resource type="AudioStream" uid="uid://4hh1xtj8ac4j" path="res://assets/audio/effect/card-slide-6.ogg" id="2_lrtja"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m2kse"]
 shader = ExtResource("1_d6i4b")

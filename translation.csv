@@ -60,3 +60,21 @@ SHOW_ALL;Show All;Alle Anzeigen
 SHOW_BUILT_IN;Show only built in;Nur eingebaute anzeigen
 SHOW_CUSTOM;Only show custom;Nur eigene anzeigen
 CLOSE;Close;Schließen
+GITHUB_REPOSITORY_BUTTON;GitHub Repository containing game code;GitHub Repository mit dem Code des Spiels
+GAME_PAGE;Game page;Spielseite
+REPORT_BUG;Report bug;Fehler melden
+HOW_TO_PLAY;How to play;Spielanleitung
+FULL_SCREEN;Fullscreen;Vollbild
+V_SYNC;VSync;VSync
+LOAD_CUSTOM_DECKS;Load custom decks;Eigene decks laden
+SETTINGS;Settings;Einstellungen
+AUDIO;Audio;Audio
+TEST_EFFECTS;Test effect volume;Effekt Lautstärke testen
+MASTER_VOLUME;Master volume;Gesamtlautstärke
+EFFECT_VOLUME;Effect volume;Effektlautstärke
+MUSIC_VOLUME;Music volume;Musiklautstärke
+APPLY;Apply;Annehmen
+ENGLISH;English;Englisch
+GERMAN;German;Deutsch
+VERSION;Version: ;Version:
+GAME_SETTINGS;Game Settings; Spieleinstellungen

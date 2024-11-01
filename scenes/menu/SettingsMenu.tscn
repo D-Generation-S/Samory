@@ -1,0 +1,157 @@
+[gd_scene load_steps=21 format=3 uid="uid://ded0xyxbb1om1"]
+
+[ext_resource type="Texture2D" uid="uid://dmf23xobks0pc" path="res://assets/sprites/wood.png" id="1_xcxnh"]
+[ext_resource type="Script" path="res://src/menu/settings_menu/SettingsMenu.gd" id="2_hfhds"]
+[ext_resource type="Script" path="res://src/menu/settings_menu/FullscreenButton.gd" id="3_lsrcl"]
+[ext_resource type="Script" path="res://src/menu/settings_menu/BusSlider.gd" id="3_qrm32"]
+[ext_resource type="Script" path="res://src/menu/settings_menu/VsyncButton.gd" id="4_cwx70"]
+[ext_resource type="Script" path="res://src/menu/settings_menu/TestEffectButton.gd" id="4_l6fy8"]
+[ext_resource type="Script" path="res://src/menu/settings_menu/LoadCustomDecks.gd" id="4_xqb7h"]
+[ext_resource type="AudioStream" uid="uid://dj5j3cwv0a265" path="res://assets/audio/effect/card-slide-1.ogg" id="5_fls2r"]
+[ext_resource type="AudioStream" uid="uid://cihpod1jtdkyn" path="res://assets/audio/effect/card-slide-2.ogg" id="6_0bdhr"]
+[ext_resource type="Script" path="res://src/menu/settings_menu/LanguageSelection.gd" id="6_cw3wv"]
+[ext_resource type="AudioStream" uid="uid://dynepq4bifu2g" path="res://assets/audio/effect/card-slide-3.ogg" id="7_vbnlv"]
+[ext_resource type="AudioStream" uid="uid://dy4vgls6p35ci" path="res://assets/audio/effect/card-slide-4.ogg" id="8_obkpv"]
+[ext_resource type="AudioStream" uid="uid://62algo6uwxwy" path="res://assets/audio/effect/card-slide-5.ogg" id="9_plrjf"]
+[ext_resource type="AudioStream" uid="uid://4hh1xtj8ac4j" path="res://assets/audio/effect/card-slide-6.ogg" id="10_3mytq"]
+[ext_resource type="AudioStream" uid="uid://dhm4p2ecwyfl3" path="res://assets/audio/effect/card-slide-7.ogg" id="11_bbgb2"]
+[ext_resource type="AudioStream" uid="uid://duqacxqgecl83" path="res://assets/audio/effect/card-slide-8.ogg" id="12_05mi4"]
+[ext_resource type="AudioStream" uid="uid://dhlalkc173c3p" path="res://assets/audio/effect/card-turn-1.ogg" id="13_jbvf7"]
+[ext_resource type="AudioStream" uid="uid://48iu01xst023" path="res://assets/audio/effect/card-turn-2.ogg" id="14_vb64j"]
+[ext_resource type="AudioStream" uid="uid://h0louy6yrv3o" path="res://assets/audio/effect/card-turn-3.ogg" id="15_b5nta"]
+[ext_resource type="Script" path="res://src/menu/ClickableButton.gd" id="19_3ip51"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("2_hfhds")
+
+[node name="SettingsMenu" type="TextureRect" parent="."]
+offset_right = 2048.0
+offset_bottom = 2048.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_xcxnh")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="SettingsLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "SETTINGS"
+
+[node name="GraphicSettings" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="FullScreen" type="CheckButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GraphicSettings"]
+layout_mode = 2
+text = "FULL_SCREEN"
+script = ExtResource("3_lsrcl")
+
+[node name="VSync" type="CheckButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GraphicSettings"]
+layout_mode = 2
+text = "V_SYNC"
+script = ExtResource("4_cwx70")
+
+[node name="LoadCustomDecks" type="CheckButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "LOAD_CUSTOM_DECKS"
+script = ExtResource("4_xqb7h")
+
+[node name="OptionButton" type="OptionButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+item_count = 2
+popup/item_0/text = "ENGLISH"
+popup/item_1/text = "GERMAN"
+popup/item_1/id = 1
+script = ExtResource("6_cw3wv")
+
+[node name="AudioLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "AUDIO"
+
+[node name="Audio Control" type="GridContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Audio Control"]
+layout_mode = 2
+text = "MASTER_VOLUME"
+
+[node name="Master" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Audio Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+script = ExtResource("3_qrm32")
+
+[node name="Label2" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Audio Control"]
+layout_mode = 2
+text = "EFFECT_VOLUME"
+
+[node name="Effects" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Audio Control"]
+layout_mode = 2
+script = ExtResource("3_qrm32")
+bus_name = 1
+
+[node name="Label3" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Audio Control"]
+layout_mode = 2
+text = "MUSIC_VOLUME"
+
+[node name="Music" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Audio Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("3_qrm32")
+bus_name = 2
+
+[node name="Button" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "TEST_EFFECTS"
+script = ExtResource("4_l6fy8")
+test_effects = Array[AudioStream]([ExtResource("5_fls2r"), ExtResource("6_0bdhr"), ExtResource("7_vbnlv"), ExtResource("8_obkpv"), ExtResource("9_plrjf"), ExtResource("10_3mytq"), ExtResource("11_bbgb2"), ExtResource("12_05mi4"), ExtResource("13_jbvf7"), ExtResource("14_vb64j"), ExtResource("15_b5nta")])
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Button" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "APPLY"
+script = ExtResource("19_3ip51")
+
+[node name="Close" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "CLOSE"
+script = ExtResource("19_3ip51")
+
+[connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GraphicSettings/FullScreen" method="settings_loaded"]
+[connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GraphicSettings/VSync" method="settings_loaded"]
+[connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/LoadCustomDecks" method="settings_loaded"]
+[connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/OptionButton" method="settings_loaded"]
+[connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Audio Control/Master" method="settings_loaded"]
+[connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Audio Control/Effects" method="settings_loaded"]
+[connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Audio Control/Music" method="settings_loaded"]
+[connection signal="toggled" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/LoadCustomDecks" to="." method="load_custom_deck_changed"]
+[connection signal="language_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/OptionButton" to="." method="language_changed"]
+[connection signal="volume_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Audio Control/Master" to="." method="volume_changed"]
+[connection signal="volume_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Audio Control/Effects" to="." method="volume_changed"]
+[connection signal="volume_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Audio Control/Music" to="." method="volume_changed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Button" to="." method="save_settings"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Close" to="." method="reset_settings"]

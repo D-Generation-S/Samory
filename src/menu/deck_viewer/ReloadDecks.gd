@@ -6,7 +6,8 @@ func _ready():
 	super()
 	GlobalSystemDeckManager.loading_system_decks_done.connect(loading_done)
 	GlobalSystemDeckManager.loading_system_decks.connect(load_decks)
-	if OS.has_feature("web"):
+	var settings: SettingsResource = SettingsRepository.load_settings()
+	if OS.has_feature("web") or !settings.load_custom_decks:
 		disabled = true
 
 func _pressed():

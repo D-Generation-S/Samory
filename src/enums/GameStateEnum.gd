@@ -1,4 +1,4 @@
-class_name  GameState
+class_name GameState
 enum {
     ROUND_START,
     ROUND_FREEZE,
