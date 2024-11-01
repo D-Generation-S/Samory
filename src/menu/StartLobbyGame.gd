@@ -3,6 +3,8 @@ extends ClickableButton
 @export var player_list: VBoxContainer
 @export var deck_manager: DisplayDecksInGrid
 
+var deck_valid: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	disabled = true
@@ -31,10 +33,15 @@ func validate_players() -> bool:
 
 	return valid_players >= 2
 
-func validate_deck() -> bool:
-	return deck_manager.current_deck != null
+func deck_changed(deck: MemoryDeckResource):
+	deck_valid = deck != null
+	validate()
+
+func deck_unselected():
+	deck_valid = false
+	validate()
 
 func validate():
 	disabled = true
-	if validate_players() and validate_deck():
+	if validate_players() and deck_valid:
 		disabled = false

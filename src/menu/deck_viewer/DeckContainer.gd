@@ -87,6 +87,7 @@ func show_only_custom(active: bool):
 	show_decks()
 
 func clear_all_decks():
+	deck_unselected.emit()
 	deck_data = []
 	for child in get_children():
 		child.queue_free()
