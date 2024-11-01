@@ -10,7 +10,7 @@ extends GridContainer
 func _ready():
 	GlobalSystemDeckManager.loading_system_decks.connect(remove_all_cards)
 
-func _process(delta):
+func _process(_delta):
 	var scroll_vector = Input.get_axis("scroll_up", "scroll_down")
 	var is_in_foucus = !deck_container.is_scroll_focus()
 

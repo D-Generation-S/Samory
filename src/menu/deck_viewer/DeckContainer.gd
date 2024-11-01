@@ -22,7 +22,7 @@ func _ready():
 	GlobalSystemDeckManager.loading_system_decks_done.connect(place_all_decks)
 	place_all_decks()
 
-func _process(delta):
+func _process(_delta):
 	var scroll_vector = Input.get_axis("scroll_up", "scroll_down")
 	is_in_foucus = false
 	for deck in get_valid_decks():
@@ -87,6 +87,7 @@ func show_only_custom(active: bool):
 	show_decks()
 
 func clear_all_decks():
+	deck_unselected.emit()
 	deck_data = []
 	for child in get_children():
 		child.queue_free()
