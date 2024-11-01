@@ -7,5 +7,5 @@ class_name SongResource extends Resource
 func is_valid() -> bool:
 	return song_name != "" and interpret != "" and song_data != null
 
-func get_length() -> int:
+func get_length() -> float:
 	return song_data.get_length()
