@@ -16,7 +16,6 @@ var bus_id
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	bus_id = AudioServer.get_bus_index(map_enum_to_name(bus_name))
-	print(map_enum_to_name(bus_name))
 	step = 0.001
 	min_value = 0
 	max_value = 1

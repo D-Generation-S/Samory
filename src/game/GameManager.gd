@@ -21,6 +21,7 @@ func _ready():
 	initial_settings_setup()
 	reload_system_decks()
 	translate_built_in_decks()
+	MusicManager.start_playing()
 
 func reload_system_decks():
 	inital_menu_shown = false
@@ -46,9 +47,9 @@ func initial_settings_setup():
 	var effect_bus_id = AudioServer.get_bus_index(effect_bus)
 	var music_bus_id = AudioServer.get_bus_index(music_bus)
 
-	AudioServer.set_bus_volume_db(master_bus_id, settings.master_volume)
-	AudioServer.set_bus_volume_db(effect_bus_id, settings.effect_volume)
-	AudioServer.set_bus_volume_db(music_bus_id, settings.music_volume)
+	AudioServer.set_bus_volume_db(master_bus_id, linear_to_db(settings.master_volume))
+	AudioServer.set_bus_volume_db(effect_bus_id, linear_to_db(settings.effect_volume))
+	AudioServer.set_bus_volume_db(music_bus_id, linear_to_db(settings.music_volume))
 		
 	TranslationServer.set_locale(settings.language_code)
 
