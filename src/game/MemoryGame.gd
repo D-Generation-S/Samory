@@ -2,9 +2,6 @@ extends Node2D
 
 class_name MemoryGame
 
-signal round_start()
-signal freeze_round()
-signal round_end()
 signal game_state_changed(game_state: int)
 
 signal game_has_endet()
@@ -182,14 +179,12 @@ func start_round_now():
 	print("Start Round")
 	current_game_state = GameState.ROUND_START
 	game_state_changed.emit(current_game_state)
-	round_start.emit()
 	triggered_cards = 0
 
 func freeze_round_now():
 	print("Freeze Round")
 	current_game_state = GameState.ROUND_FREEZE
 	game_state_changed.emit(current_game_state)
-	freeze_round.emit()
 
 func round_closed_now():
 	print("Closing round")
@@ -200,7 +195,6 @@ func end_round_now():
 	print("End Round")
 	current_game_state = GameState.ROUND_END
 	game_state_changed.emit(current_game_state)
-	round_end.emit()
 
 func check_card_state():
 	if removed_cards >= card_deck.cards.size():

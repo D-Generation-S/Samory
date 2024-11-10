@@ -42,3 +42,8 @@ func player_scored(player_id):
 			break
 	selected_player.score = selected_player.score + 1
 	player_score_changed.emit(selected_player.id, selected_player.score)
+
+
+func game_state_changed(game_state:int):
+	if game_state == GameState.ROUND_END:
+		next_player()

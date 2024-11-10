@@ -48,9 +48,7 @@ func _enter_tree():
 		printerr("No parent node was found!")
 		return
 
-	parent_node.round_start.connect(unfreeze_card)
-	parent_node.freeze_round.connect(freeze_card)
-	parent_node.round_end.connect(toggle_card_on)
+	parent_node.game_state_changed.connect(state_changed)
 
 func toggle_card_on():
 	var time_range = max_time_delay - min_time_delay
@@ -142,3 +140,12 @@ func play_sound(audio: AudioStream):
 	if audio == null:
 		return
 	GlobalSoundManager.play_sound_effect(audio)
+
+func state_changed(new_state: int):
+	match new_state:
+		GameState.ROUND_FREEZE:
+			freeze_card()
+		GameState.ROUND_START:
+			unfreeze_card()
+		GameState.ROUND_END:
+			toggle_card_on()
