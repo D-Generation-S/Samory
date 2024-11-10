@@ -16,11 +16,12 @@ var dragging = false
 var initial_drag = false
 var last_mouse_pos: Vector2
 var paused = false
+var can_end_round = false
 
 var parent_node: MemoryGame
 
 func _ready():
-	parent_node = get_parent() as Node2D
+	parent_node = get_parent() as MemoryGame
 	var screen_size = DisplayServer.screen_get_size()
 	position = Vector2(screen_size.x / 2, screen_size.y / 2)
 
@@ -47,7 +48,8 @@ func _process(_delta):
 	if Input.is_action_just_pressed("back"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		game_menu_requested.emit()
-	if Input.is_action_just_pressed("next_round") and parent_node.get_current_game_phase() == GameState.ROUND_FREEZE:
+	if Input.is_action_just_pressed("next_round") and can_end_round:
+		can_end_round = false
 		parent_node.end_round_now()
 
 	var movement = Vector2.ZERO
@@ -99,4 +101,11 @@ func drag_controller(delta: Vector2):
 
 func game_paused(is_paused: bool):
 	paused = is_paused
+	
+
+
+func game_state_changed(game_state: int):
+	match game_state:
+		GameState.PREPARE_ROUND_END:
+			can_end_round = true
 	

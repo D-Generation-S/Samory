@@ -69,6 +69,7 @@ script = ExtResource("19_ploi3")
 [connection signal="freeze_round" from="." to="Cards" method="round_frozen"]
 [connection signal="game_has_endet" from="." to="CanvasLayer/MarginContainer/PlayersOverlay" method="game_ended"]
 [connection signal="game_paused" from="." to="Camera2D" method="game_paused"]
+[connection signal="game_state_changed" from="." to="Camera2D" method="game_state_changed"]
 [connection signal="player_scored" from="." to="Players" method="player_scored"]
 [connection signal="round_end" from="." to="Players" method="next_player"]
 [connection signal="round_end" from="." to="CanvasLayer/MarginContainer/PlayersOverlay" method="round_end"]

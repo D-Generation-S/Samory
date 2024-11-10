@@ -115,6 +115,11 @@ func card_is_hidden() -> bool:
 		return true
 	return back_side.is_hidden()
 
+func card_is_fully_shown() -> bool:
+	if back_side == null:
+		return false
+	return back_side.is_fully_shown()
+
 func card_is_focused() -> bool:
 	if back_side == null:
 		return true
