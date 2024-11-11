@@ -8,6 +8,7 @@ signal card_in_focus()
 signal card_lost_focus()
 signal mouse_was_used()
 signal about_to_get_delete()
+signal input_active(is_active: bool)
 
 @export var card_deck: MemoryDeckResource
 @export var memory_card: MemoryCardResource
@@ -24,6 +25,7 @@ signal about_to_get_delete()
 
 var was_clicked: bool
 var getting_removed: bool = false
+var is_ai_turn: bool = false
 
 func _ready():	
 	card_id_label.text = str(memory_card.get_id())
@@ -140,6 +142,9 @@ func play_sound(audio: AudioStream):
 	if audio == null:
 		return
 	GlobalSoundManager.play_sound_effect(audio)
+
+func player_changed(ai_player: bool):
+	input_active.emit(!ai_player)
 
 func state_changed(new_state: int):
 	match new_state:

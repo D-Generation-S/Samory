@@ -1,0 +1,1 @@
+class_name AiDifficultyResource extends Resource
