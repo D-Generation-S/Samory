@@ -27,7 +27,10 @@ func player_scored(player_id: int, score: int):
 	set_player_name()
 
 func build_player_name() -> String:
-	return contained_player.name + " (" + str(player_score) + ")"
+	var return_name = contained_player.name + " (" + str(player_score) + ")"
+	if contained_player.is_ai():
+		return_name = return_name + " [AI]"
+	return return_name
 
 func set_player_name():
 	label.text = build_player_name()

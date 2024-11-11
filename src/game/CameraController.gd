@@ -9,14 +9,15 @@ signal confirm_current_card()
 @export_range(0.01, 0.2) var zoom_step: float = 0.01
 @export var max_x_range: int = 7000
 @export var max_y_range:int = 3500
-@export var drag_speed:float = 1
-@export var controller_drag_speed:float = 5
+@export var drag_speed: float = 1
+@export var controller_drag_speed: float = 5
 
-var dragging = false
-var initial_drag = false
+var dragging: bool = false
+var initial_drag: bool = false
 var last_mouse_pos: Vector2
-var paused = false
-var can_end_round = false
+var paused: bool = false
+var can_end_round: bool = false
+var current_ai_player: bool = false
 
 var parent_node: MemoryGame
 
@@ -63,7 +64,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("move_down"):
 		movement.y = 1
 
-	if Input.is_action_just_pressed("confirm"):
+	if Input.is_action_just_pressed("confirm") and !current_ai_player:
 		confirm_current_card.emit()
 
 	if movement != Vector2.ZERO:
@@ -101,11 +102,11 @@ func drag_controller(delta: Vector2):
 
 func game_paused(is_paused: bool):
 	paused = is_paused
-	
-
 
 func game_state_changed(game_state: int):
 	match game_state:
 		GameState.PREPARE_ROUND_END:
 			can_end_round = true
-	
+
+func player_changed(current_player:PlayerResource):
+	current_ai_player = current_player.is_ai()

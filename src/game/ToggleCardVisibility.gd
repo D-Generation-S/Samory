@@ -15,6 +15,7 @@ var currently_in_focus: bool = false
 
 var collider: Area2D
 var remove_if_possible: bool = false
+var currently_ai: bool = false
 
 
 func _ready():
@@ -32,6 +33,8 @@ func freeze_card():
 	collider.visible = false
 	
 func unfreeze_card():
+	if currently_ai:
+		return
 	collider.visible = true
 
 func toggle_off():
@@ -93,3 +96,9 @@ func _process(_delta):
 		ready_for_removal.emit()
 		queue_free()
 		
+func input_active(is_active: bool):
+	currently_ai = !is_active
+	if is_active:
+		unfreeze_card()
+		return
+	freeze_card()

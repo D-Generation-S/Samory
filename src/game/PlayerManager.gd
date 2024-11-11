@@ -3,6 +3,7 @@ extends Node
 class_name PlayerManager
 
 signal player_changed(player_id: int)
+signal player_resource_changed(current_player: PlayerResource)
 signal player_added(player: PlayerResource)
 signal player_score_changed(player_id: int, score: int)
 
@@ -33,6 +34,7 @@ func next_player():
 	if current_player_index > players.size() -1:
 		current_player_index = 0
 	player_changed.emit(get_current_player().id)
+	player_resource_changed.emit(get_current_player())
 
 func player_scored(player_id):
 	var selected_player = null
