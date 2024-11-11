@@ -2,14 +2,14 @@ extends MarginContainer
 
 class_name  PlayerGameLabel
 
-var label: RichTextLabel
+@export var label: RichTextLabel
+
 var active_id: int = -1
 var contained_player: PlayerResource
 var player_score = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	label = get_children()[0] as RichTextLabel
 	label.bbcode_enabled = true
 	round_end()
 

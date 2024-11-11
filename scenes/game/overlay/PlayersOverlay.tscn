@@ -34,6 +34,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/PlayerList"]
 layout_mode = 2
 text = "PLAYER_LIST"
+horizontal_alignment = 1
 
 [node name="PlayerNames" type="VBoxContainer" parent="PanelContainer/MarginContainer/PlayerList"]
 layout_mode = 2

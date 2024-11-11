@@ -186,3 +186,10 @@ func card_loading_done():
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			)
 			
+
+func game_state_changed(game_state:int):
+	match game_state:
+		GameState.ROUND_START:
+			round_unfrozen()
+		GameState.ROUND_FREEZE:
+			round_frozen()
