@@ -31,3 +31,8 @@ func round_end():
 	
 func game_ended():
 	visible = false
+
+
+func game_state_changed(game_state:int):
+	if game_state == GameState.ROUND_END:
+		round_end()
