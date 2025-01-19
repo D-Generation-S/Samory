@@ -4,6 +4,7 @@ extends ClickableButton
 @export var deck_manager: DisplayDecksInGrid
 
 var deck_valid: bool = false
+var current_deck: MemoryDeckResource = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,7 +17,7 @@ func _pressed():
 	if disabled == true:
 		return
 		
-	var deck = deck_manager.current_deck
+	var deck = current_deck
 	var players: Array[PlayerResource] = []
 	for player in player_list.get_children():
 		if player is PlayerCard and player.player_card != null:
@@ -34,7 +35,9 @@ func validate_players() -> bool:
 	return valid_players >= 2
 
 func deck_changed(deck: MemoryDeckResource):
-	deck_valid = deck != null
+	current_deck = deck;
+	deck_valid = current_deck != null
+
 	validate()
 
 func deck_unselected():
