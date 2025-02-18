@@ -1,7 +1,7 @@
 class_name PlayerResource
 extends Resource
 
-@export var ai_difficulty: AiDifficultyResource = AiDifficultyResource.new()
+@export var ai_difficulty: AiDifficultyResource = null
 @export var name: String
 @export var score: int
 @export var age: int

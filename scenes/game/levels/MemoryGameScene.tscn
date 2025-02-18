@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bnfr8gek24m47"]
+[gd_scene load_steps=21 format=3 uid="uid://bnfr8gek24m47"]
 
 [ext_resource type="Script" path="res://src/game/MemoryGame.gd" id="1_13jq5"]
 [ext_resource type="AudioStream" uid="uid://dj5j3cwv0a265" path="res://assets/audio/effect/card-slide-1.ogg" id="2_2td5d"]
@@ -19,8 +19,6 @@
 [ext_resource type="PackedScene" uid="uid://cluwm03j8e11p" path="res://scenes/game/overlay/GamePauseMenu.tscn" id="12_dfx06"]
 [ext_resource type="PackedScene" uid="uid://bv4jg7bjubrrr" path="res://scenes/game/levels/LoadingScreen.tscn" id="12_v3o3x"]
 [ext_resource type="Script" path="res://src/game/GameAI.gd" id="15_u3ner"]
-[ext_resource type="Script" path="res://src/game/ai/blackboard.gd" id="16_rhfvk"]
-[ext_resource type="Script" path="res://src/game/ai/OpenRandomCard.gd" id="17_7smi4"]
 [ext_resource type="Script" path="res://src/game/GameCardGrid.gd" id="19_ploi3"]
 
 [node name="MemoryGame" type="Node2D" node_paths=PackedStringArray("gui_node", "card_target_node", "game_nodes_to_show", "loading_scene")]
@@ -41,17 +39,10 @@ play_effects = false
 unique_name_in_owner = true
 script = ExtResource("4_n744t")
 
-[node name="AI" type="Node" parent="." node_paths=PackedStringArray("cards_node", "blackboard", "random_card")]
+[node name="AI" type="Node" parent="." node_paths=PackedStringArray("cards_node", "players")]
 script = ExtResource("15_u3ner")
 cards_node = NodePath("../Cards")
-blackboard = NodePath("Blackboard")
-random_card = NodePath("RevealRandomCard")
-
-[node name="Blackboard" type="Node" parent="AI"]
-script = ExtResource("16_rhfvk")
-
-[node name="RevealRandomCard" type="Node" parent="AI"]
-script = ExtResource("17_7smi4")
+players = NodePath("../Players")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(600, 0)
@@ -81,6 +72,7 @@ camera_node = NodePath("../Camera2D")
 script = ExtResource("19_ploi3")
 
 [connection signal="card_loading_done" from="." to="Cards" method="card_loading_done"]
+[connection signal="card_triggered" from="." to="AI" method="card_was_triggered"]
 [connection signal="game_has_endet" from="." to="CanvasLayer/MarginContainer/PlayersOverlay" method="game_ended"]
 [connection signal="game_paused" from="." to="Camera2D" method="game_paused"]
 [connection signal="game_state_changed" from="." to="Players" method="game_state_changed"]
@@ -88,6 +80,7 @@ script = ExtResource("19_ploi3")
 [connection signal="game_state_changed" from="." to="Camera2D" method="game_state_changed"]
 [connection signal="game_state_changed" from="." to="CanvasLayer/MarginContainer/PlayersOverlay" method="game_state_changed"]
 [connection signal="game_state_changed" from="." to="Cards" method="game_state_changed"]
+[connection signal="identical_cards" from="." to="AI" method="card_was_identically"]
 [connection signal="player_scored" from="." to="Players" method="player_scored"]
 [connection signal="player_added" from="Players" to="CanvasLayer/MarginContainer/PlayersOverlay" method="add_player"]
 [connection signal="player_changed" from="Players" to="CanvasLayer/MarginContainer/PlayersOverlay" method="player_changed"]

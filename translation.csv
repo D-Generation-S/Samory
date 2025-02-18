@@ -79,3 +79,7 @@ GERMAN;German;Deutsch
 VERSION;Version: ;Version:
 GAME_SETTINGS;Game Settings; Spieleinstellungen
 CREDITS;Credits;Credits
+QUICK_AI_GAME;Start Quick AI Game; Starte schnelles KI Spiel
+EASY_AI;Easy AI; Einfache ki
+NORMAL_AI;Normal AI; Normale ki
+HARD_AI;Hard AI; Schwere ki

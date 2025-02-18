@@ -8,6 +8,9 @@ signal game_has_endet()
 signal game_paused(is_paused: bool)
 signal card_loading_done()
 
+signal card_triggered(game_state: int, clicked_cards: Array[CardTemplate])
+signal identical_cards(first_card_point: Point, set_icon_modulatecard_point: Point)
+
 signal player_scored(player_id: int)
 
 const CARDS_PER_PLAYER = 2
@@ -148,6 +151,9 @@ func card_was_triggered():
 	if current_game_state == GameState.ROUND_END:
 		return
 	triggered_cards = triggered_cards + 1
+	
+	var clicked_cards: Array[CardTemplate] = get_clicked_cards()
+	card_triggered.emit(current_game_state, clicked_cards)
 	if cards_where_identically():
 		for child in card_target_node.get_children():
 			if child is CardTemplate and child.is_turned():
@@ -160,12 +166,10 @@ func card_was_triggered():
 		return 
 	if triggered_cards >= CARDS_PER_PLAYER:
 		freeze_round_now()
+		return
 
 func cards_where_identically() -> bool:
-	var clicked_cards: Array[CardTemplate]
-	for child in card_target_node.get_children():
-		if child is CardTemplate and child.is_turned() and !child.is_getting_removed():
-			clicked_cards.append(child as CardTemplate)
+	var clicked_cards: Array[CardTemplate] = get_clicked_cards()
 
 	if clicked_cards.size() != 2:
 		return false
@@ -173,7 +177,17 @@ func cards_where_identically() -> bool:
 	var first_card = clicked_cards[0]
 	var second_card = clicked_cards[1]
 
-	return first_card.get_card_id() == second_card.get_card_id()
+	var identical = first_card.get_card_id() == second_card.get_card_id()
+	if identical:
+		identical_cards.emit(first_card.grid_position, second_card.grid_position)
+	return identical
+
+func get_clicked_cards() -> Array[CardTemplate]:
+	var clicked_cards: Array[CardTemplate]
+	for child in card_target_node.get_children():
+		if child is CardTemplate and child.is_turned() and !child.is_getting_removed():
+			clicked_cards.append(child as CardTemplate)
+	return clicked_cards
 
 func start_round_now():
 	print("Start Round")

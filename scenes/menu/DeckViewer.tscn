@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://scnjjf50me2r"]
+[gd_scene load_steps=12 format=3 uid="uid://scnjjf50me2r"]
 
 [ext_resource type="Texture2D" uid="uid://dmf23xobks0pc" path="res://assets/sprites/wood.png" id="1_4ectf"]
 [ext_resource type="ButtonGroup" uid="uid://68g48rm5eqcv" path="res://assets/button_groups/DeckViewerFilter.tres" id="2_t7m8t"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b3cv1g0a284mq" path="res://scenes/menu/DeckPreview.tscn" id="6_wx8yk"]
 [ext_resource type="Script" path="res://src/menu/deck_viewer/DeckViewerCards.gd" id="7_tnjvp"]
 [ext_resource type="PackedScene" uid="uid://bkpf0f8bvau6t" path="res://scenes/menu/CardPreview.tscn" id="8_51rxv"]
+[ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="10_rf5ea"]
 
 [node name="DeckViewer" type="CanvasLayer"]
 
@@ -132,6 +133,7 @@ layout_mode = 2
 [node name="Close" type="Button" parent="VBoxContainer/MarginContainer3/PanelContainer3/View Controls"]
 layout_mode = 2
 size_flags_horizontal = 10
+shortcut = ExtResource("10_rf5ea")
 text = "CLOSE"
 script = ExtResource("4_br1ba")
 

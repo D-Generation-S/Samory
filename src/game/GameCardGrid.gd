@@ -206,11 +206,12 @@ func game_state_changed(game_state:int):
 		GameState.ROUND_FREEZE:
 			round_frozen()
 
-func get_all_card_positions() -> Array[Point]:
+func get_all_card_positions(get_turned: bool = false) -> Array[Point]:
 	var return_data: Array[Point] = []
 	for card in get_children():
 		if card is CardTemplate:
-			return_data.append(card.grid_position)
+			if get_turned or !card.is_turned():
+				return_data.append(card.grid_position)
 	return return_data
 
 func player_changed(current_player:PlayerResource):
