@@ -1,0 +1,80 @@
+[gd_scene load_steps=6 format=3 uid="uid://n2r2v72dltn8"]
+
+[ext_resource type="Script" path="res://src/menu/credit_screen/CreditHandling.gd" id="1_xb4j0"]
+[ext_resource type="Script" path="res://src/overlay/FinishGameOk.gd" id="2_52q2a"]
+[ext_resource type="Script" path="res://src/menu/LinkButton.gd" id="2_f3feg"]
+[ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="3_i56v7"]
+[ext_resource type="Texture2D" uid="uid://dmf23xobks0pc" path="res://assets/sprites/wood.png" id="5_2bvy6"]
+
+[node name="Credits" type="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 2048.0
+offset_bottom = 2048.0
+texture = ExtResource("5_2bvy6")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/bold_italics_font_size = 35
+theme_override_font_sizes/italics_font_size = 35
+theme_override_font_sizes/mono_font_size = 35
+theme_override_font_sizes/normal_font_size = 35
+theme_override_font_sizes/bold_font_size = 36
+bbcode_enabled = true
+text = "CREDITS"
+fit_content = true
+scroll_active = false
+script = ExtResource("1_xb4j0")
+timer_tick = 30.0
+scroll_speed = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+top_level = true
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -59.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Kenney_nl" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Close")
+focus_neighbor_right = NodePath("../Abstraction")
+text = "Kenney.nl"
+script = ExtResource("2_f3feg")
+link = "https://www.kenney.nl/"
+
+[node name="Abstraction" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Kenney_nl")
+focus_neighbor_right = NodePath("../Material Maker")
+text = "Abstraction"
+script = ExtResource("2_f3feg")
+link = "https://abstractionmusic.com/"
+
+[node name="Material Maker" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Abstraction")
+focus_neighbor_right = NodePath("../Close")
+text = "Material Maker"
+script = ExtResource("2_f3feg")
+link = "https://www.materialmaker.org/"
+
+[node name="Close" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+focus_neighbor_left = NodePath("../Material Maker")
+focus_neighbor_right = NodePath("../Kenney_nl")
+shortcut = ExtResource("3_i56v7")
+shortcut_in_tooltip = false
+text = "CLOSE"
+script = ExtResource("2_52q2a")
+is_focused = true
