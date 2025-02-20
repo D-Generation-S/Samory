@@ -77,4 +77,10 @@ APPLY;Apply;Annehmen
 ENGLISH;English;Englisch
 GERMAN;German;Deutsch
 VERSION;Version: ;Version:
-GAME_SETTINGS;Game Settings; Spieleinstellungen
+GAME_SETTINGS;Game Settings;Spieleinstellungen
+CREDITS;Credits;Credits
+QUICK_AI_GAME;Start Quick AI Game;Starte schnelles KI Spiel
+EASY_AI;Easy;Einfach
+NORMAL_AI;Normal;Normal
+HARD_AI;Hard;Schwer
+ADD_AI_PLAYER;Add AI Player;Ki Spieler hinzufügen

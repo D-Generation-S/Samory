@@ -15,5 +15,5 @@ func get_loot():
     if loot_table.size() == 0:
         return null
     loot_table.shuffle()
-    var index = randi() % loot_table.size()
+    var index = randi_range(0, loot_table.size() - 1)
     return loot_table[index]

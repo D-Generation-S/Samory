@@ -1,9 +1,6 @@
 extends ClickableButton
 
-@export var player_target_node: VBoxContainer
-@export var player_card_template: PackedScene
-
-signal player_was_deleted()
+signal player_added(new_player: PlayerResource)
 
 var name_generator: NameGenerator
 
@@ -19,9 +16,4 @@ func _pressed():
 	player.name = player_name
 	player.age = age
 
-	var player_card = player_card_template.instantiate() as PlayerCard
-	player_card.player_card = player
-	player_card.getting_deleted.connect(func (): 
-		player_was_deleted.emit()
-	)
-	player_target_node.add_child(player_card)
+	player_added.emit(player)

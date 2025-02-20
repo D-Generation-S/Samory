@@ -2,12 +2,14 @@ extends Node2D
 
 class_name MemoryGame
 
-signal round_start()
-signal freeze_round()
-signal round_end()
+signal game_state_changed(game_state: int)
+
 signal game_has_endet()
 signal game_paused(is_paused: bool)
 signal card_loading_done()
+
+signal card_triggered(game_state: int, clicked_cards: Array[CardTemplate])
+signal identical_cards(first_card_point: Point, set_icon_modulatecard_point: Point)
 
 signal player_scored(player_id: int)
 
@@ -50,6 +52,8 @@ func _process(delta):
 	check_if_still_paused()
 	if current_game_state == GameState.ROUND_END:
 		check_if_round_complete()
+	if current_game_state == GameState.ROUND_FREEZE:
+		check_if_round_can_be_closed()
 	if !is_node_ready() or !is_loading():
 		return
 	current_sound_timer = current_sound_timer + delta
@@ -84,6 +88,15 @@ func _process(delta):
 
 func is_loading() -> bool:
 	return load_thread != null
+
+func check_if_round_can_be_closed():
+	var all_cards_shown = true
+	for node in card_target_node.get_children():
+		if node is CardTemplate and node.is_turned():
+			if !node.card_is_fully_shown():
+				all_cards_shown = false
+	if all_cards_shown:
+		round_closed_now()
 
 func build_card_layout(deck_of_cards: MemoryDeckResource,
 					   template: PackedScene,
@@ -138,6 +151,9 @@ func card_was_triggered():
 	if current_game_state == GameState.ROUND_END:
 		return
 	triggered_cards = triggered_cards + 1
+	
+	var clicked_cards: Array[CardTemplate] = get_clicked_cards()
+	card_triggered.emit(current_game_state, clicked_cards)
 	if cards_where_identically():
 		for child in card_target_node.get_children():
 			if child is CardTemplate and child.is_turned():
@@ -150,12 +166,10 @@ func card_was_triggered():
 		return 
 	if triggered_cards >= CARDS_PER_PLAYER:
 		freeze_round_now()
+		return
 
 func cards_where_identically() -> bool:
-	var clicked_cards: Array[CardTemplate]
-	for child in card_target_node.get_children():
-		if child is CardTemplate and child.is_turned() and !child.is_getting_removed():
-			clicked_cards.append(child as CardTemplate)
+	var clicked_cards: Array[CardTemplate] = get_clicked_cards()
 
 	if clicked_cards.size() != 2:
 		return false
@@ -163,23 +177,38 @@ func cards_where_identically() -> bool:
 	var first_card = clicked_cards[0]
 	var second_card = clicked_cards[1]
 
-	return first_card.get_card_id() == second_card.get_card_id()
+	var identical = first_card.get_card_id() == second_card.get_card_id()
+	if identical:
+		identical_cards.emit(first_card.grid_position, second_card.grid_position)
+	return identical
+
+func get_clicked_cards() -> Array[CardTemplate]:
+	var clicked_cards: Array[CardTemplate]
+	for child in card_target_node.get_children():
+		if child is CardTemplate and child.is_turned() and !child.is_getting_removed():
+			clicked_cards.append(child as CardTemplate)
+	return clicked_cards
 
 func start_round_now():
 	print("Start Round")
 	current_game_state = GameState.ROUND_START
-	round_start.emit()
+	game_state_changed.emit(current_game_state)
 	triggered_cards = 0
 
 func freeze_round_now():
 	print("Freeze Round")
 	current_game_state = GameState.ROUND_FREEZE
-	freeze_round.emit()
+	game_state_changed.emit(current_game_state)
+
+func round_closed_now():
+	print("Closing round")
+	current_game_state = GameState.PREPARE_ROUND_END
+	game_state_changed.emit(current_game_state)
 
 func end_round_now():
-	current_game_state = GameState.ROUND_END
 	print("End Round")
-	round_end.emit()
+	current_game_state = GameState.ROUND_END
+	game_state_changed.emit(current_game_state)
 
 func check_card_state():
 	if removed_cards >= card_deck.cards.size():

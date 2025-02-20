@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="AiDifficultyResource" load_steps=16 format=3 uid="uid://gy5cebbq2aed"]
+
+[ext_resource type="Script" path="res://src/game/ai/AiBehaviorNode.gd" id="1_yjcfv"]
+[ext_resource type="Script" path="res://src/templates/AiDifficultyResource.gd" id="2_kabtl"]
+[ext_resource type="Script" path="res://src/game/ai/GetMatchingCard.gd" id="2_spg3f"]
+[ext_resource type="Script" path="res://src/game/ai/OpenLastRevealedCard.gd" id="3_1maa1"]
+[ext_resource type="Script" path="res://src/game/ai/OpenRandomBlackboardCard.gd" id="4_jovtk"]
+[ext_resource type="Script" path="res://src/game/ai/OpenRandomCard.gd" id="5_36tnr"]
+[ext_resource type="Script" path="res://src/game/ai/OpenFirstMatchingCard.gd" id="6_ds6ms"]
+[ext_resource type="Script" path="res://src/game/ai/OpenUnknownCard.gd" id="7_ujdyv"]
+
+[sub_resource type="Resource" id="Resource_er0g6"]
+script = ExtResource("2_spg3f")
+propability = 80
+
+[sub_resource type="Resource" id="Resource_6c2om"]
+script = ExtResource("3_1maa1")
+propability = 10
+
+[sub_resource type="Resource" id="Resource_q8pdn"]
+script = ExtResource("5_36tnr")
+propability = 0
+
+[sub_resource type="Resource" id="Resource_5evvt"]
+script = ExtResource("4_jovtk")
+backup_action = SubResource("Resource_q8pdn")
+propability = 10
+
+[sub_resource type="Resource" id="Resource_ud30y"]
+script = ExtResource("5_36tnr")
+propability = 1
+
+[sub_resource type="Resource" id="Resource_4gy06"]
+script = ExtResource("6_ds6ms")
+propability = 160
+
+[sub_resource type="Resource" id="Resource_6asb8"]
+script = ExtResource("7_ujdyv")
+propability = 40
+
+[resource]
+script = ExtResource("2_kabtl")
+name = "HARD_AI"
+card_memory = 15
+actions = Array[ExtResource("1_yjcfv")]([SubResource("Resource_er0g6"), SubResource("Resource_6c2om"), SubResource("Resource_5evvt"), SubResource("Resource_ud30y"), SubResource("Resource_4gy06"), SubResource("Resource_6asb8")])

@@ -1,9 +1,10 @@
-extends Node2D
+class_name GameCardGrid extends Node2D
 
 var current_card: CardTemplate
 
 var currently_forzen: bool = false
 var controller_input_was_made: bool = false
+var currently_ai_player: bool = false
 
 func get_current_grid_position() -> Point:
 	if current_card == null:
@@ -87,8 +88,6 @@ func get_next_y_card_position(current_pos: Point, go_up: bool) -> Point:
 
 	return return_point
 
-
-
 func get_card_on_same_y_axis(current_position: Point, valid_cards: Array[Point]) -> Point:
 	var return_point: Point = null;
 
@@ -144,6 +143,8 @@ func confirm_current_card():
 	select_closest_card(current_card.grid_position, false)
 	
 func select_closest_card(source_position: Point, include_source: bool):
+	if currently_ai_player:
+		return
 	var cards: Array[Point] = get_card_grid(source_position)
 	if include_source:
 		cards.append(source_position)
@@ -152,8 +153,16 @@ func select_closest_card(source_position: Point, include_source: bool):
 	if return_position != null:
 		select_card_at_position(return_position)
 
+func get_card_on_position(position: Point) -> MemoryCardResource:
+	for card in get_children():
+		if card is CardTemplate:
+			if position.is_identical(card.grid_position):
+				return card.memory_card
+	return null
+		
+
 func parse_movement(information: Vector2):
-	if currently_forzen:
+	if currently_forzen or currently_ai_player:
 		return
 	controller_input_was_made = true
 	if information != Vector2.ZERO:
@@ -184,5 +193,34 @@ func card_loading_done():
 			card.mouse_was_used.connect(func(): 
 				current_card = null
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			)
-			
+			)	
+
+func game_state_changed(game_state:int):
+	match game_state:
+		GameState.ROUND_START:
+			round_unfrozen()
+			for card in get_children():
+				if card is CardTemplate:
+					card.player_changed(currently_ai_player)
+
+		GameState.ROUND_FREEZE:
+			round_frozen()
+
+func get_all_card_positions(get_turned: bool = false) -> Array[Point]:
+	var return_data: Array[Point] = []
+	for card in get_children():
+		if card is CardTemplate:
+			if get_turned or !card.is_turned():
+				return_data.append(card.grid_position)
+	return return_data
+
+func get_all_cards_currently_turned() -> Array[Point]:
+	var return_data: Array[Point] = []
+	for card in get_children():
+		if card is CardTemplate:
+			if card.is_turned():
+				return_data.append(card.grid_position)
+	return return_data
+
+func player_changed(current_player:PlayerResource):
+	currently_ai_player = current_player.is_ai()

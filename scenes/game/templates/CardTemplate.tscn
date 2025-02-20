@@ -132,6 +132,7 @@ vertical_alignment = 2
 [connection signal="card_in_focus" from="." to="CardBack" method="is_focused"]
 [connection signal="card_lost_focus" from="." to="CardBack" method="lost_focus"]
 [connection signal="hide_card" from="." to="CardBack" method="toggle_on"]
+[connection signal="input_active" from="." to="CardBack" method="input_active"]
 [connection signal="ready_for_destruction" from="CanvasGroup" to="." method="destory_now"]
 [connection signal="timeout" from="TurnDelay" to="." method="hide_card_now"]
 [connection signal="ready_for_removal" from="CardBack" to="CanvasGroup" method="animate_destruction"]

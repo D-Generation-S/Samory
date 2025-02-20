@@ -8,6 +8,7 @@ signal card_in_focus()
 signal card_lost_focus()
 signal mouse_was_used()
 signal about_to_get_delete()
+signal input_active(is_active: bool)
 
 @export var card_deck: MemoryDeckResource
 @export var memory_card: MemoryCardResource
@@ -24,6 +25,7 @@ signal about_to_get_delete()
 
 var was_clicked: bool
 var getting_removed: bool = false
+var is_ai_turn: bool = false
 
 func _ready():	
 	card_id_label.text = str(memory_card.get_id())
@@ -48,9 +50,7 @@ func _enter_tree():
 		printerr("No parent node was found!")
 		return
 
-	parent_node.round_start.connect(unfreeze_card)
-	parent_node.freeze_round.connect(freeze_card)
-	parent_node.round_end.connect(toggle_card_on)
+	parent_node.game_state_changed.connect(state_changed)
 
 func toggle_card_on():
 	var time_range = max_time_delay - min_time_delay
@@ -115,6 +115,11 @@ func card_is_hidden() -> bool:
 		return true
 	return back_side.is_hidden()
 
+func card_is_fully_shown() -> bool:
+	if back_side == null:
+		return false
+	return back_side.is_fully_shown()
+
 func card_is_focused() -> bool:
 	if back_side == null:
 		return true
@@ -137,3 +142,15 @@ func play_sound(audio: AudioStream):
 	if audio == null:
 		return
 	GlobalSoundManager.play_sound_effect(audio)
+
+func player_changed(ai_player: bool):
+	input_active.emit(!ai_player)
+
+func state_changed(new_state: int):
+	match new_state:
+		GameState.ROUND_FREEZE:
+			freeze_card()
+		GameState.ROUND_START:
+			unfreeze_card()
+		GameState.ROUND_END:
+			toggle_card_on()

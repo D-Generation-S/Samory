@@ -1,8 +1,8 @@
 extends ClickableButton
 
 signal player_adding()
-signal player_added()
-signal player_removed()
+signal dialog_closed()
+signal player_added(new_player: PlayerResource)
 
 @export var root_node: GameLobby
 @export var player_node: VBoxContainer
@@ -21,21 +21,9 @@ func _pressed():
 	
 
 func player_was_added(new_player: PlayerResource):
-	var player_card = player_card_template.instantiate() as PlayerCard
-	player_card.player_card = new_player
-	player_node.add_child(player_card)
-	player_card.getting_deleted.connect(player_was_removed)
-	player_added.emit()
-	dialog_was_closed()
+	player_added.emit(new_player)
 
 func dialog_was_closed():
+	dialog_closed.emit()
 	grab_focus()
 
-func player_was_removed():
-	player_removed.emit()
-
-func disable_button():
-	disabled = true
-
-func enable_button():
-	disabled = false
