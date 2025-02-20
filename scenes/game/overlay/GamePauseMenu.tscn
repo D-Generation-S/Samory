@@ -52,6 +52,7 @@ is_focused = true
 [node name="CloseMenu" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 shortcut = ExtResource("3_vcfmt")
+shortcut_in_tooltip = false
 text = "CLOSE_MENU"
 script = ExtResource("2_ojomg")
 is_focused = true

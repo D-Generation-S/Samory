@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="AiDifficultyResource" load_steps=9 format=3 uid="uid://bvccy0uqye5ff"]
+
+[ext_resource type="Script" path="res://src/game/ai/AiBehaviorNode.gd" id="1_0pxck"]
+[ext_resource type="Script" path="res://src/game/ai/OpenRandomCard.gd" id="2_fydnb"]
+[ext_resource type="Script" path="res://src/game/ai/OpenLastRevealedCard.gd" id="3_p5vbk"]
+[ext_resource type="Script" path="res://src/templates/AiDifficultyResource.gd" id="4_d6me8"]
+[ext_resource type="Script" path="res://src/game/ai/GetMatchingCard.gd" id="4_ff725"]
+
+[sub_resource type="Resource" id="Resource_ixrth"]
+script = ExtResource("2_fydnb")
+propability = 100
+
+[sub_resource type="Resource" id="Resource_dy1nx"]
+script = ExtResource("3_p5vbk")
+propability = 200
+
+[sub_resource type="Resource" id="Resource_tjakf"]
+script = ExtResource("4_ff725")
+propability = 1
+
+[resource]
+script = ExtResource("4_d6me8")
+name = "EASY_AI"
+card_memory = 3
+actions = Array[ExtResource("1_0pxck")]([SubResource("Resource_ixrth"), SubResource("Resource_dy1nx"), SubResource("Resource_tjakf")])

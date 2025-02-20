@@ -15,3 +15,5 @@ func loading_decks():
 func loading_decks_done():
 	disabled = false
 
+func toggle_enabled(on: bool):
+	disabled = !on

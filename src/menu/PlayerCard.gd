@@ -12,7 +12,10 @@ signal getting_deleted()
 var delete_queued: bool = false
 
 func _ready():
-	player_name_field.text = player_card.name
+	var name_suffix = ""
+	if  player_card.is_ai():
+		name_suffix = " [AI]"
+	player_name_field.text = player_card.name + name_suffix
 	player_age_field.text = str(player_card.age)
 
 func delete_card():

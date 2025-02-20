@@ -11,3 +11,6 @@ func _ready():
 		editable = true
 	)
 
+func toggle_enabled(on: bool):
+	editable = on
+

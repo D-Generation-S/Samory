@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://co10o6j0oxeep"]
+[gd_scene load_steps=22 format=3 uid="uid://co10o6j0oxeep"]
 
 [ext_resource type="Script" path="res://src/menu/QuitGameButton.gd" id="1_6c3ib"]
 [ext_resource type="Script" path="res://src/menu/StartQuickGame.gd" id="1_dyfxg"]
@@ -7,11 +7,15 @@
 [ext_resource type="Texture2D" uid="uid://dmf23xobks0pc" path="res://assets/sprites/wood.png" id="2_4tb54"]
 [ext_resource type="PackedScene" uid="uid://dkd4cftggpymb" path="res://scenes/menu/GameLobby.tscn" id="2_o3qyg"]
 [ext_resource type="PackedScene" uid="uid://scnjjf50me2r" path="res://scenes/menu/DeckViewer.tscn" id="6_7qj6t"]
+[ext_resource type="Script" path="res://src/templates/AiDifficultyResource.gd" id="6_k6mp2"]
+[ext_resource type="Resource" uid="uid://bvccy0uqye5ff" path="res://scenes/game/ai/EasyAi.tres" id="7_2i4h7"]
 [ext_resource type="PackedScene" uid="uid://n2r2v72dltn8" path="res://scenes/menu/Credits.tscn" id="7_63ye2"]
+[ext_resource type="Resource" uid="uid://dlrxaqb0lgbif" path="res://scenes/game/ai/NormalAi.tres" id="8_cilha"]
 [ext_resource type="Texture2D" uid="uid://cg0l7tvqmtghr" path="res://assets/sprites/sheet_white1x.png" id="8_txxco"]
 [ext_resource type="PackedScene" uid="uid://cn2mtwmpg34g8" path="res://scenes/menu/GameVersion.tscn" id="8_xjhtt"]
 [ext_resource type="PackedScene" uid="uid://ded0xyxbb1om1" path="res://scenes/menu/SettingsMenu.tscn" id="9_87sbi"]
 [ext_resource type="Script" path="res://src/menu/LinkButton.gd" id="9_my4re"]
+[ext_resource type="Resource" uid="uid://gy5cebbq2aed" path="res://scenes/game/ai/HardAi.tres" id="9_trt1w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_he75x"]
 atlas = ExtResource("8_txxco")
@@ -84,6 +88,13 @@ layout_mode = 2
 text = "QUICK_GAME"
 script = ExtResource("1_dyfxg")
 
+[node name="Quick Game AI" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "QUICK_AI_GAME"
+script = ExtResource("1_dyfxg")
+is_ai_game = true
+possible_ai_difficulties = Array[ExtResource("6_k6mp2")]([ExtResource("7_2i4h7"), ExtResource("8_cilha"), ExtResource("9_trt1w")])
+
 [node name="Deck Viewer" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "DECK_VIEWER"
@@ -98,8 +109,6 @@ scene_template = ExtResource("7_63ye2")
 
 [node name="Quit" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 focus_neighbor_right = NodePath("../../../../../BottomDock/HBoxContainer/HowToPlay")
 focus_neighbor_bottom = NodePath("../../../../../BottomDock/HBoxContainer/HowToPlay")
 focus_next = NodePath("../Start Game")
