@@ -4,9 +4,3 @@ extends ClickableButton
 
 func _pressed():
 	super()
-
-func disable_button():
-	disabled = true
-
-func enable_button():
-	disabled = false

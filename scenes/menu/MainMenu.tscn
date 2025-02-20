@@ -87,9 +87,6 @@ is_focused = true
 layout_mode = 2
 text = "QUICK_GAME"
 script = ExtResource("1_dyfxg")
-is_ai_game = null
-possible_ai_difficulties = null
-is_focused = null
 
 [node name="Quick Game AI" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -97,7 +94,6 @@ text = "QUICK_AI_GAME"
 script = ExtResource("1_dyfxg")
 is_ai_game = true
 possible_ai_difficulties = Array[ExtResource("6_k6mp2")]([ExtResource("7_2i4h7"), ExtResource("8_cilha"), ExtResource("9_trt1w")])
-is_focused = null
 
 [node name="Deck Viewer" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

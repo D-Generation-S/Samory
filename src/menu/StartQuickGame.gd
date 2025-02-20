@@ -9,8 +9,8 @@ func _pressed():
 	var selected_deck_index = randi() % game_manager.get_available_decks().size()
 	var deck = game_manager.get_available_decks()[selected_deck_index]
 
-	var player_one = create_ai_player(1, is_ai_game)
-	var player_two = create_ai_player(2, false)
+	var player_one = create_ai_player(1, false)
+	var player_two = create_ai_player(2, is_ai_game)
 
 	game_manager.play_game([player_one, player_two], deck)
 

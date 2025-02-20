@@ -22,7 +22,6 @@ func trigger_card(position: Point, blackboard: Blackboard, grid: GameCardGrid) -
 
 	if grid.select_card_at_position(position):
 		grid.confirm_current_card()
-		blackboard.add_card(position, card)
 		return true
 
 	return false

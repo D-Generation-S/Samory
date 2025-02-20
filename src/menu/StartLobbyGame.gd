@@ -28,11 +28,14 @@ func _pressed():
 
 func validate_players() -> bool:
 	var valid_players: int = 0
+	var human_present = false
 	for player in player_list.get_children():
 		if player is PlayerCard and player.player_card != null and !player.is_getting_deleted():
+			if !player.player_card.is_ai():
+				human_present = true
 			valid_players = valid_players + 1
 
-	return valid_players >= 2
+	return valid_players >= 2 && human_present
 
 func deck_changed(deck: MemoryDeckResource):
 	current_deck = deck;
@@ -48,3 +51,7 @@ func validate():
 	disabled = true
 	if validate_players() and deck_valid:
 		disabled = false
+
+func toggle_button(on: bool):
+	super(on)
+	validate()

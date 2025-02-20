@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://dkd4cftggpymb"]
+[gd_scene load_steps=20 format=3 uid="uid://dkd4cftggpymb"]
 
 [ext_resource type="Script" path="res://src/menu/GameLobby.gd" id="1_0oi2l"]
 [ext_resource type="Script" path="res://src/menu/AddNewPlayerButton.gd" id="1_2n3u5"]
 [ext_resource type="PackedScene" uid="uid://b3cv1g0a284mq" path="res://scenes/menu/DeckPreview.tscn" id="1_uo1dm"]
 [ext_resource type="Texture2D" uid="uid://dmf23xobks0pc" path="res://assets/sprites/wood.png" id="2_6d8gk"]
+[ext_resource type="Script" path="res://src/menu/game_lobby/PlayersLobbyManager.gd" id="3_1ax0d"]
 [ext_resource type="Script" path="res://src/menu/SelectSavedPlayerButton.gd" id="3_b76ak"]
 [ext_resource type="PackedScene" uid="uid://dxhn5n16onctb" path="res://scenes/menu/NewPlayer.tscn" id="3_vi7sw"]
 [ext_resource type="PackedScene" uid="uid://de0if4rovyxsv" path="res://scenes/menu/PlayerCard.tscn" id="4_l5ybk"]
@@ -11,6 +12,8 @@
 [ext_resource type="Script" path="res://src/menu/StartLobbyGame.gd" id="8_6tuah"]
 [ext_resource type="Script" path="res://src/menu/deck_viewer/DeckViewerFilterBox.gd" id="8_7nqqi"]
 [ext_resource type="Script" path="res://src/overlay/FinishGameOk.gd" id="8_i1lj5"]
+[ext_resource type="Script" path="res://src/menu/game_lobby/AddAiPlayer.gd" id="8_prt8c"]
+[ext_resource type="PackedScene" uid="uid://sjjc4vd4h47c" path="res://scenes/menu/SelectAiPlayer.tscn" id="9_2gndk"]
 [ext_resource type="ButtonGroup" uid="uid://csu1gmbh8nooq" path="res://assets/button_groups/GameLobbyFilter.tres" id="9_b0hcr"]
 [ext_resource type="Script" path="res://src/menu/deck_viewer/DeckViewCheckbox.gd" id="10_nuo64"]
 [ext_resource type="Script" path="res://src/menu/deck_viewer/DeckContainer.gd" id="11_3fbum"]
@@ -85,32 +88,44 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("3_1ax0d")
+player_card_template = ExtResource("4_l5ybk")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="AddNewPlayer" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("root_node", "player_node")]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="AddNewPlayer" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer" node_paths=PackedStringArray("root_node", "player_node")]
 layout_mode = 2
 text = "ADD_NEW_PLAYER"
 script = ExtResource("1_2n3u5")
-root_node = NodePath("../../../../../../../../../..")
-player_node = NodePath("../../ScrollContainer/Players")
+root_node = NodePath("../../../../../../../../../../..")
+player_node = NodePath("../../../ScrollContainer/Players")
 player_template = ExtResource("3_vi7sw")
 player_card_template = ExtResource("4_l5ybk")
 is_focused = true
 
-[node name="AddSavedPlayer" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="AddSavedPlayer" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer"]
 visible = false
 layout_mode = 2
 text = "SELECT_SAVED_PLAYER"
 script = ExtResource("3_b76ak")
 
-[node name="QuickAddPlayer" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("player_target_node")]
+[node name="QuickAddPlayer" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer"]
 layout_mode = 2
 text = "ADD_RANDOM_PLAYER"
 script = ExtResource("7_6tvv5")
-player_target_node = NodePath("../../ScrollContainer/Players")
-player_card_template = ExtResource("4_l5ybk")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="AddAiPlayer" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+text = "ADD_AI_PLAYER"
+script = ExtResource("8_prt8c")
+ai_selecion_dialog = ExtResource("9_2gndk")
 
 [node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer"]
 layout_mode = 2
@@ -197,19 +212,25 @@ shortcut = ExtResource("11_eein8")
 text = "CANCEL"
 script = ExtResource("8_i1lj5")
 
-[connection signal="block_buttons" from="." to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/AddNewPlayer" method="disable_button"]
-[connection signal="block_buttons" from="." to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/AddSavedPlayer" method="disable_button"]
-[connection signal="enable_buttons" from="." to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/AddNewPlayer" method="enable_button"]
-[connection signal="enable_buttons" from="." to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/AddSavedPlayer" method="enable_button"]
-[connection signal="player_added" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/AddNewPlayer" to="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/StartGame" method="validate"]
-[connection signal="player_adding" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/AddNewPlayer" to="." method="block_all_buttons"]
-[connection signal="player_removed" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/AddNewPlayer" to="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/StartGame" method="validate"]
-[connection signal="player_was_deleted" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/QuickAddPlayer" to="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/StartGame" method="validate"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/QuickAddPlayer" to="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/StartGame" method="validate"]
+[connection signal="toggle_buttons" from="." to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/AddNewPlayer" method="toggle_button"]
+[connection signal="toggle_buttons" from="." to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/AddSavedPlayer" method="toggle_button"]
+[connection signal="toggle_buttons" from="." to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/QuickAddPlayer" method="toggle_button"]
+[connection signal="toggle_buttons" from="." to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer2/AddAiPlayer" method="toggle_button"]
+[connection signal="toggle_buttons" from="." to="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/StartGame" method="toggle_button"]
+[connection signal="toggle_buttons" from="." to="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/Cancel" method="toggle_button"]
+[connection signal="player_list_changed" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/Players" to="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/StartGame" method="validate"]
+[connection signal="dialog_closed" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/AddNewPlayer" to="." method="enable_all_buttons"]
+[connection signal="player_added" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/AddNewPlayer" to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/Players" method="add_player"]
+[connection signal="player_adding" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/AddNewPlayer" to="." method="block_all_buttons"]
+[connection signal="player_added" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/QuickAddPlayer" to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/Players" method="add_player"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/QuickAddPlayer" to="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/StartGame" method="validate"]
+[connection signal="adding_ai_player" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer2/AddAiPlayer" to="." method="block_all_buttons"]
+[connection signal="dialog_closed" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer2/AddAiPlayer" to="." method="enable_all_buttons"]
+[connection signal="player_added" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer2/AddAiPlayer" to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/Players" method="add_player"]
 [connection signal="text_changed" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/HBoxContainer/Filter Decks" to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/ScrollContainer/Decks" method="filter_decks_by_name"]
 [connection signal="toggled" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/HBoxContainer/Show All" to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/ScrollContainer/Decks" method="show_all_decks"]
 [connection signal="toggled" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/HBoxContainer/Show Build In" to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/ScrollContainer/Decks" method="show_only_built_in"]
 [connection signal="toggled" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/HBoxContainer/Show Custom" to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/ScrollContainer/Decks" method="show_only_custom"]
-[connection signal="deck_selected" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/ScrollContainer/Decks" to="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/StartGame" method="deck_changed"]
 [connection signal="deck_selected" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/ScrollContainer/Decks" to="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/StartGame" method="validate"]
+[connection signal="deck_selected" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/ScrollContainer/Decks" to="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/StartGame" method="deck_changed"]
 [connection signal="deck_unselected" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/ScrollContainer/Decks" to="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/StartGame" method="deck_unselected"]

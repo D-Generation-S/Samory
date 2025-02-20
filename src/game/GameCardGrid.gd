@@ -214,5 +214,13 @@ func get_all_card_positions(get_turned: bool = false) -> Array[Point]:
 				return_data.append(card.grid_position)
 	return return_data
 
+func get_all_cards_currently_turned() -> Array[Point]:
+	var return_data: Array[Point] = []
+	for card in get_children():
+		if card is CardTemplate:
+			if card.is_turned():
+				return_data.append(card.grid_position)
+	return return_data
+
 func player_changed(current_player:PlayerResource):
 	currently_ai_player = current_player.is_ai()

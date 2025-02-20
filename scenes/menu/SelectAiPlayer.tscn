@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://sjjc4vd4h47c"]
+
+[ext_resource type="Script" path="res://src/menu/tools/AiPlayerSelect.gd" id="1_kcv8v"]
+[ext_resource type="Script" path="res://src/menu/game_lobby/SelectAiPlayer.gd" id="1_p83k3"]
+[ext_resource type="Script" path="res://src/templates/AiDifficultyResource.gd" id="2_6r6ar"]
+[ext_resource type="Resource" uid="uid://bvccy0uqye5ff" path="res://scenes/game/ai/EasyAi.tres" id="3_4lsn0"]
+[ext_resource type="Resource" uid="uid://dlrxaqb0lgbif" path="res://scenes/game/ai/NormalAi.tres" id="4_cfdgj"]
+[ext_resource type="Resource" uid="uid://gy5cebbq2aed" path="res://scenes/game/ai/HardAi.tres" id="5_8nd7x"]
+[ext_resource type="Script" path="res://src/menu/ClickableButton.gd" id="7_qxik2"]
+[ext_resource type="Script" path="res://src/menu/game_lobby/ConfirmAiPlayer.gd" id="7_wv3gv"]
+
+[node name="SelectAiPlayer" type="CanvasLayer"]
+script = ExtResource("1_p83k3")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "EASY_AI"
+popup/item_1/text = "NORMAL_AI"
+popup/item_1/id = 1
+popup/item_2/text = "HARD_AI"
+popup/item_2/id = 2
+script = ExtResource("1_kcv8v")
+ai_options = Array[ExtResource("2_6r6ar")]([ExtResource("3_4lsn0"), ExtResource("4_cfdgj"), ExtResource("5_8nd7x")])
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Confirm" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "OK"
+script = ExtResource("7_wv3gv")
+
+[node name="Close" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "CANCEL"
+script = ExtResource("7_qxik2")
+
+[connection signal="item_changed" from="PanelContainer/VBoxContainer/OptionButton" to="PanelContainer/VBoxContainer/HBoxContainer/Confirm" method="ai_changed"]
+[connection signal="closing" from="PanelContainer/VBoxContainer/HBoxContainer/Confirm" to="." method="close_dialog"]
+[connection signal="player_was_selected" from="PanelContainer/VBoxContainer/HBoxContainer/Confirm" to="." method="confirm_ai_player"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Close" to="." method="close_dialog"]

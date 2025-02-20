@@ -17,9 +17,9 @@ var current_player_data: PlayerResource = null
 var last_card: MemoryCardResource = null
 
 func card_was_triggered(game_state:int, clicked_cards: Array[CardTemplate]):
+	for card in clicked_cards:
+		add_card_to_all_ais(card.grid_position, card.memory_card)
 	if !should_play_round:
-		for card in clicked_cards:
-			add_card_to_all_ais(card.grid_position, card.memory_card)
 		return
 	if game_state == GameState.ROUND_START and triggered_cards < 2:
 		prepare_and_start_timer()
@@ -30,7 +30,18 @@ func card_was_identically(first_card_position: Point, second_card_position: Poin
 	triggered_cards = 0 
 	if should_play_round:
 		prepare_and_start_timer()
-	
+
+func game_paused(is_paused: bool):
+	if is_paused:
+		pause_ai()
+		return
+	unpause_ai()
+
+func pause_ai():
+	timer.paused = true
+
+func unpause_ai():
+	timer.paused = false
 
 func game_state_changed(game_state:int):
 	if !should_play_round:

@@ -21,4 +21,5 @@ propability = 1
 [resource]
 script = ExtResource("4_d6me8")
 name = "EASY_AI"
+card_memory = 3
 actions = Array[ExtResource("1_0pxck")]([SubResource("Resource_ixrth"), SubResource("Resource_dy1nx"), SubResource("Resource_tjakf")])

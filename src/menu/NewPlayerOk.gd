@@ -9,12 +9,14 @@ signal player_was_added(player: PlayerResource)
 var is_valid: bool = false
 
 func _ready():
+	super()
 	disabled = true
 
 func _pressed():
 	if !is_valid:
 		return
 	
+	super()
 	var player_name = player_name_field.text
 	var age = int(player_age_field.text)
 
