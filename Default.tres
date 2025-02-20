@@ -1549,11 +1549,14 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_1xatq"]
 image = SubResource("Image_5ij1s")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dmbft"]
-content_margin_left = 6.0
-content_margin_top = 4.0
-content_margin_right = 6.0
-content_margin_bottom = 4.0
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r6afm"]
+texture = ExtResource("1_pdnn8")
+texture_margin_left = 18.0
+texture_margin_top = 18.0
+texture_margin_right = 18.0
+texture_margin_bottom = 18.0
+region_rect = Rect2(320, 512, 64, 64)
+modulate_color = Color(0.299547, 0.299547, 0.299547, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tb3eb"]
 texture = ExtResource("1_pdnn8")
@@ -1708,18 +1711,14 @@ texture_margin_right = 16.0
 texture_margin_bottom = 16.0
 region_rect = Rect2(449, 383, 63, 65)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5e3w1"]
-content_margin_left = 6.0
-content_margin_top = 4.0
-content_margin_right = 6.0
-content_margin_bottom = 5.0
-bg_color = Color(0.189, 0.216, 0.261, 1)
-border_width_bottom = 2
-border_color = Color(0.147, 0.168, 0.203, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_detail = 3
-anti_aliasing = false
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v8r74"]
+texture = ExtResource("1_pdnn8")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+region_rect = Rect2(449, 383, 63, 65)
+modulate_color = Color(0.190762, 0.190762, 0.190762, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i1ke6"]
 texture = ExtResource("1_pdnn8")
@@ -3154,7 +3153,7 @@ CheckButton/icons/unchecked = SubResource("ImageTexture_argum")
 CheckButton/icons/unchecked_disabled = SubResource("ImageTexture_2kuvb")
 CheckButton/icons/unchecked_disabled_mirrored = SubResource("ImageTexture_epv0n")
 CheckButton/icons/unchecked_mirrored = SubResource("ImageTexture_1xatq")
-CheckButton/styles/disabled = SubResource("StyleBoxEmpty_dmbft")
+CheckButton/styles/disabled = SubResource("StyleBoxTexture_r6afm")
 CheckButton/styles/focus = SubResource("StyleBoxTexture_tb3eb")
 CheckButton/styles/hover = SubResource("StyleBoxTexture_u2ghn")
 CheckButton/styles/hover_pressed = SubResource("StyleBoxTexture_8oidr")
@@ -3176,7 +3175,7 @@ LineEdit/colors/font_color = Color(0, 0, 0, 1)
 LineEdit/colors/font_outline_color = Color(0, 0, 0, 0)
 LineEdit/colors/font_placeholder_color = Color(0.118581, 0.118581, 0.118581, 0.6)
 LineEdit/colors/font_selected_color = Color(1, 1, 1, 1)
-LineEdit/colors/font_uneditable_color = Color(1, 1, 1, 0.65)
+LineEdit/colors/font_uneditable_color = Color(0, 0, 0, 0.65)
 LineEdit/colors/selection_color = Color(0.44, 0.73, 0.98, 0.4)
 LineEdit/constants/caret_width = 1
 LineEdit/constants/minimum_character_width = 4
@@ -3184,7 +3183,7 @@ LineEdit/constants/outline_size = 0
 LineEdit/icons/clear = SubResource("ImageTexture_w27er")
 LineEdit/styles/focus = SubResource("StyleBoxTexture_k7lxt")
 LineEdit/styles/normal = SubResource("StyleBoxTexture_f0pfh")
-LineEdit/styles/read_only = SubResource("StyleBoxFlat_5e3w1")
+LineEdit/styles/read_only = SubResource("StyleBoxTexture_v8r74")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_i1ke6")
 PopupMenu/colors/font_accelerator_color = Color(0.7, 0.7, 0.7, 0.8)
 PopupMenu/colors/font_color = Color(0.875, 0.875, 0.875, 1)
