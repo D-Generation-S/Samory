@@ -17,7 +17,6 @@ signal input_active(is_active: bool)
 @export var back_side: ToggleCardVisibility
 @export var flip_effects: Array[AudioStream]
 @export var timer_for_hide_delay: Timer
-@export var card_id_label: Label
 @export_range(0,0.25) var min_time_delay: float = 0.1
 @export_range(0,0.5) var max_time_delay: float = 0.5
 
@@ -27,12 +26,7 @@ var was_clicked: bool
 var getting_removed: bool = false
 var is_ai_turn: bool = false
 
-func _ready():	
-	card_id_label.text = str(memory_card.get_id())
-	if !OS.is_debug_build():
-		card_id_label.visible = false
-		card_id_label.queue_free()
-
+func _ready():
 	if memory_card == null:
 		printerr("No card was set!")
 		return

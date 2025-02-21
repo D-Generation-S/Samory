@@ -3,6 +3,7 @@ extends Node2D
 class_name GameManager
 
 signal loading_message(message: String)
+signal debug_mode(on: bool)
 
 @export var main_menu_template: PackedScene
 @export var build_in_decks: Array[MemoryDeckResource]
@@ -14,14 +15,19 @@ signal loading_message(message: String)
 
 var translated_build_in_decks: Array[MemoryDeckResource] = []
 var inital_menu_shown = false
+var is_debug = false
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	initial_settings_setup()
 	reload_system_decks()
 	translate_built_in_decks()
 	MusicManager.start_playing()
+
+func _process(_delta):
+	if OS.is_debug_build() and Input.is_action_just_pressed("toggle_debug"):
+		is_debug = !is_debug
+		debug_mode.emit(is_debug)
 
 func reload_system_decks():
 	inital_menu_shown = false
