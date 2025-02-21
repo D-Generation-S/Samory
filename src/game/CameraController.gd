@@ -4,6 +4,7 @@ signal game_menu_requested()
 signal card_movement(information: Vector2)
 signal confirm_current_card()
 
+@export var zoom_per_card: float = 0.0005
 @export_range(1,2) var max_zoom: float = 1.8
 @export_range(0.1, 0.2) var min_zoom: float = 0.15
 @export_range(0.01, 0.2) var zoom_step: float = 0.01
@@ -11,6 +12,7 @@ signal confirm_current_card()
 @export var max_y_range:int = 3500
 @export var drag_speed: float = 1
 @export var controller_drag_speed: float = 5
+
 
 var dragging: bool = false
 var initial_drag: bool = false
@@ -20,11 +22,19 @@ var can_end_round: bool = false
 var current_ai_player: bool = false
 
 var parent_node: MemoryGame
+var initial_position: Vector2
+var initial_zoom: Vector2
 
 func _ready():
 	parent_node = get_parent() as MemoryGame
 	var screen_size = DisplayServer.screen_get_size()
 	position = Vector2(screen_size.x / 2, screen_size.y / 2)
+	paused = true
+
+func loading_done():
+	zoom = initial_zoom
+	position = initial_position
+	paused = false
 
 func _process(_delta):
 	if paused:
@@ -110,3 +120,30 @@ func game_state_changed(game_state: int):
 
 func player_changed(current_player:PlayerResource):
 	current_ai_player = current_player.is_ai()
+
+func adjust_zoom_and_position_to_play_area(cards_on_x: int, cards_on_y: int):
+	var card_template = parent_node.card_template
+	if card_template == null:
+		return
+	var card_instance = card_template.instantiate()
+	var card_height = card_instance.get_height() + parent_node.separation
+	var card_width = card_instance.get_width() + parent_node.separation
+
+	var field_width = card_width * cards_on_x
+	var field_height = card_height * cards_on_y
+
+	var center_x = field_width / 2
+	var center_y = field_height / 2
+
+	var larger_side = max(field_width, field_height * 1.3)
+
+	var zoom_value: float = zoom_per_card * larger_side
+	print(zoom_value)
+	zoom_value = clampf(zoom_value, min_zoom, max_zoom)
+	print(zoom_value)
+	zoom_value = max_zoom - zoom_value
+	zoom_value = clampf(zoom_value, min_zoom, max_zoom)
+	print(zoom_value)
+
+	initial_position = Vector2(center_x, center_y)
+	initial_zoom = Vector2(zoom_value, zoom_value)

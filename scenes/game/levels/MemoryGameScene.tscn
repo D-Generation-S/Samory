@@ -30,10 +30,7 @@ finished_game_template = ExtResource("4_6f670")
 game_menu_template = ExtResource("12_dfx06")
 card_target_node = NodePath("Cards")
 game_nodes_to_show = [NodePath("CanvasLayer"), NodePath("Background")]
-loading_scene = NodePath("LoadingScreen")
-
-[node name="LoadingScreen" parent="." instance=ExtResource("12_v3o3x")]
-play_effects = false
+loading_scene = NodePath("Camera2D/LoadingScreen")
 
 [node name="Players" type="Node" parent="."]
 unique_name_in_owner = true
@@ -48,6 +45,10 @@ min_wait_milliseconds = 750.0
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(600, 0)
 script = ExtResource("4_4ihyn")
+
+[node name="LoadingScreen" parent="Camera2D" instance=ExtResource("12_v3o3x")]
+position = Vector2(-960, -540)
+play_effects = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
@@ -74,6 +75,7 @@ script = ExtResource("19_ploi3")
 
 [connection signal="card_loading_done" from="." to="Cards" method="card_loading_done"]
 [connection signal="card_triggered" from="." to="AI" method="card_was_triggered"]
+[connection signal="field_constructed" from="." to="Camera2D" method="adjust_zoom_and_position_to_play_area"]
 [connection signal="game_has_endet" from="." to="CanvasLayer/MarginContainer/PlayersOverlay" method="game_ended"]
 [connection signal="game_paused" from="." to="AI" method="game_paused"]
 [connection signal="game_paused" from="." to="Camera2D" method="game_paused"]
@@ -93,3 +95,4 @@ script = ExtResource("19_ploi3")
 [connection signal="card_movement" from="Camera2D" to="Cards" method="parse_movement"]
 [connection signal="confirm_current_card" from="Camera2D" to="Cards" method="confirm_current_card"]
 [connection signal="game_menu_requested" from="Camera2D" to="." method="show_game_menu"]
+[connection signal="loading_done" from="Camera2D/LoadingScreen" to="Camera2D" method="loading_done"]
