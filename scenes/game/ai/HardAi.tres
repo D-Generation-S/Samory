@@ -41,5 +41,5 @@ propability = 40
 [resource]
 script = ExtResource("2_kabtl")
 name = "HARD_AI"
-card_memory = 15
+card_memory = 18
 actions = Array[ExtResource("1_yjcfv")]([SubResource("Resource_er0g6"), SubResource("Resource_6c2om"), SubResource("Resource_5evvt"), SubResource("Resource_ud30y"), SubResource("Resource_4gy06"), SubResource("Resource_6asb8")])
