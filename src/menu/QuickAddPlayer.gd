@@ -10,10 +10,8 @@ func _ready():
 func _pressed():
 	super()
 	var player_name = name_generator.get_random_name()
-	var age = randi() % 100 + 1
 
 	var player = PlayerResource.new()
 	player.name = player_name
-	player.age = age
 
 	player_added.emit(player)

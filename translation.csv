@@ -84,3 +84,6 @@ EASY_AI;Easy;Einfach
 NORMAL_AI;Normal;Normal
 HARD_AI;Hard;Schwer
 ADD_AI_PLAYER;Add AI Player;Ki Spieler hinzufügen
+MOVE_PLAYER_UP;Move player up;Spieler nach oben schieben
+MOVE_PLAYER_DOWN;Move player down;Spieler nach unten schieben
+PLAYER_LIST_HELP;The order within this list indicates the order in which the players take their turn;Die Reihenfolge innerhalb dieser liste gibt an in welcher Reihenfolge die Spieler dran kommen

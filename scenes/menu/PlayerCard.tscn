@@ -1,8 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://de0if4rovyxsv"]
+[gd_scene load_steps=11 format=3 uid="uid://de0if4rovyxsv"]
 
 [ext_resource type="Script" path="res://src/menu/PlayerCard.gd" id="1_ab6rg"]
 [ext_resource type="Texture2D" uid="uid://bmxqeqo65xwt" path="res://assets/sprites/spritesheet-default.png" id="1_u8sm3"]
-[ext_resource type="Script" path="res://src/menu/ClickableButton.gd" id="3_4auv0"]
+[ext_resource type="Texture2D" uid="uid://lj7phnlllstw" path="res://assets/textures/HumanIcon.tres" id="3_yxyur"]
+[ext_resource type="Texture2D" uid="uid://wa0qa5dgmjgk" path="res://assets/textures/AiIcon.tres" id="4_tagwq"]
+[ext_resource type="Texture2D" uid="uid://dpa7nk5wwkgvj" path="res://assets/textures/UpIcon.tres" id="5_flwrt"]
+[ext_resource type="Texture2D" uid="uid://cgyq8ual4eu0m" path="res://assets/textures/DownIcon.tres" id="6_46f7i"]
+[ext_resource type="Script" path="res://src/menu/game_lobby/RegainFocusButton.gd" id="6_ok6yb"]
+[ext_resource type="Texture2D" uid="uid://cg0l7tvqmtghr" path="res://assets/sprites/sheet_white1x.png" id="7_p7vsn"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vkn4j"]
 texture = ExtResource("1_u8sm3")
@@ -12,7 +17,11 @@ texture_margin_right = 14.0
 texture_margin_bottom = 14.0
 region_rect = Rect2(384, 256, 64, 64)
 
-[node name="PlayerCard" type="PanelContainer" node_paths=PackedStringArray("player_name_field", "player_age_field")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fb3y2"]
+atlas = ExtResource("7_p7vsn")
+region = Rect2(110, 204, 28, 41)
+
+[node name="PlayerCard" type="PanelContainer" node_paths=PackedStringArray("icon_target", "player_name_field")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -20,44 +29,77 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_vkn4j")
 script = ExtResource("1_ab6rg")
-player_name_field = NodePath("PanelContainer/HBoxContainer/GridContainer/Name")
-player_age_field = NodePath("PanelContainer/HBoxContainer/GridContainer/Age")
+human_player_icon = ExtResource("3_yxyur")
+ai_player_icon = ExtResource("4_tagwq")
+icon_target = NodePath("PanelContainer/HBoxContainer/MarginContainer/TextureRect")
+player_name_field = NodePath("PanelContainer/HBoxContainer/Name")
 
 [node name="PanelContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="PanelContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/h_separation = 30
-columns = 2
-
-[node name="PlayerName" type="Label" parent="PanelContainer/HBoxContainer/GridContainer"]
+[node name="PlayerName" type="Label" parent="PanelContainer/HBoxContainer"]
 layout_mode = 2
 text = "PLAYER_NAME"
 
-[node name="Name" type="Label" parent="PanelContainer/HBoxContainer/GridContainer"]
+[node name="Name" type="Label" parent="PanelContainer/HBoxContainer"]
 layout_mode = 2
 text = "PLACEHOLDER"
 
-[node name="PlayerAge" type="Label" parent="PanelContainer/HBoxContainer/GridContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/HBoxContainer"]
 layout_mode = 2
-text = "PLAYER_AGE"
+size_flags_horizontal = 10
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 5
 
-[node name="Age" type="Label" parent="PanelContainer/HBoxContainer/GridContainer"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/HBoxContainer/MarginContainer"]
 layout_mode = 2
-text = "PLACEHOLDER"
+size_flags_horizontal = 10
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MoveUp" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+tooltip_text = "MOVE_PLAYER_UP"
+focus_neighbor_right = NodePath("../../RemovePlayer")
+focus_neighbor_bottom = NodePath("../MoveDown")
+theme_override_constants/icon_max_width = 15
+icon = ExtResource("5_flwrt")
+icon_alignment = 1
+script = ExtResource("6_ok6yb")
+
+[node name="MoveDown" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+tooltip_text = "MOVE_PLAYER_UP"
+focus_neighbor_top = NodePath("../MoveUp")
+focus_neighbor_right = NodePath("../../RemovePlayer")
+theme_override_constants/icon_max_width = 15
+icon = ExtResource("6_46f7i")
+icon_alignment = 1
+script = ExtResource("6_ok6yb")
 
 [node name="RemovePlayer" type="Button" parent="PanelContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 10
-text = "DELETE"
-script = ExtResource("3_4auv0")
+size_flags_horizontal = 8
+tooltip_text = "DELETE"
+focus_neighbor_left = NodePath("../VBoxContainer/MoveUp")
+icon = SubResource("AtlasTexture_fb3y2")
+icon_alignment = 1
+script = ExtResource("6_ok6yb")
 
+[connection signal="regain_focus_request" from="." to="PanelContainer/HBoxContainer/VBoxContainer/MoveUp" method="regain_focus"]
+[connection signal="regain_focus_request" from="." to="PanelContainer/HBoxContainer/VBoxContainer/MoveDown" method="regain_focus"]
+[connection signal="regain_focus_request" from="." to="PanelContainer/HBoxContainer/RemovePlayer" method="regain_focus"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/VBoxContainer/MoveUp" to="." method="move_up"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/VBoxContainer/MoveDown" to="." method="move_down"]
 [connection signal="pressed" from="PanelContainer/HBoxContainer/RemovePlayer" to="." method="delete_card"]
