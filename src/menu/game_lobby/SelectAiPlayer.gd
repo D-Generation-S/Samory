@@ -1,4 +1,4 @@
-class_name SelectAiPlayer extends CanvasLayer
+class_name SelectAiPlayer extends Control
 
 signal dialog_closed()
 signal ai_added(ai: AiDifficultyResource)

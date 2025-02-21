@@ -9,15 +9,15 @@ func _pressed():
 	var selected_deck_index = randi() % game_manager.get_available_decks().size()
 	var deck = game_manager.get_available_decks()[selected_deck_index]
 
-	var player_one = create_ai_player(1, false)
-	var player_two = create_ai_player(2, is_ai_game)
+	var player_one = create_ai_player(0, false)
+	var player_two = create_ai_player(1, is_ai_game)
 
 	game_manager.play_game([player_one, player_two], deck)
 
-func create_ai_player(age: int, is_ai: bool) -> PlayerResource:
+func create_ai_player(order_number: int, is_ai: bool) -> PlayerResource:
 	var new_player = PlayerResource.new()
-	new_player.name = "Player " + str(age)
-	new_player.age = age
+	new_player.name = "Player " + str(order_number + 1)
+	new_player.order_number = order_number
 	new_player.score = 0
 	if is_ai:
 		var loot = LootTable.new()

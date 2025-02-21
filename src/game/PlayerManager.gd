@@ -21,7 +21,7 @@ func add_players(players_to_add: Array[PlayerResource]):
 func player_sort(a, b):
 	if typeof(a) != typeof(b):
 		return false
-	return a.age < b.age
+	return a.order_number < b.order_number
 
 func get_current_player() -> PlayerResource:
 	return players[current_player_index]

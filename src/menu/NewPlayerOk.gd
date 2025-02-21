@@ -3,7 +3,6 @@ extends ClickableButton
 signal player_was_added(player: PlayerResource)
 
 @export var player_name_field: LineEditValidation
-@export var player_age_field: LineEditValidation
 @export var fields_for_validation: Array[LineEditValidation]
 
 var is_valid: bool = false
@@ -18,19 +17,20 @@ func _pressed():
 	
 	super()
 	var player_name = player_name_field.text
-	var age = int(player_age_field.text)
 
 	var return_player = PlayerResource.new()
 
 	return_player.name = player_name
-	return_player.age = age
 	return_player.score = 0
 	return_player.id = -1
 
 	player_was_added.emit(return_player)
 
+func text_submitted(_text: String):
+	validate()
+	if is_valid:
+		_pressed()
 
-	
 func invalid_data():
 	disabled = true
 
