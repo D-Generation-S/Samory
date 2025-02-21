@@ -13,6 +13,8 @@ signal identical_cards(first_card_point: Point, set_icon_modulatecard_point: Poi
 
 signal player_scored(player_id: int)
 
+signal field_constructed(cards_on_x: int, cards_on_y: int)
+
 const CARDS_PER_PLAYER = 2
 
 @export var card_lay_sounds: Array[AudioStream] = []
@@ -41,12 +43,12 @@ var current_sound_timer = 0
 var paused: bool = false
 
 func _ready():
+	loading_scene.set_screen_message("PLACING_CARDS", true)
 	current_sound_timer = seconds_to_lay_cards
 	load_thread = Thread.new()
 	load_thread.start(build_card_layout.bind(card_deck, card_template, separation))
 	player_node = get_node("%Players")
 	
-	loading_scene.set_screen_message("PLACING_CARDS", true)
 
 func _process(delta):
 	check_if_still_paused()
@@ -72,7 +74,7 @@ func _process(delta):
 		card_loading_done.emit()
 		start_round_now()
 		
-		loading_scene.queue_free()
+		loading_scene.destory()
 		for node in game_nodes_to_show:
 			if node is Node2D:
 				node.visible = true 
@@ -137,6 +139,7 @@ func build_card_layout(deck_of_cards: MemoryDeckResource,
 			
 			return_cards.append(card_template_node)
 			current_card = current_card + 1
+	call_deferred("emit_signal","field_constructed", column_count, row_count)
 	return return_cards
 
 func numberize_cards_from_pool(card_pool) -> Array:
