@@ -26,11 +26,11 @@ func update_comb_box_entries():
 
 	selected = initial_index
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if Engine.is_editor_hint():
 		return
+	grab_focus()
 	item_selected.connect(selection_changed)
 	item_changed.emit(ai_options[initial_index])
 

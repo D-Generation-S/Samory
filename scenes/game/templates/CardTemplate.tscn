@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ubmqrubcq2a2"]
+[gd_scene load_steps=27 format=3 uid="uid://ubmqrubcq2a2"]
 
 [ext_resource type="Script" path="res://src/game/CardTemplate.gd" id="1_fmo68"]
 [ext_resource type="AudioStream" uid="uid://dhlalkc173c3p" path="res://assets/audio/effect/card-turn-1.ogg" id="2_7bwi6"]
@@ -17,6 +17,8 @@
 [ext_resource type="Script" path="res://src/game/ToggleCardVisibility.gd" id="8_pw264"]
 [ext_resource type="Script" path="res://src/game/CardHandler.gd" id="9_mu0q4"]
 [ext_resource type="Material" uid="uid://dkl2lojy2u6nx" path="res://assets/material/GlowingFocusMaterialtres.tres" id="12_drvni"]
+[ext_resource type="Script" path="res://src/game/DebugControl.gd" id="18_8fn1p"]
+[ext_resource type="Script" path="res://src/game/debug/CardTemplateDebug.gd" id="18_tqsbp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sgpsy"]
 shader = ExtResource("6_pyeu3")
@@ -50,14 +52,13 @@ fill_to = Vector2(0.521368, 0.388889)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phkhd"]
 size = Vector2(500, 550)
 
-[node name="CardTemplate" type="Node2D" node_paths=PackedStringArray("front_side", "text_node", "back_side", "timer_for_hide_delay", "card_id_label")]
+[node name="CardTemplate" type="Node2D" node_paths=PackedStringArray("front_side", "text_node", "back_side", "timer_for_hide_delay")]
 script = ExtResource("1_fmo68")
 front_side = NodePath("CanvasGroup/CardFront")
 text_node = NodePath("CanvasGroup/CardText")
 back_side = NodePath("CardBack")
 flip_effects = Array[AudioStream]([ExtResource("2_7bwi6"), ExtResource("3_hh2fg"), ExtResource("4_s61ka")])
 timer_for_hide_delay = NodePath("TurnDelay")
-card_id_label = NodePath("Label")
 min_time_delay = 0.05
 max_time_delay = 0.3
 
@@ -118,15 +119,32 @@ script = ExtResource("9_mu0q4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CardBack/Area2D"]
 shape = SubResource("RectangleShape2D_phkhd")
 
-[node name="Label" type="Label" parent="."]
+[node name="DebugInformation" type="Node2D" parent="." node_paths=PackedStringArray("card_id_label", "card_position_label")]
+script = ExtResource("18_tqsbp")
+card_id_label = NodePath("CardIdLabel")
+card_position_label = NodePath("CardPositionLabel")
+
+[node name="CardIdLabel" type="Label" parent="DebugInformation"]
 offset_left = 20.0
 offset_top = 390.0
 offset_right = 218.0
 offset_bottom = 527.0
 theme_override_colors/font_color = Color(0, 1, 0.815686, 1)
 theme_override_font_sizes/font_size = 100
-text = "1"
+text = "0"
 vertical_alignment = 2
+script = ExtResource("18_8fn1p")
+
+[node name="CardPositionLabel" type="Label" parent="DebugInformation"]
+offset_left = 136.0
+offset_top = 22.0
+offset_right = 479.0
+offset_bottom = 159.0
+theme_override_colors/font_color = Color(0, 1, 0.815686, 1)
+theme_override_font_sizes/font_size = 100
+text = "[0,0]"
+horizontal_alignment = 2
+script = ExtResource("18_8fn1p")
 
 [connection signal="about_to_get_delete" from="." to="CardBack" method="remove_from_board"]
 [connection signal="card_in_focus" from="." to="CardBack" method="is_focused"]

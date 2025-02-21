@@ -1,6 +1,7 @@
 extends ClickableButton
 
 signal player_added(new_player: PlayerResource)
+signal show_special_control(new_control: Control)
 signal adding_ai_player()
 signal dialog_closed()
 
@@ -24,7 +25,8 @@ func _pressed():
 	var scene = ai_selecion_dialog.instantiate() as SelectAiPlayer
 	scene.dialog_closed.connect(dialog_closing)
 	scene.ai_added.connect(add_new_ai_player)
-	add_child(scene)
+	#add_child(scene)
+	show_special_control.emit(scene)
 
 func dialog_closing():
 	currently_shown = false
@@ -33,7 +35,7 @@ func dialog_closing():
 func add_new_ai_player(ai: AiDifficultyResource):
 	var player = PlayerResource.new()
 	player.name = tr(ai.name)
-	player.age = randi_range(200, 700)
 	player.ai_difficulty = ai
 
+	dialog_closed.emit()
 	player_added.emit(player)
