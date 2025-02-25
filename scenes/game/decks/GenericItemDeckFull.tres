@@ -22,7 +22,7 @@
 [ext_resource type="Resource" uid="uid://cqif8a425crwn" path="res://scenes/game/cards/generic_items/ShovleCard.tres" id="19_2kyx3"]
 [ext_resource type="Resource" uid="uid://djbvm828hnwc0" path="res://scenes/game/cards/generic_items/PickaxeCard.tres" id="20_3sv4o"]
 [ext_resource type="Resource" uid="uid://ckk2d27jq2hcu" path="res://scenes/game/cards/generic_items/CdCard.tres" id="21_alop0"]
-[ext_resource type="Resource" uid="uid://cj6x44b6htab5" path="res://scenes/game/cards/generic_items/BoneCard.tres" id="22_84uvg"]
+[ext_resource type="Resource" uid="uid://cj6x44b6htab5" path="res://scenes/game/cards/generic_items/NotebookCard.tres" id="22_84uvg"]
 [ext_resource type="Resource" uid="uid://bn83vd52k12bk" path="res://scenes/game/cards/generic_items/PhoneCard.tres" id="23_wmyng"]
 
 [resource]
