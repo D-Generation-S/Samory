@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MemoryCardResource" load_steps=4 format=3 uid="uid://t0i7bis7c8jm"]
+
+[ext_resource type="Script" path="res://src/templates/MemoryCardResource.gd" id="1_lq32d"]
+[ext_resource type="Texture2D" uid="uid://cjf0iw8w4drb7" path="res://assets/sprites/genericItems_vector_colored.svg" id="2_twvgr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntfws"]
+atlas = ExtResource("2_twvgr")
+region = Rect2(17, 2599, 293, 273)
+
+[resource]
+script = ExtResource("1_lq32d")
+name = "BRIEFCASE"
+description = "BRIEFCASE_DESCRIPTION"
+texture = SubResource("AtlasTexture_ntfws")

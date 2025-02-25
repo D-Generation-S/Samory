@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MemoryCardResource" load_steps=4 format=3 uid="uid://uh4xlrleuvqs"]
+
+[ext_resource type="Script" path="res://src/templates/MemoryCardResource.gd" id="1_v6pba"]
+[ext_resource type="Texture2D" uid="uid://cjf0iw8w4drb7" path="res://assets/sprites/genericItems_vector_colored.svg" id="2_p86ab"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2l56x"]
+atlas = ExtResource("2_p86ab")
+region = Rect2(3347, 1611, 276, 346)
+
+[resource]
+script = ExtResource("1_v6pba")
+name = "MICROSCOPE"
+description = "MICROSCOPE_DESCRIPTION"
+texture = SubResource("AtlasTexture_2l56x")

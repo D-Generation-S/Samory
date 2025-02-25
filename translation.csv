@@ -53,6 +53,50 @@ RABBIT;The Rabbit;Der Hase
 RABBIT_DESCRIPTION;Hares/Rabbits are agile mammals from the hare family, which are notable for their long ears and strong hind legs. They live in various habitats around the world and feed mainly on grasses and herbs.;Hasen sind flinke Säugetiere aus der Familie der Hasenartigen, die durch ihre langen Ohren und kräftigen Hinterbeine auffallen. Sie leben in verschiedenen Lebensräumen weltweit und ernähren sich hauptsächlich von Gräsern und Kräutern.
 SNAKE;The Snake;Die Schlange
 SNAKE_DESCRIPTION;Snakes are elongated, legless reptiles from the suborder Serpentes, which are characterized by their scaly skin and their ability to move smoothly. They can be found in various habitats worldwide, except in extremely cold regions such as the Arctic and Antarctic.;Schlangen sind langgestreckte, beinlose Reptilien aus der Unterordnung Serpentes, die sich durch ihre schuppige Haut und ihre Fähigkeit, sich geschmeidig fortzubewegen, auszeichnen. Sie sind weltweit in verschiedenen Lebensräumen anzutreffen, außer in extrem kalten Regionen wie der Arktis und Antarktis.
+GENERIC_ITEMS_FULL;Generic Items;Haushaltsgegenstände
+GENERIC_ITEMS_FULL_DESCRIPTION;A collection of items you can find in most households;Eine Sammlung von Gegenständen welche in nahezu jedem Haushalt gefunden werden können
+BONE;Bone;Knochen
+BONE_DESCRIPTION;It's a bone, your dog will properly like it;Das ist ein Knochen, dein Hund wird diesen vermutlich mögen
+BRIEFCASE;Briefcase;Aktentasche
+BRIEFCASE_DESCRIPTION;A briefcase that you need to carry all your items for office work;Eine aktentasche die du benötigst um all deine Gegenstände für die Büro arbeit zu transportieren
+BRUSH;Brush;Pinsel
+BRUSH_DESCRIPTION;A brush is used to paint something on a canvas;Ein Pinsel wird benötigt um etwas auf eine Leinwand zu malen
+CAMERA;Camera;Kamera
+CAMERA_DESCRIPTION;A camera used to take  video of something;Eine Kamera um von etwas einen Film anzufertigen
+CD;CD;CD
+CD_DESCRIPTION;A round storage device used to store data;Ein rundes Speichermedium auf dem Daten gespeichert werden können
+COMPUTER;Computer;Computer
+COMPUTER_DESCRIPTION;An electronic device used for processing and storing data;Ein elektronisches Gerät, das zur Verarbeitung und Speicherung von Daten verwendet wird
+HEADPHONE;Headphone;Kopfhörer
+HEADPHONE_DESCRIPTION;A device worn over the ears to listen to music or other audio signals directly;Ein Gerät, das über die Ohren getragen wird, um Musik oder andere Audiosignale direkt zu hören
+MICROPHONE;Microphone;Mikrofon
+MICROPHONE_DESCRIPTION;A device that converts sound waves into electrical signals and is used for recording or amplifying sound;Ein Gerät, das Schallwellen in elektrische Signale umwandelt und zur Tonaufnahme oder -verstärkung verwendet wird
+MICROSCOPE;Microscope;Mikroskop
+MICROSCOPE_DESCRIPTION;An optical instrument used for magnifying and examining small objects;Ein optisches Instrument, das zur Vergrößerung und Untersuchung kleiner Objekte verwendet wird
+MODERN_CONTROLLER;Controller;Controller
+MODERN_CONTROLLER_DESCRIPTION;A device to make inputs for a gaming console or computer;Ein Gerät um eigaben an einer Spielekonsole oder an einem Computer zu machen
+MONEY;Money;Geld
+MONEY_DESCRIPTION;A piece of paper you can use to buy stuff in a store;Ein stück papaier mit dem man Dinge in einem Laden kaufen kann
+MORTAR_AND_PESTLE;Morat and Pestle;Mörser und Stößel
+MORTAR_AND_PESTLE_DESCRIPTION;A device consisting of a bowl (mortar) and a heavy rod (pestle) used for crushing and mixing substances;Ein Gerät, das aus einer Schale (Mörser) und einem schweren Stab (Stößel) besteht, und zum Zerkleinern und Mischen von Substanzen verwendet wird
+PAN;Pan;Pfanne
+PAN_DESCRIPTION;A flat cooking vessel with a long handle, used for frying or cooking;Ein flaches Kochgeschirr mit einem langen Griff, das zum Braten oder Kochen verwendet wird
+PHONE;Phone;Telefon
+PHONE_DESCRIPTION;A device used for transmitting sound over long distances using electrical signals;Ein Gerät, das zur Übertragung von Schall über große Entfernungen mithilfe elektrischer Signale verwendet wird
+PICKAXE;Pickaxe;Spitzhacke
+PICKAXE_DESCRIPTION;A tool with a long handle and a heavy head, used for digging and breaking hard materials like stone and soi;Ein Werkzeug mit einem langen Griff und einem schweren Kopf, das zum Graben und Zerkleinern harter Materialien wie Stein und Erde verwendet wird
+POT;Pot;Topf
+POT_DESCRIPTION;A cooking vessel with high sides and often a lid, used for boiling and simmering food;in Kochgefäß mit hohen Seiten und oft mit einem Deckel, das zum Kochen und Schmoren von Speisen verwendet wird
+SAW;Saw;Säge
+SAW_DESCRIPTION;A tool with a toothed blade used for cutting wood, metal, or other materials;Ein Werkzeug mit einer gezahnten Klinge, das zum Schneiden von Holz, Metall oder anderen Materialien verwendet wird
+SHOVEL;Shovle;Schaufel
+SHOVEL_DESCRIPTION;A tool with a broad, flat blade and a long handle, used for digging and moving loose material like soil, sand, or snow;Ein Werkzeug mit einem breiten, flachen Blatt und einem langen Griff, das zum Graben und Bewegen von losem Material wie Erde, Sand oder Schnee verwendet wird
+SLEDGEHAMMER;Sledgehammer;Vorschlagshammer
+SLEDGEHAMMER_DESCRIPTION;A heavy tool with a long handle and a massive head used for demolishing and breaking hard materials like concrete or stone;Ein schweres Werkzeug mit einem langen Griff und einem massiven Kopf, das zum Zerstören und Brechen von harten Materialien wie Beton oder Stein verwendet wird
+TEA_POT;Tea Pot;Tee Kanne
+TEA_POT_DESCRIPTION;A vessel with a spout and a handle, used for brewing and serving tea;Ein Gefäß mit einem Ausguss und einem Griff, das verwendet wird, um Tee aufzubrühen und zu servieren
+THOOTHBRUSH;Thoothbrush;Zahnbürste
+THOOTHBRUSH_DESCRIPTION;A tool with bristles on a handle used for cleaning teeth and gums;Ein Werkzeug mit Borsten auf einem Griff, das zur Reinigung der Zähne und des Zahnfleisches verwendet wird
 DECK_VIEWER;Deck Viewer;Deckbetrachter
 RELOAD_CUSTOM_DECKS;Reload custom decks;Eigene Decks neu laden
 FILTER_DECKS;Filter decks by deck name;Decks anhand ihres Namens filtern
