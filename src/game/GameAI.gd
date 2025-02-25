@@ -57,8 +57,6 @@ func player_changed(current_player:PlayerResource):
 	triggered_cards = 0 
 	current_player_data = current_player
 	should_play_round = current_player.is_ai()
-	if should_play_round:
-		print(current_player.ai_difficulty.blackboard.cards.size())
 
 func prepare_and_start_timer():
 	triggered_cards = triggered_cards + 1

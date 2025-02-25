@@ -16,7 +16,7 @@ func can_execute(blackboard: Blackboard, grid: GameCardGrid) -> bool:
     return false
 
 func execute_action(blackboard: Blackboard, grid: GameCardGrid):
-    print("GetMatchingCard")
+    print_debug("GetMatchingCard")
     var unvealed_cards = grid.get_all_cards_currently_turned()
     var card_of_focus = unvealed_cards[0]
     var loaded_card = grid.get_card_on_position(card_of_focus)

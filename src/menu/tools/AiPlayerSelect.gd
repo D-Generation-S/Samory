@@ -5,19 +5,16 @@ signal item_changed(ai: AiDifficultyResource)
 
 @export var initial_index: int = 0:
 	set(new_resource):
-		print("index_set")
 		initial_index = new_resource
 		update_comb_box_entries()
 		
 		update_comb_box_entries()
 @export var ai_options: Array[AiDifficultyResource] = []:
 	set(new_resource):
-		print("options_set")
 		ai_options = new_resource
 		update_comb_box_entries()
 
 func update_comb_box_entries():
-	print("update")
 	clear()
 	var counter = 0
 	for option in ai_options:

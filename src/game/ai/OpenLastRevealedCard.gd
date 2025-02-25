@@ -9,6 +9,6 @@ func can_execute(blackboard: Blackboard, grid: GameCardGrid) -> bool:
     return false
 
 func execute_action(blackboard: Blackboard, grid: GameCardGrid):
-    print("OpenLastRevealedCard")
+    print_debug("OpenLastRevealedCard")
     var card = blackboard.get_last_saved_card()
     trigger_card(card.position, blackboard, grid)

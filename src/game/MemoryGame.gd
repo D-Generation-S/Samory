@@ -1,6 +1,4 @@
-extends Node2D
-
-class_name MemoryGame
+class_name MemoryGame extends Node2D
 
 signal game_state_changed(game_state: int)
 
@@ -43,11 +41,35 @@ var current_sound_timer = 0
 var paused: bool = false
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_DISABLED
 	loading_scene.set_screen_message("PLACING_CARDS", true)
 	current_sound_timer = seconds_to_lay_cards
+	
+	player_node = get_node("%Players")
+
 	load_thread = Thread.new()
 	load_thread.start(build_card_layout.bind(card_deck, card_template, separation))
-	player_node = get_node("%Players")
+
+	await field_constructed
+
+	process_mode = Node.PROCESS_MODE_INHERIT
+
+	current_sound_timer = 0
+	var cards = load_thread.wait_to_finish() as Array[CardTemplate]
+	for card in cards:
+		card_target_node.add_child(card)
+		card.card_triggered.connect(card_was_triggered)
+	load_thread = null
+	card_loading_done.emit()
+	start_round_now()
+		
+	loading_scene.destory()
+	for node in game_nodes_to_show:
+		if node is Node2D:
+			node.visible = true 
+		if node is CanvasLayer:
+			node.visible = true
+
 	
 
 func _process(delta):
@@ -63,24 +85,6 @@ func _process(delta):
 		return
 
 	current_sound_timer = current_sound_timer - seconds_to_lay_cards
-	var still_loading = load_thread.is_alive()
-	if !still_loading:
-		current_sound_timer = 0
-		var cards = load_thread.wait_to_finish() as Array[CardTemplate]
-		for card in cards:
-			card_target_node.add_child(card)
-			card.card_triggered.connect(card_was_triggered)
-		load_thread = null
-		card_loading_done.emit()
-		start_round_now()
-		
-		loading_scene.destory()
-		for node in game_nodes_to_show:
-			if node is Node2D:
-				node.visible = true 
-			if node is CanvasLayer:
-				node.visible = true
-		return
 
 	if card_lay_sounds.size() == 0:
 		return
