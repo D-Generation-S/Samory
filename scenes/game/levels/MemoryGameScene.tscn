@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bnfr8gek24m47"]
+[gd_scene load_steps=24 format=3 uid="uid://bnfr8gek24m47"]
 
 [ext_resource type="Script" path="res://src/game/MemoryGame.gd" id="1_13jq5"]
 [ext_resource type="AudioStream" uid="uid://dj5j3cwv0a265" path="res://assets/audio/effect/card-slide-1.ogg" id="2_2td5d"]
@@ -19,7 +19,10 @@
 [ext_resource type="PackedScene" uid="uid://cluwm03j8e11p" path="res://scenes/game/overlay/GamePauseMenu.tscn" id="12_dfx06"]
 [ext_resource type="PackedScene" uid="uid://bv4jg7bjubrrr" path="res://scenes/game/levels/LoadingScreen.tscn" id="12_v3o3x"]
 [ext_resource type="Script" path="res://src/game/GameAI.gd" id="15_u3ner"]
+[ext_resource type="Texture2D" uid="uid://b6xl5vukmvlku" path="res://assets/textures/AddIcon.tres" id="18_pqxyo"]
+[ext_resource type="Script" path="res://src/menu/touch/TouchButton.gd" id="18_u7amr"]
 [ext_resource type="Script" path="res://src/game/GameCardGrid.gd" id="19_ploi3"]
+[ext_resource type="Texture2D" uid="uid://bjgikbiemswhu" path="res://assets/textures/MinusIcon.tres" id="20_ef4f6"]
 
 [node name="MemoryGame" type="Node2D" node_paths=PackedStringArray("gui_node", "card_target_node", "game_nodes_to_show", "loading_scene")]
 script = ExtResource("1_13jq5")
@@ -51,6 +54,18 @@ position = Vector2(-960, -540)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="Menu" type="Button" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.5
+offset_right = 35.5
+offset_bottom = 36.0
+grow_horizontal = 2
+text = "PAUSE_MENU"
+script = ExtResource("18_u7amr")
+action_to_performe = "back"
+
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 offset_right = 40.0
 offset_bottom = 40.0
@@ -61,6 +76,30 @@ theme_override_constants/margin_bottom = 25
 
 [node name="PlayersOverlay" parent="CanvasLayer/MarginContainer" instance=ExtResource("7_a7rnv")]
 layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="ZoomIn" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+icon = ExtResource("18_pqxyo")
+script = ExtResource("18_u7amr")
+continue_press = true
+action_to_performe = "zoom_out"
+
+[node name="ZoomOut" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+icon = ExtResource("20_ef4f6")
+script = ExtResource("18_u7amr")
+continue_press = true
+action_to_performe = "zoom_in"
 
 [node name="Background" type="Node2D" parent="." node_paths=PackedStringArray("camera_node")]
 visible = false

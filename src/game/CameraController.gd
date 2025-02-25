@@ -11,6 +11,7 @@ signal confirm_current_card()
 @export var max_x_range: int = 7000
 @export var max_y_range:int = 3500
 @export var drag_speed: float = 1
+@export var touch_speed: float = 1.3
 @export var controller_drag_speed: float = 5
 
 
@@ -35,6 +36,10 @@ func loading_done():
 	zoom = initial_zoom
 	position = initial_position
 	paused = false
+
+func _input(event):
+	if event is InputEventScreenDrag:
+		position = position - event.relative * touch_speed
 
 func _process(_delta):
 	if paused:
