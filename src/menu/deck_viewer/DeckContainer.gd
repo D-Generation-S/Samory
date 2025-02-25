@@ -2,6 +2,7 @@ class_name DeckContainer extends Control
 
 signal data_reloaded()
 signal deck_selected(deck: MemoryDeckResource)
+signal decks_getting_placed(decks: Array[MemoryDeckResource])
 signal deck_unselected()
 
 @export var deck_preview_template: PackedScene
@@ -38,16 +39,21 @@ func is_scroll_focus():
 func place_all_decks():
 	deck_unselected.emit()
 	var decks = GlobalGameManagerAccess.game_manager.get_available_decks()
+	decks_getting_placed.emit(decks)
 	decks.sort_custom(sort_by_name)
 	for deck in decks:
 		var template: DeckPreview = deck_preview_template.instantiate() as DeckPreview
 		template.set_deck(deck)
 		template.deck_selected.connect(deck_was_selected)
-		
+		template.visible = false
 		add_child(template)
 
 
 	data_reloaded.emit()
+
+func make_decks_visible():
+	for deck in get_children():
+		deck.visible = true
 
 func deck_was_selected(deck: MemoryDeckResource):
 	for current_deck in get_children():

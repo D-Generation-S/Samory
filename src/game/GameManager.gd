@@ -19,9 +19,15 @@ var is_debug = false
 
 
 func _ready():
+	var counter: int = 0
+	for deck in build_in_decks:
+		deck.id = counter
+		counter = counter + 1
+
 	initial_settings_setup()
 	reload_system_decks()
 	translate_built_in_decks()
+
 	MusicManager.start_playing()
 
 func _process(_delta):
