@@ -55,8 +55,8 @@ SNAKE;The Snake;Die Schlange
 SNAKE_DESCRIPTION;Snakes are elongated, legless reptiles from the suborder Serpentes, which are characterized by their scaly skin and their ability to move smoothly. They can be found in various habitats worldwide, except in extremely cold regions such as the Arctic and Antarctic.;Schlangen sind langgestreckte, beinlose Reptilien aus der Unterordnung Serpentes, die sich durch ihre schuppige Haut und ihre Fähigkeit, sich geschmeidig fortzubewegen, auszeichnen. Sie sind weltweit in verschiedenen Lebensräumen anzutreffen, außer in extrem kalten Regionen wie der Arktis und Antarktis.
 GENERIC_ITEMS_FULL;Generic Items;Haushaltsgegenstände
 GENERIC_ITEMS_FULL_DESCRIPTION;A collection of items you can find in most households;Eine Sammlung von Gegenständen welche in nahezu jedem Haushalt gefunden werden können
-BONE;Bone;Knochen
-BONE_DESCRIPTION;It's a bone, your dog will properly like it;Das ist ein Knochen, dein Hund wird diesen vermutlich mögen
+NOTEBOOK;Notebook;Notebook
+NOTEBOOK_DESCRIPTION;A portable computer designed for mobile use, offering all the functionalities of a desktop computer;Ein tragbarer Computer, der für den mobilen Einsatz konzipiert ist und alle Funktionen eines Desktop-Computers bietet
 BRIEFCASE;Briefcase;Aktentasche
 BRIEFCASE_DESCRIPTION;A briefcase that you need to carry all your items for office work;Eine aktentasche die du benötigst um all deine Gegenstände für die Büro arbeit zu transportieren
 BRUSH;Brush;Pinsel

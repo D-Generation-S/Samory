@@ -9,13 +9,13 @@ class_name AiBehaviorNode extends Resource
 func get_execution_probability() -> int:
 	return propability
 
-func can_execute(blackboard: Blackboard, grid: GameCardGrid) -> bool:
+func can_execute(_blackboard: Blackboard, _grid: GameCardGrid) -> bool:
 	return false
 
-func execute_action(blackboard: Blackboard, grid: GameCardGrid):
+func execute_action(_blackboard: Blackboard, _grid: GameCardGrid):
 	pass
 
-func trigger_card(position: Point, blackboard: Blackboard, grid: GameCardGrid) -> bool:
+func trigger_card(position: Point, _blackboard: Blackboard, grid: GameCardGrid) -> bool:
 	var card = grid.get_card_on_position(position)
 	if card == null:
 		return false

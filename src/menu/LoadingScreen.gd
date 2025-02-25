@@ -31,4 +31,5 @@ func set_screen_message(new_text: String, remove_default_label:bool = false):
 
 func destory():
 	queue_free()
+	GlobalSoundManager.stop_all_sounds()
 	loading_done.emit()

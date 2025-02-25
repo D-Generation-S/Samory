@@ -22,14 +22,15 @@
 [ext_resource type="Resource" uid="uid://cqif8a425crwn" path="res://scenes/game/cards/generic_items/ShovleCard.tres" id="19_2kyx3"]
 [ext_resource type="Resource" uid="uid://djbvm828hnwc0" path="res://scenes/game/cards/generic_items/PickaxeCard.tres" id="20_3sv4o"]
 [ext_resource type="Resource" uid="uid://ckk2d27jq2hcu" path="res://scenes/game/cards/generic_items/CdCard.tres" id="21_alop0"]
-[ext_resource type="Resource" uid="uid://cj6x44b6htab5" path="res://scenes/game/cards/generic_items/BoneCard.tres" id="22_84uvg"]
+[ext_resource type="Resource" uid="uid://cj6x44b6htab5" path="res://scenes/game/cards/generic_items/NotebookCard.tres" id="22_84uvg"]
 [ext_resource type="Resource" uid="uid://bn83vd52k12bk" path="res://scenes/game/cards/generic_items/PhoneCard.tres" id="23_wmyng"]
 
 [resource]
 script = ExtResource("2_1y2ok")
 built_in = true
-file_system_folder = ""
 name = "GENERIC_ITEMS_FULL"
 description = "GENERIC_ITEMS_FULL_DESCRIPTION"
 card_back = ExtResource("1_huwfb")
 cards = Array[ExtResource("1_xwtne")]([ExtResource("3_h00bb"), ExtResource("4_1qrq1"), ExtResource("5_6nnq5"), ExtResource("6_d1bkf"), ExtResource("7_y3wst"), ExtResource("8_qimtq"), ExtResource("9_x4wre"), ExtResource("10_y0w1y"), ExtResource("11_hh3pa"), ExtResource("12_84x1j"), ExtResource("13_aulkb"), ExtResource("14_cbtxt"), ExtResource("15_k0iqp"), ExtResource("16_yipsv"), ExtResource("17_p4eg2"), ExtResource("18_bq2lm"), ExtResource("19_2kyx3"), ExtResource("20_3sv4o"), ExtResource("21_alop0"), ExtResource("22_84uvg"), ExtResource("23_wmyng")])
+id = -1
+file_system_folder = ""

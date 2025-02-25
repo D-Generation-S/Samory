@@ -38,6 +38,7 @@ func reload_system_decks():
 		load_threads.append(deck_loader.load_deck_async(deck))
 
 func _process(delta):
+	var deck_id: int = 1000
 	if is_loading():
 		elapsed_time = elapsed_time + delta
 		if elapsed_time < CHECK_INTERVALL_SECONDS:
@@ -52,6 +53,8 @@ func _process(delta):
 			for thread in load_threads:
 				var data = thread.wait_to_finish() as MemoryDeckResource
 				if data != null:
+					data.id = deck_id
 					system_decks.append(data)
+					deck_id = deck_id + 1
 			load_threads = []
 			loading_system_decks_done.emit()

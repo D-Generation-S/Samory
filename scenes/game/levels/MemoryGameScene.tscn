@@ -48,10 +48,8 @@ script = ExtResource("4_4ihyn")
 
 [node name="LoadingScreen" parent="Camera2D" instance=ExtResource("12_v3o3x")]
 position = Vector2(-960, -540)
-play_effects = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 offset_right = 40.0
