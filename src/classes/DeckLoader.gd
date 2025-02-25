@@ -74,7 +74,7 @@ func load_deck(deck_name: String) -> MemoryDeckResource:
 	var path = build_deck_base_path(deck_name)
 	var deck_found = DirAccess.dir_exists_absolute(path)
 	if !deck_found:
-		print("deck not found")
+		printerr("deck not found")
 		return null
 	var return_deck = MemoryDeckResource.new()
 	return_deck.name = get_deck_name(deck_name)

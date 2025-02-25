@@ -40,6 +40,5 @@ func collect_old_cards():
 func get_card() -> RigidBody2D:
 	var card = cards.pop_back()
 	if card == null:
-		print("Generate card")
 		card = spawn_template.instantiate() as RigidBody2D
 	return card

@@ -10,7 +10,7 @@ func can_execute(blackboard: Blackboard, grid: GameCardGrid) -> bool:
     return true
 
 func execute_action(blackboard: Blackboard, grid: GameCardGrid):
-    print("OpenRandomBlackBoardCard")
+    print_debug("OpenRandomBlackBoardCard")
     var card = blackboard.get_random_known_card_from_storage()
     var success = false
     if !trigger_card(card.position, blackboard, grid) and blackboard.cards_remembered() > 1 and attemps < 5:
