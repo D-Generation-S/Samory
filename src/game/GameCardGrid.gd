@@ -153,10 +153,10 @@ func select_closest_card(source_position: Point, include_source: bool):
 	if return_position != null:
 		select_card_at_position(return_position)
 
-func get_card_on_position(position: Point) -> MemoryCardResource:
+func get_card_on_position(card_position: Point) -> MemoryCardResource:
 	for card in get_children():
 		if card is CardTemplate:
-			if position.is_identical(card.grid_position):
+			if card_position.is_identical(card.grid_position):
 				return card.memory_card
 	return null
 		
