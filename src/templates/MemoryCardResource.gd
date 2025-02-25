@@ -1,9 +1,13 @@
-extends Resource
+@tool
+class_name MemoryCardResource extends Resource
 
-class_name MemoryCardResource
-
-@export var name: String
-@export var description: String
+@export var name: String:
+    set(value):
+        name = value
+        if Engine.is_editor_hint():
+            description = value + "_DESCRIPTION"
+            
+@export var description: String = ""
 @export var texture: Texture2D
 
 var id: int = -1

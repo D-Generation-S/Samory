@@ -1,6 +1,6 @@
-extends Node2D
+class_name GameManager extends Node2D
 
-class_name GameManager
+
 
 signal loading_message(message: String)
 signal debug_mode(on: bool)

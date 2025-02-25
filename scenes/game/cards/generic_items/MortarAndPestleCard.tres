@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MemoryCardResource" load_steps=4 format=3 uid="uid://oxrnjtqftays"]
+
+[ext_resource type="Script" path="res://src/templates/MemoryCardResource.gd" id="1_qb6vo"]
+[ext_resource type="Texture2D" uid="uid://cjf0iw8w4drb7" path="res://assets/sprites/genericItems_vector_colored.svg" id="2_u75ok"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4i5c"]
+atlas = ExtResource("2_u75ok")
+region = Rect2(3724, 1550, 239, 424)
+
+[resource]
+script = ExtResource("1_qb6vo")
+name = "MORTAR_AND_PESTLE"
+description = "MORTAR_AND_PESTLE_DESCRIPTION"
+texture = SubResource("AtlasTexture_d4i5c")
