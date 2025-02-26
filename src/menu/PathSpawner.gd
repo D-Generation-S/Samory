@@ -33,13 +33,13 @@ func _process(delta):
 
 func collect_old_cards():
 	for child in spawn_target.get_children():
-		if child is RigidBody2D and child.global_position.y > lowest_fall_line:
+		if child is FallingCard and child.global_position.y > lowest_fall_line:
 			child.freeze = true
+			child.reset_card()
 			cards.append(child)
 
 func get_card() -> RigidBody2D:
 	var card = cards.pop_back()
 	if card == null:
-		print("Generate card")
 		card = spawn_template.instantiate() as RigidBody2D
 	return card

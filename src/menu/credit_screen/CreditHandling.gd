@@ -29,7 +29,7 @@ func load_credits():
 func try_and_load_credits(path: String) -> String:
 	var text_file = FileAccess.open(path, FileAccess.READ)
 	if text_file == null:
-		print("Failed to open credits file \" "+ path +"\"")
+		printerr("Failed to open credits file \" "+ path +"\"")
 		return ""
 	return text_file.get_as_text()
 

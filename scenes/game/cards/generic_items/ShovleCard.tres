@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MemoryCardResource" load_steps=4 format=3 uid="uid://cqif8a425crwn"]
+
+[ext_resource type="Script" path="res://src/templates/MemoryCardResource.gd" id="1_8baqe"]
+[ext_resource type="Texture2D" uid="uid://cjf0iw8w4drb7" path="res://assets/sprites/genericItems_vector_colored.svg" id="2_y65vh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5gxe"]
+atlas = ExtResource("2_y65vh")
+region = Rect2(5510, 41, 215, 405)
+
+[resource]
+script = ExtResource("1_8baqe")
+name = "SHOVEL"
+description = "SHOVEL_DESCRIPTION"
+texture = SubResource("AtlasTexture_l5gxe")

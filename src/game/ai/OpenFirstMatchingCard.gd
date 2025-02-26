@@ -17,7 +17,7 @@ func blackboard_contains_identical_cards(blackboard: Blackboard) -> bool:
     return get_blackboard_intentical_cards(blackboard).size() > 0
 
 func execute_action(blackboard: Blackboard, grid: GameCardGrid):
-    print("OpenFirstMatchingCard")
+    print_debug("OpenFirstMatchingCard")
     var cards = get_blackboard_intentical_cards(blackboard)
     var index = randi_range(0, cards.size() - 1)
     trigger_card(cards[index].position, blackboard, grid)

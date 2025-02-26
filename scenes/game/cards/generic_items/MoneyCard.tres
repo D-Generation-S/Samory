@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MemoryCardResource" load_steps=4 format=3 uid="uid://chxne0udrs8jr"]
+
+[ext_resource type="Script" path="res://src/templates/MemoryCardResource.gd" id="1_aimq0"]
+[ext_resource type="Texture2D" uid="uid://cjf0iw8w4drb7" path="res://assets/sprites/genericItems_vector_colored.svg" id="2_rmnxx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4axf"]
+atlas = ExtResource("2_rmnxx")
+region = Rect2(5496, 2603, 252, 262)
+
+[resource]
+script = ExtResource("1_aimq0")
+name = "MONEY"
+description = "MONEY_DESCRIPTION"
+texture = SubResource("AtlasTexture_i4axf")

@@ -1,6 +1,6 @@
-extends Node2D
+class_name GameManager extends Node2D
 
-class_name GameManager
+
 
 signal loading_message(message: String)
 signal debug_mode(on: bool)
@@ -19,9 +19,15 @@ var is_debug = false
 
 
 func _ready():
+	var counter: int = 0
+	for deck in build_in_decks:
+		deck.id = counter
+		counter = counter + 1
+
 	initial_settings_setup()
 	reload_system_decks()
 	translate_built_in_decks()
+
 	MusicManager.start_playing()
 
 func _process(_delta):
@@ -62,12 +68,16 @@ func initial_settings_setup():
 func translate_built_in_decks():
 	translated_build_in_decks = []
 	for deck in build_in_decks:
-		var new_deck = deck.duplicate()
+		var new_deck = deck.duplicate() as MemoryDeckResource
 		new_deck.name = tr(deck.name)
 		new_deck.description = tr(deck.description)
-		for card in deck.cards:
-			card.name = tr(card.name)
-			card.description = tr(card.description)
+		var cards = deck.cards
+		new_deck.cards.clear()
+		for card in cards:
+			var card_copy = card.duplicate()
+			card_copy.name = tr(card.name)
+			card_copy.description = tr(card.description)
+			new_deck.cards.append(card_copy)
 		translated_build_in_decks.append(new_deck)
 
 func close_game():

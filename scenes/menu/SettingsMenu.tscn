@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ded0xyxbb1om1"]
+[gd_scene load_steps=22 format=3 uid="uid://ded0xyxbb1om1"]
 
 [ext_resource type="Texture2D" uid="uid://dmf23xobks0pc" path="res://assets/sprites/wood.png" id="1_xcxnh"]
 [ext_resource type="Script" path="res://src/menu/settings_menu/SettingsMenu.gd" id="2_hfhds"]
@@ -20,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://48iu01xst023" path="res://assets/audio/effect/card-turn-2.ogg" id="14_vb64j"]
 [ext_resource type="AudioStream" uid="uid://h0louy6yrv3o" path="res://assets/audio/effect/card-turn-3.ogg" id="15_b5nta"]
 [ext_resource type="Script" path="res://src/menu/ClickableButton.gd" id="19_3ip51"]
+[ext_resource type="Script" path="res://src/menu/settings_menu/ResetTutorial.gd" id="20_wiovc"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("2_hfhds")
@@ -121,11 +122,17 @@ size_flags_horizontal = 3
 script = ExtResource("3_qrm32")
 bus_name = 2
 
-[node name="Button" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="TestEffectVolume" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "TEST_EFFECTS"
 script = ExtResource("4_l6fy8")
 test_effects = Array[AudioStream]([ExtResource("5_fls2r"), ExtResource("6_0bdhr"), ExtResource("7_vbnlv"), ExtResource("8_obkpv"), ExtResource("9_plrjf"), ExtResource("10_3mytq"), ExtResource("11_bbgb2"), ExtResource("12_05mi4"), ExtResource("13_jbvf7"), ExtResource("14_vb64j"), ExtResource("15_b5nta")])
+
+[node name="ResetTutorial" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "RESET_TUTORIAL_TOOLTIP"
+text = "RESET_TUTORIAL"
+script = ExtResource("20_wiovc")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

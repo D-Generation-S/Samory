@@ -1,19 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkpf0f8bvau6t"]
+[gd_scene load_steps=5 format=3 uid="uid://bkpf0f8bvau6t"]
 
 [ext_resource type="Script" path="res://src/menu/deck_viewer/CardPreview.gd" id="1_fij37"]
 [ext_resource type="Texture2D" uid="uid://d4nvcsyb0ehtb" path="res://assets/sprites/CardDefaultFront.png" id="2_ckxxk"]
 [ext_resource type="Script" path="res://src/menu/deck_viewer/DeckViewerCardImage.gd" id="3_ky5l6"]
-[ext_resource type="Texture2D" uid="uid://bmxqeqo65xwt" path="res://assets/sprites/spritesheet-default.png" id="3_xl5xl"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3its5"]
-texture = ExtResource("3_xl5xl")
-texture_margin_left = 16.0
-texture_margin_top = 16.0
-texture_margin_right = 16.0
-texture_margin_bottom = 16.0
-region_rect = Rect2(384, 384, 64, 64)
+[ext_resource type="StyleBox" uid="uid://d1rhal5rp1608" path="res://assets/styles/MetalBox.tres" id="4_w8vnn"]
 
 [node name="CardPreview" type="MarginContainer" node_paths=PackedStringArray("card_name", "card_description", "card_image")]
+custom_minimum_size = Vector2(542, 628)
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
@@ -24,6 +17,7 @@ card_description = NodePath("PanelContainer/VBoxContainer/PanelContainer/VBoxCon
 card_image = NodePath("PanelContainer/VBoxContainer/Card Image")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(532, 618)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
@@ -39,7 +33,7 @@ script = ExtResource("3_ky5l6")
 [node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 10
-theme_override_styles/panel = SubResource("StyleBoxTexture_3its5")
+theme_override_styles/panel = ExtResource("4_w8vnn")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/PanelContainer"]
 layout_mode = 2

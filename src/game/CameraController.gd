@@ -11,6 +11,7 @@ signal confirm_current_card()
 @export var max_x_range: int = 7000
 @export var max_y_range:int = 3500
 @export var drag_speed: float = 1
+@export var touch_speed: float = 1.3
 @export var controller_drag_speed: float = 5
 
 
@@ -35,6 +36,10 @@ func loading_done():
 	zoom = initial_zoom
 	position = initial_position
 	paused = false
+
+func _input(event):
+	if event is InputEventScreenDrag:
+		position = position - event.relative * touch_speed
 
 func _process(_delta):
 	if paused:
@@ -138,12 +143,9 @@ func adjust_zoom_and_position_to_play_area(cards_on_x: int, cards_on_y: int):
 	var larger_side = max(field_width, field_height * 1.3)
 
 	var zoom_value: float = zoom_per_card * larger_side
-	print(zoom_value)
 	zoom_value = clampf(zoom_value, min_zoom, max_zoom)
-	print(zoom_value)
 	zoom_value = max_zoom - zoom_value
 	zoom_value = clampf(zoom_value, min_zoom, max_zoom)
-	print(zoom_value)
 
 	initial_position = Vector2(center_x, center_y)
 	initial_zoom = Vector2(zoom_value, zoom_value)

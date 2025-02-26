@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MemoryCardResource" load_steps=4 format=3 uid="uid://si3w4ut4o3lb"]
+
+[ext_resource type="Script" path="res://src/templates/MemoryCardResource.gd" id="1_qynpn"]
+[ext_resource type="Texture2D" uid="uid://cjf0iw8w4drb7" path="res://assets/sprites/genericItems_vector_colored.svg" id="2_wc6pi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3txb"]
+atlas = ExtResource("2_wc6pi")
+region = Rect2(366, 1648, 183, 264)
+
+[resource]
+script = ExtResource("1_qynpn")
+name = "THOOTHBRUSH"
+description = "THOOTHBRUSH_DESCRIPTION"
+texture = SubResource("AtlasTexture_p3txb")

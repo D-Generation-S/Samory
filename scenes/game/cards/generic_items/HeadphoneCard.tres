@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MemoryCardResource" load_steps=4 format=3 uid="uid://qmm6cy0vyfhx"]
+
+[ext_resource type="Script" path="res://src/templates/MemoryCardResource.gd" id="1_c4h5m"]
+[ext_resource type="Texture2D" uid="uid://cjf0iw8w4drb7" path="res://assets/sprites/genericItems_vector_colored.svg" id="2_jwvjg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3l33r"]
+atlas = ExtResource("2_jwvjg")
+region = Rect2(5627, 1227, 262, 293)
+
+[resource]
+script = ExtResource("1_c4h5m")
+name = "HEADPHONE"
+description = "HEADPHONE_DESCRIPTION"
+texture = SubResource("AtlasTexture_3l33r")
