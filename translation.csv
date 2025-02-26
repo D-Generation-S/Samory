@@ -132,3 +132,16 @@ ADD_AI_PLAYER;Add AI Player;Ki Spieler hinzufügen
 MOVE_PLAYER_UP;Move player up;Spieler nach oben schieben
 MOVE_PLAYER_DOWN;Move player down;Spieler nach unten schieben
 PLAYER_LIST_HELP;The order within this list indicates the order in which the players take their turn;Die Reihenfolge innerhalb dieser liste gibt an in welcher Reihenfolge die Spieler dran kommen
+OK;Ok;Ok
+COMPLETE_TUTORIAL;Mark Tutorial as completed;Tutorial als abgeschlossen markieren
+COMPLETE_TUTORIAL_TOOLTIP;Will stop the tutorial and not additional help will be provided;Das Tutorial wird abgebrochen und es wird keine weitere Hilfe geben
+RESET_TUTORIAL;Reset Tutorial;Tutorial zurücksetzten
+RESET_TUTORIAL_TOOLTIP;If you press this button the tutorial will be reset;Wenn du diesen Knopf drückst wird das Tutorial zurückgesetzt
+PLAYER_TURN;Your first turn;Dein erster Zug
+PLAYER_TURN_BODY;This is your first turn, as you can see in the background there are some cards.\n\nYour task is to click on one of these cards and memorize the picture on it. The target of the game is to find the two matching cards, if you manage to do this within your turn you get a point.;Das ist dein erster Spielzug, wie du im Hintergrund sehen kannst sind hier einige Karten zu finden.\n\nDeine Aufgabe ist es nun eine dieser Karten anzuklicken und sich das Bild darauf zu merken. Das Ziel des Spiels ist es die beiden passenden Karten zu finden, wenn du dies innerhalb deines Zuges schaffst bekommst du einen Punkt.
+FIRST_CARD_TURNED;First card turned;Deine erste Karte umgedreht
+FIRST_CARD_TURNED_BODY;You have just turned over your first card, now try to find the second one with the same picture.;Du hast soeben deine erste Karte umgedreht, versuche nun die zweite mit dem selben Bild zu finden.
+FIRST_ROUND_END;First round did end;Die erste Runde hat
+FIRST_ROUND_END_BODY;The first round did end, the next player can play there turn now.\n\nTo see which player is currently playing, look into the upper left corner, the player with a red name is the active one;Die erste Runde ist beendet, der nächste Spieler kann jetzt spielen.\n\nUm zu sehen, welcher Spieler gerade spielt, schauen Sie in die obere linke Ecke, der Spieler mit einem roten Namen ist der aktive.
+FIRST_MATCHING_CARD;First matching card found;Erstes Kartenpaar gefunden
+FIRST_MATCHING_CARD_BODY;You did find you first matching card, this will score you a point. Check the upper left corner beside your player name.\n\nBecause you found a matching pair your round will continue, this allowes you to score another point or reveal some cards.;Du hast die erste passende Karte gefunden, die dir einen Punkt einbringt. Überprüfen Sie die obere linke Ecke neben Ihrem Spielernamen.\n\nDa Sie ein übereinstimmendes Paar gefunden haben, wird Ihre Runde fortgesetzt, was dir erlaubt, einen weiteren Punkt zu erzielen oder einige Karten aufzudecken

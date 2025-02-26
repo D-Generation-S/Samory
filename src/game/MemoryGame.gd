@@ -13,6 +13,12 @@ signal player_scored(player_id: int)
 
 signal field_constructed(cards_on_x: int, cards_on_y: int)
 
+##Tutorial
+signal turn_of_an_player()
+signal card_turned_by_player()
+signal matching_card_by_player()
+signal player_round_endet()
+
 const CARDS_PER_PLAYER = 2
 
 @export var card_lay_sounds: Array[AudioStream] = []
@@ -34,6 +40,7 @@ var current_game_state
 var player_node: PlayerManager
 var triggered_cards: int
 var removed_cards = 0
+var game_menu: GamePauseMenu = null
 
 var load_thread: Thread = null
 var current_sound_timer = 0
@@ -42,6 +49,10 @@ var paused: bool = false
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_DISABLED
+	game_menu = game_menu_template.instantiate() as GamePauseMenu
+	game_menu.close_pause_menu.connect(hide_game_menu)
+	game_menu.visible = false
+	gui_node.add_child(game_menu)
 	loading_scene.set_screen_message("PLACING_CARDS", true)
 	current_sound_timer = seconds_to_lay_cards
 	
@@ -70,10 +81,9 @@ func _ready():
 		if node is CanvasLayer:
 			node.visible = true
 
-	
-
 func _process(delta):
-	check_if_still_paused()
+	if paused:
+		return
 	if current_game_state == GameState.ROUND_END:
 		check_if_round_complete()
 	if current_game_state == GameState.ROUND_FREEZE:
@@ -159,15 +169,20 @@ func card_was_triggered():
 		return
 	triggered_cards = triggered_cards + 1
 	
+	var current_player = player_node.get_current_player()
+	if !current_player.is_ai():
+		card_turned_by_player.emit()
+	
 	var clicked_cards: Array[CardTemplate] = get_clicked_cards()
 	card_triggered.emit(current_game_state, clicked_cards)
 	if cards_where_identically():
+		if !current_player.is_ai():
+			matching_card_by_player.emit()
 		for child in card_target_node.get_children():
 			if child is CardTemplate and child.is_turned():
 				child.remove_from_board()
 		triggered_cards = 0
 		removed_cards = removed_cards + 1
-		var current_player = player_node.get_current_player()
 		player_scored.emit(current_player.id)
 		check_card_state()
 		return 
@@ -199,6 +214,8 @@ func get_clicked_cards() -> Array[CardTemplate]:
 func start_round_now():
 	print("Start Round")
 	current_game_state = GameState.ROUND_START
+	if !player_node.get_current_player().is_ai():
+		turn_of_an_player.emit()
 	game_state_changed.emit(current_game_state)
 	triggered_cards = 0
 
@@ -210,6 +227,9 @@ func freeze_round_now():
 func round_closed_now():
 	print("Closing round")
 	current_game_state = GameState.PREPARE_ROUND_END
+	var current_player = player_node.get_current_player()
+	if !current_player.is_ai():
+		player_round_endet.emit()
 	game_state_changed.emit(current_game_state)
 
 func end_round_now():
@@ -240,26 +260,25 @@ func play_game_sound(stream: AudioStream):
 		return
 	GlobalSoundManager.play_sound_effect(stream)
 
-func show_game_menu():
+func pause_game():
 	paused = true
-	game_paused.emit(true)
-	var menu = game_menu_template.instantiate() as GamePauseMenu
-	gui_node.add_child(menu)
+	game_paused.emit(paused)
 
-func check_if_still_paused():
-	if !paused:
-		return
-	var pause_complete = true
-	for node in gui_node.get_children():
-		if node is GamePauseMenu:
-			pause_complete = false
-			break
-	if pause_complete:
-		paused = false
-		continue_game()
+func unpause_game():
+	paused = false
+	game_paused.emit(paused)
+
+func show_game_menu():
+	pause_game()
+	game_menu.visible = true
+
+func hide_game_menu():
+	unpause_game()
+	game_menu.visible = false
 
 func continue_game():
-	game_paused.emit(false)
+	printerr("should not be used!")
+	unpause_game()
 
 func check_if_round_complete():
 	var card_not_hidden = false

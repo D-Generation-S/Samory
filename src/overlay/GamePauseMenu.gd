@@ -1,6 +1,6 @@
-extends Control
+class_name GamePauseMenu extends Control
 
-class_name  GamePauseMenu
+signal close_pause_menu()
 
 func close_menu():
-	queue_free()
+	close_pause_menu.emit()
