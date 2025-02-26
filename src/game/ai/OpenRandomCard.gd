@@ -1,7 +1,7 @@
 class_name OpenRandomCard extends AiBehaviorNode
 
 func can_execute(_blackboard: Blackboard, grid: GameCardGrid) -> bool:
-    if grid.get_all_card_positions(false).size() >= 2:
+    if grid.get_all_card_positions(false).size() > 0:
         return true
     return false
 

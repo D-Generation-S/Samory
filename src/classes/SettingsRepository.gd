@@ -17,6 +17,7 @@ func load_settings() -> SettingsResource:
     save_file.close()
     var return_settings: SettingsResource = default_settings.duplicate()
 
+    
     return_settings.fullscreen = data.get("fullscreen")
     return_settings.load_custom_decks = data.get("load_custom_decks")
     return_settings.vsync_active = data.get("vsync_active")
@@ -24,6 +25,13 @@ func load_settings() -> SettingsResource:
     return_settings.master_volume = data.get("master_volume")
     return_settings.effect_volume = data.get("effect_volume")
     return_settings.music_volume = data.get("music_volume")
+    if data.has("tutorial"):
+        var tutorial_data = data.get("tutorial") as Dictionary
+        return_settings.tutorial.player_turn = tutorial_data.get("player_turn")
+        return_settings.tutorial.first_card_turned = tutorial_data.get("first_card_turned")
+        return_settings.tutorial.first_matching_card_found = tutorial_data.get("first_matching_card_found")
+        return_settings.tutorial.first_round_done = tutorial_data.get("first_round_done")
+        return_settings.tutorial.tutorial_aborted = tutorial_data.get("tutorial_aborted")
     loaded_settings = return_settings
     return return_settings
     
@@ -36,7 +44,14 @@ func save_settings(settings: SettingsResource) -> bool:
         "load_custom_decks": settings.load_custom_decks,
         "master_volume": settings.master_volume,
         "effect_volume": settings.effect_volume,
-        "music_volume": settings.music_volume
+        "music_volume": settings.music_volume,
+        "tutorial": {
+            "player_turn": settings.tutorial.player_turn,
+            "first_card_turned": settings.tutorial.first_card_turned,
+            "first_matching_card_found": settings.tutorial.first_matching_card_found,
+            "first_round_done": settings.tutorial.first_round_done,
+            "tutorial_aborted": settings.tutorial.tutorial_aborted,
+        }
     }
 
     var file = FileAccess.open(settings_file, FileAccess.WRITE)
