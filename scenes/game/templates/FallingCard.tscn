@@ -1,18 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://8yxfao2fwwod"]
+[gd_scene load_steps=9 format=3 uid="uid://8yxfao2fwwod"]
 
+[ext_resource type="Script" path="res://src/game/FallingCard.gd" id="1_5pc70"]
 [ext_resource type="Texture2D" uid="uid://dpcfrsq40moii" path="res://assets/sprites/CardDefaultBack.png" id="1_f7o75"]
+[ext_resource type="Shader" path="res://assets/shaders/BurnFromPoint.gdshader" id="2_bndme"]
 [ext_resource type="Script" path="res://src/game/FallingCardSprite.gd" id="2_hxqwv"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7g1s1"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5ducq"]
+noise = SubResource("FastNoiseLite_7g1s1")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hhi4s"]
+shader = ExtResource("2_bndme")
+shader_parameter/position = null
+shader_parameter/radius = 0.0
+shader_parameter/borderWidth = 0.03
+shader_parameter/burnMult = 0.135
+shader_parameter/burnColor = Color(1, 0.443137, 0, 1)
+shader_parameter/noiseTexture = SubResource("NoiseTexture2D_5ducq")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ov72a"]
-size = Vector2(50, 50)
+size = Vector2(150, 150)
 
 [node name="FallingCard" type="RigidBody2D"]
+input_pickable = true
 gravity_scale = 0.2
+script = ExtResource("1_5pc70")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_ov72a")
-disabled = true
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("collision_shape")]
+material = SubResource("ShaderMaterial_hhi4s")
 texture = ExtResource("1_f7o75")
 script = ExtResource("2_hxqwv")
+collision_shape = NodePath("../CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_ov72a")
+
+[connection signal="dissolve" from="." to="Sprite2D" method="dissolve"]
+[connection signal="reset" from="." to="Sprite2D" method="reset"]
