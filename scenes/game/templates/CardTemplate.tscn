@@ -108,7 +108,6 @@ material = ExtResource("5_b0osi")
 position = Vector2(250, 275)
 texture = ExtResource("3_xiuu2")
 script = ExtResource("8_pw264")
-threshold_change_step = 0.02
 toggle_material = ExtResource("5_b0osi")
 focus_material = ExtResource("12_drvni")
 

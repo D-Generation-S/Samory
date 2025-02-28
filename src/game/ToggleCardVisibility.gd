@@ -4,19 +4,18 @@ class_name ToggleCardVisibility
 
 signal ready_for_removal()
 
-@export_range(0.01, 0.2) var threshold_change_step: float = 0.01
-@export var toggle_material: Material
-@export var focus_material: Material
+@export var animation_time: float = 1.0
+@export var toggle_material: ShaderMaterial
+@export var focus_material: ShaderMaterial
 
-var threshold: float = 0
-var toggle_off_now: bool = false
-var toggle_on_now: bool = false
 var currently_in_focus: bool = false
 
 var collider: Area2D
-var remove_if_possible: bool = false
+var removal_requested: bool = false
+var can_remove: bool = false
 var currently_ai: bool = false
 
+var animation_tween: Tween = null
 
 func _ready():
 	collider = get_children()[0]
@@ -24,8 +23,13 @@ func _ready():
 	set_shader_material(toggle_material)
 
 func toggle_on():
-	toggle_on_now = true
-	toggle_off_now = false
+	can_remove = false
+	if is_hidden():
+		return
+	if animation_tween != null:
+		animation_tween.kill()
+	animation_tween = create_tween()
+	animation_tween.tween_method(update_toggle_material, 1.0, 0.0, animation_time)
 	if currently_in_focus:
 		set_shader_material(toggle_material)
 
@@ -38,12 +42,20 @@ func unfreeze_card():
 	collider.visible = true
 
 func toggle_off():
-	toggle_off_now = true
+	if animation_tween != null:
+		animation_tween.kill()
+	animation_tween = create_tween()
+	animation_tween.tween_method(update_toggle_material, 0.0, 1.0, animation_time)
+	animation_tween.finished.connect(func(): can_remove = true)
 	if currently_in_focus:
 		set_shader_material(toggle_material)
 
+func update_toggle_material(progress: float):
+	if material is ShaderMaterial:
+		material.set_shader_parameter("threshold", progress)	
+
 func is_focused():
-	if toggle_off_now or toggle_on_now:
+	if animation_tween != null && animation_tween.is_running():
 		return
 	for card in get_parent().get_parent().get_children():
 		if card is CardTemplate and card.card_is_focused():
@@ -60,39 +72,31 @@ func set_shader_material(new_material: Material):
 	material = new_material.duplicate()
 
 func is_hidden() -> bool:
-	return threshold <= 0
+	var card_back_visible = false
+	if get_shader_threshold() <= 0:
+		card_back_visible = true
+	return card_back_visible
+
+func get_shader_threshold() -> float:
+	var value = -1.0
+	if material is ShaderMaterial:
+		value = material.get_shader_parameter("threshold")
+	return value
 
 func is_fully_shown() -> bool:
-	return threshold >= 1
+	var card_back_visible = true
+	if get_shader_threshold() >= 1:
+		card_back_visible = false
+	return !card_back_visible
 
 func is_currently_in_focus() -> bool:
 	return currently_in_focus
 
 func remove_from_board():
-	remove_if_possible = true
+	removal_requested = true
 
 func _process(_delta):
-	var changed = false
-	if toggle_off_now:
-		changed = true
-		threshold = threshold + threshold_change_step
-
-	if toggle_on_now && !remove_if_possible:
-		changed = true
-		threshold = threshold - threshold_change_step
-
-	if threshold < 0:
-		toggle_on_now = false
-		threshold = 0
-
-	if threshold > 1:
-		toggle_off_now = false
-		threshold = 1
-
-	if changed:
-		material.set("shader_parameter/threshold", threshold)
-
-	if remove_if_possible && threshold >= 1:
+	if removal_requested && can_remove:
 		ready_for_removal.emit()
 		queue_free()
 		

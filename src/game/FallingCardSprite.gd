@@ -25,7 +25,7 @@ func _ready():
 
 func reset():
 	if tween and tween.is_running():
-		tween.stop()
+		tween.kill()
 	tween = null
 	update_radius(0)
 	collision_shape.disabled = false
@@ -47,9 +47,9 @@ func get_local_uv(local_click_pos: Vector2) -> Vector2:
 func burn_card(uv: Vector2):
 	if material and material is ShaderMaterial:
 		tween = create_tween()
+		tween.set_ease(Tween.EASE_IN)
 		material.set_shader_parameter("position", uv)
 		tween.tween_method(update_radius, 0.0, 2.0, 1.5)
-
 
 func update_radius(value: float):
 	if material and material is ShaderMaterial:
