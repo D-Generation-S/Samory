@@ -12,8 +12,6 @@ jobs:
         platform:
         - name: linux
           file: samory
-        - name: windows
-          file: samory.exe
     steps:
       - uses: actions/checkout@v3
         with:
