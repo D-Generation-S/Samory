@@ -11,9 +11,9 @@ func _ready():
 		printerr("No action set for touch button")
 		queue_free()
 	var active = false
-	if is_mobile() or OS.has_feature("windows"):
+	if is_mobile():
 		active = true
-	if !active:
+	if !active and !OS.is_debug_build():
 		queue_free()
 		return
 
