@@ -1,6 +1,4 @@
-extends Button
-
-class_name ClickableButton
+class_name ClickableButton extends Button
 
 @export var is_focused: bool = false
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cluwm03j8e11p"]
+[gd_scene load_steps=6 format=3 uid="uid://cluwm03j8e11p"]
 
 [ext_resource type="Script" path="res://src/overlay/GamePauseMenu.gd" id="1_avng0"]
 [ext_resource type="Script" path="res://src/overlay/FinishGameOk.gd" id="2_00hhe"]
+[ext_resource type="Script" path="res://src/game/TriggerButton.gd" id="2_ben4t"]
 [ext_resource type="Script" path="res://src/menu/ClickableButton.gd" id="2_ojomg"]
 [ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="3_vcfmt"]
 
@@ -43,6 +44,13 @@ theme_override_constants/margin_bottom = 15
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 
+[node name="ToggleDebug" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "TOGGLE_DEBUG"
+script = ExtResource("2_ben4t")
+button_action_name = "toggle_debug"
+active = 14
+
 [node name="MainMenu" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "MAIN_MENU"
@@ -57,4 +65,5 @@ text = "CLOSE_MENU"
 script = ExtResource("2_ojomg")
 is_focused = true
 
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ToggleDebug" to="." method="close_menu"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/CloseMenu" to="." method="close_menu"]
