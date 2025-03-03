@@ -12,6 +12,7 @@ signal identical_cards(first_card_point: Point, set_icon_modulatecard_point: Poi
 signal player_scored(player_id: int)
 
 signal field_constructed(cards_on_x: int, cards_on_y: int)
+signal request_popup(window: PopupWindow)
 
 ##Tutorial
 signal turn_of_an_player()
@@ -50,9 +51,6 @@ var paused: bool = false
 func _ready():
 	process_mode = Node.PROCESS_MODE_DISABLED
 	game_menu = game_menu_template.instantiate() as GamePauseMenu
-	game_menu.close_pause_menu.connect(hide_game_menu)
-	game_menu.visible = false
-	gui_node.add_child(game_menu)
 	loading_scene.set_screen_message("PLACING_CARDS", true)
 	current_sound_timer = seconds_to_lay_cards
 	
@@ -246,7 +244,7 @@ func show_game_end_screen():
 	var finish_node = finished_game_template.instantiate() as GameFinished
 	finish_node.set_player_manager(player_node)
 	finish_node.set_played_deck(card_deck)
-	gui_node.add_child(finish_node)
+	request_popup.emit(finish_node)
 
 func set_players(players_of_game: Array[PlayerResource]):
 	player_node.add_players(players_of_game)
@@ -269,12 +267,7 @@ func unpause_game():
 	game_paused.emit(paused)
 
 func show_game_menu():
-	pause_game()
-	game_menu.visible = true
-
-func hide_game_menu():
-	unpause_game()
-	game_menu.visible = false
+	request_popup.emit(game_menu)
 
 func continue_game():
 	printerr("should not be used!")

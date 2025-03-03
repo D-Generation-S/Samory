@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://d15qeu4s4bgjk"]
+[gd_scene load_steps=4 format=3 uid="uid://d15qeu4s4bgjk"]
 
-[ext_resource type="Script" path="res://src/game/TutorialWindow.gd" id="1_rm1ic"]
+[ext_resource type="Script" path="res://src/game/tutorial/TutorialWindow.gd" id="1_rm1ic"]
 [ext_resource type="StyleBox" uid="uid://d1rhal5rp1608" path="res://assets/styles/MetalBox.tres" id="2_a5yjs"]
+[ext_resource type="Script" path="res://src/menu/ClickableButton.gd" id="3_h0j3c"]
 
 [node name="TutorialWindow" type="CenterContainer"]
 anchors_preset = 15
@@ -57,7 +58,10 @@ text = "COMPLETE_TUTORIAL"
 
 [node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Controls"]
 layout_mode = 2
+size_flags_horizontal = 10
 text = "OK"
+script = ExtResource("3_h0j3c")
+is_focused = true
 
 [connection signal="toggled" from="PanelContainer/MarginContainer/VBoxContainer/Controls/CompleteTutorial" to="." method="toggle_abort_tutorial"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Controls/Button" to="." method="close"]

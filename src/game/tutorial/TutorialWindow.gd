@@ -1,19 +1,20 @@
-class_name TutorialWindow extends CenterContainer
+class_name TutorialWindow extends PopupWindow
 
 signal abort_tutorial()
-signal window_closed()
 
 var title: Label = null
 var body: RichTextLabel = null
 var abort_tutorial_check: CheckButton = null
 
 var should_abort_tutorial = false
+var is_ready = false
 
 func _ready():
 	title = get_node("%Title") as Label
 	body = get_node("%Body") as RichTextLabel
 	abort_tutorial_check = get_node("%CompleteTutorial") as CheckButton
 	visible = false
+	is_ready = true
 
 	if !title or !body or !abort_tutorial_check:
 		close()
@@ -33,6 +34,5 @@ func close():
 	if should_abort_tutorial:
 		abort_tutorial.emit()
 		queue_free()
-		return
 	visible = false
-	window_closed.emit()
+	popup_closed.emit()
