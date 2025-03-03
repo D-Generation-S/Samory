@@ -14,15 +14,12 @@ func _ready():
 	visible = false
 	if active & (1 << WEB) && OS.has_feature("web"):
 		visible = true
-		print("web active")
 
 	if active & (1 << DESKTOP) && is_desktop():
 		visible = true
-		print("desktop active")
 
 	if active & (1 << MOBILE) && is_mobile():
 		visible = true
-		print("mobile active")
 
 	if active & (1 << DEBUG) && !OS.is_debug_build():
 		print_debug("debug only")

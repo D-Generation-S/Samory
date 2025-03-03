@@ -31,18 +31,6 @@ func card_was_identically(first_card_position: Point, second_card_position: Poin
 	if should_play_round:
 		prepare_and_start_timer()
 
-func game_paused(is_paused: bool):
-	if is_paused:
-		pause_ai()
-		return
-	unpause_ai()
-
-func pause_ai():
-	timer.paused = true
-
-func unpause_ai():
-	timer.paused = false
-
 func game_state_changed(game_state:int):
 	if !should_play_round:
 		return

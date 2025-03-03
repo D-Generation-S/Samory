@@ -3,6 +3,6 @@ class_name GamePauseMenu extends PopupWindow
 #signal close_pause_menu()
 
 func close_menu():
+	visible = false
 	popup_closed.emit()
-	
-	#close_pause_menu.emit()
+	queue_free()

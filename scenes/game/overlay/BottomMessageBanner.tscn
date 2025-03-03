@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://cy1y7rhyl27xn"]
+
+[ext_resource type="Script" path="res://src/game/overlay/BottomMessageBanner.gd" id="1_3xthr"]
+
+[node name="MarginContainer" type="MarginContainer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -32.0
+offset_right = 16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 50
+script = ExtResource("1_3xthr")
+
+[node name="BottomMessageBanner" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="MessageLabel" type="Label" parent="BottomMessageBanner"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "LABEL_TEXT"
+horizontal_alignment = 1
+vertical_alignment = 1

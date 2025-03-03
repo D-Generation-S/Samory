@@ -4,7 +4,7 @@ GAME_STATISTIC;[center]Game Statistic[/center];[center]Spiele Statistik[/center]
 PLAYER_WON;Winning player:;Gewinnende/r Spieler:
 PLAYER_TITLE;Player name;Spielername
 PLAYER_SCORE;[right]Player Score[/right];[right]Punktzahl[/right]
-OK;OK;OK
+OK;Ok;Ok
 CANCEL;Cancel;Abbrechen
 REPLAY;Replay;Erneut spielen
 QUIT_GAME;Quit Game;Spiel schließen
@@ -130,7 +130,6 @@ ADD_AI_PLAYER;Add AI Player;Ki Spieler hinzufügen
 MOVE_PLAYER_UP;Move player up;Spieler nach oben schieben
 MOVE_PLAYER_DOWN;Move player down;Spieler nach unten schieben
 PLAYER_LIST_HELP;The order within this list indicates the order in which the players take their turn;Die Reihenfolge innerhalb dieser liste gibt an in welcher Reihenfolge die Spieler an der reihe sind
-OK;Ok;Ok
 COMPLETE_TUTORIAL;Mark Tutorial as completed;Tutorial als abgeschlossen markieren
 COMPLETE_TUTORIAL_TOOLTIP;Will stop the tutorial and not additional help will be provided;Das Tutorial wird abgebrochen und es wird keine weitere Hilfe geben
 RESET_TUTORIAL;Reset Tutorial;Tutorial zurücksetzten
@@ -143,3 +142,9 @@ FIRST_ROUND_END;First round did end;Die erste Runde hat
 FIRST_ROUND_END_BODY;The first round did end, the next player can play there turn now.\n\nTo see which player is currently playing, look into the upper left corner, the player with a red name is the active one;Die erste Runde ist beendet, der nächste Spieler kann jetzt spielen.\n\nUm zu sehen, welcher Spieler gerade spielt, schauen Sie in die obere linke Ecke, der Spieler mit einem roten Namen ist der aktive.
 FIRST_MATCHING_CARD;First matching card found;Erstes Kartenpaar gefunden
 FIRST_MATCHING_CARD_BODY;You did find you first matching card, this will score you a point. Check the upper left corner beside your player name.\n\nBecause you found a matching pair your round will continue, this allowes you to score another point or reveal some cards.;Du hast die erste passende Karte gefunden, die dir einen Punkt einbringt. Überprüfen Sie die obere linke Ecke neben Ihrem Spielernamen.\n\nDa Sie ein übereinstimmendes Paar gefunden haben, wird Ihre Runde fortgesetzt, was dir erlaubt, einen weiteren Punkt zu erzielen oder einige Karten aufzudecken
+ROUND_END_BANNER_MESSAGE;To end the round, wait for %time% seconds or press the main action button;Um die Runde abzuschließen warte %time% Sekunden oder drücke die Aktions taste
+ROUND_END_BANNER_MESSAGE_NO_COMPLETE;To end the round, click the main action button;Um die Runde abzuschließen, drücke die Aktions Taste
+AUTO_COMPLETE_ROUND;Auto complete round;Runde automatisch abschließen
+TIME_FOR_COMPLETION;Time for completion: %time%s;Zeit bis beenden: %time%s
+AUTO_COMPLETE_ROUND_TOOLTIP;If enabled this will automatically wrap up a round after n seconds.;Wenn diese Aktion aktiv ist, wird die Runde automatisch nach n Sekunden beendet.
+AUTO_CLOSE_POPUP_BODY;Do you want to automatically wrap up a round if every possible card was turned?\n\nUse the buttons below to setup as you wish.\n\n\nTo change that setting later on, please go to the game settings located in the main menu;Möchten Sie eine Runde automatisch beenden, wenn alle möglichen Karten aufgedeckt wurden?\n\nVerwenden Sie die folgenden Schaltflächen, um die Einstellungen vorzunehmen.\n\n\nUm diese Einstellung später anzupassen, gehe bitte in die Spieleinstellungen im Hauptmenü
