@@ -51,3 +51,9 @@ func load_custom_deck_changed(toggled: bool):
 
 func close_window():
 	GlobalGameManagerAccess.get_game_manager().close_game()
+
+func auto_complete_round_changed(toggled: bool):
+	current_settings.auto_close_round = toggled
+
+func time_for_completion_changed(new_time: float):
+	current_settings.close_round_after_seconds = new_time

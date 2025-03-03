@@ -81,6 +81,8 @@ func get_shader_threshold() -> float:
 	var value = -1.0
 	if material is ShaderMaterial:
 		value = material.get_shader_parameter("threshold")
+		if value == null:
+			value = -1.0
 	return value
 
 func is_fully_shown() -> bool:

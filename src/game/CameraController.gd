@@ -13,12 +13,14 @@ signal confirm_current_card()
 @export var drag_speed: float = 1
 @export var touch_speed: float = 1.3
 @export var controller_drag_speed: float = 5
+@export var frames_to_skip_after_pause: int = 2
 
 
 var dragging: bool = false
 var initial_drag: bool = false
 var last_mouse_pos: Vector2
-var paused: bool = false
+var resumed_from_pause = false
+var skipped_frames = 0
 var can_end_round: bool = false
 var current_ai_player: bool = false
 
@@ -30,19 +32,23 @@ func _ready():
 	parent_node = get_parent() as MemoryGame
 	var screen_size = DisplayServer.screen_get_size()
 	position = Vector2(screen_size.x / 2, screen_size.y / 2)
-	paused = true
+	process_mode = Node.PROCESS_MODE_DISABLED
 
 func loading_done():
 	zoom = initial_zoom
 	position = initial_position
-	paused = false
+	process_mode = Node.PROCESS_MODE_INHERIT
 
 func _input(event):
 	if event is InputEventScreenDrag:
 		position = position - event.relative * touch_speed
 
 func _process(_delta):
-	if paused:
+	if resumed_from_pause:
+		if skipped_frames > frames_to_skip_after_pause:
+			resumed_from_pause = false
+			skipped_frames = 0
+		skipped_frames += 1
 		return
 	var controller_drag_vector = Input.get_vector("drag_left", "drag_right", "drag_up", "drag_down")
 		
@@ -116,7 +122,7 @@ func drag_controller(delta: Vector2):
 	offset = offset + delta * controller_drag_speed
 
 func game_paused(is_paused: bool):
-	paused = is_paused
+	resumed_from_pause = !is_paused
 
 func game_state_changed(game_state: int):
 	match game_state:

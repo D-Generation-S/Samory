@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://cfh5a6ymixhrd" path="res://scenes/songs/Sketchbook_2024-10_16.tres" id="6_yhiph"]
 
 [node name="MusicManager" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_bji2j")
 audio_bus_name = "music"
 tracks_to_skip = 2
