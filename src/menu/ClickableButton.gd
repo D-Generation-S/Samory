@@ -1,6 +1,7 @@
 class_name ClickableButton extends Button
 
 @export var is_focused: bool = false
+@export var play_sounds: bool = true
 
 var sound_bridge: SoundBridge = null
 
@@ -14,15 +15,14 @@ func load_sound_bridge() -> bool:
 	return sound_bridge != null
 
 func _pressed():
-	if !load_sound_bridge():
+	if !load_sound_bridge() or !play_sounds:
 		return
 	sound_bridge.play_button_click()
 
 func _hover():
-	if !load_sound_bridge():
+	if !load_sound_bridge() or !play_sounds:
 		return
 	sound_bridge.play_button_hover()
-
 
 func disable_button():
 	disabled = true

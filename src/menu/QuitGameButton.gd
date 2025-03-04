@@ -1,6 +1,7 @@
-extends Button
+extends ClickableButton
 
 func _ready():
+	super()
 	if OS.has_feature("web"):
 		visible = false
 

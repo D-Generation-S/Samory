@@ -57,6 +57,7 @@ text = "COMPLETE_TUTORIAL"
 
 [node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Controls"]
 layout_mode = 2
+size_flags_horizontal = 10
 text = "OK"
 
 [connection signal="toggled" from="PanelContainer/MarginContainer/VBoxContainer/Controls/CompleteTutorial" to="." method="toggle_abort_tutorial"]

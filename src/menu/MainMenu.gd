@@ -9,6 +9,7 @@ func _ready():
 	GlobalSystemDeckManager.loading_system_decks.connect(loading_cards)
 	GlobalSystemDeckManager.loading_system_decks.connect(loading_cards_done)
 	change_button_state(GlobalSystemDeckManager.is_loading())
+	get_tree().paused = false
 
 func loading_cards():
 	change_button_state(true)

@@ -1,6 +1,4 @@
-extends Control
-
-class_name GameFinished
+class_name GameFinished extends PopupWindow
 
 signal finish_game_ui_loaded(players: Array[PlayerResource], winner: Array[PlayerResource])
 
