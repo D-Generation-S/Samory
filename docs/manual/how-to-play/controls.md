@@ -42,12 +42,12 @@ If you want to know how to play, [press here][how-to-play]
 
 The mouse input does need some keyboard inputs, it does not work fully without it.
 
-| Button / Axis       | Actions                   | Additional Information                                                               |
-| ------------------- | ------------------------- | ------------------------------------------------------------------------------------ |
-| Left Mouse Button   | `Confirm`, `Uncover Card` | \-                                                                                   |
-| Right Mouse Button  | `Start panning`           | Keep the button pressed and move the mouse to pan the gamefield                      |
-| Middle Mouse Button | `Start panning`           | Same as Right Mouse Button                                                           |
-| Scroll Wheel        | `Zoom in`, `Zoom out`     | Scroll to zoom the view, allowing you to see all the cards or focus on specific ones |
+| Button / Axis       | Actions                                | Additional Information                                                               |
+| ------------------- | -------------------------------------- | ------------------------------------------------------------------------------------ |
+| Left Mouse Button   | `Confirm`, `Uncover Card`, `End Round` | \-                                                                                   |
+| Right Mouse Button  | `Start panning`                        | Keep the button pressed and move the mouse to pan the gamefield                      |
+| Middle Mouse Button | `Start panning`                        | Same as Right Mouse Button                                                           |
+| Scroll Wheel        | `Zoom in`, `Zoom out`                  | Scroll to zoom the view, allowing you to see all the cards or focus on specific ones |
 
 ### Keyboard
 
