@@ -20,6 +20,9 @@ func initialize_popup(message: String, time_until_close_in_seconds: float, shoul
 	label_text = translated_message
 
 func timer_timeout():
+	if !visible:
+		return
+	print ("closed by popup")
 	close_popup()
 
 func popup_active():
@@ -40,6 +43,8 @@ func popup_active():
 func close_popup():
 	popup_closed.emit()
 	banner_close_action.call()
+	visible = false
+	timer.stop()
 	queue_free()
 
 func popup_paused():

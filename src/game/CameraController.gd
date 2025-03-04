@@ -50,8 +50,11 @@ func _process(_delta):
 			skipped_frames = 0
 		skipped_frames += 1
 		return
-	var controller_drag_vector = Input.get_vector("drag_left", "drag_right", "drag_up", "drag_down")
-		
+	handle_special_player_actions()
+	handle_camera_movement()
+	handle_player_input_actions()
+
+func handle_camera_movement():
 	var zoom_vector = Input.get_axis("zoom_in", "zoom_out")
 
 	if Input.is_action_just_pressed("stepped_zoom_in"):
@@ -61,19 +64,32 @@ func _process(_delta):
 
 	zoom_vector = zoom_vector *  zoom_step
 	zoom = zoom + Vector2(zoom_vector, zoom_vector)
-
+	
+	var zoom_x = clampf(zoom.x, min_zoom, max_zoom)
+	zoom = Vector2(zoom_x, zoom_x)
+	
+	var controller_drag_vector = Input.get_vector("drag_left", "drag_right", "drag_up", "drag_down")
 	if Input.is_action_just_pressed("drag"):
 		dragging = true
 		initial_drag = true
 	if Input.is_action_just_released("drag"):
 		dragging = false
-	if Input.is_action_just_pressed("back"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		game_menu_requested.emit()
-	if Input.is_action_just_pressed("next_round") and can_end_round:
-		can_end_round = false
-		parent_node.end_round_now()
+	if offset != Vector2.ZERO:
+		var position_x = clamp(position.x + offset.x, -max_x_range, max_x_range)
+		var position_y = clamp(position.y + offset.y, -max_y_range, max_y_range)
+		position = Vector2(position_x, position_y)
 
+		offset = Vector2.ZERO
+
+	if dragging:
+		drag_mouse()
+
+	drag_controller(controller_drag_vector)
+	pass
+
+func handle_player_input_actions():
+	if current_ai_player:
+		return
 	var movement = Vector2.ZERO
 	if Input.is_action_just_pressed("move_left"):
 		movement.x = -1
@@ -90,21 +106,14 @@ func _process(_delta):
 
 	if movement != Vector2.ZERO:
 		card_movement.emit(movement)
-		
-	var zoom_x = clampf(zoom.x, min_zoom, max_zoom)
-	zoom = Vector2(zoom_x, zoom_x)
 
-	if offset != Vector2.ZERO:
-		var position_x = clamp(position.x + offset.x, -max_x_range, max_x_range)
-		var position_y = clamp(position.y + offset.y, -max_y_range, max_y_range)
-		position = Vector2(position_x, position_y)
-
-		offset = Vector2.ZERO
-
-	if dragging:
-		drag_mouse()
-
-	drag_controller(controller_drag_vector)
+func handle_special_player_actions():
+	if Input.is_action_just_pressed("back"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		game_menu_requested.emit()
+	if Input.is_action_just_pressed("next_round") and can_end_round:
+		can_end_round = false
+		parent_node.end_round_now()
 
 func drag_mouse():
 	if initial_drag:
@@ -128,6 +137,8 @@ func game_state_changed(game_state: int):
 	match game_state:
 		GameState.PREPARE_ROUND_END:
 			can_end_round = true
+		GameState.ROUND_START:
+			can_end_round = false
 
 func player_changed(current_player:PlayerResource):
 	current_ai_player = current_player.is_ai()
@@ -148,7 +159,7 @@ func adjust_zoom_and_position_to_play_area(cards_on_x: int, cards_on_y: int):
 
 	var larger_side = max(field_width, field_height * 1.3)
 
-	var zoom_value: float = zoom_per_card * larger_side
+	var zoom_value: float = (zoom_per_card * larger_side) * get_window().content_scale_factor
 	zoom_value = clampf(zoom_value, min_zoom, max_zoom)
 	zoom_value = max_zoom - zoom_value
 	zoom_value = clampf(zoom_value, min_zoom, max_zoom)

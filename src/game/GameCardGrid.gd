@@ -180,6 +180,9 @@ func round_frozen():
 	current_card = null
 
 func round_unfrozen():
+	if currently_ai_player:
+		controller_input_was_made = false
+		return
 	if controller_input_was_made:
 		select_closest_card(Point.new(0,0), true)
 	controller_input_was_made = false

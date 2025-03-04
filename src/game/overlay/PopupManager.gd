@@ -9,6 +9,8 @@ var current_popup_id: int = 0
 func add_and_show_popup(popup: PopupWindow):
 	if !popup.popup_closed.is_connected(popup_closed):
 		popup.popup_closed.connect(popup_closed)
+	
+	check_and_add_id(popup)
 	popupQueue.append(popup)
 	show_next_popup()
 
@@ -31,9 +33,7 @@ func show_next_popup():
 		return
 	unpause()
 	var popup = popupQueue.pop_front()
-	if popup.get_id() == -1:
-		popup.set_id(current_popup_id)
-		current_popup_id += 1
+	check_and_add_id(popup)
 	
 	if popup.should_pause:
 		pause_game.emit()
@@ -41,6 +41,11 @@ func show_next_popup():
 	add_child(popup)
 	popup.show()
 	popup.popup_active()
+
+func check_and_add_id(popup: PopupWindow):
+	if popup.get_id() == -1:
+		popup.set_id(current_popup_id)
+		current_popup_id += 1
 
 func is_high_priority_popup_requested() -> bool:
 	var is_requested: bool = false
@@ -56,6 +61,10 @@ func handle_high_priority_popup():
 			child.popup_paused()
 			remove_child(child)
 			popupQueue.append(child)
+	for child in popupQueue:
+		if child.high_priority and child.should_pause:
+			popupQueue.erase(child)
+			popupQueue.insert(0, child)
 	
 func close_current_popup():
 	for child in get_children():

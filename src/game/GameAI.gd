@@ -37,6 +37,8 @@ func game_state_changed(game_state:int):
 
 	if game_state == GameState.ROUND_START:
 		prepare_and_start_timer()
+	if game_state == GameState.PREPARE_ROUND_END:
+		timer.stop()
 
 func get_all_card_positions() -> Array[Point]:
 	return cards_node.get_all_card_positions()

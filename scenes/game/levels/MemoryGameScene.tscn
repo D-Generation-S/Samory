@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bnfr8gek24m47"]
+[gd_scene load_steps=27 format=3 uid="uid://bnfr8gek24m47"]
 
 [ext_resource type="Script" path="res://src/game/MemoryGame.gd" id="1_13jq5"]
 [ext_resource type="AudioStream" uid="uid://dj5j3cwv0a265" path="res://assets/audio/effect/card-slide-1.ogg" id="2_2td5d"]
@@ -23,8 +23,9 @@
 [ext_resource type="Script" path="res://src/menu/touch/TouchButton.gd" id="18_u7amr"]
 [ext_resource type="Script" path="res://src/game/GameCardGrid.gd" id="19_ploi3"]
 [ext_resource type="Texture2D" path="res://assets/textures/MinusIcon.tres" id="20_ef4f6"]
-[ext_resource type="Script" path="res://src/game/tutorial/Tutorial.gd" id="21_dv4ao"]
+[ext_resource type="Script" path="res://src/game/overlay/PopupManager.gd" id="21_dv4ao"]
 [ext_resource type="PackedScene" uid="uid://d15qeu4s4bgjk" path="res://scenes/game/templates/TutorialWindow.tscn" id="22_ubsrg"]
+[ext_resource type="Script" path="res://src/game/tutorial/tutorial.gd" id="23_gflho"]
 
 [node name="MemoryGame" type="Node2D" node_paths=PackedStringArray("gui_node", "card_target_node", "game_nodes_to_show", "loading_scene")]
 process_mode = 1
@@ -105,7 +106,7 @@ script = ExtResource("18_u7amr")
 continue_press = true
 action_to_performe = "zoom_in"
 
-[node name="Tutorial" type="Control" parent="CanvasLayer"]
+[node name="PopupManager" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -114,10 +115,14 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("21_dv4ao")
+
+[node name="Tutorial" type="Node" parent="CanvasLayer"]
+script = ExtResource("23_gflho")
 tutorial_window_scene = ExtResource("22_ubsrg")
 
 [node name="Background" type="Node2D" parent="." node_paths=PackedStringArray("camera_node")]
 visible = false
+z_index = -20
 script = ExtResource("7_kxmqb")
 background_texture = ExtResource("7_35r1o")
 camera_node = NodePath("../Camera2D")
@@ -145,6 +150,7 @@ script = ExtResource("19_ploi3")
 [connection signal="matching_card_by_player" from="." to="CanvasLayer/Tutorial" method="first_matching_card"]
 [connection signal="player_round_endet" from="." to="CanvasLayer/Tutorial" method="first_round_end"]
 [connection signal="player_scored" from="." to="Players" method="player_scored"]
+[connection signal="request_popup" from="." to="CanvasLayer/PopupManager" method="add_and_show_popup"]
 [connection signal="turn_of_an_player" from="." to="CanvasLayer/Tutorial" method="player_turn"]
 [connection signal="player_added" from="Players" to="CanvasLayer/MarginContainer/PlayersOverlay" method="add_player"]
 [connection signal="player_changed" from="Players" to="CanvasLayer/MarginContainer/PlayersOverlay" method="player_changed"]
@@ -156,5 +162,6 @@ script = ExtResource("19_ploi3")
 [connection signal="confirm_current_card" from="Camera2D" to="Cards" method="confirm_current_card"]
 [connection signal="game_menu_requested" from="Camera2D" to="." method="show_game_menu"]
 [connection signal="loading_done" from="Camera2D/LoadingScreen" to="Camera2D" method="loading_done"]
-[connection signal="continue_game" from="CanvasLayer/Tutorial" to="." method="unpause_game"]
-[connection signal="pause_game" from="CanvasLayer/Tutorial" to="." method="pause_game"]
+[connection signal="continue_game" from="CanvasLayer/PopupManager" to="." method="unpause_game"]
+[connection signal="pause_game" from="CanvasLayer/PopupManager" to="." method="pause_game"]
+[connection signal="tutorial_requested" from="CanvasLayer/Tutorial" to="CanvasLayer/PopupManager" method="add_and_show_popup"]

@@ -258,7 +258,7 @@ func show_round_ended_banner():
 	if !auto_close:
 		message = "ROUND_END_BANNER_MESSAGE_NO_COMPLETE"
 
-	popup_banner.initialize_popup(message, time_until_close, auto_close, func(): end_round_now())
+	popup_banner.initialize_popup(message, time_until_close, auto_close, func(): end_round_now() )
 	popup_banner.should_pause = false
 	request_popup.emit(popup_banner)
 
@@ -266,7 +266,7 @@ func show_round_ended_banner():
 	
 
 func end_round_now():
-	if ending_round:
+	if ending_round or current_game_state != GameState.PREPARE_ROUND_END:
 		return
 	ending_round = true
 	print("End Round")

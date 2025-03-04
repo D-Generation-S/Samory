@@ -14,6 +14,7 @@ var effect_length: float = 1000000
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	process_mode = PROCESS_MODE_ALWAYS
 	effect_length = sound_effect.get_length()
 	elapsed_time = effect_length
 	screen_message.text = ""
