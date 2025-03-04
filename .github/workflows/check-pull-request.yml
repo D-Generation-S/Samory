@@ -18,7 +18,7 @@ jobs:
            lfs: true
       - name: Build
         id: build
-        uses: manleydev/build-godot-action@master
+        uses: felix-schindler/build-godot-action@v2.0.0
         with:
           name: ${{ matrix.platform.file }}
           preset: ${{ matrix.platform.name }}

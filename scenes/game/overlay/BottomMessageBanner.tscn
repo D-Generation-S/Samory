@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cy1y7rhyl27xn"]
 
-[ext_resource type="Script" path="res://src/game/overlay/BottomMessageBanner.gd" id="1_3xthr"]
+[ext_resource type="Script" uid="uid://bu2j6ac3at5j2" path="res://src/game/overlay/BottomMessageBanner.gd" id="1_3xthr"]
 
 [node name="MarginContainer" type="MarginContainer"]
 anchors_preset = 7

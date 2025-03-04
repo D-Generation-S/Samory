@@ -88,7 +88,7 @@ operator = 2
 code = "shader_type canvas_item;
 render_mode blend_mix;
 
-uniform float FloatParameter : hint_range(0.05000000074506, 1) = 0.05000000074506;
+uniform float FloatParameter : hint_range(0.05000000074506, 1.0) = 0.05000000074506;
 uniform sampler2D Pattern : repeat_enable;
 uniform vec4 effect_color : source_color = vec4(0.000000, 0.090196, 0.525490, 1.000000);
 

@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://n2r2v72dltn8"]
 
 [ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://scenes/menu/MenuBackground.tscn" id="1_n8sdb"]
-[ext_resource type="Script" path="res://src/menu/credit_screen/CreditHandling.gd" id="1_xb4j0"]
-[ext_resource type="Script" path="res://src/overlay/FinishGameOk.gd" id="2_52q2a"]
-[ext_resource type="Script" path="res://src/menu/LinkButton.gd" id="2_f3feg"]
+[ext_resource type="Script" uid="uid://crh68yicln7tu" path="res://src/menu/credit_screen/CreditHandling.gd" id="1_xb4j0"]
+[ext_resource type="Script" uid="uid://b257bx14gogv7" path="res://src/overlay/FinishGameOk.gd" id="2_52q2a"]
+[ext_resource type="Script" uid="uid://bxxc0dm0qgu31" path="res://src/menu/LinkButton.gd" id="2_f3feg"]
 [ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="3_i56v7"]
 
 [node name="Credits" type="CanvasLayer"]

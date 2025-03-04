@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://8yxfao2fwwod"]
 
-[ext_resource type="Script" path="res://src/game/FallingCard.gd" id="1_5pc70"]
+[ext_resource type="Script" uid="uid://duuqirolpug42" path="res://src/game/FallingCard.gd" id="1_5pc70"]
 [ext_resource type="Texture2D" uid="uid://dpcfrsq40moii" path="res://assets/sprites/CardDefaultBack.png" id="1_f7o75"]
-[ext_resource type="Shader" path="res://assets/shaders/BurnFromPoint.gdshader" id="2_bndme"]
-[ext_resource type="Script" path="res://src/game/FallingCardSprite.gd" id="2_hxqwv"]
+[ext_resource type="Shader" uid="uid://b2lxbv0cehgbw" path="res://assets/shaders/BurnFromPoint.gdshader" id="2_bndme"]
+[ext_resource type="Script" uid="uid://cmyd11m75j7hf" path="res://src/game/FallingCardSprite.gd" id="2_hxqwv"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_7g1s1"]
 
@@ -12,12 +12,12 @@ noise = SubResource("FastNoiseLite_7g1s1")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hhi4s"]
 shader = ExtResource("2_bndme")
-shader_parameter/position = null
+shader_parameter/position = Vector2(0, 0)
 shader_parameter/radius = 0.0
 shader_parameter/borderWidth = 0.03
 shader_parameter/burnMult = 0.135
-shader_parameter/burnColor = Color(1, 0.443137, 0, 1)
 shader_parameter/noiseTexture = SubResource("NoiseTexture2D_5ducq")
+shader_parameter/burnColor = Color(1, 0.443137, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ov72a"]
 size = Vector2(150, 150)

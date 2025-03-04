@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://csamt2tu6hlpo"]
 
-[ext_resource type="Script" path="res://src/overlay/GameFinished.gd" id="1_fioaw"]
-[ext_resource type="Script" path="res://src/overlay/PlayerScoreList.gd" id="2_ohkho"]
-[ext_resource type="Script" path="res://src/overlay/PlayerWon.gd" id="2_wslvc"]
+[ext_resource type="Script" uid="uid://cmke7i4erk8vw" path="res://src/overlay/GameFinished.gd" id="1_fioaw"]
+[ext_resource type="Script" uid="uid://bcrw3c0sasodl" path="res://src/overlay/PlayerScoreList.gd" id="2_ohkho"]
+[ext_resource type="Script" uid="uid://bwey0ebunoy8d" path="res://src/overlay/PlayerWon.gd" id="2_wslvc"]
 [ext_resource type="PackedScene" uid="uid://pwy03e08f1ov" path="res://scenes/game/overlay/PlayerScoreEntry.tscn" id="3_6aww1"]
-[ext_resource type="Script" path="res://src/overlay/FinishGameOk.gd" id="5_8dsgm"]
-[ext_resource type="Script" path="res://src/overlay/ReplayGame.gd" id="6_f0a12"]
+[ext_resource type="Script" uid="uid://b257bx14gogv7" path="res://src/overlay/FinishGameOk.gd" id="5_8dsgm"]
+[ext_resource type="Script" uid="uid://cigttlfj7yvng" path="res://src/overlay/ReplayGame.gd" id="6_f0a12"]
 
 [node name="FinishGame" type="Control"]
 layout_mode = 3

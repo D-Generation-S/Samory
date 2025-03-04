@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://pwy03e08f1ov"]
 
-[ext_resource type="Script" path="res://src/overlay/PlayerScoreEntry.gd" id="1_4epdj"]
+[ext_resource type="Script" uid="uid://b7mso3wm1qj2l" path="res://src/overlay/PlayerScoreEntry.gd" id="1_4epdj"]
 
 [node name="MarginContainer" type="MarginContainer" node_paths=PackedStringArray("player_name", "player_score")]
 anchors_preset = 15

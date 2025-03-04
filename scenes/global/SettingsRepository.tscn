@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bh4bg61xwlmi3"]
 
-[ext_resource type="Script" path="res://src/classes/SettingsRepository.gd" id="1_abiu6"]
+[ext_resource type="Script" uid="uid://op3f28advvsk" path="res://src/classes/SettingsRepository.gd" id="1_abiu6"]
 [ext_resource type="Resource" uid="uid://gbkkrxvvrxpt" path="res://scenes/menu/resources/DefaultSettings.tres" id="2_apg35"]
 
 [node name="SettingsRepository" type="Node"]
