@@ -1,4 +1,4 @@
-extends Button
+extends ClickableButton
 
 @export var test_effects: Array[AudioStream] = []
 

@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://src/menu/StartQuickGame.gd" id="1_dyfxg"]
 [ext_resource type="Script" path="res://src/menu/OpenSingleScene.gd" id="1_ohfem"]
 [ext_resource type="Script" path="res://src/menu/MainMenu.gd" id="1_w7od3"]
-[ext_resource type="Texture2D" uid="uid://dmf23xobks0pc" path="res://assets/sprites/wood.png" id="2_4tb54"]
+[ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://scenes/menu/MenuBackground.tscn" id="2_hebqv"]
 [ext_resource type="PackedScene" uid="uid://dkd4cftggpymb" path="res://scenes/menu/GameLobby.tscn" id="2_o3qyg"]
 [ext_resource type="PackedScene" uid="uid://scnjjf50me2r" path="res://scenes/menu/DeckViewer.tscn" id="6_7qj6t"]
 [ext_resource type="Script" path="res://src/templates/AiDifficultyResource.gd" id="6_k6mp2"]
@@ -41,10 +41,7 @@ region = Rect2(58, 360, 35, 33)
 script = ExtResource("1_w7od3")
 game_buttons = [NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Start Game"), NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quick Game"), NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Deck Viewer")]
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 2048.0
-offset_bottom = 2048.0
-texture = ExtResource("2_4tb54")
+[node name="MenuBackground" parent="." instance=ExtResource("2_hebqv")]
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchors_preset = 8
@@ -52,10 +49,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.5
-offset_top = -60.5
-offset_right = 100.5
-offset_bottom = 60.5
+offset_left = -106.5
+offset_top = -213.0
+offset_right = 106.5
+offset_bottom = 213.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -64,18 +61,19 @@ layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Start Game" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 4
 focus_neighbor_top = NodePath("../../../../../TopDock/HBoxContainer/SettingsButton")
 focus_neighbor_right = NodePath("../../../../../TopDock/HBoxContainer/SettingsButton")
 text = "START_GAME"
