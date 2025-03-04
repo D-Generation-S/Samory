@@ -18,19 +18,31 @@ It will add two players and get you directly into the game.
 
 ### Start Game
 
-![Game Lobby](https://i.imgur.com/PbzDMlq.jpeg)
+This option will show you a lobby screen, it does allow you to add players to the player list on the left. You can also add ai players to play against
 
-This option will show you a lobby screen, it does allow you to add players to the player list on the left.
+![Add Human Player](https://i.imgur.com/LgZWtIP.png)
+*Adding a human player to the game*
+
+![Add AI Player](https://i.imgur.com/nNDb0pI.png)
+*Adding an AI player to the game*
+
+>:information_source: The order of the players in the player list,
+>will be the order in which the players will play there round
+
 It also allows you to select a deck on the right side of the screen.
 
-You need to select one deck and add at least two players, if done correctly the `Start Game` button in the left corner
+You need to select one deck and add at least two players. There must be a human player in the list, if done correctly the `Start Game` button in the left corner
 will unlock.
+
+![Game Lobby](https://i.imgur.com/UEX1QkS.png)
+*Screenshot of the game lobby, showing 2 human players and a selected deck*
 
 Press it to get to the game screen
 
 ## Game Play
 
-![Game field](https://i.imgur.com/afx5CKg.jpeg)
+![Game field](https://i.imgur.com/XqXqUiE.png)
+*Screenshot of the game area right after starting a new game*
 
 This part will explain to you how you actually play the game as soon as it was started.
 
@@ -55,6 +67,9 @@ Wait until every player did see the cards you uncovered, press the `End Round` b
 Check the [controls][controls] to find the required button.
 
 #### Round end
+
+![Round End](https://i.imgur.com/9YsppX6.png)
+*Screenshot of a game at the end of a turn, it's about change the player and start a new round*
 
 If your selection does not match up your turn will end and the next player will be
 highlighted in the left corner, now he can play.
