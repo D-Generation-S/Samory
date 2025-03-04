@@ -1,7 +1,7 @@
 key;en;de
 CURRENT_PLAYER;Current player:;Aktueller Spieler:
 GAME_STATISTIC;[center]Game Statistic[/center];[center]Spiele Statistik[/center]
-PLAYER_WON;Winning player:;Gewinnender Spieler:
+PLAYER_WON;Winning player:;Gewinnende/r Spieler:
 PLAYER_TITLE;Player name;Spielername
 PLAYER_SCORE;[right]Player Score[/right];[right]Punktzahl[/right]
 OK;OK;OK
@@ -15,13 +15,10 @@ CARD_COUNT;Card count:;Kartenanzahl:
 BUILT_IN;Embedded:;Eingebettetes:
 PLAYER_LIST;Players;Spieler
 PLAYER_NAME;Playername;Spielername
-PLAYER_AGE;Plageage;Alter des Spielers
 ADD_NEW_PLAYER;Add new player;Neuen Spieler hinzufügen
 SELECT_SAVED_PLAYER;Select saved player;Bereits erstellen Spieler auswählen
 ONLY_LETTER_AND_NUMBERS_ALLOWED_FOR_PLAYERNAME;A playername can only contain letters and numbers;Nur Buchstaben und Zahlen sind für einen Spielernamen erlaubt
 NO_NAME_WAS_ENTERD;A Playername is required;Der Spielername wird benötigt
-NO_AGE_WAS_ENTERED;The age of a player is required;Das alter des Spielers wird benötigt
-AGE_NEEDS_TO_BE_A_NUMBER;The age of an player must be a number;Das alter eines Spielers muss eien Zahl sein
 DELETE;Delete;Entfernen
 LOADING;Loading;Lade
 LOAD_DECKS;custom decks;eigene Kartendecks
@@ -30,6 +27,7 @@ PLACING_CARDS;Placing cards on table;Lege Karten auf den Tisch
 CLOSE_MENU;Close menu;Menü schließen
 MAIN_MENU;Main Menu;Hauptmenü
 PAUSE_MENU;Pause Menu;Pause Menü
+TOGGLE_DEBUG;Enable/Disable Debug;Debug aktivieren/deaktivieren
 NO;No;Nein
 YES;Yes;Ja
 ANIMALS;Animals;Tiere
@@ -121,7 +119,7 @@ MUSIC_VOLUME;Music volume;Musiklautstärke
 APPLY;Apply;Annehmen
 ENGLISH;English;Englisch
 GERMAN;German;Deutsch
-VERSION;Version: ;Version:
+VERSION;Version:;Version:
 GAME_SETTINGS;Game Settings;Spieleinstellungen
 CREDITS;Credits;Credits
 QUICK_AI_GAME;Start Quick AI Game;Starte schnelles KI Spiel
@@ -131,14 +129,14 @@ HARD_AI;Hard;Schwer
 ADD_AI_PLAYER;Add AI Player;Ki Spieler hinzufügen
 MOVE_PLAYER_UP;Move player up;Spieler nach oben schieben
 MOVE_PLAYER_DOWN;Move player down;Spieler nach unten schieben
-PLAYER_LIST_HELP;The order within this list indicates the order in which the players take their turn;Die Reihenfolge innerhalb dieser liste gibt an in welcher Reihenfolge die Spieler dran kommen
+PLAYER_LIST_HELP;The order within this list indicates the order in which the players take their turn;Die Reihenfolge innerhalb dieser liste gibt an in welcher Reihenfolge die Spieler an der reihe sind
 OK;Ok;Ok
 COMPLETE_TUTORIAL;Mark Tutorial as completed;Tutorial als abgeschlossen markieren
 COMPLETE_TUTORIAL_TOOLTIP;Will stop the tutorial and not additional help will be provided;Das Tutorial wird abgebrochen und es wird keine weitere Hilfe geben
 RESET_TUTORIAL;Reset Tutorial;Tutorial zurücksetzten
 RESET_TUTORIAL_TOOLTIP;If you press this button the tutorial will be reset;Wenn du diesen Knopf drückst wird das Tutorial zurückgesetzt
 PLAYER_TURN;Your first turn;Dein erster Zug
-PLAYER_TURN_BODY;This is your first turn, as you can see in the background there are some cards.\n\nYour task is to click on one of these cards and memorize the picture on it. The target of the game is to find the two matching cards, if you manage to do this within your turn you get a point.;Das ist dein erster Spielzug, wie du im Hintergrund sehen kannst sind hier einige Karten zu finden.\n\nDeine Aufgabe ist es nun eine dieser Karten anzuklicken und sich das Bild darauf zu merken. Das Ziel des Spiels ist es die beiden passenden Karten zu finden, wenn du dies innerhalb deines Zuges schaffst bekommst du einen Punkt.
+PLAYER_TURN_BODY;This is your first turn, as you can see in the background there are some cards.\n\nYour task is to click on one of these cards and memorize the picture on it. The goal of the game is to find the two matching cards, if you manage to do this within your turn you get a point.;Das ist dein erster Spielzug, wie du im Hintergrund sehen kannst sind hier einige Karten zu finden.\n\nDeine Aufgabe ist es nun eine dieser Karten anzuklicken und sich das Bild darauf zu merken. Das Ziel des Spiels ist es die beiden passenden Karten zu finden, wenn du dies innerhalb deines Zuges schaffst bekommst du einen Punkt.
 FIRST_CARD_TURNED;First card turned;Deine erste Karte umgedreht
 FIRST_CARD_TURNED_BODY;You have just turned over your first card, now try to find the second one with the same picture.;Du hast soeben deine erste Karte umgedreht, versuche nun die zweite mit dem selben Bild zu finden.
 FIRST_ROUND_END;First round did end;Die erste Runde hat

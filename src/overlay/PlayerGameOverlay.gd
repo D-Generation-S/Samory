@@ -5,6 +5,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	visible = false
 	for child in player_target_control.get_children():
 		player_target_control.remove_child(child)
 
