@@ -13,3 +13,6 @@ func change_curve():
 	var window_size = get_window().size
 	curve.add_point(Vector2(-width_margin, target_height))
 	curve.add_point(Vector2(window_size.x + width_margin, target_height))
+
+func _exit_tree():
+	get_window().size_changed.disconnect(change_curve)
