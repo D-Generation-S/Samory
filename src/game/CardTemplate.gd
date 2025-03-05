@@ -76,6 +76,9 @@ func get_width() -> float:
 	return back_side.get_rect().size.x
 
 func card_was_clicked():
+	if was_clicked:
+		printerr("Clicked on already revealed card")
+		return
 	was_clicked = true
 	freeze_card()
 	play_card_turn_sound()
