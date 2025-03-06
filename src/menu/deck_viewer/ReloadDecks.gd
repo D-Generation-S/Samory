@@ -13,6 +13,7 @@ func _ready():
 		disabled = true
 
 func _pressed():
+	super()
 	GlobalSystemDeckManager.reload_system_decks()
 
 func loading_done():

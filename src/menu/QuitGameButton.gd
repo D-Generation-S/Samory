@@ -6,4 +6,5 @@ func _ready():
 		visible = false
 
 func _pressed():
+	super()
 	get_tree().quit()
