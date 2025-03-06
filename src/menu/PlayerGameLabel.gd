@@ -1,11 +1,15 @@
 extends MarginContainer
 
-class_name  PlayerGameLabel
+class_name PlayerGameLabel
+
+signal player_is_active()
+signal player_is_inactive()
 
 @export var label: RichTextLabel
 @export var player_type_icon_box: TextureRect
 @export var human_player_icon: Texture
 @export var ai_player_icon: Texture
+@export var player_round_color: ColorResource
 
 var active_id: int = -1
 var contained_player: PlayerResource
@@ -34,15 +38,16 @@ func player_scored(player_id: int, score: int):
 	set_player_name()
 
 func build_player_name() -> String:
-	var return_name = contained_player.name
-	if contained_player.is_ai():
-		return_name = return_name + " [AI]"
+	var return_name = contained_player.get_display_name()
 	return return_name + " (" + str(player_score) + ")"
 
 func set_player_name():
 	label.text = build_player_name()
 	if contained_player.id == active_id:
-		label.text = "[color=red]" + build_player_name() + "[/color]"
+		label.text = player_round_color.get_color_bb_code() + build_player_name() + "[/color]"
+		player_is_active.emit()
+	else:
+		player_is_inactive.emit()
 
 func round_end():
 	set_player_name()

@@ -17,10 +17,7 @@ signal regain_focus_request()
 var delete_queued: bool = false
 
 func _ready():
-	var name_suffix = ""
-	if  player_card.is_ai():
-		name_suffix = " [AI]"
-	player_name_field.text = player_card.name + name_suffix
+	player_name_field.text = player_card.get_display_name()
 	var icon = human_player_icon
 	if player_card.is_ai():
 		icon = ai_player_icon

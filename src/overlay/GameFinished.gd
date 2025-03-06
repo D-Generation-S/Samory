@@ -7,7 +7,10 @@ var played_deck: MemoryDeckResource
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var players = manager.get_players()
+	var players: Array[PlayerResource] = []
+	if manager != null:
+		players = manager.get_players()
+		
 	var highest_score = -1
 	for player in players:
 		if player.score >= highest_score:
