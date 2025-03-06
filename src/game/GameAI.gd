@@ -27,6 +27,7 @@ func card_was_triggered(game_state:int, clicked_cards: Array[CardTemplate]):
 func card_was_identically(first_card_position: Point, second_card_position: Point):
 	remove_card_to_all_ais(first_card_position)
 	remove_card_to_all_ais(second_card_position)
+	
 	triggered_cards = 0 
 	if should_play_round:
 		prepare_and_start_timer()
@@ -35,10 +36,12 @@ func game_state_changed(game_state:int):
 	if !should_play_round:
 		return
 
+	if game_state == GameState.PREPARE_ROUND_END or game_state == GameState.ROUND_FREEZE:
+		timer.stop()
+		should_play_round = false
+		return
 	if game_state == GameState.ROUND_START:
 		prepare_and_start_timer()
-	if game_state == GameState.PREPARE_ROUND_END:
-		timer.stop()
 
 func get_all_card_positions() -> Array[Point]:
 	return cards_node.get_all_card_positions()
@@ -49,14 +52,19 @@ func player_changed(current_player:PlayerResource):
 	should_play_round = current_player.is_ai()
 
 func prepare_and_start_timer():
-	triggered_cards = triggered_cards + 1
+	if !timer.is_stopped():
+		return
 	timer.wait_time = randf_range(min_wait_milliseconds, max_wait_milliseconds) / 1000
 	timer.start()
 
 func timer_triggered():
+	if triggered_cards >= 2:
+		printerr("Already revealed 2 cards without matching pair!")
+		return
 	var ai_resource = current_player_data.ai_difficulty as AiDifficultyResource
 	timer.stop()
 	if should_play_round and ai_resource != null:
+		triggered_cards += 1
 		ai_resource.execute_action(cards_node)
 
 func add_card_to_all_ais(point: Point, card: MemoryCardResource):

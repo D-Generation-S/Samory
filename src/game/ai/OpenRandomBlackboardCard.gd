@@ -18,5 +18,6 @@ func execute_action(blackboard: Blackboard, grid: GameCardGrid):
         success = execute_action(blackboard, grid)
     
     if !success and backup_action != null and backup_action.can_execute(blackboard, grid):
+        print_debug("Trigger fallback action")
         backup_action.execute_action(blackboard, grid)
         
