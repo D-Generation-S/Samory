@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dkd4cftggpymb"]
+[gd_scene load_steps=22 format=3 uid="uid://dkd4cftggpymb"]
 
 [ext_resource type="Script" path="res://src/menu/GameLobby.gd" id="1_0oi2l"]
 [ext_resource type="Script" path="res://src/menu/AddNewPlayerButton.gd" id="1_2n3u5"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://scenes/menu/MenuBackground.tscn" id="2_q7a4k"]
 [ext_resource type="Script" path="res://src/menu/game_lobby/PlayersLobbyManager.gd" id="3_1ax0d"]
 [ext_resource type="Texture2D" uid="uid://d3kktfkudqqbm" path="res://assets/textures/HelpIcon.tres" id="3_bvnvj"]
+[ext_resource type="Script" path="res://src/menu/game_lobby/LobbySplitter.gd" id="3_muy8l"]
 [ext_resource type="PackedScene" uid="uid://dxhn5n16onctb" path="res://scenes/menu/NewPlayer.tscn" id="3_vi7sw"]
 [ext_resource type="PackedScene" uid="uid://de0if4rovyxsv" path="res://scenes/menu/PlayerCard.tscn" id="4_l5ybk"]
 [ext_resource type="Script" path="res://src/menu/QuickAddPlayer.gd" id="7_6tvv5"]
@@ -51,6 +52,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 split_offset = -300
 dragger_visibility = 2
+script = ExtResource("3_muy8l")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer"]
 layout_mode = 2
