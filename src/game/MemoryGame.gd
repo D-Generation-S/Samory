@@ -12,6 +12,8 @@ signal identical_cards(first_card_point: Point, set_icon_modulatecard_point: Poi
 signal player_scored(player_id: int)
 
 signal field_constructed(cards_on_x: int, cards_on_y: int)
+signal request_popup(window: PopupWindow)
+signal close_last_message_box(id: int)
 
 ##Tutorial
 signal turn_of_an_player()
@@ -45,14 +47,14 @@ var game_menu: GamePauseMenu = null
 var load_thread: Thread = null
 var current_sound_timer = 0
 
-var paused: bool = false
+var ending_round: bool = false
+
+var message_banner: PackedScene = preload("res://scenes/game/overlay/BottomMessageBanner.tscn")
+var auto_close_popup: PackedScene = preload("res://scenes/game/overlay/AutoClosePopup.tscn")
+var last_message_banner_id: int = -1
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_DISABLED
-	game_menu = game_menu_template.instantiate() as GamePauseMenu
-	game_menu.close_pause_menu.connect(hide_game_menu)
-	game_menu.visible = false
-	gui_node.add_child(game_menu)
 	loading_scene.set_screen_message("PLACING_CARDS", true)
 	current_sound_timer = seconds_to_lay_cards
 	
@@ -82,8 +84,6 @@ func _ready():
 			node.visible = true
 
 func _process(delta):
-	if paused:
-		return
 	if current_game_state == GameState.ROUND_END:
 		check_if_round_complete()
 	if current_game_state == GameState.ROUND_FREEZE:
@@ -212,6 +212,7 @@ func get_clicked_cards() -> Array[CardTemplate]:
 	return clicked_cards
 
 func start_round_now():
+	ending_round = false
 	print("Start Round")
 	current_game_state = GameState.ROUND_START
 	if !player_node.get_current_player().is_ai():
@@ -231,9 +232,48 @@ func round_closed_now():
 	if !current_player.is_ai():
 		player_round_endet.emit()
 	game_state_changed.emit(current_game_state)
+	var initial_setup_shown = show_initial_setup()
+	if !initial_setup_shown:
+		show_round_ended_banner()
+
+func show_initial_setup() -> bool:
+	var settings = SettingsRepository.load_settings() as SettingsResource
+	if settings.auto_close_popup_shown:
+		return false
+	settings.auto_close_popup_shown = true	
+	SettingsRepository.save_settings(settings)
+
+	var popup = auto_close_popup.instantiate() as PopupWindow
+	request_popup.emit(popup)
+	popup.popup_closed.connect(func(): show_round_ended_banner())
+	return true
+
+
+func show_round_ended_banner():
+	var settings = SettingsRepository.load_settings() as SettingsResource
+	var auto_close = settings.auto_close_round
+	var time_until_close = settings.close_round_after_seconds
+	var popup_banner: BottomMessageBanner = message_banner.instantiate() as BottomMessageBanner
+	var message = "ROUND_END_BANNER_MESSAGE"
+	if !auto_close:
+		message = "ROUND_END_BANNER_MESSAGE_NO_COMPLETE"
+
+	popup_banner.initialize_popup(message, time_until_close, auto_close, func(): end_round_now() )
+	popup_banner.should_pause = false
+	request_popup.emit(popup_banner)
+
+	last_message_banner_id = popup_banner.get_id()
+	
 
 func end_round_now():
+	if ending_round or current_game_state != GameState.PREPARE_ROUND_END:
+		return
+	ending_round = true
 	print("End Round")
+	if last_message_banner_id != -1:
+		close_last_message_box.emit(last_message_banner_id)
+	last_message_banner_id = -1
+
 	current_game_state = GameState.ROUND_END
 	game_state_changed.emit(current_game_state)
 
@@ -261,20 +301,17 @@ func play_game_sound(stream: AudioStream):
 	GlobalSoundManager.play_sound_effect(stream)
 
 func pause_game():
-	paused = true
-	game_paused.emit(paused)
+	get_tree().paused = true
+	game_paused.emit(get_tree().paused)
 
 func unpause_game():
-	paused = false
-	game_paused.emit(paused)
+	get_tree().paused = false
+	game_paused.emit(get_tree().paused)
 
 func show_game_menu():
-	pause_game()
-	game_menu.visible = true
-
-func hide_game_menu():
-	unpause_game()
-	game_menu.visible = false
+	game_menu = game_menu_template.instantiate() as GamePauseMenu
+	game_menu.high_priority = true
+	request_popup.emit(game_menu)
 
 func continue_game():
 	printerr("should not be used!")

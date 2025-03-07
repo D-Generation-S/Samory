@@ -1,4 +1,4 @@
-class_name DeckContainer extends Control
+class_name DeckContainer extends GridContainer
 
 signal data_reloaded()
 signal deck_selected(deck: MemoryDeckResource)
@@ -22,6 +22,11 @@ func _ready():
 	GlobalSystemDeckManager.loading_system_decks.connect(clear_all_decks)
 	GlobalSystemDeckManager.loading_system_decks_done.connect(place_all_decks)
 	place_all_decks()
+	if is_mobile():
+		columns = 1
+
+func is_mobile() -> bool:
+	return OS.has_feature("web_android") or OS.has_feature("web_ios")
 
 func _process(_delta):
 	var scroll_vector = Input.get_axis("scroll_up", "scroll_down")
@@ -45,7 +50,7 @@ func place_all_decks():
 		var template: DeckPreview = deck_preview_template.instantiate() as DeckPreview
 		template.set_deck(deck)
 		template.deck_selected.connect(deck_was_selected)
-		template.visible = false
+		template.visible = true
 		add_child(template)
 
 

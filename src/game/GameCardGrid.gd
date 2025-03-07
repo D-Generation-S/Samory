@@ -4,7 +4,6 @@ var current_card: CardTemplate
 
 var controller_input_was_made: bool = false
 var currently_ai_player: bool = false
-var paused: bool = false
 
 func get_current_grid_position() -> Point:
 	if current_card == null:
@@ -135,7 +134,7 @@ func select_card_at_position(grid_position: Point) -> bool:
 	return found_card
 
 func confirm_current_card():
-	if current_card == null or paused:
+	if current_card == null or get_tree().paused:
 		return
 	current_card.card_was_clicked()
 	if current_card == null:
@@ -162,7 +161,7 @@ func get_card_on_position(card_position: Point) -> MemoryCardResource:
 		
 
 func parse_movement(information: Vector2):
-	if paused or currently_ai_player:
+	if get_tree().paused or currently_ai_player:
 		return
 	controller_input_was_made = true
 	if information != Vector2.ZERO:
@@ -178,13 +177,14 @@ func map_float(input: float) -> int:
 	return 0
 
 func round_frozen():
-	paused = true
 	current_card = null
 
 func round_unfrozen():
+	if currently_ai_player:
+		controller_input_was_made = false
+		return
 	if controller_input_was_made:
 		select_closest_card(Point.new(0,0), true)
-	paused = false
 	controller_input_was_made = false
 
 func card_loading_done():
@@ -224,6 +224,3 @@ func get_all_cards_currently_turned() -> Array[Point]:
 
 func player_changed(current_player:PlayerResource):
 	currently_ai_player = current_player.is_ai()
-
-func game_pause(state: bool):
-	paused = state

@@ -1,8 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://scnjjf50me2r"]
+[gd_scene load_steps=17 format=3 uid="uid://scnjjf50me2r"]
 
-[ext_resource type="Texture2D" uid="uid://dmf23xobks0pc" path="res://assets/sprites/wood.png" id="1_4ectf"]
 [ext_resource type="Script" path="res://src/menu/deck_viewer/DeckViewer.gd" id="1_yrncy"]
 [ext_resource type="Script" path="res://src/menu/LoadingSpinner.gd" id="2_4nid0"]
+[ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://scenes/menu/MenuBackground.tscn" id="2_c7b6s"]
 [ext_resource type="ButtonGroup" uid="uid://68g48rm5eqcv" path="res://assets/button_groups/DeckViewerFilter.tres" id="2_t7m8t"]
 [ext_resource type="Script" path="res://src/menu/deck_viewer/ReloadDecks.gd" id="2_v68ni"]
 [ext_resource type="Script" path="res://src/menu/deck_viewer/DeckViewerFilterBox.gd" id="3_44ipw"]
@@ -13,16 +13,14 @@
 [ext_resource type="Script" path="res://src/menu/deck_viewer/DeckViewerCards.gd" id="7_tnjvp"]
 [ext_resource type="PackedScene" uid="uid://bkpf0f8bvau6t" path="res://scenes/menu/CardPreview.tscn" id="8_51rxv"]
 [ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="10_rf5ea"]
+[ext_resource type="Resource" uid="uid://b0gd4uwnid78l" path="res://scenes/menu/resources/Animations/DefaultButtonAnimation.tres" id="13_sb03g"]
 [ext_resource type="Script" path="res://src/menu/generic/spinner/CloseByTrigger.gd" id="13_tdu0j"]
 [ext_resource type="Resource" uid="uid://lufbdld5awkx" path="res://scenes/menu/spinners/ControllerSpinner.tres" id="15_dk4td"]
 
 [node name="DeckViewer" type="CanvasLayer"]
 script = ExtResource("1_yrncy")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 2048.0
-offset_bottom = 2048.0
-texture = ExtResource("1_4ectf")
+[node name="MenuBackground" parent="." instance=ExtResource("2_c7b6s")]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = 15
@@ -143,6 +141,7 @@ size_flags_horizontal = 10
 shortcut = ExtResource("10_rf5ea")
 text = "CLOSE"
 script = ExtResource("4_br1ba")
+animation_resource = ExtResource("13_sb03g")
 
 [node name="preloaded_cards" type="Control" parent="."]
 visible = false

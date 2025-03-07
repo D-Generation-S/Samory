@@ -5,6 +5,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	visible = false
 	for child in player_target_control.get_children():
 		player_target_control.remove_child(child)
 
@@ -31,7 +32,6 @@ func round_end():
 	
 func game_ended():
 	visible = false
-
 
 func game_state_changed(game_state:int):
 	if game_state == GameState.ROUND_END:

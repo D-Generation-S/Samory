@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bv4jg7bjubrrr"]
+[gd_scene load_steps=8 format=3 uid="uid://bv4jg7bjubrrr"]
 
 [ext_resource type="Script" path="res://src/menu/LoadingScreen.gd" id="1_b8dw1"]
 [ext_resource type="Script" path="res://src/menu/PathSpawner.gd" id="2_18x8e"]
 [ext_resource type="AudioStream" uid="uid://lboryp8cbdxe" path="res://assets/audio/effect/card-shuffle.ogg" id="2_b0kc6"]
+[ext_resource type="Script" path="res://src/game/LoadingPath.gd" id="3_7sgnu"]
 [ext_resource type="PackedScene" uid="uid://8yxfao2fwwod" path="res://scenes/game/templates/FallingCard.tscn" id="3_d4esl"]
-[ext_resource type="Texture2D" uid="uid://dmf23xobks0pc" path="res://assets/sprites/wood.png" id="4_vnqec"]
+[ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://scenes/menu/MenuBackground.tscn" id="5_0ob53"]
 
 [sub_resource type="Curve2D" id="Curve2D_27oxi"]
 _data = {
@@ -56,12 +57,9 @@ size_flags_horizontal = 2
 size_flags_vertical = 8
 text = "MESSAGE"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1024, 1024)
-texture = ExtResource("4_vnqec")
-
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_27oxi")
+script = ExtResource("3_7sgnu")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D" node_paths=PackedStringArray("spawn_target")]
 position = Vector2(-50, -350)
@@ -70,3 +68,8 @@ spawn_template = ExtResource("3_d4esl")
 spawn_target = NodePath("../../CardNode")
 
 [node name="CardNode" type="Node2D" parent="."]
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -3
+
+[node name="MenuBackground" parent="BackgroundLayer" instance=ExtResource("5_0ob53")]

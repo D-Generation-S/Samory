@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://csamt2tu6hlpo"]
+[gd_scene load_steps=6 format=3 uid="uid://csamt2tu6hlpo"]
 
 [ext_resource type="Script" path="res://src/overlay/GameFinished.gd" id="1_fioaw"]
 [ext_resource type="Script" path="res://src/overlay/PlayerScoreList.gd" id="2_ohkho"]
-[ext_resource type="Script" path="res://src/overlay/PlayerWon.gd" id="2_wslvc"]
 [ext_resource type="PackedScene" uid="uid://pwy03e08f1ov" path="res://scenes/game/overlay/PlayerScoreEntry.tscn" id="3_6aww1"]
 [ext_resource type="Script" path="res://src/overlay/FinishGameOk.gd" id="5_8dsgm"]
 [ext_resource type="Script" path="res://src/overlay/ReplayGame.gd" id="6_f0a12"]
@@ -37,82 +36,83 @@ theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="BodyContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2"]
+[node name="Header" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer/VBoxContainer2/Header"]
 layout_mode = 2
 theme_override_constants/margin_top = 5
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_bottom = 0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2/MarginContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer/VBoxContainer2/Header/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 bbcode_enabled = true
 text = "GAME_STATISTIC"
 fit_content = true
 
-[node name="VBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2"]
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer/VBoxContainer2/Header"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_right = 25
+
+[node name="VBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer/VBoxContainer2/Header/MarginContainer2"]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="PlayerNameTitle" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2/VBoxContainer2"]
+[node name="PlayerNameTitle" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer/VBoxContainer2/Header/MarginContainer2/VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "PLAYER_TITLE"
 fit_content = true
 
-[node name="PlayerScoreTitle" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2/VBoxContainer2"]
+[node name="PlayerScoreTitle" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer/VBoxContainer2/Header/MarginContainer2/VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
 text = "PLAYER_SCORE"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2"]
+[node name="Player List" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer/VBoxContainer2"]
 layout_mode = 2
-size_flags_vertical = 6
+size_flags_vertical = 3
 script = ExtResource("2_ohkho")
 player_template = ExtResource("3_6aww1")
 
-[node name="PlayerWon" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" node_paths=PackedStringArray("player_name_node")]
+[node name="Footer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
-script = ExtResource("2_wslvc")
-player_name_node = NodePath("WinningPlayer")
+size_flags_vertical = 3
+theme_override_constants/margin_top = 5
 
-[node name="PlayerWonText" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2/PlayerWon"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "PLAYER_WON"
-fit_content = true
-
-[node name="WinningPlayer" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2/PlayerWon"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "PLACEHOLDER"
-fit_content = true
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Buttons" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer2/Footer"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 10
+size_flags_vertical = 8
 
-[node name="OkButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="OkButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer2/Footer/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 8
 text = "OK"
 script = ExtResource("5_8dsgm")
 is_focused = true
 
-[node name="ReplayGame" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("finish_game_node")]
+[node name="ReplayGame" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer2/Footer/Buttons" node_paths=PackedStringArray("finish_game_node")]
 layout_mode = 2
 text = "REPLAY"
 script = ExtResource("6_f0a12")
-finish_game_node = NodePath("../../../../..")
+finish_game_node = NodePath("../../../../../..")
 
-[connection signal="finish_game_ui_loaded" from="." to="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2/VBoxContainer" method="build_player_statistic"]
-[connection signal="finish_game_ui_loaded" from="." to="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2/PlayerWon" method="set_winning_players"]
+[connection signal="finish_game_ui_loaded" from="." to="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer/VBoxContainer2/Player List" method="build_player_statistic"]

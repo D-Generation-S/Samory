@@ -1,10 +1,10 @@
 key;en;de
 CURRENT_PLAYER;Current player:;Aktueller Spieler:
 GAME_STATISTIC;[center]Game Statistic[/center];[center]Spiele Statistik[/center]
-PLAYER_WON;Winning player:;Gewinnender Spieler:
+PLAYER_WON;Winning player:;Gewinnende/r Spieler:
 PLAYER_TITLE;Player name;Spielername
 PLAYER_SCORE;[right]Player Score[/right];[right]Punktzahl[/right]
-OK;OK;OK
+OK;Ok;Ok
 CANCEL;Cancel;Abbrechen
 REPLAY;Replay;Erneut spielen
 QUIT_GAME;Quit Game;Spiel schließen
@@ -15,13 +15,10 @@ CARD_COUNT;Card count:;Kartenanzahl:
 BUILT_IN;Embedded:;Eingebettetes:
 PLAYER_LIST;Players;Spieler
 PLAYER_NAME;Playername;Spielername
-PLAYER_AGE;Plageage;Alter des Spielers
 ADD_NEW_PLAYER;Add new player;Neuen Spieler hinzufügen
 SELECT_SAVED_PLAYER;Select saved player;Bereits erstellen Spieler auswählen
 ONLY_LETTER_AND_NUMBERS_ALLOWED_FOR_PLAYERNAME;A playername can only contain letters and numbers;Nur Buchstaben und Zahlen sind für einen Spielernamen erlaubt
 NO_NAME_WAS_ENTERD;A Playername is required;Der Spielername wird benötigt
-NO_AGE_WAS_ENTERED;The age of a player is required;Das alter des Spielers wird benötigt
-AGE_NEEDS_TO_BE_A_NUMBER;The age of an player must be a number;Das alter eines Spielers muss eien Zahl sein
 DELETE;Delete;Entfernen
 LOADING;Loading;Lade
 LOAD_DECKS;custom decks;eigene Kartendecks
@@ -30,6 +27,7 @@ PLACING_CARDS;Placing cards on table;Lege Karten auf den Tisch
 CLOSE_MENU;Close menu;Menü schließen
 MAIN_MENU;Main Menu;Hauptmenü
 PAUSE_MENU;Pause Menu;Pause Menü
+TOGGLE_DEBUG;Enable/Disable Debug;Debug aktivieren/deaktivieren
 NO;No;Nein
 YES;Yes;Ja
 ANIMALS;Animals;Tiere
@@ -121,7 +119,7 @@ MUSIC_VOLUME;Music volume;Musiklautstärke
 APPLY;Apply;Annehmen
 ENGLISH;English;Englisch
 GERMAN;German;Deutsch
-VERSION;Version: ;Version:
+VERSION;Version:;Version:
 GAME_SETTINGS;Game Settings;Spieleinstellungen
 CREDITS;Credits;Credits
 QUICK_AI_GAME;Start Quick AI Game;Starte schnelles KI Spiel
@@ -131,17 +129,22 @@ HARD_AI;Hard;Schwer
 ADD_AI_PLAYER;Add AI Player;Ki Spieler hinzufügen
 MOVE_PLAYER_UP;Move player up;Spieler nach oben schieben
 MOVE_PLAYER_DOWN;Move player down;Spieler nach unten schieben
-PLAYER_LIST_HELP;The order within this list indicates the order in which the players take their turn;Die Reihenfolge innerhalb dieser liste gibt an in welcher Reihenfolge die Spieler dran kommen
-OK;Ok;Ok
+PLAYER_LIST_HELP;The order within this list indicates the order in which the players take their turn;Die Reihenfolge innerhalb dieser liste gibt an in welcher Reihenfolge die Spieler an der reihe sind
 COMPLETE_TUTORIAL;Mark Tutorial as completed;Tutorial als abgeschlossen markieren
 COMPLETE_TUTORIAL_TOOLTIP;Will stop the tutorial and not additional help will be provided;Das Tutorial wird abgebrochen und es wird keine weitere Hilfe geben
 RESET_TUTORIAL;Reset Tutorial;Tutorial zurücksetzten
 RESET_TUTORIAL_TOOLTIP;If you press this button the tutorial will be reset;Wenn du diesen Knopf drückst wird das Tutorial zurückgesetzt
 PLAYER_TURN;Your first turn;Dein erster Zug
-PLAYER_TURN_BODY;This is your first turn, as you can see in the background there are some cards.\n\nYour task is to click on one of these cards and memorize the picture on it. The target of the game is to find the two matching cards, if you manage to do this within your turn you get a point.;Das ist dein erster Spielzug, wie du im Hintergrund sehen kannst sind hier einige Karten zu finden.\n\nDeine Aufgabe ist es nun eine dieser Karten anzuklicken und sich das Bild darauf zu merken. Das Ziel des Spiels ist es die beiden passenden Karten zu finden, wenn du dies innerhalb deines Zuges schaffst bekommst du einen Punkt.
+PLAYER_TURN_BODY;This is your first turn, as you can see in the background there are some cards.\n\nYour task is to click on one of these cards and memorize the picture on it. The goal of the game is to find the two matching cards, if you manage to do this within your turn you get a point.;Das ist dein erster Spielzug. Wie du im Hintergrund sehen kannst sind hier einige Karten zu finden.\n\nDeine Aufgabe ist es nun eine dieser Karten anzuklicken und sich das Bild darauf zu merken. Das Ziel des Spiels ist es die beiden passenden Karten zu finden, wenn du dies schaffst bekommst du einen Punkt.
 FIRST_CARD_TURNED;First card turned;Deine erste Karte umgedreht
-FIRST_CARD_TURNED_BODY;You have just turned over your first card, now try to find the second one with the same picture.;Du hast soeben deine erste Karte umgedreht, versuche nun die zweite mit dem selben Bild zu finden.
+FIRST_CARD_TURNED_BODY;You have just turned over your first card, now try to find the second one with the same picture.;Du hast soeben deine erste Karte umgedreht, versuche nun die Zweite mit dem selben Bild zu finden.
 FIRST_ROUND_END;First round did end;Die erste Runde hat
-FIRST_ROUND_END_BODY;The first round did end, the next player can play there turn now.\n\nTo see which player is currently playing, look into the upper left corner, the player with a red name is the active one;Die erste Runde ist beendet, der nächste Spieler kann jetzt spielen.\n\nUm zu sehen, welcher Spieler gerade spielt, schauen Sie in die obere linke Ecke, der Spieler mit einem roten Namen ist der aktive.
+FIRST_ROUND_END_BODY;The first round did end, the next player can play there turn now.\n\nTo see which player is currently playing, look into the upper left corner, the player with a gray  name is the active one;Die erste Runde ist beendet, der nächste Spieler kann jetzt spielen.\n\nUm zu sehen, welcher Spieler gerade spielt, schaue in die obere linke Ecke, der Spieler mit einem grauen Namen ist der Aktive.
 FIRST_MATCHING_CARD;First matching card found;Erstes Kartenpaar gefunden
-FIRST_MATCHING_CARD_BODY;You did find you first matching card, this will score you a point. Check the upper left corner beside your player name.\n\nBecause you found a matching pair your round will continue, this allowes you to score another point or reveal some cards.;Du hast die erste passende Karte gefunden, die dir einen Punkt einbringt. Überprüfen Sie die obere linke Ecke neben Ihrem Spielernamen.\n\nDa Sie ein übereinstimmendes Paar gefunden haben, wird Ihre Runde fortgesetzt, was dir erlaubt, einen weiteren Punkt zu erzielen oder einige Karten aufzudecken
+FIRST_MATCHING_CARD_BODY;You have found the first matching card that earns you a point. Check your score in the top left corner next to your player name.\n\nIf you have found a matching pair, your round will continue Accordingly, you may turn two cards again, if you find another pair, your round will continue. Your round ends as soon as you no longer find a matching pair.;Du hast die erste passende Karte gefunden, die dir einen Punkt einbringt. Überprüfe deinen Punktestand in der oberen linken Ecke neben deinem Spielernamen.\n\nDa du ein übereinstimmendes Paar gefunden hast, wird deine Runde fortgesetzt. Entsprechend darfst du erneut zwei Karten drehen, findest du erneut ein Pärchen, wird deine Runde fortgesetzt. Deine Runde endet sobald du kein Paar gefunden hast.
+ROUND_END_BANNER_MESSAGE;To end the round, wait for %time% seconds or press the main action button;Um die Runde abzuschließen warte %time% Sekunden oder drücke die Aktions taste
+ROUND_END_BANNER_MESSAGE_NO_COMPLETE;To end the round, click the main action button;Um die Runde abzuschließen, drücke die Aktions Taste
+AUTO_COMPLETE_ROUND;Auto complete round;Runde automatisch abschließen
+TIME_FOR_COMPLETION;Time for completion: %time%s;Zeit bis beenden: %time%s
+AUTO_COMPLETE_ROUND_TOOLTIP;If enabled this will automatically wrap up a round after n seconds.;Wenn diese Aktion aktiv ist, wird die Runde automatisch nach n Sekunden beendet.
+AUTO_CLOSE_POPUP_BODY;Do you want to automatically wrap up a round if every possible card was turned?\n\nUse the buttons below to setup as you wish.\n\n\nTo change that setting later on, please go to the game settings located in the main menu;Möchten Sie eine Runde automatisch beenden, wenn alle möglichen Karten aufgedeckt wurden?\n\nVerwenden Sie die folgenden Schaltflächen, um die Einstellungen vorzunehmen.\n\n\nUm diese Einstellung später anzupassen, gehe bitte in die Spieleinstellungen im Hauptmenü

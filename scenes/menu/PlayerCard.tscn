@@ -22,11 +22,11 @@ atlas = ExtResource("7_p7vsn")
 region = Rect2(110, 204, 28, 41)
 
 [node name="PlayerCard" type="PanelContainer" node_paths=PackedStringArray("icon_target", "player_name_field")]
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
+offset_bottom = 111.0
 grow_horizontal = 2
-grow_vertical = 2
+size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_vkn4j")
 script = ExtResource("1_ab6rg")
 human_player_icon = ExtResource("3_yxyur")
@@ -36,17 +36,11 @@ player_name_field = NodePath("PanelContainer/HBoxContainer/Name")
 
 [node name="PanelContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 3
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 3
+size_flags_vertical = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
 layout_mode = 2
-
-[node name="PlayerName" type="Label" parent="PanelContainer/HBoxContainer"]
-layout_mode = 2
-text = "PLAYER_NAME"
+size_flags_vertical = 4
 
 [node name="Name" type="Label" parent="PanelContainer/HBoxContainer"]
 layout_mode = 2
@@ -55,7 +49,6 @@ text = "PLACEHOLDER"
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 5
 
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/HBoxContainer/MarginContainer"]
@@ -63,26 +56,23 @@ layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer"]
+[node name="MoveUp" type="Button" parent="PanelContainer/HBoxContainer"]
 layout_mode = 2
-
-[node name="MoveUp" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 0
+size_flags_horizontal = 4
 tooltip_text = "MOVE_PLAYER_UP"
-focus_neighbor_right = NodePath("../../RemovePlayer")
+focus_neighbor_right = NodePath("../RemovePlayer")
 focus_neighbor_bottom = NodePath("../MoveDown")
 theme_override_constants/icon_max_width = 15
 icon = ExtResource("5_flwrt")
 icon_alignment = 1
 script = ExtResource("6_ok6yb")
 
-[node name="MoveDown" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+[node name="MoveDown" type="Button" parent="PanelContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 8
+size_flags_horizontal = 4
 tooltip_text = "MOVE_PLAYER_UP"
 focus_neighbor_top = NodePath("../MoveUp")
-focus_neighbor_right = NodePath("../../RemovePlayer")
+focus_neighbor_right = NodePath("../RemovePlayer")
 theme_override_constants/icon_max_width = 15
 icon = ExtResource("6_46f7i")
 icon_alignment = 1
@@ -91,15 +81,16 @@ script = ExtResource("6_ok6yb")
 [node name="RemovePlayer" type="Button" parent="PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
+size_flags_vertical = 4
 tooltip_text = "DELETE"
-focus_neighbor_left = NodePath("../VBoxContainer/MoveUp")
+focus_neighbor_left = NodePath("../MoveUp")
 icon = SubResource("AtlasTexture_fb3y2")
 icon_alignment = 1
 script = ExtResource("6_ok6yb")
 
-[connection signal="regain_focus_request" from="." to="PanelContainer/HBoxContainer/VBoxContainer/MoveUp" method="regain_focus"]
-[connection signal="regain_focus_request" from="." to="PanelContainer/HBoxContainer/VBoxContainer/MoveDown" method="regain_focus"]
+[connection signal="regain_focus_request" from="." to="PanelContainer/HBoxContainer/MoveUp" method="regain_focus"]
+[connection signal="regain_focus_request" from="." to="PanelContainer/HBoxContainer/MoveDown" method="regain_focus"]
 [connection signal="regain_focus_request" from="." to="PanelContainer/HBoxContainer/RemovePlayer" method="regain_focus"]
-[connection signal="pressed" from="PanelContainer/HBoxContainer/VBoxContainer/MoveUp" to="." method="move_up"]
-[connection signal="pressed" from="PanelContainer/HBoxContainer/VBoxContainer/MoveDown" to="." method="move_down"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/MoveUp" to="." method="move_up"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/MoveDown" to="." method="move_down"]
 [connection signal="pressed" from="PanelContainer/HBoxContainer/RemovePlayer" to="." method="delete_card"]
