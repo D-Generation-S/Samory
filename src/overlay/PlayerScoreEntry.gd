@@ -9,7 +9,6 @@ class_name PlayerScoreEntry
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#player_name.bbcode_enabled = true
 	player_score.bbcode_enabled = true
 
 func set_player(player: PlayerResource, did_win: bool):
