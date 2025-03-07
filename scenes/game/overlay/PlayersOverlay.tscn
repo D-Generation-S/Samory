@@ -38,6 +38,7 @@ horizontal_alignment = 1
 
 [node name="PlayerNames" type="VBoxContainer" parent="PanelContainer/MarginContainer/PlayerList"]
 layout_mode = 2
+size_flags_vertical = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/PlayerList/PlayerNames"]
 clip_contents = true
