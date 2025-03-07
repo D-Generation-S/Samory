@@ -5,6 +5,7 @@ signal player_added(new_player: PlayerResource)
 var name_generator: NameGenerator
 
 func _ready():
+	super()
 	name_generator = NameGenerator.new()
 
 func _pressed():

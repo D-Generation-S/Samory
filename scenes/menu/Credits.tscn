@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://n2r2v72dltn8"]
+[gd_scene load_steps=7 format=3 uid="uid://n2r2v72dltn8"]
 
 [ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://scenes/menu/MenuBackground.tscn" id="1_n8sdb"]
 [ext_resource type="Script" path="res://src/menu/credit_screen/CreditHandling.gd" id="1_xb4j0"]
 [ext_resource type="Script" path="res://src/overlay/FinishGameOk.gd" id="2_52q2a"]
 [ext_resource type="Script" path="res://src/menu/LinkButton.gd" id="2_f3feg"]
 [ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="3_i56v7"]
+[ext_resource type="Resource" uid="uid://b0gd4uwnid78l" path="res://scenes/menu/resources/Animations/DefaultButtonAnimation.tres" id="4_5w3yf"]
 
 [node name="Credits" type="CanvasLayer"]
 
@@ -48,6 +49,7 @@ focus_neighbor_right = NodePath("../Abstraction")
 text = "Kenney.nl"
 script = ExtResource("2_f3feg")
 link = "https://www.kenney.nl/"
+animation_resource = ExtResource("4_5w3yf")
 
 [node name="Abstraction" type="Button" parent="HBoxContainer"]
 layout_mode = 2
@@ -56,6 +58,7 @@ focus_neighbor_right = NodePath("../Material Maker")
 text = "Abstraction"
 script = ExtResource("2_f3feg")
 link = "https://abstractionmusic.com/"
+animation_resource = ExtResource("4_5w3yf")
 
 [node name="Material Maker" type="Button" parent="HBoxContainer"]
 layout_mode = 2
@@ -64,6 +67,7 @@ focus_neighbor_right = NodePath("../Close")
 text = "Material Maker"
 script = ExtResource("2_f3feg")
 link = "https://www.materialmaker.org/"
+animation_resource = ExtResource("4_5w3yf")
 
 [node name="Close" type="Button" parent="HBoxContainer"]
 layout_mode = 2
@@ -75,3 +79,4 @@ shortcut_in_tooltip = false
 text = "CLOSE"
 script = ExtResource("2_52q2a")
 is_focused = true
+animation_resource = ExtResource("4_5w3yf")
