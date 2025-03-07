@@ -23,16 +23,13 @@ func _ready():
 	button_up.connect(button_is_up)
 
 func show_button():
-	var should_be_visible = true
-	if OS.has_feature("windows") and OS.is_debug_build():
-		should_be_visible = false
-	visible = should_be_visible
+	visible = is_mobile()
 
 func is_mobile() -> bool:
 	return OS.has_feature("web_android") or OS.has_feature("web_ios")
 
 func _process(_delta):
-	if Input.is_action_just_pressed("toggle_debug") and OS.is_debug_build() and OS.has_feature("windows"):
+	if Input.is_action_just_pressed("toggle_debug") and OS.is_debug_build() and !is_mobile():
 		visible = !visible
 	if !visible:
 		return

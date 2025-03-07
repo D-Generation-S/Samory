@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://d15qeu4s4bgjk"]
+[gd_scene load_steps=9 format=3 uid="uid://d15qeu4s4bgjk"]
 
 [ext_resource type="Script" path="res://src/game/TutorialWindow.gd" id="1_rm1ic"]
 [ext_resource type="StyleBox" uid="uid://d1rhal5rp1608" path="res://assets/styles/MetalBox.tres" id="2_a5yjs"]
+[ext_resource type="Script" path="res://src/game/AnimatedText.gd" id="3_x2dyy"]
+[ext_resource type="AudioStream" uid="uid://ctjq1ihqaqsqu" path="res://assets/audio/effect/letter_written.ogg" id="4_vo2go"]
+[ext_resource type="Texture2D" uid="uid://cg0l7tvqmtghr" path="res://assets/sprites/sheet_white1x.png" id="5_0mnhe"]
+[ext_resource type="Script" path="res://src/game/tutorial/TutorialContinueButton.gd" id="6_las18"]
+[ext_resource type="Script" path="res://src/menu/ClickableButton.gd" id="7_scsgn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynyq3"]
+atlas = ExtResource("5_0mnhe")
+region = Rect2(410, 315, 32, 20)
 
 [node name="TutorialWindow" type="CenterContainer"]
 anchors_preset = 15
@@ -44,6 +53,25 @@ size_flags_vertical = 4
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "BODY"
 fit_content = true
+script = ExtResource("3_x2dyy")
+letter_place_sound = ExtResource("4_vo2go")
+sound_db_change = -15.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TextureButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture_normal = SubResource("AtlasTexture_ynyq3")
+stretch_mode = 3
+script = ExtResource("6_las18")
+initial_position = Vector2(684, 106)
+pixels_to_move = 5.0
+animation_speed = 1.5
 
 [node name="Controls" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -59,6 +87,13 @@ text = "COMPLETE_TUTORIAL"
 layout_mode = 2
 size_flags_horizontal = 10
 text = "OK"
+script = ExtResource("7_scsgn")
 
+[connection signal="current_text_displayed" from="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/Body" to="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/TextureButton" method="show"]
+[connection signal="no_text_left" from="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/Body" to="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/TextureButton" method="hide"]
+[connection signal="no_text_left" from="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/Body" to="PanelContainer/MarginContainer/VBoxContainer/Controls/Button" method="enable_button"]
+[connection signal="text_getting_animated" from="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/Body" to="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/TextureButton" method="hide"]
+[connection signal="text_getting_animated" from="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/Body" to="PanelContainer/MarginContainer/VBoxContainer/Controls/Button" method="disable_button"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/TextureButton" to="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/Body" method="roll_in_next_text"]
 [connection signal="toggled" from="PanelContainer/MarginContainer/VBoxContainer/Controls/CompleteTutorial" to="." method="toggle_abort_tutorial"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Controls/Button" to="." method="close"]

@@ -24,8 +24,8 @@
 [ext_resource type="Script" path="res://src/game/GameCardGrid.gd" id="19_ploi3"]
 [ext_resource type="Texture2D" path="res://assets/textures/MinusIcon.tres" id="20_ef4f6"]
 [ext_resource type="Script" path="res://src/game/overlay/PopupManager.gd" id="21_dv4ao"]
+[ext_resource type="Script" path="res://src/game/tutorial/Tutorial.gd" id="22_0x2pf"]
 [ext_resource type="PackedScene" uid="uid://d15qeu4s4bgjk" path="res://scenes/game/templates/TutorialWindow.tscn" id="22_ubsrg"]
-[ext_resource type="Script" path="res://src/game/tutorial/tutorial.gd" id="23_gflho"]
 
 [node name="MemoryGame" type="Node2D" node_paths=PackedStringArray("gui_node", "card_target_node", "game_nodes_to_show", "loading_scene")]
 process_mode = 1
@@ -59,7 +59,7 @@ position = Vector2(-960, -540)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
 
-[node name="Menu" type="Button" parent="CanvasLayer"]
+[node name="MenuButton" type="Button" parent="CanvasLayer"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -117,7 +117,7 @@ mouse_filter = 2
 script = ExtResource("21_dv4ao")
 
 [node name="Tutorial" type="Node" parent="CanvasLayer"]
-script = ExtResource("23_gflho")
+script = ExtResource("22_0x2pf")
 tutorial_window_scene = ExtResource("22_ubsrg")
 
 [node name="Background" type="Node2D" parent="." node_paths=PackedStringArray("camera_node")]
@@ -130,7 +130,7 @@ camera_node = NodePath("../Camera2D")
 [node name="Cards" type="Node2D" parent="."]
 script = ExtResource("19_ploi3")
 
-[connection signal="card_loading_done" from="." to="CanvasLayer/Menu" method="show_button"]
+[connection signal="card_loading_done" from="." to="CanvasLayer/MenuButton" method="show_button"]
 [connection signal="card_loading_done" from="." to="CanvasLayer/MarginContainer/PlayersOverlay" method="show"]
 [connection signal="card_loading_done" from="." to="CanvasLayer/VBoxContainer/ZoomIn" method="show_button"]
 [connection signal="card_loading_done" from="." to="CanvasLayer/VBoxContainer/ZoomOut" method="show_button"]
