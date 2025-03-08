@@ -50,7 +50,7 @@ func place_all_decks():
 		var template: DeckPreview = deck_preview_template.instantiate() as DeckPreview
 		template.set_deck(deck)
 		template.deck_selected.connect(deck_was_selected)
-		template.visible = true
+		template.visible = false
 		add_child(template)
 
 
