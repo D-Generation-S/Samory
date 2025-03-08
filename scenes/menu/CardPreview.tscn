@@ -19,6 +19,7 @@ card_image = NodePath("PanelContainer/VBoxContainer/Card Image")
 [node name="PanelContainer" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(532, 618)
 layout_mode = 2
+mouse_filter = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -33,6 +34,7 @@ script = ExtResource("3_ky5l6")
 [node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 10
+mouse_filter = 1
 theme_override_styles/panel = ExtResource("4_w8vnn")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/PanelContainer"]
@@ -44,6 +46,7 @@ text = "CARD_NAME"
 
 [node name="Card Description" type="RichTextLabel" parent="PanelContainer/VBoxContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 1
 bbcode_enabled = true
 text = "CARD_DESCRIPTION"
 fit_content = true
