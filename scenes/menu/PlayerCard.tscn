@@ -1,21 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://de0if4rovyxsv"]
+[gd_scene load_steps=10 format=3 uid="uid://de0if4rovyxsv"]
 
 [ext_resource type="Script" path="res://src/menu/PlayerCard.gd" id="1_ab6rg"]
-[ext_resource type="Texture2D" uid="uid://bmxqeqo65xwt" path="res://assets/sprites/spritesheet-default.png" id="1_u8sm3"]
+[ext_resource type="StyleBox" uid="uid://d1rhal5rp1608" path="res://assets/styles/panel/MetalBox.tres" id="1_sir20"]
 [ext_resource type="Texture2D" uid="uid://lj7phnlllstw" path="res://assets/textures/HumanIcon.tres" id="3_yxyur"]
 [ext_resource type="Texture2D" uid="uid://wa0qa5dgmjgk" path="res://assets/textures/AiIcon.tres" id="4_tagwq"]
 [ext_resource type="Texture2D" uid="uid://dpa7nk5wwkgvj" path="res://assets/textures/UpIcon.tres" id="5_flwrt"]
 [ext_resource type="Texture2D" uid="uid://cgyq8ual4eu0m" path="res://assets/textures/DownIcon.tres" id="6_46f7i"]
 [ext_resource type="Script" path="res://src/menu/game_lobby/RegainFocusButton.gd" id="6_ok6yb"]
 [ext_resource type="Texture2D" uid="uid://cg0l7tvqmtghr" path="res://assets/sprites/sheet_white1x.png" id="7_p7vsn"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vkn4j"]
-texture = ExtResource("1_u8sm3")
-texture_margin_left = 14.0
-texture_margin_top = 14.0
-texture_margin_right = 14.0
-texture_margin_bottom = 14.0
-region_rect = Rect2(384, 256, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fb3y2"]
 atlas = ExtResource("7_p7vsn")
@@ -28,7 +20,7 @@ offset_bottom = 111.0
 grow_horizontal = 2
 size_flags_vertical = 4
 mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxTexture_vkn4j")
+theme_override_styles/panel = ExtResource("1_sir20")
 script = ExtResource("1_ab6rg")
 human_player_icon = ExtResource("3_yxyur")
 ai_player_icon = ExtResource("4_tagwq")
