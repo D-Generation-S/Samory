@@ -1,4 +1,4 @@
-extends CheckButton
+extends ClickableToggle
 
 var initial_load_state: bool = false
 
@@ -9,3 +9,4 @@ func _ready():
 
 func settings_loaded(settings: SettingsResource):
 	button_pressed = settings.load_custom_decks
+	starts_ready = true
