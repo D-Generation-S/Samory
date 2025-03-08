@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/game/overlay/AutoClosePopup.gd" id="1_v8yqj"]
 [ext_resource type="Script" path="res://src/menu/settings/AutoCompleteRound.gd" id="2_al37c"]
 [ext_resource type="Script" path="res://src/menu/settings/AutoCloseRoundSlider.gd" id="3_eb2ke"]
-[ext_resource type="Script" path="res://src/menu/ClickableButton.gd" id="4_yyqw5"]
+[ext_resource type="Script" path="res://src/menu/control_overwrites/ClickableButton.gd" id="4_yyqw5"]
 
 [node name="AutoClosePopup" type="CenterContainer"]
 anchors_preset = 15

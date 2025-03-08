@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://csamt2tu6hlpo"]
 
-[ext_resource type="Script" path="res://src/overlay/GameFinished.gd" id="1_fioaw"]
-[ext_resource type="Script" path="res://src/overlay/PlayerScoreList.gd" id="2_ohkho"]
+[ext_resource type="Script" path="res://src/game/overlay/GameFinished.gd" id="1_fioaw"]
+[ext_resource type="Script" path="res://src/game/overlay/PlayerScoreList.gd" id="2_ohkho"]
 [ext_resource type="PackedScene" uid="uid://pwy03e08f1ov" path="res://scenes/game/overlay/PlayerScoreEntry.tscn" id="3_6aww1"]
-[ext_resource type="Script" path="res://src/overlay/FinishGameOk.gd" id="5_8dsgm"]
-[ext_resource type="Script" path="res://src/overlay/ReplayGame.gd" id="6_f0a12"]
+[ext_resource type="Script" path="res://src/game/overlay/FinishGameOk.gd" id="5_8dsgm"]
+[ext_resource type="Script" path="res://src/game/overlay/ReplayGame.gd" id="6_f0a12"]
 
 [node name="FinishGame" type="Control"]
 layout_mode = 3

@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://8yxfao2fwwod"]
 
-[ext_resource type="Script" path="res://src/game/FallingCard.gd" id="1_5pc70"]
+[ext_resource type="Script" path="res://src/game/loading_screen/FallingCard.gd" id="1_5pc70"]
 [ext_resource type="Texture2D" uid="uid://dpcfrsq40moii" path="res://assets/sprites/CardDefaultBack.png" id="1_f7o75"]
 [ext_resource type="Shader" path="res://assets/shaders/BurnFromPoint.gdshader" id="2_bndme"]
-[ext_resource type="Script" path="res://src/game/FallingCardSprite.gd" id="2_hxqwv"]
+[ext_resource type="Script" path="res://src/game/loading_screen/FallingCardSprite.gd" id="2_hxqwv"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_7g1s1"]
 

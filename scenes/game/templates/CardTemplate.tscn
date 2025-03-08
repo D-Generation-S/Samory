@@ -17,7 +17,7 @@
 [ext_resource type="Script" path="res://src/game/ToggleCardVisibility.gd" id="8_pw264"]
 [ext_resource type="Script" path="res://src/game/CardHandler.gd" id="9_mu0q4"]
 [ext_resource type="Material" uid="uid://dkl2lojy2u6nx" path="res://assets/material/GlowingFocusMaterialtres.tres" id="12_drvni"]
-[ext_resource type="Script" path="res://src/game/DebugControl.gd" id="18_8fn1p"]
+[ext_resource type="Script" path="res://src/game/debug/DebugControl.gd" id="18_8fn1p"]
 [ext_resource type="Script" path="res://src/game/debug/CardTemplateDebug.gd" id="18_tqsbp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sgpsy"]

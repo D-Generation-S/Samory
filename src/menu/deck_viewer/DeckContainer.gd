@@ -7,6 +7,7 @@ signal deck_unselected()
 
 @export var deck_preview_template: PackedScene
 @export var scroll_speed: float = 5
+@export var decks_visible_on_start: bool = true
 
 @onready var scoll_container: ScrollContainer = get_parent() as ScrollContainer
 
@@ -50,7 +51,7 @@ func place_all_decks():
 		var template: DeckPreview = deck_preview_template.instantiate() as DeckPreview
 		template.set_deck(deck)
 		template.deck_selected.connect(deck_was_selected)
-		template.visible = false
+		template.visible = decks_visible_on_start
 		add_child(template)
 
 

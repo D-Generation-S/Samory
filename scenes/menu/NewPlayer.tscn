@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://dxhn5n16onctb"]
 
-[ext_resource type="Script" path="res://src/menu/NewPlayer.gd" id="1_oy8p1"]
-[ext_resource type="Script" path="res://src/menu/PlayerName.gd" id="2_nbrg8"]
-[ext_resource type="Script" path="res://src/menu/ErrorBox.gd" id="3_37146"]
-[ext_resource type="Script" path="res://src/menu/NewPlayerOk.gd" id="4_dgat8"]
+[ext_resource type="Script" path="res://src/menu/game_lobby/NewPlayer.gd" id="1_oy8p1"]
+[ext_resource type="Script" path="res://src/menu/deck_viewer/PlayerName.gd" id="2_nbrg8"]
+[ext_resource type="Script" path="res://src/menu/game_lobby/ErrorBox.gd" id="3_37146"]
+[ext_resource type="Script" path="res://src/menu/game_lobby/NewPlayerOk.gd" id="4_dgat8"]
 [ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="6_057kb"]
-[ext_resource type="Script" path="res://src/menu/ClickableButton.gd" id="6_321yi"]
+[ext_resource type="Script" path="res://src/menu/control_overwrites/ClickableButton.gd" id="6_321yi"]
 
 [node name="MarginContainer" type="MarginContainer"]
 anchors_preset = 10

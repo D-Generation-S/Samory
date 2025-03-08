@@ -18,7 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://duqacxqgecl83" path="res://assets/audio/effect/card-slide-8.ogg" id="9_2ngk1"]
 [ext_resource type="PackedScene" uid="uid://cluwm03j8e11p" path="res://scenes/game/overlay/GamePauseMenu.tscn" id="12_dfx06"]
 [ext_resource type="PackedScene" uid="uid://bv4jg7bjubrrr" path="res://scenes/game/levels/LoadingScreen.tscn" id="12_v3o3x"]
-[ext_resource type="Script" path="res://src/game/GameAI.gd" id="15_u3ner"]
+[ext_resource type="Script" path="res://src/game/ai/GameAI.gd" id="15_u3ner"]
 [ext_resource type="Texture2D" path="res://assets/textures/AddIcon.tres" id="18_pqxyo"]
 [ext_resource type="Script" path="res://src/menu/touch/TouchButton.gd" id="18_u7amr"]
 [ext_resource type="Script" path="res://src/game/GameCardGrid.gd" id="19_ploi3"]

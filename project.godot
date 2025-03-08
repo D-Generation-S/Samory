@@ -20,7 +20,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalSoundManager="*res://scenes/global/SoundEffectManager.tscn"
-GlobalSystemDeckManager="*res://src/game/SystemDeckManager.gd"
+GlobalSystemDeckManager="*res://src/game/data_loading/SystemDeckManager.gd"
 GlobalGameManagerAccess="*res://src/game/GlobalGameManagerAccess.gd"
 SettingsRepository="*res://scenes/global/SettingsRepository.tscn"
 GlobalSoundBridge="*res://scenes/global/SoundBridge.tscn"
