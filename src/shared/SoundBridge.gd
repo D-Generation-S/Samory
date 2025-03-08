@@ -7,6 +7,7 @@ signal stop_sound_effects()
 
 @export var button_click_sound: AudioStream
 @export var button_hover_sound: AudioStream
+@export var toggle_sound: AudioStream
 @export var text_input_sound: AudioStream
 
 func _ready():
@@ -29,4 +30,7 @@ func play_button_hover():
 
 func play_text_input():
 	play_sound(text_input_sound)
+
+func play_toggle_sound():
+	play_sound(toggle_sound)
 

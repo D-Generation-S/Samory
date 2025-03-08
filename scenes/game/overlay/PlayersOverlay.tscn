@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d0vijthhc3d38"]
 
-[ext_resource type="Script" path="res://src/overlay/PlayerGameOverlay.gd" id="1_mi4rq"]
+[ext_resource type="Script" path="res://src/game/overlay/PlayerGameOverlay.gd" id="1_mi4rq"]
 [ext_resource type="PackedScene" uid="uid://cynb8xjpxqa6w" path="res://scenes/game/overlay/PlayerNameOverlay.tscn" id="2_ehytq"]
 
 [node name="PlayersOverlay" type="Control" node_paths=PackedStringArray("player_target_control")]

@@ -1,7 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://scnjjf50me2r"]
+[gd_scene load_steps=18 format=3 uid="uid://scnjjf50me2r"]
 
 [ext_resource type="Script" path="res://src/menu/deck_viewer/DeckViewer.gd" id="1_yrncy"]
-[ext_resource type="Script" path="res://src/menu/LoadingSpinner.gd" id="2_4nid0"]
+[ext_resource type="Script" path="res://src/menu/loading/LoadingSpinner.gd" id="2_4nid0"]
 [ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://scenes/menu/MenuBackground.tscn" id="2_c7b6s"]
 [ext_resource type="ButtonGroup" uid="uid://68g48rm5eqcv" path="res://assets/button_groups/DeckViewerFilter.tres" id="2_t7m8t"]
 [ext_resource type="Script" path="res://src/menu/deck_viewer/ReloadDecks.gd" id="2_v68ni"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://src/menu/deck_viewer/DeckViewCheckbox.gd" id="4_dd2y2"]
 [ext_resource type="Script" path="res://src/menu/deck_viewer/DeckContainer.gd" id="4_m2ntb"]
 [ext_resource type="PackedScene" uid="uid://b3cv1g0a284mq" path="res://scenes/menu/DeckPreview.tscn" id="6_wx8yk"]
+[ext_resource type="Script" path="res://src/menu/game_lobby/LobbySplitter.gd" id="7_88bf3"]
 [ext_resource type="Script" path="res://src/menu/deck_viewer/DeckViewerCards.gd" id="7_tnjvp"]
 [ext_resource type="PackedScene" uid="uid://bkpf0f8bvau6t" path="res://scenes/menu/CardPreview.tscn" id="8_51rxv"]
 [ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="10_rf5ea"]
@@ -86,31 +87,37 @@ theme_override_constants/margin_bottom = 5
 [node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/MarginContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/PanelContainer2"]
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/MarginContainer2/PanelContainer2"]
 layout_mode = 2
+split_offset = -420
+dragger_visibility = 2
+script = ExtResource("7_88bf3")
+default_split_size = -420
+mobile_split_size = 0
 
-[node name="Decks" type="ScrollContainer" parent="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer"]
+[node name="Decks" type="ScrollContainer" parent="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.4
 horizontal_scroll_mode = 0
 
-[node name="DeckContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer/Decks"]
+[node name="DeckContainer" type="GridContainer" parent="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/Decks"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("4_m2ntb")
 deck_preview_template = ExtResource("6_wx8yk")
 scroll_speed = 15.0
+decks_visible_on_start = false
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 horizontal_scroll_mode = 0
 
-[node name="Cards" type="GridContainer" parent="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer/ScrollContainer" node_paths=PackedStringArray("deck_container", "system_card_container", "built_in_card_container")]
+[node name="Cards" type="GridContainer" parent="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/ScrollContainer" node_paths=PackedStringArray("deck_container", "system_card_container", "built_in_card_container")]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
@@ -181,29 +188,29 @@ layout_mode = 2
 script = ExtResource("2_4nid0")
 animation = ExtResource("15_dk4td")
 
-[connection signal="deck_loading_done" from="." to="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer/ScrollContainer/Cards" method="cards_loaded"]
+[connection signal="deck_loading_done" from="." to="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/ScrollContainer/Cards" method="cards_loaded"]
 [connection signal="decks_loading" from="." to="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Reload Decks" method="disable_button"]
 [connection signal="decks_loading" from="." to="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Filter Decks" method="disable"]
 [connection signal="decks_loading" from="." to="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Show All" method="loading_decks"]
 [connection signal="decks_loading" from="." to="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Show Built In" method="loading_decks"]
 [connection signal="decks_loading" from="." to="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Show Custom" method="loading_decks"]
-[connection signal="decks_loading" from="." to="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer/ScrollContainer/Cards" method="decks_loading"]
-[connection signal="decks_loading" from="." to="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer/ScrollContainer/Cards" method="clear_all_system_cards"]
+[connection signal="decks_loading" from="." to="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/ScrollContainer/Cards" method="decks_loading"]
+[connection signal="decks_loading" from="." to="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/ScrollContainer/Cards" method="clear_all_system_cards"]
 [connection signal="decks_loading" from="." to="LoadingSpinner" method="show"]
 [connection signal="scene_ready" from="." to="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Reload Decks" method="enable_button"]
 [connection signal="scene_ready" from="." to="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Filter Decks" method="enable"]
 [connection signal="scene_ready" from="." to="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Show All" method="loading_decks_done"]
 [connection signal="scene_ready" from="." to="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Show Built In" method="loading_decks_done"]
 [connection signal="scene_ready" from="." to="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Show Custom" method="loading_decks_done"]
-[connection signal="scene_ready" from="." to="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer/Decks/DeckContainer" method="make_decks_visible"]
+[connection signal="scene_ready" from="." to="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/Decks/DeckContainer" method="make_decks_visible"]
 [connection signal="scene_ready" from="." to="LoadingSpinner" method="hide"]
 [connection signal="decks_loading" from="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Reload Decks" to="." method="load_decks"]
-[connection signal="text_changed" from="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Filter Decks" to="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer/Decks/DeckContainer" method="filter_decks_by_name"]
-[connection signal="toggled" from="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Show All" to="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer/Decks/DeckContainer" method="show_all_decks"]
-[connection signal="toggled" from="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Show Built In" to="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer/Decks/DeckContainer" method="show_only_built_in"]
-[connection signal="toggled" from="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Show Custom" to="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer/Decks/DeckContainer" method="show_only_custom"]
-[connection signal="data_reloaded" from="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer/Decks/DeckContainer" to="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Show All" method="signal_activated"]
-[connection signal="deck_selected" from="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer/Decks/DeckContainer" to="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer/ScrollContainer/Cards" method="show_cards"]
-[connection signal="deck_unselected" from="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer/Decks/DeckContainer" to="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer/ScrollContainer/Cards" method="remove_all_cards"]
-[connection signal="decks_getting_placed" from="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer/Decks/DeckContainer" to="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer/ScrollContainer/Cards" method="decks_loaded"]
-[connection signal="cards_preloaded" from="VBoxContainer/MarginContainer2/PanelContainer2/HBoxContainer/ScrollContainer/Cards" to="." method="scene_is_ready"]
+[connection signal="text_changed" from="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Filter Decks" to="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/Decks/DeckContainer" method="filter_decks_by_name"]
+[connection signal="toggled" from="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Show All" to="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/Decks/DeckContainer" method="show_all_decks"]
+[connection signal="toggled" from="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Show Built In" to="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/Decks/DeckContainer" method="show_only_built_in"]
+[connection signal="toggled" from="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Show Custom" to="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/Decks/DeckContainer" method="show_only_custom"]
+[connection signal="data_reloaded" from="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/Decks/DeckContainer" to="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Show All" method="signal_activated"]
+[connection signal="deck_selected" from="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/Decks/DeckContainer" to="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/ScrollContainer/Cards" method="show_cards"]
+[connection signal="deck_unselected" from="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/Decks/DeckContainer" to="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/ScrollContainer/Cards" method="remove_all_cards"]
+[connection signal="decks_getting_placed" from="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/Decks/DeckContainer" to="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/ScrollContainer/Cards" method="decks_loaded"]
+[connection signal="cards_preloaded" from="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/ScrollContainer/Cards" to="." method="scene_is_ready"]

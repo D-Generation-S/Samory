@@ -1,8 +1,9 @@
-extends CheckButton
+extends ClickableToggle
 
 func _ready():
 	if OS.has_feature("web"):
 		visible = false
+	starts_ready = true
 
 func signal_activated():
 	button_pressed = true

@@ -1,4 +1,4 @@
-extends CheckButton
+extends ClickableToggle
 
 
 # Called when the node enters the scene tree for the first time.
@@ -8,6 +8,7 @@ func _ready():
 
 func settings_loaded(settings: SettingsResource):
 	button_pressed = settings.fullscreen
+	starts_ready = true
 
 func was_toggled(toggled_on: bool):
 	if !toggled_on:

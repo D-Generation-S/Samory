@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="MemoryDeckResource" load_steps=14 format=3 uid="uid://dgbigggpvj0rk"]
+
+[ext_resource type="Texture2D" uid="uid://dpcfrsq40moii" path="res://assets/sprites/CardDefaultBack.png" id="1_fcqkf"]
+[ext_resource type="Script" path="res://src/templates/MemoryCardResource.gd" id="2_mfcoj"]
+[ext_resource type="Resource" uid="uid://clwy17ikjqk21" path="res://scenes/game/resources/cards/animals/MonkeyCard.tres" id="3_a8qo0"]
+[ext_resource type="Resource" uid="uid://dtjjkvfhlefdq" path="res://scenes/game/resources/cards/animals/ElephantCard.tres" id="4_0sikl"]
+[ext_resource type="Resource" uid="uid://bc64rxhnwnvm8" path="res://scenes/game/resources/cards/animals/PandaCard.tres" id="5_ym12t"]
+[ext_resource type="Script" path="res://src/templates/MemoryDeckResource.gd" id="6_66xdg"]
+[ext_resource type="Resource" uid="uid://b0ftbhsembri4" path="res://scenes/game/resources/cards/animals/SnakeCard.tres" id="6_ukg4m"]
+[ext_resource type="Resource" uid="uid://d17bwjtauikmj" path="res://scenes/game/resources/cards/animals/RabbitCard.tres" id="7_cts1r"]
+[ext_resource type="Resource" uid="uid://vxy2bdpgcvr3" path="res://scenes/game/resources/cards/animals/PigCard.tres" id="8_nglv3"]
+[ext_resource type="Resource" uid="uid://cv72or5wjx6qn" path="res://scenes/game/resources/cards/animals/PenguinCard.tres" id="9_fhie6"]
+[ext_resource type="Resource" uid="uid://dpv85htjprdm" path="res://scenes/game/resources/cards/animals/ParrotCard.tres" id="10_ew51u"]
+[ext_resource type="Resource" uid="uid://bg0l55tud01xn" path="res://scenes/game/resources/cards/animals/HippoCard.tres" id="11_i0xv5"]
+[ext_resource type="Resource" uid="uid://duiavui3igkd7" path="res://scenes/game/resources/cards/animals/GiraffeCard.tres" id="12_xl3os"]
+
+[resource]
+script = ExtResource("6_66xdg")
+built_in = true
+name = "ANIMALS"
+description = "ANIMALS_DESCRIPTION"
+card_back = ExtResource("1_fcqkf")
+cards = Array[ExtResource("2_mfcoj")]([ExtResource("3_a8qo0"), ExtResource("4_0sikl"), ExtResource("5_ym12t"), ExtResource("6_ukg4m"), ExtResource("7_cts1r"), ExtResource("8_nglv3"), ExtResource("9_fhie6"), ExtResource("10_ew51u"), ExtResource("11_i0xv5"), ExtResource("12_xl3os")])
+id = -1
+file_system_folder = ""

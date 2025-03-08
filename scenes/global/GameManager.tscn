@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://co10o6j0oxeep" path="res://scenes/menu/MainMenu.tscn" id="2_yr08t"]
 [ext_resource type="Script" path="res://src/templates/MemoryDeckResource.gd" id="3_b0cgo"]
 [ext_resource type="PackedScene" uid="uid://bnfr8gek24m47" path="res://scenes/game/levels/MemoryGameScene.tscn" id="3_u1w4v"]
-[ext_resource type="Resource" uid="uid://dgbigggpvj0rk" path="res://scenes/game/decks/AnimalDeck.tres" id="4_rticu"]
+[ext_resource type="Resource" uid="uid://dgbigggpvj0rk" path="res://scenes/game/resources/decks/AnimalDeck.tres" id="4_rticu"]
 [ext_resource type="PackedScene" uid="uid://bv4jg7bjubrrr" path="res://scenes/game/levels/LoadingScreen.tscn" id="4_x4qxi"]
-[ext_resource type="Resource" uid="uid://bhkoclualncm3" path="res://scenes/game/decks/GenericItemDeckFull.tres" id="5_odb18"]
+[ext_resource type="Resource" uid="uid://bhkoclualncm3" path="res://scenes/game/resources/decks/GenericItemDeckFull.tres" id="5_odb18"]
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_34dj2")

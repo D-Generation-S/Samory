@@ -1,25 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3cv1g0a284mq"]
+[gd_scene load_steps=5 format=3 uid="uid://b3cv1g0a284mq"]
 
-[ext_resource type="Script" path="res://src/menu/DeckPreview.gd" id="1_k0qju"]
-[ext_resource type="Script" path="res://src/menu/DeckPreviewSelection.gd" id="3_0x34l"]
+[ext_resource type="Script" path="res://src/menu/deck_viewer/DeckPreview.gd" id="1_k0qju"]
+[ext_resource type="Script" path="res://src/menu/deck_viewer/DeckPreviewSelection.gd" id="3_0x34l"]
 [ext_resource type="Material" uid="uid://dkl2lojy2u6nx" path="res://assets/material/GlowingFocusMaterialtres.tres" id="3_imrd3"]
-[ext_resource type="Texture2D" uid="uid://bmxqeqo65xwt" path="res://assets/sprites/spritesheet-default.png" id="4_20ys8"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wmik1"]
-texture = ExtResource("4_20ys8")
-texture_margin_left = 16.0
-texture_margin_top = 16.0
-texture_margin_right = 16.0
-texture_margin_bottom = 16.0
-region_rect = Rect2(384, 321, 64, 63)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i0pjp"]
-texture = ExtResource("4_20ys8")
-texture_margin_left = 16.0
-texture_margin_top = 16.0
-texture_margin_right = 16.0
-texture_margin_bottom = 16.0
-region_rect = Rect2(384, 384, 64, 64)
+[ext_resource type="StyleBox" uid="uid://d1rhal5rp1608" path="res://assets/styles/panel/MetalBox.tres" id="4_hcvyd"]
 
 [node name="DeckPreview" type="MarginContainer" node_paths=PackedStringArray("deck_name", "card_count", "buildint", "texture_rect", "deck_description", "selection_button")]
 anchors_preset = 15
@@ -77,7 +61,8 @@ selected_color = Color(0.94902, 0.301961, 0, 0.768627)
 [node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxTexture_wmik1")
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("4_hcvyd")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer"]
 layout_mode = 2
@@ -100,6 +85,7 @@ text = "BUILT_IN"
 [node name="IsBuildIn" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 bbcode_enabled = true
 text = "No"
 fit_content = true
@@ -112,6 +98,7 @@ text = "CARD_COUNT"
 [node name="CardCounter" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 bbcode_enabled = true
 text = "0"
 fit_content = true
@@ -121,10 +108,12 @@ self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+mouse_filter = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_i0pjp")
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("4_hcvyd")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer"]
 layout_mode = 2
@@ -136,6 +125,7 @@ text = "DECK_NAME"
 [node name="DeckDescription" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 1
 bbcode_enabled = true
 text = "DESCRIPTION"
 fit_content = true

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cn2mtwmpg34g8"]
 
-[ext_resource type="Script" path="res://src/menu/GameVersion.gd" id="1_ch0ee"]
+[ext_resource type="Script" path="res://src/menu/main_menu/GameVersion.gd" id="1_ch0ee"]
 
 [node name="GameVersion" type="Label"]
 script = ExtResource("1_ch0ee")

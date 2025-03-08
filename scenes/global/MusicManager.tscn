@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://dl8xlp3rmjcfy"]
 
-[ext_resource type="Script" path="res://src/shared/MusicManager.gd" id="1_bji2j"]
+[ext_resource type="Script" path="res://src/game/audio/MusicManager.gd" id="1_bji2j"]
 [ext_resource type="Script" path="res://src/templates/SongResource.gd" id="2_8454u"]
-[ext_resource type="Resource" uid="uid://bp5c4aedvg5p0" path="res://scenes/songs/Sketchbook_2024-03_06_01.tres" id="3_m27jm"]
-[ext_resource type="Resource" uid="uid://dh2q54c21ns33" path="res://scenes/songs/Sketchbook_2024-03_06_02.tres" id="4_omwcj"]
-[ext_resource type="Resource" uid="uid://cul082rkban1q" path="res://scenes/songs/Sketchbook_2024-10_13.tres" id="5_jf4nr"]
-[ext_resource type="Resource" uid="uid://cfh5a6ymixhrd" path="res://scenes/songs/Sketchbook_2024-10_16.tres" id="6_yhiph"]
+[ext_resource type="Resource" uid="uid://bp5c4aedvg5p0" path="res://scenes/global/resources/songs/Sketchbook_2024-03_06_01.tres" id="3_m27jm"]
+[ext_resource type="Resource" uid="uid://dh2q54c21ns33" path="res://scenes/global/resources/songs/Sketchbook_2024-03_06_02.tres" id="4_omwcj"]
+[ext_resource type="Resource" uid="uid://cul082rkban1q" path="res://scenes/global/resources/songs/Sketchbook_2024-10_13.tres" id="5_jf4nr"]
+[ext_resource type="Resource" uid="uid://cfh5a6ymixhrd" path="res://scenes/global/resources/songs/Sketchbook_2024-10_16.tres" id="6_yhiph"]
 
 [node name="MusicManager" type="Node2D"]
 process_mode = 3

@@ -15,6 +15,13 @@ var is_initial_load: bool = true
 var current_deck: MemoryDeckResource = null
 var card_gen_thread: Thread = null
 
+func _ready():
+	if is_mobile():
+		columns = 1
+
+func is_mobile() -> bool:
+	return OS.has_feature("web_android") or OS.has_feature("web_ios")
+	
 func create_new_card_container(node_name: String) -> CardViewerTemplate:
 	var return_container = CardViewerTemplate.new()
 
@@ -25,7 +32,7 @@ func _process(_delta):
 	var scroll_vector = Input.get_axis("scroll_up", "scroll_down")
 	var is_in_foucus = !deck_container.is_scroll_focus()
 
-	if is_in_foucus:
+	if is_in_foucus and scroll_vector != 0:
 		scroll_container.scroll_vertical = ceili(scroll_container.scroll_vertical + scroll_vector * scroll_speed)
 
 func clear_card_view(restore_system: bool = true):
