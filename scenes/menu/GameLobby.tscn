@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b3cv1g0a284mq" path="res://scenes/menu/DeckPreview.tscn" id="1_uo1dm"]
 [ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://scenes/menu/MenuBackground.tscn" id="2_q7a4k"]
 [ext_resource type="Script" path="res://src/menu/game_lobby/PlayersLobbyManager.gd" id="3_1ax0d"]
-[ext_resource type="Texture2D" uid="uid://d3kktfkudqqbm" path="res://assets/textures/HelpIcon.tres" id="3_bvnvj"]
+[ext_resource type="Texture2D" uid="uid://d3kktfkudqqbm" path="res://assets/icons/HelpIcon.tres" id="3_bvnvj"]
 [ext_resource type="Script" path="res://src/menu/game_lobby/LobbySplitter.gd" id="3_muy8l"]
 [ext_resource type="PackedScene" uid="uid://dxhn5n16onctb" path="res://scenes/menu/NewPlayer.tscn" id="3_vi7sw"]
 [ext_resource type="PackedScene" uid="uid://de0if4rovyxsv" path="res://scenes/menu/PlayerCard.tscn" id="4_l5ybk"]
