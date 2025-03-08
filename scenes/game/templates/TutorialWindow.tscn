@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://d15qeu4s4bgjk"]
 
-[ext_resource type="Script" path="res://src/game/TutorialWindow.gd" id="1_rm1ic"]
+[ext_resource type="Script" path="res://src/game/tutorial/TutorialWindow.gd" id="1_rm1ic"]
 [ext_resource type="StyleBox" uid="uid://d1rhal5rp1608" path="res://assets/styles/panel/MetalBox.tres" id="2_a5yjs"]
 [ext_resource type="Script" path="res://src/game/AnimatedText.gd" id="3_x2dyy"]
 [ext_resource type="AudioStream" uid="uid://ctjq1ihqaqsqu" path="res://assets/audio/effect/letter_written.ogg" id="4_vo2go"]
 [ext_resource type="Texture2D" uid="uid://cg0l7tvqmtghr" path="res://assets/sprites/sheet_white1x.png" id="5_0mnhe"]
 [ext_resource type="Script" path="res://src/game/tutorial/TutorialContinueButton.gd" id="6_las18"]
-[ext_resource type="Script" path="res://src/menu/ClickableButton.gd" id="7_scsgn"]
+[ext_resource type="Script" path="res://src/menu/control_overwrites/ClickableButton.gd" id="7_scsgn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ynyq3"]
 atlas = ExtResource("5_0mnhe")

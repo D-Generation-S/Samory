@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://scenes/menu/MenuBackground.tscn" id="1_n8sdb"]
 [ext_resource type="Script" path="res://src/menu/credit_screen/CreditHandling.gd" id="1_xb4j0"]
-[ext_resource type="Script" path="res://src/overlay/FinishGameOk.gd" id="2_52q2a"]
-[ext_resource type="Script" path="res://src/menu/LinkButton.gd" id="2_f3feg"]
+[ext_resource type="Script" path="res://src/game/overlay/FinishGameOk.gd" id="2_52q2a"]
+[ext_resource type="Script" path="res://src/menu/generic/LinkButton.gd" id="2_f3feg"]
 [ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="3_i56v7"]
 [ext_resource type="Resource" uid="uid://b0gd4uwnid78l" path="res://scenes/menu/resources/Animations/DefaultButtonAnimation.tres" id="4_5w3yf"]
 

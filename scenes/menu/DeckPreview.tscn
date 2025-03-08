@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b3cv1g0a284mq"]
 
-[ext_resource type="Script" path="res://src/menu/DeckPreview.gd" id="1_k0qju"]
-[ext_resource type="Script" path="res://src/menu/DeckPreviewSelection.gd" id="3_0x34l"]
+[ext_resource type="Script" path="res://src/menu/deck_viewer/DeckPreview.gd" id="1_k0qju"]
+[ext_resource type="Script" path="res://src/menu/deck_viewer/DeckPreviewSelection.gd" id="3_0x34l"]
 [ext_resource type="Material" uid="uid://dkl2lojy2u6nx" path="res://assets/material/GlowingFocusMaterialtres.tres" id="3_imrd3"]
 [ext_resource type="StyleBox" uid="uid://d1rhal5rp1608" path="res://assets/styles/panel/MetalBox.tres" id="4_hcvyd"]
 

@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://cluwm03j8e11p"]
 
-[ext_resource type="Script" path="res://src/overlay/GamePauseMenu.gd" id="1_avng0"]
-[ext_resource type="Script" path="res://src/overlay/FinishGameOk.gd" id="2_00hhe"]
-[ext_resource type="Script" path="res://src/game/TriggerButton.gd" id="2_ben4t"]
-[ext_resource type="Script" path="res://src/menu/ClickableButton.gd" id="2_ojomg"]
+[ext_resource type="Script" path="res://src/game/overlay/GamePauseMenu.gd" id="1_avng0"]
+[ext_resource type="Script" path="res://src/game/overlay/FinishGameOk.gd" id="2_00hhe"]
+[ext_resource type="Script" path="res://src/game/overlay/TriggerButton.gd" id="2_ben4t"]
+[ext_resource type="Script" path="res://src/menu/control_overwrites/ClickableButton.gd" id="2_ojomg"]
 [ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="3_vcfmt"]
 
 [node name="GamePauseMenu" type="Control"]

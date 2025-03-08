@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://scnjjf50me2r"]
 
 [ext_resource type="Script" path="res://src/menu/deck_viewer/DeckViewer.gd" id="1_yrncy"]
-[ext_resource type="Script" path="res://src/menu/LoadingSpinner.gd" id="2_4nid0"]
+[ext_resource type="Script" path="res://src/menu/loading/LoadingSpinner.gd" id="2_4nid0"]
 [ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://scenes/menu/MenuBackground.tscn" id="2_c7b6s"]
 [ext_resource type="ButtonGroup" uid="uid://68g48rm5eqcv" path="res://assets/button_groups/DeckViewerFilter.tres" id="2_t7m8t"]
 [ext_resource type="Script" path="res://src/menu/deck_viewer/ReloadDecks.gd" id="2_v68ni"]
@@ -110,6 +110,7 @@ size_flags_vertical = 3
 script = ExtResource("4_m2ntb")
 deck_preview_template = ExtResource("6_wx8yk")
 scroll_speed = 15.0
+decks_visible_on_start = false
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer"]
 layout_mode = 2
