@@ -81,8 +81,7 @@ func translate_built_in_decks():
 		translated_build_in_decks.append(new_deck)
 
 func close_game():
-	clear_all_nodes()
-	open_menu(main_menu_template)
+	ScreenTransitionManager.transit_screen(main_menu_template)
 
 func open_menu(scene: PackedScene):
 	if scene == null:
@@ -98,7 +97,6 @@ func open_menu(scene: PackedScene):
 			loading_message.connect(child.set_screen_message)
 
 func play_game(players: Array[PlayerResource], deck: MemoryDeckResource):
-	clear_all_nodes()
 	for player in players:
 		player.score = 0
 	load_game(deck, players)
@@ -113,8 +111,18 @@ func load_game(card_deck: Resource, players: Array[PlayerResource]):
 		current_player_id = current_player_id + 1
 	var game_scene_node = game_scene.instantiate() as MemoryGame
 	game_scene_node.card_deck = card_deck
-	add_child(game_scene_node)  
-	game_scene_node.set_players(players)
+	game_scene_node.add_to_group("active_scene")
+	#for scene in get_tree().get_nodes_in_group("active_scene"):
+	#	scene.queue_free()
+	#add_child(game_scene_node)  
+	var transit = ScreenTransitionManager.transit_screen_by_node(game_scene_node)
+	transit.scene_instantiated.connect(func(_scene): 
+		game_scene_node.set_players(players)
+		)
+	transit.animation_done.connect(func(_scene):
+		game_scene_node.start_loading_data()
+		)
+	#game_scene_node.set_players(players)
 
 
 func get_available_decks() -> Array[MemoryDeckResource]:

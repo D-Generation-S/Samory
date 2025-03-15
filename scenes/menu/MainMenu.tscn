@@ -38,7 +38,7 @@ region = Rect2(157, 257, 36, 38)
 atlas = ExtResource("8_txxco")
 region = Rect2(58, 360, 35, 33)
 
-[node name="MainMenu" type="CanvasLayer" node_paths=PackedStringArray("game_buttons")]
+[node name="MainMenu" type="CanvasLayer" node_paths=PackedStringArray("game_buttons") groups=["active_scene"]]
 script = ExtResource("1_w7od3")
 game_buttons = [NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Start Game"), NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quick Game"), NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Deck Viewer")]
 
