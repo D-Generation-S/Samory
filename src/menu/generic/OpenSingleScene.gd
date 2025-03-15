@@ -4,4 +4,5 @@ extends ClickableButton
 
 func _pressed():
 	super()
-	GlobalGameManagerAccess.get_game_manager().open_menu(scene_template)
+	ScreenTransitionManager.transit_screen(scene_template)
+	#GlobalGameManagerAccess.get_game_manager().open_menu(scene_template)

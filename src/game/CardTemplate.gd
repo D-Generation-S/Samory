@@ -10,6 +10,8 @@ signal mouse_was_used()
 signal about_to_get_delete()
 signal input_active(is_active: bool)
 
+@export var is_ghost: bool = false
+
 @export var card_deck: MemoryDeckResource
 @export var memory_card: MemoryCardResource
 @export var front_side: CardFrontSize
@@ -27,6 +29,8 @@ var getting_removed: bool = false
 var is_ai_turn: bool = false
 
 func _ready():
+	if is_ghost:
+		return
 	if memory_card == null:
 		printerr("No card was set!")
 		return
@@ -39,6 +43,8 @@ func _ready():
 	back_side.texture = card_deck.card_back
 
 func _enter_tree():
+	if is_ghost:
+		return
 	var parent_node = get_parent().get_parent() as MemoryGame
 	if parent_node == null:
 		printerr("No parent node was found!")

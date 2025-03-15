@@ -10,6 +10,9 @@ func _ready():
 		return
 
 	var card_information = get_parent() as CardTemplate
+	if card_information.is_ghost:
+		queue_free()
+		return
 	var card = card_information.memory_card
 	var card_position = card_information.grid_position
 
