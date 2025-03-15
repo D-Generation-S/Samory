@@ -26,14 +26,21 @@ import button inside of the Godot project overview to do so.
 
 Now you should be able to run the game by starting the debug. 
 
-
 ## Special Thanks
 
 Special Thank to [Kenney][kenney] for making so manny assets free to use. This game does use sound effects and image assets.
 Also a big thank to "Abstraction" for making his awesome [music][music] free to use.
+
+## License
+
+The code for this project is licensed with an [MIT][license-code] license. This license is only valid for all the code, scripts and shaders.
+To check the license for the assets, like music, effects or sprite sheets please go to the special thanks secion and follow the links to the
+creators of those assets.
 
 
 [itch-io]: https://xanatos.itch.io/samory
 [godot4_3]: https://godotengine.org/download/archive/4.3-stable/https://godotengine.org/download/archive/4.3-stable/
 [kenney]: https://www.kenney.nl/
 [music]: https://tallbeard.itch.io/music-loop-bundle
+[license-code]: ./LICENSE
+
