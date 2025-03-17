@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://eoxlxr16h0t7"]
+
+[ext_resource type="Script" path="res://src/shared/AnimationScene.gd" id="1_nwsgv"]
+[ext_resource type="Script" path="res://src/shared/CanvasFadeAnimation.gd" id="2_ixus4"]
+
+[node name="ScreenTransitionScene" type="Node2D"]
+process_mode = 3
+z_index = 1000
+script = ExtResource("1_nwsgv")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="Animation" type="ColorRect" parent="CanvasLayer"]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_ixus4")
+
+[connection signal="transition_state" from="." to="CanvasLayer/Animation" method="transition_step"]

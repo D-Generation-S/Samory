@@ -11,7 +11,8 @@ config_version=5
 [application]
 
 config/name="Samory"
-config/version="0.8.0"
+config/version="0.9.0"
+config/tags=PackedStringArray("public")
 run/main_scene="res://scenes/global/GameManager.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 run/max_fps=60
@@ -26,6 +27,7 @@ SettingsRepository="*res://scenes/global/SettingsRepository.tscn"
 GlobalSoundBridge="*res://scenes/global/SoundBridge.tscn"
 MusicManager="*res://scenes/global/MusicManager.tscn"
 ScaleManager="*res://src/shared/ScaleManager.gd"
+ScreenTransitionManager="*res://scenes/global/ScreenTransitionManager.tscn"
 
 [display]
 
@@ -34,6 +36,10 @@ window/size/viewport_height=1080
 window/size/mode=2
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+
+[global_group]
+
+active_scene="The currently active scene"
 
 [gui]
 

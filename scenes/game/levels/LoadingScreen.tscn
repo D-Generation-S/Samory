@@ -14,12 +14,14 @@ _data = {
 point_count = 2
 
 [node name="LoadingScreen" type="Node2D" node_paths=PackedStringArray("screen_message", "static_label")]
+process_mode = 3
 script = ExtResource("1_b8dw1")
 screen_message = NodePath("CanvasLayer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/LoadingMessage")
 static_label = NodePath("CanvasLayer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/LoadingStatic")
 sound_effect = ExtResource("2_b0kc6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 120
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 15

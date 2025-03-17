@@ -54,18 +54,19 @@ var auto_close_popup: PackedScene = preload("res://scenes/game/overlay/AutoClose
 var last_message_banner_id: int = -1
 
 func _ready():
-	process_mode = Node.PROCESS_MODE_DISABLED
+	process_mode = PROCESS_MODE_DISABLED
 	loading_scene.set_screen_message("PLACING_CARDS", true)
 	current_sound_timer = seconds_to_lay_cards
 	
 	player_node = get_node("%Players")
 
+func start_loading_data():
 	load_thread = Thread.new()
 	load_thread.start(build_card_layout.bind(card_deck, card_template, separation))
 
 	await field_constructed
 
-	process_mode = Node.PROCESS_MODE_INHERIT
+	process_mode = PROCESS_MODE_INHERIT
 
 	current_sound_timer = 0
 	var cards = load_thread.wait_to_finish() as Array[CardTemplate]
@@ -76,7 +77,11 @@ func _ready():
 	card_loading_done.emit()
 	start_round_now()
 		
-	loading_scene.destory()
+	for child in get_tree().get_nodes_in_group("game_initialize_scene"):
+		if child is LoadingScreen:
+			loading_scene.destory()
+		else:
+			child.queue_free()
 	for node in game_nodes_to_show:
 		if node is Node2D:
 			node.visible = true 

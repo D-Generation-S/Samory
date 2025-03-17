@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0lbya108prwh"]
+
+[ext_resource type="Script" path="res://src/shared/ScreenTransitionManager.gd" id="1_rb6cu"]
+[ext_resource type="PackedScene" uid="uid://eoxlxr16h0t7" path="res://scenes/global/ScreenTransitionScene.tscn" id="2_1v8o8"]
+
+[node name="ScreenTransitionManager" type="Node"]
+script = ExtResource("1_rb6cu")
+animation_scene = ExtResource("2_1v8o8")
