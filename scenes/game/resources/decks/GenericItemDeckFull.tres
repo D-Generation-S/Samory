@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="MemoryDeckResource" load_steps=25 format=3 uid="uid://bhkoclualncm3"]
 
 [ext_resource type="Texture2D" uid="uid://dpcfrsq40moii" path="res://assets/sprites/CardDefaultBack.png" id="1_huwfb"]
-[ext_resource type="Script" path="res://src/templates/MemoryCardResource.gd" id="1_xwtne"]
-[ext_resource type="Script" path="res://src/templates/MemoryDeckResource.gd" id="2_1y2ok"]
+[ext_resource type="Script" uid="uid://d3u4837pgjc3d" path="res://src/templates/MemoryCardResource.gd" id="1_xwtne"]
+[ext_resource type="Script" uid="uid://bpimk4xlfh3xc" path="res://src/templates/MemoryDeckResource.gd" id="2_1y2ok"]
 [ext_resource type="Resource" uid="uid://bi07necohgv76" path="res://scenes/game/resources/cards/generic_items/ComputerCard.tres" id="3_h00bb"]
 [ext_resource type="Resource" uid="uid://cvulxb1epwmdw" path="res://scenes/game/resources/cards/generic_items/SawCard.tres" id="4_1qrq1"]
 [ext_resource type="Resource" uid="uid://bx8upxfh0e0jg" path="res://scenes/game/resources/cards/generic_items/MicrophoneCard.tres" id="5_6nnq5"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://eoxlxr16h0t7"]
 
-[ext_resource type="Script" path="res://src/shared/AnimationScene.gd" id="1_nwsgv"]
-[ext_resource type="Script" path="res://src/shared/CanvasFadeAnimation.gd" id="2_ixus4"]
+[ext_resource type="Script" uid="uid://cpukienor4wir" path="res://src/shared/AnimationScene.gd" id="1_nwsgv"]
+[ext_resource type="Script" uid="uid://ccp05mu53noyb" path="res://src/shared/CanvasFadeAnimation.gd" id="2_ixus4"]
 
 [node name="ScreenTransitionScene" type="Node2D"]
 process_mode = 3

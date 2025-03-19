@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bkpf0f8bvau6t"]
 
-[ext_resource type="Script" path="res://src/menu/deck_viewer/CardPreview.gd" id="1_fij37"]
+[ext_resource type="Script" uid="uid://c6032rdebhyde" path="res://src/menu/deck_viewer/CardPreview.gd" id="1_fij37"]
 [ext_resource type="Texture2D" uid="uid://d4nvcsyb0ehtb" path="res://assets/sprites/CardDefaultFront.png" id="2_ckxxk"]
-[ext_resource type="Script" path="res://src/menu/deck_viewer/DeckViewerCardImage.gd" id="3_ky5l6"]
+[ext_resource type="Script" uid="uid://dptiokv5lgg1n" path="res://src/menu/deck_viewer/DeckViewerCardImage.gd" id="3_ky5l6"]
 [ext_resource type="StyleBox" uid="uid://d1rhal5rp1608" path="res://assets/styles/panel/MetalBox.tres" id="4_w8vnn"]
 
 [node name="CardPreview" type="MarginContainer" node_paths=PackedStringArray("card_name", "card_description", "card_image")]

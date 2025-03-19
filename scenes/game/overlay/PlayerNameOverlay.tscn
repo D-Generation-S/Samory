@@ -1,14 +1,14 @@
 [gd_scene load_steps=14 format=3 uid="uid://cynb8xjpxqa6w"]
 
-[ext_resource type="Script" path="res://src/game/overlay/PlayerGameLabel.gd" id="1_d33rg"]
+[ext_resource type="Script" uid="uid://c04wthgck8mhp" path="res://src/game/overlay/PlayerGameLabel.gd" id="1_d33rg"]
 [ext_resource type="Texture2D" uid="uid://bmxqeqo65xwt" path="res://assets/sprites/spritesheet-default.png" id="2_blt2s"]
 [ext_resource type="Texture2D" uid="uid://lj7phnlllstw" path="res://assets/icons/HumanIcon.tres" id="2_urml8"]
 [ext_resource type="Texture2D" uid="uid://wa0qa5dgmjgk" path="res://assets/icons/AiIcon.tres" id="3_nldki"]
 [ext_resource type="Resource" uid="uid://c0eqsic62hvl0" path="res://scenes/menu/resources/colors/PlayerHighlightColor.tres" id="4_e0a06"]
-[ext_resource type="Script" path="res://src/menu/generic/StyleOverwriteOnAction.gd" id="6_jynke"]
+[ext_resource type="Script" uid="uid://debll6gkj7h13" path="res://src/menu/generic/StyleOverwriteOnAction.gd" id="6_jynke"]
 [ext_resource type="Shader" uid="uid://docbe2j6cd3wg" path="res://assets/shaders/ColorReplaceShader.tres" id="6_vrh8j"]
-[ext_resource type="Script" path="res://src/game/overlay/ColorReplace.gd" id="7_4mda4"]
-[ext_resource type="Script" path="res://src/templates/ColorResource.gd" id="8_e0d5f"]
+[ext_resource type="Script" uid="uid://davutkne54fp8" path="res://src/game/overlay/ColorReplace.gd" id="7_4mda4"]
+[ext_resource type="Script" uid="uid://crr4r8hbc4d1l" path="res://src/templates/ColorResource.gd" id="8_e0d5f"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qprtf"]
 texture = ExtResource("2_blt2s")
@@ -28,7 +28,7 @@ region_rect = Rect2(448, 384, 64, 64)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iisri"]
 shader = ExtResource("6_vrh8j")
-shader_parameter/replace_color = null
+shader_parameter/replace_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Resource" id="Resource_u12w1"]
 script = ExtResource("8_e0d5f")

@@ -7,7 +7,7 @@ on:
 env:
   REF_CHECKOUT_BRANCH: main
   RELEASE_ARTIFACT_FOLDER: artifacts
-  GODOT_VERSION: 4.3
+  GODOT_VERSION: 4.4
   PROJECT_PATH: .
   DEBUG: false
 
@@ -47,7 +47,7 @@ jobs:
           os: windows
           file: samory.exe
     container:
-      image: barichello/godot-ci:4.3
+      image: barichello/godot-ci:4.4
     steps:
       - uses: actions/checkout@v3
         with:

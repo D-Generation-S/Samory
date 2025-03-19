@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="AiDifficultyResource" load_steps=16 format=3 uid="uid://gy5cebbq2aed"]
 
-[ext_resource type="Script" path="res://src/game/ai/AiBehaviorNode.gd" id="1_yjcfv"]
-[ext_resource type="Script" path="res://src/templates/AiDifficultyResource.gd" id="2_kabtl"]
-[ext_resource type="Script" path="res://src/game/ai/GetMatchingCard.gd" id="2_spg3f"]
-[ext_resource type="Script" path="res://src/game/ai/OpenLastRevealedCard.gd" id="3_1maa1"]
-[ext_resource type="Script" path="res://src/game/ai/OpenRandomBlackboardCard.gd" id="4_jovtk"]
-[ext_resource type="Script" path="res://src/game/ai/OpenRandomCard.gd" id="5_36tnr"]
-[ext_resource type="Script" path="res://src/game/ai/OpenFirstMatchingCard.gd" id="6_ds6ms"]
-[ext_resource type="Script" path="res://src/game/ai/OpenUnknownCard.gd" id="7_ujdyv"]
+[ext_resource type="Script" uid="uid://c1te0iu0444y4" path="res://src/game/ai/AiBehaviorNode.gd" id="1_yjcfv"]
+[ext_resource type="Script" uid="uid://cagpu6d10g55o" path="res://src/templates/AiDifficultyResource.gd" id="2_kabtl"]
+[ext_resource type="Script" uid="uid://7biix5hsjheq" path="res://src/game/ai/GetMatchingCard.gd" id="2_spg3f"]
+[ext_resource type="Script" uid="uid://d0vjenabf7c5i" path="res://src/game/ai/OpenLastRevealedCard.gd" id="3_1maa1"]
+[ext_resource type="Script" uid="uid://bda4016im6e8w" path="res://src/game/ai/OpenRandomBlackboardCard.gd" id="4_jovtk"]
+[ext_resource type="Script" uid="uid://cvnxi5g1235m6" path="res://src/game/ai/OpenRandomCard.gd" id="5_36tnr"]
+[ext_resource type="Script" uid="uid://cnc4s4mdqoccc" path="res://src/game/ai/OpenFirstMatchingCard.gd" id="6_ds6ms"]
+[ext_resource type="Script" uid="uid://b27mb346tnwgt" path="res://src/game/ai/OpenUnknownCard.gd" id="7_ujdyv"]
 
 [sub_resource type="Resource" id="Resource_er0g6"]
 script = ExtResource("2_spg3f")

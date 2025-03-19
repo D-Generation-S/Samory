@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://bv4jg7bjubrrr"]
 
-[ext_resource type="Script" path="res://src/game/loading_screen/LoadingScreen.gd" id="1_b8dw1"]
-[ext_resource type="Script" path="res://src/game/loading_screen/PathSpawner.gd" id="2_18x8e"]
+[ext_resource type="Script" uid="uid://bkiuisbx2cguy" path="res://src/game/loading_screen/LoadingScreen.gd" id="1_b8dw1"]
+[ext_resource type="Script" uid="uid://br6qahelfupby" path="res://src/game/loading_screen/PathSpawner.gd" id="2_18x8e"]
 [ext_resource type="AudioStream" uid="uid://lboryp8cbdxe" path="res://assets/audio/effect/card-shuffle.ogg" id="2_b0kc6"]
-[ext_resource type="Script" path="res://src/game/LoadingPath.gd" id="3_7sgnu"]
+[ext_resource type="Script" uid="uid://bsn7w2sres7n1" path="res://src/game/LoadingPath.gd" id="3_7sgnu"]
 [ext_resource type="PackedScene" uid="uid://8yxfao2fwwod" path="res://scenes/game/templates/FallingCard.tscn" id="3_d4esl"]
 [ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://scenes/menu/MenuBackground.tscn" id="5_0ob53"]
 

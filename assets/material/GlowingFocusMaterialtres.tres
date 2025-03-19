@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dkl2lojy2u6nx"]
 
-[ext_resource type="Shader" path="res://assets/shaders/CardSelectionGlowShader.gdshader" id="1_175s7"]
+[ext_resource type="Shader" uid="uid://6pmkw3r1hcqm" path="res://assets/shaders/CardSelectionGlowShader.gdshader" id="1_175s7"]
 
 [resource]
 shader = ExtResource("1_175s7")
