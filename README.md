@@ -17,7 +17,7 @@ If you want to give it a try check it out on [Itch.io][itch-io]. You could also 
 
 ### Requerements
 
-- [Godot 4.3][godot4_3]
+- [Godot 4.4][godot4_4]
 
 ### How to build the project
 
@@ -28,7 +28,7 @@ Now you should be able to run the game by starting the debug.
 
 ## Special Thanks
 
-Special Thank to [Kenney][kenney] for making so manny assets free to use. This game does use sound effects and image assets.
+Special Thank to [Kenney][kenney] for making so many assets free to use. This game does use sound effects and image assets.
 Also a big thank to "Abstraction" for making his awesome [music][music] free to use.
 
 ## License
@@ -39,7 +39,7 @@ creators of those assets.
 
 
 [itch-io]: https://xanatos.itch.io/samory
-[godot4_3]: https://godotengine.org/download/archive/4.3-stable/https://godotengine.org/download/archive/4.3-stable/
+[godot4_4]: https://godotengine.org/download/archive/4.4-stable/
 [kenney]: https://www.kenney.nl/
 [music]: https://tallbeard.itch.io/music-loop-bundle
 [license-code]: ./LICENSE
