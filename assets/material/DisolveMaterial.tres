@@ -13,6 +13,6 @@ noise = SubResource("FastNoiseLite_vy61v")
 [resource]
 shader = ExtResource("1_7t678")
 shader_parameter/threshold = 0.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_dgshd")
 shader_parameter/Offset = 0.059
 shader_parameter/BurnColor = Color(0.811765, 0.647059, 0, 1)
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_dgshd")

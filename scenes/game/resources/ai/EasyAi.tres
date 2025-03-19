@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="AiDifficultyResource" load_steps=9 format=3 uid="uid://bvccy0uqye5ff"]
 
-[ext_resource type="Script" path="res://src/game/ai/AiBehaviorNode.gd" id="1_0pxck"]
-[ext_resource type="Script" path="res://src/game/ai/OpenRandomCard.gd" id="2_fydnb"]
-[ext_resource type="Script" path="res://src/game/ai/OpenLastRevealedCard.gd" id="3_p5vbk"]
-[ext_resource type="Script" path="res://src/templates/AiDifficultyResource.gd" id="4_d6me8"]
-[ext_resource type="Script" path="res://src/game/ai/GetMatchingCard.gd" id="4_ff725"]
+[ext_resource type="Script" uid="uid://c1te0iu0444y4" path="res://src/game/ai/AiBehaviorNode.gd" id="1_0pxck"]
+[ext_resource type="Script" uid="uid://cvnxi5g1235m6" path="res://src/game/ai/OpenRandomCard.gd" id="2_fydnb"]
+[ext_resource type="Script" uid="uid://d0vjenabf7c5i" path="res://src/game/ai/OpenLastRevealedCard.gd" id="3_p5vbk"]
+[ext_resource type="Script" uid="uid://cagpu6d10g55o" path="res://src/templates/AiDifficultyResource.gd" id="4_d6me8"]
+[ext_resource type="Script" uid="uid://7biix5hsjheq" path="res://src/game/ai/GetMatchingCard.gd" id="4_ff725"]
 
 [sub_resource type="Resource" id="Resource_ixrth"]
 script = ExtResource("2_fydnb")

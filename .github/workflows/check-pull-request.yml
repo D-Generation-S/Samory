@@ -4,27 +4,40 @@ on:
   pull_request:
     branches: [ "main", "develop" ]
 
+env:
+  GODOT_VERSION: 4.4
+  PROJECT_PATH: .
+
 jobs:
   Check-Build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
         platform:
-        - name: linux
-          file: samory
+        - name: windows
+          preset: windows
+          os: windows
+          file: samory.exe
+    container:
+      image: barichello/godot-ci:4.4
     steps:
       - uses: actions/checkout@v3
         with:
            lfs: true
-      - name: Build
-        id: build
-        uses: manleydev/build-godot-action@master
-        with:
-          name: ${{ matrix.platform.file }}
-          preset: ${{ matrix.platform.name }}
-          debugMode: "true"
+      - name: Setup
+        run: |
+          mkdir -v -p ~/.local/share/godot/export_templates/
+          mkdir -v -p ~/.config/
+          mv /root/.config/godot ~/.config/godot
+          mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+      - name: Build ${{ matrix.platform.name }}
+        run: |
+          mkdir -v -p build/${{ matrix.platform.os }}
+          EXPORT_DIR="$(readlink -f build)"
+          cd $PROJECT_PATH
+          godot --headless --verbose --export-debug ${{ matrix.platform.preset }} "$EXPORT_DIR/${{ matrix.platform.os }}/${{ matrix.platform.file }}"
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: Samory - ${{ matrix.platform.name }}
-          path: ${{ github.workspace }}/${{ steps.build.outputs.build }}
+          path: build/${{ matrix.platform.os }}

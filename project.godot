@@ -11,10 +11,10 @@ config_version=5
 [application]
 
 config/name="Samory"
-config/version="0.9.0"
+config/version="0.9.1"
 config/tags=PackedStringArray("public")
 run/main_scene="res://scenes/global/GameManager.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+config/features=PackedStringArray("4.4", "GL Compatibility")
 run/max_fps=60
 config/icon="res://icon.svg"
 

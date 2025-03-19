@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SettingsResource" load_steps=4 format=3 uid="uid://gbkkrxvvrxpt"]
 
-[ext_resource type="Script" path="res://src/templates/SettingsResource.gd" id="1_ivax6"]
-[ext_resource type="Script" path="res://src/templates/TutorialResource.gd" id="2_0sltm"]
+[ext_resource type="Script" uid="uid://cqtvyw6fggf1x" path="res://src/templates/SettingsResource.gd" id="1_ivax6"]
+[ext_resource type="Script" uid="uid://b5rklrbui4uhp" path="res://src/templates/TutorialResource.gd" id="2_0sltm"]
 
 [sub_resource type="Resource" id="Resource_pm4ei"]
 script = ExtResource("2_0sltm")
