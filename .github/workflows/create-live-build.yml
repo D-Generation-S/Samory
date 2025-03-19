@@ -45,7 +45,11 @@ jobs:
         - name: windows
           preset: windows
           os: windows
-          file: samory.exe
+          file: samory.exe        
+        - name: web
+          preset: Web
+          os: web
+          file: index.html
     container:
       image: barichello/godot-ci:4.4
     steps:
@@ -79,9 +83,8 @@ jobs:
       matrix:
         platform:
         - name: linux
-          file: samory
         - name: windows
-          file: samory.exe
+        - name: web
     steps:      
       - uses: actions/checkout@v3
         with:
@@ -116,9 +119,11 @@ jobs:
       matrix:
         platform:
         - name: linux
-          file: samory
+          channel: linux
         - name: windows
-          file: samory.exe
+          channel: windows
+        - name: web
+          channel: web-build
     steps:  
       - uses: actions/checkout@v3
         with:
@@ -132,7 +137,7 @@ jobs:
       - uses: manleydev/butler-publish-itchio-action@master
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
-          CHANNEL: ${{ matrix.platform.name }}
+          CHANNEL: ${{ matrix.platform.channel }}
           ITCH_GAME: samory
           ITCH_USER: xanatos
           VERSION: ${{ github.ref_name }}
