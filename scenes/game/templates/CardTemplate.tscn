@@ -26,7 +26,7 @@ shader_parameter/fragment_number = Vector2(20, 20)
 shader_parameter/progress = 0.0
 
 [sub_resource type="Gradient" id="Gradient_0sfg2"]
-colors = PackedColorArray(0.87451, 0.807843, 0.631373, 1, 0.87451, 0.807843, 0.631373, 1)
+colors = PackedColorArray(0.955955, 0.929103, 0.857593, 1, 0.955955, 0.929103, 0.857593, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_vp4ck"]
 gradient = SubResource("Gradient_0sfg2")
