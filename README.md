@@ -13,9 +13,21 @@ The game is shipped with a build in deck, no need to create a custom one.
 
 If you want to give it a try check it out on [Itch.io][itch-io]. You could also download the latest build on GitHub if you wish.
 
+## Installation from GitHub
+
+If you do want to download the game from GitHub go to [release][latest-release] page and download the zip file for your system. Unzip the content to your machine into an directory. Open up that directory and execute the `samory` binary.
+
+### Arch Linux
+
+If you are on Arch you can get the game via the AUR. To do so head over to [samory-bin][samory-aur] or if you do have `yay` installed run
+
+```bash
+yay samory-bin
+```
+
 ## Build the project
 
-### Requerements
+### Requirements
 
 - [Godot 4.4][godot4_4]
 
@@ -40,6 +52,8 @@ creators of those assets.
 
 [itch-io]: https://xanatos.itch.io/samory
 [godot4_4]: https://godotengine.org/download/archive/4.4-stable/
+[latest-release]: https://github.com/D-Generation-S/Samory/releases/latest
+[samory-aur]: https://aur.archlinux.org/packages/samory-bin
 [kenney]: https://www.kenney.nl/
 [music]: https://tallbeard.itch.io/music-loop-bundle
 [license-code]: ./LICENSE
