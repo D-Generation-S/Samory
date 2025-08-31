@@ -16,7 +16,7 @@
 [center][b]Special Thanks to[/b][/center]
 
 [center]My son Samuel,
-who was the inspiration and name giver for that game[/center]
+who provided the inspiration for the game and gave it its name[/center]
 
 [center]My wife,
 who had my back and gave me the time I needed for development[/center]
