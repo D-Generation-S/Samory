@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://cluwm03j8e11p"]
+[gd_scene load_steps=8 format=3 uid="uid://cluwm03j8e11p"]
 
 [ext_resource type="Script" uid="uid://086a7sypd8oh" path="res://src/game/overlay/GamePauseMenu.gd" id="1_avng0"]
 [ext_resource type="Script" uid="uid://b1uyki8ha85d7" path="res://src/game/overlay/FinishGameOk.gd" id="2_00hhe"]
 [ext_resource type="Script" uid="uid://bl7uilwoob8ni" path="res://src/game/overlay/TriggerButton.gd" id="2_ben4t"]
 [ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://src/menu/control_overwrites/ClickableButton.gd" id="2_ojomg"]
+[ext_resource type="Texture2D" uid="uid://cln3v63hwble8" path="res://assets/icons/HomeIcon.tres" id="3_jjhg3"]
 [ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="3_vcfmt"]
+[ext_resource type="Texture2D" uid="uid://b6vwa7x6vgpfd" path="res://assets/icons/DenyIcon.tres" id="6_34hpv"]
 
 [node name="GamePauseMenu" type="Control"]
 layout_mode = 3
@@ -54,6 +56,7 @@ active = 15
 [node name="MainMenu" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "MAIN_MENU"
+icon = ExtResource("3_jjhg3")
 script = ExtResource("2_00hhe")
 is_focused = true
 
@@ -62,6 +65,7 @@ layout_mode = 2
 shortcut = ExtResource("3_vcfmt")
 shortcut_in_tooltip = false
 text = "CLOSE_MENU"
+icon = ExtResource("6_34hpv")
 script = ExtResource("2_ojomg")
 is_focused = true
 

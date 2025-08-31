@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ded0xyxbb1om1"]
+[gd_scene load_steps=29 format=3 uid="uid://ded0xyxbb1om1"]
 
 [ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://scenes/menu/MenuBackground.tscn" id="2_cootk"]
 [ext_resource type="Script" uid="uid://be1ipi8ub0y8n" path="res://src/menu/settings_menu/SettingsMenu.gd" id="2_hfhds"]
@@ -17,13 +17,17 @@
 [ext_resource type="Script" uid="uid://g8dk5ckx5t4d" path="res://src/menu/settings/AutoCloseRoundSlider.gd" id="9_adf7j"]
 [ext_resource type="AudioStream" uid="uid://62algo6uwxwy" path="res://assets/audio/effect/card-slide-5.ogg" id="9_plrjf"]
 [ext_resource type="AudioStream" uid="uid://4hh1xtj8ac4j" path="res://assets/audio/effect/card-slide-6.ogg" id="10_3mytq"]
+[ext_resource type="Texture2D" uid="uid://xn3vywapxb7e" path="res://assets/icons/ResetIcon.tres" id="10_mdkqv"]
 [ext_resource type="AudioStream" uid="uid://dhm4p2ecwyfl3" path="res://assets/audio/effect/card-slide-7.ogg" id="11_bbgb2"]
 [ext_resource type="AudioStream" uid="uid://duqacxqgecl83" path="res://assets/audio/effect/card-slide-8.ogg" id="12_05mi4"]
+[ext_resource type="Texture2D" uid="uid://dkm1d2mijfcuq" path="res://assets/icons/PlayIcon.tres" id="13_12fsg"]
 [ext_resource type="AudioStream" uid="uid://dhlalkc173c3p" path="res://assets/audio/effect/card-turn-1.ogg" id="13_jbvf7"]
 [ext_resource type="AudioStream" uid="uid://48iu01xst023" path="res://assets/audio/effect/card-turn-2.ogg" id="14_vb64j"]
 [ext_resource type="AudioStream" uid="uid://h0louy6yrv3o" path="res://assets/audio/effect/card-turn-3.ogg" id="15_b5nta"]
 [ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://src/menu/control_overwrites/ClickableButton.gd" id="19_3ip51"]
 [ext_resource type="Script" uid="uid://bx11dlcw4bqx4" path="res://src/menu/settings_menu/ResetTutorial.gd" id="20_wiovc"]
+[ext_resource type="Texture2D" uid="uid://dqv4i4y66gem" path="res://assets/icons/OkIcon.tres" id="26_br808"]
+[ext_resource type="Texture2D" uid="uid://b6vwa7x6vgpfd" path="res://assets/icons/DenyIcon.tres" id="28_mbv6n"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("2_hfhds")
@@ -93,6 +97,7 @@ script = ExtResource("4_xqb7h")
 layout_mode = 2
 item_count = 2
 popup/item_0/text = "ENGLISH"
+popup/item_0/id = 0
 popup/item_1/text = "GERMAN"
 popup/item_1/id = 1
 script = ExtResource("6_cw3wv")
@@ -126,6 +131,7 @@ size_flags_vertical = 1
 layout_mode = 2
 tooltip_text = "RESET_TUTORIAL_TOOLTIP"
 text = "RESET_TUTORIAL"
+icon = ExtResource("10_mdkqv")
 script = ExtResource("20_wiovc")
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer"]
@@ -178,6 +184,7 @@ bus_name = 2
 layout_mode = 2
 size_flags_vertical = 10
 text = "TEST_EFFECTS"
+icon = ExtResource("13_12fsg")
 script = ExtResource("4_l6fy8")
 test_effects = Array[AudioStream]([ExtResource("5_fls2r"), ExtResource("6_0bdhr"), ExtResource("7_vbnlv"), ExtResource("8_obkpv"), ExtResource("9_plrjf"), ExtResource("10_3mytq"), ExtResource("11_bbgb2"), ExtResource("12_05mi4"), ExtResource("13_jbvf7"), ExtResource("14_vb64j"), ExtResource("15_b5nta")])
 play_sounds = false
@@ -189,11 +196,13 @@ size_flags_horizontal = 4
 [node name="Button" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2"]
 layout_mode = 2
 text = "APPLY"
+icon = ExtResource("26_br808")
 script = ExtResource("19_3ip51")
 
 [node name="Close" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2"]
 layout_mode = 2
 text = "CLOSE"
+icon = ExtResource("28_mbv6n")
 script = ExtResource("19_3ip51")
 
 [connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/FullScreen" method="settings_loaded"]

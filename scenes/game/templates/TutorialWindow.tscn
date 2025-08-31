@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d15qeu4s4bgjk"]
+[gd_scene load_steps=10 format=3 uid="uid://d15qeu4s4bgjk"]
 
 [ext_resource type="Script" uid="uid://brlkkuu3xnw88" path="res://src/game/tutorial/TutorialWindow.gd" id="1_rm1ic"]
 [ext_resource type="StyleBox" uid="uid://d1rhal5rp1608" path="res://assets/styles/panel/MetalBox.tres" id="2_a5yjs"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://ctjq1ihqaqsqu" path="res://assets/audio/effect/letter_written.ogg" id="4_vo2go"]
 [ext_resource type="Texture2D" uid="uid://cg0l7tvqmtghr" path="res://assets/sprites/sheet_white1x.png" id="5_0mnhe"]
 [ext_resource type="Script" uid="uid://b1muqfd0npxnt" path="res://src/game/tutorial/TutorialContinueButton.gd" id="6_las18"]
+[ext_resource type="Texture2D" uid="uid://dqv4i4y66gem" path="res://assets/icons/OkIcon.tres" id="7_ky4hq"]
 [ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://src/menu/control_overwrites/ClickableButton.gd" id="7_scsgn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ynyq3"]
@@ -87,6 +88,7 @@ text = "COMPLETE_TUTORIAL"
 layout_mode = 2
 size_flags_horizontal = 10
 text = "OK"
+icon = ExtResource("7_ky4hq")
 script = ExtResource("7_scsgn")
 
 [connection signal="current_text_displayed" from="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/Body" to="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/TextureButton" method="show"]
