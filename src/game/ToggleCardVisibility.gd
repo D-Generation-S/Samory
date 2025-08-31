@@ -19,6 +19,7 @@ var animation_tween: Tween = null
 
 func _ready():
 	collider = get_children()[0]
+	visible = true
 	# This makes sure that each instance does get it's own shader instance
 	set_shader_material(toggle_material)
 
