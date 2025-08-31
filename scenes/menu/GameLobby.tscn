@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dkd4cftggpymb"]
+[gd_scene load_steps=26 format=3 uid="uid://dkd4cftggpymb"]
 
 [ext_resource type="Script" uid="uid://lae7d6ybthx1" path="res://src/menu/game_lobby/GameLobby.gd" id="1_0oi2l"]
 [ext_resource type="Script" uid="uid://dob4ydfgei44n" path="res://src/menu/deck_viewer/AddNewPlayerButton.gd" id="1_2n3u5"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dxhn5n16onctb" path="res://scenes/menu/NewPlayer.tscn" id="3_vi7sw"]
 [ext_resource type="PackedScene" uid="uid://de0if4rovyxsv" path="res://scenes/menu/PlayerCard.tscn" id="4_l5ybk"]
 [ext_resource type="Script" uid="uid://crg48uu6clbuc" path="res://src/menu/game_lobby/QuickAddPlayer.gd" id="7_6tvv5"]
+[ext_resource type="Texture2D" uid="uid://lj7phnlllstw" path="res://assets/icons/HumanIcon.tres" id="7_soh36"]
 [ext_resource type="Script" uid="uid://7xhiyal0wb00" path="res://src/menu/main_menu/StartLobbyGame.gd" id="8_6tuah"]
 [ext_resource type="Script" uid="uid://duoapsvxmnpca" path="res://src/menu/deck_viewer/DeckViewerFilterBox.gd" id="8_7nqqi"]
 [ext_resource type="Script" uid="uid://b1uyki8ha85d7" path="res://src/game/overlay/FinishGameOk.gd" id="8_i1lj5"]
@@ -18,8 +19,11 @@
 [ext_resource type="ButtonGroup" uid="uid://csu1gmbh8nooq" path="res://assets/button_groups/GameLobbyFilter.tres" id="9_b0hcr"]
 [ext_resource type="Script" uid="uid://cjuiuh4s0clue" path="res://src/menu/deck_viewer/DeckViewCheckbox.gd" id="10_nuo64"]
 [ext_resource type="Script" uid="uid://bt7h8k61frlxw" path="res://src/menu/deck_viewer/DeckContainer.gd" id="11_3fbum"]
+[ext_resource type="Texture2D" uid="uid://wa0qa5dgmjgk" path="res://assets/icons/AiIcon.tres" id="11_3vpqe"]
 [ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="11_eein8"]
 [ext_resource type="Resource" uid="uid://b0gd4uwnid78l" path="res://scenes/menu/resources/Animations/DefaultButtonAnimation.tres" id="17_to3in"]
+[ext_resource type="Texture2D" uid="uid://dkm1d2mijfcuq" path="res://assets/icons/PlayIcon.tres" id="19_ef40l"]
+[ext_resource type="Texture2D" uid="uid://b6vwa7x6vgpfd" path="res://assets/icons/DenyIcon.tres" id="23_k5aev"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s33bc"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -112,6 +116,7 @@ layout_mode = 2
 [node name="AddNewPlayer" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer" node_paths=PackedStringArray("root_node", "player_node")]
 layout_mode = 2
 text = "ADD_NEW_PLAYER"
+icon = ExtResource("7_soh36")
 script = ExtResource("1_2n3u5")
 root_node = NodePath("../../../../../../../../../../..")
 player_node = NodePath("../../../ScrollContainer/Players")
@@ -122,6 +127,7 @@ is_focused = true
 [node name="AddRandomPlayer" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer"]
 layout_mode = 2
 text = "ADD_RANDOM_PLAYER"
+icon = ExtResource("7_soh36")
 script = ExtResource("7_6tvv5")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
@@ -130,6 +136,7 @@ layout_mode = 2
 [node name="AddAiPlayer" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer2"]
 layout_mode = 2
 text = "ADD_AI_PLAYER"
+icon = ExtResource("11_3vpqe")
 script = ExtResource("8_prt8c")
 ai_selecion_dialog = ExtResource("9_2gndk")
 
@@ -207,6 +214,7 @@ layout_mode = 2
 [node name="StartGame" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2" node_paths=PackedStringArray("player_list", "deck_manager")]
 layout_mode = 2
 text = "START_GAME"
+icon = ExtResource("19_ef40l")
 script = ExtResource("8_6tuah")
 player_list = NodePath("../../../../../HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/Players")
 deck_manager = NodePath("../../../../../HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/ScrollContainer/Decks")
@@ -217,6 +225,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 shortcut = ExtResource("11_eein8")
 text = "CANCEL"
+icon = ExtResource("23_k5aev")
 script = ExtResource("8_i1lj5")
 animation_resource = ExtResource("17_to3in")
 
