@@ -10,12 +10,14 @@ signal mouse_was_used()
 signal about_to_get_delete()
 signal input_active(is_active: bool)
 
+signal card_text_changed(new_text: String)
+signal card_tooltip_changed(new_tooltip: String)
+
 @export var is_ghost: bool = false
 
 @export var card_deck: MemoryDeckResource
 @export var memory_card: MemoryCardResource
 @export var front_side: CardFrontSize
-@export var text_node: Node
 @export var back_side: ToggleCardVisibility
 @export var flip_effects: Array[AudioStream]
 @export var timer_for_hide_delay: Timer
@@ -37,7 +39,9 @@ func _ready():
 	if card_deck == null:		
 		printerr("No deck was set")
 		return
-	text_node.set_card_text(memory_card.name)
+	card_text_changed.emit(memory_card.name)
+	card_tooltip_changed.emit(memory_card.description)
+
 	var real_texture: Texture2D = memory_card.texture
 	front_side.set_and_scale_texture(real_texture)
 	back_side.texture = card_deck.card_back
@@ -89,12 +93,13 @@ func card_was_clicked():
 	freeze_card()
 	play_card_turn_sound()
 	back_side.toggle_off()
+	card_triggered.emit()
 
 func play_card_turn_sound():
 	var index = randi() % flip_effects.size()
 	var effect = flip_effects[index]
 	GlobalSoundManager.play_sound_effect(effect)
-	card_triggered.emit()
+	
 
 func get_card_id():
 	var card = memory_card as MemoryCardResource
