@@ -8,9 +8,19 @@ OK;Ok;Ok
 CANCEL;Cancel;Abbrechen
 REPLAY;Replay;Erneut spielen
 QUIT_GAME;Quit Game;Spiel schließen
+QUIT_GAME_TOOLTIP;Close the game;Das Spiel schließen
 START_GAME;Start game;Spiel starten
+CUSTOM_GAME;Custom game;Eigenes Spiel erstellen
+CUSTOM_GAME_TOOLTIP;Create a custom game against AI or humans;Erstelle ein eigenes Spiel gegen die KI oder andere Menschliche Spieler
 QUICK_GAME;Quick Game;Schnelles Spiel
+QUICK_GAME_TOOLTIP;Create a quick game against another human with a random deck;Erstelle ein schnelles Spiel gegen einen anderen Menschen, es wird hierfür ein zufälliges Deck genutzt
+DECK_VIEWER;Deck Viewer;Deckbetrachter
+DECK_VIEWER_TOOLTIP;View all your decks with the card description;Schaue dir all deine Decks an, hier kannst du auch die Karten beschreibungen lesen
 DECK_INFO;Deck Info;Deck Informationen
+CREDITS;Credits;Credits
+CREDITS_TOOLTIP;Checkout who is responsible for all the bugs you found, let's got;Schaue wer schuld an all den bugs im Spiel ist, worauf wartest du?
+QUICK_AI_GAME;Start Quick AI Game;Starte schnelles KI Spiel
+QUICK_AI_GAME_TOOLTIP;Start a quick game against a AI with an random difficulty using a random deck;Starte ein schnelles spiel gegen eine KI mit zufälliger schwierigkeit, es wird hierbei ein zufälliges Deck genutzt
 CARD_COUNT;Card count:;Kartenanzahl:
 BUILT_IN;Embedded:;Eingebettetes:
 PLAYER_LIST;Players;Spieler
@@ -96,7 +106,6 @@ TEA_POT;Tea Pot;Tee Kanne
 TEA_POT_DESCRIPTION;A vessel with a spout and a handle, used for brewing and serving tea;Ein Gefäß mit einem Ausguss und einem Griff, das verwendet wird, um Tee aufzubrühen und zu servieren
 THOOTHBRUSH;Thoothbrush;Zahnbürste
 THOOTHBRUSH_DESCRIPTION;A tool with bristles on a handle used for cleaning teeth and gums;Ein Werkzeug mit Borsten auf einem Griff, das zur Reinigung der Zähne und des Zahnfleisches verwendet wird
-DECK_VIEWER;Deck Viewer;Deckbetrachter
 RELOAD_CUSTOM_DECKS;Reload custom decks;Eigene Decks neu laden
 FILTER_DECKS;Filter decks by deck name;Decks anhand ihres Namens filtern
 SHOW_ALL;Show All;Alle Anzeigen
@@ -121,8 +130,6 @@ ENGLISH;English;Englisch
 GERMAN;German;Deutsch
 VERSION;Version:;Version:
 GAME_SETTINGS;Game Settings;Spieleinstellungen
-CREDITS;Credits;Credits
-QUICK_AI_GAME;Start Quick AI Game;Starte schnelles KI Spiel
 EASY_AI;Easy;Einfach
 NORMAL_AI;Normal;Normal
 HARD_AI;Hard;Schwer
