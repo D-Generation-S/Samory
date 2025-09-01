@@ -138,6 +138,7 @@ theme_override_constants/margin_bottom = 10
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TopDock"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="GameVersion" parent="TopDock/HBoxContainer" instance=ExtResource("8_xjhtt")]
 layout_mode = 2
@@ -166,6 +167,7 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 3
 size_flags_vertical = 10
+mouse_filter = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
