@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://co10o6j0oxeep"]
+[gd_scene load_steps=30 format=3 uid="uid://co10o6j0oxeep"]
 
 [ext_resource type="Script" uid="uid://chjw5lk6vyisx" path="res://src/menu/main_menu/QuitGameButton.gd" id="1_6c3ib"]
 [ext_resource type="Script" uid="uid://duplgguwpsw7p" path="res://src/menu/main_menu/StartQuickGame.gd" id="1_dyfxg"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://cln3v63hwble8" path="res://assets/icons/HomeIcon.tres" id="19_heq2t"]
 [ext_resource type="Texture2D" uid="uid://cswswoet5pppp" path="res://assets/icons/ShareIcon.tres" id="20_pb5pf"]
 [ext_resource type="Texture2D" uid="uid://cat86qdkpvga8" path="res://assets/icons/WarningIcon.tres" id="21_whx4l"]
+[ext_resource type="Shortcut" uid="uid://nq3pb8cwdj1m" path="res://assets/shortcuts/help.tres" id="23_3hocj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pb5pf"]
 atlas = ExtResource("8_txxco")
@@ -187,6 +188,7 @@ focus_neighbor_top = NodePath("../../../CenterContainer/PanelContainer/MarginCon
 focus_neighbor_right = NodePath("../GitHubRepository")
 focus_next = NodePath("../GitHubRepository")
 focus_previous = NodePath("../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit")
+shortcut = ExtResource("23_3hocj")
 icon = ExtResource("18_pb5pf")
 script = ExtResource("9_my4re")
 link = "https://d-generation-s.github.io/Samory/manual/how-to-play/"
