@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Samory"
-config/version="0.10.2"
+config/version="0.10.3"
 config/tags=PackedStringArray("public")
 run/main_scene="res://scenes/global/GameManager.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
