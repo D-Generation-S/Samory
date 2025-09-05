@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ded0xyxbb1om1"]
+[gd_scene load_steps=30 format=3 uid="uid://ded0xyxbb1om1"]
 
 [ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://scenes/menu/MenuBackground.tscn" id="2_cootk"]
 [ext_resource type="Script" uid="uid://be1ipi8ub0y8n" path="res://src/menu/settings_menu/SettingsMenu.gd" id="2_hfhds"]
@@ -27,6 +27,7 @@
 [ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://src/menu/control_overwrites/ClickableButton.gd" id="19_3ip51"]
 [ext_resource type="Script" uid="uid://bx11dlcw4bqx4" path="res://src/menu/settings_menu/ResetTutorial.gd" id="20_wiovc"]
 [ext_resource type="Texture2D" uid="uid://dqv4i4y66gem" path="res://assets/icons/OkIcon.tres" id="26_br808"]
+[ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="28_12fsg"]
 [ext_resource type="Texture2D" uid="uid://b6vwa7x6vgpfd" path="res://assets/icons/DenyIcon.tres" id="28_mbv6n"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
@@ -203,6 +204,8 @@ script = ExtResource("19_3ip51")
 
 [node name="Close" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2"]
 layout_mode = 2
+shortcut = ExtResource("28_12fsg")
+shortcut_in_tooltip = false
 text = "CLOSE"
 icon = ExtResource("28_mbv6n")
 script = ExtResource("19_3ip51")
