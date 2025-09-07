@@ -10,7 +10,7 @@ var is_animated: bool = false
 
 func _ready():
 	mouse_entered.connect(_hover_event)
-	mouse_exited.connect(_hober_left)
+	mouse_exited.connect(_hover_left)
 	focus_entered.connect(got_focus)
 	focus_exited.connect(lost_focus)
 	sound_bridge = GlobalGameManagerAccess.get_sound_bridge()
@@ -30,11 +30,10 @@ func _hover_event():
 		return
 	grab_focus()
 
-func _hober_left():
+func _hover_left():
 	if !has_focus():
 		return
 	lost_focus()
-	
 
 func ensure_new_tween():
 	if animation_tween != null:
@@ -76,8 +75,8 @@ func _exit_tree():
 	if mouse_entered.is_connected(_hover_event):
 		mouse_entered.disconnect(_hover_event)
 		
-	if mouse_exited.is_connected(_hober_left):
-		mouse_exited.disconnect(_hober_left)
+	if mouse_exited.is_connected(_hover_left):
+		mouse_exited.disconnect(_hover_left)
 	
 	if focus_entered.is_connected(got_focus):
 		focus_entered.disconnect(got_focus)
