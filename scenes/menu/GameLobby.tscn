@@ -218,6 +218,7 @@ icon = ExtResource("19_ef40l")
 script = ExtResource("8_6tuah")
 player_list = NodePath("../../../../../HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/Players")
 deck_manager = NodePath("../../../../../HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/ScrollContainer/Decks")
+can_multi_click = false
 animation_resource = ExtResource("17_to3in")
 
 [node name="Cancel" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2"]
