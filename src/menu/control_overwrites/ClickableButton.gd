@@ -22,6 +22,9 @@ func _ready():
 	if is_focused:
 		grab_focus()
 
+func get_global_center_position() -> Vector2:
+	return global_position + (size / 2)
+
 func _pressed():
 	if !can_multi_click:
 		disabled = true

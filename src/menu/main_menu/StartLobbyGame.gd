@@ -24,7 +24,7 @@ func _pressed():
 		if player is PlayerCard and player.player_card != null:
 			players.append(player.player_card)
 
-	GlobalGameManagerAccess.get_game_manager().play_game(players, deck)
+	GlobalGameManagerAccess.get_game_manager().play_name_with_position(players, deck, get_global_center_position())
 	
 
 func validate_players() -> bool:

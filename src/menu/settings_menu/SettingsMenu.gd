@@ -3,6 +3,9 @@ extends CanvasLayer
 signal settings_loaded(settings: SettingsResource)
 
 var inital_settings: SettingsResource;
+@export var accept_button: Button
+@export var close_button: Button
+
 @onready var current_settings
 
 # Called when the node enters the scene tree for the first time.
@@ -13,7 +16,7 @@ func _ready():
 
 func reset_settings():
 	settings_loaded.emit(inital_settings)
-	close_window()
+	close_window(close_button)
 
 func save_settings():
 	var window_mode = DisplayServer.window_get_mode()
@@ -32,7 +35,7 @@ func save_settings():
 	
 	if !current_settings.load_custom_decks:
 		GlobalSystemDeckManager.clear_system_decks()
-	close_window()
+	close_window(accept_button)
 
 func volume_changed(bus_name: int, new_volume: float):
 	match bus_name:
@@ -49,8 +52,8 @@ func language_changed(new_language_code: String):
 func load_custom_deck_changed(toggled: bool):
 	current_settings.load_custom_decks = toggled
 
-func close_window():
-	GlobalGameManagerAccess.get_game_manager().close_game()
+func close_window(calling_button: Button):
+	GlobalGameManagerAccess.get_game_manager().close_game_with_position(calling_button.get_global_center_position())
 
 func auto_complete_round_changed(toggled: bool):
 	current_settings.auto_close_round = toggled

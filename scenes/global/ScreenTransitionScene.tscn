@@ -5,11 +5,11 @@
 
 [node name="ScreenTransitionScene" type="Node2D"]
 process_mode = 3
-z_index = 1000
 script = ExtResource("1_nwsgv")
+transition_time_in = 0.3
+transition_time_out = 0.3
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 128
 
 [node name="Animation" type="ColorRect" parent="CanvasLayer"]
 process_mode = 3
