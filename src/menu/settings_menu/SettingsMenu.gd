@@ -2,7 +2,7 @@ extends CanvasLayer
 
 signal settings_loaded(settings: SettingsResource)
 
-var inital_settings: SettingsResource;
+var initial_settings: SettingsResource;
 @export var accept_button: Button
 @export var close_button: Button
 
@@ -10,12 +10,12 @@ var inital_settings: SettingsResource;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	inital_settings = SettingsRepository.load_settings()
-	current_settings = inital_settings.duplicate()
-	settings_loaded.emit(inital_settings)
+	initial_settings = SettingsRepository.load_settings()
+	current_settings = initial_settings.duplicate()
+	settings_loaded.emit(initial_settings)
 
 func reset_settings():
-	settings_loaded.emit(inital_settings)
+	settings_loaded.emit(initial_settings)
 	close_window(close_button)
 
 func save_settings():
@@ -29,7 +29,7 @@ func save_settings():
 	if !SettingsRepository.save_settings(current_settings):
 		reset_settings()
 	
-	if !inital_settings.load_custom_decks and current_settings.load_custom_decks:
+	if !initial_settings.load_custom_decks and current_settings.load_custom_decks:
 		GlobalGameManagerAccess.get_game_manager().reload_system_decks()
 		return
 	
