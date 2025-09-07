@@ -201,6 +201,7 @@ layout_mode = 2
 text = "APPLY"
 icon = ExtResource("26_br808")
 script = ExtResource("19_3ip51")
+can_multi_click = false
 
 [node name="Close" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2"]
 layout_mode = 2
@@ -209,6 +210,7 @@ shortcut_in_tooltip = false
 text = "CLOSE"
 icon = ExtResource("28_mbv6n")
 script = ExtResource("19_3ip51")
+can_multi_click = false
 
 [connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/FullScreen" method="settings_loaded"]
 [connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/VSync" method="settings_loaded"]

@@ -148,6 +148,7 @@ size_flags_horizontal = 10
 shortcut = ExtResource("10_rf5ea")
 text = "CLOSE"
 script = ExtResource("4_br1ba")
+can_multi_click = false
 animation_resource = ExtResource("13_sb03g")
 
 [node name="preloaded_cards" type="Control" parent="."]

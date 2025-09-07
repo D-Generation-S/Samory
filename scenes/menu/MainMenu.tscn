@@ -78,6 +78,7 @@ icon = ExtResource("3_whx4l")
 script = ExtResource("1_ohfem")
 scene_template = ExtResource("2_o3qyg")
 is_focused = true
+can_multi_click = false
 animation_resource = ExtResource("5_d75fr")
 
 [node name="Quick Game" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
@@ -86,6 +87,7 @@ tooltip_text = "QUICK_GAME_TOOLTIP"
 text = "QUICK_GAME"
 icon = ExtResource("7_jfl25")
 script = ExtResource("1_dyfxg")
+can_multi_click = false
 animation_resource = ExtResource("5_d75fr")
 
 [node name="Quick Game AI" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
@@ -96,6 +98,7 @@ icon = ExtResource("9_2aa1e")
 script = ExtResource("1_dyfxg")
 is_ai_game = true
 possible_ai_difficulties = Array[ExtResource("6_k6mp2")]([ExtResource("7_2i4h7"), ExtResource("8_cilha"), ExtResource("9_trt1w")])
+can_multi_click = false
 animation_resource = ExtResource("5_d75fr")
 
 [node name="Deck Viewer" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
@@ -105,6 +108,7 @@ text = "DECK_VIEWER"
 icon = SubResource("AtlasTexture_pb5pf")
 script = ExtResource("1_ohfem")
 scene_template = ExtResource("6_7qj6t")
+can_multi_click = false
 animation_resource = ExtResource("5_d75fr")
 
 [node name="Credits" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
@@ -114,6 +118,7 @@ text = "CREDITS"
 icon = ExtResource("16_h5eu7")
 script = ExtResource("1_ohfem")
 scene_template = ExtResource("7_63ye2")
+can_multi_click = false
 animation_resource = ExtResource("5_d75fr")
 
 [node name="Quit" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
@@ -125,6 +130,7 @@ focus_next = NodePath("../Start Game")
 text = "QUIT_GAME"
 icon = ExtResource("13_heq2t")
 script = ExtResource("1_6c3ib")
+can_multi_click = false
 animation_resource = ExtResource("5_d75fr")
 
 [node name="TopDock" type="MarginContainer" parent="."]
@@ -158,6 +164,7 @@ focus_previous = NodePath("../../../CenterContainer/PanelContainer/MarginContain
 icon = ExtResource("15_t1xqk")
 script = ExtResource("1_ohfem")
 scene_template = ExtResource("9_87sbi")
+can_multi_click = false
 animation_resource = ExtResource("5_d75fr")
 
 [node name="BottomDock" type="MarginContainer" parent="."]
