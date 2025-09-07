@@ -1,6 +1,8 @@
 class_name ClickableButton extends Button
 
 @export var is_focused: bool = false
+## If false the button can only be clicked once
+@export var can_multi_click: bool = true
 @export var play_sounds: bool = true
 @export var animation_resource: ControlAnimationResource = null
 	
@@ -21,6 +23,8 @@ func _ready():
 		grab_focus()
 
 func _pressed():
+	if !can_multi_click:
+		disabled = true
 	if sound_bridge == null or !play_sounds:
 		return
 	sound_bridge.play_button_click()
