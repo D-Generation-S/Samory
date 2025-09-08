@@ -36,7 +36,6 @@ const CARDS_PER_PLAYER = 2
 @export var card_target_node: Node2D
 
 @export var game_nodes_to_show: Array[Node]
-@export var loading_scene: LoadingScreen
 
 var current_game_state
 var player_node: PlayerManager
@@ -55,7 +54,6 @@ var last_message_banner_id: int = -1
 
 func _ready():
 	process_mode = PROCESS_MODE_DISABLED
-	loading_scene.set_screen_message("PLACING_CARDS", true)
 	current_sound_timer = seconds_to_lay_cards
 	
 	player_node = get_node("%Players")
@@ -72,16 +70,16 @@ func start_loading_data():
 	var cards = load_thread.wait_to_finish() as Array[CardTemplate]
 	for card in cards:
 		card_target_node.add_child(card)
+		card.visible = false
 		card.card_triggered.connect(card_was_triggered)
 	load_thread = null
 	card_loading_done.emit()
+	for card in cards:
+		card.visible = true
 	start_round_now()
 		
 	for child in get_tree().get_nodes_in_group("game_initialize_scene"):
-		if child is LoadingScreen:
-			loading_scene.destory()
-		else:
-			child.queue_free()
+		child.queue_free()
 	for node in game_nodes_to_show:
 		if node is Node2D:
 			node.visible = true 

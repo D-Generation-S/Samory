@@ -54,7 +54,8 @@ func _enter_tree():
 		printerr("No parent node was found!")
 		return
 
-	parent_node.game_state_changed.connect(state_changed)
+	if !parent_node.game_state_changed.is_connected(state_changed):
+		parent_node.game_state_changed.connect(state_changed)
 
 func toggle_card_on():
 	var time_range = max_time_delay - min_time_delay

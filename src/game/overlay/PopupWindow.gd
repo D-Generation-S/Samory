@@ -1,5 +1,6 @@
 class_name PopupWindow extends Control
 
+@warning_ignore("unused_signal")
 signal popup_closed()
 
 var id: int = -1

@@ -2,11 +2,10 @@ extends Node2D
 
 class_name SystemDeckManager
 
-
 signal loading_system_decks()
 signal loading_system_decks_done()
 
-const CHECK_INTERVALL_SECONDS: float = 2
+const CHECK_INTERVAL_SECONDS: float = 2
 var elapsed_time = 0
 var system_decks: Array[MemoryDeckResource] = []
 var load_threads: Array[Thread] = []
@@ -41,7 +40,7 @@ func _process(delta):
 	var deck_id: int = 1000
 	if is_loading():
 		elapsed_time = elapsed_time + delta
-		if elapsed_time < CHECK_INTERVALL_SECONDS:
+		if elapsed_time < CHECK_INTERVAL_SECONDS:
 			return
 		elapsed_time = 0
 		var loading_done = true
