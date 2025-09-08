@@ -9,7 +9,7 @@ func _ready():
 	
 func _pressed():
 	super()
-	GlobalGameManagerAccess.get_game_manager().close_game()
+	GlobalGameManagerAccess.get_game_manager().close_game_with_position(global_position)
 
 func loading_decks():
 	disabled = true

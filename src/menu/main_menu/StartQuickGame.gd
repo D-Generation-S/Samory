@@ -12,7 +12,7 @@ func _pressed():
 	var player_one = create_ai_player(0, false)
 	var player_two = create_ai_player(1, is_ai_game)
 
-	game_manager.play_game([player_one, player_two], deck)
+	game_manager.play_name_with_position([player_one, player_two], deck, get_global_center_position())
 
 func create_ai_player(order_number: int, is_ai: bool) -> PlayerResource:
 	var new_player = PlayerResource.new()

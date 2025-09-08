@@ -30,8 +30,10 @@
 [ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="28_12fsg"]
 [ext_resource type="Texture2D" uid="uid://b6vwa7x6vgpfd" path="res://assets/icons/DenyIcon.tres" id="28_mbv6n"]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("accept_button", "close_button")]
 script = ExtResource("2_hfhds")
+accept_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2/SaveAndClose")
+close_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2/Close")
 
 [node name="MenuBackground" parent="." instance=ExtResource("2_cootk")]
 
@@ -196,7 +198,7 @@ play_sounds = false
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Button" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2"]
+[node name="SaveAndClose" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2"]
 layout_mode = 2
 text = "APPLY"
 icon = ExtResource("26_br808")
@@ -231,5 +233,5 @@ can_multi_click = false
 [connection signal="volume_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer/Audio Control/Master" to="." method="volume_changed"]
 [connection signal="volume_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer/Audio Control/Effects" to="." method="volume_changed"]
 [connection signal="volume_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer/Audio Control/Music" to="." method="volume_changed"]
-[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2/Button" to="." method="save_settings"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2/SaveAndClose" to="." method="save_settings"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2/Close" to="." method="reset_settings"]
