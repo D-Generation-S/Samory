@@ -15,13 +15,14 @@ point_count = 2
 
 [node name="LoadingScreen" type="Node2D" node_paths=PackedStringArray("screen_message", "static_label")]
 process_mode = 3
+z_index = 1000
 script = ExtResource("1_b8dw1")
 screen_message = NodePath("CanvasLayer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/LoadingMessage")
 static_label = NodePath("CanvasLayer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/LoadingStatic")
 sound_effect = ExtResource("2_b0kc6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 120
+layer = 127
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 15
@@ -70,8 +71,10 @@ spawn_template = ExtResource("3_d4esl")
 spawn_target = NodePath("../../CardNode")
 
 [node name="CardNode" type="Node2D" parent="."]
+z_index = 1000
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -3
 
 [node name="MenuBackground" parent="BackgroundLayer" instance=ExtResource("5_0ob53")]
+z_index = -3

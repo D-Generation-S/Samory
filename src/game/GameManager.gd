@@ -14,7 +14,8 @@ signal debug_mode(on: bool)
 @export var music_bus: String= "music"
 
 var translated_build_in_decks: Array[MemoryDeckResource] = []
-var inital_menu_shown = false
+var initial_menu_shown = false
+var current_loading_node: Node = null
 var is_debug = false
 
 
@@ -36,8 +37,8 @@ func _process(_delta):
 		debug_mode.emit(is_debug)
 
 func reload_system_decks():
-	inital_menu_shown = false
-	open_menu(loading_screen_template)
+	initial_menu_shown = false
+	current_loading_node = open_menu(loading_screen_template)
 	loading_message.emit("LOAD_DECKS")
 	var settings = SettingsRepository.load_settings()
 	if OS.has_feature("web") or !settings.load_custom_decks:
@@ -86,18 +87,31 @@ func close_game_with_position(transition_start_position: Vector2):
 func close_game():
 	close_game_with_position(Vector2.ZERO)
 
-func open_menu(scene: PackedScene):
+func open_additional_menu(scene: PackedScene) -> Node:
 	if scene == null:
 		printerr("No scene was provided!")
-		return
-	clear_all_nodes()
+		return null
 	var node = scene.instantiate()
 	add_child(node)
+	return node;
 
+func open_menu(scene: PackedScene) -> Node:
+	if scene == null:
+		printerr("No scene was provided!")
+		return null
+	clear_all_nodes()
+	var new_node: Node = open_additional_menu(scene)
 	
 	for child in get_children():
 		if child is LoadingScreen:
 			loading_message.connect(child.set_screen_message)
+			child.set_follow_up_screen(main_menu_template)
+			child.loaded_scene.connect(func(node_to_load: Node):
+				if node_to_load.get_parent() != null:
+					node_to_load.reparent(self)
+			)
+
+	return new_node;
 
 func play_name_with_position(players: Array[PlayerResource], deck: MemoryDeckResource, click_position: Vector2):
 	for player in players:
@@ -117,17 +131,20 @@ func load_game(card_deck: Resource, players: Array[PlayerResource], click_positi
 		current_player_id = current_player_id + 1
 	var game_scene_node = game_scene.instantiate() as MemoryGame
 	game_scene_node.card_deck = card_deck
-	game_scene_node.add_to_group("active_scene")
+
 	
-	var transit = await ScreenTransitionManager.transit_screen_by_node_with_position(game_scene_node, click_position)
-	transit.scene_instantiated.connect(func(_scene): 
+	game_scene_node.ready.connect(func():
 		game_scene_node.set_players(players)
-		)
-	transit.animation_done.connect(func(_scene):
 		game_scene_node.start_loading_data()
 		)
-	#game_scene_node.set_players(players)
+	
+	
+	var loading_screen = loading_screen_template.instantiate() as LoadingScreen
+	loading_screen.set_follow_up_node(game_scene_node)
+	game_scene_node.card_loading_done.connect(loading_screen.destroy)
 
+	await ScreenTransitionManager.transit_screen_by_node_with_position(loading_screen, click_position, false)
+	get_tree().root.add_child(game_scene_node)
 
 func get_available_decks() -> Array[MemoryDeckResource]:
 	var return_array: Array[MemoryDeckResource] = []
@@ -142,8 +159,15 @@ func clear_all_nodes():
 			remove_child(child)
 
 func loading_data_done():
-	if inital_menu_shown:
+	if initial_menu_shown:
 		return
 	GlobalSoundManager.stop_all_sounds()
-	inital_menu_shown = true
-	open_menu(main_menu_template)
+	initial_menu_shown = true
+	if current_loading_node == null:
+		return
+
+	if current_loading_node.has_method("destroy"):
+		current_loading_node.call("destroy")
+		return
+	current_loading_node.queue_free()
+	#open_menu(main_menu_template)

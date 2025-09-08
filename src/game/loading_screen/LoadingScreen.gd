@@ -3,11 +3,14 @@ extends Node2D
 class_name LoadingScreen
 
 signal loading_done()
+signal loaded_scene(new_node: Node)
 
 @export var screen_message: Label
 @export var static_label: Label
 @export var sound_effect: AudioStream
 @export var play_effects: bool = true
+
+var loading_target_node: Node = null
 
 var elapsed_time: float = 0
 var effect_length: float = 1000000
@@ -30,7 +33,34 @@ func set_screen_message(new_text: String, remove_default_label:bool = false):
 	if remove_default_label:
 		static_label.visible = false
 
-func destory():
-	queue_free()
+func set_follow_up_node(target_node: Node):
+	if target_node == null:
+		printerr("No node was provided!")
+		return
+	loading_target_node = target_node
+
+func set_follow_up_screen(scene: PackedScene):
+	if scene == null:
+		printerr("No scene was provided!")
+		return
+	set_follow_up_node(scene.instantiate())
+
+func destroy():
 	GlobalSoundManager.stop_all_sounds()
+	process_mode = Node.PROCESS_MODE_DISABLED
 	loading_done.emit()
+	if loading_target_node == null:
+		return
+	var transition: AnimationScene = await ScreenTransitionManager.transit_screen_by_node_with_position(loading_target_node, DisplayServer.window_get_size() / 2, false)
+	transition.animation_done.connect(func(_scene):
+		queue_free()
+		if not loading_target_node.is_in_group("active_scene"):
+			loading_target_node.add_to_group("active_scene")
+		)
+
+	for child in get_children():
+		if child is Node2D:
+			child.visible = false
+		if child is Control or child is CanvasLayer:
+			child.hide()
+	loaded_scene.emit(loading_target_node)

@@ -9,11 +9,16 @@ signal start_position_changed(new_position: Vector2)
 @export var transition_time_in: float = 0.5
 @export var transition_time_out: float = 0.5
 @export var active_scene_group: String = "active_scene"
+@export var animation_scene_group: String = "animation_scene"
 
+var add_to_active_scene: bool = true
 var target_scene: Node
 var tween: Tween
 
 func _ready():
+	for child in get_tree().get_nodes_in_group(animation_scene_group):
+		child.queue_free()
+	add_to_group(animation_scene_group)
 	if z_index == 0:
 		z_index = 1000
 	for child in get_children():
@@ -29,7 +34,8 @@ func change_screen_to(scene: PackedScene, old_texture: Texture, transition_start
 func change_screen_to_node(node: Node, old_texture: Texture, transition_start_position: Vector2):
 	texture_changed.emit(old_texture)
 	start_position_changed.emit(transition_start_position)
-	node.add_to_group(active_scene_group)
+	if add_to_active_scene:
+		node.add_to_group(active_scene_group)
 	target_scene = node
 	tween = create_tween()
 	tween.step_finished.connect(_transit_now)
@@ -46,7 +52,10 @@ func _transit_now(_step_id: int):
 		for scene in get_tree().get_nodes_in_group(active_scene_group):
 			scene.queue_free()
 
-		GlobalGameManagerAccess.get_game_manager().add_child(target_scene)
+		if target_scene.get_parent() == null:
+			GlobalGameManagerAccess.get_game_manager().add_child(target_scene)
+		else:
+			target_scene.reparent(GlobalGameManagerAccess.get_game_manager())
 		scene_instantiated.emit(target_scene)
 		target_scene = null
 	

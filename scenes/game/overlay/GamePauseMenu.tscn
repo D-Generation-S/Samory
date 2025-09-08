@@ -8,7 +8,7 @@
 [ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="3_vcfmt"]
 [ext_resource type="Texture2D" uid="uid://b6vwa7x6vgpfd" path="res://assets/icons/DenyIcon.tres" id="6_34hpv"]
 
-[node name="GamePauseMenu" type="Control"]
+[node name="GamePauseMenu" type="Control" groups=["active_scene"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

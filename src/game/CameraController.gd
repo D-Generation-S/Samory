@@ -35,9 +35,10 @@ func _ready():
 	process_mode = Node.PROCESS_MODE_DISABLED
 
 func loading_done():
-	zoom = initial_zoom
-	position = initial_position
 	process_mode = Node.PROCESS_MODE_INHERIT
+	position = initial_position
+	var tween = create_tween()
+	tween.tween_property(self, "zoom", initial_zoom, 1.0)
 
 func _input(event):
 	if event is InputEventScreenDrag:
