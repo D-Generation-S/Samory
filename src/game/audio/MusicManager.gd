@@ -4,51 +4,63 @@ signal song_changed(song: SongResource)
 
 @export var audio_bus_name: String
 
-## The number of tracks to rememver and not reuse
 @export var tracks_to_skip: int = 0
 @export var tracks: Array[SongResource] = []
-@export var fade_step_size: float = 0.25
-@export var seconds_used_for_fading: int = 5
+@export var initial_song_fade_duration: float = 1;
+@export var song_fade_duration: int = 2
 @export_range(-100, 20) var disabled_db_value: float = -80
-@export var target_db_value: float = 0
+@export var target_db_value: float = 10
 
 var last_tracks: Array[SongResource] = []
 
-var playing_node: AudioStreamPlayer2D
-var next_node: AudioStreamPlayer2D
-var fading: bool = false
-var switch_now: bool = false
 var already_init: bool = false
+var fade_duration: float = 0 
 
-var timer: Timer = null
+# This timer will be started on each song and after it completes it will trigger a song switch
+# Therefor it will subtract the transition time from the song duration.
+var track_change_time: Timer = null
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
+	fade_duration = initial_song_fade_duration
 	if tracks_to_skip > tracks.size():
 		tracks_to_skip = tracks.size() - 2;
 
 	if tracks_to_skip < 0:
 		tracks_to_skip = 0
 
-	timer = Timer.new()
-	timer.timeout.connect(switch_song)
-	add_child(timer)
+	track_change_time = Timer.new()
+	track_change_time.timeout.connect(switch_song)
+	add_child(track_change_time)
 
 func start_playing():
 	if already_init:
 		return
 	already_init = true
 
-	next_node = create_audio_stream()
-	add_child(next_node)
-	
-	playing_node = create_audio_stream()
-	add_child(playing_node)
-
 	play_new_song(get_next_track())
 
+func _get_unused_audio_node() -> AudioStreamPlayer2D:
+	for audio_stream in get_children():
+		if audio_stream is AudioStreamPlayer2D:
+			if !audio_stream.playing:
+				return audio_stream
+	
 
-func create_audio_stream() -> AudioStreamPlayer2D:
+	var new_audio_stream = _create_audio_stream()
+	add_child(new_audio_stream)
+	return new_audio_stream
+
+func _get_active_audio_nodes() -> Array:
+	var audio_streams: Array = []
+	for audio_stream in get_children():
+		if audio_stream is AudioStreamPlayer2D:
+			if audio_stream.playing:
+				audio_streams.append(audio_stream)
+
+	return audio_streams
+			 
+
+func _create_audio_stream() -> AudioStreamPlayer2D:
 	var node = AudioStreamPlayer2D.new()
 	node.bus = audio_bus_name
 	return node
@@ -68,46 +80,58 @@ func get_valid_tracks() -> Array[SongResource]:
 	
 func play_new_song(song: SongResource):
 	last_tracks.append(song)
-	next_node.stream = song.song_data
-	next_node.volume_db = disabled_db_value
-	next_node.play()
-	timer.wait_time = song.get_length() - 5
-	timer.start()
+
+	for active_audio_stream in _get_active_audio_nodes():
+		if active_audio_stream is AudioStreamPlayer2D:
+			var tween_disable_audio = create_tween()
+			tween_disable_audio.tween_property(active_audio_stream, "volume_db", disabled_db_value, fade_duration);
+			tween_disable_audio.finished.connect(func(stream):
+				if stream is AudioStreamPlayer2D:
+					stream.stop()
+			)
+
+
+	var new_audio_manager: AudioStreamPlayer2D = _get_unused_audio_node()
+	new_audio_manager.stream = song.song_data
+	new_audio_manager.volume_db = disabled_db_value
+	new_audio_manager.play()
+
+	var tween_new_song_stream = create_tween()
+	tween_new_song_stream.tween_property(new_audio_manager, "volume_db", target_db_value, fade_duration);
+	tween_new_song_stream.finished.connect(func():
+		fade_duration = song_fade_duration
+	)
+
+	track_change_time.wait_time = song.get_length() - fade_duration
+	track_change_time.start()
 	song_changed.emit(song)
-	fading = true
-	
+
+func cleanup():
+	var inactive_streams: Array = []
+	for audio_stream in get_children():
+		if audio_stream is AudioStreamPlayer2D:
+			if !audio_stream.playing:
+				inactive_streams.append(audio_stream)
+
+	if inactive_streams.size() > 1:
+		var first: bool = true
+		for stream in inactive_streams:
+			if stream is AudioStreamPlayer2D:
+				if first:
+					continue
+				stream.queue_free()
+
 func switch_song():
 	var new_track = get_next_track()
-	timer.wait_time = new_track.get_length() - seconds_used_for_fading
-	timer.start()
+	track_change_time.wait_time = new_track.get_length() - fade_duration
+	track_change_time.start()
 	play_new_song(new_track)
 
 func get_next_track() -> SongResource:
 	var valid_tracks = get_valid_tracks()
 	var index = randi() % valid_tracks.size()
 	return valid_tracks[index]
-
-func _process(_delta):
-	if switch_now:
-		next_node.volume_db = target_db_value
-		playing_node.volume_db = disabled_db_value
-		var new_active = next_node
-		next_node = playing_node
-		playing_node = new_active
-		switch_now = false
-
-	if not fading:
-		return
-	
-	if next_node.volume_db >= target_db_value:
-		next_node.volume_db = target_db_value
-		playing_node.volume_db = disabled_db_value
-		switch_now = true
-		fading = false
-	
-	next_node.volume_db = next_node.volume_db + fade_step_size
-	playing_node.volume_db = playing_node.volume_db - fade_step_size
 	
 func skip_song():
-	timer.stop()
+	track_change_time.stop()
 	switch_song()
