@@ -4,8 +4,9 @@ class_name PlayerGameLabel
 
 signal player_is_active()
 signal player_is_inactive()
+signal player_score_changed(new_value: int)
+signal player_name_changed(new_player_name: String)
 
-@export var label: RichTextLabel
 @export var player_type_icon_box: TextureRect
 @export var human_player_icon: Texture
 @export var ai_player_icon: Texture
@@ -13,11 +14,8 @@ signal player_is_inactive()
 
 var active_id: int = -1
 var contained_player: PlayerResource
-var player_score = 0
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	label.bbcode_enabled = true
 	var icon = human_player_icon
 	if contained_player.is_ai():
 		icon = ai_player_icon
@@ -25,7 +23,6 @@ func _ready():
 	round_end()
 
 func set_player(current_player: PlayerResource):
-	player_score = 0
 	contained_player = current_player
 
 func player_turn(player_id: int):
@@ -34,17 +31,12 @@ func player_turn(player_id: int):
 
 func player_scored(player_id: int, score: int):
 	if contained_player.id == player_id:
-		player_score = score
+		player_score_changed.emit(score)
 	set_player_name()
 
-func build_player_name() -> String:
-	var return_name = contained_player.get_display_name()
-	return return_name + " (" + str(player_score) + ")"
-
 func set_player_name():
-	label.text = build_player_name()
+	player_name_changed.emit(contained_player.get_display_name())
 	if contained_player.id == active_id:
-		label.text = player_round_color.get_color_bb_code() + build_player_name() + "[/color]"
 		player_is_active.emit()
 	else:
 		player_is_inactive.emit()

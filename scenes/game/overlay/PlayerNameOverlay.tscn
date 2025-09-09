@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cynb8xjpxqa6w"]
+[gd_scene load_steps=18 format=3 uid="uid://cynb8xjpxqa6w"]
 
 [ext_resource type="Script" uid="uid://c04wthgck8mhp" path="res://src/game/overlay/PlayerGameLabel.gd" id="1_d33rg"]
 [ext_resource type="Texture2D" uid="uid://bmxqeqo65xwt" path="res://assets/sprites/spritesheet-default.png" id="2_blt2s"]
@@ -8,7 +8,11 @@
 [ext_resource type="Script" uid="uid://debll6gkj7h13" path="res://src/menu/generic/StyleOverwriteOnAction.gd" id="6_jynke"]
 [ext_resource type="Shader" uid="uid://docbe2j6cd3wg" path="res://assets/shaders/ColorReplaceShader.tres" id="6_vrh8j"]
 [ext_resource type="Script" uid="uid://davutkne54fp8" path="res://src/game/overlay/ColorReplace.gd" id="7_4mda4"]
+[ext_resource type="Script" uid="uid://bhhxuh3rhvxn7" path="res://src/game/overlay/PlayerScoreCounter.gd" id="7_clybx"]
+[ext_resource type="Script" uid="uid://b1sl7tihdwhil" path="res://src/game/overlay/ScoreAndName.gd" id="7_h8pn1"]
+[ext_resource type="Script" uid="uid://cpx0qtreblopk" path="res://src/game/overlay/PlayerScoreInformation.gd" id="8_4u670"]
 [ext_resource type="Script" uid="uid://crr4r8hbc4d1l" path="res://src/templates/ColorResource.gd" id="8_e0d5f"]
+[ext_resource type="Resource" uid="uid://85njf66kd3s1" path="res://scenes/menu/resources/colors/PlayerDefaultColor.tres" id="9_2q0hc"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qprtf"]
 texture = ExtResource("2_blt2s")
@@ -34,7 +38,7 @@ shader_parameter/replace_color = Color(0, 0, 0, 1)
 script = ExtResource("8_e0d5f")
 color = Color(1, 1, 1, 1)
 
-[node name="MarginContainer" type="MarginContainer" node_paths=PackedStringArray("label", "player_type_icon_box")]
+[node name="MarginContainer" type="MarginContainer" node_paths=PackedStringArray("player_type_icon_box")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -46,13 +50,13 @@ theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 script = ExtResource("1_d33rg")
-label = NodePath("PanelContainer/HBoxContainer/RichTextLabel")
 player_type_icon_box = NodePath("PanelContainer/HBoxContainer/MarginContainer/TextureRect")
 human_player_icon = ExtResource("2_urml8")
 ai_player_icon = ExtResource("3_nldki")
 player_round_color = ExtResource("4_e0a06")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_qprtf")
 script = ExtResource("6_jynke")
@@ -61,14 +65,43 @@ style_to_use = SubResource("StyleBoxTexture_xjctk")
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/HBoxContainer"]
+[node name="ScoreAndName" type="HBoxContainer" parent="PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-bbcode_enabled = true
-text = "Placeholder"
-fit_content = true
-autowrap_mode = 0
+script = ExtResource("7_h8pn1")
+
+[node name="Name" type="Label" parent="PanelContainer/HBoxContainer/ScoreAndName"]
+layout_mode = 2
+text = "NAME_PLACEHOLDER"
+script = ExtResource("8_4u670")
+inactive_color = ExtResource("9_2q0hc")
+active_color = ExtResource("4_e0a06")
+
+[node name="LeftBracket" type="Label" parent="PanelContainer/HBoxContainer/ScoreAndName"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "("
+script = ExtResource("8_4u670")
+inactive_color = ExtResource("9_2q0hc")
+active_color = ExtResource("4_e0a06")
+
+[node name="Score" type="Label" parent="PanelContainer/HBoxContainer/ScoreAndName"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 25
+text = "0"
+script = ExtResource("7_clybx")
+inactive_color = ExtResource("9_2q0hc")
+active_color = ExtResource("4_e0a06")
+
+[node name="RightBracket" type="Label" parent="PanelContainer/HBoxContainer/ScoreAndName"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = ")"
+script = ExtResource("8_4u670")
+inactive_color = ExtResource("9_2q0hc")
+active_color = ExtResource("4_e0a06")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/HBoxContainer"]
 layout_mode = 2
@@ -90,5 +123,9 @@ highlight_color = ExtResource("4_e0a06")
 
 [connection signal="player_is_active" from="." to="PanelContainer" method="is_active"]
 [connection signal="player_is_active" from="." to="PanelContainer/HBoxContainer/MarginContainer/TextureRect" method="set_hightlight_color"]
+[connection signal="player_is_active" from="." to="PanelContainer/HBoxContainer/ScoreAndName" method="is_now_active"]
 [connection signal="player_is_inactive" from="." to="PanelContainer" method="is_inactive"]
 [connection signal="player_is_inactive" from="." to="PanelContainer/HBoxContainer/MarginContainer/TextureRect" method="set_default_color"]
+[connection signal="player_is_inactive" from="." to="PanelContainer/HBoxContainer/ScoreAndName" method="is_now_inactive"]
+[connection signal="player_name_changed" from="." to="PanelContainer/HBoxContainer/ScoreAndName/Name" method="set_text"]
+[connection signal="player_score_changed" from="." to="PanelContainer/HBoxContainer/ScoreAndName/Score" method="set_new_score"]
