@@ -5,13 +5,21 @@ class_name GameManager extends Node2D
 signal loading_message(message: String)
 signal debug_mode(on: bool)
 
-@export var main_menu_template: PackedScene
+@export_group("Decks")
 @export var build_in_decks: Array[MemoryDeckResource]
+
+@export_group("Scene Templates")
+@export var main_menu_template: PackedScene
 @export var game_scene: PackedScene
 @export var loading_screen_template: PackedScene
+
+@export_group("Sound")
 @export var master_bus: String= "Master"
 @export var effect_bus: String= "sfx"
 @export var music_bus: String= "music"
+
+@export_group("Translations")
+@export var loading_decks: TextTranslation
 
 var translated_build_in_decks: Array[MemoryDeckResource] = []
 var initial_menu_shown = false
@@ -39,7 +47,7 @@ func _process(_delta):
 func reload_system_decks():
 	initial_menu_shown = false
 	current_loading_node = open_menu(loading_screen_template)
-	loading_message.emit("LOAD_DECKS")
+	loading_message.emit(loading_decks.key)
 	var settings = SettingsRepository.load_settings()
 	if OS.has_feature("web") or !settings.load_custom_decks:
 		loading_data_done()

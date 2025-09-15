@@ -1,4 +1,4 @@
-
+extends Node
 enum Tutorial_State{
 	UNKNOWN = 0,
 	PLAYER_TURN = 1,

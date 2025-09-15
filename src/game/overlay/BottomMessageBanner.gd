@@ -16,6 +16,8 @@ func initialize_popup(message: String, time_until_close_in_seconds: float, shoul
 	banner_close_action = close_action
 
 	var translated_message = tr(message)
+	print(message)
+	print(translated_message)
 	translated_message = translated_message.replace("%time%", str(time_until_close_in_seconds))
 	label_text = translated_message
 

@@ -6,15 +6,16 @@ signal deck_selected(deck: MemoryDeckResource)
 signal deck_activate()
 signal deck_unchecked()
 
-const BUILT_IN_YES = "YES"
-const BUILT_IN_NO = "NO"
-
 @export var deck_name: Label
 @export var card_count: RichTextLabel
 @export var buildint: RichTextLabel
 @export var texture_rect: DeckPreviewSelection
 @export var deck_description: RichTextLabel
 @export var selection_button: Button
+
+@export_group("Translations")
+@export var yes_translation: TextTranslation
+@export var no_translation: TextTranslation
 
 var deck: MemoryDeckResource
 var is_selected: bool = false
@@ -24,9 +25,9 @@ func _ready():
 	deck_name.text = deck.name
 	card_count.text = str(deck.cards.size())
 	deck_description.text = deck.description
-	var builtin_text = BUILT_IN_NO
+	var builtin_text = no_translation.key
 	if deck.built_in:
-		builtin_text = BUILT_IN_YES
+		builtin_text = yes_translation.key
 	buildint.text = builtin_text
 	texture_rect.set_image(deck.card_back)
 

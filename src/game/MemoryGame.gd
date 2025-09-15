@@ -21,6 +21,9 @@ signal trigger_tutorial(tutorial_state: Enums.Tutorial_State)
 
 const CARDS_PER_PLAYER = 2
 
+@export var round_end_message: TextTranslation
+@export var round_end_message_no_auto_complete: TextTranslation
+
 @export var card_deck: Resource
 @export var finished_game_template: PackedScene
 @export var game_menu_template: PackedScene
@@ -170,9 +173,11 @@ func show_round_ended_banner():
 	var auto_close = settings.auto_close_round
 	var time_until_close = settings.close_round_after_seconds
 	var popup_banner: BottomMessageBanner = message_banner.instantiate() as BottomMessageBanner
-	var message = "ROUND_END_BANNER_MESSAGE"
+	var message = round_end_message.key
 	if !auto_close:
-		message = "ROUND_END_BANNER_MESSAGE_NO_COMPLETE"
+		message = round_end_message_no_auto_complete.key
+
+	print(message)
 
 	popup_banner.initialize_popup(message, time_until_close, auto_close, func(): end_round_now() )
 	popup_banner.should_pause = false

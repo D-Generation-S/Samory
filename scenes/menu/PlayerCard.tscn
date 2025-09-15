@@ -63,7 +63,7 @@ script = ExtResource("6_ok6yb")
 [node name="MoveDown" type="Button" parent="PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-tooltip_text = "MOVE_PLAYER_UP"
+tooltip_text = "MOVE_PLAYER_DOWN"
 focus_neighbor_top = NodePath("../MoveUp")
 focus_neighbor_right = NodePath("../RemovePlayer")
 theme_override_constants/icon_max_width = 15
