@@ -4,4 +4,5 @@ extends ClickableButton
 
 func _pressed():
 	super()
-	GlobalGameManagerAccess.get_game_manager().play_game(finish_game_node.manager.get_players(), finish_game_node.played_deck)
+	get_tree().paused = false
+	GlobalGameManagerAccess.get_game_manager().play_game_with_position(finish_game_node.manager.get_players(), finish_game_node.played_deck, get_screen_position())

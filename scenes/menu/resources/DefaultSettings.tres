@@ -1,15 +1,6 @@
-[gd_resource type="Resource" script_class="SettingsResource" load_steps=4 format=3 uid="uid://gbkkrxvvrxpt"]
+[gd_resource type="Resource" script_class="SettingsResource" load_steps=2 format=3 uid="uid://gbkkrxvvrxpt"]
 
 [ext_resource type="Script" uid="uid://cqtvyw6fggf1x" path="res://src/templates/SettingsResource.gd" id="1_ivax6"]
-[ext_resource type="Script" uid="uid://b5rklrbui4uhp" path="res://src/templates/TutorialResource.gd" id="2_0sltm"]
-
-[sub_resource type="Resource" id="Resource_pm4ei"]
-script = ExtResource("2_0sltm")
-player_turn = false
-first_card_turned = false
-first_matching_card_found = false
-first_round_done = false
-tutorial_aborted = false
 
 [resource]
 script = ExtResource("1_ivax6")
@@ -17,7 +8,8 @@ fullscreen = false
 vsync_active = false
 load_custom_decks = true
 language_code = "en"
-tutorial = SubResource("Resource_pm4ei")
+tutorials = {}
+tutorial_aborted = false
 auto_close_popup_shown = false
 auto_close_round = true
 close_round_after_seconds = 3.0

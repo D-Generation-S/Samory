@@ -12,7 +12,7 @@
 [ext_resource type="Material" uid="uid://dhujjr84hm1we" path="res://assets/material/DisolveMaterial.tres" id="5_b0osi"]
 [ext_resource type="Script" uid="uid://bkytjukjcpthq" path="res://src/game/CardTemplateDestruction.gd" id="6_7ry7r"]
 [ext_resource type="Shader" uid="uid://cen4xj62iwrff" path="res://assets/shaders/DisolveCard.gdshader" id="6_pyeu3"]
-[ext_resource type="Script" uid="uid://bel0ari5ushcq" path="res://src/templates/DisolveEffectResource.gd" id="7_71qre"]
+[ext_resource type="Script" uid="uid://bel0ari5ushcq" path="res://src/templates/DissolveEffectResource.gd" id="7_71qre"]
 [ext_resource type="Resource" uid="uid://0hefyj7q57o6" path="res://scenes/game/resources/dissolve_effects/dissolve.tres" id="8_nugiu"]
 [ext_resource type="Script" uid="uid://cdvlsp04l5fhr" path="res://src/game/ToggleCardVisibility.gd" id="8_pw264"]
 [ext_resource type="Script" uid="uid://dni6lxtacurf1" path="res://src/game/CardHandler.gd" id="9_mu0q4"]
@@ -52,12 +52,11 @@ fill_to = Vector2(0.521368, 0.388889)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phkhd"]
 size = Vector2(500, 550)
 
-[node name="CardTemplate" type="Node2D" node_paths=PackedStringArray("front_side", "back_side", "timer_for_hide_delay")]
+[node name="CardTemplate" type="Node2D" node_paths=PackedStringArray("front_side", "back_side")]
 script = ExtResource("1_fmo68")
 front_side = NodePath("CanvasGroup/CardFront")
 back_side = NodePath("CardBack")
 flip_effects = Array[AudioStream]([ExtResource("2_7bwi6"), ExtResource("3_hh2fg"), ExtResource("4_s61ka")])
-timer_for_hide_delay = NodePath("TurnDelay")
 min_time_delay = 0.05
 max_time_delay = 0.3
 
@@ -76,6 +75,7 @@ offset_right = 500.0
 offset_bottom = 550.0
 tooltip_auto_translate_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[center]placeholder[/center]"
 fit_content = true
@@ -99,9 +99,6 @@ texture = ExtResource("3_uugcj")
 [node name="TopRight" type="Sprite2D" parent="CanvasGroup/Shadow"]
 position = Vector2(510, -10)
 texture = SubResource("GradientTexture2D_dg1ie")
-
-[node name="TurnDelay" type="Timer" parent="."]
-one_shot = true
 
 [node name="CardBack" type="Sprite2D" parent="."]
 material = ExtResource("5_b0osi")
@@ -155,7 +152,6 @@ script = ExtResource("18_8fn1p")
 [connection signal="hide_card" from="." to="CardBack" method="toggle_on"]
 [connection signal="input_active" from="." to="CardBack" method="input_active"]
 [connection signal="ready_for_destruction" from="CanvasGroup" to="." method="destory_now"]
-[connection signal="timeout" from="TurnDelay" to="." method="hide_card_now"]
 [connection signal="ready_for_removal" from="CardBack" to="CanvasGroup" method="animate_destruction"]
 [connection signal="clicked" from="CardBack/Area2D" to="." method="card_was_clicked"]
 [connection signal="mouse_entered" from="CardBack/Area2D" to="." method="selected_by_mouse"]

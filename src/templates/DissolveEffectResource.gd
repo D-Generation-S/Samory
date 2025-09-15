@@ -1,6 +1,6 @@
 extends Resource
 
-class_name  DisolveEffectResource
+class_name DissolveEffectResource
 
 ## If the number is higher the effect is more common
 @export_range(1, 20) var rarity: int = 1

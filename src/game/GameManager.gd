@@ -113,13 +113,13 @@ func open_menu(scene: PackedScene) -> Node:
 
 	return new_node;
 
-func play_name_with_position(players: Array[PlayerResource], deck: MemoryDeckResource, click_position: Vector2):
+func play_game_with_position(players: Array[PlayerResource], deck: MemoryDeckResource, click_position: Vector2):
 	for player in players:
 		player.score = 0
 	load_game(deck, players, click_position)
 
 func play_game(players: Array[PlayerResource], deck: MemoryDeckResource):
-	play_name_with_position(players, deck, Vector2.ZERO)
+	play_game_with_position(players, deck, Vector2.ZERO)
 
 func quit_game():
 	get_tree().quit()

@@ -20,17 +20,22 @@ signal card_tooltip_changed(new_tooltip: String)
 @export var front_side: CardFrontSize
 @export var back_side: ToggleCardVisibility
 @export var flip_effects: Array[AudioStream]
-@export var timer_for_hide_delay: Timer
 @export_range(0,0.25) var min_time_delay: float = 0.1
 @export_range(0,0.5) var max_time_delay: float = 0.5
 
 @export var grid_position: Point
 
+var _timer_for_hide_delay: Timer
 var was_clicked: bool
 var getting_removed: bool = false
 var is_ai_turn: bool = false
 
 func _ready():
+	_timer_for_hide_delay = Timer.new()
+	_timer_for_hide_delay.one_shot = true
+	_timer_for_hide_delay.timeout.connect(hide_card_now)
+	add_child(_timer_for_hide_delay)
+
 	if is_ghost:
 		return
 	if memory_card == null:
@@ -60,8 +65,8 @@ func _enter_tree():
 func toggle_card_on():
 	var time_range = max_time_delay - min_time_delay
 	var delay = randf() * time_range + min_time_delay
-	timer_for_hide_delay.wait_time = delay
-	timer_for_hide_delay.start()
+	_timer_for_hide_delay.wait_time = delay
+	_timer_for_hide_delay.start()
 
 func hide_card_now():
 	if back_side == null or back_side.is_hidden():

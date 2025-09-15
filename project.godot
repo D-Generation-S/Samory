@@ -28,6 +28,7 @@ GlobalSoundBridge="*res://scenes/global/SoundBridge.tscn"
 MusicManager="*res://scenes/global/MusicManager.tscn"
 ScaleManager="*res://src/shared/ScaleManager.gd"
 ScreenTransitionManager="*res://scenes/global/ScreenTransitionManager.tscn"
+Enums="*res://src/enums/GlobalEnums.gd"
 
 [display]
 
