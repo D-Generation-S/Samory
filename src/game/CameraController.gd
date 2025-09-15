@@ -25,6 +25,7 @@ var can_end_round: bool = false
 var current_ai_player: bool = false
 
 var parent_node: MemoryGame
+var _current_deck: MemoryDeckResource
 var initial_position: Vector2
 var initial_zoom: Vector2
 
@@ -33,6 +34,9 @@ func _ready():
 	var screen_size = DisplayServer.screen_get_size()
 	position = Vector2(screen_size.x / 2, screen_size.y / 2)
 	process_mode = Node.PROCESS_MODE_DISABLED
+
+func deck_changed(deck: MemoryDeckResource):
+	_current_deck = deck
 
 func loading_done():
 	process_mode = Node.PROCESS_MODE_INHERIT
@@ -144,26 +148,13 @@ func game_state_changed(game_state: int):
 func player_changed(current_player:PlayerResource):
 	current_ai_player = current_player.is_ai()
 
-func adjust_zoom_and_position_to_play_area(cards_on_x: int, cards_on_y: int):
-	var card_template = parent_node.card_template
-	if card_template == null:
-		return
-	var card_instance = card_template.instantiate()
-	var card_height = card_instance.get_height() + parent_node.separation
-	var card_width = card_instance.get_width() + parent_node.separation
-
-	var field_width = card_width * cards_on_x
-	var field_height = card_height * cards_on_y
-
-	var center_x = field_width / 2
-	var center_y = field_height / 2
-
-	var larger_side = max(field_width, field_height * 1.3)
+func adjust_zoom_and_position_to_play_area(area: Rect2):
+	var larger_side = max(area.size.x, area.size.y * 1.3)
 
 	var zoom_value: float = (zoom_per_card * larger_side) * get_window().content_scale_factor
 	zoom_value = clampf(zoom_value, min_zoom, max_zoom)
 	zoom_value = max_zoom - zoom_value
 	zoom_value = clampf(zoom_value, min_zoom, max_zoom)
 
-	initial_position = Vector2(center_x, center_y)
+	initial_position = Vector2(area.position.x, area.position.y)
 	initial_zoom = Vector2(zoom_value, zoom_value)

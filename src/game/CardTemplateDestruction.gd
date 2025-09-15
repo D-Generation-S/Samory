@@ -2,7 +2,7 @@ extends CanvasGroup
 
 signal ready_for_destruction()
 
-@export var possible_effects: Array[DisolveEffectResource] = []
+@export var possible_effects: Array[DissolveEffectResource] = []
 # The seconds the destroy animation should be played
 @export var time_to_vanish: float = 1.0
 
@@ -24,7 +24,7 @@ func update_progress(value: float):
 
 func animate_destruction():
 	destroy_now = true
-	var loot = loot_table.get_loot() as DisolveEffectResource
+	var loot = loot_table.get_loot() as DissolveEffectResource
 	material = loot.effect_material.duplicate()
 	effect_multiplier = loot.effect_speed_multiplier
 	var tween = create_tween()

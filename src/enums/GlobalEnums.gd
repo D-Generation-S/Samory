@@ -1,0 +1,8 @@
+
+enum Tutorial_State{
+	UNKNOWN = 0,
+	PLAYER_TURN = 1,
+	PLAYER_TURNED_CARD = 2,
+	PLAYER_FOUND_MATCHING_PAIR = 3,
+	PLAYER_TURN_END = 4
+    }

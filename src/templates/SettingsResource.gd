@@ -4,7 +4,8 @@ class_name SettingsResource extends Resource
 @export var vsync_active: bool = false
 @export var load_custom_decks: bool = true
 @export var language_code: String = "en"
-@export var tutorial: TutorialResource = TutorialResource.new()
+@export var tutorials: Dictionary = {}
+@export var tutorial_aborted: bool = false
 @export var auto_close_popup_shown: bool = false
 @export var auto_close_round: bool = true
 @export var close_round_after_seconds: float = 3

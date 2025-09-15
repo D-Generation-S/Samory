@@ -3,15 +3,14 @@ extends Node
 signal tutorial_requested(scene: Control)
 
 @export var tutorial_window_scene: PackedScene = null
+@export var available_tutorials: Array[TutorialInformation] = []
 
 var tutorial_scene: TutorialWindow = null
 var settings: SettingsResource = null
-var tutorial_settings: TutorialResource = null
 
 func _ready():
 	settings = SettingsRepository.load_settings() as SettingsResource
-	tutorial_settings = settings.tutorial as TutorialResource
-	if tutorial_window_scene == null or tutorial_settings == null:
+	if tutorial_window_scene == null or settings == null:
 		printerr("Missing template for tutorial window, or settings not loaded")
 		queue_free()
 		return
@@ -19,37 +18,34 @@ func _ready():
 		queue_free()
 		return
 
+func trigger_tutorial(tutorial_type: Enums.Tutorial_State):
+	var selected_tutorial: TutorialInformation = null
+	for tutorial in available_tutorials:
+		if tutorial.tutorial_type == tutorial_type:
+			selected_tutorial = tutorial
+			break
+	if selected_tutorial == null:
+		return
+	var setting_key: String = Enums.Tutorial_State.keys()[selected_tutorial.tutorial_type]
+	if settings.tutorials.has(setting_key) and settings.tutorials[setting_key]:
+		return
+	settings.tutorials[setting_key] = true
+	open_tutorial_window_by_information(selected_tutorial)
+
 func is_tutorial_done() -> bool:
-	if tutorial_settings.tutorial_aborted:
+	if settings.tutorial_aborted:
 		return true
-	return tutorial_settings.player_turn \
-			and tutorial_settings.first_round_done \
-			and tutorial_settings.first_matching_card_found \
-			and tutorial_settings.first_card_turned
+	var all_true: bool = true
+	for key in Enums.Tutorial_State.keys():
+		if key == Enums.Tutorial_State.keys()[0]:
+			continue
+		if !settings.tutorials.has(key) or !settings.tutorials[key]:
+			all_true = false
+			break
+	return all_true
 
-func player_turn():
-	if tutorial_settings.player_turn or is_tutorial_done():
-		return
-	tutorial_settings.player_turn = true
-	open_tutorial_window("PLAYER_TURN", "PLAYER_TURN_BODY", true)
-
-func first_card_turned():
-	if tutorial_settings.first_card_turned or is_tutorial_done():
-		return
-	tutorial_settings.first_card_turned = true
-	open_tutorial_window("FIRST_CARD_TURNED", "FIRST_CARD_TURNED_BODY", false)
-
-func first_matching_card():
-	if tutorial_settings.first_matching_card_found or is_tutorial_done():
-		return
-	tutorial_settings.first_matching_card_found = true
-	open_tutorial_window("FIRST_MATCHING_CARD", "FIRST_MATCHING_CARD_BODY", false)
-
-func first_round_end():
-	if tutorial_settings.first_round_done or is_tutorial_done():
-		return
-	tutorial_settings.first_round_done = true
-	open_tutorial_window("FIRST_ROUND_END", "FIRST_ROUND_END_BODY", false)
+func open_tutorial_window_by_information(tutorial: TutorialInformation):
+	open_tutorial_window(tutorial.title, tutorial.body, tutorial.allow_abort)
 
 func open_tutorial_window(title: String, body: String, allow_abort: bool = false):
 	tutorial_scene = tutorial_window_scene.instantiate() as TutorialWindow
@@ -59,9 +55,8 @@ func open_tutorial_window(title: String, body: String, allow_abort: bool = false
 	save_settings()
 
 func abort_tutorial():
-	tutorial_settings.tutorial_aborted = true
+	settings.tutorial_aborted = true
 	save_settings()
 
 func save_settings():
-	settings.tutorial = tutorial_settings
 	SettingsRepository.save_settings(settings)

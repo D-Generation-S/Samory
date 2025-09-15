@@ -3,22 +3,17 @@
 [ext_resource type="Script" uid="uid://ss52earb6w0r" path="res://src/game/overlay/PlayerGameOverlay.gd" id="1_mi4rq"]
 [ext_resource type="PackedScene" uid="uid://cynb8xjpxqa6w" path="res://scenes/game/overlay/PlayerNameOverlay.tscn" id="2_ehytq"]
 
-[node name="PlayersOverlay" type="Control" node_paths=PackedStringArray("player_target_control")]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+[node name="MarginContainer" type="MarginContainer" node_paths=PackedStringArray("player_target_control")]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
 script = ExtResource("1_mi4rq")
 player_template = ExtResource("2_ehytq")
-player_target_control = NodePath("PanelContainer/MarginContainer/PlayerList/PlayerNames")
+player_target_control = NodePath("PanelContainer/MarginContainer/PlayerList")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-layout_mode = 1
-offset_right = 150.0
-offset_bottom = 70.0
+layout_mode = 2
 tooltip_text = "Players"
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
