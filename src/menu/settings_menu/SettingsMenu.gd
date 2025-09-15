@@ -18,6 +18,11 @@ func reset_settings():
 	settings_loaded.emit(initial_settings)
 	close_window(close_button)
 
+func reset_tutorial():
+	current_settings.tutorials = {}
+	current_settings.tutorial_aborted = false
+	current_settings.auto_close_popup_shown = false
+
 func save_settings():
 	var window_mode = DisplayServer.window_get_mode()
 	current_settings.fullscreen = false
