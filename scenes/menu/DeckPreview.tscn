@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3cv1g0a284mq"]
+[gd_scene load_steps=7 format=3 uid="uid://b3cv1g0a284mq"]
 
 [ext_resource type="Script" uid="uid://dmuuwlyuofchc" path="res://src/menu/deck_viewer/DeckPreview.gd" id="1_k0qju"]
+[ext_resource type="Resource" uid="uid://jetuptwqlhnw" path="res://scenes/translations/Yes.tres" id="2_s0fjc"]
 [ext_resource type="Script" uid="uid://mt2ilttcpq4r" path="res://src/menu/deck_viewer/DeckPreviewSelection.gd" id="3_0x34l"]
 [ext_resource type="Material" uid="uid://dkl2lojy2u6nx" path="res://assets/material/GlowingFocusMaterialtres.tres" id="3_imrd3"]
+[ext_resource type="Resource" uid="uid://bge0q1apngvdj" path="res://scenes/translations/No.tres" id="3_m027l"]
 [ext_resource type="StyleBox" uid="uid://d1rhal5rp1608" path="res://assets/styles/panel/MetalBox.tres" id="4_hcvyd"]
 
 [node name="DeckPreview" type="MarginContainer" node_paths=PackedStringArray("deck_name", "card_count", "buildint", "texture_rect", "deck_description", "selection_button")]
@@ -26,6 +28,8 @@ buildint = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/
 texture_rect = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Control")
 deck_description = NodePath("PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/DeckDescription")
 selection_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/GridContainer/Button")
+yes_translation = ExtResource("2_s0fjc")
+no_translation = ExtResource("3_m027l")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
@@ -87,7 +91,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 bbcode_enabled = true
-text = "No"
+text = "NO"
 fit_content = true
 
 [node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/GridContainer"]
@@ -100,7 +104,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 bbcode_enabled = true
-text = "0"
 fit_content = true
 
 [node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/GridContainer"]

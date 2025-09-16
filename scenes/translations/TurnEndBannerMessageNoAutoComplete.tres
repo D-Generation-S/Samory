@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TextTranslation" load_steps=2 format=3 uid="uid://dg6a4ijl3noge"]
+
+[ext_resource type="Script" uid="uid://b3ccmsvxi5x8x" path="res://src/templates/TextTranslation.gd" id="1_qnld6"]
+
+[resource]
+script = ExtResource("1_qnld6")
+key = "ROUND_END_BANNER_MESSAGE_NO_COMPLETE"
+description = "The message to show if a turn ends, but auto complete is disabled"
+metadata/_custom_type_script = "uid://b3ccmsvxi5x8x"

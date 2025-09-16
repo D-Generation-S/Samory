@@ -1,6 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://bnfr8gek24m47"]
+[gd_scene load_steps=26 format=3 uid="uid://bnfr8gek24m47"]
 
 [ext_resource type="Script" uid="uid://bhgb4virmkji8" path="res://src/game/MemoryGame.gd" id="1_13jq5"]
+[ext_resource type="Resource" uid="uid://cnl5uxkf36ely" path="res://scenes/translations/TurnEndBannerMessage.tres" id="2_fspeh"]
+[ext_resource type="Resource" uid="uid://dg6a4ijl3noge" path="res://scenes/translations/TurnEndBannerMessageNoAutoComplete.tres" id="3_a3528"]
 [ext_resource type="PackedScene" uid="uid://ubmqrubcq2a2" path="res://scenes/game/templates/CardTemplate.tscn" id="3_ihyl6"]
 [ext_resource type="Script" uid="uid://6o7nskqm6kd0" path="res://src/game/CameraController.gd" id="4_4ihyn"]
 [ext_resource type="PackedScene" uid="uid://csamt2tu6hlpo" path="res://scenes/game/overlay/FinishGame.tscn" id="4_6f670"]
@@ -27,6 +29,8 @@
 [node name="MemoryGame" type="Node2D" node_paths=PackedStringArray("card_target_node", "game_nodes_to_show")]
 process_mode = 1
 script = ExtResource("1_13jq5")
+round_end_message = ExtResource("2_fspeh")
+round_end_message_no_auto_complete = ExtResource("3_a3528")
 finished_game_template = ExtResource("4_6f670")
 game_menu_template = ExtResource("12_dfx06")
 card_target_node = NodePath("Cards")
