@@ -62,6 +62,7 @@
 # res://scenes/translations/No.tres
 # res://scenes/translations/Yes.tres
 # res://scenes/translations/Version.tres
+# res://scenes/translations/TimeForCompletion.tres
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -521,10 +522,6 @@ msgid "AUTO_CLOSE_POPUP_BODY"
 msgstr ""
 
 #: scenes/game/overlay/AutoClosePopup.tscn
-msgid "TIME_FOR_COMPLETION"
-msgstr ""
-
-#: scenes/game/overlay/AutoClosePopup.tscn
 #: scenes/game/overlay/FinishGame.tscn
 #: scenes/game/templates/TutorialWindow.tscn
 #: scenes/menu/NewPlayer.tscn
@@ -658,9 +655,12 @@ msgstr ""
 msgid "COMPLETE_TUTORIAL"
 msgstr ""
 
+#. TRANSLATORS: You need to add "%1.0" once as a placeholder, it will contain the seconds until the next turn will start
 #: scenes/translations/TurnEndBannerMessage.tres
 msgid "ROUND_END_BANNER_MESSAGE"
-msgstr ""
+msgid_plural "ROUND_END_BANNER_MESSAGE_PLURAL"
+msgstr[0] ""
+msgstr[1] ""
 
 #: scenes/translations/TurnEndBannerMessageNoAutoComplete.tres
 msgid "ROUND_END_BANNER_MESSAGE_NO_COMPLETE"
@@ -744,4 +744,9 @@ msgstr ""
 
 #: scenes/translations/Version.tres
 msgid "VERSION"
+msgstr ""
+
+#. TRANSLATORS: Requires a single placeholder "%1.0" containing the seconds
+#: scenes/translations/TimeForCompletion.tres
+msgid "TIME_FOR_COMPLETION"
 msgstr ""

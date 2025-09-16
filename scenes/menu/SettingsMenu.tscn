@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ded0xyxbb1om1"]
+[gd_scene load_steps=30 format=3 uid="uid://ded0xyxbb1om1"]
 
 [ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://scenes/menu/MenuBackground.tscn" id="2_cootk"]
 [ext_resource type="Script" uid="uid://be1ipi8ub0y8n" path="res://src/menu/settings_menu/SettingsMenu.gd" id="2_hfhds"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://g8dk5ckx5t4d" path="res://src/menu/settings/AutoCloseRoundSlider.gd" id="9_adf7j"]
 [ext_resource type="AudioStream" uid="uid://62algo6uwxwy" path="res://assets/audio/effect/card-slide-5.ogg" id="9_plrjf"]
 [ext_resource type="AudioStream" uid="uid://4hh1xtj8ac4j" path="res://assets/audio/effect/card-slide-6.ogg" id="10_3mytq"]
+[ext_resource type="Resource" uid="uid://t4b63t07og3" path="res://scenes/translations/TimeForCompletion.tres" id="10_12fsg"]
 [ext_resource type="Texture2D" uid="uid://xn3vywapxb7e" path="res://assets/icons/ResetIcon.tres" id="10_mdkqv"]
 [ext_resource type="AudioStream" uid="uid://dhm4p2ecwyfl3" path="res://assets/audio/effect/card-slide-7.ogg" id="11_bbgb2"]
 [ext_resource type="AudioStream" uid="uid://duqacxqgecl83" path="res://assets/audio/effect/card-slide-8.ogg" id="12_05mi4"]
@@ -115,15 +116,15 @@ tooltip_text = "AUTO_COMPLETE_ROUND_TOOLTIP"
 text = "AUTO_COMPLETE_ROUND"
 script = ExtResource("8_83bh0")
 
-[node name="TimeForCompletionGroup" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/HBoxContainer2" node_paths=PackedStringArray("slider", "label")]
+[node name="TimeForCompletionGroup" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 script = ExtResource("9_adf7j")
-slider = NodePath("TimeForCompletionSlider")
-label = NodePath("TimeForCompletionLabel")
+completion_time_translation = ExtResource("10_12fsg")
 
 [node name="TimeForCompletionLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/HBoxContainer2/TimeForCompletionGroup"]
 auto_translate_mode = 2
 layout_mode = 2
+tooltip_auto_translate_mode = 2
 text = "TIME_FOR_COMPLETION"
 
 [node name="TimeForCompletionSlider" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/HBoxContainer2/TimeForCompletionGroup"]
@@ -228,6 +229,10 @@ can_multi_click = false
 [connection signal="language_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/OptionButton" to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/HBoxContainer2/TimeForCompletionGroup" method="language_changed"]
 [connection signal="toggled" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/HBoxContainer2/AutoCompleteRound" to="." method="auto_complete_round_changed"]
 [connection signal="toggled" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/HBoxContainer2/AutoCompleteRound" to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/HBoxContainer2/TimeForCompletionGroup" method="toggle_visibility"]
+[connection signal="completion_time_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/HBoxContainer2/TimeForCompletionGroup" to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/HBoxContainer2/TimeForCompletionGroup/TimeForCompletionLabel" method="set_text"]
+[connection signal="update_max_slider_value" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/HBoxContainer2/TimeForCompletionGroup" to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/HBoxContainer2/TimeForCompletionGroup/TimeForCompletionSlider" method="set_max"]
+[connection signal="update_min_slider_value" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/HBoxContainer2/TimeForCompletionGroup" to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/HBoxContainer2/TimeForCompletionGroup/TimeForCompletionSlider" method="set_min"]
+[connection signal="update_slider_value" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/HBoxContainer2/TimeForCompletionGroup" to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/HBoxContainer2/TimeForCompletionGroup/TimeForCompletionSlider" method="set_value"]
 [connection signal="value_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/HBoxContainer2/TimeForCompletionGroup/TimeForCompletionSlider" to="." method="time_for_completion_changed"]
 [connection signal="value_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/HBoxContainer2/TimeForCompletionGroup/TimeForCompletionSlider" to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/HBoxContainer2/TimeForCompletionGroup" method="slider_changed"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/ResetTutorial" to="." method="reset_tutorial"]

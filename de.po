@@ -598,10 +598,6 @@ msgstr ""
 "Um diese Einstellung später anzupassen, gehe bitte in die Spieleinstellungen "
 "im Hauptmenü"
 
-#: scenes/game/overlay/AutoClosePopup.tscn
-msgid "TIME_FOR_COMPLETION"
-msgstr "Zeit bis beenden: %time%s"
-
 #: scenes/game/overlay/AutoClosePopup.tscn scenes/game/overlay/FinishGame.tscn
 #: scenes/game/templates/TutorialWindow.tscn scenes/menu/NewPlayer.tscn
 #: scenes/menu/SelectAiPlayer.tscn
@@ -754,11 +750,14 @@ msgstr "Das Tutorial wird abgebrochen und es wird keine weitere Hilfe geben"
 msgid "COMPLETE_TUTORIAL"
 msgstr "Tutorial als abgeschlossen markieren"
 
+#. TRANSLATORS: You need to add "%1.0" once as a placeholder, it will contain the seconds until the next turn will start
 #: scenes/translations/TurnEndBannerMessage.tres
 msgid "ROUND_END_BANNER_MESSAGE"
-msgstr ""
-"Um die Runde abzuschließen warte %time% Sekunden oder drücke die Aktions "
-"taste"
+msgid_plural "ROUND_END_BANNER_MESSAGE_PLURAL"
+msgstr[0] ""
+"Um die Runde abzuschließen warte %1.0f Sekunde oder drücke die Aktions taste"
+msgstr[1] ""
+"Um die Runde abzuschließen warte %1.0f Sekunden oder drücke die Aktions taste"
 
 #: scenes/translations/TurnEndBannerMessageNoAutoComplete.tres
 msgid "ROUND_END_BANNER_MESSAGE_NO_COMPLETE"
@@ -863,3 +862,11 @@ msgstr "Ja"
 #: scenes/translations/Version.tres
 msgid "VERSION"
 msgstr "Version"
+
+#. TRANSLATORS: Requires a single placeholder "%1.0" containing the seconds
+#: scenes/translations/TimeForCompletion.tres
+#, fuzzy
+#| msgid "TIME_FOR_COMPLETION"
+#| msgid_plural "TIME_FOR_COMPLETION_PLURAL"
+msgid "TIME_FOR_COMPLETION"
+msgstr "Zeit bis beenden: %1.0f s"

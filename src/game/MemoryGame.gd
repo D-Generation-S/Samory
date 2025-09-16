@@ -173,11 +173,9 @@ func show_round_ended_banner():
 	var auto_close = settings.auto_close_round
 	var time_until_close = settings.close_round_after_seconds
 	var popup_banner: BottomMessageBanner = message_banner.instantiate() as BottomMessageBanner
-	var message = round_end_message.key
+	var message = round_end_message
 	if !auto_close:
-		message = round_end_message_no_auto_complete.key
-
-	print(message)
+		message = round_end_message_no_auto_complete
 
 	popup_banner.initialize_popup(message, time_until_close, auto_close, func(): end_round_now() )
 	popup_banner.should_pause = false

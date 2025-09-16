@@ -18,7 +18,7 @@ func update_comb_box_entries():
 	clear()
 	var counter = 0
 	for option in ai_options:
-		add_item(tr(option.name), counter)
+		add_item(option.name, counter)
 		counter = counter + 1
 
 	selected = initial_index

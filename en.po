@@ -19,6 +19,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.7\n"
 
 #: scenes/menu/DeckViewer.tscn
@@ -522,10 +523,6 @@ msgstr ""
 "To change that setting later on, please go to the game settings located in "
 "the main menu"
 
-#: scenes/game/overlay/AutoClosePopup.tscn
-msgid "TIME_FOR_COMPLETION"
-msgstr "Time for completion: %time%s"
-
 #: scenes/game/overlay/AutoClosePopup.tscn scenes/game/overlay/FinishGame.tscn
 #: scenes/game/templates/TutorialWindow.tscn scenes/menu/NewPlayer.tscn
 #: scenes/menu/SelectAiPlayer.tscn
@@ -674,10 +671,14 @@ msgstr "Will stop the tutorial and not additional help will be provided"
 msgid "COMPLETE_TUTORIAL"
 msgstr "Mark Tutorial as completed"
 
+#. TRANSLATORS: You need to add "%1.0" once as a placeholder, it will contain the seconds until the next turn will start
 #: scenes/translations/TurnEndBannerMessage.tres
 msgid "ROUND_END_BANNER_MESSAGE"
-msgstr ""
-"To end the round, wait for %time% seconds or press the main action button"
+msgid_plural "ROUND_END_BANNER_MESSAGE_PLURAL"
+msgstr[0] ""
+"To end the round, wait for %1.0f second or press the main action button"
+msgstr[1] ""
+"To end the round, wait for %1.0f seconds or press the main action button"
 
 #: scenes/translations/TurnEndBannerMessageNoAutoComplete.tres
 msgid "ROUND_END_BANNER_MESSAGE_NO_COMPLETE"
@@ -769,6 +770,7 @@ msgstr "Loading"
 msgid "MESSAGE"
 msgstr "Message"
 
+#. TRANSLATORS: This will be used after the "LOADING" string, keep in mind to keep that as lower case
 #: scenes/translations/LoadDecks.tres
 msgid "LOAD_DECKS"
 msgstr "custom decks"
@@ -780,6 +782,11 @@ msgstr "Yes"
 #: scenes/translations/Version.tres
 msgid "VERSION"
 msgstr "Version"
+
+#. TRANSLATORS: Requires a single placeholder "%1.0" containing the seconds
+#: scenes/translations/TimeForCompletion.tres
+msgid "TIME_FOR_COMPLETION"
+msgstr "Autocomplete after %1.0f s"
 
 #, fuzzy
 #~| msgid "NO"
