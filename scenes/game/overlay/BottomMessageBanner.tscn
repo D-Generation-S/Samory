@@ -25,3 +25,5 @@ layout_mode = 2
 text = "LABEL_TEXT"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="text_changed" from="." to="BottomMessageBanner/MessageLabel" method="set_text"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnyopmj36gs07"]
+[gd_scene load_steps=6 format=3 uid="uid://bnyopmj36gs07"]
 
 [ext_resource type="Script" uid="uid://b44lnl21k5vc" path="res://src/game/overlay/AutoClosePopup.gd" id="1_v8yqj"]
 [ext_resource type="Script" uid="uid://cdf84o2qp0vdc" path="res://src/menu/settings/AutoCompleteRound.gd" id="2_al37c"]
 [ext_resource type="Script" uid="uid://g8dk5ckx5t4d" path="res://src/menu/settings/AutoCloseRoundSlider.gd" id="3_eb2ke"]
+[ext_resource type="Resource" uid="uid://t4b63t07og3" path="res://scenes/translations/TimeForCompletion.tres" id="4_4bnmq"]
 [ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://src/menu/control_overwrites/ClickableButton.gd" id="4_yyqw5"]
 
 [node name="AutoClosePopup" type="CenterContainer"]
@@ -42,18 +43,19 @@ layout_mode = 2
 text = "AUTO_COMPLETE_ROUND"
 script = ExtResource("2_al37c")
 
-[node name="AutoCompleteTimer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" node_paths=PackedStringArray("slider", "label")]
+[node name="AutoCompleteTimer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 script = ExtResource("3_eb2ke")
-slider = NodePath("HSlider")
-label = NodePath("Label")
+completion_time_translation = ExtResource("4_4bnmq")
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer"]
+[node name="TimeForCompletion" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer"]
+auto_translate_mode = 2
 layout_mode = 2
+tooltip_auto_translate_mode = 2
 text = "TIME_FOR_COMPLETION"
 
-[node name="HSlider" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer"]
+[node name="SecondsSlider" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -70,6 +72,10 @@ script = ExtResource("4_yyqw5")
 [connection signal="settings_loaded" from="." to="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer" method="settings_loaded"]
 [connection signal="toggled" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteRound" to="." method="auto_complete_state_changed"]
 [connection signal="toggled" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteRound" to="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer" method="toggle_visibility"]
-[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer/HSlider" to="." method="auto_complete_time_changed"]
-[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer/HSlider" to="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer" method="slider_changed"]
+[connection signal="completion_time_changed" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer" to="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer/TimeForCompletion" method="set_text"]
+[connection signal="update_max_slider_value" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer" to="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer/SecondsSlider" method="set_max"]
+[connection signal="update_min_slider_value" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer" to="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer/SecondsSlider" method="set_min"]
+[connection signal="update_slider_value" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer" to="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer/SecondsSlider" method="set_value"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer/SecondsSlider" to="." method="auto_complete_time_changed"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer/SecondsSlider" to="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer" method="slider_changed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="close_now"]
