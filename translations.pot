@@ -63,6 +63,7 @@
 # res://scenes/translations/Yes.tres
 # res://scenes/translations/Version.tres
 # res://scenes/translations/TimeForCompletion.tres
+# res://scenes/game/levels/MemoryGameScene.tscn
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -210,6 +211,14 @@ msgstr ""
 
 #: scenes/menu/SettingsMenu.tscn
 msgid "FULL_SCREEN"
+msgstr ""
+
+#: scenes/menu/SettingsMenu.tscn
+msgid "BORDERLESS"
+msgstr ""
+
+#: scenes/menu/SettingsMenu.tscn
+msgid "MAXIMIZED"
 msgstr ""
 
 #: scenes/menu/SettingsMenu.tscn
@@ -749,4 +758,8 @@ msgstr ""
 #. TRANSLATORS: Requires a single placeholder "%1.0" containing the seconds
 #: scenes/translations/TimeForCompletion.tres
 msgid "TIME_FOR_COMPLETION"
+msgstr ""
+
+#: scenes/game/levels/MemoryGameScene.tscn
+msgid "PAUSE_MENU"
 msgstr ""

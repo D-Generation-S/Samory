@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_ivax6")
-fullscreen = false
+window_mode = 2
 vsync_active = false
 load_custom_decks = true
 language_code = "en"

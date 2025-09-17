@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://scenes/menu/MenuBackground.tscn" id="2_cootk"]
 [ext_resource type="Script" uid="uid://be1ipi8ub0y8n" path="res://src/menu/settings_menu/SettingsMenu.gd" id="2_hfhds"]
 [ext_resource type="StyleBox" uid="uid://d1rhal5rp1608" path="res://assets/styles/panel/MetalBox.tres" id="3_hn4qe"]
-[ext_resource type="Script" uid="uid://bmbimhx1ofjqo" path="res://src/menu/settings_menu/FullscreenButton.gd" id="3_lsrcl"]
 [ext_resource type="Script" uid="uid://bl1m25cil8j5f" path="res://src/menu/settings_menu/BusSlider.gd" id="3_qrm32"]
+[ext_resource type="Script" uid="uid://dxepefpl817n7" path="res://src/menu/settings_menu/WindowModeSelection.gd" id="4_br808"]
 [ext_resource type="Script" uid="uid://b6p42kfefnyc0" path="res://src/menu/settings_menu/VsyncButton.gd" id="4_cwx70"]
 [ext_resource type="Script" uid="uid://bl0446x7ixjcv" path="res://src/menu/settings_menu/TestEffectButton.gd" id="4_l6fy8"]
 [ext_resource type="Script" uid="uid://cw4ndue8c4gv4" path="res://src/menu/settings_menu/LoadCustomDecks.gd" id="4_xqb7h"]
@@ -78,16 +78,19 @@ layout_mode = 2
 text = "GAME_SETTINGS"
 horizontal_alignment = 1
 
-[node name="GraphicSettings" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer"]
+[node name="WindowModeSelection" type="OptionButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer"]
 layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "FULL_SCREEN"
+popup/item_0/id = 0
+popup/item_1/text = "BORDERLESS"
+popup/item_1/id = 1
+popup/item_2/text = "MAXIMIZED"
+popup/item_2/id = 2
+script = ExtResource("4_br808")
 
-[node name="FullScreen" type="CheckButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "FULL_SCREEN"
-script = ExtResource("3_lsrcl")
-
-[node name="VSync" type="CheckButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings"]
+[node name="VSync" type="CheckButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "V_SYNC"
@@ -100,6 +103,7 @@ script = ExtResource("4_xqb7h")
 
 [node name="OptionButton" type="OptionButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer"]
 layout_mode = 2
+selected = 0
 item_count = 2
 popup/item_0/text = "ENGLISH"
 popup/item_0/id = 0
@@ -215,8 +219,8 @@ icon = ExtResource("28_mbv6n")
 script = ExtResource("19_3ip51")
 can_multi_click = false
 
-[connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/FullScreen" method="settings_loaded"]
-[connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/VSync" method="settings_loaded"]
+[connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/WindowModeSelection" method="settings_loaded"]
+[connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/VSync" method="settings_loaded"]
 [connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/LoadCustomDecks" method="settings_loaded"]
 [connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/OptionButton" method="settings_loaded"]
 [connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/HBoxContainer2/AutoCompleteRound" method="settings_loaded"]
@@ -224,6 +228,7 @@ can_multi_click = false
 [connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer/Audio Control/Master" method="settings_loaded"]
 [connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer/Audio Control/Effects" method="settings_loaded"]
 [connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer/Audio Control/Music" method="settings_loaded"]
+[connection signal="window_mode_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/WindowModeSelection" to="." method="window_mode_changed"]
 [connection signal="toggled" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/LoadCustomDecks" to="." method="load_custom_deck_changed"]
 [connection signal="language_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/OptionButton" to="." method="language_changed"]
 [connection signal="language_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/OptionButton" to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/HBoxContainer2/TimeForCompletionGroup" method="language_changed"]

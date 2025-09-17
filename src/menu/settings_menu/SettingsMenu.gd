@@ -24,11 +24,6 @@ func reset_tutorial():
 	current_settings.auto_close_popup_shown = false
 
 func save_settings():
-	var window_mode = DisplayServer.window_get_mode()
-	current_settings.fullscreen = false
-	if window_mode == DisplayServer.WINDOW_MODE_FULLSCREEN:
-		current_settings.fullscreen = true
-
 	current_settings.vsync_active = DisplayServer.window_get_vsync_mode() == DisplayServer.VSYNC_ENABLED
 
 	if !SettingsRepository.save_settings(current_settings):
@@ -56,6 +51,9 @@ func language_changed(new_language_code: String):
 
 func load_custom_deck_changed(toggled: bool):
 	current_settings.load_custom_decks = toggled
+
+func window_mode_changed(new_mode: DisplayServer.WindowMode):
+	current_settings.window_mode = new_mode
 
 func close_window(calling_button: Button):
 	GlobalGameManagerAccess.get_game_manager().close_game_with_position(calling_button.get_global_center_position())

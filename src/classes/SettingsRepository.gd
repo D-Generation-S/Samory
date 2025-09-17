@@ -17,7 +17,7 @@ func load_settings() -> SettingsResource:
 	save_file.close()
 	var return_settings: SettingsResource = default_settings.duplicate()
 	
-	return_settings.fullscreen = data.get("fullscreen")
+	return_settings.window_mode = data.get_or_add("window_mode", DisplayServer.WindowMode.WINDOW_MODE_MAXIMIZED)
 	return_settings.load_custom_decks = data.get("load_custom_decks")
 	return_settings.vsync_active = data.get("vsync_active")
 	return_settings.language_code = data.get("language", "en")
@@ -34,7 +34,7 @@ func load_settings() -> SettingsResource:
 
 func save_settings(settings: SettingsResource) -> bool:
 	var data_to_save: Dictionary = {
-		"fullscreen": settings.fullscreen,
+		"window_mode": settings.window_mode,
 		"vsync_active": settings.vsync_active,
 		"language": settings.language_code,
 		"load_custom_decks": settings.load_custom_decks,
@@ -49,7 +49,10 @@ func save_settings(settings: SettingsResource) -> bool:
 	}
 
 	var file = FileAccess.open(settings_file, FileAccess.WRITE)
-	file.store_line(JSON.stringify(data_to_save))
+	var indent = ""
+	if OS.is_debug_build():
+		indent = "\t"
+	file.store_line(JSON.stringify(data_to_save, indent))
 	file.close()
 
 	loaded_settings = null
