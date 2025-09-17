@@ -80,7 +80,7 @@ msgstr "Cancel"
 
 #: scenes/menu/MainMenu.tscn
 msgid "CUSTOM_GAME_TOOLTIP"
-msgstr "Cancel"
+msgstr "Create a custom game against AI or humans"
 
 #: scenes/menu/MainMenu.tscn
 msgid "CUSTOM_GAME"
@@ -121,7 +121,7 @@ msgstr "Credits"
 
 #: scenes/menu/MainMenu.tscn
 msgid "QUIT_GAME_TOOLTIP"
-msgstr "Create a custom game against AI or humans"
+msgstr "Close the game"
 
 #: scenes/menu/MainMenu.tscn
 msgid "QUIT_GAME"
@@ -154,6 +154,14 @@ msgstr "Settings"
 #: scenes/menu/SettingsMenu.tscn
 msgid "FULL_SCREEN"
 msgstr "Fullscreen"
+
+#: scenes/menu/SettingsMenu.tscn
+msgid "BORDERLESS"
+msgstr "Borderless"
+
+#: scenes/menu/SettingsMenu.tscn
+msgid "MAXIMIZED"
+msgstr "Maximized"
 
 #: scenes/menu/SettingsMenu.tscn
 msgid "V_SYNC"
@@ -787,6 +795,10 @@ msgstr "Version"
 #: scenes/translations/TimeForCompletion.tres
 msgid "TIME_FOR_COMPLETION"
 msgstr "Autocomplete after %1.0f s"
+
+#: scenes/game/levels/MemoryGameScene.tscn
+msgid "PAUSE_MENU"
+msgstr "Pause Menu"
 
 #, fuzzy
 #~| msgid "NO"

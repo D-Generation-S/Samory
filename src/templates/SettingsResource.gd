@@ -1,6 +1,6 @@
 class_name SettingsResource extends Resource
 
-@export var fullscreen: bool = false
+@export var window_mode: DisplayServer.WindowMode
 @export var vsync_active: bool = false
 @export var load_custom_decks: bool = true
 @export var language_code: String = "en"

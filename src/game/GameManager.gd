@@ -28,6 +28,9 @@ var is_debug = false
 
 
 func _ready():
+	get_viewport().content_scale_size = Vector2i(1920, 1080)
+	
+	
 	var counter: int = 0
 	for deck in build_in_decks:
 		deck.id = counter
@@ -57,9 +60,7 @@ func reload_system_decks():
 
 func initial_settings_setup():
 	var settings: SettingsResource = SettingsRepository.load_settings()
-
-	if settings.fullscreen:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	DisplayServer.window_set_mode(settings.window_mode)
 
 	if settings.vsync_active:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)

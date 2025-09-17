@@ -206,6 +206,14 @@ msgid "FULL_SCREEN"
 msgstr "Vollbild"
 
 #: scenes/menu/SettingsMenu.tscn
+msgid "BORDERLESS"
+msgstr "Randlos"
+
+#: scenes/menu/SettingsMenu.tscn
+msgid "MAXIMIZED"
+msgstr "Maximiert"
+
+#: scenes/menu/SettingsMenu.tscn
 msgid "V_SYNC"
 msgstr "V Sync"
 
@@ -865,8 +873,9 @@ msgstr "Version"
 
 #. TRANSLATORS: Requires a single placeholder "%1.0" containing the seconds
 #: scenes/translations/TimeForCompletion.tres
-#, fuzzy
-#| msgid "TIME_FOR_COMPLETION"
-#| msgid_plural "TIME_FOR_COMPLETION_PLURAL"
 msgid "TIME_FOR_COMPLETION"
 msgstr "Zeit bis beenden: %1.0f s"
+
+#: scenes/game/levels/MemoryGameScene.tscn
+msgid "PAUSE_MENU"
+msgstr "Pause Menü"
