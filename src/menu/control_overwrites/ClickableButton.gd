@@ -1,23 +1,28 @@
 class_name ClickableButton extends Button
 
+@export_group("Behavior")
 @export var is_focused: bool = false
 ## If false the button can only be clicked once
 @export var can_multi_click: bool = true
 @export var play_sounds: bool = true
+
+@export_group("Animations")
 @export var animation_resource: ControlAnimationResource = null
 	
-var sound_bridge: SoundBridge = null
-var animation_tween: Tween = null
-var is_animated: bool = false
+var _sound_bridge: SoundBridge = null
+var _animation_tween: Tween = null
+var _is_animated: bool = false
+
 
 func _ready():
 	mouse_entered.connect(_hover_event)
 	mouse_exited.connect(_hover_left)
 	focus_entered.connect(got_focus)
 	focus_exited.connect(lost_focus)
-	sound_bridge = GlobalGameManagerAccess.get_sound_bridge()
-	is_animated = animation_resource != null
-	if is_animated:
+
+	_sound_bridge = GlobalGameManagerAccess.get_sound_bridge()
+	_is_animated = animation_resource != null
+	if _is_animated:
 		animation_resource.prepare_animation(self)
 	if is_focused:
 		grab_focus()
@@ -28,9 +33,9 @@ func get_global_center_position() -> Vector2:
 func _pressed():
 	if !can_multi_click:
 		disabled = true
-	if sound_bridge == null or !play_sounds:
+	if _sound_bridge == null or !play_sounds:
 		return
-	sound_bridge.play_button_click()
+	_sound_bridge.play_button_click()
 
 func _hover_event():
 	if has_focus():
@@ -43,28 +48,28 @@ func _hover_left():
 	lost_focus()
 
 func ensure_new_tween():
-	if animation_tween != null:
-		animation_tween.kill()
-		animation_tween = null
+	if _animation_tween != null:
+		_animation_tween.kill()
+		_animation_tween = null
 
 func got_focus():
 	if disabled:
 		return
-	if sound_bridge != null and play_sounds:
-		sound_bridge.play_button_hover()
+	if _sound_bridge != null and play_sounds:
+		_sound_bridge.play_button_hover()
 
-	if !is_animated or animation_resource.is_animated_in():
+	if !_is_animated or animation_resource.is_animated_in():
 		return
 	ensure_new_tween()
-	animation_tween = create_tween()
-	animation_resource.animate_in(animation_tween, self)
+	_animation_tween = create_tween()
+	animation_resource.animate_in(_animation_tween, self)
 
 func lost_focus():
-	if !is_animated or !animation_resource.is_animated_in():
+	if !_is_animated or !animation_resource.is_animated_in():
 		return
 	ensure_new_tween()
-	animation_tween = create_tween()
-	animation_resource.animate_out(animation_tween, self)
+	_animation_tween = create_tween()
+	animation_resource.animate_out(_animation_tween, self)
 
 func disable_button():
 	disabled = true
