@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bnfr8gek24m47"]
+[gd_scene load_steps=27 format=3 uid="uid://bnfr8gek24m47"]
 
 [ext_resource type="Script" uid="uid://bhgb4virmkji8" path="res://src/game/MemoryGame.gd" id="1_13jq5"]
 [ext_resource type="Resource" uid="uid://cnl5uxkf36ely" path="res://scenes/translations/TurnEndBannerMessage.tres" id="2_fspeh"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://6o7nskqm6kd0" path="res://src/game/CameraController.gd" id="4_4ihyn"]
 [ext_resource type="PackedScene" uid="uid://csamt2tu6hlpo" path="res://scenes/game/overlay/FinishGame.tscn" id="4_6f670"]
 [ext_resource type="Script" uid="uid://bxjrl2ikqn4tk" path="res://src/game/PlayerManager.gd" id="4_n744t"]
+[ext_resource type="AudioStream" uid="uid://dq3rmjoitwi1a" path="res://assets/audio/effect/confirmation_001.ogg" id="6_a3528"]
 [ext_resource type="Texture2D" uid="uid://dmf23xobks0pc" path="res://assets/sprites/wood.png" id="7_35r1o"]
 [ext_resource type="PackedScene" uid="uid://d0vijthhc3d38" path="res://scenes/game/overlay/PlayersOverlay.tscn" id="7_a7rnv"]
 [ext_resource type="Script" uid="uid://bglvkbo4aydsy" path="res://src/game/Background.gd" id="7_kxmqb"]
@@ -26,15 +27,16 @@
 [ext_resource type="PackedScene" uid="uid://d15qeu4s4bgjk" path="res://scenes/game/templates/TutorialWindow.tscn" id="22_ubsrg"]
 [ext_resource type="Script" uid="uid://btm576yjkyt4j" path="res://src/game/CardSpawner.gd" id="26_a3528"]
 
-[node name="MemoryGame" type="Node2D" node_paths=PackedStringArray("card_target_node", "game_nodes_to_show")]
+[node name="MemoryGame" type="Node2D" node_paths=PackedStringArray("game_nodes_to_show", "card_target_node")]
 process_mode = 1
 script = ExtResource("1_13jq5")
 round_end_message = ExtResource("2_fspeh")
 round_end_message_no_auto_complete = ExtResource("3_a3528")
 finished_game_template = ExtResource("4_6f670")
 game_menu_template = ExtResource("12_dfx06")
-card_target_node = NodePath("Cards")
 game_nodes_to_show = [NodePath("CanvasLayer"), NodePath("Background")]
+card_target_node = NodePath("Cards")
+sound_effect = ExtResource("6_a3528")
 
 [node name="Players" type="Node" parent="."]
 unique_name_in_owner = true

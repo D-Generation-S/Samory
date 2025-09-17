@@ -21,16 +21,20 @@ signal trigger_tutorial(tutorial_state: Enums.Tutorial_State)
 
 const CARDS_PER_PLAYER = 2
 
+@export_group("Translations")
 @export var round_end_message: TextTranslation
 @export var round_end_message_no_auto_complete: TextTranslation
 
+@export_group("Game Setup")
 @export var card_deck: Resource
 @export var finished_game_template: PackedScene
 @export var game_menu_template: PackedScene
-
+@export var game_nodes_to_show: Array[Node]
 @export var card_target_node: Node2D
 
-@export var game_nodes_to_show: Array[Node]
+@export_group("Effect Setup")
+@export var sound_effect: AudioStream
+
 
 var current_game_state
 var player_node: PlayerManager
@@ -100,6 +104,8 @@ func card_was_triggered():
 		for child in card_target_node.get_children():
 			if child is CardTemplate and child.is_turned():
 				child.remove_from_board()
+		if sound_effect != null:
+			GlobalSoundBridge.play_sound(sound_effect)
 		triggered_cards = 0
 		removed_cards = removed_cards + 1
 		player_scored.emit(current_player.id)
