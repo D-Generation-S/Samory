@@ -115,6 +115,7 @@ layout_mode = 2
 
 [node name="AddNewPlayer" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer" node_paths=PackedStringArray("root_node", "player_node")]
 layout_mode = 2
+tooltip_text = "ADD_NEW_PLAYER_TOOLTIP"
 text = "ADD_NEW_PLAYER"
 icon = ExtResource("7_soh36")
 script = ExtResource("1_2n3u5")
@@ -126,6 +127,7 @@ is_focused = true
 
 [node name="AddRandomPlayer" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer"]
 layout_mode = 2
+tooltip_text = "ADD_RANDOM_PLAYER_TOOLTIP"
 text = "ADD_RANDOM_PLAYER"
 icon = ExtResource("7_soh36")
 script = ExtResource("7_6tvv5")
@@ -135,6 +137,7 @@ layout_mode = 2
 
 [node name="AddAiPlayer" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer2"]
 layout_mode = 2
+tooltip_text = "ADD_AI_PLAYER_TOOLTIP"
 text = "ADD_AI_PLAYER"
 icon = ExtResource("11_3vpqe")
 script = ExtResource("8_prt8c")
@@ -161,6 +164,7 @@ script = ExtResource("8_7nqqi")
 
 [node name="Show All" type="CheckButton" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+tooltip_text = "SHOW_ALL_TOOLTIP"
 button_pressed = true
 button_group = ExtResource("9_b0hcr")
 text = "SHOW_ALL"
@@ -168,12 +172,14 @@ script = ExtResource("10_nuo64")
 
 [node name="Show Build In" type="CheckButton" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+tooltip_text = "SHOW_BUILT_IN_TOOLTIP"
 button_group = ExtResource("9_b0hcr")
 text = "SHOW_BUILT_IN"
 script = ExtResource("10_nuo64")
 
 [node name="Show Custom" type="CheckButton" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+tooltip_text = "SHOW_CUSTOM_TOOLTIP"
 button_group = ExtResource("9_b0hcr")
 text = "SHOW_CUSTOM"
 script = ExtResource("10_nuo64")
@@ -213,6 +219,7 @@ layout_mode = 2
 
 [node name="StartGame" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2" node_paths=PackedStringArray("player_list", "deck_manager")]
 layout_mode = 2
+tooltip_text = "START_GAME_TOOLTIP"
 text = "START_GAME"
 icon = ExtResource("19_ef40l")
 script = ExtResource("8_6tuah")
@@ -225,6 +232,7 @@ animation_resource = ExtResource("17_to3in")
 layout_mode = 2
 size_flags_horizontal = 10
 shortcut = ExtResource("11_eein8")
+shortcut_in_tooltip = false
 text = "CANCEL"
 icon = ExtResource("23_k5aev")
 script = ExtResource("8_i1lj5")

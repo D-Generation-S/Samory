@@ -67,6 +67,12 @@ msgstr ""
 "X-Generator: Poedit 3.7\n"
 
 #: scenes/menu/DeckViewer.tscn
+msgid "RELOAD_CUSTOM_DECKS_TOOLTIP"
+msgstr ""
+"Lade deine eigenen Decks neu, diese Funktionalität steht nur zur Verfügung "
+"wenn du eigene Decks aktiviert hast."
+
+#: scenes/menu/DeckViewer.tscn
 msgid "RELOAD_CUSTOM_DECKS"
 msgstr "Eigene Decks neu laden"
 
@@ -75,12 +81,26 @@ msgid "FILTER_DECKS"
 msgstr "Decks anhand ihres Namens filtern"
 
 #: scenes/menu/DeckViewer.tscn scenes/menu/GameLobby.tscn
+msgid "SHOW_ALL_TOOLTIP"
+msgstr ""
+"Zeige alle Decks an die das Spiel zu bieten hat, dies beinhaltet die "
+"eingebauten sowie eigene Decks."
+
+#: scenes/menu/DeckViewer.tscn scenes/menu/GameLobby.tscn
 msgid "SHOW_ALL"
 msgstr "Alle Anzeigen"
 
 #: scenes/menu/DeckViewer.tscn scenes/menu/GameLobby.tscn
+msgid "SHOW_BUILT_IN_TOOLTIP"
+msgstr "Zeige nur Decks welche teil des Spiels sind"
+
+#: scenes/menu/DeckViewer.tscn scenes/menu/GameLobby.tscn
 msgid "SHOW_BUILT_IN"
 msgstr "Nur eingebaute anzeigen"
+
+#: scenes/menu/DeckViewer.tscn scenes/menu/GameLobby.tscn
+msgid "SHOW_CUSTOM_TOOLTIP"
+msgstr "Zeige nur deine eigenen Decks an"
 
 #: scenes/menu/DeckViewer.tscn scenes/menu/GameLobby.tscn
 msgid "SHOW_CUSTOM"
@@ -102,16 +122,35 @@ msgstr ""
 "Spieler an der reihe sind"
 
 #: scenes/menu/GameLobby.tscn
+msgid "ADD_NEW_PLAYER_TOOLTIP"
+msgstr "Erlaubt es dir einen neuen Spieler zu konfigurieren und hinzuzufügen"
+
+#: scenes/menu/GameLobby.tscn
 msgid "ADD_NEW_PLAYER"
 msgstr "Neuen Spieler hinzufügen"
+
+#: scenes/menu/GameLobby.tscn
+msgid "ADD_RANDOM_PLAYER_TOOLTIP"
+msgstr ""
+"Füge einen zufälligen Spieler mit einem zufälligen Namen dem Spiel hinzu"
 
 #: scenes/menu/GameLobby.tscn
 msgid "ADD_RANDOM_PLAYER"
 msgstr "Zufälligen Spieler hinzufügen"
 
 #: scenes/menu/GameLobby.tscn
+msgid "ADD_AI_PLAYER_TOOLTIP"
+msgstr ""
+"Füge einen KI Spieler hinzu, du hast die Möglichkeit die Schwierigkeit "
+"auszuwählen"
+
+#: scenes/menu/GameLobby.tscn
 msgid "ADD_AI_PLAYER"
 msgstr "Ki Spieler hinzufügen"
+
+#: scenes/menu/GameLobby.tscn
+msgid "START_GAME_TOOLTIP"
+msgstr "Starte das spiel mit allen momentan aufgelisteten Spielern"
 
 #: scenes/menu/GameLobby.tscn
 msgid "START_GAME"
@@ -177,6 +216,33 @@ msgstr "Das Spiel beenden"
 msgid "QUIT_GAME"
 msgstr "Spiel beenden"
 
+#: scenes/menu/MainMenu.tscn
+msgid "MATCH_AGAINST_EASY_AI_TOOLTIP"
+msgstr "Starte eine schnelles Spiel gegen einen einfachen KI Gegner."
+
+#: scenes/menu/MainMenu.tscn scenes/game/resources/ai/EasyAi.tres
+#: scenes/menu/SelectAiPlayer.tscn
+msgid "EASY_AI"
+msgstr "Einfach"
+
+#: scenes/menu/MainMenu.tscn
+msgid "MATCH_AGAINST_NORMAL_AI_TOOLTIP"
+msgstr "Starte eine schnelles Spiel gegen einen normalen KI Gegner."
+
+#: scenes/menu/MainMenu.tscn scenes/game/resources/ai/NormalAi.tres
+#: scenes/menu/SelectAiPlayer.tscn
+msgid "NORMAL_AI"
+msgstr "Normal"
+
+#: scenes/menu/MainMenu.tscn
+msgid "MATCH_AGAINST_HARD_AI_TOOLTIP"
+msgstr "Starte eine schnelles Spiel gegen einen schweren KI Gegner."
+
+#: scenes/menu/MainMenu.tscn scenes/game/resources/ai/HardAi.tres
+#: scenes/menu/SelectAiPlayer.tscn
+msgid "HARD_AI"
+msgstr "Schwer"
+
 #: scenes/menu/MainMenu.tscn scenes/menu/SettingsMenu.tscn
 msgid "GAME_SETTINGS"
 msgstr "Spieleinstellungen"
@@ -202,6 +268,10 @@ msgid "SETTINGS"
 msgstr "Einstellungen"
 
 #: scenes/menu/SettingsMenu.tscn
+msgid "WINDOW_MODE_SETTING_TOOLTIP"
+msgstr "Ein dropdown um den gewünschten Fenster Modus auszuwählen."
+
+#: scenes/menu/SettingsMenu.tscn
 msgid "FULL_SCREEN"
 msgstr "Vollbild"
 
@@ -214,12 +284,24 @@ msgid "MAXIMIZED"
 msgstr "Maximiert"
 
 #: scenes/menu/SettingsMenu.tscn
+msgid "VSYNC_SETTING_TOOLTIP"
+msgstr "Aktiviere oder deaktiviere VSync für das Spiel"
+
+#: scenes/menu/SettingsMenu.tscn
 msgid "V_SYNC"
 msgstr "V Sync"
 
 #: scenes/menu/SettingsMenu.tscn
+msgid "LOAD_CUSTOM_DECK_SETTING_TOOLTIP"
+msgstr "Erlaube dem Spiel eigene Decks zu laden"
+
+#: scenes/menu/SettingsMenu.tscn
 msgid "LOAD_CUSTOM_DECKS"
 msgstr "Eigene decks laden"
+
+#: scenes/menu/SettingsMenu.tscn
+msgid "SELECT_LANGUAGE_SETTING_TOOLTIP"
+msgstr "Wähle die Sprache des Spiels aus in der diese angezeigt werden soll."
 
 #: scenes/menu/SettingsMenu.tscn
 msgid "ENGLISH"
@@ -252,24 +334,56 @@ msgid "AUDIO"
 msgstr "Audio"
 
 #: scenes/menu/SettingsMenu.tscn
+msgid "MASTER_VOLUME_TOOLTIP"
+msgstr ""
+"Option zum setzten der Master Lautstärke, diese Einstellung hat eine "
+"Auswirkung auf alle anderen Audio Einstellungen"
+
+#: scenes/menu/SettingsMenu.tscn
 msgid "MASTER_VOLUME"
 msgstr "Gesamtlautstärke"
+
+#: scenes/menu/SettingsMenu.tscn
+msgid "EFFECT_VOLUME_TOOLTIP"
+msgstr ""
+"Option zum setzten der Effekt Lautstärke, hiervon sind alle Effekte des "
+"Spiels betroffen."
 
 #: scenes/menu/SettingsMenu.tscn
 msgid "EFFECT_VOLUME"
 msgstr "Effektlautstärke"
 
 #: scenes/menu/SettingsMenu.tscn
+msgid "MUSIC_VOLUME_TOOLTIP"
+msgstr ""
+"Option zum setzten der Musik Lautstärke, hiervon ist die Hintergrundmusik "
+"betroffen."
+
+#: scenes/menu/SettingsMenu.tscn
 msgid "MUSIC_VOLUME"
 msgstr "Musiklautstärke"
+
+#: scenes/menu/SettingsMenu.tscn
+msgid "TEST_EFFECTS_TOOLTIP"
+msgstr ""
+"Spielt einen Effekt Ton ab, hiermit kannst du testen ob die Einstellungen "
+"für dich korrekt sind"
 
 #: scenes/menu/SettingsMenu.tscn
 msgid "TEST_EFFECTS"
 msgstr "Effekt Lautstärke testen"
 
 #: scenes/menu/SettingsMenu.tscn
+msgid "APPLY_SETTING_TOOLTIP"
+msgstr "Speichere die aktuellen Einstellungen und schließe das Menü"
+
+#: scenes/menu/SettingsMenu.tscn
 msgid "APPLY"
 msgstr "Annehmen"
+
+#: scenes/menu/SettingsMenu.tscn
+msgid "CLOSE_SETTING_TOOLTIP"
+msgstr "Schließe die Einstellungen ohne diese zu speichern."
 
 #: scenes/game/resources/cards/animals/ElephantCard.tres
 msgid "ELEPHANT"
@@ -633,8 +747,16 @@ msgid "TOGGLE_DEBUG"
 msgstr "Debug aktivieren/deaktivieren"
 
 #: scenes/game/overlay/GamePauseMenu.tscn
+msgid "MAIN_MENU_TOOLTIP"
+msgstr "Gehe zurück ins Hauptmenü des Spieles"
+
+#: scenes/game/overlay/GamePauseMenu.tscn
 msgid "MAIN_MENU"
 msgstr "Hauptmenü"
+
+#: scenes/game/overlay/GamePauseMenu.tscn
+msgid "CLOSE_MENU_TOOLTIP"
+msgstr "Schließe diese Menü"
 
 #: scenes/game/overlay/GamePauseMenu.tscn
 msgid "CLOSE_MENU"
@@ -810,18 +932,6 @@ msgstr ""
 msgid "Material Maker"
 msgstr ""
 
-#: scenes/game/resources/ai/EasyAi.tres scenes/menu/SelectAiPlayer.tscn
-msgid "EASY_AI"
-msgstr "Einfach"
-
-#: scenes/game/resources/ai/HardAi.tres scenes/menu/SelectAiPlayer.tscn
-msgid "HARD_AI"
-msgstr "Schwer"
-
-#: scenes/game/resources/ai/NormalAi.tres scenes/menu/SelectAiPlayer.tscn
-msgid "NORMAL_AI"
-msgstr "Normal"
-
 #: scenes/menu/NewPlayer.tscn
 msgid "PLAYER_NAME"
 msgstr "Spielername"
@@ -829,6 +939,10 @@ msgstr "Spielername"
 #: scenes/menu/NewPlayer.tscn
 msgid "ERROR"
 msgstr "Fehler"
+
+#: scenes/menu/SelectAiPlayer.tscn
+msgid "ADD_AI_CANCEL_TOOLTIP"
+msgstr "Entferne den aktuellen KI Spieler"
 
 #: scenes/menu/PlayerCard.tscn
 msgid "MOVE_PLAYER_UP"
@@ -839,8 +953,10 @@ msgid "MOVE_PLAYER_DOWN"
 msgstr "Spieler nach unten schieben"
 
 #: scenes/menu/PlayerCard.tscn
-msgid "DELETE"
-msgstr "Löschen"
+msgid "DELETE_LOBBY_PLAYER_TOOLTIP"
+msgstr ""
+"Lösche den Spieler aus der Lobby, dieser kann danach nicht wiederhergestellt "
+"werden."
 
 #: scenes/translations/ErrorNoNameWasEntered.tres
 msgid "NO_NAME_WAS_ENTERED"
@@ -879,3 +995,6 @@ msgstr "Zeit bis beenden: %1.0f s"
 #: scenes/game/levels/MemoryGameScene.tscn
 msgid "PAUSE_MENU"
 msgstr "Pause Menü"
+
+#~ msgid "DELETE"
+#~ msgstr "Löschen"

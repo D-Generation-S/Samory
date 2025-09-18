@@ -76,6 +76,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8-bit\n"
 
 #: scenes/menu/DeckViewer.tscn
+msgid "RELOAD_CUSTOM_DECKS_TOOLTIP"
+msgstr ""
+
+#: scenes/menu/DeckViewer.tscn
 msgid "RELOAD_CUSTOM_DECKS"
 msgstr ""
 
@@ -86,12 +90,27 @@ msgstr ""
 
 #: scenes/menu/DeckViewer.tscn
 #: scenes/menu/GameLobby.tscn
+msgid "SHOW_ALL_TOOLTIP"
+msgstr ""
+
+#: scenes/menu/DeckViewer.tscn
+#: scenes/menu/GameLobby.tscn
 msgid "SHOW_ALL"
 msgstr ""
 
 #: scenes/menu/DeckViewer.tscn
 #: scenes/menu/GameLobby.tscn
+msgid "SHOW_BUILT_IN_TOOLTIP"
+msgstr ""
+
+#: scenes/menu/DeckViewer.tscn
+#: scenes/menu/GameLobby.tscn
 msgid "SHOW_BUILT_IN"
+msgstr ""
+
+#: scenes/menu/DeckViewer.tscn
+#: scenes/menu/GameLobby.tscn
+msgid "SHOW_CUSTOM_TOOLTIP"
 msgstr ""
 
 #: scenes/menu/DeckViewer.tscn
@@ -115,7 +134,15 @@ msgid "PLAYER_LIST_HELP"
 msgstr ""
 
 #: scenes/menu/GameLobby.tscn
+msgid "ADD_NEW_PLAYER_TOOLTIP"
+msgstr ""
+
+#: scenes/menu/GameLobby.tscn
 msgid "ADD_NEW_PLAYER"
+msgstr ""
+
+#: scenes/menu/GameLobby.tscn
+msgid "ADD_RANDOM_PLAYER_TOOLTIP"
 msgstr ""
 
 #: scenes/menu/GameLobby.tscn
@@ -123,7 +150,15 @@ msgid "ADD_RANDOM_PLAYER"
 msgstr ""
 
 #: scenes/menu/GameLobby.tscn
+msgid "ADD_AI_PLAYER_TOOLTIP"
+msgstr ""
+
+#: scenes/menu/GameLobby.tscn
 msgid "ADD_AI_PLAYER"
+msgstr ""
+
+#: scenes/menu/GameLobby.tscn
+msgid "START_GAME_TOOLTIP"
 msgstr ""
 
 #: scenes/menu/GameLobby.tscn
@@ -185,6 +220,36 @@ msgid "QUIT_GAME"
 msgstr ""
 
 #: scenes/menu/MainMenu.tscn
+msgid "MATCH_AGAINST_EASY_AI_TOOLTIP"
+msgstr ""
+
+#: scenes/menu/MainMenu.tscn
+#: scenes/game/resources/ai/EasyAi.tres
+#: scenes/menu/SelectAiPlayer.tscn
+msgid "EASY_AI"
+msgstr ""
+
+#: scenes/menu/MainMenu.tscn
+msgid "MATCH_AGAINST_NORMAL_AI_TOOLTIP"
+msgstr ""
+
+#: scenes/menu/MainMenu.tscn
+#: scenes/game/resources/ai/NormalAi.tres
+#: scenes/menu/SelectAiPlayer.tscn
+msgid "NORMAL_AI"
+msgstr ""
+
+#: scenes/menu/MainMenu.tscn
+msgid "MATCH_AGAINST_HARD_AI_TOOLTIP"
+msgstr ""
+
+#: scenes/menu/MainMenu.tscn
+#: scenes/game/resources/ai/HardAi.tres
+#: scenes/menu/SelectAiPlayer.tscn
+msgid "HARD_AI"
+msgstr ""
+
+#: scenes/menu/MainMenu.tscn
 #: scenes/menu/SettingsMenu.tscn
 msgid "GAME_SETTINGS"
 msgstr ""
@@ -210,6 +275,10 @@ msgid "SETTINGS"
 msgstr ""
 
 #: scenes/menu/SettingsMenu.tscn
+msgid "WINDOW_MODE_SETTING_TOOLTIP"
+msgstr ""
+
+#: scenes/menu/SettingsMenu.tscn
 msgid "FULL_SCREEN"
 msgstr ""
 
@@ -222,11 +291,23 @@ msgid "MAXIMIZED"
 msgstr ""
 
 #: scenes/menu/SettingsMenu.tscn
+msgid "VSYNC_SETTING_TOOLTIP"
+msgstr ""
+
+#: scenes/menu/SettingsMenu.tscn
 msgid "V_SYNC"
 msgstr ""
 
 #: scenes/menu/SettingsMenu.tscn
+msgid "LOAD_CUSTOM_DECK_SETTING_TOOLTIP"
+msgstr ""
+
+#: scenes/menu/SettingsMenu.tscn
 msgid "LOAD_CUSTOM_DECKS"
+msgstr ""
+
+#: scenes/menu/SettingsMenu.tscn
+msgid "SELECT_LANGUAGE_SETTING_TOOLTIP"
 msgstr ""
 
 #: scenes/menu/SettingsMenu.tscn
@@ -259,7 +340,15 @@ msgid "AUDIO"
 msgstr ""
 
 #: scenes/menu/SettingsMenu.tscn
+msgid "MASTER_VOLUME_TOOLTIP"
+msgstr ""
+
+#: scenes/menu/SettingsMenu.tscn
 msgid "MASTER_VOLUME"
+msgstr ""
+
+#: scenes/menu/SettingsMenu.tscn
+msgid "EFFECT_VOLUME_TOOLTIP"
 msgstr ""
 
 #: scenes/menu/SettingsMenu.tscn
@@ -267,7 +356,15 @@ msgid "EFFECT_VOLUME"
 msgstr ""
 
 #: scenes/menu/SettingsMenu.tscn
+msgid "MUSIC_VOLUME_TOOLTIP"
+msgstr ""
+
+#: scenes/menu/SettingsMenu.tscn
 msgid "MUSIC_VOLUME"
+msgstr ""
+
+#: scenes/menu/SettingsMenu.tscn
+msgid "TEST_EFFECTS_TOOLTIP"
 msgstr ""
 
 #: scenes/menu/SettingsMenu.tscn
@@ -275,7 +372,15 @@ msgid "TEST_EFFECTS"
 msgstr ""
 
 #: scenes/menu/SettingsMenu.tscn
+msgid "APPLY_SETTING_TOOLTIP"
+msgstr ""
+
+#: scenes/menu/SettingsMenu.tscn
 msgid "APPLY"
+msgstr ""
+
+#: scenes/menu/SettingsMenu.tscn
+msgid "CLOSE_SETTING_TOOLTIP"
 msgstr ""
 
 #: scenes/game/resources/cards/animals/ElephantCard.tres
@@ -559,7 +664,15 @@ msgid "TOGGLE_DEBUG"
 msgstr ""
 
 #: scenes/game/overlay/GamePauseMenu.tscn
+msgid "MAIN_MENU_TOOLTIP"
+msgstr ""
+
+#: scenes/game/overlay/GamePauseMenu.tscn
 msgid "MAIN_MENU"
+msgstr ""
+
+#: scenes/game/overlay/GamePauseMenu.tscn
+msgid "CLOSE_MENU_TOOLTIP"
 msgstr ""
 
 #: scenes/game/overlay/GamePauseMenu.tscn
@@ -691,27 +804,16 @@ msgstr ""
 msgid "Material Maker"
 msgstr ""
 
-#: scenes/game/resources/ai/EasyAi.tres
-#: scenes/menu/SelectAiPlayer.tscn
-msgid "EASY_AI"
-msgstr ""
-
-#: scenes/game/resources/ai/HardAi.tres
-#: scenes/menu/SelectAiPlayer.tscn
-msgid "HARD_AI"
-msgstr ""
-
-#: scenes/game/resources/ai/NormalAi.tres
-#: scenes/menu/SelectAiPlayer.tscn
-msgid "NORMAL_AI"
-msgstr ""
-
 #: scenes/menu/NewPlayer.tscn
 msgid "PLAYER_NAME"
 msgstr ""
 
 #: scenes/menu/NewPlayer.tscn
 msgid "ERROR"
+msgstr ""
+
+#: scenes/menu/SelectAiPlayer.tscn
+msgid "ADD_AI_CANCEL_TOOLTIP"
 msgstr ""
 
 #: scenes/menu/PlayerCard.tscn
@@ -723,7 +825,7 @@ msgid "MOVE_PLAYER_DOWN"
 msgstr ""
 
 #: scenes/menu/PlayerCard.tscn
-msgid "DELETE"
+msgid "DELETE_LOBBY_PLAYER_TOOLTIP"
 msgstr ""
 
 #: scenes/translations/ErrorNoNameWasEntered.tres

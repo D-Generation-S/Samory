@@ -23,6 +23,12 @@ msgstr ""
 "X-Generator: Poedit 3.7\n"
 
 #: scenes/menu/DeckViewer.tscn
+msgid "RELOAD_CUSTOM_DECKS_TOOLTIP"
+msgstr ""
+"This button will reload all your custom decks, this is only available if "
+"this option is active"
+
+#: scenes/menu/DeckViewer.tscn
 msgid "RELOAD_CUSTOM_DECKS"
 msgstr "Reload custom decks"
 
@@ -31,12 +37,26 @@ msgid "FILTER_DECKS"
 msgstr "Filter decks by deck name"
 
 #: scenes/menu/DeckViewer.tscn scenes/menu/GameLobby.tscn
+msgid "SHOW_ALL_TOOLTIP"
+msgstr ""
+"Show all the decks available, this will include build in and custom decks "
+"alike"
+
+#: scenes/menu/DeckViewer.tscn scenes/menu/GameLobby.tscn
 msgid "SHOW_ALL"
 msgstr "Show All"
 
 #: scenes/menu/DeckViewer.tscn scenes/menu/GameLobby.tscn
+msgid "SHOW_BUILT_IN_TOOLTIP"
+msgstr "Show only decks which are built into the game"
+
+#: scenes/menu/DeckViewer.tscn scenes/menu/GameLobby.tscn
 msgid "SHOW_BUILT_IN"
 msgstr "Show built in only"
+
+#: scenes/menu/DeckViewer.tscn scenes/menu/GameLobby.tscn
+msgid "SHOW_CUSTOM_TOOLTIP"
+msgstr "Only show custom decks, sideloaded by the game"
 
 #: scenes/menu/DeckViewer.tscn scenes/menu/GameLobby.tscn
 msgid "SHOW_CUSTOM"
@@ -58,16 +78,33 @@ msgstr ""
 "their turn"
 
 #: scenes/menu/GameLobby.tscn
+msgid "ADD_NEW_PLAYER_TOOLTIP"
+msgstr "Allows you to configure a new player and add it to the game"
+
+#: scenes/menu/GameLobby.tscn
 msgid "ADD_NEW_PLAYER"
 msgstr "Add new player"
+
+#: scenes/menu/GameLobby.tscn
+msgid "ADD_RANDOM_PLAYER_TOOLTIP"
+msgstr "This will add a player with a random name to the game"
 
 #: scenes/menu/GameLobby.tscn
 msgid "ADD_RANDOM_PLAYER"
 msgstr "Add random player"
 
 #: scenes/menu/GameLobby.tscn
+msgid "ADD_AI_PLAYER_TOOLTIP"
+msgstr ""
+"Add a ai player to the game, you have to select the difficulty settings"
+
+#: scenes/menu/GameLobby.tscn
 msgid "ADD_AI_PLAYER"
 msgstr "Add AI Player"
+
+#: scenes/menu/GameLobby.tscn
+msgid "START_GAME_TOOLTIP"
+msgstr "Start the game with the currently listed players and the selected deck"
 
 #: scenes/menu/GameLobby.tscn
 msgid "START_GAME"
@@ -127,6 +164,36 @@ msgstr "Close the game"
 msgid "QUIT_GAME"
 msgstr "Quit Game"
 
+#: scenes/menu/MainMenu.tscn
+msgid "MATCH_AGAINST_EASY_AI_TOOLTIP"
+msgstr ""
+"Start a quick match against a easy ai player, a random deck will be used"
+
+#: scenes/menu/MainMenu.tscn scenes/game/resources/ai/EasyAi.tres
+#: scenes/menu/SelectAiPlayer.tscn
+msgid "EASY_AI"
+msgstr "Easy"
+
+#: scenes/menu/MainMenu.tscn
+msgid "MATCH_AGAINST_NORMAL_AI_TOOLTIP"
+msgstr ""
+"Start a quick match against a normal ai player, a random deck will be used"
+
+#: scenes/menu/MainMenu.tscn scenes/game/resources/ai/NormalAi.tres
+#: scenes/menu/SelectAiPlayer.tscn
+msgid "NORMAL_AI"
+msgstr "Normal"
+
+#: scenes/menu/MainMenu.tscn
+msgid "MATCH_AGAINST_HARD_AI_TOOLTIP"
+msgstr ""
+"Start a quick match against a hard ai player, a random deck will be used"
+
+#: scenes/menu/MainMenu.tscn scenes/game/resources/ai/HardAi.tres
+#: scenes/menu/SelectAiPlayer.tscn
+msgid "HARD_AI"
+msgstr "Hard"
+
 #: scenes/menu/MainMenu.tscn scenes/menu/SettingsMenu.tscn
 msgid "GAME_SETTINGS"
 msgstr "Game Settings"
@@ -152,6 +219,10 @@ msgid "SETTINGS"
 msgstr "Settings"
 
 #: scenes/menu/SettingsMenu.tscn
+msgid "WINDOW_MODE_SETTING_TOOLTIP"
+msgstr "Dropdown to select your preferred window mode"
+
+#: scenes/menu/SettingsMenu.tscn
 msgid "FULL_SCREEN"
 msgstr "Fullscreen"
 
@@ -164,12 +235,24 @@ msgid "MAXIMIZED"
 msgstr "Maximized"
 
 #: scenes/menu/SettingsMenu.tscn
+msgid "VSYNC_SETTING_TOOLTIP"
+msgstr "Enable or disable vsync for the game"
+
+#: scenes/menu/SettingsMenu.tscn
 msgid "V_SYNC"
 msgstr "VSync"
 
 #: scenes/menu/SettingsMenu.tscn
+msgid "LOAD_CUSTOM_DECK_SETTING_TOOLTIP"
+msgstr "Allow the game to sideload your custom decks if enabled"
+
+#: scenes/menu/SettingsMenu.tscn
 msgid "LOAD_CUSTOM_DECKS"
 msgstr "Load custom decks"
+
+#: scenes/menu/SettingsMenu.tscn
+msgid "SELECT_LANGUAGE_SETTING_TOOLTIP"
+msgstr "Select the language the game should be displayed in"
 
 #: scenes/menu/SettingsMenu.tscn
 msgid "ENGLISH"
@@ -200,24 +283,54 @@ msgid "AUDIO"
 msgstr "Audio"
 
 #: scenes/menu/SettingsMenu.tscn
+msgid "MASTER_VOLUME_TOOLTIP"
+msgstr ""
+"Option to set the master volume, this will affect all other volume settings "
+"as well"
+
+#: scenes/menu/SettingsMenu.tscn
 msgid "MASTER_VOLUME"
 msgstr "Master volume"
+
+#: scenes/menu/SettingsMenu.tscn
+msgid "EFFECT_VOLUME_TOOLTIP"
+msgstr ""
+"Option to change the effect volume, this will affect all the short sounds in "
+"the game"
 
 #: scenes/menu/SettingsMenu.tscn
 msgid "EFFECT_VOLUME"
 msgstr "Effect volume"
 
 #: scenes/menu/SettingsMenu.tscn
+msgid "MUSIC_VOLUME_TOOLTIP"
+msgstr ""
+"Option to change the music volume, this will asffect  all the background "
+"music"
+
+#: scenes/menu/SettingsMenu.tscn
 msgid "MUSIC_VOLUME"
 msgstr "Music volume"
+
+#: scenes/menu/SettingsMenu.tscn
+msgid "TEST_EFFECTS_TOOLTIP"
+msgstr "Play a effect sound, allowing you to test your current effect volume"
 
 #: scenes/menu/SettingsMenu.tscn
 msgid "TEST_EFFECTS"
 msgstr "Test effect volume"
 
 #: scenes/menu/SettingsMenu.tscn
+msgid "APPLY_SETTING_TOOLTIP"
+msgstr "This will save the current settings and close the menu"
+
+#: scenes/menu/SettingsMenu.tscn
 msgid "APPLY"
 msgstr "Apply"
+
+#: scenes/menu/SettingsMenu.tscn
+msgid "CLOSE_SETTING_TOOLTIP"
+msgstr "Close the settings menu without saving any settings you configured"
 
 #: scenes/game/resources/cards/animals/ElephantCard.tres
 msgid "ELEPHANT"
@@ -558,8 +671,16 @@ msgid "TOGGLE_DEBUG"
 msgstr "Enable/Disable Debug"
 
 #: scenes/game/overlay/GamePauseMenu.tscn
+msgid "MAIN_MENU_TOOLTIP"
+msgstr "Get to the main menu of the game"
+
+#: scenes/game/overlay/GamePauseMenu.tscn
 msgid "MAIN_MENU"
 msgstr "Main Menu"
+
+#: scenes/game/overlay/GamePauseMenu.tscn
+msgid "CLOSE_MENU_TOOLTIP"
+msgstr "Close this menu"
 
 #: scenes/game/overlay/GamePauseMenu.tscn
 msgid "CLOSE_MENU"
@@ -730,18 +851,6 @@ msgstr ""
 msgid "Material Maker"
 msgstr ""
 
-#: scenes/game/resources/ai/EasyAi.tres scenes/menu/SelectAiPlayer.tscn
-msgid "EASY_AI"
-msgstr "Easy"
-
-#: scenes/game/resources/ai/HardAi.tres scenes/menu/SelectAiPlayer.tscn
-msgid "HARD_AI"
-msgstr "Hard"
-
-#: scenes/game/resources/ai/NormalAi.tres scenes/menu/SelectAiPlayer.tscn
-msgid "NORMAL_AI"
-msgstr "Normal"
-
 #: scenes/menu/NewPlayer.tscn
 msgid "PLAYER_NAME"
 msgstr "Playername"
@@ -749,6 +858,11 @@ msgstr "Playername"
 #: scenes/menu/NewPlayer.tscn
 msgid "ERROR"
 msgstr "Error"
+
+#: scenes/menu/SelectAiPlayer.tscn
+msgid "ADD_AI_CANCEL_TOOLTIP"
+msgstr ""
+"Abort adding an AI player, all changed done to this player will be lost"
 
 #: scenes/menu/PlayerCard.tscn
 msgid "MOVE_PLAYER_UP"
@@ -759,8 +873,8 @@ msgid "MOVE_PLAYER_DOWN"
 msgstr "Move player down"
 
 #: scenes/menu/PlayerCard.tscn
-msgid "DELETE"
-msgstr "Delete"
+msgid "DELETE_LOBBY_PLAYER_TOOLTIP"
+msgstr "Delete this player from the lobby, you cannot restore it"
 
 #: scenes/translations/ErrorNoNameWasEntered.tres
 msgid "NO_NAME_WAS_ENTERED"
@@ -799,6 +913,9 @@ msgstr "Autocomplete after %1.0f s"
 #: scenes/game/levels/MemoryGameScene.tscn
 msgid "PAUSE_MENU"
 msgstr "Pause Menu"
+
+#~ msgid "DELETE"
+#~ msgstr "Delete"
 
 #, fuzzy
 #~| msgid "NO"

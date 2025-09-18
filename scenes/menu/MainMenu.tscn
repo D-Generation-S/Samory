@@ -151,6 +151,7 @@ layout_mode = 2
 
 [node name="Easy_AI" type="Button" parent="AvailableAiModes/PanelContainer/AvailableAis"]
 layout_mode = 2
+tooltip_text = "MATCH_AGAINST_EASY_AI_TOOLTIP"
 focus_neighbor_left = NodePath("../../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI")
 focus_neighbor_top = NodePath("../Hard_AI")
 focus_neighbor_bottom = NodePath("../Normal_AI")
@@ -161,6 +162,7 @@ possible_ai_difficulties = Array[ExtResource("6_k6mp2")]([ExtResource("7_2i4h7")
 
 [node name="Normal_AI" type="Button" parent="AvailableAiModes/PanelContainer/AvailableAis"]
 layout_mode = 2
+tooltip_text = "MATCH_AGAINST_NORMAL_AI_TOOLTIP"
 focus_neighbor_left = NodePath("../../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI")
 focus_neighbor_top = NodePath("../Easy_AI")
 focus_neighbor_bottom = NodePath("../Hard_AI")
@@ -171,6 +173,7 @@ possible_ai_difficulties = Array[ExtResource("6_k6mp2")]([ExtResource("8_cilha")
 
 [node name="Hard_AI" type="Button" parent="AvailableAiModes/PanelContainer/AvailableAis"]
 layout_mode = 2
+tooltip_text = "MATCH_AGAINST_HARD_AI_TOOLTIP"
 focus_neighbor_left = NodePath("../../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI")
 focus_neighbor_top = NodePath("../Normal_AI")
 focus_neighbor_bottom = NodePath("../Easy_AI")

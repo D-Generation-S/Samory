@@ -50,6 +50,8 @@ script = ExtResource("7_wv3gv")
 
 [node name="Close" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
+tooltip_text = "ADD_AI_CANCEL_TOOLTIP"
+shortcut_in_tooltip = false
 text = "CANCEL"
 script = ExtResource("7_qxik2")
 
