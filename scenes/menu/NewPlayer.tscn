@@ -50,6 +50,7 @@ fields_for_validation = [NodePath("../../PlayerName")]
 layout_mode = 2
 size_flags_horizontal = 10
 shortcut = ExtResource("6_057kb")
+shortcut_in_tooltip = false
 text = "CANCEL"
 script = ExtResource("6_321yi")
 

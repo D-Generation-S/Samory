@@ -47,6 +47,7 @@ alignment = 1
 
 [node name="Reload Decks" type="Button" parent="VBoxContainer/MarginContainer/PanelContainer/Deck Controls"]
 layout_mode = 2
+tooltip_text = "RELOAD_CUSTOM_DECKS_TOOLTIP"
 text = "RELOAD_CUSTOM_DECKS"
 script = ExtResource("2_v68ni")
 is_focused = true
@@ -59,6 +60,7 @@ script = ExtResource("3_44ipw")
 
 [node name="Show All" type="CheckButton" parent="VBoxContainer/MarginContainer/PanelContainer/Deck Controls"]
 layout_mode = 2
+tooltip_text = "SHOW_ALL_TOOLTIP"
 button_pressed = true
 button_group = ExtResource("2_t7m8t")
 text = "SHOW_ALL"
@@ -66,12 +68,14 @@ script = ExtResource("4_dd2y2")
 
 [node name="Show Built In" type="CheckButton" parent="VBoxContainer/MarginContainer/PanelContainer/Deck Controls"]
 layout_mode = 2
+tooltip_text = "SHOW_BUILT_IN_TOOLTIP"
 button_group = ExtResource("2_t7m8t")
 text = "SHOW_BUILT_IN"
 script = ExtResource("4_dd2y2")
 
 [node name="Show Custom" type="CheckButton" parent="VBoxContainer/MarginContainer/PanelContainer/Deck Controls"]
 layout_mode = 2
+tooltip_text = "SHOW_CUSTOM_TOOLTIP"
 button_group = ExtResource("2_t7m8t")
 text = "SHOW_CUSTOM"
 script = ExtResource("4_dd2y2")
@@ -196,8 +200,8 @@ animation = ExtResource("15_dk4td")
 [connection signal="decks_loading" from="." to="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Show All" method="loading_decks"]
 [connection signal="decks_loading" from="." to="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Show Built In" method="loading_decks"]
 [connection signal="decks_loading" from="." to="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Show Custom" method="loading_decks"]
-[connection signal="decks_loading" from="." to="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/ScrollContainer/Cards" method="clear_all_system_cards"]
 [connection signal="decks_loading" from="." to="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/ScrollContainer/Cards" method="decks_loading"]
+[connection signal="decks_loading" from="." to="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/ScrollContainer/Cards" method="clear_all_system_cards"]
 [connection signal="decks_loading" from="." to="LoadingSpinner" method="show"]
 [connection signal="scene_ready" from="." to="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Reload Decks" method="enable_button"]
 [connection signal="scene_ready" from="." to="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Filter Decks" method="enable"]

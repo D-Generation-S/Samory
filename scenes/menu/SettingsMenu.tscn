@@ -80,6 +80,7 @@ horizontal_alignment = 1
 
 [node name="WindowModeSelection" type="OptionButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "WINDOW_MODE_SETTING_TOOLTIP"
 selected = 0
 item_count = 3
 popup/item_0/text = "FULL_SCREEN"
@@ -93,16 +94,19 @@ script = ExtResource("4_br808")
 [node name="VSync" type="CheckButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+tooltip_text = "VSYNC_SETTING_TOOLTIP"
 text = "V_SYNC"
 script = ExtResource("4_cwx70")
 
 [node name="LoadCustomDecks" type="CheckButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "LOAD_CUSTOM_DECK_SETTING_TOOLTIP"
 text = "LOAD_CUSTOM_DECKS"
 script = ExtResource("4_xqb7h")
 
 [node name="OptionButton" type="OptionButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "SELECT_LANGUAGE_SETTING_TOOLTIP"
 selected = 0
 item_count = 2
 popup/item_0/text = "ENGLISH"
@@ -163,6 +167,8 @@ columns = 2
 
 [node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer/Audio Control"]
 layout_mode = 2
+tooltip_text = "MASTER_VOLUME_TOOLTIP"
+mouse_filter = 1
 text = "MASTER_VOLUME"
 
 [node name="Master" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer/Audio Control"]
@@ -173,6 +179,8 @@ script = ExtResource("3_qrm32")
 
 [node name="Label2" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer/Audio Control"]
 layout_mode = 2
+tooltip_text = "EFFECT_VOLUME_TOOLTIP"
+mouse_filter = 1
 text = "EFFECT_VOLUME"
 
 [node name="Effects" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer/Audio Control"]
@@ -182,6 +190,8 @@ bus_name = 1
 
 [node name="Label3" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer/Audio Control"]
 layout_mode = 2
+tooltip_text = "MUSIC_VOLUME_TOOLTIP"
+mouse_filter = 1
 text = "MUSIC_VOLUME"
 
 [node name="Music" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer/Audio Control"]
@@ -193,6 +203,7 @@ bus_name = 2
 [node name="TestEffectVolume" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 10
+tooltip_text = "TEST_EFFECTS_TOOLTIP"
 text = "TEST_EFFECTS"
 icon = ExtResource("13_12fsg")
 script = ExtResource("4_l6fy8")
@@ -205,6 +216,7 @@ size_flags_horizontal = 4
 
 [node name="SaveAndClose" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2"]
 layout_mode = 2
+tooltip_text = "APPLY_SETTING_TOOLTIP"
 text = "APPLY"
 icon = ExtResource("26_br808")
 script = ExtResource("19_3ip51")
@@ -212,6 +224,7 @@ can_multi_click = false
 
 [node name="Close" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2"]
 layout_mode = 2
+tooltip_text = "CLOSE_SETTING_TOOLTIP"
 shortcut = ExtResource("28_12fsg")
 shortcut_in_tooltip = false
 text = "CLOSE"

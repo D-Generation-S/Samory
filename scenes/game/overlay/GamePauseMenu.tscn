@@ -55,6 +55,7 @@ active = 15
 
 [node name="MainMenu" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "MAIN_MENU_TOOLTIP"
 text = "MAIN_MENU"
 icon = ExtResource("3_jjhg3")
 script = ExtResource("2_00hhe")
@@ -62,6 +63,7 @@ is_focused = true
 
 [node name="CloseMenu" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "CLOSE_MENU_TOOLTIP"
 shortcut = ExtResource("3_vcfmt")
 shortcut_in_tooltip = false
 text = "CLOSE_MENU"
