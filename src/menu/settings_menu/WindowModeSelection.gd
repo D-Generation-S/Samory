@@ -42,6 +42,5 @@ func _on_item_was_selected(index: int):
 			mode = DisplayServer.WindowMode.WINDOW_MODE_EXCLUSIVE_FULLSCREEN
 		modes.MAXIMIZED:
 			mode = DisplayServer.WindowMode.WINDOW_MODE_MAXIMIZED
-	print(mode)
 	_change_window_mode(mode)
 	window_mode_changed.emit(mode)

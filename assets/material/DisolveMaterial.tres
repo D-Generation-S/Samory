@@ -7,8 +7,8 @@
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dgshd"]
 width = 265
 height = 265
-seamless = true
 noise = SubResource("FastNoiseLite_vy61v")
+seamless = true
 
 [resource]
 shader = ExtResource("1_7t678")

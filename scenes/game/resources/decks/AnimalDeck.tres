@@ -16,10 +16,7 @@
 
 [resource]
 script = ExtResource("6_66xdg")
-built_in = true
 name = "ANIMALS"
 description = "ANIMALS_DESCRIPTION"
 card_back = ExtResource("1_fcqkf")
 cards = Array[ExtResource("2_mfcoj")]([ExtResource("3_a8qo0"), ExtResource("4_0sikl"), ExtResource("5_ym12t"), ExtResource("6_ukg4m"), ExtResource("7_cts1r"), ExtResource("8_nglv3"), ExtResource("9_fhie6"), ExtResource("10_ew51u"), ExtResource("11_i0xv5"), ExtResource("12_xl3os")])
-id = -1
-file_system_folder = ""

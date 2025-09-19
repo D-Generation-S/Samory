@@ -8,7 +8,7 @@ var active: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if material is ShaderMaterial:
-		material = material.duplicate()
+		material = material.duplicate_deep()
 		active = true
 		set_color(default_color.get_color())
 		return

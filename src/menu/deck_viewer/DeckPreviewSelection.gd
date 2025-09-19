@@ -14,7 +14,7 @@ func _ready():
 	if material == null:
 		initial_material = null
 		return
-	initial_material = material.duplicate()
+	initial_material = material.duplicate_deep()
 
 func set_image(new_texture: Texture2D):
 	texture = new_texture
@@ -30,5 +30,5 @@ func activate():
 	if deck_preview.is_selected:
 		color = selected_color
 
-	material = selection_material.duplicate()
+	material = selection_material.duplicate_deep()
 	material.set("shader_parameter/effect_color", color)

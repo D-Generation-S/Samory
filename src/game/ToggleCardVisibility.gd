@@ -70,7 +70,7 @@ func lost_focus():
 	set_shader_material(toggle_material)
 
 func set_shader_material(new_material: Material):
-	material = new_material.duplicate()
+	material = new_material.duplicate_deep()
 
 func is_hidden() -> bool:
 	var card_back_visible = false

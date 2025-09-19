@@ -15,7 +15,7 @@ func load_settings() -> SettingsResource:
 	var save_file = FileAccess.open(settings_file, FileAccess.READ)
 	var data: Dictionary = JSON.parse_string(save_file.get_as_text())
 	save_file.close()
-	var return_settings: SettingsResource = default_settings.duplicate()
+	var return_settings: SettingsResource = default_settings.duplicate_deep()
 	
 	return_settings.window_mode = data.get_or_add("window_mode", DisplayServer.WindowMode.WINDOW_MODE_MAXIMIZED)
 	return_settings.load_custom_decks = data.get("load_custom_decks")
