@@ -66,7 +66,6 @@ func roll_in_next_text():
 	display_animated_text(text_queue.pop_front())
 
 func text_was_set():
-	print("text set")
 	animating = false
 	current_text_displayed.emit()
 	if text_queue.size() == 0:

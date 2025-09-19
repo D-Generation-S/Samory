@@ -33,7 +33,6 @@ func place_cards_from_deck(deck_to_user: MemoryDeckResource):
 	for card in cards:
 		card.visible = true
 	card_loading_done.emit()
-
 	queue_free()
 
 func _calculate_field_size(cards_on_x: int, cards_on_y: int):
@@ -56,7 +55,6 @@ func build_card_layout(deck_of_cards: MemoryDeckResource,
 					   card_separation: int
 					   ) -> Array[CardTemplate]:
 	var return_cards: Array[CardTemplate] = []
-
 	var card_pool = deck_of_cards.cards
 	var additional_cards = deck_of_cards.cards
 	card_pool = numbering_cards_from_pool(card_pool)

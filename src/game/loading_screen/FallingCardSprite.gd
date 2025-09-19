@@ -13,7 +13,7 @@ func _ready():
 		queue_free()
 		return
 	if material:
-		material = material.duplicate()
+		material = material.duplicate_deep()
 	var texture_image = texture.get_image()
 	texture_image.resize(max_width, max_height)
 	texture = ImageTexture.create_from_image(texture_image)

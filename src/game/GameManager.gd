@@ -78,18 +78,17 @@ func initial_settings_setup():
 func translate_built_in_decks():
 	translated_build_in_decks = []
 	for deck in build_in_decks:
-		var new_deck = deck.duplicate() as MemoryDeckResource
+		var new_deck = deck.duplicate_deep() as MemoryDeckResource
 		new_deck.name = tr(deck.name)
 		new_deck.description = tr(deck.description)
 		var cards = deck.cards
 		new_deck.cards.clear()
 		for card in cards:
-			var card_copy = card.duplicate()
+			var card_copy = card.duplicate_deep()
 			card_copy.name = tr(card.name)
 			card_copy.description = tr(card.description)
 			new_deck.cards.append(card_copy)
 		translated_build_in_decks.append(new_deck)
-
 func close_game_with_position(transition_start_position: Vector2):
 	ScreenTransitionManager.transit_screen_with_position(main_menu_template, transition_start_position)
 

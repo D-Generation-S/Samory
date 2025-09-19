@@ -25,7 +25,7 @@ func update_progress(value: float):
 func animate_destruction():
 	destroy_now = true
 	var loot = loot_table.get_loot() as DissolveEffectResource
-	material = loot.effect_material.duplicate()
+	material = loot.effect_material.duplicate_deep()
 	effect_multiplier = loot.effect_speed_multiplier
 	var tween = create_tween()
 	tween.bind_node(self)

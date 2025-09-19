@@ -11,7 +11,7 @@ var initial_settings: SettingsResource;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	initial_settings = SettingsRepository.load_settings()
-	current_settings = initial_settings.duplicate()
+	current_settings = initial_settings.duplicate_deep()
 	settings_loaded.emit(initial_settings)
 
 func reset_settings():
