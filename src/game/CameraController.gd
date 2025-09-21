@@ -157,4 +157,7 @@ func adjust_zoom_and_position_to_play_area(area: Rect2):
 	zoom_value = clampf(zoom_value, min_zoom, max_zoom)
 
 	initial_position = Vector2(area.position.x, area.position.y)
-	initial_zoom = Vector2(zoom_value, zoom_value)
+
+	var zoom_multipler = GlobalGameManagerAccess.get_game_manager().get_camera_zoom_adjustment()
+
+	initial_zoom = Vector2(zoom_value * zoom_multipler, zoom_value * zoom_multipler)

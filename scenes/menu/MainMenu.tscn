@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://co10o6j0oxeep"]
+[gd_scene load_steps=33 format=3 uid="uid://co10o6j0oxeep"]
 
 [ext_resource type="Script" uid="uid://chjw5lk6vyisx" path="res://src/menu/main_menu/QuitGameButton.gd" id="1_6c3ib"]
 [ext_resource type="Script" uid="uid://duplgguwpsw7p" path="res://src/menu/main_menu/StartQuickGame.gd" id="1_dyfxg"]
@@ -30,6 +30,7 @@
 [ext_resource type="Resource" uid="uid://gy5cebbq2aed" path="res://scenes/game/resources/ai/HardAi.tres" id="21_w7y08"]
 [ext_resource type="Texture2D" uid="uid://cat86qdkpvga8" path="res://assets/icons/WarningIcon.tres" id="21_whx4l"]
 [ext_resource type="Shortcut" uid="uid://nq3pb8cwdj1m" path="res://assets/shortcuts/help.tres" id="23_3hocj"]
+[ext_resource type="Script" uid="uid://dwmcgt21j0l0l" path="res://src/menu/main_menu/DebugData.gd" id="23_al83v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pb5pf"]
 atlas = ExtResource("8_txxco")
@@ -197,10 +198,27 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 mouse_filter = 2
 
-[node name="GameVersion" parent="TopDock/HBoxContainer" instance=ExtResource("8_xjhtt")]
+[node name="VBoxContainer" type="VBoxContainer" parent="TopDock/HBoxContainer"]
+layout_mode = 2
+
+[node name="GameVersion" parent="TopDock/HBoxContainer/VBoxContainer" instance=ExtResource("8_xjhtt")]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+
+[node name="ResolutionDisplay" type="Label" parent="TopDock/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("23_al83v")
+
+[node name="UiZoom" type="Label" parent="TopDock/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("23_al83v")
+type = 1
+
+[node name="ZoomMultiplier" type="Label" parent="TopDock/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("23_al83v")
+type = 2
 
 [node name="SettingsButton" type="Button" parent="TopDock/HBoxContainer"]
 layout_mode = 2

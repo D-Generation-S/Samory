@@ -1,7 +1,5 @@
 class_name GameManager extends Node2D
 
-
-
 signal loading_message(message: String)
 signal debug_mode(on: bool)
 
@@ -26,9 +24,14 @@ var initial_menu_shown = false
 var current_loading_node: Node = null
 var is_debug = false
 
+var _debug_mobile: bool = false
+var _viewport_size = Vector2i(1920, 1080)
+var _ui_scale = 1
+var _camera_zoom_factor = 1
 
 func _ready():
-	get_viewport().content_scale_size = Vector2i(1920, 1080)
+	_calculate_resolution_values()
+	get_viewport().content_scale_size = _viewport_size
 	
 	
 	var counter: int = 0
@@ -41,6 +44,21 @@ func _ready():
 	translate_built_in_decks()
 
 	MusicManager.start_playing()
+
+func _calculate_resolution_values():
+	if _debug_mobile || OS.has_feature("web_android") or OS.has_feature("web_ios"):
+		_viewport_size = Vector2i(640, 360)
+		_ui_scale = 0.3
+		_camera_zoom_factor = 0.3
+
+func _get_viewport_size() -> Vector2i:
+	return _viewport_size
+
+func get_ui_scale() -> float:
+	return _ui_scale
+
+func get_camera_zoom_adjustment() -> float:
+	return _camera_zoom_factor
 
 func _process(_delta):
 	if OS.is_debug_build() and Input.is_action_just_pressed("toggle_debug"):
