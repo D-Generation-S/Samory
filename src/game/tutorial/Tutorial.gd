@@ -19,6 +19,8 @@ func _ready():
 		return
 
 func trigger_tutorial(tutorial_type: Enums.Tutorial_State):
+	if settings.tutorial_aborted:
+		return
 	var selected_tutorial: TutorialInformation = null
 	for tutorial in available_tutorials:
 		if tutorial.tutorial_type == tutorial_type:

@@ -27,9 +27,10 @@ func load_settings() -> SettingsResource:
 	return_settings.master_volume = data.get("master_volume")
 	return_settings.effect_volume = data.get("effect_volume")
 	return_settings.music_volume = data.get("music_volume")
+	return_settings.tutorial_aborted = data.get_or_add("tutorial_aborted", false)
 	if data.has("completed_tutorials"):
 		return_settings.tutorials = data.get("completed_tutorials") as Dictionary
-	loaded_settings = return_settings
+	loaded_settings = return_settings	
 	return return_settings
 
 func save_settings(settings: SettingsResource) -> bool:
