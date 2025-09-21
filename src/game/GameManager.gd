@@ -1,6 +1,7 @@
 class_name GameManager extends Node2D
 
 signal loading_message(message: String)
+signal resolution_changed(resolution: Vector2i, ui_zoom: float, camera_zoom: float)
 signal debug_mode(on: bool)
 
 @export_group("Decks")
@@ -50,6 +51,8 @@ func _calculate_resolution_values():
 		_viewport_size = Vector2i(640, 360)
 		_ui_scale = 0.3
 		_camera_zoom_factor = 0.3
+	
+	resolution_changed.emit(_viewport_size, _ui_scale, _camera_zoom_factor)
 
 func _get_viewport_size() -> Vector2i:
 	return _viewport_size

@@ -268,6 +268,22 @@ msgid "SETTINGS"
 msgstr "Einstellungen"
 
 #: scenes/menu/SettingsMenu.tscn
+msgid "SELECT_LANGUAGE_SETTING_TOOLTIP"
+msgstr "Wähle die Sprache des Spiels aus in der diese angezeigt werden soll."
+
+#: scenes/menu/SettingsMenu.tscn
+msgid "ENGLISH"
+msgstr "Englisch"
+
+#: scenes/menu/SettingsMenu.tscn
+msgid "GERMAN"
+msgstr "Deutsch"
+
+#: scenes/menu/SettingsMenu.tscn
+msgid "GRAPHIC_SETTINGS"
+msgstr "Grafikeinstellungen"
+
+#: scenes/menu/SettingsMenu.tscn
 msgid "WINDOW_MODE_SETTING_TOOLTIP"
 msgstr "Ein dropdown um den gewünschten Fenster Modus auszuwählen."
 
@@ -292,24 +308,26 @@ msgid "V_SYNC"
 msgstr "V Sync"
 
 #: scenes/menu/SettingsMenu.tscn
+msgid "UI_SCALE_TOOLTIP"
+msgstr ""
+"Diese Einstellung legt fest in wie weit das UI skaliert werden soll, eine "
+"Einstellung auf 100% entspricht der vorgesehenen Einstellung"
+
+#: scenes/menu/SettingsMenu.tscn
+msgid "UI_SCALE"
+msgstr "UI: %0.0f %%"
+
+#: scenes/menu/SettingsMenu.tscn
+msgid "GAMEPLAY_SETTINGS"
+msgstr "Spieleinstellungen"
+
+#: scenes/menu/SettingsMenu.tscn
 msgid "LOAD_CUSTOM_DECK_SETTING_TOOLTIP"
 msgstr "Erlaube dem Spiel eigene Decks zu laden"
 
 #: scenes/menu/SettingsMenu.tscn
 msgid "LOAD_CUSTOM_DECKS"
 msgstr "Eigene decks laden"
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "SELECT_LANGUAGE_SETTING_TOOLTIP"
-msgstr "Wähle die Sprache des Spiels aus in der diese angezeigt werden soll."
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "ENGLISH"
-msgstr "Englisch"
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "GERMAN"
-msgstr "Deutsch"
 
 #: scenes/menu/SettingsMenu.tscn
 msgid "AUTO_COMPLETE_ROUND_TOOLTIP"

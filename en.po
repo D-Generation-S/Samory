@@ -219,6 +219,22 @@ msgid "SETTINGS"
 msgstr "Settings"
 
 #: scenes/menu/SettingsMenu.tscn
+msgid "SELECT_LANGUAGE_SETTING_TOOLTIP"
+msgstr "Select the language the game should be displayed in"
+
+#: scenes/menu/SettingsMenu.tscn
+msgid "ENGLISH"
+msgstr "English"
+
+#: scenes/menu/SettingsMenu.tscn
+msgid "GERMAN"
+msgstr "German"
+
+#: scenes/menu/SettingsMenu.tscn
+msgid "GRAPHIC_SETTINGS"
+msgstr "Graphic Settings"
+
+#: scenes/menu/SettingsMenu.tscn
 msgid "WINDOW_MODE_SETTING_TOOLTIP"
 msgstr "Dropdown to select your preferred window mode"
 
@@ -243,24 +259,26 @@ msgid "V_SYNC"
 msgstr "VSync"
 
 #: scenes/menu/SettingsMenu.tscn
+msgid "UI_SCALE_TOOLTIP"
+msgstr ""
+"Change how the ui should be scaled, if set to 100% the scale is set as "
+"intended"
+
+#: scenes/menu/SettingsMenu.tscn
+msgid "UI_SCALE"
+msgstr "UI Scale: %0.0f %%"
+
+#: scenes/menu/SettingsMenu.tscn
+msgid "GAMEPLAY_SETTINGS"
+msgstr "Gameplay Settings"
+
+#: scenes/menu/SettingsMenu.tscn
 msgid "LOAD_CUSTOM_DECK_SETTING_TOOLTIP"
 msgstr "Allow the game to sideload your custom decks if enabled"
 
 #: scenes/menu/SettingsMenu.tscn
 msgid "LOAD_CUSTOM_DECKS"
 msgstr "Load custom decks"
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "SELECT_LANGUAGE_SETTING_TOOLTIP"
-msgstr "Select the language the game should be displayed in"
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "ENGLISH"
-msgstr "English"
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "GERMAN"
-msgstr "German"
 
 #: scenes/menu/SettingsMenu.tscn
 msgid "AUTO_COMPLETE_ROUND_TOOLTIP"
