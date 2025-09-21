@@ -30,6 +30,11 @@ func load_settings() -> SettingsResource:
 	return_settings.tutorial_aborted = data.get_or_add("tutorial_aborted", false)
 	if data.has("completed_tutorials"):
 		return_settings.tutorials = data.get("completed_tutorials") as Dictionary
+
+	return_settings.master_volume = clampf(return_settings.master_volume, 0, 1)
+	return_settings.effect_volume = clampf(return_settings.effect_volume, 0, 1)
+	return_settings.music_volume = clampf(return_settings.music_volume, 0, 1)
+	
 	loaded_settings = return_settings	
 	return return_settings
 
