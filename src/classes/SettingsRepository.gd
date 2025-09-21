@@ -1,5 +1,7 @@
 extends Node
 
+signal settings_updated(setings: SettingsResource)
+
 @export var default_settings: SettingsResource
 
 var loaded_settings: SettingsResource
@@ -20,6 +22,7 @@ func load_settings() -> SettingsResource:
 	return_settings.window_mode = data.get_or_add("window_mode", DisplayServer.WindowMode.WINDOW_MODE_MAXIMIZED)
 	return_settings.load_custom_decks = data.get("load_custom_decks")
 	return_settings.vsync_active = data.get("vsync_active")
+	return_settings.ui_scale_factor = data.get_or_add("ui_scale_factor", 1)
 	return_settings.language_code = data.get("language", "en")
 	return_settings.auto_close_popup_shown = data.get_or_add("auto_close_popup_shown", false)
 	return_settings.auto_close_round = data.get_or_add("auto_close_round", true)
@@ -35,13 +38,16 @@ func load_settings() -> SettingsResource:
 	return_settings.effect_volume = clampf(return_settings.effect_volume, 0, 1)
 	return_settings.music_volume = clampf(return_settings.music_volume, 0, 1)
 	
-	loaded_settings = return_settings	
+	loaded_settings = return_settings
+	
+	settings_updated.emit(return_settings)
 	return return_settings
 
 func save_settings(settings: SettingsResource) -> bool:
 	var data_to_save: Dictionary = {
 		"window_mode": settings.window_mode,
 		"vsync_active": settings.vsync_active,
+		"ui_scale_factor": settings.ui_scale_factor,
 		"language": settings.language_code,
 		"load_custom_decks": settings.load_custom_decks,
 		"auto_close_popup_shown": settings.auto_close_popup_shown,
@@ -62,6 +68,4 @@ func save_settings(settings: SettingsResource) -> bool:
 	file.close()
 
 	loaded_settings = null
-
-
 	return load_settings() != null

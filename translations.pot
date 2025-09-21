@@ -275,6 +275,22 @@ msgid "SETTINGS"
 msgstr ""
 
 #: scenes/menu/SettingsMenu.tscn
+msgid "SELECT_LANGUAGE_SETTING_TOOLTIP"
+msgstr ""
+
+#: scenes/menu/SettingsMenu.tscn
+msgid "ENGLISH"
+msgstr ""
+
+#: scenes/menu/SettingsMenu.tscn
+msgid "GERMAN"
+msgstr ""
+
+#: scenes/menu/SettingsMenu.tscn
+msgid "GRAPHIC_SETTINGS"
+msgstr ""
+
+#: scenes/menu/SettingsMenu.tscn
 msgid "WINDOW_MODE_SETTING_TOOLTIP"
 msgstr ""
 
@@ -299,23 +315,23 @@ msgid "V_SYNC"
 msgstr ""
 
 #: scenes/menu/SettingsMenu.tscn
+msgid "UI_SCALE_TOOLTIP"
+msgstr ""
+
+#: scenes/menu/SettingsMenu.tscn
+msgid "UI_SCALE"
+msgstr ""
+
+#: scenes/menu/SettingsMenu.tscn
+msgid "GAMEPLAY_SETTINGS"
+msgstr ""
+
+#: scenes/menu/SettingsMenu.tscn
 msgid "LOAD_CUSTOM_DECK_SETTING_TOOLTIP"
 msgstr ""
 
 #: scenes/menu/SettingsMenu.tscn
 msgid "LOAD_CUSTOM_DECKS"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "SELECT_LANGUAGE_SETTING_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "ENGLISH"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "GERMAN"
 msgstr ""
 
 #: scenes/menu/SettingsMenu.tscn

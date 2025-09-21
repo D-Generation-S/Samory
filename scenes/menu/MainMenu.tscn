@@ -30,7 +30,7 @@
 [ext_resource type="Resource" uid="uid://gy5cebbq2aed" path="res://scenes/game/resources/ai/HardAi.tres" id="21_w7y08"]
 [ext_resource type="Texture2D" uid="uid://cat86qdkpvga8" path="res://assets/icons/WarningIcon.tres" id="21_whx4l"]
 [ext_resource type="Shortcut" uid="uid://nq3pb8cwdj1m" path="res://assets/shortcuts/help.tres" id="23_3hocj"]
-[ext_resource type="Script" uid="uid://dwmcgt21j0l0l" path="res://src/menu/main_menu/DebugData.gd" id="23_al83v"]
+[ext_resource type="Script" path="res://src/menu/main_menu/DebugData.gd" id="23_al83v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pb5pf"]
 atlas = ExtResource("8_txxco")
@@ -223,6 +223,7 @@ type = 2
 [node name="SettingsButton" type="Button" parent="TopDock/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
+size_flags_vertical = 0
 tooltip_text = "GAME_SETTINGS"
 focus_neighbor_left = NodePath("../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Start Game")
 focus_neighbor_bottom = NodePath("../../../BottomDock/HBoxContainer/HowToPlay")
