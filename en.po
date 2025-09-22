@@ -266,7 +266,7 @@ msgstr ""
 
 #: scenes/menu/SettingsMenu.tscn
 msgid "UI_SCALE"
-msgstr "UI Scale: %0.0f %%"
+msgstr "UI Scale: %03.0f %%"
 
 #: scenes/menu/SettingsMenu.tscn
 msgid "GAMEPLAY_SETTINGS"
