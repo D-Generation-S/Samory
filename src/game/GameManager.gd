@@ -20,12 +20,15 @@ signal debug_mode(on: bool)
 @export_group("Translations")
 @export var loading_decks: TextTranslation
 
+@export_group("debug")
+@export var _debug_mobile: bool = false
+
 var translated_build_in_decks: Array[MemoryDeckResource] = []
 var initial_menu_shown = false
 var current_loading_node: Node = null
 var is_debug = false
 
-var _debug_mobile: bool = false
+
 var _viewport_size = Vector2i(1920, 1080)
 var _ui_scale = 1
 var _camera_zoom_factor = 1
