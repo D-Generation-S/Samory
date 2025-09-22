@@ -69,6 +69,7 @@ text = "SETTINGS"
 layout_mode = 2
 
 [node name="GameSettings" type="PanelContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_hn4qe")
 
@@ -123,6 +124,8 @@ script = ExtResource("4_cwx70")
 [node name="UiScale" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/VBoxContainer"]
 layout_mode = 2
 script = ExtResource("6_br808")
+min_value = 0.5
+max_value = 1.8
 
 [node name="UiScaleLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/VBoxContainer/UiScale"]
 layout_mode = 2
@@ -274,19 +277,19 @@ icon = ExtResource("28_mbv6n")
 script = ExtResource("19_3ip51")
 can_multi_click = false
 
+[connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/LanguageSelection" method="settings_loaded"]
 [connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/VBoxContainer/WindowModeSelection" method="settings_loaded"]
 [connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/VBoxContainer/VSync" method="settings_loaded"]
+[connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/VBoxContainer/UiScale" method="settings_changed"]
 [connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GameplaySettings2/VBoxContainer/LoadCustomDecks" method="settings_loaded"]
-[connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/LanguageSelection" method="settings_loaded"]
 [connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GameplaySettings2/VBoxContainer/HBoxContainer2/AutoCompleteRound" method="settings_loaded"]
 [connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GameplaySettings2/VBoxContainer/HBoxContainer2/TimeForCompletionGroup" method="settings_loaded"]
 [connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer/Audio Control/Master" method="settings_loaded"]
 [connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer/Audio Control/Effects" method="settings_loaded"]
 [connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer/Audio Control/Music" method="settings_loaded"]
-[connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/VBoxContainer/UiScale" method="settings_changed"]
 [connection signal="language_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/LanguageSelection" to="." method="language_changed"]
-[connection signal="language_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/LanguageSelection" to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GameplaySettings2/VBoxContainer/HBoxContainer2/TimeForCompletionGroup" method="language_changed"]
 [connection signal="language_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/LanguageSelection" to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/VBoxContainer/UiScale/UiScaleLabel" method="language_changed"]
+[connection signal="language_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/LanguageSelection" to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GameplaySettings2/VBoxContainer/HBoxContainer2/TimeForCompletionGroup" method="language_changed"]
 [connection signal="window_mode_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/VBoxContainer/WindowModeSelection" to="." method="window_mode_changed"]
 [connection signal="max_value_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/VBoxContainer/UiScale" to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/VBoxContainer/UiScale/UiScaleSlider" method="set_max"]
 [connection signal="min_value_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/VBoxContainer/UiScale" to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/VBoxContainer/UiScale/UiScaleSlider" method="set_min"]
