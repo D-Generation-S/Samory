@@ -19,11 +19,11 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 35
+theme_override_font_sizes/bold_font_size = 36
 theme_override_font_sizes/bold_italics_font_size = 35
 theme_override_font_sizes/italics_font_size = 35
 theme_override_font_sizes/mono_font_size = 35
-theme_override_font_sizes/normal_font_size = 35
-theme_override_font_sizes/bold_font_size = 36
 bbcode_enabled = true
 text = "CREDITS_ROLL_TEXT"
 fit_content = true
@@ -32,47 +32,63 @@ script = ExtResource("1_xb4j0")
 timer_tick = 30.0
 scroll_speed = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-top_level = true
+[node name="ButtonArea" type="MarginContainer" parent="."]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -59.0
+offset_top = -15.0
 grow_horizontal = 2
 grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
 
-[node name="Kenney_nl" type="Button" parent="HBoxContainer"]
+[node name="LinkList" type="HBoxContainer" parent="ButtonArea"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../Close")
+
+[node name="Kenney_nl" type="Button" parent="ButtonArea/LinkList"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../CloseButton")
 focus_neighbor_right = NodePath("../Abstraction")
 text = "Kenney.nl"
 script = ExtResource("2_f3feg")
 link = "https://www.kenney.nl/"
 animation_resource = ExtResource("4_5w3yf")
 
-[node name="Abstraction" type="Button" parent="HBoxContainer"]
+[node name="Auxree" type="Button" parent="ButtonArea/LinkList"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../CloseButton")
+focus_neighbor_right = NodePath("../Abstraction")
+text = "Axuree"
+script = ExtResource("2_f3feg")
+link = "https://axuree.myportfolio.com/"
+animation_resource = ExtResource("4_5w3yf")
+
+[node name="Abstraction" type="Button" parent="ButtonArea/LinkList"]
 layout_mode = 2
 focus_neighbor_left = NodePath("../Kenney_nl")
-focus_neighbor_right = NodePath("../Material Maker")
+focus_neighbor_right = NodePath("../MaterialMaker")
 text = "Abstraction"
 script = ExtResource("2_f3feg")
 link = "https://abstractionmusic.com/"
 animation_resource = ExtResource("4_5w3yf")
 
-[node name="Material Maker" type="Button" parent="HBoxContainer"]
+[node name="MaterialMaker" type="Button" parent="ButtonArea/LinkList"]
 layout_mode = 2
 focus_neighbor_left = NodePath("../Abstraction")
-focus_neighbor_right = NodePath("../Close")
+focus_neighbor_right = NodePath("../CloseButton")
 text = "Material Maker"
 script = ExtResource("2_f3feg")
 link = "https://www.materialmaker.org/"
 animation_resource = ExtResource("4_5w3yf")
 
-[node name="Close" type="Button" parent="HBoxContainer"]
+[node name="CloseButton" type="Button" parent="ButtonArea/LinkList"]
 layout_mode = 2
 size_flags_horizontal = 10
-focus_neighbor_left = NodePath("../Material Maker")
+focus_neighbor_left = NodePath("../MaterialMaker")
 focus_neighbor_right = NodePath("../Kenney_nl")
 shortcut = ExtResource("3_i56v7")
 shortcut_in_tooltip = false

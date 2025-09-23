@@ -43,11 +43,16 @@ Now you should be able to run the game by starting the debug.
 Special Thank to [Kenney][kenney] for making so many assets free to use. This game does use sound effects and image assets.
 Also a big thank to "Abstraction" for making his awesome [music][music] free to use.
 
+Thank you [Axuree][axuree] for creating some really unique assets for the game, this really does make it pop. Thank you so much for your effort.
+
+
 ## License
 
 The code for this project is licensed with an [MIT][license-code] license. This license is only valid for all the code, scripts and shaders.
-To check the license for the assets, like music, effects or sprite sheets please go to the special thanks secion and follow the links to the
+To check the license for the assets, like music, effects or sprite sheets please go to the special thanks section and follow the links to the
 creators of those assets.
+
+All assets contained inside of the [Axuree directory][axuree-directory] are licensed with the [Attribution-NonCommercial-ShareAlike 4.0 International license][axuree-license]. The license is part of the folder containing the asset if you need more information.
 
 
 [itch-io]: https://xanatos.itch.io/samory
@@ -55,6 +60,9 @@ creators of those assets.
 [latest-release]: https://github.com/D-Generation-S/Samory/releases/latest
 [samory-aur]: https://aur.archlinux.org/packages/samory-bin
 [kenney]: https://www.kenney.nl/
+[axuree]: https://axuree.myportfolio.com/
+[axuree-directory]: ./assets/sprites/Axuree/
+[axuree-license]: ./assets/sprites/Axuree/LICENSE
 [music]: https://tallbeard.itch.io/music-loop-bundle
 [license-code]: ./LICENSE
 

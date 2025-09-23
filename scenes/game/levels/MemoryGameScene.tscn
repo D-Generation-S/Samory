@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://csamt2tu6hlpo" path="res://scenes/game/overlay/FinishGame.tscn" id="4_6f670"]
 [ext_resource type="Script" uid="uid://bxjrl2ikqn4tk" path="res://src/game/PlayerManager.gd" id="4_n744t"]
 [ext_resource type="AudioStream" uid="uid://dq3rmjoitwi1a" path="res://assets/audio/effect/confirmation_001.ogg" id="6_a3528"]
-[ext_resource type="Texture2D" uid="uid://dmf23xobks0pc" path="res://assets/sprites/wood.png" id="7_35r1o"]
 [ext_resource type="PackedScene" uid="uid://d0vijthhc3d38" path="res://scenes/game/overlay/PlayersOverlay.tscn" id="7_a7rnv"]
 [ext_resource type="Script" uid="uid://bglvkbo4aydsy" path="res://src/game/Background.gd" id="7_kxmqb"]
 [ext_resource type="PackedScene" uid="uid://cluwm03j8e11p" path="res://scenes/game/overlay/GamePauseMenu.tscn" id="12_dfx06"]
@@ -25,6 +24,7 @@
 [ext_resource type="Script" uid="uid://6fa28680utd5" path="res://src/game/overlay/PopupManager.gd" id="21_dv4ao"]
 [ext_resource type="Script" uid="uid://boch5lqi4lvc7" path="res://src/game/tutorial/Tutorial.gd" id="22_0x2pf"]
 [ext_resource type="PackedScene" uid="uid://d15qeu4s4bgjk" path="res://scenes/game/templates/TutorialWindow.tscn" id="22_ubsrg"]
+[ext_resource type="Texture2D" uid="uid://vk4fpd7xo01j" path="res://assets/sprites/Axuree/wood_medium.png" id="23_a3528"]
 [ext_resource type="Script" uid="uid://btm576yjkyt4j" path="res://src/game/CardSpawner.gd" id="26_a3528"]
 
 [node name="MemoryGame" type="Node2D" node_paths=PackedStringArray("game_nodes_to_show", "card_target_node")]
@@ -118,7 +118,7 @@ available_tutorials = Array[ExtResource("14_65xsg")]([ExtResource("15_s0u1d"), E
 visible = false
 z_index = -20
 script = ExtResource("7_kxmqb")
-background_texture = ExtResource("7_35r1o")
+background_texture = ExtResource("23_a3528")
 camera_node = NodePath("../Camera2D")
 
 [node name="Cards" type="Node2D" parent="."]

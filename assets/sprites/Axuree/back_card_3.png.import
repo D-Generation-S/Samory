@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cg0l7tvqmtghr"
-path="res://.godot/imported/sheet_white1x.png-2509ccdcb853a681b8afb2b5f3a95115.ctex"
+uid="uid://cpdy0umtx233e"
+path="res://.godot/imported/back_card_3.png-7b5e2f7bc97ffcc99bd76dbe5717b46f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/sheet_white1x.png"
-dest_files=["res://.godot/imported/sheet_white1x.png-2509ccdcb853a681b8afb2b5f3a95115.ctex"]
+source_file="res://assets/sprites/Axuree/back_card_3.png"
+dest_files=["res://.godot/imported/back_card_3.png-7b5e2f7bc97ffcc99bd76dbe5717b46f.ctex"]
 
 [params]
 

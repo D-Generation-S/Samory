@@ -1,7 +1,7 @@
 
 class_name ColorResource extends Resource
 
-@export_color_no_alpha var color: Color
+@export var color: Color
 
 func get_color() -> Color:
 	return color

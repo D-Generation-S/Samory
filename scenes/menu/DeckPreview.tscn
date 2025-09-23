@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3cv1g0a284mq"]
+[gd_scene load_steps=9 format=3 uid="uid://b3cv1g0a284mq"]
 
 [ext_resource type="Script" uid="uid://dmuuwlyuofchc" path="res://src/menu/deck_viewer/DeckPreview.gd" id="1_k0qju"]
 [ext_resource type="Resource" uid="uid://jetuptwqlhnw" path="res://scenes/translations/Yes.tres" id="2_s0fjc"]
@@ -6,6 +6,8 @@
 [ext_resource type="Material" uid="uid://dkl2lojy2u6nx" path="res://assets/material/GlowingFocusMaterialtres.tres" id="3_imrd3"]
 [ext_resource type="Resource" uid="uid://bge0q1apngvdj" path="res://scenes/translations/No.tres" id="3_m027l"]
 [ext_resource type="StyleBox" uid="uid://d1rhal5rp1608" path="res://assets/styles/panel/MetalBox.tres" id="4_hcvyd"]
+[ext_resource type="Resource" uid="uid://b6uuk6xw16ak4" path="res://scenes/menu/resources/colors/ItemFocusColor.tres" id="6_i8t08"]
+[ext_resource type="Resource" uid="uid://62hlbto7b8c6" path="res://scenes/menu/resources/colors/ItemSelectionColor.tres" id="7_5qsbf"]
 
 [node name="DeckPreview" type="MarginContainer" node_paths=PackedStringArray("deck_name", "card_count", "buildint", "texture_rect", "deck_description", "selection_button")]
 anchors_preset = 15
@@ -59,8 +61,8 @@ script = ExtResource("3_0x34l")
 target_size = Vector2(250, 250)
 selection_material = ExtResource("3_imrd3")
 deck_preview = NodePath("../../../../../..")
-focus_color = Color(4.89971e-05, 0.43067, 0.885304, 0.905882)
-selected_color = Color(0.94902, 0.301961, 0, 0.768627)
+color_on_focus = ExtResource("6_i8t08")
+color_on_select = ExtResource("7_5qsbf")
 
 [node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2

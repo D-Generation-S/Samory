@@ -5,8 +5,8 @@ class_name DeckPreviewSelection
 @export var target_size: Vector2
 @export var selection_material: Material
 @export var deck_preview: DeckPreview
-@export var focus_color: Color
-@export var selected_color: Color
+@export var color_on_focus: ColorResource
+@export var color_on_select: ColorResource
 
 var initial_material: Material
 
@@ -26,9 +26,9 @@ func reset():
 	material = initial_material
 
 func activate():
-	var color = focus_color
+	var color = color_on_focus.color
 	if deck_preview.is_selected:
-		color = selected_color
+		color = color_on_select.color
 
 	material = selection_material.duplicate_deep()
 	material.set("shader_parameter/effect_color", color)
