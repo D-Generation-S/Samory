@@ -1,6 +1,7 @@
 extends Sprite2D
 
 @export var collision_shape: CollisionShape2D
+@export var card_pool: Array[Texture] = []
 @export var max_width: int = 150
 @export var max_height: int = 150
 
@@ -14,6 +15,11 @@ func _ready():
 		return
 	if material:
 		material = material.duplicate_deep()
+	
+	if card_pool.size() > 0:
+		var current_image = card_pool.pick_random()
+		texture = current_image
+
 	var texture_image = texture.get_image()
 	texture_image.resize(max_width, max_height)
 	texture = ImageTexture.create_from_image(texture_image)
