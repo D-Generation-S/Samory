@@ -64,6 +64,13 @@
 # res://scenes/translations/Version.tres
 # res://scenes/translations/TimeForCompletion.tres
 # res://scenes/game/levels/MemoryGameScene.tscn
+# res://scenes/game/resources/cards/hardware/Calculator.tres
+# res://scenes/game/resources/cards/hardware/ComputerMonitor.tres
+# res://scenes/game/resources/cards/hardware/GraphicCard.tres
+# res://scenes/game/resources/cards/hardware/Keyboard.tres
+# res://scenes/game/resources/cards/hardware/Ram.tres
+# res://scenes/game/resources/cards/hardware/UsbStick.tres
+# res://scenes/game/resources/decks/HardwareDeck.tres
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -813,6 +820,10 @@ msgid "Kenney.nl"
 msgstr ""
 
 #: scenes/menu/Credits.tscn
+msgid "Axuree"
+msgstr ""
+
+#: scenes/menu/Credits.tscn
 msgid "Abstraction"
 msgstr ""
 
@@ -880,4 +891,60 @@ msgstr ""
 
 #: scenes/game/levels/MemoryGameScene.tscn
 msgid "PAUSE_MENU"
+msgstr ""
+
+#: scenes/game/resources/cards/hardware/Calculator.tres
+msgid "CALCULATOR"
+msgstr ""
+
+#: scenes/game/resources/cards/hardware/Calculator.tres
+msgid "CALCULATOR_DESCRIPTION"
+msgstr ""
+
+#: scenes/game/resources/cards/hardware/ComputerMonitor.tres
+msgid "USB_STICK"
+msgstr ""
+
+#: scenes/game/resources/cards/hardware/ComputerMonitor.tres
+msgid "USB_STICK_DESCRIPTION"
+msgstr ""
+
+#: scenes/game/resources/cards/hardware/GraphicCard.tres
+msgid "GRAPHIC_CARD"
+msgstr ""
+
+#: scenes/game/resources/cards/hardware/GraphicCard.tres
+msgid "GRAPHIC_CARD_DESCRIPTION"
+msgstr ""
+
+#: scenes/game/resources/cards/hardware/Keyboard.tres
+msgid "KEYBOARD"
+msgstr ""
+
+#: scenes/game/resources/cards/hardware/Keyboard.tres
+msgid "KEYBOARD_DESCRIPTION"
+msgstr ""
+
+#: scenes/game/resources/cards/hardware/Ram.tres
+msgid "RAM"
+msgstr ""
+
+#: scenes/game/resources/cards/hardware/Ram.tres
+msgid "RAM_DESCRIPTION"
+msgstr ""
+
+#: scenes/game/resources/cards/hardware/UsbStick.tres
+msgid "COMPUTER_MONITOR"
+msgstr ""
+
+#: scenes/game/resources/cards/hardware/UsbStick.tres
+msgid "COMPUTER_MONITOR_DESCRIPTION"
+msgstr ""
+
+#: scenes/game/resources/decks/HardwareDeck.tres
+msgid "HARDWARE_DECK"
+msgstr ""
+
+#: scenes/game/resources/decks/HardwareDeck.tres
+msgid "HARDWARE_DECK_DESCRIPTION"
 msgstr ""

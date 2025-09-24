@@ -84,7 +84,7 @@ msgstr "Decks anhand ihres Namens filtern"
 msgid "SHOW_ALL_TOOLTIP"
 msgstr ""
 "Zeige alle Decks an die das Spiel zu bieten hat, dies beinhaltet die "
-"eingebauten sowie eigene Decks."
+"eingebauten sowie eigene Decks"
 
 #: scenes/menu/DeckViewer.tscn scenes/menu/GameLobby.tscn
 msgid "SHOW_ALL"
@@ -942,6 +942,10 @@ msgid "Kenney.nl"
 msgstr ""
 
 #: scenes/menu/Credits.tscn
+msgid "Axuree"
+msgstr ""
+
+#: scenes/menu/Credits.tscn
 msgid "Abstraction"
 msgstr ""
 
@@ -973,7 +977,7 @@ msgstr "Spieler nach unten schieben"
 msgid "DELETE_LOBBY_PLAYER_TOOLTIP"
 msgstr ""
 "Lösche den Spieler aus der Lobby, dieser kann danach nicht wiederhergestellt "
-"werden."
+"werden"
 
 #: scenes/translations/ErrorNoNameWasEntered.tres
 msgid "NO_NAME_WAS_ENTERED"
@@ -1012,6 +1016,79 @@ msgstr "Zeit bis beenden: %1.0f s"
 #: scenes/game/levels/MemoryGameScene.tscn
 msgid "PAUSE_MENU"
 msgstr "Pause Menü"
+
+#: scenes/game/resources/cards/hardware/Calculator.tres
+msgid "CALCULATOR"
+msgstr "Taschenrechner"
+
+#: scenes/game/resources/cards/hardware/Calculator.tres
+msgid "CALCULATOR_DESCRIPTION"
+msgstr ""
+"Ein Gerät welches dafür genutzt wird Berechnungen auszuführen. Diese Geräte "
+"waren im Büros sehr häufig bevor Smartphones allgegenwärtig geworden sind. "
+"Heutzutage werden diese Geräte weitaus seltener gefunden"
+
+#: scenes/game/resources/cards/hardware/ComputerMonitor.tres
+msgid "USB_STICK"
+msgstr "USB-Stick"
+
+#: scenes/game/resources/cards/hardware/ComputerMonitor.tres
+msgid "USB_STICK_DESCRIPTION"
+msgstr ""
+"Ein digitales Speichergerät. Das Gerät erlaubt es große mengen an Daten auf "
+"einem kleinen Gerät zu speichern"
+
+#: scenes/game/resources/cards/hardware/GraphicCard.tres
+msgid "GRAPHIC_CARD"
+msgstr "Grafikkarte (GPU)"
+
+#: scenes/game/resources/cards/hardware/GraphicCard.tres
+msgid "GRAPHIC_CARD_DESCRIPTION"
+msgstr ""
+"Eine PC Komponente welche dafür zuständig ist das Bild zu generieren. Diese "
+"Bild wird dann wiederum an den Monitor zur anzeige weiter gegeben. Dieses "
+"Bauteil wird auch öfter \"GPU\" bezeichnet, dies ist eine Abkürzung für das "
+"Wort Graphic Processor Unit"
+
+#: scenes/game/resources/cards/hardware/Keyboard.tres
+msgid "KEYBOARD"
+msgstr "Tastatur"
+
+#: scenes/game/resources/cards/hardware/Keyboard.tres
+msgid "KEYBOARD_DESCRIPTION"
+msgstr "Ein Gerät welche Texteingaben an einem PC erlaubt"
+
+#: scenes/game/resources/cards/hardware/Ram.tres
+msgid "RAM"
+msgstr "Arbeitsspeicher"
+
+#: scenes/game/resources/cards/hardware/Ram.tres
+msgid "RAM_DESCRIPTION"
+msgstr ""
+"Der Arbeitsspeicher ist eine Ansammlung an chips welche Daten speichern "
+"während der PC eingeschalten ist. Diese Daten sind nur dann verfügbar wenn "
+"der Computer auch aktiv ist, sobald man Ihn ausschaltet sind die hier "
+"gespeicherten Daten verloren"
+
+#: scenes/game/resources/cards/hardware/UsbStick.tres
+msgid "COMPUTER_MONITOR"
+msgstr "Monitor"
+
+#: scenes/game/resources/cards/hardware/UsbStick.tres
+msgid "COMPUTER_MONITOR_DESCRIPTION"
+msgstr ""
+"Ein Gerät welches die visuelle Ausgabe des PC's darstellt was gerade auf dem "
+"Gerät passiert"
+
+#: scenes/game/resources/decks/HardwareDeck.tres
+msgid "HARDWARE_DECK"
+msgstr "Hardware Deck"
+
+#: scenes/game/resources/decks/HardwareDeck.tres
+msgid "HARDWARE_DECK_DESCRIPTION"
+msgstr ""
+"Ein Kartendeck welches Gegenstände beinhaltet die mit PC Hardware zu tun "
+"haben oder häufig ins Büros gefunden werden"
 
 #~ msgid "QUICK_AI_GAME_TOOLTIP"
 #~ msgstr ""
