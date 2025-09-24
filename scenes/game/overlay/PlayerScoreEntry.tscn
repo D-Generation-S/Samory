@@ -8,7 +8,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uf65b"]
 shader = ExtResource("4_4i8wl")
-shader_parameter/replace_color = Color(0, 0, 0, 1)
+shader_parameter/replace_color = Color(0.94509804, 0.75686276, 0.5529412, 1)
 
 [node name="MarginContainer" type="MarginContainer" node_paths=PackedStringArray("player_name", "player_score", "player_win_icon")]
 anchors_preset = 10

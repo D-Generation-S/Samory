@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1_hr4rv")
-color = Color(0.172549, 0.203922, 0.231373, 1)
+color = Color(1, 0.9372549, 0.87058824, 1)

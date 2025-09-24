@@ -1,9 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://8yxfao2fwwod"]
+[gd_scene load_steps=12 format=3 uid="uid://8yxfao2fwwod"]
 
 [ext_resource type="Script" uid="uid://hiwp8p7e35oc" path="res://src/game/loading_screen/FallingCard.gd" id="1_5pc70"]
 [ext_resource type="Texture2D" uid="uid://dpcfrsq40moii" path="res://assets/sprites/CardDefaultBack.png" id="1_f7o75"]
 [ext_resource type="Shader" uid="uid://du7kats6oltxl" path="res://assets/shaders/BurnFromPoint.gdshader" id="2_bndme"]
 [ext_resource type="Script" uid="uid://wjceg51tdv30" path="res://src/game/loading_screen/FallingCardSprite.gd" id="2_hxqwv"]
+[ext_resource type="Texture2D" uid="uid://b0lfebra6adhv" path="res://assets/sprites/Axuree/back_card_1.png" id="5_723xn"]
+[ext_resource type="Texture2D" uid="uid://cahkopk46qk6k" path="res://assets/sprites/Axuree/back_card_2.png" id="6_56p1m"]
+[ext_resource type="Texture2D" uid="uid://cpdy0umtx233e" path="res://assets/sprites/Axuree/back_card_3.png" id="7_bec50"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_7g1s1"]
 
@@ -32,6 +35,7 @@ material = SubResource("ShaderMaterial_hhi4s")
 texture = ExtResource("1_f7o75")
 script = ExtResource("2_hxqwv")
 collision_shape = NodePath("../CollisionShape2D")
+card_pool = Array[Texture]([ExtResource("5_723xn"), ExtResource("6_56p1m"), ExtResource("7_bec50")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -0.5)

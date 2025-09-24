@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cynb8xjpxqa6w"]
+[gd_scene load_steps=16 format=3 uid="uid://cynb8xjpxqa6w"]
 
 [ext_resource type="Script" uid="uid://c04wthgck8mhp" path="res://src/game/overlay/PlayerGameLabel.gd" id="1_d33rg"]
 [ext_resource type="Texture2D" uid="uid://bmxqeqo65xwt" path="res://assets/sprites/spritesheet-default.png" id="2_blt2s"]
@@ -11,7 +11,6 @@
 [ext_resource type="Script" uid="uid://bhhxuh3rhvxn7" path="res://src/game/overlay/PlayerScoreCounter.gd" id="7_clybx"]
 [ext_resource type="Script" uid="uid://b1sl7tihdwhil" path="res://src/game/overlay/ScoreAndName.gd" id="7_h8pn1"]
 [ext_resource type="Script" uid="uid://cpx0qtreblopk" path="res://src/game/overlay/PlayerScoreInformation.gd" id="8_4u670"]
-[ext_resource type="Script" uid="uid://crr4r8hbc4d1l" path="res://src/templates/ColorResource.gd" id="8_e0d5f"]
 [ext_resource type="Resource" uid="uid://85njf66kd3s1" path="res://scenes/menu/resources/colors/PlayerDefaultColor.tres" id="9_2q0hc"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qprtf"]
@@ -33,10 +32,6 @@ region_rect = Rect2(448, 384, 64, 64)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iisri"]
 shader = ExtResource("6_vrh8j")
 shader_parameter/replace_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Resource" id="Resource_u12w1"]
-script = ExtResource("8_e0d5f")
-color = Color(1, 1, 1, 1)
 
 [node name="MarginContainer" type="MarginContainer" node_paths=PackedStringArray("player_type_icon_box")]
 anchors_preset = 15
@@ -118,14 +113,14 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 script = ExtResource("7_4mda4")
-default_color = SubResource("Resource_u12w1")
+default_color = ExtResource("9_2q0hc")
 highlight_color = ExtResource("4_e0a06")
 
 [connection signal="player_is_active" from="." to="PanelContainer" method="is_active"]
-[connection signal="player_is_active" from="." to="PanelContainer/HBoxContainer/MarginContainer/TextureRect" method="set_hightlight_color"]
 [connection signal="player_is_active" from="." to="PanelContainer/HBoxContainer/ScoreAndName" method="is_now_active"]
+[connection signal="player_is_active" from="." to="PanelContainer/HBoxContainer/MarginContainer/TextureRect" method="set_hightlight_color"]
 [connection signal="player_is_inactive" from="." to="PanelContainer" method="is_inactive"]
-[connection signal="player_is_inactive" from="." to="PanelContainer/HBoxContainer/MarginContainer/TextureRect" method="set_default_color"]
 [connection signal="player_is_inactive" from="." to="PanelContainer/HBoxContainer/ScoreAndName" method="is_now_inactive"]
+[connection signal="player_is_inactive" from="." to="PanelContainer/HBoxContainer/MarginContainer/TextureRect" method="set_default_color"]
 [connection signal="player_name_changed" from="." to="PanelContainer/HBoxContainer/ScoreAndName/Name" method="set_text"]
 [connection signal="player_score_changed" from="." to="PanelContainer/HBoxContainer/ScoreAndName/Score" method="set_new_score"]

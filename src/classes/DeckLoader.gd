@@ -108,7 +108,7 @@ func get_cover_image(deck_name: String) -> Texture2D:
 		var image = Image.load_from_file(image_source_path)
 		return ImageTexture.create_from_image(image) as Texture2D
 		
-	return load("res://assets/sprites/CardDefaultBack.png") as Texture2D
+	return load("res://assets/sprites/Axuree/back_card_3.png") as Texture2D
 
 func load_card(deck_name: String, card_name: String) -> MemoryCardResource:
 	var base_path = build_card_base_path(deck_name) + "/" + card_name

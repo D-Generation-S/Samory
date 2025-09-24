@@ -19,8 +19,8 @@
 [ext_resource type="Material" uid="uid://dkl2lojy2u6nx" path="res://assets/material/GlowingFocusMaterialtres.tres" id="12_drvni"]
 [ext_resource type="Script" uid="uid://bipcmxhkarmo3" path="res://src/game/debug/DebugControl.gd" id="18_8fn1p"]
 [ext_resource type="Script" uid="uid://oqb8v04e4sw6" path="res://src/game/debug/CardTemplateDebug.gd" id="18_tqsbp"]
-[ext_resource type="Texture2D" uid="uid://mgak7dr0hp17" path="res://assets/icons/StarIcon.tres" id="20_pss7v"]
-[ext_resource type="Script" uid="uid://dy87p5qmcoqva" path="res://scenes/game/templates/MatchingCardParticleEffect.gd" id="21_ja01p"]
+[ext_resource type="Texture2D" uid="uid://bl38eat4t17v6" path="res://assets/sprites/Axuree/sparkle.png" id="20_ja01p"]
+[ext_resource type="Script" path="res://scenes/game/templates/MatchingCardParticleEffect.gd" id="21_ja01p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sgpsy"]
 shader = ExtResource("6_pyeu3")
@@ -174,8 +174,8 @@ script = ExtResource("18_8fn1p")
 
 [node name="MatchingFoundEffect" type="GPUParticles2D" parent="."]
 position = Vector2(250, 275)
-amount = 1000
-texture = ExtResource("20_pss7v")
+amount = 800
+texture = ExtResource("20_ja01p")
 lifetime = 3.0
 preprocess = 1.5
 explosiveness = 1.0
