@@ -14,6 +14,7 @@ func _ready():
 	if OS.has_feature("web") or !settings.load_custom_decks:
 		is_locked = true
 		disabled = true
+		queue_free()
 
 func enable_button():
 	if is_locked:
