@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://co10o6j0oxeep"]
+[gd_scene load_steps=32 format=3 uid="uid://co10o6j0oxeep"]
 
 [ext_resource type="Script" uid="uid://chjw5lk6vyisx" path="res://src/menu/main_menu/QuitGameButton.gd" id="1_6c3ib"]
 [ext_resource type="Script" uid="uid://duplgguwpsw7p" path="res://src/menu/main_menu/StartQuickGame.gd" id="1_dyfxg"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" uid="uid://cagpu6d10g55o" path="res://src/templates/AiDifficultyResource.gd" id="6_k6mp2"]
 [ext_resource type="Resource" uid="uid://bvccy0uqye5ff" path="res://scenes/game/resources/ai/EasyAi.tres" id="7_2i4h7"]
 [ext_resource type="PackedScene" uid="uid://n2r2v72dltn8" path="res://scenes/menu/Credits.tscn" id="7_63ye2"]
-[ext_resource type="Texture2D" uid="uid://bk6hr6v5raff5" path="res://assets/icons/QuickGameIcon.tres" id="7_jfl25"]
 [ext_resource type="Resource" uid="uid://dlrxaqb0lgbif" path="res://scenes/game/resources/ai/NormalAi.tres" id="8_cilha"]
 [ext_resource type="Texture2D" uid="uid://cg0l7tvqmtghr" path="res://assets/sprites/sheet_white1x.png" id="8_txxco"]
 [ext_resource type="PackedScene" uid="uid://cn2mtwmpg34g8" path="res://scenes/menu/GameVersion.tscn" id="8_xjhtt"]
@@ -30,7 +29,7 @@
 [ext_resource type="Resource" uid="uid://gy5cebbq2aed" path="res://scenes/game/resources/ai/HardAi.tres" id="21_w7y08"]
 [ext_resource type="Texture2D" uid="uid://cat86qdkpvga8" path="res://assets/icons/WarningIcon.tres" id="21_whx4l"]
 [ext_resource type="Shortcut" uid="uid://nq3pb8cwdj1m" path="res://assets/shortcuts/help.tres" id="23_3hocj"]
-[ext_resource type="Script" path="res://src/menu/main_menu/DebugData.gd" id="23_al83v"]
+[ext_resource type="Script" uid="uid://dwmcgt21j0l0l" path="res://src/menu/main_menu/DebugData.gd" id="23_al83v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pb5pf"]
 atlas = ExtResource("8_txxco")
@@ -38,7 +37,7 @@ region = Rect2(50, 250, 50, 50)
 
 [node name="MainMenu" type="CanvasLayer" node_paths=PackedStringArray("game_buttons") groups=["active_scene"]]
 script = ExtResource("1_w7od3")
-game_buttons = [NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Start Game"), NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quick Game"), NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Deck Viewer")]
+game_buttons = [NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Start Game"), NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI"), NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Deck Viewer")]
 
 [node name="MenuBackground" parent="." instance=ExtResource("2_hebqv")]
 
@@ -85,19 +84,10 @@ is_focused = true
 can_multi_click = false
 animation_resource = ExtResource("5_d75fr")
 
-[node name="Quick Game" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Quick Game AI" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" node_paths=PackedStringArray("dynamic_neighbor_right")]
 layout_mode = 2
 tooltip_text = "QUICK_GAME_TOOLTIP"
 text = "QUICK_GAME"
-icon = ExtResource("7_jfl25")
-script = ExtResource("1_dyfxg")
-can_multi_click = false
-animation_resource = ExtResource("5_d75fr")
-
-[node name="Quick Game AI" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" node_paths=PackedStringArray("dynamic_neighbor_right")]
-layout_mode = 2
-tooltip_text = "QUICK_AI_GAME_TOOLTIP"
-text = "QUICK_AI_GAME"
 icon = ExtResource("9_2aa1e")
 script = ExtResource("10_lp4m4")
 dynamic_neighbor_right = NodePath("../../../../../AvailableAiModes/PanelContainer/AvailableAis/Normal_AI")
@@ -149,6 +139,12 @@ layout_mode = 2
 
 [node name="AvailableAis" type="VBoxContainer" parent="AvailableAiModes/PanelContainer"]
 layout_mode = 2
+
+[node name="AgainstPlayer" type="Button" parent="AvailableAiModes/PanelContainer/AvailableAis"]
+layout_mode = 2
+tooltip_text = "VS_PLAYER_TOOLTIP"
+text = "VS_PLAYER"
+script = ExtResource("1_dyfxg")
 
 [node name="Easy_AI" type="Button" parent="AvailableAiModes/PanelContainer/AvailableAis"]
 layout_mode = 2

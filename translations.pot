@@ -188,14 +188,6 @@ msgid "QUICK_GAME"
 msgstr ""
 
 #: scenes/menu/MainMenu.tscn
-msgid "QUICK_AI_GAME_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/MainMenu.tscn
-msgid "QUICK_AI_GAME"
-msgstr ""
-
-#: scenes/menu/MainMenu.tscn
 msgid "DECK_VIEWER_TOOLTIP"
 msgstr ""
 
@@ -217,6 +209,14 @@ msgstr ""
 
 #: scenes/menu/MainMenu.tscn
 msgid "QUIT_GAME"
+msgstr ""
+
+#: scenes/menu/MainMenu.tscn
+msgid "VS_PLAYER_TOOLTIP"
+msgstr ""
+
+#: scenes/menu/MainMenu.tscn
+msgid "VS_PLAYER"
 msgstr ""
 
 #: scenes/menu/MainMenu.tscn

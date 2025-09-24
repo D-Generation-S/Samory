@@ -181,16 +181,6 @@ msgid "QUICK_GAME"
 msgstr "Schnelles Spiel"
 
 #: scenes/menu/MainMenu.tscn
-msgid "QUICK_AI_GAME_TOOLTIP"
-msgstr ""
-"Starte ein schnelles spiel gegen eine KI mit zufälliger schwierigkeit, es "
-"wird hierbei ein zufälliges Deck genutzt"
-
-#: scenes/menu/MainMenu.tscn
-msgid "QUICK_AI_GAME"
-msgstr "Starte schnelles KI Spiel"
-
-#: scenes/menu/MainMenu.tscn
 msgid "DECK_VIEWER_TOOLTIP"
 msgstr ""
 "Schaue dir all deine Decks an, hier kannst du auch die Karten beschreibungen "
@@ -215,6 +205,14 @@ msgstr "Das Spiel beenden"
 #: scenes/menu/MainMenu.tscn
 msgid "QUIT_GAME"
 msgstr "Spiel beenden"
+
+#: scenes/menu/MainMenu.tscn
+msgid "VS_PLAYER_TOOLTIP"
+msgstr "Spiele ein HotSeat Spiel gegen einen anderen Spieler"
+
+#: scenes/menu/MainMenu.tscn
+msgid "VS_PLAYER"
+msgstr "Menschlicher Spieler"
 
 #: scenes/menu/MainMenu.tscn
 msgid "MATCH_AGAINST_EASY_AI_TOOLTIP"
@@ -1013,6 +1011,14 @@ msgstr "Zeit bis beenden: %1.0f s"
 #: scenes/game/levels/MemoryGameScene.tscn
 msgid "PAUSE_MENU"
 msgstr "Pause Menü"
+
+#~ msgid "QUICK_AI_GAME_TOOLTIP"
+#~ msgstr ""
+#~ "Starte ein schnelles spiel gegen eine KI mit zufälliger schwierigkeit, es "
+#~ "wird hierbei ein zufälliges Deck genutzt"
+
+#~ msgid "QUICK_AI_GAME"
+#~ msgstr "Starte schnelles KI Spiel"
 
 #~ msgid "DELETE"
 #~ msgstr "Löschen"
