@@ -132,15 +132,6 @@ msgid "QUICK_GAME"
 msgstr "Quick Game"
 
 #: scenes/menu/MainMenu.tscn
-msgid "QUICK_AI_GAME_TOOLTIP"
-msgstr ""
-"Start a quick game against a AI with an random difficulty using a random deck"
-
-#: scenes/menu/MainMenu.tscn
-msgid "QUICK_AI_GAME"
-msgstr "Start Quick AI Game"
-
-#: scenes/menu/MainMenu.tscn
 msgid "DECK_VIEWER_TOOLTIP"
 msgstr "View all your decks with the card description"
 
@@ -163,6 +154,14 @@ msgstr "Close the game"
 #: scenes/menu/MainMenu.tscn
 msgid "QUIT_GAME"
 msgstr "Quit Game"
+
+#: scenes/menu/MainMenu.tscn
+msgid "VS_PLAYER_TOOLTIP"
+msgstr "Play in a hot seat mode against a human player"
+
+#: scenes/menu/MainMenu.tscn
+msgid "VS_PLAYER"
+msgstr "Against Human Player"
 
 #: scenes/menu/MainMenu.tscn
 msgid "MATCH_AGAINST_EASY_AI_TOOLTIP"
@@ -931,6 +930,14 @@ msgstr "Autocomplete after %1.0f s"
 #: scenes/game/levels/MemoryGameScene.tscn
 msgid "PAUSE_MENU"
 msgstr "Pause Menu"
+
+#~ msgid "QUICK_AI_GAME_TOOLTIP"
+#~ msgstr ""
+#~ "Start a quick game against a AI with an random difficulty using a random "
+#~ "deck"
+
+#~ msgid "QUICK_AI_GAME"
+#~ msgstr "Start Quick AI Game"
 
 #~ msgid "DELETE"
 #~ msgstr "Delete"
