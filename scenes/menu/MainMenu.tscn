@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://co10o6j0oxeep"]
+[gd_scene load_steps=33 format=3 uid="uid://co10o6j0oxeep"]
 
 [ext_resource type="Script" uid="uid://chjw5lk6vyisx" path="res://src/menu/main_menu/QuitGameButton.gd" id="1_6c3ib"]
 [ext_resource type="Script" uid="uid://duplgguwpsw7p" path="res://src/menu/main_menu/StartQuickGame.gd" id="1_dyfxg"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://5tb48e2wts7" path="res://src/menu/main_menu/QuickAiGame.gd" id="10_lp4m4"]
 [ext_resource type="Texture2D" uid="uid://doybax1rt0tgn" path="res://assets/icons/QuitIcon.tres" id="13_heq2t"]
 [ext_resource type="Texture2D" uid="uid://dmmfqt6ictpos" path="res://assets/icons/SettingsIcon.tres" id="15_t1xqk"]
+[ext_resource type="Texture2D" uid="uid://bk6hr6v5raff5" path="res://assets/icons/QuickGameIcon.tres" id="16_al83v"]
 [ext_resource type="Texture2D" uid="uid://fp6wosrlx177" path="res://assets/icons/CreditsIcon.tres" id="16_h5eu7"]
 [ext_resource type="Texture2D" uid="uid://d1fc7nwftgx4y" path="res://assets/icons/QuestionIcon.tres" id="18_pb5pf"]
 [ext_resource type="Texture2D" uid="uid://cln3v63hwble8" path="res://assets/icons/HomeIcon.tres" id="19_heq2t"]
@@ -144,6 +145,7 @@ layout_mode = 2
 layout_mode = 2
 tooltip_text = "VS_PLAYER_TOOLTIP"
 text = "VS_PLAYER"
+icon = ExtResource("16_al83v")
 script = ExtResource("1_dyfxg")
 
 [node name="Easy_AI" type="Button" parent="AvailableAiModes/PanelContainer/AvailableAis"]
@@ -153,6 +155,7 @@ focus_neighbor_left = NodePath("../../../../CenterContainer/PanelContainer/Margi
 focus_neighbor_top = NodePath("../Hard_AI")
 focus_neighbor_bottom = NodePath("../Normal_AI")
 text = "EASY_AI"
+icon = ExtResource("9_2aa1e")
 script = ExtResource("1_dyfxg")
 is_ai_game = true
 possible_ai_difficulties = Array[ExtResource("6_k6mp2")]([ExtResource("7_2i4h7")])
@@ -164,6 +167,7 @@ focus_neighbor_left = NodePath("../../../../CenterContainer/PanelContainer/Margi
 focus_neighbor_top = NodePath("../Easy_AI")
 focus_neighbor_bottom = NodePath("../Hard_AI")
 text = "NORMAL_AI"
+icon = ExtResource("9_2aa1e")
 script = ExtResource("1_dyfxg")
 is_ai_game = true
 possible_ai_difficulties = Array[ExtResource("6_k6mp2")]([ExtResource("8_cilha")])
@@ -175,6 +179,7 @@ focus_neighbor_left = NodePath("../../../../CenterContainer/PanelContainer/Margi
 focus_neighbor_top = NodePath("../Normal_AI")
 focus_neighbor_bottom = NodePath("../Easy_AI")
 text = "HARD_AI"
+icon = ExtResource("9_2aa1e")
 script = ExtResource("1_dyfxg")
 is_ai_game = true
 possible_ai_difficulties = Array[ExtResource("6_k6mp2")]([ExtResource("21_w7y08")])
