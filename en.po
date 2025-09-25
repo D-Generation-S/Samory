@@ -862,6 +862,10 @@ msgid "Kenney.nl"
 msgstr ""
 
 #: scenes/menu/Credits.tscn
+msgid "Axuree"
+msgstr ""
+
+#: scenes/menu/Credits.tscn
 msgid "Abstraction"
 msgstr ""
 
@@ -931,6 +935,75 @@ msgstr "Autocomplete after %1.0f s"
 #: scenes/game/levels/MemoryGameScene.tscn
 msgid "PAUSE_MENU"
 msgstr "Pause Menu"
+
+#: scenes/game/resources/cards/hardware/Calculator.tres
+msgid "CALCULATOR"
+msgstr "Calculator"
+
+#: scenes/game/resources/cards/hardware/Calculator.tres
+msgid "CALCULATOR_DESCRIPTION"
+msgstr ""
+"A device to make calculations on the fly. Those where common in offices "
+"before modern phones where used in large quantities. Today this is not that "
+"often to the found"
+
+#: scenes/game/resources/cards/hardware/ComputerMonitor.tres
+msgid "USB_STICK"
+msgstr "USB-Stick"
+
+#: scenes/game/resources/cards/hardware/ComputerMonitor.tres
+msgid "USB_STICK_DESCRIPTION"
+msgstr ""
+"A digital storage device, allowing you to store large amounts of data on a "
+"small portable device"
+
+#: scenes/game/resources/cards/hardware/GraphicCard.tres
+msgid "GRAPHIC_CARD"
+msgstr "Graphic Card (GPU)"
+
+#: scenes/game/resources/cards/hardware/GraphicCard.tres
+msgid "GRAPHIC_CARD_DESCRIPTION"
+msgstr ""
+"A pc component which is responsible to generate the image displayed on your "
+"monitor. This is often called an \"GPU\" which is a abbreviation for Graphic "
+"Processor Unit"
+
+#: scenes/game/resources/cards/hardware/Keyboard.tres
+msgid "KEYBOARD"
+msgstr "Keyboard"
+
+#: scenes/game/resources/cards/hardware/Keyboard.tres
+msgid "KEYBOARD_DESCRIPTION"
+msgstr "A device allowing you to performance textual input to a pc"
+
+#: scenes/game/resources/cards/hardware/Ram.tres
+msgid "RAM"
+msgstr "Ram"
+
+#: scenes/game/resources/cards/hardware/Ram.tres
+msgid "RAM_DESCRIPTION"
+msgstr ""
+"A small collection of chips to store data while a pc is operational. This "
+"data is only present while the machine is running, getting wiped as soon as "
+"the machine is turned off"
+
+#: scenes/game/resources/cards/hardware/UsbStick.tres
+msgid "COMPUTER_MONITOR"
+msgstr "Computer Monitor"
+
+#: scenes/game/resources/cards/hardware/UsbStick.tres
+msgid "COMPUTER_MONITOR_DESCRIPTION"
+msgstr ""
+"A device to show the output of your pc allowing you to visually see what you "
+"are doing right now"
+
+#: scenes/game/resources/decks/HardwareDeck.tres
+msgid "HARDWARE_DECK"
+msgstr "Hardware Deck"
+
+#: scenes/game/resources/decks/HardwareDeck.tres
+msgid "HARDWARE_DECK_DESCRIPTION"
+msgstr "A deck containing items used in a office or with/within a pc"
 
 #~ msgid "QUICK_AI_GAME_TOOLTIP"
 #~ msgstr ""

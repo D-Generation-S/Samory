@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MemoryCardResource" load_steps=4 format=3 uid="uid://bd1ts8e88ds41"]
+
+[ext_resource type="Script" uid="uid://d3u4837pgjc3d" path="res://src/templates/MemoryCardResource.gd" id="1_4bjn5"]
+[ext_resource type="Texture2D" uid="uid://dv4h5xis22ax1" path="res://assets/sprites/genericItems_spritesheet_colored.png" id="2_qjdjy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ujap"]
+atlas = ExtResource("2_qjdjy")
+region = Rect2(688, 1178, 58, 79)
+
+[resource]
+script = ExtResource("1_4bjn5")
+name = "USB_STICK"
+description = "USB_STICK_DESCRIPTION"
+texture = SubResource("AtlasTexture_0ujap")
+metadata/_custom_type_script = "uid://d3u4837pgjc3d"
