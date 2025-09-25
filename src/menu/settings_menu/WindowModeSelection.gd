@@ -1,4 +1,4 @@
-extends OptionButton
+extends ClickableOptionButton
 
 enum modes {
 	FULLSCREEN = 0,
@@ -11,9 +11,9 @@ signal window_mode_changed(new_mode: DisplayServer.WindowMode)
 var _current_settings: SettingsResource = null
 
 func _ready():
+	super()
 	if OS.has_feature("web"):
 		remove_item(modes.BORDERLESS)
-	item_selected.connect(_on_item_was_selected)
 	
 
 func settings_loaded(settings: SettingsResource):
@@ -33,9 +33,9 @@ func set_default_option():
 func _change_window_mode(mode: DisplayServer.WindowMode):
 	DisplayServer.window_set_mode(mode)
 
-func _on_item_was_selected(index: int):
+func _selection_changed(selection: int):
 	var mode := DisplayServer.WindowMode.WINDOW_MODE_MAXIMIZED
-	match index:
+	match selection:
 		modes.FULLSCREEN:
 			mode = DisplayServer.WindowMode.WINDOW_MODE_FULLSCREEN
 		modes.BORDERLESS:
