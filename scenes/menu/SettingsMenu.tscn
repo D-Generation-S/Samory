@@ -1,21 +1,23 @@
-[gd_scene load_steps=34 format=3 uid="uid://ded0xyxbb1om1"]
+[gd_scene load_steps=36 format=3 uid="uid://ded0xyxbb1om1"]
 
 [ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://scenes/menu/MenuBackground.tscn" id="2_cootk"]
 [ext_resource type="Script" uid="uid://be1ipi8ub0y8n" path="res://src/menu/settings_menu/SettingsMenu.gd" id="2_hfhds"]
 [ext_resource type="StyleBox" uid="uid://d1rhal5rp1608" path="res://assets/styles/panel/MetalBox.tres" id="3_hn4qe"]
 [ext_resource type="Script" uid="uid://bl1m25cil8j5f" path="res://src/menu/settings_menu/BusSlider.gd" id="3_qrm32"]
-[ext_resource type="Texture2D" uid="uid://6y6d86sem7ee" path="res://assets/icons/ExpandIcon.tres" id="4_2s828"]
 [ext_resource type="Script" uid="uid://dxepefpl817n7" path="res://src/menu/settings_menu/WindowModeSelection.gd" id="4_br808"]
 [ext_resource type="Script" uid="uid://b6p42kfefnyc0" path="res://src/menu/settings_menu/VsyncButton.gd" id="4_cwx70"]
 [ext_resource type="Script" uid="uid://bl0446x7ixjcv" path="res://src/menu/settings_menu/TestEffectButton.gd" id="4_l6fy8"]
 [ext_resource type="Script" uid="uid://cw4ndue8c4gv4" path="res://src/menu/settings_menu/LoadCustomDecks.gd" id="4_xqb7h"]
-[ext_resource type="Script" uid="uid://bgq2cpeyiiikq" path="res://src/shared/SingleFold.gd" id="5_acki3"]
+[ext_resource type="Script" uid="uid://bgq2cpeyiiikq" path="res://src/shared/ClickableFold.gd" id="5_acki3"]
 [ext_resource type="AudioStream" uid="uid://dj5j3cwv0a265" path="res://assets/audio/effect/card-slide-1.ogg" id="5_fls2r"]
 [ext_resource type="AudioStream" uid="uid://cihpod1jtdkyn" path="res://assets/audio/effect/card-slide-2.ogg" id="6_0bdhr"]
+[ext_resource type="FoldableGroup" uid="uid://b6axuve5083ru" path="res://assets/foldable_groups/SettingsMenu.tres" id="6_01oec"]
 [ext_resource type="Script" uid="uid://b3mbd6eeylk66" path="res://src/menu/settings_menu/UiScale.gd" id="6_br808"]
 [ext_resource type="Script" uid="uid://b3rk5o6ceqblf" path="res://src/menu/settings_menu/LanguageSelection.gd" id="6_cw3wv"]
 [ext_resource type="Script" uid="uid://crpang1vb3yxa" path="res://src/menu/settings_menu/UiScaleLabel.gd" id="7_mbv6n"]
+[ext_resource type="AudioStream" uid="uid://bmd1ponspe8mk" path="res://assets/audio/effect/button-hover-1.ogg" id="7_sr1hj"]
 [ext_resource type="AudioStream" uid="uid://dynepq4bifu2g" path="res://assets/audio/effect/card-slide-3.ogg" id="7_vbnlv"]
+[ext_resource type="AudioStream" uid="uid://cesdmptmtygih" path="res://assets/audio/effect/button-click-1.ogg" id="8_01oec"]
 [ext_resource type="Script" uid="uid://cdf84o2qp0vdc" path="res://src/menu/settings/AutoCompleteRound.gd" id="8_83bh0"]
 [ext_resource type="AudioStream" uid="uid://dy4vgls6p35ci" path="res://assets/audio/effect/card-slide-4.ogg" id="8_obkpv"]
 [ext_resource type="Script" uid="uid://g8dk5ckx5t4d" path="res://src/menu/settings/AutoCloseRoundSlider.gd" id="9_adf7j"]
@@ -88,7 +90,6 @@ horizontal_alignment = 1
 [node name="LanguageSelection" type="OptionButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer"]
 layout_mode = 2
 tooltip_text = "SELECT_LANGUAGE_SETTING_TOOLTIP"
-theme_override_icons/arrow = ExtResource("4_2s828")
 selected = 0
 item_count = 2
 popup/item_0/text = "ENGLISH"
@@ -96,19 +97,22 @@ popup/item_0/id = 0
 popup/item_1/text = "GERMAN"
 popup/item_1/id = 1
 script = ExtResource("6_cw3wv")
+should_grab_focus = true
 
 [node name="GraphicSettings" type="FoldableContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer" groups=["auto_fold"]]
 layout_mode = 2
-folded = true
 title = "GRAPHIC_SETTINGS"
+foldable_group = ExtResource("6_01oec")
 script = ExtResource("5_acki3")
-auto_add_components = true
-auto_add_group = "auto_fold"
+folded_neighbor = NodePath("../GameplaySettings")
+unfolded_neighbor = NodePath("ScrollContainer/VBoxContainer/WindowModeSelection")
+hover_sound = ExtResource("7_sr1hj")
+click_sound = ExtResource("8_01oec")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings"]
-visible = false
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
+follow_focus = true
 horizontal_scroll_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/ScrollContainer"]
@@ -161,14 +165,18 @@ step = 0.05
 layout_mode = 2
 folded = true
 title = "GAMEPLAY_SETTINGS"
+foldable_group = ExtResource("6_01oec")
 script = ExtResource("5_acki3")
-auto_add_components = true
-auto_add_group = "auto_fold"
+folded_neighbor = NodePath("../../../PanelContainer/VBoxContainer/Audio Control/Master")
+unfolded_neighbor = NodePath("ScrollContainer/VBoxContainer/LoadCustomDecks")
+hover_sound = ExtResource("7_sr1hj")
+click_sound = ExtResource("8_01oec")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GameplaySettings"]
 visible = false
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
+follow_focus = true
 horizontal_scroll_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GameplaySettings/ScrollContainer"]
@@ -278,6 +286,7 @@ text = "TEST_EFFECTS"
 icon = ExtResource("13_12fsg")
 script = ExtResource("4_l6fy8")
 test_effects = Array[AudioStream]([ExtResource("5_fls2r"), ExtResource("6_0bdhr"), ExtResource("7_vbnlv"), ExtResource("8_obkpv"), ExtResource("9_plrjf"), ExtResource("10_3mytq"), ExtResource("11_bbgb2"), ExtResource("12_05mi4"), ExtResource("13_jbvf7"), ExtResource("14_vb64j"), ExtResource("15_b5nta")])
+hover_sound = ExtResource("7_sr1hj")
 play_sounds = false
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2"]

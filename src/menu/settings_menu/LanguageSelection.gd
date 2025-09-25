@@ -1,10 +1,14 @@
-extends OptionButton
+extends ClickableOptionButton
 
 signal language_changed(new_language_code: int)
 
+@export var should_grab_focus: bool = false
+
 func _ready():
-	connect("item_selected", selection_changed)
-	
+	super()
+	if should_grab_focus:
+		grab_focus()
+		
 func settings_loaded(settings: SettingsResource):
 	match settings.language_code:
 		"en":
@@ -12,7 +16,8 @@ func settings_loaded(settings: SettingsResource):
 		"de_DE":
 			selected = 1
 
-func selection_changed(selection: int):
+func _selection_changed(selection: int):
+	super(selection)
 	var language_code = "en"
 	match selection:
 		0: 
@@ -22,3 +27,4 @@ func selection_changed(selection: int):
 	TranslationServer.set_locale(language_code)
 	GlobalGameManagerAccess.get_game_manager().translate_built_in_decks()
 	language_changed.emit(language_code)
+	

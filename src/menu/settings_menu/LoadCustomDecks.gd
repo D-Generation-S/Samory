@@ -3,6 +3,7 @@ extends ClickableToggle
 var initial_load_state: bool = false
 
 func _ready():
+	super()
 	if OS.has_feature("web"):
 		visible = false
 
