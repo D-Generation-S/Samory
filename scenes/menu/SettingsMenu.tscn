@@ -253,6 +253,7 @@ text = "EFFECT_VOLUME"
 
 [node name="Effects" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer/Audio Control"]
 layout_mode = 2
+size_flags_vertical = 4
 script = ExtResource("3_qrm32")
 bus_name = 1
 
@@ -265,6 +266,7 @@ text = "MUSIC_VOLUME"
 [node name="Music" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer/Audio Control"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
 script = ExtResource("3_qrm32")
 bus_name = 2
 
