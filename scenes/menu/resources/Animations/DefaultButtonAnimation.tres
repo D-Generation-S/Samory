@@ -4,5 +4,4 @@
 
 [resource]
 script = ExtResource("1_ktx3o")
-scale_percentage = 105.0
-duration = 0.2
+scale_percentage = 110.0

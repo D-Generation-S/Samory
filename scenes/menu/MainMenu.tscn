@@ -92,6 +92,7 @@ text = "QUICK_GAME"
 icon = ExtResource("9_2aa1e")
 script = ExtResource("10_lp4m4")
 dynamic_neighbor_right = NodePath("../../../../../AvailableAiModes/PanelContainer/AvailableAis/Normal_AI")
+animation_resource = ExtResource("5_d75fr")
 
 [node name="Deck Viewer" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -144,6 +145,9 @@ layout_mode = 2
 [node name="AgainstPlayer" type="Button" parent="AvailableAiModes/PanelContainer/AvailableAis"]
 layout_mode = 2
 tooltip_text = "VS_PLAYER_TOOLTIP"
+focus_neighbor_left = NodePath("../../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI")
+focus_neighbor_top = NodePath("../Hard_AI")
+focus_neighbor_bottom = NodePath("../Easy_AI")
 text = "VS_PLAYER"
 icon = ExtResource("16_al83v")
 script = ExtResource("1_dyfxg")
@@ -152,7 +156,7 @@ script = ExtResource("1_dyfxg")
 layout_mode = 2
 tooltip_text = "MATCH_AGAINST_EASY_AI_TOOLTIP"
 focus_neighbor_left = NodePath("../../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI")
-focus_neighbor_top = NodePath("../Hard_AI")
+focus_neighbor_top = NodePath("../AgainstPlayer")
 focus_neighbor_bottom = NodePath("../Normal_AI")
 text = "EASY_AI"
 icon = ExtResource("9_2aa1e")
@@ -177,7 +181,7 @@ layout_mode = 2
 tooltip_text = "MATCH_AGAINST_HARD_AI_TOOLTIP"
 focus_neighbor_left = NodePath("../../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI")
 focus_neighbor_top = NodePath("../Normal_AI")
-focus_neighbor_bottom = NodePath("../Easy_AI")
+focus_neighbor_bottom = NodePath("../AgainstPlayer")
 text = "HARD_AI"
 icon = ExtResource("9_2aa1e")
 script = ExtResource("1_dyfxg")

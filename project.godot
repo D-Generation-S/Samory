@@ -45,6 +45,7 @@ active_scene="The currently active scene"
 
 [gui]
 
+theme/default_font_multichannel_signed_distance_field=true
 theme/custom="res://Default.tres"
 
 [input]
