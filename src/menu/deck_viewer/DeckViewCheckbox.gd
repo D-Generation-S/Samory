@@ -1,6 +1,7 @@
 extends ClickableToggle
 
 func _ready():
+	super()
 	if OS.has_feature("web"):
 		visible = false
 	starts_ready = true
