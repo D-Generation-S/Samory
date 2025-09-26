@@ -8,6 +8,9 @@ signal ready_for_removal()
 @export var toggle_material: ShaderMaterial
 @export var focus_material: ShaderMaterial
 
+var _internal_toggle_material: ShaderMaterial
+var _internal_focus_material: ShaderMaterial
+
 var currently_in_focus: bool = false
 
 var collider: Area2D
@@ -20,8 +23,10 @@ var animation_tween: Tween = null
 func _ready():
 	collider = get_children()[0]
 	visible = true
+	_internal_focus_material = focus_material.duplicate_deep()
+	_internal_toggle_material = toggle_material.duplicate_deep()
 	# This makes sure that each instance does get it's own shader instance
-	set_shader_material(toggle_material)
+	set_shader_material(_internal_toggle_material)
 
 func toggle_on():
 	can_remove = false
@@ -32,7 +37,7 @@ func toggle_on():
 	animation_tween = create_tween()
 	animation_tween.tween_method(update_toggle_material, 1.0, 0.0, animation_time)
 	if currently_in_focus:
-		set_shader_material(toggle_material)
+		set_shader_material(_internal_toggle_material)
 
 func freeze_card():
 	collider.visible = false
@@ -49,7 +54,7 @@ func toggle_off():
 	animation_tween.tween_method(update_toggle_material, 0.0, 1.0, animation_time)
 	animation_tween.finished.connect(func(): can_remove = true)
 	if currently_in_focus:
-		set_shader_material(toggle_material)
+		set_shader_material(_internal_toggle_material)
 
 func update_toggle_material(progress: float):
 	if material is ShaderMaterial:
@@ -63,14 +68,14 @@ func is_focused():
 			card.lost_focus()
 
 	currently_in_focus = true
-	set_shader_material(focus_material)
+	set_shader_material(_internal_focus_material)
 
 func lost_focus():
 	currently_in_focus = false
-	set_shader_material(toggle_material)
+	set_shader_material(_internal_toggle_material)
 
 func set_shader_material(new_material: Material):
-	material = new_material.duplicate_deep()
+	material = new_material
 
 func is_hidden() -> bool:
 	var card_back_visible = false
