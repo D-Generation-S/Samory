@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bnfr8gek24m47"]
+[gd_scene load_steps=28 format=3 uid="uid://bnfr8gek24m47"]
 
 [ext_resource type="Script" uid="uid://bhgb4virmkji8" path="res://src/game/MemoryGame.gd" id="1_13jq5"]
 [ext_resource type="Resource" uid="uid://cnl5uxkf36ely" path="res://scenes/translations/TurnEndBannerMessage.tres" id="2_fspeh"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://dq3rmjoitwi1a" path="res://assets/audio/effect/confirmation_001.ogg" id="6_a3528"]
 [ext_resource type="PackedScene" uid="uid://d0vijthhc3d38" path="res://scenes/game/overlay/PlayersOverlay.tscn" id="7_a7rnv"]
 [ext_resource type="Script" uid="uid://bglvkbo4aydsy" path="res://src/game/Background.gd" id="7_kxmqb"]
+[ext_resource type="Script" uid="uid://bxrsfyvew4ysu" path="res://src/game/PlayerInput.gd" id="9_86hnd"]
 [ext_resource type="PackedScene" uid="uid://cluwm03j8e11p" path="res://scenes/game/overlay/GamePauseMenu.tscn" id="12_dfx06"]
 [ext_resource type="Script" uid="uid://bsilbayat31i4" path="res://src/templates/TutorialInformation.gd" id="14_65xsg"]
 [ext_resource type="Resource" uid="uid://dmh064uu1p16b" path="res://scenes/game/resources/tutorials/PlayerTurnTutorial.tres" id="15_s0u1d"]
@@ -47,6 +48,9 @@ script = ExtResource("15_u3ner")
 cards_node = NodePath("../Cards")
 players = NodePath("../Players")
 min_wait_milliseconds = 750.0
+
+[node name="PlayerInput" type="Node" parent="."]
+script = ExtResource("9_86hnd")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(600, 0)
@@ -143,11 +147,12 @@ is_ghost = true
 [connection signal="close_last_message_box" from="." to="CanvasLayer/PopupManager" method="force_close_popup_with_id"]
 [connection signal="game_has_endet" from="." to="CanvasLayer/PlayersOverlay" method="game_ended"]
 [connection signal="game_paused" from="." to="Camera2D" method="game_paused"]
+[connection signal="game_paused" from="." to="PlayerInput" method="game_paused"]
 [connection signal="game_state_changed" from="." to="Players" method="game_state_changed"]
 [connection signal="game_state_changed" from="." to="AI" method="game_state_changed"]
-[connection signal="game_state_changed" from="." to="Camera2D" method="game_state_changed"]
 [connection signal="game_state_changed" from="." to="CanvasLayer/PlayersOverlay" method="game_state_changed"]
 [connection signal="game_state_changed" from="." to="Cards" method="game_state_changed"]
+[connection signal="game_state_changed" from="." to="PlayerInput" method="game_state_changed"]
 [connection signal="identical_cards" from="." to="AI" method="card_was_identically"]
 [connection signal="load_game" from="." to="Cards/CardSpawner" method="place_cards_from_deck"]
 [connection signal="player_scored" from="." to="Players" method="player_scored"]
@@ -159,9 +164,10 @@ is_ghost = true
 [connection signal="player_resource_changed" from="Players" to="Camera2D" method="player_changed"]
 [connection signal="player_resource_changed" from="Players" to="Cards" method="player_changed"]
 [connection signal="player_score_changed" from="Players" to="CanvasLayer/PlayersOverlay" method="player_scored"]
-[connection signal="card_movement" from="Camera2D" to="Cards" method="parse_movement"]
-[connection signal="confirm_current_card" from="Camera2D" to="Cards" method="confirm_current_card"]
-[connection signal="game_menu_requested" from="Camera2D" to="." method="show_game_menu"]
+[connection signal="card_movement" from="PlayerInput" to="Cards" method="parse_movement"]
+[connection signal="confirm_current_card" from="PlayerInput" to="Cards" method="confirm_current_card"]
+[connection signal="end_current_round" from="PlayerInput" to="." method="end_round_now"]
+[connection signal="game_menu_requested" from="PlayerInput" to="." method="show_game_menu"]
 [connection signal="continue_game" from="CanvasLayer/PopupManager" to="." method="unpause_game"]
 [connection signal="pause_game" from="CanvasLayer/PopupManager" to="." method="pause_game"]
 [connection signal="tutorial_requested" from="CanvasLayer/Tutorial" to="CanvasLayer/PopupManager" method="add_and_show_popup"]

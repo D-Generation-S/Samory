@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://ubmqrubcq2a2"]
+[gd_scene load_steps=35 format=3 uid="uid://ubmqrubcq2a2"]
 
 [ext_resource type="Script" uid="uid://dpct6bkajq8et" path="res://src/game/CardTemplate.gd" id="1_fmo68"]
 [ext_resource type="AudioStream" uid="uid://dhlalkc173c3p" path="res://assets/audio/effect/card-turn-1.ogg" id="2_7bwi6"]
@@ -16,7 +16,7 @@
 [ext_resource type="Resource" uid="uid://0hefyj7q57o6" path="res://scenes/game/resources/dissolve_effects/dissolve.tres" id="8_nugiu"]
 [ext_resource type="Script" uid="uid://cdvlsp04l5fhr" path="res://src/game/ToggleCardVisibility.gd" id="8_pw264"]
 [ext_resource type="Script" uid="uid://dni6lxtacurf1" path="res://src/game/CardHandler.gd" id="9_mu0q4"]
-[ext_resource type="Material" uid="uid://dkl2lojy2u6nx" path="res://assets/material/GlowingFocusMaterialtres.tres" id="12_drvni"]
+[ext_resource type="Shader" uid="uid://6pmkw3r1hcqm" path="res://assets/shaders/CardSelectionGlowShader.gdshader" id="16_ja01p"]
 [ext_resource type="Script" uid="uid://bipcmxhkarmo3" path="res://src/game/debug/DebugControl.gd" id="18_8fn1p"]
 [ext_resource type="Script" uid="uid://oqb8v04e4sw6" path="res://src/game/debug/CardTemplateDebug.gd" id="18_tqsbp"]
 [ext_resource type="Texture2D" uid="uid://bl38eat4t17v6" path="res://assets/sprites/Axuree/sparkle.png" id="20_ja01p"]
@@ -50,6 +50,14 @@ width = 20
 height = 20
 fill_from = Vector2(0, 1)
 fill_to = Vector2(0.521368, 0.388889)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vcvmk"]
+shader = ExtResource("16_ja01p")
+shader_parameter/border_percentage = 25.0
+shader_parameter/effect_color = Color(0.6509804, 0.27450982, 0.43137255, 0.6627451)
+shader_parameter/frequenzy = 0.35
+shader_parameter/border_shift = 0.6450000068875
+shader_parameter/pulse_active = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phkhd"]
 size = Vector2(500, 550)
@@ -136,7 +144,7 @@ position = Vector2(250, 275)
 texture = ExtResource("3_xiuu2")
 script = ExtResource("8_pw264")
 toggle_material = ExtResource("5_b0osi")
-focus_material = ExtResource("12_drvni")
+focus_material = SubResource("ShaderMaterial_vcvmk")
 
 [node name="Area2D" type="Area2D" parent="CardBack"]
 visible = false

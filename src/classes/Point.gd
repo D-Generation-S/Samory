@@ -9,16 +9,16 @@ func _init(x: int , y: int):
     x_pos = x
     y_pos = y
 
-func get_x_pos():
+func get_x_pos()  -> int:
     return x_pos
 
-func get_y_pos():
+func get_y_pos() -> int:
     return y_pos
 
-func set_x_pos(x: int):
+func set_x_pos(x: int) -> void:
     x_pos = x
 
-func set_y_pos(y: int):
+func set_y_pos(y: int) -> void:
     y_pos = y
 
 func is_identical(other_point: Point) -> bool:
