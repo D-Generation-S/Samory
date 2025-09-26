@@ -9,7 +9,6 @@ var background_pool_node: Node2D
 var screen_width: float
 var screen_height: float
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	background_pool_node = Node2D.new()
 	background_pool_node.global_position = camera_node.global_position
