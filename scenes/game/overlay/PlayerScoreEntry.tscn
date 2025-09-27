@@ -3,12 +3,15 @@
 [ext_resource type="Script" uid="uid://mkhadapjv12d" path="res://src/game/overlay/PlayerScoreEntry.gd" id="1_4epdj"]
 [ext_resource type="StyleBox" uid="uid://d1rhal5rp1608" path="res://assets/styles/panel/MetalBox.tres" id="2_5y1a8"]
 [ext_resource type="Resource" uid="uid://c0eqsic62hvl0" path="res://scenes/menu/resources/colors/PlayerHighlightColor.tres" id="2_nkn6w"]
-[ext_resource type="Shader" uid="uid://docbe2j6cd3wg" path="res://assets/shaders/ColorReplaceShader.tres" id="4_4i8wl"]
+[ext_resource type="Shader" uid="uid://c68i873by7j7q" path="res://assets/shaders/ColorReplace.gdshader" id="4_c8bdi"]
 [ext_resource type="Texture2D" uid="uid://dpwyddj6yhp8r" path="res://assets/icons/TrophyIcon.tres" id="5_sqauh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uf65b"]
-shader = ExtResource("4_4i8wl")
-shader_parameter/replace_color = Color(0.94509804, 0.75686276, 0.5529412, 1)
+shader = ExtResource("4_c8bdi")
+shader_parameter/always_replace = true
+shader_parameter/base_color = Color(0, 0, 0, 0)
+shader_parameter/target_color = Color(1, 0.9254902, 0.3019608, 1)
+shader_parameter/tolerance = 0.02000000095
 
 [node name="MarginContainer" type="MarginContainer" node_paths=PackedStringArray("player_name", "player_score", "player_win_icon")]
 anchors_preset = 10
@@ -51,6 +54,7 @@ stretch_mode = 3
 [node name="PlayerScore" type="RichTextLabel" parent="PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
 bbcode_enabled = true
 text = "[right]PLAYER_SCORE"
 fit_content = true

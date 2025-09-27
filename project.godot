@@ -42,6 +42,7 @@ enabled=PackedStringArray("res://addons/resource_translation_plugin/plugin.cfg")
 [global_group]
 
 active_scene="The currently active scene"
+game_card=""
 
 [gui]
 

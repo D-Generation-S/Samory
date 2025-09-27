@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ceraa2tomrum8"]
+
+[ext_resource type="Shader" uid="uid://6pmkw3r1hcqm" path="res://assets/shaders/CardSelectionGlowShader.gdshader" id="1_wxlol"]
+
+[resource]
+shader = ExtResource("1_wxlol")
+shader_parameter/border_percentage = 15.0000007125
+shader_parameter/effect_color = Color(0.65, 0.273, 0.43008325, 0.75686276)
+shader_parameter/frequenzy = 0.29200001061012004
+shader_parameter/border_shift = 0.6500000071250001
+shader_parameter/pulse_active = true

@@ -3,8 +3,12 @@ extends Sprite2D
 class_name ToggleCardVisibility
 
 signal ready_for_removal()
+signal fully_hidden()
+signal hide_started()
+signal in_focus()
+signal focus_lost()
 
-@export var animation_time: float = 1.0
+@export var animation_time: float = 0.7
 @export var toggle_material: ShaderMaterial
 @export var focus_material: ShaderMaterial
 
@@ -25,7 +29,7 @@ func _ready():
 	visible = true
 	_internal_focus_material = focus_material.duplicate_deep()
 	_internal_toggle_material = toggle_material.duplicate_deep()
-	# This makes sure that each instance does get it's own shader instance
+	# This ensures that each instance does get it's own shader instance
 	set_shader_material(_internal_toggle_material)
 
 func toggle_on():
@@ -34,8 +38,10 @@ func toggle_on():
 		return
 	if animation_tween != null:
 		animation_tween.kill()
+	hide_started.emit()
 	animation_tween = create_tween()
 	animation_tween.tween_method(update_toggle_material, 1.0, 0.0, animation_time)
+	animation_tween.finished.connect(func(): fully_hidden.emit())
 	if currently_in_focus:
 		set_shader_material(_internal_toggle_material)
 
@@ -63,16 +69,19 @@ func update_toggle_material(progress: float):
 func is_focused():
 	if animation_tween != null && animation_tween.is_running():
 		return
-	for card in get_parent().get_parent().get_children():
+	for card in get_tree().get_nodes_in_group("game_card"):
 		if card is CardTemplate and card.card_is_focused():
 			card.lost_focus()
 
 	currently_in_focus = true
 	set_shader_material(_internal_focus_material)
+	in_focus.emit()
 
 func lost_focus():
 	currently_in_focus = false
 	set_shader_material(_internal_toggle_material)
+	if collider.visible:
+		focus_lost.emit()
 
 func set_shader_material(new_material: Material):
 	material = new_material

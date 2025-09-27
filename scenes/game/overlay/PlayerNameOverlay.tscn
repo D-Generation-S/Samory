@@ -6,12 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://wa0qa5dgmjgk" path="res://assets/icons/AiIcon.tres" id="3_nldki"]
 [ext_resource type="Resource" uid="uid://c0eqsic62hvl0" path="res://scenes/menu/resources/colors/PlayerHighlightColor.tres" id="4_e0a06"]
 [ext_resource type="Script" uid="uid://debll6gkj7h13" path="res://src/menu/generic/StyleOverwriteOnAction.gd" id="6_jynke"]
-[ext_resource type="Shader" uid="uid://docbe2j6cd3wg" path="res://assets/shaders/ColorReplaceShader.tres" id="6_vrh8j"]
 [ext_resource type="Script" uid="uid://davutkne54fp8" path="res://src/game/overlay/ColorReplace.gd" id="7_4mda4"]
 [ext_resource type="Script" uid="uid://bhhxuh3rhvxn7" path="res://src/game/overlay/PlayerScoreCounter.gd" id="7_clybx"]
 [ext_resource type="Script" uid="uid://b1sl7tihdwhil" path="res://src/game/overlay/ScoreAndName.gd" id="7_h8pn1"]
 [ext_resource type="Script" uid="uid://cpx0qtreblopk" path="res://src/game/overlay/PlayerScoreInformation.gd" id="8_4u670"]
 [ext_resource type="Resource" uid="uid://85njf66kd3s1" path="res://scenes/menu/resources/colors/PlayerDefaultColor.tres" id="9_2q0hc"]
+[ext_resource type="Shader" uid="uid://c68i873by7j7q" path="res://assets/shaders/ColorReplace.gdshader" id="11_2q0hc"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qprtf"]
 texture = ExtResource("2_blt2s")
@@ -30,8 +30,11 @@ texture_margin_bottom = 18.0
 region_rect = Rect2(448, 384, 64, 64)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iisri"]
-shader = ExtResource("6_vrh8j")
-shader_parameter/replace_color = Color(0, 0, 0, 1)
+shader = ExtResource("11_2q0hc")
+shader_parameter/always_replace = true
+shader_parameter/base_color = Color(0, 0, 0, 0)
+shader_parameter/target_color = Color(0, 0, 0, 0)
+shader_parameter/tolerance = 0.1
 
 [node name="MarginContainer" type="MarginContainer" node_paths=PackedStringArray("player_type_icon_box")]
 anchors_preset = 15
@@ -118,7 +121,7 @@ highlight_color = ExtResource("4_e0a06")
 
 [connection signal="player_is_active" from="." to="PanelContainer" method="is_active"]
 [connection signal="player_is_active" from="." to="PanelContainer/HBoxContainer/ScoreAndName" method="is_now_active"]
-[connection signal="player_is_active" from="." to="PanelContainer/HBoxContainer/MarginContainer/TextureRect" method="set_hightlight_color"]
+[connection signal="player_is_active" from="." to="PanelContainer/HBoxContainer/MarginContainer/TextureRect" method="set_highlight_color"]
 [connection signal="player_is_inactive" from="." to="PanelContainer" method="is_inactive"]
 [connection signal="player_is_inactive" from="." to="PanelContainer/HBoxContainer/ScoreAndName" method="is_now_inactive"]
 [connection signal="player_is_inactive" from="." to="PanelContainer/HBoxContainer/MarginContainer/TextureRect" method="set_default_color"]

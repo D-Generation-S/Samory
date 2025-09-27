@@ -1,10 +1,14 @@
 extends RichTextLabel
 
 @export var max_tooltip_length: int = 75
+@export var max_text_length: int = 24
+
 var card_tooltip_text: String = ""
 var raw_card_text: String = ""
 
-func set_card_text(card_text) -> void:
+func set_card_text(card_text: String) -> void:
+	if card_text.length() > max_text_length:
+		card_text = card_text.substr(0, max_text_length)
 	raw_card_text = card_text
 	text = "[center]" + raw_card_text +"[/center]"
 

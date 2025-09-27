@@ -1,13 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3cv1g0a284mq"]
+[gd_scene load_steps=10 format=3 uid="uid://b3cv1g0a284mq"]
 
 [ext_resource type="Script" uid="uid://dmuuwlyuofchc" path="res://src/menu/deck_viewer/DeckPreview.gd" id="1_k0qju"]
 [ext_resource type="Resource" uid="uid://jetuptwqlhnw" path="res://scenes/translations/Yes.tres" id="2_s0fjc"]
 [ext_resource type="Script" uid="uid://mt2ilttcpq4r" path="res://src/menu/deck_viewer/DeckPreviewSelection.gd" id="3_0x34l"]
-[ext_resource type="Material" uid="uid://dkl2lojy2u6nx" path="res://assets/material/GlowingFocusMaterialtres.tres" id="3_imrd3"]
 [ext_resource type="Resource" uid="uid://bge0q1apngvdj" path="res://scenes/translations/No.tres" id="3_m027l"]
 [ext_resource type="StyleBox" uid="uid://d1rhal5rp1608" path="res://assets/styles/panel/MetalBox.tres" id="4_hcvyd"]
+[ext_resource type="Shader" uid="uid://6pmkw3r1hcqm" path="res://assets/shaders/CardSelectionGlowShader.gdshader" id="5_i8t08"]
 [ext_resource type="Resource" uid="uid://b6uuk6xw16ak4" path="res://scenes/menu/resources/colors/ItemFocusColor.tres" id="6_i8t08"]
 [ext_resource type="Resource" uid="uid://62hlbto7b8c6" path="res://scenes/menu/resources/colors/ItemSelectionColor.tres" id="7_5qsbf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5qsbf"]
+shader = ExtResource("5_i8t08")
+shader_parameter/border_percentage = 25.0
+shader_parameter/effect_color = Color(0.65, 0.273, 0.43008325, 0.90588236)
+shader_parameter/frequenzy = 0.29200001061012004
+shader_parameter/border_shift = 0.6500000071250001
+shader_parameter/pulse_active = true
 
 [node name="DeckPreview" type="MarginContainer" node_paths=PackedStringArray("deck_name", "card_count", "buildint", "texture_rect", "deck_description", "selection_button")]
 anchors_preset = 15
@@ -59,7 +67,7 @@ layout_mode = 2
 expand_mode = 1
 script = ExtResource("3_0x34l")
 target_size = Vector2(250, 250)
-selection_material = ExtResource("3_imrd3")
+selection_material = SubResource("ShaderMaterial_5qsbf")
 deck_preview = NodePath("../../../../../..")
 color_on_focus = ExtResource("6_i8t08")
 color_on_select = ExtResource("7_5qsbf")
