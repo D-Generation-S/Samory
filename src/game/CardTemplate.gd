@@ -12,6 +12,7 @@ signal input_active(is_active: bool)
 
 signal card_text_changed(new_text: String)
 signal card_tooltip_changed(new_tooltip: String)
+signal deck_changed(deck: MemoryDeckResource)
 
 @export var is_ghost: bool = false
 
@@ -49,7 +50,7 @@ func _ready():
 
 	var real_texture: Texture2D = memory_card.texture
 	front_side.set_and_scale_texture(real_texture)
-	back_side.texture = card_deck.card_back
+	deck_changed.emit(card_deck)
 
 func _enter_tree():
 	if is_ghost:

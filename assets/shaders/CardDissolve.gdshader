@@ -8,11 +8,12 @@ uniform float edgeWidth : hint_range(0.0, 0.2) = 0.1;
 
 void fragment() {
 	float noiseValue = texture(noiseTexture, UV).r;
-	float alpha = step(threshold, noiseValue);
+	float alpha = COLOR.a;
 	float edge = 0.0;
 	if (threshold > 0.0)
 	{
 		edge = 1.0 - smoothstep(threshold, threshold + edgeWidth, noiseValue);
+		 alpha = step(threshold, noiseValue);
 	}
 	vec3 finalColor = mix(COLOR.rgb, burnColor, edge);
 	

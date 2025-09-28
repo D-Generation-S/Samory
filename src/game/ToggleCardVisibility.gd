@@ -9,6 +9,8 @@ signal in_focus()
 signal focus_lost()
 
 @export var animation_time: float = 0.7
+@export var focus_animation_time: float = 0.2
+@export var focus_scale: float = 1.03
 @export var toggle_material: ShaderMaterial
 @export var focus_material: ShaderMaterial
 
@@ -23,6 +25,7 @@ var can_remove: bool = false
 var currently_ai: bool = false
 
 var animation_tween: Tween = null
+var _focus_tween: Tween = null
 
 func _ready():
 	collider = get_children()[0]
@@ -31,6 +34,10 @@ func _ready():
 	_internal_toggle_material = toggle_material.duplicate_deep()
 	# This ensures that each instance does get it's own shader instance
 	set_shader_material(_internal_toggle_material)
+
+func deck_changed(deck: MemoryDeckResource):
+	if deck.card_back != null:
+		texture = deck.card_back
 
 func toggle_on():
 	can_remove = false
@@ -76,12 +83,19 @@ func is_focused():
 	currently_in_focus = true
 	set_shader_material(_internal_focus_material)
 	in_focus.emit()
+	_animate_focus(focus_scale)
 
 func lost_focus():
 	currently_in_focus = false
 	set_shader_material(_internal_toggle_material)
 	if collider.visible:
 		focus_lost.emit()
+
+	_animate_focus(1.0)
+
+func _animate_focus(new_scale: float):
+	_focus_tween = create_tween()
+	_focus_tween.tween_property(self, "scale", Vector2(new_scale, new_scale), focus_animation_time)
 
 func set_shader_material(new_material: Material):
 	material = new_material
