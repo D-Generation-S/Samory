@@ -150,7 +150,8 @@ func get_card_on_position(card_position: Point) -> MemoryCardResource:
 				return card.memory_card
 	return null
 		
-func parse_movement(information: Vector2):	
+func parse_movement(information: Vector2):
+	print("parse")
 	if get_tree().paused or currently_ai_player:
 		return
 	controller_input_was_made = true
@@ -208,3 +209,8 @@ func get_all_cards_currently_turned() -> Array[Point]:
 
 func player_changed(current_player:PlayerResource):
 	currently_ai_player = current_player.is_ai()
+
+func disable_card_effects():
+	for card in get_tree().get_nodes_in_group("game_card"):
+		if card is CardTemplate:
+			card.lost_focus()
