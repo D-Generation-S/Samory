@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://b6p42kfefnyc0" path="res://src/menu/settings_menu/VsyncButton.gd" id="4_cwx70"]
 [ext_resource type="Script" uid="uid://bl0446x7ixjcv" path="res://src/menu/settings_menu/TestEffectButton.gd" id="4_l6fy8"]
 [ext_resource type="Script" uid="uid://cw4ndue8c4gv4" path="res://src/menu/settings_menu/LoadCustomDecks.gd" id="4_xqb7h"]
-[ext_resource type="Script" uid="uid://bgq2cpeyiiikq" path="res://src/shared/ClickableFold.gd" id="5_acki3"]
+[ext_resource type="Script" uid="uid://bgq2cpeyiiikq" path="res://src/shared/SingleFold.gd" id="5_acki3"]
 [ext_resource type="AudioStream" uid="uid://dj5j3cwv0a265" path="res://assets/audio/effect/card-slide-1.ogg" id="5_fls2r"]
 [ext_resource type="AudioStream" uid="uid://cihpod1jtdkyn" path="res://assets/audio/effect/card-slide-2.ogg" id="6_0bdhr"]
 [ext_resource type="FoldableGroup" uid="uid://b6axuve5083ru" path="res://assets/foldable_groups/SettingsMenu.tres" id="6_01oec"]

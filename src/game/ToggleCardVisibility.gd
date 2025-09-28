@@ -46,6 +46,7 @@ func toggle_on():
 	if animation_tween != null:
 		animation_tween.kill()
 	hide_started.emit()
+	lost_focus()
 	animation_tween = create_tween()
 	animation_tween.tween_method(update_toggle_material, 1.0, 0.0, animation_time)
 	animation_tween.finished.connect(func(): fully_hidden.emit())
