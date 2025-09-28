@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://ubmqrubcq2a2"]
+[gd_scene load_steps=38 format=3 uid="uid://ubmqrubcq2a2"]
 
 [ext_resource type="Script" uid="uid://dpct6bkajq8et" path="res://src/game/CardTemplate.gd" id="1_fmo68"]
 [ext_resource type="AudioStream" uid="uid://dhlalkc173c3p" path="res://assets/audio/effect/card-turn-1.ogg" id="2_7bwi6"]
@@ -22,6 +22,11 @@
 [ext_resource type="Script" uid="uid://oqb8v04e4sw6" path="res://src/game/debug/CardTemplateDebug.gd" id="18_tqsbp"]
 [ext_resource type="Texture2D" uid="uid://bl38eat4t17v6" path="res://assets/sprites/Axuree/sparkle.png" id="20_ja01p"]
 [ext_resource type="Script" path="res://scenes/game/templates/MatchingCardParticleEffect.gd" id="21_ja01p"]
+[ext_resource type="Script" uid="uid://cal3eylr5vt07" path="res://src/shared/EffectTrigger.gd" id="23_bmj37"]
+[ext_resource type="AudioStream" uid="uid://bc2asc1ycehsj" path="res://assets/audio/effect/card-shove-2.ogg" id="24_7o8gd"]
+[ext_resource type="AudioStream" uid="uid://d2smrpmt773ak" path="res://assets/audio/effect/card-shove-4.ogg" id="25_o4ple"]
+[ext_resource type="AudioStream" uid="uid://x7uoopn87syx" path="res://assets/audio/effect/card-shove-1.ogg" id="26_7cddj"]
+[ext_resource type="AudioStream" uid="uid://klup7a1js5u1" path="res://assets/audio/effect/card-shove-3.ogg" id="27_7sao1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sgpsy"]
 shader = ExtResource("6_pyeu3")
@@ -166,10 +171,16 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_bmj37")
 script = ExtResource("21_ja01p")
 
+[node name="FocusEffect" type="Node" parent="."]
+script = ExtResource("23_bmj37")
+effect_pool = Array[AudioStream]([ExtResource("24_7o8gd"), ExtResource("25_o4ple"), ExtResource("26_7cddj"), ExtResource("27_7sao1")])
+volume = -15.0
+
 [connection signal="about_to_get_delete" from="." to="CanvasGroup" method="animate_destruction"]
 [connection signal="about_to_get_delete" from="." to="CardBack" method="remove_from_board"]
 [connection signal="about_to_get_delete" from="." to="MatchingFoundEffect" method="trigger"]
 [connection signal="card_in_focus" from="." to="CardBack" method="is_focused"]
+[connection signal="card_in_focus" from="." to="FocusEffect" method="trigger_random_effect"]
 [connection signal="card_lost_focus" from="." to="CardBack" method="lost_focus"]
 [connection signal="card_text_changed" from="." to="CanvasGroup/CardText" method="set_card_text"]
 [connection signal="card_tooltip_changed" from="." to="CanvasGroup/CardText" method="set_tooltip"]
@@ -180,12 +191,13 @@ script = ExtResource("21_ja01p")
 [connection signal="hide_card" from="." to="CanvasGroup/CardText" method="card_hidden"]
 [connection signal="hide_card" from="." to="CardBack" method="toggle_on"]
 [connection signal="input_active" from="." to="CardBack" method="input_active"]
+[connection signal="input_active" from="." to="FocusEffect" method="toggle_state"]
 [connection signal="ready_for_destruction" from="CanvasGroup" to="." method="destory_now"]
 [connection signal="focus_lost" from="CardBack" to="CanvasGroup/DropShadow" method="lost_focus"]
 [connection signal="fully_hidden" from="CardBack" to="CanvasGroup" method="hide_card_content"]
 [connection signal="hide_started" from="CardBack" to="CanvasGroup/DropShadow" method="lost_focus"]
 [connection signal="in_focus" from="CardBack" to="CanvasGroup/DropShadow" method="got_focus"]
+[connection signal="in_focus" from="CardBack" to="FocusEffect" method="trigger_random_effect"]
 [connection signal="clicked" from="CardBack/Area2D" to="." method="card_was_clicked"]
 [connection signal="mouse_entered" from="CardBack/Area2D" to="." method="selected_by_mouse"]
 [connection signal="mouse_entered" from="CardBack/Area2D" to="CardBack" method="is_focused"]
-[connection signal="mouse_exited" from="CardBack/Area2D" to="CardBack" method="lost_focus"]
