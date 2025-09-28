@@ -1,5 +1,7 @@
 extends Camera2D
 
+signal touch_used()
+
 @export_group("Zoom")
 @export var zoom_per_card: float = 0.0005
 @export_range(1,2) var max_zoom: float = 1.8
@@ -37,6 +39,7 @@ func loading_done():
 func _input(event):
 	if event is InputEventScreenDrag:
 		position = position - event.relative * touch_speed
+		touch_used.emit()
 
 func _process(_delta):
 	handle_camera_movement()
