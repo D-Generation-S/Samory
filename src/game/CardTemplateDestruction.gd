@@ -14,6 +14,7 @@ var effect_multiplier: float = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	hide_card_content()
 	root_node = get_parent()
 	loot_table = LootTable.new()
 	for effect in possible_effects:
@@ -35,3 +36,13 @@ func animate_destruction():
 	var effect_sound = loot.remove_sound
 	GlobalSoundManager.play_sound_effect(effect_sound)
 
+func show_card_content():
+	_toggle_show(true)
+
+func hide_card_content():
+	_toggle_show(false)
+
+func _toggle_show(new_visibility: bool):
+	for child in get_children():
+		if child is Node2D and child.is_in_group("card_content"):
+			child.visible = new_visibility

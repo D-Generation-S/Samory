@@ -1,11 +1,9 @@
-[gd_scene load_steps=35 format=3 uid="uid://ubmqrubcq2a2"]
+[gd_scene load_steps=31 format=3 uid="uid://ubmqrubcq2a2"]
 
 [ext_resource type="Script" uid="uid://dpct6bkajq8et" path="res://src/game/CardTemplate.gd" id="1_fmo68"]
 [ext_resource type="AudioStream" uid="uid://dhlalkc173c3p" path="res://assets/audio/effect/card-turn-1.ogg" id="2_7bwi6"]
 [ext_resource type="Script" uid="uid://4jlyx3gauqbi" path="res://src/game/CardText.gd" id="3_4fnc2"]
 [ext_resource type="AudioStream" uid="uid://48iu01xst023" path="res://assets/audio/effect/card-turn-2.ogg" id="3_hh2fg"]
-[ext_resource type="Texture2D" uid="uid://cdtyie7mnl05w" path="res://assets/icons/ShadowTexture.tres" id="3_uugcj"]
-[ext_resource type="Texture2D" uid="uid://dpcfrsq40moii" path="res://assets/sprites/CardDefaultBack.png" id="3_xiuu2"]
 [ext_resource type="Texture2D" uid="uid://d4nvcsyb0ehtb" path="res://assets/sprites/CardDefaultFront.png" id="4_e8l51"]
 [ext_resource type="Script" uid="uid://dooi851ydlcaf" path="res://src/game/CardFrontSize.gd" id="4_kxmgl"]
 [ext_resource type="AudioStream" uid="uid://h0louy6yrv3o" path="res://assets/audio/effect/card-turn-3.ogg" id="4_s61ka"]
@@ -15,8 +13,10 @@
 [ext_resource type="Script" uid="uid://bel0ari5ushcq" path="res://src/templates/DissolveEffectResource.gd" id="7_71qre"]
 [ext_resource type="Resource" uid="uid://0hefyj7q57o6" path="res://scenes/game/resources/dissolve_effects/dissolve.tres" id="8_nugiu"]
 [ext_resource type="Script" uid="uid://cdvlsp04l5fhr" path="res://src/game/ToggleCardVisibility.gd" id="8_pw264"]
+[ext_resource type="Script" uid="uid://b5mhdwdn1h8fo" path="res://src/game/CardDropShadow.gd" id="9_ja01p"]
 [ext_resource type="Script" uid="uid://dni6lxtacurf1" path="res://src/game/CardHandler.gd" id="9_mu0q4"]
-[ext_resource type="Shader" uid="uid://6pmkw3r1hcqm" path="res://assets/shaders/CardSelectionGlowShader.gdshader" id="16_ja01p"]
+[ext_resource type="Texture2D" uid="uid://b0lfebra6adhv" path="res://assets/sprites/Axuree/back_card_1.png" id="14_bmj37"]
+[ext_resource type="Material" uid="uid://ceraa2tomrum8" path="res://assets/material/SelectionShader.tres" id="16_ja01p"]
 [ext_resource type="Script" uid="uid://bipcmxhkarmo3" path="res://src/game/debug/DebugControl.gd" id="18_8fn1p"]
 [ext_resource type="Script" uid="uid://oqb8v04e4sw6" path="res://src/game/debug/CardTemplateDebug.gd" id="18_tqsbp"]
 [ext_resource type="Texture2D" uid="uid://bl38eat4t17v6" path="res://assets/sprites/Axuree/sparkle.png" id="20_ja01p"]
@@ -34,30 +34,6 @@ colors = PackedColorArray(0.955955, 0.929103, 0.857593, 1, 0.955955, 0.929103, 0
 gradient = SubResource("Gradient_0sfg2")
 width = 500
 height = 550
-
-[sub_resource type="Gradient" id="Gradient_fwwud"]
-colors = PackedColorArray(0, 0, 0, 1, 0.247059, 0.247059, 0.247059, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_b380y"]
-gradient = SubResource("Gradient_fwwud")
-width = 500
-height = 20
-fill_from = Vector2(1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_dg1ie"]
-gradient = SubResource("Gradient_fwwud")
-width = 20
-height = 20
-fill_from = Vector2(0, 1)
-fill_to = Vector2(0.521368, 0.388889)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vcvmk"]
-shader = ExtResource("16_ja01p")
-shader_parameter/border_percentage = 25.0
-shader_parameter/effect_color = Color(0.6509804, 0.27450982, 0.43137255, 0.6627451)
-shader_parameter/frequenzy = 0.35
-shader_parameter/border_shift = 0.6450000068875
-shader_parameter/pulse_active = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phkhd"]
 size = Vector2(500, 550)
@@ -92,7 +68,7 @@ scale_max = 1.5
 color_ramp = SubResource("GradientTexture1D_vcvmk")
 alpha_curve = SubResource("CurveTexture_bmj37")
 
-[node name="CardTemplate" type="Node2D" node_paths=PackedStringArray("front_side", "back_side")]
+[node name="CardTemplate" type="Node2D" node_paths=PackedStringArray("front_side", "back_side") groups=["game_card"]]
 script = ExtResource("1_fmo68")
 front_side = NodePath("CanvasGroup/CardFront")
 back_side = NodePath("CardBack")
@@ -103,11 +79,20 @@ material = SubResource("ShaderMaterial_sgpsy")
 script = ExtResource("6_7ry7r")
 possible_effects = Array[ExtResource("7_71qre")]([ExtResource("8_nugiu")])
 
-[node name="CardBackground" type="Sprite2D" parent="CanvasGroup"]
+[node name="DropShadow" type="ColorRect" parent="CanvasGroup"]
+offset_right = 500.0
+offset_bottom = 550.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.3764706)
+script = ExtResource("9_ja01p")
+target_offset = Vector2(13, 13)
+animation_time = 0.1
+
+[node name="CardBackground" type="Sprite2D" parent="CanvasGroup" groups=["card_content"]]
 position = Vector2(250, 275)
 texture = SubResource("GradientTexture2D_vp4ck")
 
-[node name="CardText" type="RichTextLabel" parent="CanvasGroup"]
+[node name="CardText" type="RichTextLabel" parent="CanvasGroup" groups=["card_content"]]
 offset_top = 500.0
 offset_right = 500.0
 offset_bottom = 550.0
@@ -119,35 +104,20 @@ text = "[center]placeholder[/center]"
 fit_content = true
 script = ExtResource("3_4fnc2")
 
-[node name="CardFront" type="Sprite2D" parent="CanvasGroup"]
+[node name="CardFront" type="Sprite2D" parent="CanvasGroup" groups=["card_content"]]
 position = Vector2(250, 250)
 texture = ExtResource("4_e8l51")
 script = ExtResource("4_kxmgl")
 
-[node name="Shadow" type="Node2D" parent="CanvasGroup"]
-
-[node name="Top" type="Sprite2D" parent="CanvasGroup/Shadow"]
-position = Vector2(250, -10)
-texture = SubResource("GradientTexture2D_b380y")
-
-[node name="Right" type="Sprite2D" parent="CanvasGroup/Shadow"]
-position = Vector2(510, 275)
-texture = ExtResource("3_uugcj")
-
-[node name="TopRight" type="Sprite2D" parent="CanvasGroup/Shadow"]
-position = Vector2(510, -10)
-texture = SubResource("GradientTexture2D_dg1ie")
-
 [node name="CardBack" type="Sprite2D" parent="."]
 material = ExtResource("5_b0osi")
 position = Vector2(250, 275)
-texture = ExtResource("3_xiuu2")
+texture = ExtResource("14_bmj37")
 script = ExtResource("8_pw264")
 toggle_material = ExtResource("5_b0osi")
-focus_material = SubResource("ShaderMaterial_vcvmk")
+focus_material = ExtResource("16_ja01p")
 
 [node name="Area2D" type="Area2D" parent="CardBack"]
-visible = false
 script = ExtResource("9_mu0q4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CardBack/Area2D"]
@@ -197,11 +167,16 @@ script = ExtResource("21_ja01p")
 [connection signal="card_lost_focus" from="." to="CardBack" method="lost_focus"]
 [connection signal="card_text_changed" from="." to="CanvasGroup/CardText" method="set_card_text"]
 [connection signal="card_tooltip_changed" from="." to="CanvasGroup/CardText" method="set_tooltip"]
+[connection signal="card_triggered" from="." to="CanvasGroup" method="show_card_content"]
 [connection signal="card_triggered" from="." to="CanvasGroup/CardText" method="card_revealed"]
 [connection signal="hide_card" from="." to="CanvasGroup/CardText" method="card_hidden"]
 [connection signal="hide_card" from="." to="CardBack" method="toggle_on"]
 [connection signal="input_active" from="." to="CardBack" method="input_active"]
 [connection signal="ready_for_destruction" from="CanvasGroup" to="." method="destory_now"]
+[connection signal="focus_lost" from="CardBack" to="CanvasGroup/DropShadow" method="lost_focus"]
+[connection signal="fully_hidden" from="CardBack" to="CanvasGroup" method="hide_card_content"]
+[connection signal="hide_started" from="CardBack" to="CanvasGroup/DropShadow" method="lost_focus"]
+[connection signal="in_focus" from="CardBack" to="CanvasGroup/DropShadow" method="got_focus"]
 [connection signal="clicked" from="CardBack/Area2D" to="." method="card_was_clicked"]
 [connection signal="mouse_entered" from="CardBack/Area2D" to="." method="selected_by_mouse"]
 [connection signal="mouse_entered" from="CardBack/Area2D" to="CardBack" method="is_focused"]

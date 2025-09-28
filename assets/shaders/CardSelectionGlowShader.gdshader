@@ -6,49 +6,27 @@ uniform float frequenzy: hint_range(0.1, 5) = 1;
 uniform float border_shift: hint_range(0.5, 0.9) = 0.5;
 uniform bool pulse_active = true;
 
-void vertex() {
+float get_border_mix(float uv_coord, float border, float alpha)
+{
+	float distance_to_edge = min(uv_coord, 1.0 - uv_coord);
+	float percentage = 1. - distance_to_edge / border;
+	
+	return clamp(percentage, 0., 1.) * alpha;
 }
 
 void fragment() {
-	vec4 pixelColor = texture(TEXTURE, UV);
-	float pulse = clamp((1. - border_shift) * sin(TIME / frequenzy) + border_shift, 0., 1.);
-	if (!pulse_active)
-	{
-		pulse = 1.;
-	}
+	vec4 pixel_color = texture(TEXTURE, UV);
+	float pulse = pulse_active
+					? clamp((1. - border_shift) * sin(TIME / frequenzy) + border_shift, 0., 1.)
+					: 1.;
 
-	vec2 border = vec2(border_percentage / 100. , border_percentage / 100.);
-	if (UV.x < border.x)
-	{
-		float percentage = 1.0 - UV.x / border.x;
-		percentage *= effect_color.a;
-		pixelColor.rgb = mix(pixelColor.rgb, effect_color.rgb, percentage * pulse);
-	}
-	if (UV.x > 1.0 - border.x)
-	{
-		float uv_base = 1. - UV.x;
-		float percentage = 1.0 - uv_base / border.x;
-		percentage *= effect_color.a;
-		pixelColor.rgb = mix(pixelColor.rgb, effect_color.rgb, percentage * pulse);
-	}
-	if (UV.y < border.y)
-	{
-		float percentage = 1.0 - UV.y / border.y;
-		percentage *= effect_color.a;
-		pixelColor.rgb = mix(pixelColor.rgb, effect_color.rgb, percentage * pulse);
-	}
-	if (UV.y > 1.0 - border.y)
-	{
-		float uv_base = 1. - UV.y;
-		float percentage = 1.0 - uv_base / border.y;
-		percentage *= effect_color.a;
-		pixelColor.rgb = mix(pixelColor.rgb, effect_color.rgb, percentage * pulse);
-	}
+	float border = border_percentage / 100.;
+	float effect_alpha = effect_color.a * pulse;
+	
+	float min_x = get_border_mix(UV.x, border, effect_alpha);
+	float min_y = get_border_mix(UV.y, border, effect_alpha);
+	float mix_factor = max(min_x, min_y);
 
-	COLOR = pixelColor;
+	COLOR = mix(pixel_color, effect_color, mix_factor);
 }
 
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}
