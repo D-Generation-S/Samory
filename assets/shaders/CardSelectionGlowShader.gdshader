@@ -10,7 +10,7 @@ float get_border_mix(float uv_coord, float border, float alpha)
 {
 	float distance_to_edge = min(uv_coord, 1.0 - uv_coord);
 	float percentage = 1. - distance_to_edge / border;
-	
+
 	return clamp(percentage, 0., 1.) * alpha;
 }
 
@@ -22,11 +22,13 @@ void fragment() {
 
 	float border = border_percentage / 100.;
 	float effect_alpha = effect_color.a * pulse;
-	
+
 	float min_x = get_border_mix(UV.x, border, effect_alpha);
 	float min_y = get_border_mix(UV.y, border, effect_alpha);
 	float mix_factor = max(min_x, min_y);
 
+	float initial_alpha = COLOR.a;
 	COLOR = mix(pixel_color, effect_color, mix_factor);
+	COLOR.a = initial_alpha;
 }
 
