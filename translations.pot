@@ -71,6 +71,15 @@
 # res://scenes/game/resources/cards/hardware/Ram.tres
 # res://scenes/game/resources/cards/hardware/UsbStick.tres
 # res://scenes/game/resources/decks/HardwareDeck.tres
+# res://scenes/translations/MultiplayerDeckHasBeenChanged.tres
+# res://scenes/translations/MultiplayerPlayerJoined.tres
+# res://scenes/translations/MultiplayerPlayerKicked.tres
+# res://scenes/translations/MultiplayerServerKicked.tres
+# res://scenes/translations/MultiplayerWrongVersion.tres
+# res://scenes/menu/multiplayer/MultiplayerLobby.tscn
+# res://scenes/menu/multiplayer/MultiplayerStart.tscn
+# res://scenes/translations/MultiplayerConnectionFailed.tres
+# res://scenes/translations/MultiplayerConnectingToServer.tres
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -92,6 +101,7 @@ msgstr ""
 
 #: scenes/menu/DeckViewer.tscn
 #: scenes/menu/GameLobby.tscn
+#: scenes/menu/multiplayer/MultiplayerLobby.tscn
 msgid "FILTER_DECKS"
 msgstr ""
 
@@ -128,11 +138,13 @@ msgstr ""
 #: scenes/menu/DeckViewer.tscn
 #: scenes/menu/SettingsMenu.tscn
 #: scenes/menu/Credits.tscn
+#: scenes/menu/multiplayer/MultiplayerStart.tscn
 msgid "CLOSE"
 msgstr ""
 
 #: scenes/menu/GameLobby.tscn
 #: scenes/game/overlay/PlayersOverlay.tscn
+#: scenes/menu/multiplayer/MultiplayerLobby.tscn
 msgid "PLAYER_LIST"
 msgstr ""
 
@@ -169,6 +181,7 @@ msgid "START_GAME_TOOLTIP"
 msgstr ""
 
 #: scenes/menu/GameLobby.tscn
+#: scenes/menu/multiplayer/MultiplayerLobby.tscn
 msgid "START_GAME"
 msgstr ""
 
@@ -184,6 +197,10 @@ msgstr ""
 
 #: scenes/menu/MainMenu.tscn
 msgid "CUSTOM_GAME"
+msgstr ""
+
+#: scenes/menu/MainMenu.tscn
+msgid "LOCAL_MULTIPLAYER"
 msgstr ""
 
 #: scenes/menu/MainMenu.tscn
@@ -832,6 +849,7 @@ msgid "Material Maker"
 msgstr ""
 
 #: scenes/menu/NewPlayer.tscn
+#: scenes/menu/multiplayer/MultiplayerStart.tscn
 msgid "PLAYER_NAME"
 msgstr ""
 
@@ -947,4 +965,58 @@ msgstr ""
 
 #: scenes/game/resources/decks/HardwareDeck.tres
 msgid "HARDWARE_DECK_DESCRIPTION"
+msgstr ""
+
+#. TRANSLATORS: Requires a single %s placeholder to add the name of the new deck
+#: scenes/translations/MultiplayerDeckHasBeenChanged.tres
+msgid "DECK_HAS_BEEN_CHANGED"
+msgstr ""
+
+#. TRANSLATORS: Requires a single %s placeholder conng the player nametaini
+#: scenes/translations/MultiplayerPlayerJoined.tres
+msgid "MULTIPLAYER_PLAYER_JOINED"
+msgstr ""
+
+#. TRANSLATORS: Requires a single %s placeholder containing the player name
+#: scenes/translations/MultiplayerPlayerKicked.tres
+msgid "MULTIPLAYER_PLAYER_KICKED"
+msgstr ""
+
+#. TRANSLATORS: Message client gets if he was kicked from the server
+#: scenes/translations/MultiplayerServerKicked.tres
+msgid "MULTIPLAYER_KICKED_BY_SERVER"
+msgstr ""
+
+#. TRANSLATORS: Player got kicked from the server, because the game version is different, requires two %s placeholders for game versions of client and server
+#: scenes/translations/MultiplayerWrongVersion.tres
+msgid "MULTIPLAYER_WRONG_VERSION"
+msgstr ""
+
+#: scenes/menu/multiplayer/MultiplayerLobby.tscn
+msgid "ABORT"
+msgstr ""
+
+#: scenes/menu/multiplayer/MultiplayerStart.tscn
+msgid "SERVER_ADDRESS"
+msgstr ""
+
+#: scenes/menu/multiplayer/MultiplayerStart.tscn
+msgid "CONNECT"
+msgstr ""
+
+#: scenes/menu/multiplayer/MultiplayerStart.tscn
+msgid "AVAILABLE_SERVERS"
+msgstr ""
+
+#: scenes/menu/multiplayer/MultiplayerStart.tscn
+msgid "HOST"
+msgstr ""
+
+#. TRANSLATORS: Single placeholder %s required to add the ip address
+#: scenes/translations/MultiplayerConnectionFailed.tres
+msgid "MUTLIPLAYER_CONNECTION_FAILED"
+msgstr ""
+
+#: scenes/translations/MultiplayerConnectingToServer.tres
+msgid "CONNECTING_TO_SERVER"
 msgstr ""

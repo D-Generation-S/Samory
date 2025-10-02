@@ -5,15 +5,19 @@ signal deck_selected(deck: MemoryDeckResource)
 signal decks_getting_placed(decks: Array[MemoryDeckResource])
 signal deck_unselected()
 
+@export_group("Container settings")
 @export var deck_preview_template: PackedScene
 @export var scroll_speed: float = 5
+
+@export_group("Deck settings")
 @export var decks_visible_on_start: bool = true
+@export var show_built_in: bool = true
+@export var show_custom: bool = true
 
 @onready var scoll_container: ScrollContainer = get_parent() as ScrollContainer
 
 var deck_data: Array[MemoryDeckResource] = []
-var show_built_in: bool = true
-var show_custom: bool = true
+
 var text_filter: String = ""
 var is_in_foucus: bool = false
 
@@ -25,6 +29,8 @@ func _ready():
 	place_all_decks()
 	if is_mobile():
 		columns = 1
+
+	show_decks()
 
 func is_mobile() -> bool:
 	return OS.has_feature("web_android") or OS.has_feature("web_ios")
@@ -129,7 +135,3 @@ func show_decks():
 		if deck.is_selected and !deck.visible:
 			deck.restore_deck()
 			deck_unselected.emit()
-			
-		
-	
-		

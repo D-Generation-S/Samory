@@ -28,6 +28,7 @@ signal deck_changed(deck: MemoryDeckResource)
 
 var _timer_for_hide_delay: Timer
 var was_clicked: bool
+var _card_frozen: bool = false
 var getting_removed: bool = false
 var is_ai_turn: bool = false
 
@@ -58,10 +59,6 @@ func _enter_tree():
 	var parent_node = get_parent().get_parent() as MemoryGame
 	if parent_node == null:
 		printerr("No parent node was found!")
-		return
-
-	if !parent_node.game_state_changed.is_connected(state_changed):
-		parent_node.game_state_changed.connect(state_changed)
 
 func toggle_card_on():
 	var time_range = max_time_delay - min_time_delay
@@ -72,7 +69,9 @@ func toggle_card_on():
 func hide_card_now():
 	if back_side == null or back_side.is_hidden():
 		return
+	was_clicked = false
 	hide_card.emit()
+	lost_focus()
 	play_card_turn_sound()
 
 func get_height() -> float:
@@ -82,19 +81,29 @@ func freeze_card():
 	if back_side == null:
 		return
 	back_side.freeze_card()
+	_card_frozen = true
+	lost_focus()
 
 func unfreeze_card():
 	if back_side == null:
 		return
 	was_clicked = false
+	_card_frozen = false
 	back_side.unfreeze_card()
 
 func get_width() -> float:
 	return back_side.get_rect().size.x
 
 func card_was_clicked():
+	if _card_frozen:
+		return
 	if was_clicked:
 		printerr("Clicked on already revealed card")
+		return
+	force_reveal_card()
+
+func force_reveal_card():
+	if was_clicked:
 		return
 	was_clicked = true
 	freeze_card()
@@ -141,7 +150,7 @@ func card_is_focused() -> bool:
 	return back_side.is_currently_in_focus()
 
 func got_focus():
-	if was_clicked:
+	if was_clicked or _card_frozen:
 		return
 	card_in_focus.emit()
 
@@ -160,12 +169,3 @@ func play_sound(audio: AudioStream):
 
 func player_changed(ai_player: bool):
 	input_active.emit(!ai_player)
-
-func state_changed(new_state: int):
-	match new_state:
-		GameState.ROUND_FREEZE:
-			freeze_card()
-		GameState.ROUND_START:
-			unfreeze_card()
-		GameState.ROUND_END:
-			toggle_card_on()

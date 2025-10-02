@@ -1,0 +1,164 @@
+[gd_scene load_steps=23 format=3 uid="uid://1jf4yyijbnie"]
+
+[ext_resource type="Script" uid="uid://cdk7431i5avu5" path="res://src/menu/multiplayer_game_lobby/MultiplayerGameLobby.gd" id="1_fujdv"]
+[ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://scenes/menu/MenuBackground.tscn" id="2_udaat"]
+[ext_resource type="Script" uid="uid://pik1xooq47eq" path="res://src/game/multiplayer/MultiplayerLobby.gd" id="3_5oy8v"]
+[ext_resource type="PackedScene" uid="uid://d15qeu4s4bgjk" path="res://scenes/game/templates/TutorialWindow.tscn" id="4_nmt54"]
+[ext_resource type="Resource" uid="uid://cluxptx25nhcj" path="res://scenes/translations/MultiplayerWrongVersion.tres" id="5_nefmw"]
+[ext_resource type="Resource" uid="uid://ck0vtgvgswnha" path="res://scenes/translations/MultiplayerServerKicked.tres" id="6_057pv"]
+[ext_resource type="Resource" uid="uid://b1f3wjhvljg0r" path="res://scenes/translations/MultiplayerConnectionFailed.tres" id="7_t528b"]
+[ext_resource type="Resource" uid="uid://c2d7flycqg1e7" path="res://scenes/translations/MultiplayerPlayerJoined.tres" id="8_ec7gj"]
+[ext_resource type="Resource" uid="uid://bj4jw2ro5u4eq" path="res://scenes/translations/MultiplayerPlayerKicked.tres" id="9_cpxv2"]
+[ext_resource type="Resource" uid="uid://dbt1hbebn0dvj" path="res://scenes/translations/MultiplayerDeckHasBeenChanged.tres" id="10_rtr8t"]
+[ext_resource type="Script" uid="uid://co2n040hy5hu4" path="res://src/menu/multiplayer_game_lobby/GameBroadcast.gd" id="11_5oy8v"]
+[ext_resource type="Script" uid="uid://qpfiq11ml8y4" path="res://src/menu/multiplayer_game_lobby/MultiplayerGameList.gd" id="11_f7rnu"]
+[ext_resource type="PackedScene" uid="uid://de0if4rovyxsv" path="res://scenes/menu/PlayerCard.tscn" id="12_tupvp"]
+[ext_resource type="PackedScene" uid="uid://cjuq64u16spk4" path="res://scenes/menu/multiplayer/Chat.tscn" id="13_udaat"]
+[ext_resource type="Script" uid="uid://nqldsuknnfh6" path="res://src/menu/multiplayer_game_lobby/MultiplayerDecks.gd" id="14_j5g3f"]
+[ext_resource type="Script" uid="uid://bt7h8k61frlxw" path="res://src/menu/deck_viewer/DeckContainer.gd" id="15_m3g0j"]
+[ext_resource type="PackedScene" uid="uid://b3cv1g0a284mq" path="res://scenes/menu/DeckPreview.tscn" id="16_h314c"]
+[ext_resource type="Script" uid="uid://ep7mvi0mvj1a" path="res://src/menu/multiplayer_game_lobby/MultiplayerStartGame.gd" id="17_vmvut"]
+[ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="18_3ilta"]
+[ext_resource type="Script" uid="uid://ba0o865f2c2k4" path="res://src/menu/multiplayer_game_lobby/MultiplayerCloseLobby.gd" id="19_33gyw"]
+[ext_resource type="Script" uid="uid://6fa28680utd5" path="res://src/game/overlay/PopupManager.gd" id="20_qmoly"]
+[ext_resource type="PackedScene" uid="uid://y8ij2nqvugsq" path="res://scenes/menu/multiplayer/ConnectionStateMessage.tscn" id="21_udaat"]
+
+[node name="MultiplayerLobby" type="CanvasLayer"]
+script = ExtResource("1_fujdv")
+
+[node name="MenuBackground" parent="." instance=ExtResource("2_udaat")]
+
+[node name="MultiplayerLobby" type="Node" parent="."]
+script = ExtResource("3_5oy8v")
+popup_window_template = ExtResource("4_nmt54")
+wrong_version_translation = ExtResource("5_nefmw")
+kicked_by_server = ExtResource("6_057pv")
+connection_failed = ExtResource("7_t528b")
+player_joined_message = ExtResource("8_ec7gj")
+player_kicked_message = ExtResource("9_cpxv2")
+deck_has_been_changed = ExtResource("10_rtr8t")
+metadata/_custom_type_script = "uid://pik1xooq47eq"
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("11_5oy8v")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Players" type="PanelContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer/Players"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer/Players/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayerList" type="Label" parent="MarginContainer/VBoxContainer2/VBoxContainer/Players/VBoxContainer3/VBoxContainer"]
+layout_mode = 2
+text = "PLAYER_LIST"
+
+[node name="Players" type="ScrollContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer/Players/VBoxContainer3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayerList" type="VBoxContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer/Players/VBoxContainer3/VBoxContainer/Players"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("11_f7rnu")
+player_template = ExtResource("12_tupvp")
+
+[node name="Chat" parent="MarginContainer/VBoxContainer2/VBoxContainer/Players/VBoxContainer3" instance=ExtResource("13_udaat")]
+layout_mode = 2
+
+[node name="Decks" type="PanelContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("14_j5g3f")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer/Decks"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer2/VBoxContainer/Decks/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "FILTER_DECKS"
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer/Decks/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 2
+script = ExtResource("15_m3g0j")
+deck_preview_template = ExtResource("16_h314c")
+show_custom = false
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer2/PanelContainer"]
+layout_mode = 2
+
+[node name="StartGame" type="Button" parent="MarginContainer/VBoxContainer2/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "START_GAME"
+script = ExtResource("17_vmvut")
+is_server_only = true
+
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer2/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+shortcut = ExtResource("18_3ilta")
+text = "ABORT"
+script = ExtResource("19_33gyw")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("20_qmoly")
+
+[node name="ConnectingMessage" parent="CenterContainer" instance=ExtResource("21_udaat")]
+layout_mode = 2
+
+[connection signal="connect_server" from="." to="MultiplayerLobby" method="connect_to_server"]
+[connection signal="set_player_namer" from="." to="MultiplayerLobby" method="player_name_changed"]
+[connection signal="start_server" from="." to="MultiplayerLobby" method="start_server"]
+[connection signal="clear_players" from="MultiplayerLobby" to="MarginContainer/VBoxContainer2/VBoxContainer/Players/VBoxContainer3/VBoxContainer/Players/PlayerList" method="clear_player_list"]
+[connection signal="clear_players" from="MultiplayerLobby" to="MarginContainer/VBoxContainer2/PanelContainer/HBoxContainer/StartGame" method="players_updated"]
+[connection signal="connection_established" from="MultiplayerLobby" to="CenterContainer/ConnectingMessage" method="got_connected"]
+[connection signal="player_disconnected" from="MultiplayerLobby" to="MarginContainer/VBoxContainer2/VBoxContainer/Players/VBoxContainer3/VBoxContainer/Players/PlayerList" method="player_disconnected"]
+[connection signal="player_joined" from="MultiplayerLobby" to="MarginContainer/VBoxContainer2/VBoxContainer/Players/VBoxContainer3/VBoxContainer/Players/PlayerList" method="player_added"]
+[connection signal="show_error_popup" from="MultiplayerLobby" to="CenterContainer" method="add_and_show_popup"]
+[connection signal="player_kicked" from="MarginContainer/VBoxContainer2/VBoxContainer/Players/VBoxContainer3/VBoxContainer/Players/PlayerList" to="MultiplayerLobby" method="kick_player"]
+[connection signal="request_player_list" from="MarginContainer/VBoxContainer2/VBoxContainer/Players/VBoxContainer3/VBoxContainer/Players/PlayerList" to="MultiplayerLobby" method="announce_player_list"]
+[connection signal="resync_player_order" from="MarginContainer/VBoxContainer2/VBoxContainer/Players/VBoxContainer3/VBoxContainer/Players/PlayerList" to="MultiplayerLobby" method="player_list_order_changed"]
+[connection signal="text_changed" from="MarginContainer/VBoxContainer2/VBoxContainer/Decks/VBoxContainer/LineEdit" to="MarginContainer/VBoxContainer2/VBoxContainer/Decks/VBoxContainer/GridContainer" method="filter_decks_by_name"]
+[connection signal="deck_selected" from="MarginContainer/VBoxContainer2/VBoxContainer/Decks/VBoxContainer/GridContainer" to="MultiplayerLobby" method="set_deck"]
+[connection signal="deck_selected" from="MarginContainer/VBoxContainer2/VBoxContainer/Decks/VBoxContainer/GridContainer" to="MarginContainer/VBoxContainer2/PanelContainer/HBoxContainer/StartGame" method="deck_changed"]
+[connection signal="start_game" from="MarginContainer/VBoxContainer2/PanelContainer/HBoxContainer/StartGame" to="MultiplayerLobby" method="start_game"]
