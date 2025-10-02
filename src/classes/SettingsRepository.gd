@@ -14,7 +14,7 @@ func load_settings() -> SettingsResource:
 	if !FileAccess.file_exists(settings_file):
 		return default_settings
 
-	var save_file = FileAccess.open(settings_file, FileAccess.READ)
+	var save_file: FileAccess = FileAccess.open(settings_file, FileAccess.READ)
 	var data: Dictionary = JSON.parse_string(save_file.get_as_text())
 	save_file.close()
 	var return_settings: SettingsResource = default_settings.duplicate_deep()
@@ -37,6 +37,9 @@ func load_settings() -> SettingsResource:
 	return_settings.master_volume = clampf(return_settings.master_volume, 0, 1)
 	return_settings.effect_volume = clampf(return_settings.effect_volume, 0, 1)
 	return_settings.music_volume = clampf(return_settings.music_volume, 0, 1)
+
+	return_settings.default_multiplayer_name = data.get_or_add("multiplayer_name", "")
+	return_settings.last_used_ip = data.get_or_add("last_used_ip", "127.0.0.1")
 	
 	loaded_settings = return_settings
 	
@@ -57,11 +60,13 @@ func save_settings(settings: SettingsResource) -> bool:
 		"effect_volume": settings.effect_volume,
 		"music_volume": settings.music_volume,
 		"tutorial_aborted": settings.tutorial_aborted,
-		"completed_tutorials": settings.tutorials
+		"completed_tutorials": settings.tutorials,
+		"multiplayer_name": settings.default_multiplayer_name,
+		"last_used_ip": settings.last_used_ip
 	}
 
-	var file = FileAccess.open(settings_file, FileAccess.WRITE)
-	var indent = ""
+	var file: FileAccess = FileAccess.open(settings_file, FileAccess.WRITE)
+	var indent: String = ""
 	if OS.is_debug_build():
 		indent = "\t"
 	file.store_line(JSON.stringify(data_to_save, indent))
@@ -69,3 +74,7 @@ func save_settings(settings: SettingsResource) -> bool:
 
 	loaded_settings = null
 	return load_settings() != null
+
+func save_current_settings() -> void:
+	var settings: SettingsResource = load_settings()
+	save_settings(settings)

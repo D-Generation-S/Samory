@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bnfr8gek24m47"]
+[gd_scene load_steps=29 format=3 uid="uid://bnfr8gek24m47"]
 
 [ext_resource type="Script" uid="uid://bhgb4virmkji8" path="res://src/game/MemoryGame.gd" id="1_13jq5"]
 [ext_resource type="Resource" uid="uid://cnl5uxkf36ely" path="res://scenes/translations/TurnEndBannerMessage.tres" id="2_fspeh"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://d15qeu4s4bgjk" path="res://scenes/game/templates/TutorialWindow.tscn" id="22_ubsrg"]
 [ext_resource type="Texture2D" uid="uid://vk4fpd7xo01j" path="res://assets/sprites/Axuree/wood_medium.png" id="23_a3528"]
 [ext_resource type="Script" uid="uid://btm576yjkyt4j" path="res://src/game/CardSpawner.gd" id="26_a3528"]
+[ext_resource type="Script" uid="uid://drr3p4wba2ys3" path="res://src/game/multiplayer/NetworkHandler.gd" id="29_kihnp"]
 
 [node name="MemoryGame" type="Node2D" node_paths=PackedStringArray("game_nodes_to_show", "card_target_node")]
 process_mode = 1
@@ -137,15 +138,23 @@ metadata/_custom_type_script = "uid://btm576yjkyt4j"
 position = Vector2(-11367, -8587)
 is_ghost = true
 
+[node name="NetworkHandler" type="Node" parent="." node_paths=PackedStringArray("player_node")]
+script = ExtResource("29_kihnp")
+finished_game_template = ExtResource("4_6f670")
+player_node = NodePath("../Players")
+
 [connection signal="card_loading_done" from="." to="Camera2D" method="loading_done"]
 [connection signal="card_loading_done" from="." to="CanvasLayer/MenuButton" method="show_button"]
 [connection signal="card_loading_done" from="." to="CanvasLayer/PlayersOverlay" method="show"]
 [connection signal="card_loading_done" from="." to="CanvasLayer/VBoxContainer/ZoomIn" method="show_button"]
 [connection signal="card_loading_done" from="." to="CanvasLayer/VBoxContainer/ZoomOut" method="show_button"]
+[connection signal="card_loading_done" from="." to="Cards" method="announce_card_field"]
 [connection signal="card_loading_done" from="." to="Cards" method="card_loading_done"]
 [connection signal="card_triggered" from="." to="AI" method="card_was_triggered"]
+[connection signal="card_triggered" from="." to="NetworkHandler" method="card_clicked"]
 [connection signal="close_last_message_box" from="." to="CanvasLayer/PopupManager" method="force_close_popup_with_id"]
 [connection signal="game_has_endet" from="." to="CanvasLayer/PlayersOverlay" method="game_ended"]
+[connection signal="game_has_endet" from="." to="NetworkHandler" method="end_game"]
 [connection signal="game_paused" from="." to="PlayerInput" method="game_paused"]
 [connection signal="game_paused" from="." to="Camera2D" method="game_paused"]
 [connection signal="game_state_changed" from="." to="Players" method="game_state_changed"]
@@ -153,16 +162,22 @@ is_ghost = true
 [connection signal="game_state_changed" from="." to="PlayerInput" method="game_state_changed"]
 [connection signal="game_state_changed" from="." to="CanvasLayer/PlayersOverlay" method="game_state_changed"]
 [connection signal="game_state_changed" from="." to="Cards" method="game_state_changed"]
+[connection signal="game_state_changed" from="." to="NetworkHandler" method="game_state_changed"]
 [connection signal="identical_cards" from="." to="AI" method="card_was_identically"]
+[connection signal="identical_cards" from="." to="NetworkHandler" method="matching_pair"]
 [connection signal="load_game" from="." to="Cards/CardSpawner" method="place_cards_from_deck"]
 [connection signal="player_scored" from="." to="Players" method="player_scored"]
+[connection signal="player_scored" from="." to="NetworkHandler" method="player_scored"]
+[connection signal="remove_card" from="." to="Cards" method="remove_card_from_board"]
 [connection signal="request_popup" from="." to="CanvasLayer/PopupManager" method="add_and_show_popup"]
 [connection signal="trigger_tutorial" from="." to="CanvasLayer/Tutorial" method="trigger_tutorial"]
 [connection signal="player_added" from="Players" to="CanvasLayer/PlayersOverlay" method="add_player"]
 [connection signal="player_changed" from="Players" to="CanvasLayer/PlayersOverlay" method="player_changed"]
 [connection signal="player_resource_changed" from="Players" to="AI" method="player_changed"]
+[connection signal="player_resource_changed" from="Players" to="PlayerInput" method="player_changed"]
 [connection signal="player_resource_changed" from="Players" to="Camera2D" method="player_changed"]
 [connection signal="player_resource_changed" from="Players" to="Cards" method="player_changed"]
+[connection signal="player_resource_changed" from="Players" to="NetworkHandler" method="player_changed"]
 [connection signal="player_score_changed" from="Players" to="CanvasLayer/PlayersOverlay" method="player_scored"]
 [connection signal="card_movement" from="PlayerInput" to="Cards" method="parse_movement"]
 [connection signal="confirm_current_card" from="PlayerInput" to="Cards" method="confirm_current_card"]
@@ -175,3 +190,11 @@ is_ghost = true
 [connection signal="announce_field_size" from="Cards/CardSpawner" to="Camera2D" method="adjust_zoom_and_position_to_play_area"]
 [connection signal="card_loading_done" from="Cards/CardSpawner" to="." method="all_cards_placed"]
 [connection signal="card_placed" from="Cards/CardSpawner" to="." method="card_was_placed"]
+[connection signal="card_was_clicked" from="NetworkHandler" to="Cards" method="trigger_card_at_position"]
+[connection signal="game_has_been_finished" from="NetworkHandler" to="CanvasLayer/PlayersOverlay" method="game_ended"]
+[connection signal="game_state_has_changed" from="NetworkHandler" to="PlayerInput" method="game_state_changed"]
+[connection signal="game_state_has_changed" from="NetworkHandler" to="Cards" method="game_state_changed"]
+[connection signal="player_has_changed" from="NetworkHandler" to="Players" method="set_player_by_id"]
+[connection signal="player_has_scored" from="NetworkHandler" to="Players" method="set_player_score"]
+[connection signal="remove_card" from="NetworkHandler" to="Cards" method="remove_card_from_board"]
+[connection signal="request_popup" from="NetworkHandler" to="CanvasLayer/PopupManager" method="add_and_show_popup"]

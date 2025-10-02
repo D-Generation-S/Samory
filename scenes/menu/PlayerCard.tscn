@@ -81,6 +81,9 @@ icon = SubResource("AtlasTexture_fb3y2")
 icon_alignment = 1
 script = ExtResource("6_ok6yb")
 
+[connection signal="cannot_delete" from="." to="PanelContainer/HBoxContainer/RemovePlayer" method="hide"]
+[connection signal="cannot_move" from="." to="PanelContainer/HBoxContainer/MoveUp" method="hide"]
+[connection signal="cannot_move" from="." to="PanelContainer/HBoxContainer/MoveDown" method="hide"]
 [connection signal="regain_focus_request" from="." to="PanelContainer/HBoxContainer/MoveUp" method="regain_focus"]
 [connection signal="regain_focus_request" from="." to="PanelContainer/HBoxContainer/MoveDown" method="regain_focus"]
 [connection signal="regain_focus_request" from="." to="PanelContainer/HBoxContainer/RemovePlayer" method="regain_focus"]

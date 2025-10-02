@@ -20,7 +20,7 @@ func _ready():
 		close()
 
 func show_window(new_title: String, new_body: String, allow_abort: bool = true):
-	title.text = tr(new_title)
+	title.text = new_title
 	body.add_animated_text(new_body)
 	abort_tutorial_check.button_pressed = false
 	should_abort_tutorial = false

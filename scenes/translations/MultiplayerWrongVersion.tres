@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TextTranslation" load_steps=2 format=3 uid="uid://cluxptx25nhcj"]
+
+[ext_resource type="Script" uid="uid://b3ccmsvxi5x8x" path="res://src/templates/TextTranslation.gd" id="1_g1yw0"]
+
+[resource]
+script = ExtResource("1_g1yw0")
+key = "MULTIPLAYER_WRONG_VERSION"
+comment = "Player got kicked from the server, because the game version is different, requires two %s placeholders for game versions of client and server"
+metadata/_custom_type_script = "uid://b3ccmsvxi5x8x"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://co10o6j0oxeep"]
+[gd_scene load_steps=34 format=3 uid="uid://co10o6j0oxeep"]
 
 [ext_resource type="Script" uid="uid://chjw5lk6vyisx" path="res://src/menu/main_menu/QuitGameButton.gd" id="1_6c3ib"]
 [ext_resource type="Script" uid="uid://duplgguwpsw7p" path="res://src/menu/main_menu/StartQuickGame.gd" id="1_dyfxg"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://cagpu6d10g55o" path="res://src/templates/AiDifficultyResource.gd" id="6_k6mp2"]
 [ext_resource type="Resource" uid="uid://bvccy0uqye5ff" path="res://scenes/game/resources/ai/EasyAi.tres" id="7_2i4h7"]
 [ext_resource type="PackedScene" uid="uid://n2r2v72dltn8" path="res://scenes/menu/Credits.tscn" id="7_63ye2"]
+[ext_resource type="PackedScene" uid="uid://bcc3pe48h2wb8" path="res://scenes/menu/multiplayer/MultiplayerStart.tscn" id="7_pwy2o"]
 [ext_resource type="Resource" uid="uid://dlrxaqb0lgbif" path="res://scenes/game/resources/ai/NormalAi.tres" id="8_cilha"]
 [ext_resource type="Texture2D" uid="uid://cg0l7tvqmtghr" path="res://assets/sprites/sheet_white1x.png" id="8_txxco"]
 [ext_resource type="PackedScene" uid="uid://cn2mtwmpg34g8" path="res://scenes/menu/GameVersion.tscn" id="8_xjhtt"]
@@ -84,6 +85,16 @@ transmit_click_position = true
 is_focused = true
 can_multi_click = false
 animation_resource = ExtResource("5_d75fr")
+
+[node name="LocalMultiplayer" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "LOCAL_MULTIPLAYER_TOOLTIP"
+text = "LOCAL_MULTIPLAYER"
+script = ExtResource("1_ohfem")
+scene_template = ExtResource("7_pwy2o")
+transmit_click_position = true
+available_on_mobile_and_web = false
+can_multi_click = false
 
 [node name="Quick Game AI" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" node_paths=PackedStringArray("dynamic_neighbor_right")]
 layout_mode = 2

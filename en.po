@@ -33,6 +33,7 @@ msgid "RELOAD_CUSTOM_DECKS"
 msgstr "Reload custom decks"
 
 #: scenes/menu/DeckViewer.tscn scenes/menu/GameLobby.tscn
+#: scenes/menu/multiplayer/MultiplayerLobby.tscn
 msgid "FILTER_DECKS"
 msgstr "Filter decks by deck name"
 
@@ -63,11 +64,12 @@ msgid "SHOW_CUSTOM"
 msgstr "Only custom only"
 
 #: scenes/menu/DeckViewer.tscn scenes/menu/SettingsMenu.tscn
-#: scenes/menu/Credits.tscn
+#: scenes/menu/Credits.tscn scenes/menu/multiplayer/MultiplayerStart.tscn
 msgid "CLOSE"
 msgstr "Close"
 
 #: scenes/menu/GameLobby.tscn scenes/game/overlay/PlayersOverlay.tscn
+#: scenes/menu/multiplayer/MultiplayerLobby.tscn
 msgid "PLAYER_LIST"
 msgstr "Players"
 
@@ -102,11 +104,11 @@ msgstr ""
 msgid "ADD_AI_PLAYER"
 msgstr "Add AI Player"
 
-#: scenes/menu/GameLobby.tscn
+#: scenes/menu/GameLobby.tscn scenes/menu/multiplayer/MultiplayerLobby.tscn
 msgid "START_GAME_TOOLTIP"
 msgstr "Start the game with the currently listed players and the selected deck"
 
-#: scenes/menu/GameLobby.tscn
+#: scenes/menu/GameLobby.tscn scenes/menu/multiplayer/MultiplayerLobby.tscn
 msgid "START_GAME"
 msgstr "Start game"
 
@@ -122,6 +124,14 @@ msgstr "Create a custom game against AI or humans"
 #: scenes/menu/MainMenu.tscn
 msgid "CUSTOM_GAME"
 msgstr "Custom game"
+
+#: scenes/menu/MainMenu.tscn
+msgid "LOCAL_MULTIPLAYER_TOOLTIP"
+msgstr "Open LAN Multiplayer lobby (Experimental)"
+
+#: scenes/menu/MainMenu.tscn
+msgid "LOCAL_MULTIPLAYER"
+msgstr "LAN Multiplayer"
 
 #: scenes/menu/MainMenu.tscn
 msgid "QUICK_GAME_TOOLTIP"
@@ -873,7 +883,7 @@ msgstr ""
 msgid "Material Maker"
 msgstr ""
 
-#: scenes/menu/NewPlayer.tscn
+#: scenes/menu/NewPlayer.tscn scenes/menu/multiplayer/MultiplayerStart.tscn
 msgid "PLAYER_NAME"
 msgstr "Playername"
 
@@ -1004,6 +1014,90 @@ msgstr "Hardware Deck"
 #: scenes/game/resources/decks/HardwareDeck.tres
 msgid "HARDWARE_DECK_DESCRIPTION"
 msgstr "A deck containing items used in a office or with/within a pc"
+
+#. TRANSLATORS: Requires a single %s placeholder to add the name of the new deck
+#: scenes/translations/MultiplayerDeckHasBeenChanged.tres
+msgid "DECK_HAS_BEEN_CHANGED"
+msgstr "Deck was changed to %s"
+
+#. TRANSLATORS: Requires a single %s placeholder conng the player nametaini
+#: scenes/translations/MultiplayerPlayerJoined.tres
+msgid "MULTIPLAYER_PLAYER_JOINED"
+msgstr "Player %s joined the lobby"
+
+#. TRANSLATORS: Requires a single %s placeholder containing the player name
+#: scenes/translations/MultiplayerPlayerKicked.tres
+msgid "MULTIPLAYER_PLAYER_KICKED"
+msgstr "Player %s was kicked from the lobby"
+
+#. TRANSLATORS: Message client gets if he was kicked from the server
+#: scenes/translations/MultiplayerServerKicked.tres
+msgid "MULTIPLAYER_KICKED_BY_SERVER"
+msgstr "You where kicked from the server"
+
+#. TRANSLATORS: Player got kicked from the server, because the game version is different, requires two %s placeholders for game versions of client and server
+#: scenes/translations/MultiplayerWrongVersion.tres
+msgid "MULTIPLAYER_WRONG_VERSION"
+msgstr "You are using version %s while the server is running %s"
+
+#: scenes/menu/multiplayer/MultiplayerLobby.tscn
+msgid "ABORT_TOOLTIP"
+msgstr "Abort the current action or close the current Window"
+
+#: scenes/menu/multiplayer/MultiplayerLobby.tscn
+msgid "ABORT"
+msgstr "Abort"
+
+#: scenes/menu/multiplayer/MultiplayerStart.tscn
+msgid "AVAILABLE_SERVERS"
+msgstr "Available Servers"
+
+#: scenes/menu/multiplayer/MultiplayerStart.tscn
+msgid "SERVER_ADDRESS"
+msgstr "Server Address"
+
+#: scenes/menu/multiplayer/MultiplayerStart.tscn
+msgid "CONNECT_TOOLTIP"
+msgstr "Connect to a given IP address"
+
+#: scenes/menu/multiplayer/MultiplayerStart.tscn
+msgid "CONNECT"
+msgstr "Connect"
+
+#: scenes/menu/multiplayer/MultiplayerStart.tscn
+msgid "HOST_TOOLTIP"
+msgstr "Create a new server other players can join"
+
+#: scenes/menu/multiplayer/MultiplayerStart.tscn
+msgid "HOST"
+msgstr "Host"
+
+#: scenes/menu/multiplayer/MultiplayerStart.tscn
+msgid "CLOSE_TOOLTIP"
+msgstr "Close this menu"
+
+#. TRANSLATORS: Single placeholder %s required to add the ip address
+#: scenes/translations/MultiplayerConnectionFailed.tres
+msgid "MUTLIPLAYER_CONNECTION_FAILED"
+msgstr "Connection to server with ip %s failed"
+
+#: scenes/translations/MultiplayerConnectingToServer.tres
+msgid "CONNECTING_TO_SERVER"
+msgstr "Connecting to server"
+
+#. TRANSLATORS: Requires a single %s placeholder for player name
+#: scenes/translations/MultiplayerPlayerLeft.tres
+msgid "MULTIPLAYER_PLAYER_LEFT"
+msgstr "Player %s left the lobby"
+
+#~ msgid "PLAYER_NAME_TOOLTIP"
+#~ msgstr "The "
+
+#~ msgid "SEND"
+#~ msgstr "Send"
+
+#~ msgid "ABORT_CONNECTION"
+#~ msgstr "Abort Connection"
 
 #~ msgid "QUICK_AI_GAME_TOOLTIP"
 #~ msgstr ""

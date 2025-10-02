@@ -10,6 +10,12 @@ class_name SettingsResource extends Resource
 @export var auto_close_round: bool = true
 @export var close_round_after_seconds: float = 3
 @export_range(0.2, 3) var ui_scale_factor: float = 1
+
+@export_group("Audio")
 @export_range(0,1) var master_volume: float = 1
 @export_range(0,1) var effect_volume: float = 1
 @export_range(0,1) var music_volume: float = 1
+
+@export_group("Multiplayer")
+@export var default_multiplayer_name: String = ""
+@export var last_used_ip: String = "127.0.0.1"
