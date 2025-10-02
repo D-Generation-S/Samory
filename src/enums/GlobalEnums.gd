@@ -1,8 +1,17 @@
 extends Node
-enum Tutorial_State{
+enum Tutorial_State
+{
 	UNKNOWN = 0,
 	PLAYER_TURN = 1,
 	PLAYER_TURNED_CARD = 2,
 	PLAYER_FOUND_MATCHING_PAIR = 3,
 	PLAYER_TURN_END = 4
-    }
+}
+
+enum Game_State
+{
+	ROUND_START,
+    ROUND_FREEZE,
+    PREPARE_ROUND_END,
+    ROUND_END
+}

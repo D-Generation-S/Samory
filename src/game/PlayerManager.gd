@@ -10,6 +10,8 @@ signal player_score_changed(player_id: int, score: int)
 var players: Array[PlayerResource]
 var current_player_index: int
 
+var _initial_announce: bool = false
+
 func add_players(players_to_add: Array[PlayerResource]):
 	players_to_add.sort_custom(player_sort)
 	players = players_to_add
@@ -36,15 +38,33 @@ func next_player():
 	player_changed.emit(get_current_player().id)
 	player_resource_changed.emit(get_current_player())
 
-func player_scored(player_id):
-	var selected_player = null
+func player_scored(scoring_player: PlayerResource):
+	var selected_player: PlayerResource = null
 	for player in players:
-		if player.id == player_id:
+		if player.id == scoring_player.id:
 			selected_player = player
 			break
-	selected_player.score = selected_player.score + 1
-	player_score_changed.emit(selected_player.id, selected_player.score)
+	set_player_score(selected_player.id, selected_player.score + 1)
 
 func game_state_changed(game_state:int):
+	if game_state == GameState.ROUND_START and !_initial_announce:
+		_initial_announce = true
+		player_resource_changed.emit(get_current_player())
 	if game_state == GameState.ROUND_END:
 		next_player()
+
+func set_player_by_id(id: int):
+	var index = players.find_custom(func(player: PlayerResource): return player.id == id)
+	if index == -1:
+		return
+
+	current_player_index = index
+	player_changed.emit(get_current_player().id)
+	player_resource_changed.emit(get_current_player())
+
+func set_player_score(id: int, score: int):
+	var index = players.find_custom(func(player: PlayerResource): return player.id == id)
+	if index == -1:
+		return
+	players[index].score = score
+	player_score_changed.emit(players[index].id, players[index].score)

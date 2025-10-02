@@ -1,0 +1,88 @@
+[gd_scene load_steps=6 format=3 uid="uid://1jf4yyijbnie"]
+
+[ext_resource type="Script" uid="uid://pik1xooq47eq" path="res://src/game/multiplayer/MultiplayerLobby.gd" id="1_4pita"]
+[ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://scenes/menu/MenuBackground.tscn" id="1_5rtyc"]
+[ext_resource type="Script" uid="uid://cdk7431i5avu5" path="res://src/menu/multiplayer_game_lobby/MultiplayerGameLobby.gd" id="1_javwl"]
+[ext_resource type="Script" uid="uid://qpfiq11ml8y4" path="res://src/menu/multiplayer_game_lobby/MultiplayerGameList.gd" id="3_yhfaa"]
+[ext_resource type="PackedScene" uid="uid://de0if4rovyxsv" path="res://scenes/menu/PlayerCard.tscn" id="4_javwl"]
+
+[node name="MultiplayerLobby" type="CanvasLayer"]
+script = ExtResource("1_javwl")
+
+[node name="MenuBackground" parent="." instance=ExtResource("1_5rtyc")]
+
+[node name="MultiplayerLobby" type="Node" parent="."]
+script = ExtResource("1_4pita")
+metadata/_custom_type_script = "uid://pik1xooq47eq"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Players" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Players"]
+layout_mode = 2
+
+[node name="PlayerList" type="Label" parent="MarginContainer/VBoxContainer/Players/VBoxContainer"]
+layout_mode = 2
+text = "PLAYER_LIST"
+
+[node name="Players" type="ScrollContainer" parent="MarginContainer/VBoxContainer/Players/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayerList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Players/VBoxContainer/Players"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("3_yhfaa")
+player_template = ExtResource("4_javwl")
+
+[node name="Settings" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Chat" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Chat"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Chat/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "CHAT"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Chat/VBoxContainer"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/Chat/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "MESSAGE"
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/Chat/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "SEND"
+
+[connection signal="connect_server" from="." to="MultiplayerLobby" method="connect_to_server"]
+[connection signal="set_player_namer" from="." to="MultiplayerLobby" method="player_name_changed"]
+[connection signal="start_server" from="." to="MultiplayerLobby" method="start_server"]
+[connection signal="player_disconnected" from="MultiplayerLobby" to="MarginContainer/VBoxContainer/Players/VBoxContainer/Players/PlayerList" method="player_disconnected"]
+[connection signal="player_joined" from="MultiplayerLobby" to="MarginContainer/VBoxContainer/Players/VBoxContainer/Players/PlayerList" method="player_added"]
+[connection signal="player_kicked" from="MarginContainer/VBoxContainer/Players/VBoxContainer/Players/PlayerList" to="MultiplayerLobby" method="kick_player"]
+[connection signal="request_player_list" from="MarginContainer/VBoxContainer/Players/VBoxContainer/Players/PlayerList" to="MultiplayerLobby" method="announce_player_list"]

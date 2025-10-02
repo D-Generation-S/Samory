@@ -9,9 +9,10 @@ signal game_paused(is_paused: bool)
 signal card_loading_done()
 
 signal card_triggered(game_state: int, clicked_cards: Array[CardTemplate])
+signal remove_card(grid_position: Point)
 signal identical_cards(first_card_point: Point, set_icon_modulated_card_point: Point)
 
-signal player_scored(player_id: int)
+signal player_scored(player: PlayerResource)
 
 signal request_popup(window: PopupWindow)
 signal close_last_message_box(id: int)
@@ -49,6 +50,8 @@ var message_banner: PackedScene = preload("res://scenes/game/overlay/BottomMessa
 var auto_close_popup: PackedScene = preload("res://scenes/game/overlay/AutoClosePopup.tscn")
 var last_message_banner_id: int = -1
 
+var _is_local_only: bool = true
+
 func _ready():
 	process_mode = PROCESS_MODE_DISABLED
 	player_node = get_node("%Players")
@@ -70,9 +73,12 @@ func all_cards_placed():
 			
 	card_loading_done.emit()
 	process_mode = Node.PROCESS_MODE_INHERIT
-	start_round_now()
+	if execute_logic():
+		start_round_now()
 
 func _process(_delta):
+	if !execute_logic():
+		return
 	if current_game_state == GameState.ROUND_END:
 		check_if_round_complete()
 	if current_game_state == GameState.ROUND_FREEZE:
@@ -88,6 +94,9 @@ func check_if_round_can_be_closed():
 		round_closed_now()
 
 func card_was_triggered():
+	if !execute_logic():
+		card_triggered.emit(GameState.ROUND_START, get_clicked_cards())
+		return
 	if current_game_state == GameState.ROUND_END:
 		return
 	triggered_cards = triggered_cards + 1
@@ -101,14 +110,13 @@ func card_was_triggered():
 	if cards_where_identically():
 		if !current_player.is_ai():
 			trigger_tutorial.emit(Enums.Tutorial_State.PLAYER_FOUND_MATCHING_PAIR)
-		for child in card_target_node.get_children():
-			if child is CardTemplate and child.is_turned():
-				child.remove_from_board()
+		for card in clicked_cards:
+			remove_card.emit(card.grid_position)
 		if sound_effect != null:
 			GlobalSoundBridge.play_sound(sound_effect)
 		triggered_cards = 0
 		removed_cards = removed_cards + 1
-		player_scored.emit(current_player.id)
+		player_scored.emit(current_player)
 		check_card_state()
 		return 
 	if triggered_cards >= CARDS_PER_PLAYER:
@@ -153,7 +161,7 @@ func freeze_round_now():
 func round_closed_now():
 	print("Closing round")
 	current_game_state = GameState.PREPARE_ROUND_END
-	var current_player = player_node.get_current_player()
+	var current_player := player_node.get_current_player()
 	if !current_player.is_ai():
 		trigger_tutorial.emit(Enums.Tutorial_State.PLAYER_TURN_END)
 	game_state_changed.emit(current_game_state)
@@ -247,3 +255,12 @@ func check_if_round_complete():
 	if card_not_hidden:
 		return
 	start_round_now()
+
+func set_is_multiplayer():
+	_is_local_only = false
+
+func execute_logic() -> bool:
+	if _is_local_only:
+		return true
+	
+	return multiplayer.is_server()

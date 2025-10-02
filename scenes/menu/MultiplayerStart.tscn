@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcc3pe48h2wb8"]
+
+[ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://scenes/menu/MenuBackground.tscn" id="1_j1a2p"]
+[ext_resource type="Script" uid="uid://brbcc8bllpjah" path="res://src/menu/generic/LineEditValidation.gd" id="2_3jk0x"]
+[ext_resource type="PackedScene" uid="uid://1jf4yyijbnie" path="res://scenes/menu/MultiplayerLobby.tscn" id="4_osryj"]
+[ext_resource type="Script" uid="uid://d0jkx58w1a850" path="res://src/menu/multiplayer_game_lobby/HostMultiplayerGame.gd" id="5_h86l2"]
+
+[node name="MultiplayerStart" type="CanvasLayer"]
+
+[node name="MenuBackground" parent="." instance=ExtResource("1_j1a2p")]
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(750, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -42.0
+offset_right = 36.0
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="LineEditValidation" type="LineEdit" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "PLAYER_NAME"
+script = ExtResource("2_3jk0x")
+metadata/_custom_type_script = "uid://brbcc8bllpjah"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LineEditValidation" type="LineEdit" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "SERVER_ADDRESS"
+script = ExtResource("2_3jk0x")
+metadata/_custom_type_script = "uid://brbcc8bllpjah"
+
+[node name="Connect" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "CONNECT"
+script = ExtResource("5_h86l2")
+game_lobby_template = ExtResource("4_osryj")
+is_connect_button = true
+
+[node name="Host" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "HOST"
+script = ExtResource("5_h86l2")
+game_lobby_template = ExtResource("4_osryj")
+
+[connection signal="text_submitted" from="PanelContainer/VBoxContainer/LineEditValidation" to="PanelContainer/VBoxContainer/HBoxContainer/Connect" method="name_updated"]
+[connection signal="text_submitted" from="PanelContainer/VBoxContainer/LineEditValidation" to="PanelContainer/VBoxContainer/Host" method="name_updated"]
+[connection signal="text_submitted" from="PanelContainer/VBoxContainer/HBoxContainer/LineEditValidation" to="PanelContainer/VBoxContainer/HBoxContainer/Connect" method="ip_updated"]

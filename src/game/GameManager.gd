@@ -145,6 +145,25 @@ func open_menu(scene: PackedScene) -> Node:
 
 	return new_node;
 
+func play_network_game(players: Array[PlayerResource], deck: MemoryDeckResource, click_position: Vector2):
+	for player in players:
+		player.score = 0
+		
+	_rpc_load_game.rpc(_build_network_game_package(players, deck, click_position))
+
+func _build_network_game_package(players: Array[PlayerResource], deck: MemoryDeckResource, click_position: Vector2) -> Dictionary:
+	var network_players: Array[Dictionary] = []
+	for player in players:
+		network_players.append(player.get_network_data_set())
+	return {
+		"players": network_players,
+		"deck-path": deck.resource_path,
+		"click-position": {
+			"x": click_position.x,
+			"y": click_position.y,
+		}
+	}
+
 func play_game_with_position(players: Array[PlayerResource], deck: MemoryDeckResource, click_position: Vector2):
 	for player in players:
 		player.score = 0
@@ -155,6 +174,40 @@ func play_game(players: Array[PlayerResource], deck: MemoryDeckResource):
 
 func quit_game():
 	get_tree().quit()
+
+@rpc("call_local", "reliable")
+func _rpc_load_game(game_data: Dictionary):
+	print(game_data)
+	var players: Array[PlayerResource] = []
+	for player_data in game_data["players"]:
+		var player := PlayerResource.new()
+		player.name = player_data["name"]
+		player.id = player_data["id"]
+		player.score = player_data["score"]
+		player.order_number = player_data["order"]
+		if player_data["ai-path"] != "":
+			player.ai_difficulty = load(player_data["ai-path"])
+
+		players.append(player)
+	
+	var click_position: Vector2 = Vector2.ZERO
+	var card_deck: MemoryDeckResource = load(game_data["deck-path"]) as MemoryDeckResource
+
+	var game_scene_node = game_scene.instantiate() as MemoryGame
+	game_scene_node.set_is_multiplayer()
+	game_scene_node.card_deck = card_deck
+	game_scene_node.ready.connect(func():
+		game_scene_node.set_players(players)
+		if multiplayer.is_server():
+			game_scene_node.start_loading_data()
+	)
+
+	var loading_screen = loading_screen_template.instantiate() as LoadingScreen
+	loading_screen.set_follow_up_node(game_scene_node)
+	game_scene_node.card_loading_done.connect(loading_screen.destroy)
+
+	await ScreenTransitionManager.transit_screen_by_node_with_position(loading_screen, click_position, false)
+	get_tree().root.add_child(game_scene_node)
 
 func load_game(card_deck: Resource, players: Array[PlayerResource], click_position: Vector2):
 	var current_player_id = 0
@@ -182,6 +235,8 @@ func get_available_decks() -> Array[MemoryDeckResource]:
 	var return_array: Array[MemoryDeckResource] = []
 	return_array.append_array(translated_build_in_decks)
 	return_array.append_array(GlobalSystemDeckManager.get_system_decks())
+	for deck in return_array:
+		deck.ready_up()
 	return return_array
 
 func clear_all_nodes():

@@ -7,6 +7,8 @@ signal move_up_request(current_id: int)
 signal move_down_request(current_id: int)
 signal regain_focus_request()
 
+signal cannot_delete()
+
 @export var player_card: PlayerResource
 @export var human_player_icon: Texture
 @export var ai_player_icon: Texture
@@ -15,6 +17,7 @@ signal regain_focus_request()
 @export var player_name_field: Label
 
 var delete_queued: bool = false
+var can_delete: bool = true
 
 func _ready():
 	player_name_field.text = player_card.get_display_name()
@@ -22,6 +25,9 @@ func _ready():
 	if player_card.is_ai():
 		icon = ai_player_icon
 	icon_target.texture = icon
+
+	if !can_delete:
+		cannot_delete.emit()
 
 func delete_card():
 	delete_queued = true
