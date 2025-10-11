@@ -8,6 +8,8 @@ var timer: Timer = null;
 var triggered_cards: int = 0
 
 func _ready():
+	if multiplayer.get_peers().size() > 0 and !multiplayer.is_server():
+		queue_free()
 	timer = Timer.new()
 	timer.timeout.connect(timer_triggered)
 	add_child(timer)

@@ -5,14 +5,4 @@
 [resource]
 script = ExtResource("1_ivax6")
 window_mode = 2
-vsync_active = false
-load_custom_decks = true
-language_code = "en"
-tutorials = {}
-tutorial_aborted = false
-auto_close_popup_shown = false
-auto_close_round = true
-close_round_after_seconds = 3.0
-master_volume = 1.0
-effect_volume = 1.0
 music_volume = 0.15

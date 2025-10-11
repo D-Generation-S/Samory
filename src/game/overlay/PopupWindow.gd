@@ -19,3 +19,6 @@ func popup_active():
 
 func popup_paused():
 	pass
+
+func show_window(_new_title: String, _new_body: String, _allow_abort: bool = true):
+	pass

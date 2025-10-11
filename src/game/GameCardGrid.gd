@@ -107,6 +107,17 @@ func _get_card_on_same_axis(current_position: Point, valid_positions: Array[Poin
 
 	return return_point
 
+func trigger_card_at_position(grid_position: Point):
+	if select_card_at_position(grid_position):
+		if current_card == null:
+			return
+		current_card.force_reveal_card()
+
+func remove_card_from_board(grid_position: Point):
+	for child in get_children():
+		if child is CardTemplate and child.grid_position.is_identical(grid_position):
+			child.remove_from_board()
+
 func select_card_at_position(grid_position: Point) -> bool:
 	var found_card = false
 	var initial_card = current_card
@@ -151,7 +162,6 @@ func get_card_on_position(card_position: Point) -> MemoryCardResource:
 	return null
 		
 func parse_movement(information: Vector2):
-	print("parse")
 	if get_tree().paused or currently_ai_player:
 		return
 	controller_input_was_made = true
@@ -181,6 +191,7 @@ func card_loading_done():
 			)	
 
 func game_state_changed(game_state:int):
+	handle_card_state(game_state)
 	match game_state:
 		GameState.ROUND_START:
 			round_unfrozen()
@@ -209,8 +220,24 @@ func get_all_cards_currently_turned() -> Array[Point]:
 
 func player_changed(current_player:PlayerResource):
 	currently_ai_player = current_player.is_ai()
+	if multiplayer.get_peers().size() > 0 and current_player.id != multiplayer.get_unique_id():
+		currently_ai_player = true
 
 func disable_card_effects():
 	for card in get_tree().get_nodes_in_group("game_card"):
 		if card is CardTemplate:
 			card.lost_focus()
+
+func handle_card_state(new_state: int):
+	if new_state == GameState.PREPARE_ROUND_END:
+		return
+
+	for card in get_children():
+		if card is CardTemplate:
+			match new_state:
+				GameState.ROUND_FREEZE:
+					card.freeze_card()
+				GameState.ROUND_START:
+					card.unfreeze_card()
+				GameState.ROUND_END:
+					card.toggle_card_on()
