@@ -5,7 +5,7 @@ signal decks_loading()
 var is_locked: bool = false
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	super()
 	GlobalSystemDeckManager.loading_system_decks_done.connect(loading_done)
 	GlobalSystemDeckManager.loading_system_decks.connect(load_decks)
@@ -16,18 +16,18 @@ func _ready():
 		disabled = true
 		queue_free()
 
-func enable_button():
+func enable_button() -> void:
 	if is_locked:
 		return
 	super()
 
-func _pressed():
+func _pressed() -> void:
 	super()
 	GlobalSystemDeckManager.reload_system_decks()
 
-func loading_done():
+func loading_done() -> void:
 	disabled = false
 
-func load_decks():
+func load_decks() -> void:
 	decks_loading.emit()
 	disabled = true

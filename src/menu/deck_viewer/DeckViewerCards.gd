@@ -15,7 +15,7 @@ var is_initial_load: bool = true
 var current_deck: MemoryDeckResource = null
 var card_gen_thread: Thread = null
 
-func _ready():
+func _ready() -> void:
 	if is_mobile():
 		columns = 1
 
@@ -23,61 +23,61 @@ func is_mobile() -> bool:
 	return OS.has_feature("web_android") or OS.has_feature("web_ios")
 	
 func create_new_card_container(node_name: String) -> CardViewerTemplate:
-	var return_container = CardViewerTemplate.new()
+	var return_container: CardViewerTemplate = CardViewerTemplate.new()
 
 	return_container.name = node_name
 	return return_container
 
-func _process(_delta):
-	var scroll_vector = Input.get_axis("scroll_up", "scroll_down")
-	var is_in_foucus = !deck_container.is_scroll_focus()
+func _process(_delta: float) -> void:
+	var scroll_vector: float = Input.get_axis("scroll_up", "scroll_down")
+	var is_in_focus: bool = !deck_container.is_scroll_focus()
 
-	if is_in_foucus and scroll_vector != 0:
+	if is_in_focus and scroll_vector != 0:
 		scroll_container.scroll_vertical = ceili(scroll_container.scroll_vertical + scroll_vector * scroll_speed)
 
-func clear_card_view(restore_system: bool = true):
+func clear_card_view(restore_system: bool = true) -> void:
 	if get_children().size() == 0:
 		return
 	if !restore_system and !current_deck.built_in:
-		for card in get_children():
+		for card: Node in get_children():
 			card.queue_free()
 		return
 	move_cards_back(current_deck)
 	current_deck = null
 
-func decks_loading():
+func decks_loading() -> void:
 	clear_card_view(false)
 
-func show_cards(deck: MemoryDeckResource):
+func show_cards(deck: MemoryDeckResource) -> void:
 	if current_deck != null:
 		move_cards_back(current_deck)
 
 	current_deck = deck
-	var deck_card_parent = get_deck_preload_node(deck)
+	var deck_card_parent: Control = get_deck_preload_node(deck)
 	if deck_card_parent == null:
 		printerr("Deck template was missing, help")
 		return
 
-	for card_node in deck_card_parent.get_children():
+	for card_node: Node in deck_card_parent.get_children():
 		card_node.reparent(self)
 
 func get_deck_preload_node(deck: MemoryDeckResource) -> Control:
-	var source_node = built_in_card_container
+	var source_node: Control = built_in_card_container
 	if !deck.built_in:
 		source_node = system_card_container
 
-	var deck_card_parent = null 
-	for deck_template in source_node.get_children():
+	var deck_card_parent: Node = null 
+	for deck_template: Node in source_node.get_children():
 		if deck_template.name == str(deck.id):
 			deck_card_parent = deck_template
 			break
 
 	return deck_card_parent
 
-func card_name_sort(a: MemoryCardResource, b: MemoryCardResource):
+func card_name_sort(a: MemoryCardResource, b: MemoryCardResource) -> bool:
 	return a.name < b.name
 
-func decks_loaded(decks: Array[MemoryDeckResource]):
+func decks_loaded(decks: Array[MemoryDeckResource]) -> void:
 	clear_all_system_cards()
 
 	process_mode = Node.PROCESS_MODE_DISABLED
@@ -89,35 +89,35 @@ func decks_loaded(decks: Array[MemoryDeckResource]):
 
 	process_mode = Node.PROCESS_MODE_INHERIT
 
-	var data = card_gen_thread.wait_to_finish() as Array[CardViewerTemplate]
+	var data: Array[CardViewerTemplate] = card_gen_thread.wait_to_finish() as Array[CardViewerTemplate]
 	card_gen_thread = null
 
-	for card in data:
-		var parent = system_card_container
+	for card: CardViewerTemplate in data:
+		var parent: Control = system_card_container
 		if card.built_in:
 			parent = built_in_card_container
 		parent.add_child(card)
 
-func get_cards_async(decks: Array[MemoryDeckResource], inital_load: bool) -> Array[Control]:
-	var return_data: Array[Control] = []
-	for deck in decks:
-		if !deck.built_in or inital_load:
+func get_cards_async(decks: Array[MemoryDeckResource], initial_load: bool) -> Array[CardViewerTemplate]:
+	var return_data: Array[CardViewerTemplate] = []
+	for deck: MemoryDeckResource in decks:
+		if !deck.built_in or initial_load:
 			return_data.append(load_cards_from_deck(deck))
-	inital_load = false
+	initial_load = false
 
 	call_deferred("emit_signal","cards_preloaded")
 	return return_data
 
 func load_cards_from_deck(deck: MemoryDeckResource) -> CardViewerTemplate:
-	var parent = create_new_card_container(str(deck.id))
+	var parent: CardViewerTemplate = create_new_card_container(str(deck.id))
 	parent.built_in = deck.built_in
 
 	var cards: Array[MemoryCardResource] = deck.cards
 	cards.sort_custom(card_name_sort)
 
 	var card_number: int = 0
-	for card in cards:
-		var card_node = card_template.instantiate() as CardPreview
+	for card: MemoryCardResource in cards:
+		var card_node: CardPreview = card_template.instantiate() as CardPreview
 		card_node.set_card(card)
 		card_node.name = str(card_number)
 		parent.add_child(card_node)
@@ -125,15 +125,15 @@ func load_cards_from_deck(deck: MemoryDeckResource) -> CardViewerTemplate:
 	
 	return parent
 
-func clear_all_system_cards():
-	for card in system_card_container.get_children():
+func clear_all_system_cards() -> void:
+	for card: Node in system_card_container.get_children():
 		card.queue_free()
 
-func move_cards_back(target_deck: MemoryDeckResource):
-	var deck_card_parent = get_deck_preload_node(target_deck)
+func move_cards_back(target_deck: MemoryDeckResource) -> void:
+	var deck_card_parent: Control = get_deck_preload_node(target_deck)
 	if deck_card_parent == null:
 		printerr("Missing deck parent")
 		return
 
-	for card in get_children():
+	for card: Node in get_children():
 		card.reparent(deck_card_parent)

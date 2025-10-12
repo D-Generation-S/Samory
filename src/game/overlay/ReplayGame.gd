@@ -2,12 +2,12 @@ extends ClickableButton
 
 @export var finish_game_node: GameFinished
 
-func _ready():
+func _ready() -> void:
 	await get_tree().physics_frame
 	if finish_game_node.played_deck == null:
 		queue_free()
 
-func _pressed():
+func _pressed() -> void:
 	super()
 	get_tree().paused = false
 	if multiplayer.multiplayer_peer != null:

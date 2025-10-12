@@ -1,19 +1,16 @@
-extends  Node
+class_name LootTable extends Node
 
-class_name LootTable
+var loot_table: Array[Variant] = []
 
-var loot_table: Array = []
-
-func add_to_table(object, amount: int):
-    for i in range(amount):
+func add_to_table(object: Variant, amount: int) -> void:
+    for i: int in amount:
         loot_table.append(object)
 
-func clear_table():
+func clear_table() -> void:
     loot_table = []
 
-func get_loot():
+func get_loot() -> Variant:
     if loot_table.size() == 0:
         return null
     loot_table.shuffle()
-    var index = randi_range(0, loot_table.size() - 1)
-    return loot_table[index]
+    return loot_table.pick_random()

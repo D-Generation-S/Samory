@@ -27,7 +27,7 @@ var currently_ai: bool = false
 var animation_tween: Tween = null
 var _focus_tween: Tween = null
 
-func _ready():
+func _ready() -> void:
 	collider = get_children()[0]
 	visible = true
 	_internal_focus_material = focus_material.duplicate_deep()
@@ -35,11 +35,11 @@ func _ready():
 	# This ensures that each instance does get it's own shader instance
 	set_shader_material(_internal_toggle_material)
 
-func deck_changed(deck: MemoryDeckResource):
+func deck_changed(deck: MemoryDeckResource) -> void:
 	if deck.card_back != null:
 		texture = deck.card_back
 
-func toggle_on():
+func toggle_on() -> void:
 	can_remove = false
 	if is_hidden():
 		return
@@ -49,35 +49,35 @@ func toggle_on():
 	lost_focus()
 	animation_tween = create_tween()
 	animation_tween.tween_method(update_toggle_material, 1.0, 0.0, animation_time)
-	animation_tween.finished.connect(func(): fully_hidden.emit())
+	animation_tween.finished.connect(func() -> void: fully_hidden.emit())
 	if currently_in_focus:
 		set_shader_material(_internal_toggle_material)
 
-func freeze_card():
+func freeze_card() -> void:
 	collider.visible = false
 	
-func unfreeze_card():
+func unfreeze_card() -> void:
 	if currently_ai:
 		return
 	collider.visible = true
 
-func toggle_off():
+func toggle_off() -> void:
 	if animation_tween != null:
 		animation_tween.kill()
 	animation_tween = create_tween()
 	animation_tween.tween_method(update_toggle_material, 0.0, 1.0, animation_time)
-	animation_tween.finished.connect(func(): can_remove = true)
+	animation_tween.finished.connect(func() -> void: can_remove = true)
 	if currently_in_focus:
 		set_shader_material(_internal_toggle_material)
 
-func update_toggle_material(progress: float):
+func update_toggle_material(progress: float) -> void:
 	if material is ShaderMaterial:
 		material.set_shader_parameter("threshold", progress)	
 
-func is_focused():
+func is_focused() -> void:
 	if animation_tween != null && animation_tween.is_running():
 		return
-	for card in get_tree().get_nodes_in_group("game_card"):
+	for card: Node in get_tree().get_nodes_in_group("game_card"):
 		if card is CardTemplate and card.card_is_focused():
 			card.lost_focus()
 
@@ -86,7 +86,7 @@ func is_focused():
 	in_focus.emit()
 	_animate_focus(focus_scale)
 
-func lost_focus():
+func lost_focus() -> void:
 	currently_in_focus = false
 	set_shader_material(_internal_toggle_material)
 	if collider.visible:
@@ -94,21 +94,21 @@ func lost_focus():
 
 	_animate_focus(1.0)
 
-func _animate_focus(new_scale: float):
+func _animate_focus(new_scale: float) -> void:
 	_focus_tween = create_tween()
 	_focus_tween.tween_property(self, "scale", Vector2(new_scale, new_scale), focus_animation_time)
 
-func set_shader_material(new_material: Material):
+func set_shader_material(new_material: Material) -> void:
 	material = new_material
 
 func is_hidden() -> bool:
-	var card_back_visible = false
+	var card_back_visible: bool = false
 	if get_shader_threshold() <= 0:
 		card_back_visible = true
 	return card_back_visible
 
 func get_shader_threshold() -> float:
-	var value = -1.0
+	var value: float = -1.0
 	if material is ShaderMaterial:
 		value = material.get_shader_parameter("threshold")
 		if value == null:
@@ -116,7 +116,7 @@ func get_shader_threshold() -> float:
 	return value
 
 func is_fully_shown() -> bool:
-	var card_back_visible = true
+	var card_back_visible: bool = true
 	if get_shader_threshold() >= 1:
 		card_back_visible = false
 	return !card_back_visible
@@ -124,15 +124,15 @@ func is_fully_shown() -> bool:
 func is_currently_in_focus() -> bool:
 	return currently_in_focus
 
-func remove_from_board():
+func remove_from_board() -> void:
 	removal_requested = true
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	if removal_requested && can_remove:
 		ready_for_removal.emit()
 		queue_free()
 		
-func input_active(is_active: bool):
+func input_active(is_active: bool) -> void:
 	currently_ai = !is_active
 	if is_active:
 		unfreeze_card()

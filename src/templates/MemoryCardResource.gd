@@ -12,10 +12,10 @@ class_name MemoryCardResource extends Resource
 
 var id: int = -1
 
-func set_id(new_id: int):
+func set_id(new_id: int) -> void:
     if id != -1:
         return
     id = new_id
 
-func get_id():
+func get_id() -> int:
     return id

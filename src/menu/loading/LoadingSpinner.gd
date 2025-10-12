@@ -3,27 +3,34 @@ class_name LoadingSpinner extends TextureRect
 
 @export var animation: SpinnerAnimation = null
 
-var current_time = 0
-var index = 0
+var _index: int = 0
+var _timer: Timer
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	if animation == null:
 		printerr("No animation set for spinner")
 		queue_free()
 		return
 	select_next_texture()
+	_timer = Timer.new()
+	_timer.wait_time = animation.change_in_milliseconds / 1000
+	_timer.autostart = true
+	_timer.one_shot = false
+	_timer.timeout.connect(_timeout)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if current_time > animation.change_in_milliseconds / 1000:
-		current_time = (animation.change_in_milliseconds / 1000) - current_time
-		index = index + 1
-		if index >= animation.images.size():
-			index = 0
-		select_next_texture()
-	current_time = current_time + delta
+	add_child(_timer)
 
-func select_next_texture():
-	texture = animation.images[index]
+func _timeout() -> void:
+	var tween: Tween = create_tween()
+	tween.tween_property(self, "texture", animation.images[_index], animation.change_in_milliseconds / 1000)
+	_increase_index()
+
+func _increase_index() -> void:
+	_index = _index + 1
+	if _index >= animation.images.size():
+		_index = 0
+
+func select_next_texture() -> void:
+	texture = animation.images[_index]
 

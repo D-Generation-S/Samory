@@ -8,7 +8,7 @@ extends Resource
 @export var id: int
 
 static func from_network_data(data: Dictionary) -> PlayerResource:
-	var player = PlayerResource.new()
+	var player: PlayerResource = PlayerResource.new()
 	player.id = data["id"]
 	player.name = data["name"]
 	player.order_number = data["order"]
@@ -20,7 +20,7 @@ static func from_network_data(data: Dictionary) -> PlayerResource:
 	return player
 
 
-func get_display_name():
+func get_display_name() -> String:
 	if is_ai():
 		return name + " [AI]"
 	return name

@@ -17,7 +17,7 @@ signal request_popup(window: PopupWindow)
 var peer: ENetMultiplayerPeer
 var is_started: bool = false
 
-func _ready():
+func _ready() -> void:
 	if multiplayer == null or multiplayer.multiplayer_peer == null:
 		queue_free()
 	if multiplayer.get_peers().size() == 0:
@@ -28,19 +28,19 @@ func _ready():
 		return
 	multiplayer.peer_disconnected.connect(peer_gone)
 
-func server_gone():
+func server_gone() -> void:
 	GlobalGameManagerAccess.game_manager.close_game_with_position(Vector2.ZERO)
 
-func peer_gone(_id: int):
+func peer_gone(_id: int) -> void:
 	server_gone()
 	multiplayer.multiplayer_peer.close()
 
-func card_clicked(_game_state: int, clicked_cards: Array[CardTemplate]):
-	for card in clicked_cards:
+func card_clicked(_game_state: int, clicked_cards: Array[CardTemplate]) -> void:
+	for card: CardTemplate in clicked_cards:
 		_rpc_card_clicked.rpc(card.grid_position.get_network_data())
 
 @rpc("any_peer", "reliable")
-func _rpc_card_clicked(position: Dictionary):
+func _rpc_card_clicked(position: Dictionary) -> void:
 	print(multiplayer.get_remote_sender_id())
 	print(multiplayer.get_unique_id())
 	if multiplayer.get_remote_sender_id() == multiplayer.get_unique_id():
@@ -49,19 +49,19 @@ func _rpc_card_clicked(position: Dictionary):
 
 	card_was_clicked.emit(point)
 
-func game_state_changed(state: int):
+func game_state_changed(state: int) -> void:
 	if multiplayer.is_server():
 		_rpc_game_state_changed.rpc({"state-id": state})
 
 @rpc("authority", "reliable")
-func _rpc_game_state_changed(state: Dictionary):
+func _rpc_game_state_changed(state: Dictionary) -> void:
 	var state_id: int = state["state-id"]
 	if state_id == GameState.ROUND_FREEZE:
 		game_state_has_changed.emit(state_id)
 	if state_id == GameState.ROUND_END:
 		game_state_has_changed.emit(state_id)
 
-func player_changed(player: PlayerResource):
+func player_changed(player: PlayerResource) -> void:
 	if !multiplayer.is_server():
 		return
 	
@@ -79,20 +79,16 @@ func player_changed(player: PlayerResource):
 	game_state_has_changed.emit(GameState.ROUND_START)
 
 @rpc("authority", "reliable")
-func _rpc_player_changed(player: Dictionary):
-	var player_id = player["id"]
+func _rpc_player_changed(player: Dictionary) -> void:
+	var player_id: int = player["id"]
 	player_has_changed.emit(player_id)
-	print("compare")
-	print(player_id)
-	print(multiplayer.get_unique_id())
 	if player_id != multiplayer.get_unique_id():
-		print("freeze")
 		game_state_has_changed.emit(GameState.ROUND_FREEZE)
 		return
 
 	game_state_has_changed.emit(GameState.ROUND_START)
 
-func player_scored(player: PlayerResource):
+func player_scored(player: PlayerResource) -> void:
 	if !multiplayer.is_server():
 		return
 	_rpc_player_scored.rpc({
@@ -102,10 +98,10 @@ func player_scored(player: PlayerResource):
 	})
 
 @rpc("authority", "reliable")
-func _rpc_player_scored(player: Dictionary):
+func _rpc_player_scored(player: Dictionary) -> void:
 	player_has_scored.emit(player["id"], player["score"])
 
-func matching_pair(first: Point, second: Point):
+func matching_pair(first: Point, second: Point) -> void:
 	if !multiplayer.is_server():
 		return
 	var card_data: Array[Dictionary] = [first.get_network_data(), second.get_network_data()]
@@ -114,22 +110,22 @@ func matching_pair(first: Point, second: Point):
 	_rpc_remove_cards.rpc(dict)
 
 @rpc("authority", "reliable")
-func _rpc_remove_cards(array_data: Dictionary):
+func _rpc_remove_cards(array_data: Dictionary) -> void:
 	var data: Array[Dictionary] = array_data.get_or_add("cards", []);
-	for card in data:
+	for card: Dictionary in data:
 		var point: Point = Point.new(card["x"], card["y"])
 		remove_card.emit(point)
 	
-func end_game():
+func end_game() -> void:
 	rpc_game_ended.rpc()
 
 @rpc("authority", "reliable")
-func rpc_game_ended():
+func rpc_game_ended() -> void:
 	if multiplayer.is_server():
 		return
 	game_has_been_finished.emit()
 	
-	var finish_node = finished_game_template.instantiate() as GameFinished
+	var finish_node: GameFinished = finished_game_template.instantiate() as GameFinished
 	finish_node.high_priority = true
 	finish_node.set_player_manager(player_node)
 	request_popup.emit(finish_node)

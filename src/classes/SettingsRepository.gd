@@ -1,6 +1,6 @@
 extends Node
 
-signal settings_updated(setings: SettingsResource)
+signal settings_updated(settings: SettingsResource)
 
 @export var default_settings: SettingsResource
 

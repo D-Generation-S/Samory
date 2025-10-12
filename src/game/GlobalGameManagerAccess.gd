@@ -7,7 +7,7 @@ func get_game_manager() -> GameManager:
 	if game_manager != null:
 		return game_manager
 
-	for child in get_tree().root.get_children():
+	for child: Node in get_tree().root.get_children():
 		if child is GameManager:
 			game_manager = child
 

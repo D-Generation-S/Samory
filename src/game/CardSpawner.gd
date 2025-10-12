@@ -13,10 +13,10 @@ signal card_placed(card: CardTemplate)
 var load_thread: Thread = null
 var _current_deck: MemoryDeckResource
 
-func _ready():
+func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_DISABLED
 
-func place_cards_from_deck(deck_to_use: MemoryDeckResource):
+func place_cards_from_deck(deck_to_use: MemoryDeckResource) -> void:
 	_current_deck = deck_to_use
 	if multiplayer.is_server():
 		_rpc_announce_deck.rpc(deck_to_use.resource_path)
@@ -27,25 +27,25 @@ func place_cards_from_deck(deck_to_use: MemoryDeckResource):
 
 	process_mode = PROCESS_MODE_INHERIT
 
-	var cards = load_thread.wait_to_finish() as Array[CardTemplate]
-	for card in cards:
+	var cards: Array[CardTemplate] = load_thread.wait_to_finish() as Array[CardTemplate]
+	for card: CardTemplate in cards:
 		_card_target_node.add_child(card)
 		card.visible = false
 		card_placed.emit(card)
 		
 	load_thread = null
-	for card in cards:
+	for card: CardTemplate in cards:
 		card.visible = true
 	announce_card_field()
 	card_loading_done.emit()
 	queue_free()
 
-func _calculate_field_size(cards_on_x: int, cards_on_y: int):
+func _calculate_field_size(cards_on_x: int, cards_on_y: int) -> void:
 	if card_template == null:
 		return
-	var card_instance = card_template.instantiate()
-	var card_height = card_instance.get_height() + separation
-	var card_width = card_instance.get_width() + separation
+	var card_instance: CardTemplate = card_template.instantiate() as CardTemplate
+	var card_height: float = card_instance.get_height() + separation
+	var card_width: float = card_instance.get_width() + separation
 
 	var field_width: float = card_width * cards_on_x
 	var field_height: float = card_height * cards_on_y
@@ -68,34 +68,34 @@ func build_card_layout(deck_of_cards: MemoryDeckResource,
 					   card_separation: int
 					   ) -> Array[CardTemplate]:
 	var return_cards: Array[CardTemplate] = []
-	var card_pool = deck_of_cards.cards
-	var additional_cards = deck_of_cards.cards
+	var card_pool: Array[MemoryCardResource] = deck_of_cards.cards
+	var additional_cards: Array[MemoryCardResource] = deck_of_cards.cards
 	card_pool = numbering_cards_from_pool(card_pool)
 	card_pool.append_array(numbering_cards_from_pool(additional_cards))
-	for i in range((randi() % 20) + 1):
+	for i: int in range((randi() % 20) + 1):
 		card_pool.shuffle()
 
-	var current_card = 0
-	var side_length = floor(sqrt(card_pool.size()))
+	var current_card: int = 0
+	var side_length: int = floori(sqrt(card_pool.size()))
 
-	var row_count = side_length
-	var column_count = side_length
+	var row_count: int = side_length
+	var column_count: int = side_length
 
 	while row_count * column_count < card_pool.size():
 		column_count = column_count + 1
 	call_deferred("_calculate_field_size", column_count, row_count)
-	for y in range(row_count):
-		for x in range(column_count):
-			var card_template_node = template.instantiate() as CardTemplate
+	for y: int in row_count:
+		for x: int in column_count:
+			var card_template_node: CardTemplate = template.instantiate() as CardTemplate
 			card_template_node.card_deck = deck_of_cards
 			if current_card >= card_pool.size():
 				print("exceed pool!")
 				continue
 			card_template_node.memory_card = card_pool[current_card]
-			var height = card_template_node.get_height()
-			var width = card_template_node.get_width()
-			var height_to_set = y * height + y * card_separation
-			var width_to_set = x * width + x * card_separation
+			var height: float = card_template_node.get_height()
+			var width: float = card_template_node.get_width()
+			var height_to_set: float = y * height + y * card_separation
+			var width_to_set: float = x * width + x * card_separation
 			card_template_node.position = Vector2(width_to_set, height_to_set)
 			card_template_node.grid_position = Point.new(x, y)
 			
@@ -104,44 +104,42 @@ func build_card_layout(deck_of_cards: MemoryDeckResource,
 	call_deferred("emit_signal","field_constructed", column_count, row_count)
 	return return_cards
 
-func numbering_cards_from_pool(card_pool) -> Array:
-	var cards: Array
-	for i in range(card_pool.size()):
-		var card = card_pool[i] as MemoryCardResource
-		#card.set_id(i)
+func numbering_cards_from_pool(card_pool: Array[MemoryCardResource]) -> Array[MemoryCardResource]:
+	var cards: Array[MemoryCardResource]
+	for i: int in card_pool.size():
+		var card: MemoryCardResource = card_pool[i] as MemoryCardResource
 		cards.append(card)
 	return cards
 
 @rpc("authority", "reliable")
-func _rpc_announce_deck(path: String):
+func _rpc_announce_deck(path: String) -> void:
 	if _current_deck == null:
 		_current_deck = load(path)
 
-func announce_card_field():
+func announce_card_field() -> void:
 	if !multiplayer.is_server():
 		return
 	var network_cards: Array[Dictionary] = []
-	for card in _card_target_node.get_children():
-		if card is CardTemplate:
-			var real_card: MemoryCardResource = card.memory_card
-			network_cards.append({
-				"id": real_card.get_id(),
-				"grid-position": card.grid_position.get_network_data(),
-				"world-position": {
-					"x": card.global_position.x,
-					"y": card.global_position.y,
-				},
-				"card-resource": real_card.resource_path
-			})
+	for card: CardTemplate in _card_target_node.get_children().filter(func(data: Node) -> bool: return data is CardTemplate):
+		var real_card: MemoryCardResource = card.memory_card
+		network_cards.append({
+			"id": real_card.get_id(),
+			"grid-position": card.grid_position.get_network_data(),
+			"world-position": {
+				"x": card.global_position.x,
+				"y": card.global_position.y,
+			},
+			"card-resource": real_card.resource_path
+		})
 
 	_rpc_rebuild_field.rpc({"cards": network_cards})
 
 @rpc("authority", "reliable")
-func _rpc_rebuild_field(field: Dictionary):
+func _rpc_rebuild_field(field: Dictionary) -> void:
 	print(field)
 	if multiplayer.is_server():
 		return
-	for card in field["cards"]:
+	for card: Dictionary in field["cards"]:
 		var real_card: CardTemplate = card_template.instantiate() as CardTemplate
 		var world_pos: Dictionary = card["world-position"]
 		var grid_pos: Dictionary = card["grid-position"]
@@ -159,7 +157,7 @@ func _rpc_rebuild_field(field: Dictionary):
 	card_loading_done.emit()
 
 @rpc("authority", "reliable")
-func _rpc_sync_field_size(field_size: Dictionary):
+func _rpc_sync_field_size(field_size: Dictionary) -> void:
 	if multiplayer.is_server():
 		return
 	var rect: Rect2 = Rect2(field_size["x"], field_size["y"], field_size["width"], field_size["height"])

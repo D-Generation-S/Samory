@@ -11,15 +11,15 @@ signal volume_changed(bus_name: int, new_volume: float)
 
 @export var bus_name: BusNames
 
-var bus_id
+var bus_id: int
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	bus_id = AudioServer.get_bus_index(map_enum_to_name(bus_name))
 	step = 0.001
 	min_value = 0
 	max_value = 1
-	var volume = AudioServer.get_bus_volume_db(bus_id)
+	var volume: float = AudioServer.get_bus_volume_db(bus_id)
 	value = db_to_linear(volume)
 	connect("value_changed", _on_value_changed)
 
@@ -43,11 +43,11 @@ func map_local_enum_to_global(local: BusNames) -> int:
 			return BusType.Music
 	return BusType.Master
 
-func _on_value_changed(volume: float):
+func _on_value_changed(volume: float) -> void:
 	AudioServer.set_bus_volume_db(bus_id, linear_to_db(volume))
 	volume_changed.emit(map_local_enum_to_global(bus_name), volume)
 	
-func settings_loaded(settings: SettingsResource):
+func settings_loaded(settings: SettingsResource) -> void:
 	match bus_name:
 		BusNames.Master:
 			value = settings.master_volume

@@ -9,21 +9,20 @@ signal value_changed(new_value: float)
 
 var _current_value: float = 1
 
-func _ready():
-
+func _ready() -> void:
 	if min_value > max_value:
 		printerr("Min value cannot be larger than max value!")
-		for child in get_children():
+		for child: Node in get_children():
 			child.queue_free()
 		queue_free()
 
-func settings_changed(new_settings: SettingsResource):
+func settings_changed(new_settings: SettingsResource) -> void:
 	min_value_changed.emit(min_value)
 	max_value_changed.emit(max_value)
 	value_changed.emit(new_settings.ui_scale_factor)
 
-func update_preview(_changed: bool):
+func update_preview(_changed: bool) -> void:
 	ScaleManager.update_ui_scale(_current_value)
 
-func value_was_changed(new_value: float):
+func value_was_changed(new_value: float) -> void:
 	_current_value = new_value

@@ -9,7 +9,7 @@ func _get_transition_scene() -> PackedScene:
 	return animation_scene
 
 func _create_animation_scene_instance(add_to_active_scene: bool = true) -> AnimationScene:
-	var scene = _get_transition_scene().instantiate() as AnimationScene
+	var scene: AnimationScene = _get_transition_scene().instantiate() as AnimationScene
 	scene.add_to_active_scene = add_to_active_scene
 	scene.animation_done.connect(_animation_done)
 	get_tree().root.add_child(scene)
@@ -17,13 +17,13 @@ func _create_animation_scene_instance(add_to_active_scene: bool = true) -> Anima
 
 	return scene
 
-func _animation_done(scene: Node):
+func _animation_done(scene: Node) -> void:
 	scene.queue_free()
 
 func transit_screen_with_position(new_scene: PackedScene, position: Vector2, add_to_active_scene: bool = true) -> AnimationScene:
 	await RenderingServer.frame_post_draw
 	var old_texture: Texture = ImageTexture.create_from_image( get_viewport().get_texture().get_image() )
-	var scene = _create_animation_scene_instance(add_to_active_scene)
+	var scene: AnimationScene = _create_animation_scene_instance(add_to_active_scene)
 	scene.change_screen_to(new_scene, old_texture, position)
 	return scene
 
@@ -33,7 +33,7 @@ func transit_screen(new_scene: PackedScene, add_to_active_scene: bool = true) ->
 func transit_screen_by_node_with_position(new_scene: Node, position: Vector2 , add_to_active_scene: bool = true) -> AnimationScene:
 	await RenderingServer.frame_post_draw
 	var old_texture: Texture = ImageTexture.create_from_image( get_viewport().get_texture().get_image() )
-	var scene = _create_animation_scene_instance(add_to_active_scene)
+	var scene: AnimationScene = _create_animation_scene_instance(add_to_active_scene)
 	scene.change_screen_to_node(new_scene, old_texture, position)
 	return scene
 

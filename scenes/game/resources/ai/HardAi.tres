@@ -11,11 +11,11 @@
 
 [sub_resource type="Resource" id="Resource_er0g6"]
 script = ExtResource("2_spg3f")
-propability = 80
+probability = 80
 
 [sub_resource type="Resource" id="Resource_6c2om"]
 script = ExtResource("3_1maa1")
-propability = 10
+probability = 10
 
 [sub_resource type="Resource" id="Resource_q8pdn"]
 script = ExtResource("5_36tnr")
@@ -23,19 +23,19 @@ script = ExtResource("5_36tnr")
 [sub_resource type="Resource" id="Resource_5evvt"]
 script = ExtResource("4_jovtk")
 backup_action = SubResource("Resource_q8pdn")
-propability = 10
+probability = 10
 
 [sub_resource type="Resource" id="Resource_ud30y"]
 script = ExtResource("5_36tnr")
-propability = 1
+probability = 1
 
 [sub_resource type="Resource" id="Resource_4gy06"]
 script = ExtResource("6_ds6ms")
-propability = 160
+probability = 160
 
 [sub_resource type="Resource" id="Resource_6asb8"]
 script = ExtResource("7_ujdyv")
-propability = 40
+probability = 40
 
 [resource]
 script = ExtResource("2_kabtl")

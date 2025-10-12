@@ -5,7 +5,7 @@ class_name Point
 var x_pos: int = 0
 var y_pos: int = 0
 
-func _init(x: int , y: int):
+func _init(x: int , y: int) -> void:
 	x_pos = x
 	y_pos = y
 

@@ -7,12 +7,12 @@ extends RichTextLabel
 var timer: Timer
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	if scrolling_active:
 		position.y = DisplayServer.window_get_size().y
 	setup_timer_for_scroll()
 
-func setup_timer_for_scroll():
+func setup_timer_for_scroll() -> void:
 	if !scrolling_active:
 		return
 	timer = Timer.new()
@@ -21,5 +21,5 @@ func setup_timer_for_scroll():
 	add_child(timer)
 	timer.start()
 	
-func timer_timeout():
+func timer_timeout() -> void:
 	position.y = position.y - scroll_speed

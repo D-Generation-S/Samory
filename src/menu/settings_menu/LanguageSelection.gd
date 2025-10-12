@@ -4,21 +4,21 @@ signal language_changed(new_language_code: int)
 
 @export var should_grab_focus: bool = false
 
-func _ready():
+func _ready() -> void:
 	super()
 	if should_grab_focus:
 		grab_focus()
 		
-func settings_loaded(settings: SettingsResource):
+func settings_loaded(settings: SettingsResource) -> void:
 	match settings.language_code:
 		"en":
 			selected = 0
 		"de_DE":
 			selected = 1
 
-func _selection_changed(selection: int):
+func _selection_changed(selection: int) -> void:
 	super(selection)
-	var language_code = "en"
+	var language_code: String = "en"
 	match selection:
 		0: 
 			language_code = "en"

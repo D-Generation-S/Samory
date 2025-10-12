@@ -4,14 +4,14 @@ extends ClickableButton
 @export var transmit_click_position: bool = false
 @export var is_connect_button: bool = false
 
-func _ready():
+func _ready() -> void:
 	if game_lobby_template == null:
 		printerr("missing game lobby template")
 		queue_free()
 
-func _pressed():
+func _pressed() -> void:
 	super()
-	var instance := game_lobby_template.instantiate() as MultiplayerGameLobby
+	var instance: MultiplayerGameLobby = game_lobby_template.instantiate() as MultiplayerGameLobby
 	instance.start_as_host()
 	if transmit_click_position:
 		ScreenTransitionManager.transit_screen_by_node_with_position(instance, get_global_center_position())

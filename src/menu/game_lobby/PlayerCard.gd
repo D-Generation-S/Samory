@@ -21,9 +21,9 @@ var delete_queued: bool = false
 var can_delete: bool = true
 var can_move: bool = true
 
-func _ready():
+func _ready() -> void:
 	player_name_field.text = player_card.get_display_name()
-	var icon = human_player_icon
+	var icon: Texture = human_player_icon
 	if player_card.is_ai():
 		icon = ai_player_icon
 	icon_target.texture = icon
@@ -33,7 +33,7 @@ func _ready():
 	if !can_move:
 		cannot_move.emit()
 
-func delete_card():
+func delete_card() -> void:
 	delete_queued = true
 	getting_deleted.emit()
 	queue_free()
@@ -41,11 +41,11 @@ func delete_card():
 func is_getting_deleted() -> bool:
 	return delete_queued
 
-func move_up():
+func move_up() -> void:
 	move_up_request.emit(player_card.order_number)
 
-func move_down():
+func move_down() -> void:
 	move_down_request.emit(player_card.order_number)
 
-func regain_focus():
+func regain_focus() -> void:
 	regain_focus_request.emit()

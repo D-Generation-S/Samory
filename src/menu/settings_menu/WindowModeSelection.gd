@@ -10,17 +10,17 @@ signal window_mode_changed(new_mode: DisplayServer.WindowMode)
 
 var _current_settings: SettingsResource = null
 
-func _ready():
+func _ready() -> void:
 	super()
 	if OS.has_feature("web"):
 		remove_item(modes.BORDERLESS)
 	
 
-func settings_loaded(settings: SettingsResource):
+func settings_loaded(settings: SettingsResource) -> void:
 	_current_settings = settings
 	set_default_option()
 
-func set_default_option():
+func set_default_option() -> void:
 	selected = modes.MAXIMIZED
 	match _current_settings.window_mode:
 		DisplayServer.WindowMode.WINDOW_MODE_FULLSCREEN:
@@ -30,11 +30,11 @@ func set_default_option():
 		DisplayServer.WindowMode.WINDOW_MODE_EXCLUSIVE_FULLSCREEN:
 			selected = modes.BORDERLESS
 
-func _change_window_mode(mode: DisplayServer.WindowMode):
+func _change_window_mode(mode: DisplayServer.WindowMode) -> void:
 	DisplayServer.window_set_mode(mode)
 
-func _selection_changed(selection: int):
-	var mode := DisplayServer.WindowMode.WINDOW_MODE_MAXIMIZED
+func _selection_changed(selection: int) -> void:
+	var mode: DisplayServer.WindowMode = DisplayServer.WindowMode.WINDOW_MODE_MAXIMIZED
 	match selection:
 		modes.FULLSCREEN:
 			mode = DisplayServer.WindowMode.WINDOW_MODE_FULLSCREEN

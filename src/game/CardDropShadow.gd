@@ -7,28 +7,28 @@ extends Sprite2D
 var _current_tween: Tween = null
 var _initial_position: Vector2 = Vector2.ZERO
 
-func _ready():
+func _ready() -> void:
 	_initial_position = position;
 
-func deck_changed(deck: MemoryDeckResource):
+func deck_changed(deck: MemoryDeckResource) -> void:
 	if deck.card_back != null:
 		texture = deck.card_back
 
-func got_focus():
+func got_focus() -> void:
 	_animate_shadow(true)	
 
-func lost_focus():
+func lost_focus() -> void:
 	_animate_shadow(false)
 
-func _animate_shadow(animate_in: bool):
+func _animate_shadow(animate_in: bool) -> void:
 	if animate_in:
 		visible = true
 	if _current_tween != null:
 		_current_tween.stop()
 	_current_tween = create_tween()
 
-	var value := _initial_position
-	var new_scale := Vector2.ONE
+	var value: Vector2= _initial_position
+	var new_scale: Vector2= Vector2.ONE
 	if animate_in:
 		value = _initial_position + target_offset
 		new_scale = Vector2(focus_scale, focus_scale)
@@ -37,4 +37,4 @@ func _animate_shadow(animate_in: bool):
 	_current_tween.parallel()
 	_current_tween.tween_property(self, "scale", new_scale, animation_time)
 	if not animate_in:
-		_current_tween.finished.connect(func(): visible = false)
+		_current_tween.finished.connect(func() -> void: visible = false)

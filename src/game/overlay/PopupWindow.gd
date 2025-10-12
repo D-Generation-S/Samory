@@ -11,14 +11,14 @@ var was_activated: bool = false
 func get_id() -> int:
 	return id
 
-func set_id(new_id: int):
+func set_id(new_id: int) -> void:
 	id = new_id
 
-func popup_active():
+func popup_active() -> void:
 	pass
 
-func popup_paused():
+func popup_paused() -> void:
 	pass
 
-func show_window(_new_title: String, _new_body: String, _allow_abort: bool = true):
+func show_window(_new_title: String, _new_body: String, _allow_abort: bool = true) -> void:
 	pass
