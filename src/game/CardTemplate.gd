@@ -32,7 +32,7 @@ var _card_frozen: bool = false
 var getting_removed: bool = false
 var is_ai_turn: bool = false
 
-func _ready():
+func _ready() -> void:
 	_timer_for_hide_delay = Timer.new()
 	_timer_for_hide_delay.one_shot = true
 	_timer_for_hide_delay.timeout.connect(hide_card_now)
@@ -53,20 +53,20 @@ func _ready():
 	front_side.set_and_scale_texture(real_texture)
 	deck_changed.emit(card_deck)
 
-func _enter_tree():
+func _enter_tree() -> void:
 	if is_ghost:
 		return
-	var parent_node = get_parent().get_parent() as MemoryGame
+	var parent_node: MemoryGame = get_parent().get_parent() as MemoryGame
 	if parent_node == null:
 		printerr("No parent node was found!")
 
-func toggle_card_on():
-	var time_range = max_time_delay - min_time_delay
-	var delay = randf() * time_range + min_time_delay
+func toggle_card_on() -> void:
+	var time_range: float = max_time_delay - min_time_delay
+	var delay: float = randf() * time_range + min_time_delay
 	_timer_for_hide_delay.wait_time = delay
 	_timer_for_hide_delay.start()
 
-func hide_card_now():
+func hide_card_now() -> void:
 	if back_side == null or back_side.is_hidden():
 		return
 	was_clicked = false
@@ -77,14 +77,14 @@ func hide_card_now():
 func get_height() -> float:
 	return back_side.get_rect().size.y
 
-func freeze_card():
+func freeze_card() -> void:
 	if back_side == null:
 		return
 	back_side.freeze_card()
 	_card_frozen = true
 	lost_focus()
 
-func unfreeze_card():
+func unfreeze_card() -> void:
 	if back_side == null:
 		return
 	was_clicked = false
@@ -94,7 +94,7 @@ func unfreeze_card():
 func get_width() -> float:
 	return back_side.get_rect().size.x
 
-func card_was_clicked():
+func card_was_clicked() -> void:
 	if _card_frozen:
 		return
 	if was_clicked:
@@ -102,7 +102,7 @@ func card_was_clicked():
 		return
 	force_reveal_card()
 
-func force_reveal_card():
+func force_reveal_card() -> void:
 	if was_clicked:
 		return
 	was_clicked = true
@@ -111,27 +111,25 @@ func force_reveal_card():
 	back_side.toggle_off()
 	card_triggered.emit()
 
-func play_card_turn_sound():
-	var index = randi() % flip_effects.size()
-	var effect = flip_effects[index]
-	GlobalSoundManager.play_sound_effect(effect)
+func play_card_turn_sound() -> void:
+	GlobalSoundManager.play_sound_effect(flip_effects.pick_random())
 	
 
-func get_card_id():
-	var card = memory_card as MemoryCardResource
+func get_card_id() -> int:
+	var card: MemoryCardResource = memory_card as MemoryCardResource
 	return card.get_id()
 
 func is_turned() -> bool:
 	return was_clicked
 
-func remove_from_board():
+func remove_from_board() -> void:
 	about_to_get_delete.emit()
 	getting_removed = true
 
-func is_getting_removed():
+func is_getting_removed() -> bool:
 	return getting_removed
 
-func destory_now():
+func destory_now() -> void:
 	queue_free()
 
 func card_is_hidden() -> bool:
@@ -149,23 +147,23 @@ func card_is_focused() -> bool:
 		return true
 	return back_side.is_currently_in_focus()
 
-func got_focus():
+func got_focus() -> void:
 	if was_clicked or _card_frozen:
 		return
 	card_in_focus.emit()
 
-func lost_focus():
+func lost_focus() -> void:
 	if was_clicked:
 		return
 	card_lost_focus.emit()
 
-func selected_by_mouse():
+func selected_by_mouse() -> void:
 	mouse_was_used.emit()
 
-func play_sound(audio: AudioStream):
+func play_sound(audio: AudioStream) -> void:
 	if audio == null:
 		return
 	GlobalSoundManager.play_sound_effect(audio)
 
-func player_changed(ai_player: bool):
+func player_changed(ai_player: bool) -> void:
 	input_active.emit(!ai_player)

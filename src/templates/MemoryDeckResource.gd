@@ -15,11 +15,11 @@ class_name MemoryDeckResource
 
 var is_ready: bool = false
 
-func ready_up():
+func ready_up() -> void:
 	if is_ready:
 		return
 	is_ready = true
 	var cid: int = 0
-	for card in cards:
+	for card: MemoryCardResource in cards:
 		card.set_id(cid)
 		cid = cid + 1

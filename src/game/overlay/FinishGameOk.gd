@@ -1,11 +1,6 @@
 extends ClickableButton
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	super()
-
-func _pressed():
+func _pressed() -> void:
 	super()
 	if multiplayer.multiplayer_peer != null:
 		multiplayer.multiplayer_peer.close()

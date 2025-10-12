@@ -14,7 +14,7 @@ var _animation_tween: Tween = null
 var _is_animated: bool = false
 
 
-func _ready():
+func _ready() -> void:
 	mouse_entered.connect(_hover_event)
 	mouse_exited.connect(_hover_left)
 	focus_entered.connect(got_focus)
@@ -30,29 +30,29 @@ func _ready():
 func get_global_center_position() -> Vector2:
 	return global_position + (size / 2)
 
-func _pressed():
+func _pressed() -> void:
 	if !can_multi_click:
 		disabled = true
 	if _sound_bridge == null or !play_sounds:
 		return
 	_sound_bridge.play_button_click()
 
-func _hover_event():
+func _hover_event() -> void:
 	if has_focus():
 		return
 	grab_focus()
 
-func _hover_left():
+func _hover_left() -> void:
 	if !has_focus():
 		return
 	lost_focus()
 
-func ensure_new_tween():
+func ensure_new_tween() -> void:
 	if _animation_tween != null:
 		_animation_tween.kill()
 		_animation_tween = null
 
-func got_focus():
+func got_focus() -> void:
 	if disabled:
 		return
 	if _sound_bridge != null and play_sounds:
@@ -64,26 +64,26 @@ func got_focus():
 	_animation_tween = create_tween()
 	animation_resource.animate_in(_animation_tween, self)
 
-func lost_focus():
+func lost_focus() -> void:
 	if !_is_animated or !animation_resource.is_animated_in():
 		return
 	ensure_new_tween()
 	_animation_tween = create_tween()
 	animation_resource.animate_out(_animation_tween, self)
 
-func disable_button():
+func disable_button() -> void:
 	disabled = true
 
-func enable_button():
+func enable_button() -> void:
 	disabled = false
 
-func toggle_button(on: bool):
+func toggle_button(on: bool) -> void:
 	if on:
 		enable_button()
 		return
 	disable_button()
 
-func _exit_tree():
+func _exit_tree() -> void:
 	if mouse_entered.is_connected(_hover_event):
 		mouse_entered.disconnect(_hover_event)
 		

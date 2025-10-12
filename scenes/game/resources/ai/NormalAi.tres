@@ -15,27 +15,27 @@ script = ExtResource("4_ob8v1")
 [sub_resource type="Resource" id="Resource_uddj3"]
 script = ExtResource("2_agllr")
 backup_action = SubResource("Resource_4nkae")
-propability = 7
+probability = 7
 
 [sub_resource type="Resource" id="Resource_s2nqo"]
 script = ExtResource("3_o468f")
-propability = 2
+probability = 2
 
 [sub_resource type="Resource" id="Resource_y13pc"]
 script = ExtResource("4_ob8v1")
-propability = 15
+probability = 15
 
 [sub_resource type="Resource" id="Resource_2wkxe"]
 script = ExtResource("5_1ya8x")
-propability = 8
+probability = 8
 
 [sub_resource type="Resource" id="Resource_coya5"]
 script = ExtResource("6_trxpo")
-propability = 10
+probability = 10
 
 [sub_resource type="Resource" id="Resource_nqkde"]
 script = ExtResource("7_mawc1")
-propability = 5
+probability = 5
 
 [resource]
 script = ExtResource("2_b307e")

@@ -6,9 +6,9 @@ extends ClickableButton
 signal close_dialog()
 signal continue_text()
 
-var is_continue_mode = false
+var is_continue_mode: bool = false
 
-func _pressed():
+func _pressed() -> void:
 	visible = false
 	if is_continue_mode:
 		continue_text.emit()
@@ -16,18 +16,18 @@ func _pressed():
 
 	close_dialog.emit()
 
-func set_continue_text_mode():
+func set_continue_text_mode() -> void:
 	is_continue_mode = true
 	text = tr(continue_text_template)
 	pass
 
-func set_to_close_mode():
+func set_to_close_mode() -> void:
 	is_continue_mode = false
 	text = tr(close_text_template)
 	pass
 
-func disable_button():
+func disable_button() -> void:
 	disabled = true
 
-func enable_button():
+func enable_button() -> void:
 	disabled = false

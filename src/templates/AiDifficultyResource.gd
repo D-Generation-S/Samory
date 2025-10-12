@@ -11,13 +11,13 @@ class_name AiDifficultyResource extends Resource
 var blackboard: Blackboard
 
 
-func execute_action(grid: GameCardGrid):
-    var possible_actions = actions.filter(func(current_action): return current_action.can_execute(blackboard, grid))
-    var loottable = LootTable.new()
-    for action in possible_actions:
-        loottable.add_to_table(action, action.get_execution_probability())
+func execute_action(grid: GameCardGrid) -> void:
+    var possible_actions: Array[AiBehaviorNode] = actions.filter(func(current_action: AiBehaviorNode) -> bool: return current_action.can_execute(blackboard, grid))
+    var loot_table: LootTable = LootTable.new()
+    for action: AiBehaviorNode in possible_actions:
+        loot_table.add_to_table(action, action.get_execution_probability())
 
-    var action = loottable.get_loot() as AiBehaviorNode
+    var action: AiBehaviorNode = loot_table.get_loot() as AiBehaviorNode
     if action == null:
         printerr("Action was null, but there should be something ...")
         return

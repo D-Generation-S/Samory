@@ -9,7 +9,7 @@ enum {
 
 @export_flags("Web", "Desktop", "Mobile","Debug") var active: int = 0
 
-func _ready():
+func _ready() -> void:
 	super()
 	visible = false
 	if active & (1 << WEB) && OS.has_feature("web"):

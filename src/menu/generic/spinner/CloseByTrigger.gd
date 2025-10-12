@@ -1,8 +1,8 @@
 extends Control
 
 
-func set_visibility(visibility: bool):
+func set_visibility(visibility: bool) -> void:
 	visible = visibility
 
-func remove():
+func remove() -> void:
 	queue_free()

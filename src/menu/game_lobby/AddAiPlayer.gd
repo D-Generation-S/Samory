@@ -7,33 +7,33 @@ signal dialog_closed()
 
 @export var ai_selecion_dialog: PackedScene
 
-var currently_shown = false
+var currently_shown: bool = false
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	super()
 	if ai_selecion_dialog == null:
 		printerr("Ai Selection is missing packed scene")
 		visible = false
 
-func _pressed():
+func _pressed() -> void:
 	if ai_selecion_dialog == null or currently_shown:
 		return
 	super()
 	currently_shown = true
 	adding_ai_player.emit()
-	var scene = ai_selecion_dialog.instantiate() as SelectAiPlayer
+	var scene: SelectAiPlayer = ai_selecion_dialog.instantiate() as SelectAiPlayer
 	scene.dialog_closed.connect(dialog_closing)
 	scene.ai_added.connect(add_new_ai_player)
 	#add_child(scene)
 	show_special_control.emit(scene)
 
-func dialog_closing():
+func dialog_closing() -> void:
 	currently_shown = false
 	dialog_closed.emit()
 
-func add_new_ai_player(ai: AiDifficultyResource):
-	var player = PlayerResource.new()
+func add_new_ai_player(ai: AiDifficultyResource) -> void:
+	var player: PlayerResource = PlayerResource.new()
 	player.name = tr(ai.name)
 	player.ai_difficulty = ai
 

@@ -8,15 +8,15 @@
 
 [sub_resource type="Resource" id="Resource_ixrth"]
 script = ExtResource("2_fydnb")
-propability = 100
+probability = 100
 
 [sub_resource type="Resource" id="Resource_dy1nx"]
 script = ExtResource("3_p5vbk")
-propability = 200
+probability = 200
 
 [sub_resource type="Resource" id="Resource_tjakf"]
 script = ExtResource("4_ff725")
-propability = 1
+probability = 1
 
 [resource]
 script = ExtResource("4_d6me8")

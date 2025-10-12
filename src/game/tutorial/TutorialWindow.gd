@@ -6,10 +6,10 @@ var title: Label = null
 var body: AnimatedText = null
 var abort_tutorial_check: CheckButton = null
 
-var should_abort_tutorial = false
-var is_ready = false
+var should_abort_tutorial: bool = false
+var is_ready: bool = false
 
-func _ready():
+func _ready() -> void:
 	title = get_node("%Title") as Label
 	body = get_node("%Body") as AnimatedText
 	abort_tutorial_check = get_node("%CompleteTutorial") as CheckButton
@@ -19,7 +19,7 @@ func _ready():
 	if !title or !body or !abort_tutorial_check:
 		close()
 
-func show_window(new_title: String, new_body: String, allow_abort: bool = true):
+func show_window(new_title: String, new_body: String, allow_abort: bool = true) -> void:
 	title.text = new_title
 	body.add_animated_text(new_body)
 	abort_tutorial_check.button_pressed = false
@@ -27,10 +27,10 @@ func show_window(new_title: String, new_body: String, allow_abort: bool = true):
 	abort_tutorial_check.visible = allow_abort
 	visible = true
 
-func toggle_abort_tutorial(value: bool):
+func toggle_abort_tutorial(value: bool) -> void:
 	should_abort_tutorial = value
 
-func close():
+func close() -> void:
 	if should_abort_tutorial:
 		abort_tutorial.emit()
 		queue_free()

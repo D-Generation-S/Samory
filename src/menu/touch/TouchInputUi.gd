@@ -12,11 +12,11 @@ enum {
 @export_range(0, 1000, 10) var milliseconds_to_press: float = 100
 
 
-var active: bool = false
-var active_counter = 0;
+var _active: bool = false
+var _active_counter: float = 0;
 
 
-func _ready():
+func _ready() -> void:
 	if !check_if_active():
 		print_debug("Delete button because this is not a valid device!")
 		queue_free()
@@ -45,24 +45,24 @@ func check_if_active() -> bool:
 
 	return result
 
-func _pressed():
-	if active:
+func _pressed() -> void:
+	if _active:
 		return
 	Input.action_press(input_action)
-	active = true
-	active_counter = 0
+	_active = true
+	_active_counter = 0
 
-func _process(delta):
-	if !active:
+func _process(delta: float) -> void:
+	if !_active:
 		return
 
-	active_counter = active_counter + delta
-	if active_counter > milliseconds_to_press / 1000:
+	_active_counter = _active_counter + delta
+	if _active_counter > milliseconds_to_press / 1000:
 		Input.action_release(input_action)
-		active = false
+		_active = false
 
 
-func toggle_state(on: bool):
+func toggle_state(on: bool) -> void:
 	visible = on
 
 

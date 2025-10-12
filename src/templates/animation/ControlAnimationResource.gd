@@ -4,13 +4,13 @@ class_name ControlAnimationResource extends Resource
 
 var animated_in: bool
 
-func prepare_animation(_control: Control):
+func prepare_animation(_control: Control) -> void:
 	pass
 
-func animate_in(_tween: Tween, _control: Control):
+func animate_in(_tween: Tween, _control: Control) -> void:
 	animated_in = true
 
-func animate_out(_tween: Tween, _control: Control):
+func animate_out(_tween: Tween, _control: Control) -> void:
 	animated_in = false
 
 func is_animated_in() -> bool:

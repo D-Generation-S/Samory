@@ -8,7 +8,7 @@ signal tutorial_requested(scene: Control)
 var tutorial_scene: TutorialWindow = null
 var settings: SettingsResource = null
 
-func _ready():
+func _ready() -> void:
 	settings = SettingsRepository.load_settings() as SettingsResource
 	if tutorial_window_scene == null or settings == null:
 		printerr("Missing template for tutorial window, or settings not loaded")
@@ -18,11 +18,11 @@ func _ready():
 		queue_free()
 		return
 
-func trigger_tutorial(tutorial_type: Enums.Tutorial_State):
+func trigger_tutorial(tutorial_type: Enums.Tutorial_State)-> void:
 	if settings.tutorial_aborted:
 		return
 	var selected_tutorial: TutorialInformation = null
-	for tutorial in available_tutorials:
+	for tutorial: TutorialInformation in available_tutorials:
 		if tutorial.tutorial_type == tutorial_type:
 			selected_tutorial = tutorial
 			break
@@ -38,7 +38,7 @@ func is_tutorial_done() -> bool:
 	if settings.tutorial_aborted:
 		return true
 	var all_true: bool = true
-	for key in Enums.Tutorial_State.keys():
+	for key: String in Enums.Tutorial_State.keys():
 		if key == Enums.Tutorial_State.keys()[0]:
 			continue
 		if !settings.tutorials.has(key) or !settings.tutorials[key]:
@@ -46,19 +46,19 @@ func is_tutorial_done() -> bool:
 			break
 	return all_true
 
-func open_tutorial_window_by_information(tutorial: TutorialInformation):
+func open_tutorial_window_by_information(tutorial: TutorialInformation) -> void:
 	open_tutorial_window(tutorial.title, tutorial.body, tutorial.allow_abort)
 
-func open_tutorial_window(title: String, body: String, allow_abort: bool = false):
+func open_tutorial_window(title: String, body: String, allow_abort: bool = false) -> void:
 	tutorial_scene = tutorial_window_scene.instantiate() as TutorialWindow
 	tutorial_scene.abort_tutorial.connect(abort_tutorial)
 	tutorial_requested.emit(tutorial_scene)
 	tutorial_scene.show_window(title, body, allow_abort)
-	save_settings()
+	_save_settings()
 
-func abort_tutorial():
+func abort_tutorial() -> void:
 	settings.tutorial_aborted = true
-	save_settings()
+	_save_settings()
 
-func save_settings():
+func _save_settings() -> void:
 	SettingsRepository.save_settings(settings)

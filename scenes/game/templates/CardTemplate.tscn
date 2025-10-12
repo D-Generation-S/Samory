@@ -21,7 +21,7 @@
 [ext_resource type="Script" uid="uid://bipcmxhkarmo3" path="res://src/game/debug/DebugControl.gd" id="18_8fn1p"]
 [ext_resource type="Script" uid="uid://oqb8v04e4sw6" path="res://src/game/debug/CardTemplateDebug.gd" id="18_tqsbp"]
 [ext_resource type="Texture2D" uid="uid://bl38eat4t17v6" path="res://assets/sprites/Axuree/sparkle.png" id="20_ja01p"]
-[ext_resource type="Script" path="res://scenes/game/templates/MatchingCardParticleEffect.gd" id="21_ja01p"]
+[ext_resource type="Script" uid="uid://dy87p5qmcoqva" path="res://src/game/MatchingCardParticleEffect.gd" id="21_ja01p"]
 [ext_resource type="Script" uid="uid://cal3eylr5vt07" path="res://src/shared/EffectTrigger.gd" id="23_bmj37"]
 [ext_resource type="AudioStream" uid="uid://bc2asc1ycehsj" path="res://assets/audio/effect/card-shove-2.ogg" id="24_7o8gd"]
 [ext_resource type="AudioStream" uid="uid://d2smrpmt773ak" path="res://assets/audio/effect/card-shove-4.ogg" id="25_o4ple"]

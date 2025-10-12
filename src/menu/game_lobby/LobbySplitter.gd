@@ -4,7 +4,7 @@ extends HSplitContainer
 @export var mobile_split_size: int = -50;
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	split_offset = default_split_size
 	if is_mobile():
 		split_offset = mobile_split_size

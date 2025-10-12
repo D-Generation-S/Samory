@@ -70,7 +70,7 @@ offset_bottom = 36.0
 grow_horizontal = 2
 text = "PAUSE_MENU"
 script = ExtResource("18_u7amr")
-action_to_performe = "back"
+action_to_perform = "back"
 
 [node name="PlayersOverlay" parent="CanvasLayer" instance=ExtResource("7_a7rnv")]
 offset_right = 203.0
@@ -94,7 +94,7 @@ size_flags_vertical = 10
 icon = ExtResource("18_pqxyo")
 script = ExtResource("18_u7amr")
 continue_press = true
-action_to_performe = "zoom_out"
+action_to_perform = "zoom_out"
 
 [node name="ZoomOut" type="Button" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
@@ -102,7 +102,7 @@ size_flags_vertical = 2
 icon = ExtResource("20_ef4f6")
 script = ExtResource("18_u7amr")
 continue_press = true
-action_to_performe = "zoom_in"
+action_to_perform = "zoom_in"
 
 [node name="PopupManager" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -153,8 +153,6 @@ player_node = NodePath("../Players")
 [connection signal="card_triggered" from="." to="AI" method="card_was_triggered"]
 [connection signal="card_triggered" from="." to="NetworkHandler" method="card_clicked"]
 [connection signal="close_last_message_box" from="." to="CanvasLayer/PopupManager" method="force_close_popup_with_id"]
-[connection signal="game_has_endet" from="." to="CanvasLayer/PlayersOverlay" method="game_ended"]
-[connection signal="game_has_endet" from="." to="NetworkHandler" method="end_game"]
 [connection signal="game_paused" from="." to="PlayerInput" method="game_paused"]
 [connection signal="game_paused" from="." to="Camera2D" method="game_paused"]
 [connection signal="game_state_changed" from="." to="Players" method="game_state_changed"]

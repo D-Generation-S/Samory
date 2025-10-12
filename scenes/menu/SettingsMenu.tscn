@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://ded0xyxbb1om1"]
+[gd_scene load_steps=34 format=3 uid="uid://ded0xyxbb1om1"]
 
 [ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://scenes/menu/MenuBackground.tscn" id="2_cootk"]
 [ext_resource type="Script" uid="uid://be1ipi8ub0y8n" path="res://src/menu/settings_menu/SettingsMenu.gd" id="2_hfhds"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://b6p42kfefnyc0" path="res://src/menu/settings_menu/VsyncButton.gd" id="4_cwx70"]
 [ext_resource type="Script" uid="uid://bl0446x7ixjcv" path="res://src/menu/settings_menu/TestEffectButton.gd" id="4_l6fy8"]
 [ext_resource type="Script" uid="uid://cw4ndue8c4gv4" path="res://src/menu/settings_menu/LoadCustomDecks.gd" id="4_xqb7h"]
-[ext_resource type="Script" uid="uid://bgq2cpeyiiikq" path="res://src/shared/SingleFold.gd" id="5_acki3"]
 [ext_resource type="AudioStream" uid="uid://dj5j3cwv0a265" path="res://assets/audio/effect/card-slide-1.ogg" id="5_fls2r"]
 [ext_resource type="AudioStream" uid="uid://cihpod1jtdkyn" path="res://assets/audio/effect/card-slide-2.ogg" id="6_0bdhr"]
 [ext_resource type="FoldableGroup" uid="uid://b6axuve5083ru" path="res://assets/foldable_groups/SettingsMenu.tres" id="6_01oec"]
@@ -17,7 +16,6 @@
 [ext_resource type="Script" uid="uid://crpang1vb3yxa" path="res://src/menu/settings_menu/UiScaleLabel.gd" id="7_mbv6n"]
 [ext_resource type="AudioStream" uid="uid://bmd1ponspe8mk" path="res://assets/audio/effect/button-hover-1.ogg" id="7_sr1hj"]
 [ext_resource type="AudioStream" uid="uid://dynepq4bifu2g" path="res://assets/audio/effect/card-slide-3.ogg" id="7_vbnlv"]
-[ext_resource type="AudioStream" uid="uid://cesdmptmtygih" path="res://assets/audio/effect/button-click-1.ogg" id="8_01oec"]
 [ext_resource type="Script" uid="uid://cdf84o2qp0vdc" path="res://src/menu/settings/AutoCompleteRound.gd" id="8_83bh0"]
 [ext_resource type="AudioStream" uid="uid://dy4vgls6p35ci" path="res://assets/audio/effect/card-slide-4.ogg" id="8_obkpv"]
 [ext_resource type="Script" uid="uid://g8dk5ckx5t4d" path="res://src/menu/settings/AutoCloseRoundSlider.gd" id="9_adf7j"]
@@ -103,11 +101,6 @@ should_grab_focus = true
 layout_mode = 2
 title = "GRAPHIC_SETTINGS"
 foldable_group = ExtResource("6_01oec")
-script = ExtResource("5_acki3")
-folded_neighbor = NodePath("../GameplaySettings")
-unfolded_neighbor = NodePath("ScrollContainer/VBoxContainer/WindowModeSelection")
-hover_sound = ExtResource("7_sr1hj")
-click_sound = ExtResource("8_01oec")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings"]
 custom_minimum_size = Vector2(0, 160)
@@ -166,11 +159,6 @@ layout_mode = 2
 folded = true
 title = "GAMEPLAY_SETTINGS"
 foldable_group = ExtResource("6_01oec")
-script = ExtResource("5_acki3")
-folded_neighbor = NodePath("../../../PanelContainer/VBoxContainer/Audio Control/Master")
-unfolded_neighbor = NodePath("ScrollContainer/VBoxContainer/LoadCustomDecks")
-hover_sound = ExtResource("7_sr1hj")
-click_sound = ExtResource("8_01oec")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GameplaySettings"]
 visible = false

@@ -17,7 +17,7 @@ shader_parameter/frequenzy = 0.29200001061012004
 shader_parameter/border_shift = 0.6500000071250001
 shader_parameter/pulse_active = true
 
-[node name="DeckPreview" type="MarginContainer" node_paths=PackedStringArray("deck_name", "card_count", "buildint", "texture_rect", "deck_description", "selection_button")]
+[node name="DeckPreview" type="MarginContainer" node_paths=PackedStringArray("deck_name", "card_count", "buildin", "texture_rect", "deck_description", "selection_button")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -34,7 +34,7 @@ theme_override_constants/margin_bottom = 15
 script = ExtResource("1_k0qju")
 deck_name = NodePath("PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/DeckName")
 card_count = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/GridContainer/CardCounter")
-buildint = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/GridContainer/IsBuildIn")
+buildin = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/GridContainer/IsBuildIn")
 texture_rect = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Control")
 deck_description = NodePath("PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/DeckDescription")
 selection_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/GridContainer/Button")

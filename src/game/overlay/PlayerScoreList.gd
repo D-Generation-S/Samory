@@ -3,15 +3,15 @@ extends VBoxContainer
 @export var player_template: PackedScene
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	pass # Replace with function body.
 
-func build_player_statistic(players: Array[PlayerResource], winners: Array[PlayerResource]):
+func build_player_statistic(players: Array[PlayerResource], winners: Array[PlayerResource]) -> void:
 	players.sort_custom(sort_by_score)
-	for player in players:
-		var player_node = player_template.instantiate() as PlayerScoreEntry
-		var did_win = false
-		for winner in winners:
+	for player: PlayerResource in players:
+		var player_node: PlayerScoreEntry = player_template.instantiate() as PlayerScoreEntry
+		var did_win: bool = false
+		for winner: PlayerResource in winners:
 			if player.id == winner.id:
 				did_win = true
 				break
@@ -19,5 +19,5 @@ func build_player_statistic(players: Array[PlayerResource], winners: Array[Playe
 		add_child(player_node)
 			
 	
-func sort_by_score(a: PlayerResource, b: PlayerResource):
+func sort_by_score(a: PlayerResource, b: PlayerResource) -> bool:
 	return a.score > b.score
