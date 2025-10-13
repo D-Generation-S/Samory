@@ -19,7 +19,6 @@ func name_updated(player_name: String) -> void:
 	_current_player_name = player_name
 
 func _pressed() -> void:
-	super()
 	var instance: MultiplayerGameLobby= game_lobby_template.instantiate() as MultiplayerGameLobby
 	var settings: SettingsResource = SettingsRepository.load_settings()
 	SettingsRepository.save_settings(settings)

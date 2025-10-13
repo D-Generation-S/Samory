@@ -81,6 +81,7 @@
 # res://scenes/translations/MultiplayerConnectionFailed.tres
 # res://scenes/translations/MultiplayerConnectingToServer.tres
 # res://scenes/translations/MultiplayerPlayerLeft.tres
+# res://scenes/menu/AvailableAiModes.tscn
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -239,44 +240,6 @@ msgstr ""
 
 #: scenes/menu/MainMenu.tscn
 msgid "QUIT_GAME"
-msgstr ""
-
-#: scenes/menu/MainMenu.tscn
-msgid "VS_PLAYER_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/MainMenu.tscn
-msgid "VS_PLAYER"
-msgstr ""
-
-#: scenes/menu/MainMenu.tscn
-msgid "MATCH_AGAINST_EASY_AI_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/MainMenu.tscn
-#: scenes/game/resources/ai/EasyAi.tres
-#: scenes/menu/SelectAiPlayer.tscn
-msgid "EASY_AI"
-msgstr ""
-
-#: scenes/menu/MainMenu.tscn
-msgid "MATCH_AGAINST_NORMAL_AI_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/MainMenu.tscn
-#: scenes/game/resources/ai/NormalAi.tres
-#: scenes/menu/SelectAiPlayer.tscn
-msgid "NORMAL_AI"
-msgstr ""
-
-#: scenes/menu/MainMenu.tscn
-msgid "MATCH_AGAINST_HARD_AI_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/MainMenu.tscn
-#: scenes/game/resources/ai/HardAi.tres
-#: scenes/menu/SelectAiPlayer.tscn
-msgid "HARD_AI"
 msgstr ""
 
 #: scenes/menu/MainMenu.tscn
@@ -854,6 +817,24 @@ msgstr ""
 msgid "Material Maker"
 msgstr ""
 
+#: scenes/game/resources/ai/EasyAi.tres
+#: scenes/menu/SelectAiPlayer.tscn
+#: scenes/menu/AvailableAiModes.tscn
+msgid "EASY_AI"
+msgstr ""
+
+#: scenes/game/resources/ai/HardAi.tres
+#: scenes/menu/SelectAiPlayer.tscn
+#: scenes/menu/AvailableAiModes.tscn
+msgid "HARD_AI"
+msgstr ""
+
+#: scenes/game/resources/ai/NormalAi.tres
+#: scenes/menu/SelectAiPlayer.tscn
+#: scenes/menu/AvailableAiModes.tscn
+msgid "NORMAL_AI"
+msgstr ""
+
 #: scenes/menu/NewPlayer.tscn
 #: scenes/menu/multiplayer/MultiplayerStart.tscn
 msgid "PLAYER_NAME"
@@ -1046,4 +1027,24 @@ msgstr ""
 #. TRANSLATORS: Requires a single %s placeholder for player name
 #: scenes/translations/MultiplayerPlayerLeft.tres
 msgid "MULTIPLAYER_PLAYER_LEFT"
+msgstr ""
+
+#: scenes/menu/AvailableAiModes.tscn
+msgid "VS_PLAYER_TOOLTIP"
+msgstr ""
+
+#: scenes/menu/AvailableAiModes.tscn
+msgid "VS_PLAYER"
+msgstr ""
+
+#: scenes/menu/AvailableAiModes.tscn
+msgid "MATCH_AGAINST_EASY_AI_TOOLTIP"
+msgstr ""
+
+#: scenes/menu/AvailableAiModes.tscn
+msgid "MATCH_AGAINST_NORMAL_AI_TOOLTIP"
+msgstr ""
+
+#: scenes/menu/AvailableAiModes.tscn
+msgid "MATCH_AGAINST_HARD_AI_TOOLTIP"
 msgstr ""

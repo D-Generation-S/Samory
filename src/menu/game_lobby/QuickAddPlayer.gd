@@ -9,7 +9,6 @@ func _ready() -> void:
 	name_generator = NameGenerator.new()
 
 func _pressed() -> void:
-	super()
 	var player_name: String = name_generator.get_random_name()
 
 	var player: PlayerResource = PlayerResource.new()

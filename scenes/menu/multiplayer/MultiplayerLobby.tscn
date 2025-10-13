@@ -1,6 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://1jf4yyijbnie"]
+[gd_scene load_steps=26 format=3 uid="uid://1jf4yyijbnie"]
 
 [ext_resource type="Script" uid="uid://cdk7431i5avu5" path="res://src/menu/multiplayer_game_lobby/MultiplayerGameLobby.gd" id="1_fujdv"]
+[ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://src/menu/control_overwrites/ClickableButton.gd" id="1_nefmw"]
+[ext_resource type="Script" uid="uid://b03sehux5xslr" path="res://src/templates/ui/actions/OpenMainMenu.gd" id="2_057pv"]
 [ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://scenes/menu/MenuBackground.tscn" id="2_udaat"]
 [ext_resource type="Script" uid="uid://pik1xooq47eq" path="res://src/game/multiplayer/MultiplayerLobby.gd" id="3_5oy8v"]
 [ext_resource type="PackedScene" uid="uid://d15qeu4s4bgjk" path="res://scenes/game/templates/TutorialWindow.tscn" id="4_nmt54"]
@@ -20,9 +22,12 @@
 [ext_resource type="PackedScene" uid="uid://b3cv1g0a284mq" path="res://scenes/menu/DeckPreview.tscn" id="16_h314c"]
 [ext_resource type="Script" uid="uid://ep7mvi0mvj1a" path="res://src/menu/multiplayer_game_lobby/MultiplayerStartGame.gd" id="17_vmvut"]
 [ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="18_3ilta"]
-[ext_resource type="Script" uid="uid://ba0o865f2c2k4" path="res://src/menu/multiplayer_game_lobby/MultiplayerCloseLobby.gd" id="19_33gyw"]
 [ext_resource type="Script" uid="uid://6fa28680utd5" path="res://src/game/overlay/PopupManager.gd" id="20_qmoly"]
 [ext_resource type="PackedScene" uid="uid://y8ij2nqvugsq" path="res://scenes/menu/multiplayer/ConnectionStateMessage.tscn" id="21_udaat"]
+
+[sub_resource type="Resource" id="Resource_nefmw"]
+script = ExtResource("2_057pv")
+metadata/_custom_type_script = "uid://b03sehux5xslr"
 
 [node name="MultiplayerLobby" type="CanvasLayer"]
 script = ExtResource("1_fujdv")
@@ -137,7 +142,8 @@ size_flags_horizontal = 10
 tooltip_text = "ABORT_TOOLTIP"
 shortcut = ExtResource("18_3ilta")
 text = "ABORT"
-script = ExtResource("19_33gyw")
+script = ExtResource("1_nefmw")
+pressed_action = SubResource("Resource_nefmw")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchors_preset = 8

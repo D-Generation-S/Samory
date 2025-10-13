@@ -12,7 +12,6 @@ func _ready() -> void:
 	disabled = true
 
 func _pressed() -> void:
-	super()
 	validate()
 
 	if disabled == true:

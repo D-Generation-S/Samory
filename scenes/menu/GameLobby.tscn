@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dkd4cftggpymb"]
+[gd_scene load_steps=28 format=3 uid="uid://dkd4cftggpymb"]
 
 [ext_resource type="Script" uid="uid://lae7d6ybthx1" path="res://src/menu/game_lobby/GameLobby.gd" id="1_0oi2l"]
 [ext_resource type="Script" uid="uid://dob4ydfgei44n" path="res://src/menu/deck_viewer/AddNewPlayerButton.gd" id="1_2n3u5"]
@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://lj7phnlllstw" path="res://assets/icons/HumanIcon.tres" id="7_soh36"]
 [ext_resource type="Script" uid="uid://7xhiyal0wb00" path="res://src/menu/main_menu/StartLobbyGame.gd" id="8_6tuah"]
 [ext_resource type="Script" uid="uid://duoapsvxmnpca" path="res://src/menu/deck_viewer/DeckViewerFilterBox.gd" id="8_7nqqi"]
-[ext_resource type="Script" uid="uid://b1uyki8ha85d7" path="res://src/game/overlay/FinishGameOk.gd" id="8_i1lj5"]
 [ext_resource type="Script" uid="uid://jkxaernwy8o2" path="res://src/menu/game_lobby/AddAiPlayer.gd" id="8_prt8c"]
 [ext_resource type="PackedScene" uid="uid://sjjc4vd4h47c" path="res://scenes/menu/SelectAiPlayer.tscn" id="9_2gndk"]
 [ext_resource type="ButtonGroup" uid="uid://csu1gmbh8nooq" path="res://assets/button_groups/GameLobbyFilter.tres" id="9_b0hcr"]
@@ -24,9 +23,15 @@
 [ext_resource type="Resource" uid="uid://b0gd4uwnid78l" path="res://scenes/menu/resources/Animations/DefaultButtonAnimation.tres" id="17_to3in"]
 [ext_resource type="Texture2D" uid="uid://dkm1d2mijfcuq" path="res://assets/icons/PlayIcon.tres" id="19_ef40l"]
 [ext_resource type="Texture2D" uid="uid://b6vwa7x6vgpfd" path="res://assets/icons/DenyIcon.tres" id="23_k5aev"]
+[ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://src/menu/control_overwrites/ClickableButton.gd" id="24_3vpqe"]
+[ext_resource type="Script" uid="uid://b03sehux5xslr" path="res://src/templates/ui/actions/OpenMainMenu.gd" id="25_ef40l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s33bc"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Resource" id="Resource_k5aev"]
+script = ExtResource("25_ef40l")
+metadata/_custom_type_script = "uid://b03sehux5xslr"
 
 [node name="GameLobby" type="CanvasLayer"]
 script = ExtResource("1_0oi2l")
@@ -230,8 +235,9 @@ shortcut = ExtResource("11_eein8")
 shortcut_in_tooltip = false
 text = "CANCEL"
 icon = ExtResource("23_k5aev")
-script = ExtResource("8_i1lj5")
+script = ExtResource("24_3vpqe")
 animation_resource = ExtResource("17_to3in")
+pressed_action = SubResource("Resource_k5aev")
 
 [connection signal="toggle_buttons" from="." to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/AddNewPlayer" method="toggle_button"]
 [connection signal="toggle_buttons" from="." to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/AddRandomPlayer" method="toggle_button"]

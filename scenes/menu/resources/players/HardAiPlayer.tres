@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PlayerResource" load_steps=3 format=3 uid="uid://ilmb724usqpk"]
+
+[ext_resource type="Resource" uid="uid://gy5cebbq2aed" path="res://scenes/game/resources/ai/HardAi.tres" id="1_0bmhw"]
+[ext_resource type="Script" uid="uid://bftxc2q2j26m7" path="res://src/templates/PlayerResource.gd" id="1_bokcx"]
+
+[resource]
+script = ExtResource("1_bokcx")
+ai_difficulty = ExtResource("1_0bmhw")
+name = "Hard Ai"
+metadata/_custom_type_script = "uid://bftxc2q2j26m7"

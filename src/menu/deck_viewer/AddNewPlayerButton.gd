@@ -11,10 +11,8 @@ signal show_special_control(new_control: Control)
 @export var player_card_template: PackedScene
 
 func _pressed() -> void:
-	super()
 	var new_player_node: NewPlayer = player_template.instantiate() as NewPlayer
 
-	#root_node.add_child(new_player_node)
 	player_adding.emit()
 
 	new_player_node.new_player_dialog_closed.connect(root_node.enable_all_buttons)
@@ -30,4 +28,3 @@ func player_was_added(new_player: PlayerResource) -> void:
 func dialog_was_closed() -> void:
 	dialog_closed.emit()
 	grab_focus()
-

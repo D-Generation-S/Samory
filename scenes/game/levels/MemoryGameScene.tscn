@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bnfr8gek24m47"]
+[gd_scene load_steps=37 format=3 uid="uid://bnfr8gek24m47"]
 
 [ext_resource type="Script" uid="uid://bhgb4virmkji8" path="res://src/game/MemoryGame.gd" id="1_13jq5"]
 [ext_resource type="Resource" uid="uid://cnl5uxkf36ely" path="res://scenes/translations/TurnEndBannerMessage.tres" id="2_fspeh"]
@@ -13,13 +13,15 @@
 [ext_resource type="Script" uid="uid://bxrsfyvew4ysu" path="res://src/game/PlayerInput.gd" id="9_86hnd"]
 [ext_resource type="PackedScene" uid="uid://cluwm03j8e11p" path="res://scenes/game/overlay/GamePauseMenu.tscn" id="12_dfx06"]
 [ext_resource type="Script" uid="uid://bsilbayat31i4" path="res://src/templates/TutorialInformation.gd" id="14_65xsg"]
+[ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://src/menu/control_overwrites/ClickableButton.gd" id="15_2f3xl"]
 [ext_resource type="Resource" uid="uid://dmh064uu1p16b" path="res://scenes/game/resources/tutorials/PlayerTurnTutorial.tres" id="15_s0u1d"]
 [ext_resource type="Script" uid="uid://c3hyh8ifpeuxg" path="res://src/game/ai/GameAI.gd" id="15_u3ner"]
+[ext_resource type="Script" uid="uid://bc2d1ad7vpjfc" path="res://src/templates/ui/behavior/TouchButtonBehavior.gd" id="16_78e34"]
 [ext_resource type="Resource" uid="uid://s7d15d0nkymx" path="res://scenes/game/resources/tutorials/FirstCardTurnedTutorial.tres" id="16_askkq"]
 [ext_resource type="Resource" uid="uid://bo13l4s4ffjrn" path="res://scenes/game/resources/tutorials/PlayerFirstRoundEnd.tres" id="17_evx0k"]
+[ext_resource type="Script" uid="uid://cgdnmg4wop2a6" path="res://src/templates/ui/actions/TriggerInputAction.gd" id="17_tgl34"]
 [ext_resource type="Resource" uid="uid://da7g2acm7xuw1" path="res://scenes/game/resources/tutorials/PlayerFirstMatchFound.tres" id="18_evx0k"]
 [ext_resource type="Texture2D" uid="uid://b6xl5vukmvlku" path="res://assets/icons/AddIcon.tres" id="18_pqxyo"]
-[ext_resource type="Script" uid="uid://c51fjvpbl3jd0" path="res://src/menu/touch/TouchButton.gd" id="18_u7amr"]
 [ext_resource type="Script" uid="uid://xiyurpjwgjnn" path="res://src/game/GameCardGrid.gd" id="19_ploi3"]
 [ext_resource type="Texture2D" uid="uid://bjgikbiemswhu" path="res://assets/icons/MinusIcon.tres" id="20_ef4f6"]
 [ext_resource type="Script" uid="uid://6fa28680utd5" path="res://src/game/overlay/PopupManager.gd" id="21_dv4ao"]
@@ -28,6 +30,33 @@
 [ext_resource type="Texture2D" uid="uid://vk4fpd7xo01j" path="res://assets/sprites/Axuree/wood_medium.png" id="23_a3528"]
 [ext_resource type="Script" uid="uid://btm576yjkyt4j" path="res://src/game/CardSpawner.gd" id="26_a3528"]
 [ext_resource type="Script" uid="uid://drr3p4wba2ys3" path="res://src/game/multiplayer/NetworkHandler.gd" id="29_kihnp"]
+
+[sub_resource type="Resource" id="Resource_kihnp"]
+script = ExtResource("16_78e34")
+metadata/_custom_type_script = "uid://bc2d1ad7vpjfc"
+
+[sub_resource type="Resource" id="Resource_086p8"]
+script = ExtResource("17_tgl34")
+button_action_name = "back"
+metadata/_custom_type_script = "uid://cgdnmg4wop2a6"
+
+[sub_resource type="Resource" id="Resource_5dmxa"]
+script = ExtResource("16_78e34")
+metadata/_custom_type_script = "uid://bc2d1ad7vpjfc"
+
+[sub_resource type="Resource" id="Resource_1wouk"]
+script = ExtResource("17_tgl34")
+button_action_name = "zoom_out"
+metadata/_custom_type_script = "uid://cgdnmg4wop2a6"
+
+[sub_resource type="Resource" id="Resource_78e34"]
+script = ExtResource("16_78e34")
+metadata/_custom_type_script = "uid://bc2d1ad7vpjfc"
+
+[sub_resource type="Resource" id="Resource_tgl34"]
+script = ExtResource("17_tgl34")
+button_action_name = "zoom_in"
+metadata/_custom_type_script = "uid://cgdnmg4wop2a6"
 
 [node name="MemoryGame" type="Node2D" node_paths=PackedStringArray("game_nodes_to_show", "card_target_node")]
 process_mode = 1
@@ -69,8 +98,11 @@ offset_right = 35.5
 offset_bottom = 36.0
 grow_horizontal = 2
 text = "PAUSE_MENU"
-script = ExtResource("18_u7amr")
-action_to_perform = "back"
+script = ExtResource("15_2f3xl")
+can_request_debug_view = true
+active = 4
+button_behavior = SubResource("Resource_kihnp")
+pressed_action = SubResource("Resource_086p8")
 
 [node name="PlayersOverlay" parent="CanvasLayer" instance=ExtResource("7_a7rnv")]
 offset_right = 203.0
@@ -92,17 +124,21 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_vertical = 10
 icon = ExtResource("18_pqxyo")
-script = ExtResource("18_u7amr")
-continue_press = true
-action_to_perform = "zoom_out"
+script = ExtResource("15_2f3xl")
+can_request_debug_view = true
+active = 4
+button_behavior = SubResource("Resource_5dmxa")
+pressed_action = SubResource("Resource_1wouk")
 
 [node name="ZoomOut" type="Button" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 2
 icon = ExtResource("20_ef4f6")
-script = ExtResource("18_u7amr")
-continue_press = true
-action_to_perform = "zoom_in"
+script = ExtResource("15_2f3xl")
+can_request_debug_view = true
+active = 4
+button_behavior = SubResource("Resource_78e34")
+pressed_action = SubResource("Resource_tgl34")
 
 [node name="PopupManager" type="Control" parent="CanvasLayer"]
 layout_mode = 3

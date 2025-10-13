@@ -3,7 +3,6 @@ class_name RegainFocusButton extends ClickableButton
 var was_pressed: bool = false
 
 func _pressed() -> void:
-	super()
 	was_pressed = true
 
 func regain_focus() -> void:

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c1kkrbjif2hoe" path="res://src/menu/multiplayer_game_lobby/ConnectingServer.gd" id="1_u77vp"]
 [ext_resource type="Resource" uid="uid://cjlpuofci4ubw" path="res://scenes/translations/MultiplayerConnectingToServer.tres" id="2_1gfj5"]
 [ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="3_1gfj5"]
-[ext_resource type="Script" uid="uid://ba0o865f2c2k4" path="res://src/menu/multiplayer_game_lobby/MultiplayerCloseLobby.gd" id="3_s6tx6"]
+[ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://src/menu/control_overwrites/ClickableButton.gd" id="4_s6tx6"]
 
 [node name="PanelContainer" type="PanelContainer"]
 custom_minimum_size = Vector2(500, 0)
@@ -24,6 +24,6 @@ size_flags_horizontal = 4
 tooltip_text = "ABORT_CONNECTION_TOOLTIP"
 shortcut = ExtResource("3_1gfj5")
 text = "ABORT_CONNECTION"
-script = ExtResource("3_s6tx6")
+script = ExtResource("4_s6tx6")
 
 [connection signal="text_updated" from="." to="VBoxContainer/ConnectingServer" method="set_text"]

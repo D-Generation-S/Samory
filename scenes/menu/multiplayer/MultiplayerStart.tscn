@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bcc3pe48h2wb8"]
+[gd_scene load_steps=13 format=3 uid="uid://bcc3pe48h2wb8"]
 
 [ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://scenes/menu/MenuBackground.tscn" id="1_j1a2p"]
 [ext_resource type="Script" uid="uid://hk7dh5tm8rt5" path="res://src/menu/multiplayer_game_lobby/MultiplayerNameInputValidator.gd" id="2_jxhed"]
@@ -9,7 +9,12 @@
 [ext_resource type="Script" uid="uid://cjad7cr753o0w" path="res://src/menu/multiplayer_game_lobby/BroadcastServerList.gd" id="6_g4ywp"]
 [ext_resource type="PackedScene" uid="uid://bg3c8ubx25e01" path="res://scenes/menu/multiplayer/ServerEntry.tscn" id="7_8t68q"]
 [ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="8_yw5u2"]
-[ext_resource type="Script" uid="uid://b1uyki8ha85d7" path="res://src/game/overlay/FinishGameOk.gd" id="9_jrweh"]
+[ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://src/menu/control_overwrites/ClickableButton.gd" id="9_rwnah"]
+[ext_resource type="Script" uid="uid://b03sehux5xslr" path="res://src/templates/ui/actions/OpenMainMenu.gd" id="10_q6trj"]
+
+[sub_resource type="Resource" id="Resource_duj62"]
+script = ExtResource("10_q6trj")
+metadata/_custom_type_script = "uid://b03sehux5xslr"
 
 [node name="MultiplayerStart" type="CanvasLayer"]
 
@@ -90,7 +95,8 @@ layout_mode = 2
 tooltip_text = "CLOSE_TOOLTIP"
 shortcut = ExtResource("8_yw5u2")
 text = "CLOSE"
-script = ExtResource("9_jrweh")
+script = ExtResource("9_rwnah")
+pressed_action = SubResource("Resource_duj62")
 
 [node name="GameBroadcast" type="Node" parent="."]
 script = ExtResource("6_c3rh4")
