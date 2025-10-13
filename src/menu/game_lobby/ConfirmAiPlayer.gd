@@ -7,7 +7,6 @@ signal closing()
 func _pressed() -> void:
 	if current_ai == null:
 		return
-	super()
 
 	player_was_selected.emit(current_ai)
 	closing.emit()

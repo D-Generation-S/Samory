@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://bl1m25cil8j5f" path="res://src/menu/settings_menu/BusSlider.gd" id="3_qrm32"]
 [ext_resource type="Script" uid="uid://dxepefpl817n7" path="res://src/menu/settings_menu/WindowModeSelection.gd" id="4_br808"]
 [ext_resource type="Script" uid="uid://b6p42kfefnyc0" path="res://src/menu/settings_menu/VsyncButton.gd" id="4_cwx70"]
-[ext_resource type="Script" uid="uid://bl0446x7ixjcv" path="res://src/menu/settings_menu/TestEffectButton.gd" id="4_l6fy8"]
 [ext_resource type="Script" uid="uid://cw4ndue8c4gv4" path="res://src/menu/settings_menu/LoadCustomDecks.gd" id="4_xqb7h"]
 [ext_resource type="AudioStream" uid="uid://dj5j3cwv0a265" path="res://assets/audio/effect/card-slide-1.ogg" id="5_fls2r"]
 [ext_resource type="AudioStream" uid="uid://cihpod1jtdkyn" path="res://assets/audio/effect/card-slide-2.ogg" id="6_0bdhr"]
@@ -14,7 +13,6 @@
 [ext_resource type="Script" uid="uid://b3mbd6eeylk66" path="res://src/menu/settings_menu/UiScale.gd" id="6_br808"]
 [ext_resource type="Script" uid="uid://b3rk5o6ceqblf" path="res://src/menu/settings_menu/LanguageSelection.gd" id="6_cw3wv"]
 [ext_resource type="Script" uid="uid://crpang1vb3yxa" path="res://src/menu/settings_menu/UiScaleLabel.gd" id="7_mbv6n"]
-[ext_resource type="AudioStream" uid="uid://bmd1ponspe8mk" path="res://assets/audio/effect/button-hover-1.ogg" id="7_sr1hj"]
 [ext_resource type="AudioStream" uid="uid://dynepq4bifu2g" path="res://assets/audio/effect/card-slide-3.ogg" id="7_vbnlv"]
 [ext_resource type="Script" uid="uid://cdf84o2qp0vdc" path="res://src/menu/settings/AutoCompleteRound.gd" id="8_83bh0"]
 [ext_resource type="AudioStream" uid="uid://dy4vgls6p35ci" path="res://assets/audio/effect/card-slide-4.ogg" id="8_obkpv"]
@@ -29,10 +27,16 @@
 [ext_resource type="AudioStream" uid="uid://dhlalkc173c3p" path="res://assets/audio/effect/card-turn-1.ogg" id="13_jbvf7"]
 [ext_resource type="AudioStream" uid="uid://48iu01xst023" path="res://assets/audio/effect/card-turn-2.ogg" id="14_vb64j"]
 [ext_resource type="AudioStream" uid="uid://h0louy6yrv3o" path="res://assets/audio/effect/card-turn-3.ogg" id="15_b5nta"]
+[ext_resource type="Script" uid="uid://bph2k7t8o4vhj" path="res://src/templates/ui/actions/PlayRandomSoundAction.gd" id="18_acki3"]
 [ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://src/menu/control_overwrites/ClickableButton.gd" id="19_3ip51"]
 [ext_resource type="Texture2D" uid="uid://dqv4i4y66gem" path="res://assets/icons/OkIcon.tres" id="26_br808"]
 [ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="28_12fsg"]
 [ext_resource type="Texture2D" uid="uid://b6vwa7x6vgpfd" path="res://assets/icons/DenyIcon.tres" id="28_mbv6n"]
+
+[sub_resource type="Resource" id="Resource_2s828"]
+script = ExtResource("18_acki3")
+test_effects = Array[AudioStream]([ExtResource("5_fls2r"), ExtResource("6_0bdhr"), ExtResource("7_vbnlv"), ExtResource("8_obkpv"), ExtResource("9_plrjf"), ExtResource("10_3mytq"), ExtResource("11_bbgb2"), ExtResource("12_05mi4"), ExtResource("13_jbvf7"), ExtResource("14_vb64j"), ExtResource("15_b5nta")])
+metadata/_custom_type_script = "uid://bph2k7t8o4vhj"
 
 [node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("accept_button", "close_button")]
 script = ExtResource("2_hfhds")
@@ -210,7 +214,6 @@ tooltip_text = "RESET_TUTORIAL_TOOLTIP"
 text = "RESET_TUTORIAL"
 icon = ExtResource("10_mdkqv")
 script = ExtResource("19_3ip51")
-can_multi_click = false
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer"]
 custom_minimum_size = Vector2(350, 0)
@@ -272,10 +275,8 @@ size_flags_vertical = 10
 tooltip_text = "TEST_EFFECTS_TOOLTIP"
 text = "TEST_EFFECTS"
 icon = ExtResource("13_12fsg")
-script = ExtResource("4_l6fy8")
-test_effects = Array[AudioStream]([ExtResource("5_fls2r"), ExtResource("6_0bdhr"), ExtResource("7_vbnlv"), ExtResource("8_obkpv"), ExtResource("9_plrjf"), ExtResource("10_3mytq"), ExtResource("11_bbgb2"), ExtResource("12_05mi4"), ExtResource("13_jbvf7"), ExtResource("14_vb64j"), ExtResource("15_b5nta")])
-hover_sound = ExtResource("7_sr1hj")
-play_sounds = false
+script = ExtResource("19_3ip51")
+pressed_action = SubResource("Resource_2s828")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
@@ -287,7 +288,6 @@ tooltip_text = "APPLY_SETTING_TOOLTIP"
 text = "APPLY"
 icon = ExtResource("26_br808")
 script = ExtResource("19_3ip51")
-can_multi_click = false
 
 [node name="Close" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2"]
 layout_mode = 2
@@ -297,7 +297,6 @@ shortcut_in_tooltip = false
 text = "CLOSE"
 icon = ExtResource("28_mbv6n")
 script = ExtResource("19_3ip51")
-can_multi_click = false
 
 [connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/LanguageSelection" method="settings_loaded"]
 [connection signal="settings_loaded" from="." to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/ScrollContainer/VBoxContainer/WindowModeSelection" method="settings_loaded"]

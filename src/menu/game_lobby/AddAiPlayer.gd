@@ -19,7 +19,6 @@ func _ready() -> void:
 func _pressed() -> void:
 	if ai_selecion_dialog == null or currently_shown:
 		return
-	super()
 	currently_shown = true
 	adding_ai_player.emit()
 	var scene: SelectAiPlayer = ai_selecion_dialog.instantiate() as SelectAiPlayer

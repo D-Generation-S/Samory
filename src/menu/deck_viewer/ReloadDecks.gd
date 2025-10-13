@@ -22,7 +22,6 @@ func enable_button() -> void:
 	super()
 
 func _pressed() -> void:
-	super()
 	GlobalSystemDeckManager.reload_system_decks()
 
 func loading_done() -> void:

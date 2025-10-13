@@ -1,11 +1,36 @@
-[gd_scene load_steps=7 format=3 uid="uid://n2r2v72dltn8"]
+[gd_scene load_steps=13 format=3 uid="uid://n2r2v72dltn8"]
 
 [ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://scenes/menu/MenuBackground.tscn" id="1_n8sdb"]
 [ext_resource type="Script" uid="uid://crh68yicln7tu" path="res://src/menu/credit_screen/CreditHandling.gd" id="1_xb4j0"]
-[ext_resource type="Script" uid="uid://b1uyki8ha85d7" path="res://src/game/overlay/FinishGameOk.gd" id="2_52q2a"]
-[ext_resource type="Script" uid="uid://2iqjocqbcrxd" path="res://src/menu/generic/LinkButton.gd" id="2_f3feg"]
 [ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="3_i56v7"]
+[ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://src/menu/control_overwrites/ClickableButton.gd" id="3_ntyq1"]
 [ext_resource type="Resource" uid="uid://b0gd4uwnid78l" path="res://scenes/menu/resources/Animations/DefaultButtonAnimation.tres" id="4_5w3yf"]
+[ext_resource type="Script" uid="uid://dvrn3p7xl4tpl" path="res://src/templates/ui/actions/OpenLinkAction.gd" id="5_gggmv"]
+[ext_resource type="Script" uid="uid://b03sehux5xslr" path="res://src/templates/ui/actions/OpenMainMenu.gd" id="7_xxa1d"]
+
+[sub_resource type="Resource" id="Resource_gul80"]
+script = ExtResource("5_gggmv")
+link = "https://www.kenney.nl/"
+metadata/_custom_type_script = "uid://dvrn3p7xl4tpl"
+
+[sub_resource type="Resource" id="Resource_ntyq1"]
+script = ExtResource("5_gggmv")
+link = "https://axuree.myportfolio.com/"
+metadata/_custom_type_script = "uid://dvrn3p7xl4tpl"
+
+[sub_resource type="Resource" id="Resource_gggmv"]
+script = ExtResource("5_gggmv")
+link = "https://abstractionmusic.com/"
+metadata/_custom_type_script = "uid://dvrn3p7xl4tpl"
+
+[sub_resource type="Resource" id="Resource_xxa1d"]
+script = ExtResource("5_gggmv")
+link = "https://www.materialmaker.org/"
+metadata/_custom_type_script = "uid://dvrn3p7xl4tpl"
+
+[sub_resource type="Resource" id="Resource_4lqqu"]
+script = ExtResource("7_xxa1d")
+metadata/_custom_type_script = "uid://b03sehux5xslr"
 
 [node name="Credits" type="CanvasLayer"]
 
@@ -54,36 +79,36 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../CloseButton")
 focus_neighbor_right = NodePath("../Abstraction")
 text = "Kenney.nl"
-script = ExtResource("2_f3feg")
-link = "https://www.kenney.nl/"
+script = ExtResource("3_ntyq1")
 animation_resource = ExtResource("4_5w3yf")
+pressed_action = SubResource("Resource_gul80")
 
 [node name="Auxree" type="Button" parent="ButtonArea/LinkList"]
 layout_mode = 2
 focus_neighbor_left = NodePath("../CloseButton")
 focus_neighbor_right = NodePath("../Abstraction")
 text = "Axuree"
-script = ExtResource("2_f3feg")
-link = "https://axuree.myportfolio.com/"
+script = ExtResource("3_ntyq1")
 animation_resource = ExtResource("4_5w3yf")
+pressed_action = SubResource("Resource_ntyq1")
 
 [node name="Abstraction" type="Button" parent="ButtonArea/LinkList"]
 layout_mode = 2
 focus_neighbor_left = NodePath("../Kenney_nl")
 focus_neighbor_right = NodePath("../MaterialMaker")
 text = "Abstraction"
-script = ExtResource("2_f3feg")
-link = "https://abstractionmusic.com/"
+script = ExtResource("3_ntyq1")
 animation_resource = ExtResource("4_5w3yf")
+pressed_action = SubResource("Resource_gggmv")
 
 [node name="MaterialMaker" type="Button" parent="ButtonArea/LinkList"]
 layout_mode = 2
 focus_neighbor_left = NodePath("../Abstraction")
 focus_neighbor_right = NodePath("../CloseButton")
 text = "Material Maker"
-script = ExtResource("2_f3feg")
-link = "https://www.materialmaker.org/"
+script = ExtResource("3_ntyq1")
 animation_resource = ExtResource("4_5w3yf")
+pressed_action = SubResource("Resource_xxa1d")
 
 [node name="CloseButton" type="Button" parent="ButtonArea/LinkList"]
 layout_mode = 2
@@ -93,6 +118,7 @@ focus_neighbor_right = NodePath("../Kenney_nl")
 shortcut = ExtResource("3_i56v7")
 shortcut_in_tooltip = false
 text = "CLOSE"
-script = ExtResource("2_52q2a")
+script = ExtResource("3_ntyq1")
 is_focused = true
 animation_resource = ExtResource("4_5w3yf")
+pressed_action = SubResource("Resource_4lqqu")

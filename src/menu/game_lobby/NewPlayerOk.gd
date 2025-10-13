@@ -15,7 +15,6 @@ func _pressed() -> void:
 	if !is_valid:
 		return
 	
-	super()
 	var player_name: String = player_name_field.text
 
 	var return_player: PlayerResource = PlayerResource.new()

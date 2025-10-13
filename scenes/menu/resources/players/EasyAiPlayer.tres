@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PlayerResource" load_steps=3 format=3 uid="uid://dyvxj1se1pkhk"]
+
+[ext_resource type="Resource" uid="uid://bvccy0uqye5ff" path="res://scenes/game/resources/ai/EasyAi.tres" id="1_qgh7o"]
+[ext_resource type="Script" uid="uid://bftxc2q2j26m7" path="res://src/templates/PlayerResource.gd" id="1_t7m73"]
+
+[resource]
+script = ExtResource("1_t7m73")
+ai_difficulty = ExtResource("1_qgh7o")
+name = "Easy Ai"
+metadata/_custom_type_script = "uid://bftxc2q2j26m7"

@@ -12,7 +12,6 @@ func players_updated() -> void:
 	_validate_button()
 
 func _pressed() -> void:
-	super()
 	_validate_button()
 	if disabled:
 		return

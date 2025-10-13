@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://csamt2tu6hlpo"]
+[gd_scene load_steps=8 format=3 uid="uid://csamt2tu6hlpo"]
 
 [ext_resource type="Script" uid="uid://bdscbjvvsy3cn" path="res://src/game/overlay/GameFinished.gd" id="1_fioaw"]
 [ext_resource type="Script" uid="uid://bqg7gcbgquncx" path="res://src/game/overlay/PlayerScoreList.gd" id="2_ohkho"]
 [ext_resource type="PackedScene" uid="uid://pwy03e08f1ov" path="res://scenes/game/overlay/PlayerScoreEntry.tscn" id="3_6aww1"]
-[ext_resource type="Script" uid="uid://b1uyki8ha85d7" path="res://src/game/overlay/FinishGameOk.gd" id="5_8dsgm"]
+[ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://src/menu/control_overwrites/ClickableButton.gd" id="4_udvsw"]
+[ext_resource type="Script" uid="uid://b03sehux5xslr" path="res://src/templates/ui/actions/OpenMainMenu.gd" id="5_yk1ea"]
 [ext_resource type="Script" uid="uid://cy2n7p0twry43" path="res://src/game/overlay/ReplayGame.gd" id="6_f0a12"]
+
+[sub_resource type="Resource" id="Resource_0uvj0"]
+script = ExtResource("5_yk1ea")
+metadata/_custom_type_script = "uid://b03sehux5xslr"
 
 [node name="FinishGame" type="Control"]
 layout_mode = 3
@@ -106,8 +111,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 text = "OK"
-script = ExtResource("5_8dsgm")
+script = ExtResource("4_udvsw")
 is_focused = true
+pressed_action = SubResource("Resource_0uvj0")
 
 [node name="ReplayGame" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer2/Footer/Buttons" node_paths=PackedStringArray("finish_game_node")]
 layout_mode = 2

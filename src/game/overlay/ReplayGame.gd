@@ -8,7 +8,6 @@ func _ready() -> void:
 		queue_free()
 
 func _pressed() -> void:
-	super()
 	get_tree().paused = false
 	if multiplayer.multiplayer_peer != null:
 		multiplayer.multiplayer_peer.close()
