@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TextTranslation" load_steps=2 format=3 uid="uid://c2d7flycqg1e7"]
+
+[ext_resource type="Script" uid="uid://b3ccmsvxi5x8x" path="res://shared/resources/translations/TextTranslation.gd" id="1_vesmi"]
+
+[resource]
+script = ExtResource("1_vesmi")
+key = "MULTIPLAYER_PLAYER_JOINED"
+comment = "Requires a single %s placeholder conng the player nametaini"
+metadata/_custom_type_script = "uid://b3ccmsvxi5x8x"

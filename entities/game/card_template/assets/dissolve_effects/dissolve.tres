@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DissolveEffectResource" load_steps=5 format=3 uid="uid://0hefyj7q57o6"]
+
+[ext_resource type="Shader" uid="uid://cen4xj62iwrff" path="res://assets/shaders/DisolveCard.gdshader" id="1_6pdnx"]
+[ext_resource type="AudioStream" uid="uid://4hh1xtj8ac4j" path="res://assets/audio/effect/card-slide-6.ogg" id="2_5sofb"]
+[ext_resource type="Script" uid="uid://bel0ari5ushcq" path="res://entities/game/card_template/resources/DissolveEffectResource.gd" id="3_2qevd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m2kse"]
+shader = ExtResource("1_6pdnx")
+shader_parameter/fragment_number = Vector2(20, 20)
+shader_parameter/progress = 0.0
+
+[resource]
+script = ExtResource("3_2qevd")
+rarity = 20
+effect_material = SubResource("ShaderMaterial_m2kse")
+remove_sound = ExtResource("2_5sofb")
+effect_speed_multiplier = 25.0

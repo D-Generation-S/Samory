@@ -1,0 +1,271 @@
+[gd_scene load_steps=28 format=3 uid="uid://dkd4cftggpymb"]
+
+[ext_resource type="Script" uid="uid://lae7d6ybthx1" path="res://entities/ui/game_lobby/scripts/GameLobby.gd" id="1_0oi2l"]
+[ext_resource type="Script" uid="uid://dob4ydfgei44n" path="res://entities/ui/game_lobby/scripts/AddNewPlayerButton.gd" id="1_2n3u5"]
+[ext_resource type="PackedScene" uid="uid://b3cv1g0a284mq" path="res://entities/ui/deck_preview/scenes/DeckPreview.tscn" id="1_uo1dm"]
+[ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://entities/ui/menu_background/scenes/MenuBackground.tscn" id="2_q7a4k"]
+[ext_resource type="Script" uid="uid://dwwx0a5klp3wq" path="res://entities/ui/game_lobby/scripts/PlayersLobbyManager.gd" id="3_1ax0d"]
+[ext_resource type="Texture2D" uid="uid://d3kktfkudqqbm" path="res://assets/icons/HelpIcon.tres" id="3_bvnvj"]
+[ext_resource type="Script" uid="uid://f8gdbcwdx8oy" path="res://shared/entities/lobby_splitter/scripts/LobbySplitter.gd" id="3_muy8l"]
+[ext_resource type="PackedScene" uid="uid://dxhn5n16onctb" path="res://entities/ui/new_player/scenes/NewPlayer.tscn" id="3_vi7sw"]
+[ext_resource type="PackedScene" uid="uid://de0if4rovyxsv" path="res://entities/ui/player_card/scenes/PlayerCard.tscn" id="4_l5ybk"]
+[ext_resource type="Script" uid="uid://crg48uu6clbuc" path="res://entities/ui/game_lobby/scripts/QuickAddPlayer.gd" id="7_6tvv5"]
+[ext_resource type="Texture2D" uid="uid://lj7phnlllstw" path="res://assets/icons/HumanIcon.tres" id="7_soh36"]
+[ext_resource type="Script" uid="uid://7xhiyal0wb00" path="res://entities/ui/game_lobby/scripts/StartLobbyGame.gd" id="8_6tuah"]
+[ext_resource type="Script" uid="uid://duoapsvxmnpca" path="res://shared/entities/deck_viewer_filter_box/scripts/DeckViewerFilterBox.gd" id="8_7nqqi"]
+[ext_resource type="Script" uid="uid://jkxaernwy8o2" path="res://entities/ui/game_lobby/scripts/AddAiPlayer.gd" id="8_prt8c"]
+[ext_resource type="PackedScene" uid="uid://sjjc4vd4h47c" path="res://entities/ui/select_ai_player/scenes/SelectAiPlayer.tscn" id="9_2gndk"]
+[ext_resource type="ButtonGroup" uid="uid://csu1gmbh8nooq" path="res://entities/ui/game_lobby/button_groups/GameLobbyFilter.tres" id="9_b0hcr"]
+[ext_resource type="Script" uid="uid://cjuiuh4s0clue" path="res://shared/entities/deck_view_checkbox/scripts/DeckViewCheckbox.gd" id="10_nuo64"]
+[ext_resource type="Script" uid="uid://bt7h8k61frlxw" path="res://shared/entities/deck_container/scripts/DeckContainer.gd" id="11_3fbum"]
+[ext_resource type="Texture2D" uid="uid://wa0qa5dgmjgk" path="res://assets/icons/AiIcon.tres" id="11_3vpqe"]
+[ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="11_eein8"]
+[ext_resource type="Resource" uid="uid://b0gd4uwnid78l" path="res://shared/entities/clickable_button/assets/animations/DefaultButtonAnimation.tres" id="17_to3in"]
+[ext_resource type="Texture2D" uid="uid://dkm1d2mijfcuq" path="res://assets/icons/PlayIcon.tres" id="19_ef40l"]
+[ext_resource type="Texture2D" uid="uid://b6vwa7x6vgpfd" path="res://assets/icons/DenyIcon.tres" id="23_k5aev"]
+[ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="24_3vpqe"]
+[ext_resource type="Script" uid="uid://b03sehux5xslr" path="res://shared/entities/clickable_button/resources/actions/OpenMainMenu.gd" id="25_ef40l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s33bc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Resource" id="Resource_k5aev"]
+script = ExtResource("25_ef40l")
+metadata/_custom_type_script = "uid://b03sehux5xslr"
+
+[node name="GameLobby" type="CanvasLayer"]
+script = ExtResource("1_0oi2l")
+
+[node name="MenuBackground" parent="." instance=ExtResource("2_q7a4k")]
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_s33bc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HSplitContainer" type="HSplitContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+split_offset = -300
+dragger_visibility = 2
+script = ExtResource("3_muy8l")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Playerlist" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "PLAYER_LIST"
+horizontal_alignment = 1
+
+[node name="PlayerListHelp" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+tooltip_text = "PLAYER_LIST_HELP"
+texture = ExtResource("3_bvnvj")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Players" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("3_1ax0d")
+player_card_template = ExtResource("4_l5ybk")
+
+[node name="HBoxContainer2" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="AddNewPlayer" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" node_paths=PackedStringArray("root_node", "player_node")]
+layout_mode = 2
+tooltip_text = "ADD_NEW_PLAYER_TOOLTIP"
+text = "ADD_NEW_PLAYER"
+icon = ExtResource("7_soh36")
+script = ExtResource("1_2n3u5")
+root_node = NodePath("../../../../../../../../../..")
+player_node = NodePath("../../ScrollContainer/Players")
+player_template = ExtResource("3_vi7sw")
+player_card_template = ExtResource("4_l5ybk")
+is_focused = true
+
+[node name="AddRandomPlayer" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+tooltip_text = "ADD_RANDOM_PLAYER_TOOLTIP"
+text = "ADD_RANDOM_PLAYER"
+icon = ExtResource("7_soh36")
+script = ExtResource("7_6tvv5")
+
+[node name="AddAiPlayer" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+tooltip_text = "ADD_AI_PLAYER_TOOLTIP"
+text = "ADD_AI_PLAYER"
+icon = ExtResource("11_3vpqe")
+script = ExtResource("8_prt8c")
+ai_selecion_dialog = ExtResource("9_2gndk")
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="Filter Decks" type="LineEdit" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "FILTER_DECKS"
+script = ExtResource("8_7nqqi")
+
+[node name="Show All" type="CheckButton" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+tooltip_text = "SHOW_ALL_TOOLTIP"
+button_pressed = true
+button_group = ExtResource("9_b0hcr")
+text = "SHOW_ALL"
+script = ExtResource("10_nuo64")
+
+[node name="Show Build In" type="CheckButton" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+tooltip_text = "SHOW_BUILT_IN_TOOLTIP"
+button_group = ExtResource("9_b0hcr")
+text = "SHOW_BUILT_IN"
+script = ExtResource("10_nuo64")
+
+[node name="Show Custom" type="CheckButton" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+tooltip_text = "SHOW_CUSTOM_TOOLTIP"
+button_group = ExtResource("9_b0hcr")
+text = "SHOW_CUSTOM"
+script = ExtResource("10_nuo64")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Decks" type="GridContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+script = ExtResource("11_3fbum")
+deck_preview_template = ExtResource("1_uo1dm")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="StartGame" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2" node_paths=PackedStringArray("player_list", "deck_manager")]
+layout_mode = 2
+tooltip_text = "START_GAME_TOOLTIP"
+text = "START_GAME"
+icon = ExtResource("19_ef40l")
+script = ExtResource("8_6tuah")
+player_list = NodePath("../../../../../HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/Players")
+deck_manager = NodePath("../../../../../HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/ScrollContainer/Decks")
+can_multi_click = false
+animation_resource = ExtResource("17_to3in")
+
+[node name="Cancel" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 10
+shortcut = ExtResource("11_eein8")
+shortcut_in_tooltip = false
+text = "CANCEL"
+icon = ExtResource("23_k5aev")
+script = ExtResource("24_3vpqe")
+animation_resource = ExtResource("17_to3in")
+pressed_action = SubResource("Resource_k5aev")
+
+[connection signal="toggle_buttons" from="." to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/AddNewPlayer" method="toggle_button"]
+[connection signal="toggle_buttons" from="." to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/AddRandomPlayer" method="toggle_button"]
+[connection signal="toggle_buttons" from="." to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/AddAiPlayer" method="toggle_button"]
+[connection signal="toggle_buttons" from="." to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/HBoxContainer/Filter Decks" method="toggle_enabled"]
+[connection signal="toggle_buttons" from="." to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/HBoxContainer/Show All" method="toggle_enabled"]
+[connection signal="toggle_buttons" from="." to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/HBoxContainer/Show Build In" method="toggle_enabled"]
+[connection signal="toggle_buttons" from="." to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/HBoxContainer/Show Custom" method="toggle_enabled"]
+[connection signal="toggle_buttons" from="." to="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/StartGame" method="toggle_button"]
+[connection signal="toggle_buttons" from="." to="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/Cancel" method="toggle_button"]
+[connection signal="player_list_changed" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/Players" to="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/StartGame" method="validate"]
+[connection signal="request_focus_element" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/Players" to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/AddNewPlayer" method="grab_focus"]
+[connection signal="dialog_closed" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/AddNewPlayer" to="." method="enable_all_buttons"]
+[connection signal="dialog_closed" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/AddNewPlayer" to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/Players" method="unlock_special_control"]
+[connection signal="player_added" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/AddNewPlayer" to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/Players" method="add_player"]
+[connection signal="player_adding" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/AddNewPlayer" to="." method="block_all_buttons"]
+[connection signal="show_special_control" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/AddNewPlayer" to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/Players" method="add_special_control"]
+[connection signal="player_added" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/AddRandomPlayer" to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/Players" method="add_player"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/AddRandomPlayer" to="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/StartGame" method="validate"]
+[connection signal="adding_ai_player" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/AddAiPlayer" to="." method="block_all_buttons"]
+[connection signal="dialog_closed" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/AddAiPlayer" to="." method="enable_all_buttons"]
+[connection signal="dialog_closed" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/AddAiPlayer" to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/Players" method="unlock_special_control"]
+[connection signal="dialog_closed" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/AddAiPlayer" to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/AddAiPlayer" method="grab_focus"]
+[connection signal="player_added" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/AddAiPlayer" to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/Players" method="add_player"]
+[connection signal="show_special_control" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/AddAiPlayer" to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/Players" method="add_special_control"]
+[connection signal="text_changed" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/HBoxContainer/Filter Decks" to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/ScrollContainer/Decks" method="filter_decks_by_name"]
+[connection signal="toggled" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/HBoxContainer/Show All" to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/ScrollContainer/Decks" method="show_all_decks"]
+[connection signal="toggled" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/HBoxContainer/Show Build In" to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/ScrollContainer/Decks" method="show_only_built_in"]
+[connection signal="toggled" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/HBoxContainer/Show Custom" to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/ScrollContainer/Decks" method="show_only_custom"]
+[connection signal="deck_selected" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/ScrollContainer/Decks" to="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/StartGame" method="deck_changed"]
+[connection signal="deck_unselected" from="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/ScrollContainer/Decks" to="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2/StartGame" method="deck_unselected"]

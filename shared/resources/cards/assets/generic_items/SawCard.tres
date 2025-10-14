@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MemoryCardResource" load_steps=4 format=3 uid="uid://cvulxb1epwmdw"]
+
+[ext_resource type="Script" uid="uid://d3u4837pgjc3d" path="res://shared/resources/cards/MemoryCardResource.gd" id="1_63nnx"]
+[ext_resource type="Texture2D" uid="uid://dv4h5xis22ax1" path="res://assets/sprites/genericItems_spritesheet_colored.png" id="2_6xn8w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35143"]
+atlas = ExtResource("2_6xn8w")
+region = Rect2(276, 88, 106, 190)
+
+[resource]
+script = ExtResource("1_63nnx")
+name = "SAW"
+description = "SAW_DESCRIPTION"
+texture = SubResource("AtlasTexture_35143")

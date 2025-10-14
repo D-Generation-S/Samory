@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://cn2mtwmpg34g8"]
-
-[ext_resource type="Script" uid="uid://bvb535unisi1e" path="res://src/menu/main_menu/GameVersion.gd" id="1_ch0ee"]
-[ext_resource type="Resource" uid="uid://p2dnhqvcr46e" path="res://scenes/translations/Version.tres" id="2_su2lc"]
-
-[node name="GameVersion" type="Label"]
-script = ExtResource("1_ch0ee")
-version_translation_string = ExtResource("2_su2lc")

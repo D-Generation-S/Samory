@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MemoryCardResource" load_steps=4 format=3 uid="uid://d2ke5415uoqc3"]
+
+[ext_resource type="Script" uid="uid://d3u4837pgjc3d" path="res://shared/resources/cards/MemoryCardResource.gd" id="1_ygtj2"]
+[ext_resource type="Texture2D" uid="uid://dv4h5xis22ax1" path="res://assets/sprites/genericItems_spritesheet_colored.png" id="2_ucjwo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mbkx"]
+atlas = ExtResource("2_ucjwo")
+region = Rect2(132, 1600, 124, 86)
+
+[resource]
+script = ExtResource("1_ygtj2")
+name = "GRAPHIC_CARD"
+description = "GRAPHIC_CARD_DESCRIPTION"
+texture = SubResource("AtlasTexture_3mbkx")
+metadata/_custom_type_script = "uid://d3u4837pgjc3d"

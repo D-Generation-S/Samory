@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TextTranslation" load_steps=2 format=3 uid="uid://b1f3wjhvljg0r"]
+
+[ext_resource type="Script" uid="uid://b3ccmsvxi5x8x" path="res://shared/resources/translations/TextTranslation.gd" id="1_o88hd"]
+
+[resource]
+script = ExtResource("1_o88hd")
+key = "MUTLIPLAYER_CONNECTION_FAILED"
+comment = "Single placeholder %s required to add the ip address"
+metadata/_custom_type_script = "uid://b3ccmsvxi5x8x"

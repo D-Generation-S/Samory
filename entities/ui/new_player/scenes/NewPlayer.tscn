@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://dxhn5n16onctb"]
+
+[ext_resource type="Script" uid="uid://bh281khl56nys" path="res://entities/ui/new_player/scripts/NewPlayer.gd" id="1_oy8p1"]
+[ext_resource type="Script" uid="uid://bke5y1iyv6t0m" path="res://entities/ui/new_player/scripts/PlayerName.gd" id="2_nbrg8"]
+[ext_resource type="Script" uid="uid://c2xkfxidnc8ec" path="res://entities/ui/new_player/scripts/ErrorBox.gd" id="3_37146"]
+[ext_resource type="Resource" uid="uid://8spi7c2n5owb" path="res://shared/resources/translations/assets/ErrorNoNameWasEntered.tres" id="3_mo3pt"]
+[ext_resource type="Script" uid="uid://ce2gjvxth663u" path="res://entities/ui/new_player/scripts/NewPlayerOk.gd" id="4_dgat8"]
+[ext_resource type="Resource" uid="uid://b22ff6v76015g" path="res://shared/resources/translations/assets/ErrorOnlyLetterAndNumbersAllowed.tres" id="4_u0lbt"]
+[ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="6_057kb"]
+[ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="6_321yi"]
+
+[node name="MarginContainer" type="MarginContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 106.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("1_oy8p1")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="HBoxContainer" parent="VBoxContainer2"]
+layout_mode = 2
+
+[node name="PlayerName" type="LineEdit" parent="VBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "PLAYER_NAME"
+script = ExtResource("2_nbrg8")
+error_no_name_was_entered = ExtResource("3_mo3pt")
+error_only_letters_and_numbers_allowed = ExtResource("4_u0lbt")
+is_focused = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="AddPlayer" type="Button" parent="VBoxContainer2/VBoxContainer/HBoxContainer3" node_paths=PackedStringArray("player_name_field", "fields_for_validation")]
+layout_mode = 2
+text = "OK"
+script = ExtResource("4_dgat8")
+player_name_field = NodePath("../../PlayerName")
+fields_for_validation = [NodePath("../../PlayerName")]
+
+[node name="AbortButton" type="Button" parent="VBoxContainer2/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 10
+shortcut = ExtResource("6_057kb")
+shortcut_in_tooltip = false
+text = "CANCEL"
+script = ExtResource("6_321yi")
+
+[node name="PlayerNameError" type="RichTextLabel" parent="VBoxContainer2"]
+layout_mode = 2
+bbcode_enabled = true
+text = "ERROR"
+fit_content = true
+script = ExtResource("3_37146")
+
+[connection signal="text_changed" from="VBoxContainer2/VBoxContainer/PlayerName" to="VBoxContainer2/VBoxContainer/PlayerName" method="_on_text_changed"]
+[connection signal="text_submitted" from="VBoxContainer2/VBoxContainer/PlayerName" to="VBoxContainer2/VBoxContainer/HBoxContainer3/AddPlayer" method="text_submitted"]
+[connection signal="valid" from="VBoxContainer2/VBoxContainer/PlayerName" to="VBoxContainer2/VBoxContainer/HBoxContainer3/AddPlayer" method="validate"]
+[connection signal="valid" from="VBoxContainer2/VBoxContainer/PlayerName" to="VBoxContainer2/PlayerNameError" method="reset"]
+[connection signal="validation_error" from="VBoxContainer2/VBoxContainer/PlayerName" to="VBoxContainer2/PlayerNameError" method="set_error"]
+[connection signal="validation_failed" from="VBoxContainer2/VBoxContainer/PlayerName" to="VBoxContainer2/VBoxContainer/HBoxContainer3/AddPlayer" method="invalid_data"]
+[connection signal="player_was_added" from="VBoxContainer2/VBoxContainer/HBoxContainer3/AddPlayer" to="." method="player_was_added"]
+[connection signal="pressed" from="VBoxContainer2/VBoxContainer/HBoxContainer3/AbortButton" to="." method="modal_getting_closed"]

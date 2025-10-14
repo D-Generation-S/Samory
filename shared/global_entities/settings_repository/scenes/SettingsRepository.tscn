@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh4bg61xwlmi3"]
+
+[ext_resource type="Script" uid="uid://op3f28advvsk" path="res://shared/global_entities/settings_repository/scripts/SettingsRepository.gd" id="1_abiu6"]
+[ext_resource type="Resource" uid="uid://gbkkrxvvrxpt" path="res://shared/global_entities/settings_repository/assets/DefaultSettings.tres" id="2_apg35"]
+
+[node name="SettingsRepository" type="Node"]
+script = ExtResource("1_abiu6")
+default_settings = ExtResource("2_apg35")

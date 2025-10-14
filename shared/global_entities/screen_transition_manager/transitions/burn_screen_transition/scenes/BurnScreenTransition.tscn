@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://bpcsbfe0f63oo"]
+
+[ext_resource type="Script" uid="uid://cpukienor4wir" path="res://shared/entities/animation_scene/scripts/AnimationScene.gd" id="1_pg0ff"]
+[ext_resource type="Shader" uid="uid://du7kats6oltxl" path="res://assets/shaders/BurnFromPoint.gdshader" id="2_h84ul"]
+[ext_resource type="Script" uid="uid://6aosoxbxnjcp" path="res://shared/global_entities/screen_transition_manager/transitions/burn_screen_transition/scripts/CanvasShaderTransitionAnimation.gd" id="3_pg0ff"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pg0ff"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kkwwv"]
+noise = SubResource("FastNoiseLite_pg0ff")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pg0ff"]
+shader = ExtResource("2_h84ul")
+shader_parameter/position = Vector2(0, 0)
+shader_parameter/radius = 0.0
+shader_parameter/borderWidth = 0.01
+shader_parameter/burnMult = 0.135
+shader_parameter/noiseTexture = SubResource("NoiseTexture2D_kkwwv")
+shader_parameter/burnColor = Color(1, 0.713726, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_h84ul"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pg0ff"]
+gradient = SubResource("Gradient_h84ul")
+
+[node name="BurnScreenTransition" type="Node2D"]
+script = ExtResource("1_pg0ff")
+transition_time_in = 0.0
+transition_time_out = 0.6
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_pg0ff")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture1D_pg0ff")
+script = ExtResource("3_pg0ff")
+shader_progress_control_name = "radius"
+target_shader_value = 1.5
+reverted_shader = true
+
+[connection signal="start_position_changed" from="." to="CanvasLayer/TextureRect" method="set_click_position"]
+[connection signal="texture_changed" from="." to="CanvasLayer/TextureRect" method="set_texture"]
+[connection signal="transition_state" from="." to="CanvasLayer/TextureRect" method="transition_step"]

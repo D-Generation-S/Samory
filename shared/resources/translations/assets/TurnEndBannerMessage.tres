@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TextTranslation" load_steps=2 format=3 uid="uid://cnl5uxkf36ely"]
+
+[ext_resource type="Script" uid="uid://b3ccmsvxi5x8x" path="res://shared/resources/translations/TextTranslation.gd" id="1_lqerj"]
+
+[resource]
+script = ExtResource("1_lqerj")
+key = "ROUND_END_BANNER_MESSAGE"
+context = ""
+plural = "ROUND_END_BANNER_MESSAGE_PLURAL"
+comment = "You need to add \"%1.0\" once as a placeholder, it will contain the seconds until the next turn will start"
+metadata/_custom_type_script = "uid://b3ccmsvxi5x8x"

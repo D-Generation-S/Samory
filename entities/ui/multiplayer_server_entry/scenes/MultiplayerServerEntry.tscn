@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg3c8ubx25e01"]
+
+[ext_resource type="StyleBox" uid="uid://d1rhal5rp1608" path="res://assets/styles/panel/MetalBox.tres" id="1_uguqt"]
+[ext_resource type="Script" uid="uid://bd4dw1vb77xuc" path="res://entities/ui/multiplayer_server_entry/scripts/ServerEntry.gd" id="2_ol4fd"]
+
+[node name="MultiplayerServerEntry" type="PanelContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 138.0
+grow_horizontal = 2
+theme_override_styles/panel = ExtResource("1_uguqt")
+script = ExtResource("2_ol4fd")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ServerName" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "SERVER_NAME"
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+
+[node name="Version" type="Label" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "VERSION"
+
+[node name="Connect" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "CONNECT"
+
+[connection signal="name_changed" from="." to="HBoxContainer/ServerName" method="set_text"]
+[connection signal="version_changed" from="." to="HBoxContainer/MarginContainer/Version" method="set_text"]
+[connection signal="pressed" from="HBoxContainer/Connect" to="." method="was_clicked"]

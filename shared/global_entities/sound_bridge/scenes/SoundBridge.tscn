@@ -1,0 +1,14 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxp2v4p6avixo"]
+
+[ext_resource type="Script" uid="uid://dm4x0y2o0hvyr" path="res://shared/global_entities/sound_bridge/scripts/SoundBridge.gd" id="1_v0nry"]
+[ext_resource type="AudioStream" uid="uid://cesdmptmtygih" path="res://assets/audio/effect/button-click-1.ogg" id="2_kx5n8"]
+[ext_resource type="AudioStream" uid="uid://bmd1ponspe8mk" path="res://assets/audio/effect/button-hover-1.ogg" id="3_31e7j"]
+[ext_resource type="AudioStream" uid="uid://ctjq1ihqaqsqu" path="res://assets/audio/effect/letter_written.ogg" id="4_11pf5"]
+[ext_resource type="AudioStream" uid="uid://c0i3cubl5gmn8" path="res://assets/audio/effect/toggle.ogg" id="4_xnmrk"]
+
+[node name="SoundBridge" type="Node2D"]
+script = ExtResource("1_v0nry")
+button_click_sound = ExtResource("2_kx5n8")
+button_hover_sound = ExtResource("3_31e7j")
+toggle_sound = ExtResource("4_xnmrk")
+text_input_sound = ExtResource("4_11pf5")

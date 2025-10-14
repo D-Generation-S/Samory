@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjuq64u16spk4"]
+
+[ext_resource type="Script" uid="uid://dnkq0vi7xlkh1" path="res://entities/ui/multiplayer_chat/scripts/ChatController.gd" id="1_0rmtm"]
+[ext_resource type="Script" uid="uid://btfxdq2gyiddl" path="res://entities/ui/multiplayer_chat/scripts/Chat.gd" id="1_06hh4"]
+
+[node name="MultiplayerChat" type="VBoxContainer"]
+size_flags_vertical = 3
+script = ExtResource("1_06hh4")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+scroll_following = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ChatController" type="Node" parent="HBoxContainer" node_paths=PackedStringArray("edit_field", "send_button")]
+script = ExtResource("1_0rmtm")
+edit_field = NodePath("../LineEdit")
+send_button = NodePath("../Button")
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "MESSAGE"
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "SEND"
+
+[connection signal="message_requested" from="." to="HBoxContainer/ChatController" method="_send_text"]
+[connection signal="new_player_joined" from="." to="HBoxContainer/ChatController" method="player_added"]
+[connection signal="player_was_disconnected" from="." to="HBoxContainer/ChatController" method="player_deleted"]
+[connection signal="update_player_list" from="." to="HBoxContainer/ChatController" method="players_updated"]
+[connection signal="message_received" from="HBoxContainer/ChatController" to="RichTextLabel" method="add_text"]

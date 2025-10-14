@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="ControlScaleAnimation" load_steps=2 format=3 uid="uid://b0gd4uwnid78l"]
-
-[ext_resource type="Script" uid="uid://bo2i1r57xlsqc" path="res://src/templates/animation/ControlScaleAnimation.gd" id="1_ktx3o"]
-
-[resource]
-script = ExtResource("1_ktx3o")
-scale_percentage = 110.0

@@ -1,0 +1,129 @@
+[gd_scene load_steps=16 format=3 uid="uid://cynb8xjpxqa6w"]
+
+[ext_resource type="Script" uid="uid://c04wthgck8mhp" path="res://entities/game/player_name_overlay/scripts/PlayerGameLabel.gd" id="1_d33rg"]
+[ext_resource type="Texture2D" uid="uid://bmxqeqo65xwt" path="res://assets/sprites/spritesheet-default.png" id="2_blt2s"]
+[ext_resource type="Texture2D" uid="uid://lj7phnlllstw" path="res://assets/icons/HumanIcon.tres" id="2_urml8"]
+[ext_resource type="Texture2D" uid="uid://wa0qa5dgmjgk" path="res://assets/icons/AiIcon.tres" id="3_nldki"]
+[ext_resource type="Resource" uid="uid://c0eqsic62hvl0" path="res://shared/resources/colors/assets/PlayerHighlightColor.tres" id="4_e0a06"]
+[ext_resource type="Script" uid="uid://debll6gkj7h13" path="res://entities/game/player_name_overlay/scripts/StyleOverwriteOnAction.gd" id="6_jynke"]
+[ext_resource type="Script" uid="uid://davutkne54fp8" path="res://entities/game/player_name_overlay/scripts/ColorReplace.gd" id="7_4mda4"]
+[ext_resource type="Script" uid="uid://bhhxuh3rhvxn7" path="res://entities/game/player_name_overlay/scripts/PlayerScoreCounter.gd" id="7_clybx"]
+[ext_resource type="Script" uid="uid://b1sl7tihdwhil" path="res://entities/game/player_name_overlay/scripts/ScoreAndName.gd" id="7_h8pn1"]
+[ext_resource type="Script" uid="uid://cpx0qtreblopk" path="res://entities/game/player_name_overlay/scripts/PlayerScoreInformation.gd" id="8_4u670"]
+[ext_resource type="Resource" uid="uid://85njf66kd3s1" path="res://shared/resources/colors/assets/PlayerDefaultColor.tres" id="9_2q0hc"]
+[ext_resource type="Shader" uid="uid://c68i873by7j7q" path="res://assets/shaders/ColorReplace.gdshader" id="11_2q0hc"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qprtf"]
+texture = ExtResource("2_blt2s")
+texture_margin_left = 18.0
+texture_margin_top = 18.0
+texture_margin_right = 18.0
+texture_margin_bottom = 18.0
+region_rect = Rect2(384, 384, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xjctk"]
+texture = ExtResource("2_blt2s")
+texture_margin_left = 18.0
+texture_margin_top = 18.0
+texture_margin_right = 18.0
+texture_margin_bottom = 18.0
+region_rect = Rect2(448, 384, 64, 64)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iisri"]
+shader = ExtResource("11_2q0hc")
+shader_parameter/always_replace = true
+shader_parameter/base_color = Color(0, 0, 0, 0)
+shader_parameter/target_color = Color(0, 0, 0, 0)
+shader_parameter/tolerance = 0.1
+
+[node name="MarginContainer" type="MarginContainer" node_paths=PackedStringArray("player_type_icon_box")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+script = ExtResource("1_d33rg")
+player_type_icon_box = NodePath("PanelContainer/HBoxContainer/MarginContainer/TextureRect")
+human_player_icon = ExtResource("2_urml8")
+ai_player_icon = ExtResource("3_nldki")
+player_round_color = ExtResource("4_e0a06")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_qprtf")
+script = ExtResource("6_jynke")
+style_to_use = SubResource("StyleBoxTexture_xjctk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="ScoreAndName" type="HBoxContainer" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+script = ExtResource("7_h8pn1")
+
+[node name="Name" type="Label" parent="PanelContainer/HBoxContainer/ScoreAndName"]
+layout_mode = 2
+text = "NAME_PLACEHOLDER"
+script = ExtResource("8_4u670")
+inactive_color = ExtResource("9_2q0hc")
+active_color = ExtResource("4_e0a06")
+
+[node name="LeftBracket" type="Label" parent="PanelContainer/HBoxContainer/ScoreAndName"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "("
+script = ExtResource("8_4u670")
+inactive_color = ExtResource("9_2q0hc")
+active_color = ExtResource("4_e0a06")
+
+[node name="Score" type="Label" parent="PanelContainer/HBoxContainer/ScoreAndName"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 25
+text = "0"
+script = ExtResource("7_clybx")
+inactive_color = ExtResource("9_2q0hc")
+active_color = ExtResource("4_e0a06")
+
+[node name="RightBracket" type="Label" parent="PanelContainer/HBoxContainer/ScoreAndName"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = ")"
+script = ExtResource("8_4u670")
+inactive_color = ExtResource("9_2q0hc")
+active_color = ExtResource("4_e0a06")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/HBoxContainer/MarginContainer"]
+material = SubResource("ShaderMaterial_iisri")
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+script = ExtResource("7_4mda4")
+default_color = ExtResource("9_2q0hc")
+highlight_color = ExtResource("4_e0a06")
+
+[connection signal="player_is_active" from="." to="PanelContainer" method="is_active"]
+[connection signal="player_is_active" from="." to="PanelContainer/HBoxContainer/ScoreAndName" method="is_now_active"]
+[connection signal="player_is_active" from="." to="PanelContainer/HBoxContainer/MarginContainer/TextureRect" method="set_highlight_color"]
+[connection signal="player_is_inactive" from="." to="PanelContainer" method="is_inactive"]
+[connection signal="player_is_inactive" from="." to="PanelContainer/HBoxContainer/ScoreAndName" method="is_now_inactive"]
+[connection signal="player_is_inactive" from="." to="PanelContainer/HBoxContainer/MarginContainer/TextureRect" method="set_default_color"]
+[connection signal="player_name_changed" from="." to="PanelContainer/HBoxContainer/ScoreAndName/Name" method="set_text"]
+[connection signal="player_score_changed" from="." to="PanelContainer/HBoxContainer/ScoreAndName/Score" method="set_new_score"]

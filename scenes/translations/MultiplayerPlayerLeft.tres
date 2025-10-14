@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="TextTranslation" load_steps=2 format=3 uid="uid://ccs2mb1k1qos0"]
-
-[ext_resource type="Script" uid="uid://b3ccmsvxi5x8x" path="res://src/templates/TextTranslation.gd" id="1_enxlf"]
-
-[resource]
-script = ExtResource("1_enxlf")
-key = "MULTIPLAYER_PLAYER_LEFT"
-comment = "Requires a single %s placeholder for player name"
-metadata/_custom_type_script = "uid://b3ccmsvxi5x8x"

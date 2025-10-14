@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="MemoryDeckResource" load_steps=16 format=3 uid="uid://55igt6df2ilr"]
+
+[ext_resource type="Script" uid="uid://d3u4837pgjc3d" path="res://shared/resources/cards/MemoryCardResource.gd" id="1_5chdw"]
+[ext_resource type="Texture2D" uid="uid://cpdy0umtx233e" path="res://assets/sprites/Axuree/back_card_3.png" id="1_ljd8o"]
+[ext_resource type="Script" uid="uid://bpimk4xlfh3xc" path="res://shared/resources/decks/MemoryDeckResource.gd" id="2_ljd8o"]
+[ext_resource type="Resource" uid="uid://bi07necohgv76" path="res://shared/resources/cards/assets/generic_items/ComputerCard.tres" id="3_dy4pe"]
+[ext_resource type="Resource" uid="uid://bd1ts8e88ds41" path="res://shared/resources/cards/assets/hardware/ComputerMonitor.tres" id="4_0i551"]
+[ext_resource type="Resource" uid="uid://nmglyfhi3oi7" path="res://shared/resources/cards/assets/hardware/Ram.tres" id="5_mdesk"]
+[ext_resource type="Resource" uid="uid://dlojq3c62wfcb" path="res://shared/resources/cards/assets/hardware/Calculator.tres" id="6_e45nh"]
+[ext_resource type="Resource" uid="uid://d2ke5415uoqc3" path="res://shared/resources/cards/assets/hardware/GraphicCard.tres" id="7_myb04"]
+[ext_resource type="Resource" uid="uid://qmm6cy0vyfhx" path="res://shared/resources/cards/assets/generic_items/HeadphoneCard.tres" id="8_fvik6"]
+[ext_resource type="Resource" uid="uid://bx8upxfh0e0jg" path="res://shared/resources/cards/assets/generic_items/MicrophoneCard.tres" id="9_cdvvc"]
+[ext_resource type="Resource" uid="uid://ckk2d27jq2hcu" path="res://shared/resources/cards/assets/generic_items/CdCard.tres" id="10_mdesk"]
+[ext_resource type="Resource" uid="uid://lm63vtwo3m41" path="res://shared/resources/cards/assets/hardware/UsbStick.tres" id="11_e45nh"]
+[ext_resource type="Resource" uid="uid://cj6x44b6htab5" path="res://shared/resources/cards/assets/generic_items/NotebookCard.tres" id="12_myb04"]
+[ext_resource type="Resource" uid="uid://bqm3vhwb85p7m" path="res://shared/resources/cards/assets/generic_items/ModernControllerCard.tres" id="13_fvik6"]
+[ext_resource type="Resource" uid="uid://bn83vd52k12bk" path="res://shared/resources/cards/assets/generic_items/PhoneCard.tres" id="14_fvik6"]
+
+[resource]
+script = ExtResource("2_ljd8o")
+name = "HARDWARE_DECK"
+description = "HARDWARE_DECK_DESCRIPTION"
+card_back = ExtResource("1_ljd8o")
+cards = Array[ExtResource("1_5chdw")]([ExtResource("3_dy4pe"), ExtResource("4_0i551"), ExtResource("5_mdesk"), ExtResource("6_e45nh"), ExtResource("7_myb04"), ExtResource("8_fvik6"), ExtResource("9_cdvvc"), ExtResource("10_mdesk"), ExtResource("11_e45nh"), ExtResource("12_myb04"), ExtResource("13_fvik6"), ExtResource("14_fvik6")])
+metadata/_custom_type_script = "uid://bpimk4xlfh3xc"

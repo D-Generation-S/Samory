@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PlayerResource" load_steps=2 format=3 uid="uid://4eedrcwjevdv"]
+
+[ext_resource type="Script" uid="uid://bftxc2q2j26m7" path="res://entities/ui/quick_game_selection/resources/PlayerResource.gd" id="1_72wg6"]
+
+[resource]
+script = ExtResource("1_72wg6")
+name = "Player 2"
+metadata/_custom_type_script = "uid://bftxc2q2j26m7"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TextTranslation" load_steps=2 format=3 uid="uid://t4b63t07og3"]
+
+[ext_resource type="Script" uid="uid://b3ccmsvxi5x8x" path="res://shared/resources/translations/TextTranslation.gd" id="1_jjokh"]
+
+[resource]
+script = ExtResource("1_jjokh")
+key = "TIME_FOR_COMPLETION"
+context = ""
+plural = ""
+comment = "Requires a single placeholder \"%1.0\" containing the seconds"
+metadata/_custom_type_script = "uid://b3ccmsvxi5x8x"

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MemoryCardResource" load_steps=4 format=3 uid="uid://bqm3vhwb85p7m"]
+
+[ext_resource type="Script" uid="uid://d3u4837pgjc3d" path="res://shared/resources/cards/MemoryCardResource.gd" id="1_ewnn0"]
+[ext_resource type="Texture2D" uid="uid://dv4h5xis22ax1" path="res://assets/sprites/genericItems_spritesheet_colored.png" id="2_ay65r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybmuq"]
+atlas = ExtResource("2_ay65r")
+region = Rect2(248, 1448, 115, 66)
+
+[resource]
+script = ExtResource("1_ewnn0")
+name = "MODERN_CONTROLLER"
+description = "MODERN_CONTROLLER_DESCRIPTION"
+texture = SubResource("AtlasTexture_ybmuq")
