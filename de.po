@@ -66,664 +66,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.7\n"
 
-#: scenes/menu/DeckViewer.tscn
-msgid "RELOAD_CUSTOM_DECKS_TOOLTIP"
-msgstr ""
-"Lade deine eigenen Decks neu, diese Funktionalität steht nur zur Verfügung "
-"wenn du eigene Decks aktiviert hast."
-
-#: scenes/menu/DeckViewer.tscn
-msgid "RELOAD_CUSTOM_DECKS"
-msgstr "Eigene Decks neu laden"
-
-#: scenes/menu/DeckViewer.tscn scenes/menu/GameLobby.tscn
-msgid "FILTER_DECKS"
-msgstr "Decks anhand ihres Namens filtern"
-
-#: scenes/menu/DeckViewer.tscn scenes/menu/GameLobby.tscn
-msgid "SHOW_ALL_TOOLTIP"
-msgstr ""
-"Zeige alle Decks an die das Spiel zu bieten hat, dies beinhaltet die "
-"eingebauten sowie eigene Decks"
-
-#: scenes/menu/DeckViewer.tscn scenes/menu/GameLobby.tscn
-msgid "SHOW_ALL"
-msgstr "Alle Anzeigen"
-
-#: scenes/menu/DeckViewer.tscn scenes/menu/GameLobby.tscn
-msgid "SHOW_BUILT_IN_TOOLTIP"
-msgstr "Zeige nur Decks welche teil des Spiels sind"
-
-#: scenes/menu/DeckViewer.tscn scenes/menu/GameLobby.tscn
-msgid "SHOW_BUILT_IN"
-msgstr "Nur eingebaute anzeigen"
-
-#: scenes/menu/DeckViewer.tscn scenes/menu/GameLobby.tscn
-msgid "SHOW_CUSTOM_TOOLTIP"
-msgstr "Zeige nur deine eigenen Decks an"
-
-#: scenes/menu/DeckViewer.tscn scenes/menu/GameLobby.tscn
-msgid "SHOW_CUSTOM"
-msgstr "Nur eigene anzeigen"
-
-#: scenes/menu/DeckViewer.tscn scenes/menu/SettingsMenu.tscn
-#: scenes/menu/Credits.tscn
-msgid "CLOSE"
-msgstr "Schließen"
-
-#: scenes/menu/GameLobby.tscn scenes/game/overlay/PlayersOverlay.tscn
-msgid "PLAYER_LIST"
-msgstr "Spieler"
-
-#: scenes/menu/GameLobby.tscn
-msgid "PLAYER_LIST_HELP"
-msgstr ""
-"Die Reihenfolge innerhalb dieser liste gibt an in welcher Reihenfolge die "
-"Spieler an der reihe sind"
-
-#: scenes/menu/GameLobby.tscn
-msgid "ADD_NEW_PLAYER_TOOLTIP"
-msgstr "Erlaubt es dir einen neuen Spieler zu konfigurieren und hinzuzufügen"
-
-#: scenes/menu/GameLobby.tscn
-msgid "ADD_NEW_PLAYER"
-msgstr "Neuen Spieler hinzufügen"
-
-#: scenes/menu/GameLobby.tscn
-msgid "ADD_RANDOM_PLAYER_TOOLTIP"
-msgstr ""
-"Füge einen zufälligen Spieler mit einem zufälligen Namen dem Spiel hinzu"
-
-#: scenes/menu/GameLobby.tscn
-msgid "ADD_RANDOM_PLAYER"
-msgstr "Zufälligen Spieler hinzufügen"
-
-#: scenes/menu/GameLobby.tscn
-msgid "ADD_AI_PLAYER_TOOLTIP"
-msgstr ""
-"Füge einen KI Spieler hinzu, du hast die Möglichkeit die Schwierigkeit "
-"auszuwählen"
-
-#: scenes/menu/GameLobby.tscn
-msgid "ADD_AI_PLAYER"
-msgstr "Ki Spieler hinzufügen"
-
-#: scenes/menu/GameLobby.tscn
-msgid "START_GAME_TOOLTIP"
-msgstr "Starte das spiel mit allen momentan aufgelisteten Spielern"
-
-#: scenes/menu/GameLobby.tscn
-msgid "START_GAME"
-msgstr "Spiel starten"
-
-#: scenes/menu/GameLobby.tscn scenes/menu/NewPlayer.tscn
-#: scenes/menu/SelectAiPlayer.tscn
-msgid "CANCEL"
-msgstr "Abbrechen"
-
-#: scenes/menu/MainMenu.tscn
-msgid "CUSTOM_GAME_TOOLTIP"
-msgstr ""
-"Erstelle ein eigenes Spiel gegen die KI oder andere Menschliche Spieler"
-
-#: scenes/menu/MainMenu.tscn
-msgid "CUSTOM_GAME"
-msgstr "Eigenes Spiel erstellen"
-
-#: scenes/menu/MainMenu.tscn
-msgid "QUICK_GAME_TOOLTIP"
-msgstr ""
-"Erstelle ein schnelles Spiel gegen einen anderen Menschen, es wird hierfür "
-"ein zufälliges Deck genutzt"
-
-#: scenes/menu/MainMenu.tscn
-msgid "QUICK_GAME"
-msgstr "Schnelles Spiel"
-
-#: scenes/menu/MainMenu.tscn
-msgid "DECK_VIEWER_TOOLTIP"
-msgstr ""
-"Schaue dir all deine Decks an, hier kannst du auch die Karten beschreibungen "
-"lesen"
-
-#: scenes/menu/MainMenu.tscn
-msgid "DECK_VIEWER"
-msgstr "Deckbetrachter"
-
-#: scenes/menu/MainMenu.tscn
-msgid "CREDITS_TOOLTIP"
-msgstr "Schaue wer schuld an all den bugs im Spiel ist, worauf wartest du?"
-
-#: scenes/menu/MainMenu.tscn
-msgid "CREDITS"
-msgstr "Credits"
-
-#: scenes/menu/MainMenu.tscn
-msgid "QUIT_GAME_TOOLTIP"
-msgstr "Das Spiel beenden"
-
-#: scenes/menu/MainMenu.tscn
-msgid "QUIT_GAME"
-msgstr "Spiel beenden"
-
-#: scenes/menu/MainMenu.tscn
-msgid "VS_PLAYER_TOOLTIP"
-msgstr "Spiele ein HotSeat Spiel gegen einen anderen Spieler"
-
-#: scenes/menu/MainMenu.tscn
-msgid "VS_PLAYER"
-msgstr "Menschlicher Spieler"
-
-#: scenes/menu/MainMenu.tscn
-msgid "MATCH_AGAINST_EASY_AI_TOOLTIP"
-msgstr "Starte eine schnelles Spiel gegen einen einfachen KI Gegner."
-
-#: scenes/menu/MainMenu.tscn scenes/game/resources/ai/EasyAi.tres
-#: scenes/menu/SelectAiPlayer.tscn
-msgid "EASY_AI"
-msgstr "Einfach"
-
-#: scenes/menu/MainMenu.tscn
-msgid "MATCH_AGAINST_NORMAL_AI_TOOLTIP"
-msgstr "Starte eine schnelles Spiel gegen einen normalen KI Gegner."
-
-#: scenes/menu/MainMenu.tscn scenes/game/resources/ai/NormalAi.tres
-#: scenes/menu/SelectAiPlayer.tscn
-msgid "NORMAL_AI"
-msgstr "Normal"
-
-#: scenes/menu/MainMenu.tscn
-msgid "MATCH_AGAINST_HARD_AI_TOOLTIP"
-msgstr "Starte eine schnelles Spiel gegen einen schweren KI Gegner."
-
-#: scenes/menu/MainMenu.tscn scenes/game/resources/ai/HardAi.tres
-#: scenes/menu/SelectAiPlayer.tscn
-msgid "HARD_AI"
-msgstr "Schwer"
-
-#: scenes/menu/MainMenu.tscn scenes/menu/SettingsMenu.tscn
-msgid "GAME_SETTINGS"
-msgstr "Spieleinstellungen"
-
-#: scenes/menu/MainMenu.tscn
-msgid "HOW_TO_PLAY"
-msgstr "Spielanleitung"
-
-#: scenes/menu/MainMenu.tscn
-msgid "GITHUB_REPOSITORY_BUTTON"
-msgstr "GitHub Repository mit dem Quellcode des Spiels"
-
-#: scenes/menu/MainMenu.tscn
-msgid "GAME_PAGE"
-msgstr "Spielseite"
-
-#: scenes/menu/MainMenu.tscn
-msgid "REPORT_BUG"
-msgstr "Fehler melden"
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "SETTINGS"
-msgstr "Einstellungen"
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "SELECT_LANGUAGE_SETTING_TOOLTIP"
-msgstr "Wähle die Sprache des Spiels aus in der diese angezeigt werden soll."
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "ENGLISH"
-msgstr "Englisch"
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "GERMAN"
-msgstr "Deutsch"
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "GRAPHIC_SETTINGS"
-msgstr "Grafikeinstellungen"
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "WINDOW_MODE_SETTING_TOOLTIP"
-msgstr "Ein dropdown um den gewünschten Fenster Modus auszuwählen."
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "FULL_SCREEN"
-msgstr "Vollbild"
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "BORDERLESS"
-msgstr "Randlos"
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "MAXIMIZED"
-msgstr "Maximiert"
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "VSYNC_SETTING_TOOLTIP"
-msgstr "Aktiviere oder deaktiviere VSync für das Spiel"
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "V_SYNC"
-msgstr "V Sync"
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "UI_SCALE_TOOLTIP"
-msgstr ""
-"Diese Einstellung legt fest in wie weit das UI skaliert werden soll, eine "
-"Einstellung auf 100% entspricht der vorgesehenen Einstellung"
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "UI_SCALE"
-msgstr "UI: %03.0f %%"
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "GAMEPLAY_SETTINGS"
-msgstr "Spieleinstellungen"
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "LOAD_CUSTOM_DECK_SETTING_TOOLTIP"
-msgstr "Erlaube dem Spiel eigene Decks zu laden"
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "LOAD_CUSTOM_DECKS"
-msgstr "Eigene decks laden"
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "AUTO_COMPLETE_ROUND_TOOLTIP"
-msgstr ""
-"Wenn diese Aktion aktiv ist, wird die Runde automatisch nach n Sekunden "
-"beendet"
-
-#: scenes/menu/SettingsMenu.tscn scenes/game/overlay/AutoClosePopup.tscn
-msgid "AUTO_COMPLETE_ROUND"
-msgstr "Runde automatisch abschließen"
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "RESET_TUTORIAL_TOOLTIP"
-msgstr "Wenn du diesen Knopf drückst wird das Tutorial zurückgesetzt"
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "RESET_TUTORIAL"
-msgstr "Tutorial zurücksetzten"
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "AUDIO"
-msgstr "Audio"
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "MASTER_VOLUME_TOOLTIP"
-msgstr ""
-"Option zum setzten der Master Lautstärke, diese Einstellung hat eine "
-"Auswirkung auf alle anderen Audio Einstellungen"
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "MASTER_VOLUME"
-msgstr "Gesamtlautstärke"
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "EFFECT_VOLUME_TOOLTIP"
-msgstr ""
-"Option zum setzten der Effekt Lautstärke, hiervon sind alle Effekte des "
-"Spiels betroffen."
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "EFFECT_VOLUME"
-msgstr "Effektlautstärke"
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "MUSIC_VOLUME_TOOLTIP"
-msgstr ""
-"Option zum setzten der Musik Lautstärke, hiervon ist die Hintergrundmusik "
-"betroffen."
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "MUSIC_VOLUME"
-msgstr "Musiklautstärke"
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "TEST_EFFECTS_TOOLTIP"
-msgstr ""
-"Spielt einen Effekt Ton ab, hiermit kannst du testen ob die Einstellungen "
-"für dich korrekt sind"
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "TEST_EFFECTS"
-msgstr "Effekt Lautstärke testen"
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "APPLY_SETTING_TOOLTIP"
-msgstr "Speichere die aktuellen Einstellungen und schließe das Menü"
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "APPLY"
-msgstr "Annehmen"
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "CLOSE_SETTING_TOOLTIP"
-msgstr "Schließe die Einstellungen ohne diese zu speichern."
-
-#: scenes/game/resources/cards/animals/ElephantCard.tres
-msgid "ELEPHANT"
-msgstr "Der Elefant"
-
-#: scenes/game/resources/cards/animals/ElephantCard.tres
-msgid "ELEPHANT_DESCRIPTION"
-msgstr ""
-"Elefanten sind die größten Landsäugetiere, erkennbar an ihrem massiven "
-"Körper, den großen Ohren und dem langen Rüssel. Sie leben in Afrika und "
-"Asien und sind bekannt für ihre Intelligenz und ihr soziales Verhalten."
-
-#: scenes/game/resources/cards/animals/GiraffeCard.tres
-msgid "GIRAFFE"
-msgstr "Die Giraffe"
-
-#: scenes/game/resources/cards/animals/GiraffeCard.tres
-msgid "GIRAFFE_DESCRIPTION"
-msgstr ""
-"Giraffen sind die höchsten landlebenden Tiere der Welt, erkennbar an ihrem "
-"extrem langen Hals und den langen Beinen. Sie leben in den Savannen Afrikas "
-"und ernähren sich hauptsächlich von Blättern, die sie von hohen Bäumen "
-"pflücken."
-
-#: scenes/game/resources/cards/animals/HippoCard.tres
-msgid "HIPPO"
-msgstr "Das Nilpferd"
-
-#: scenes/game/resources/cards/animals/HippoCard.tres
-msgid "HIPPO_DESCRIPTION"
-msgstr ""
-"Nilpferde sind große, schwergewichtige Säugetiere, die in Afrika südlich der "
-"Sahara leben und sich durch ihre massiven Körper und großen Köpfe "
-"auszeichnen. Sie verbringen viel Zeit im Wasser, sind Pflanzenfresser und "
-"gelten als eines der gefährlichsten Tiere Afrikas."
-
-#: scenes/game/resources/cards/animals/MonkeyCard.tres
-msgid "MONKEY"
-msgstr "Der Affe"
-
-#: scenes/game/resources/cards/animals/MonkeyCard.tres
-msgid "MONKEY_DESCRIPTION"
-msgstr ""
-"Affen sind intelligente und gesellige Säugetiere aus der Ordnung der "
-"Primaten, die sich hauptsächlich von Pflanzen und Früchten ernähren. Sie "
-"leben meist in Gruppen und zeigen komplexe soziale Verhaltensweisen."
-
-#: scenes/game/resources/cards/animals/PandaCard.tres
-msgid "PANDA"
-msgstr "Der Pandabär"
-
-#: scenes/game/resources/cards/animals/PandaCard.tres
-msgid "PANDA_DESCRIPTION"
-msgstr ""
-"Pandabären sind große, schwarz-weiße Bären, die hauptsächlich in den "
-"Bambuswäldern Chinas leben und sich fast ausschließlich von Bambus ernähren. "
-"Sie sind bekannt für ihr friedliches Wesen und ihre seltene, vom Aussterben "
-"bedrohte Population."
-
-#: scenes/game/resources/cards/animals/ParrotCard.tres
-msgid "PARROT"
-msgstr "Der Papagei"
-
-#: scenes/game/resources/cards/animals/ParrotCard.tres
-msgid "PARROT_DESCRIPTION"
-msgstr ""
-"Papageien sind farbenfrohe Vögel aus der Ordnung Psittaciformes, die für "
-"ihre Intelligenz und ihre Fähigkeit, menschliche Stimmen nachzuahmen, "
-"bekannt sind. Sie leben meist in tropischen und subtropischen Regionen und "
-"ernähren sich von Samen, Früchten und manchmal auch Insekten."
-
-#: scenes/game/resources/cards/animals/PenguinCard.tres
-msgid "PENGUIN"
-msgstr "Der Pinguin"
-
-#: scenes/game/resources/cards/animals/PenguinCard.tres
-msgid "PENGUIN_DESCRIPTION"
-msgstr ""
-"Pinguine sind flugunfähige Seevögel der Südhalbkugel, die sich durch ihre "
-"schwarz-weiße Färbung und ihre Anpassung an das Leben im Wasser auszeichnen. "
-"Sie nutzen ihre Flügel als Flossen zum Schwimmen und leben hauptsächlich in "
-"kalten Meeresregionen."
-
-#: scenes/game/resources/cards/animals/PigCard.tres
-msgid "PIG"
-msgstr "Das Schwein"
-
-#: scenes/game/resources/cards/animals/PigCard.tres
-msgid "PIG_DESCRIPTION"
-msgstr ""
-"Schweine sind kurzbeinige Säugetiere mit einem gedrungenen Körper, einer "
-"rüsselartigen Schnauze und meist einem geringelten Schwanz. Sie sind "
-"Allesfresser und werden weltweit sowohl in freier Wildbahn als auch als "
-"Nutztiere gehalten."
-
-#: scenes/game/resources/cards/animals/RabbitCard.tres
-msgid "RABBIT"
-msgstr "Der Hase"
-
-#: scenes/game/resources/cards/animals/RabbitCard.tres
-msgid "RABBIT_DESCRIPTION"
-msgstr ""
-"Hasen sind flinke Säugetiere aus der Familie der Hasenartigen, die durch "
-"ihre langen Ohren und kräftigen Hinterbeine auffallen. Sie leben in "
-"verschiedenen Lebensräumen weltweit und ernähren sich hauptsächlich von "
-"Gräsern und Kräutern."
-
-#: scenes/game/resources/cards/animals/SnakeCard.tres
-msgid "SNAKE"
-msgstr "Die Schlange"
-
-#: scenes/game/resources/cards/animals/SnakeCard.tres
-msgid "SNAKE_DESCRIPTION"
-msgstr ""
-"Schlangen sind langgestreckte, beinlose Reptilien aus der Unterordnung "
-"Serpentes, die sich durch ihre schuppige Haut und ihre Fähigkeit, sich "
-"geschmeidig fortzubewegen, auszeichnen. Sie sind weltweit in verschiedenen "
-"Lebensräumen anzutreffen, außer in extrem kalten Regionen wie der Arktis und "
-"Antarktis."
-
-#: scenes/game/resources/cards/generic_items/BriefcaseCard.tres
-msgid "BRIEFCASE"
-msgstr "Aktentasche"
-
-#: scenes/game/resources/cards/generic_items/BriefcaseCard.tres
-msgid "BRIEFCASE_DESCRIPTION"
-msgstr ""
-"Eine aktentasche die du benötigst um all deine Gegenstände für die Büro "
-"arbeit zu transportieren"
-
-#: scenes/game/resources/cards/generic_items/BrushCard.tres
-msgid "BRUSH"
-msgstr "Pinsel"
-
-#: scenes/game/resources/cards/generic_items/BrushCard.tres
-msgid "BRUSH_DESCRIPTION"
-msgstr "Ein Pinsel wird benötigt um etwas auf eine Leinwand zu malen"
-
-#: scenes/game/resources/cards/generic_items/CameraCard.tres
-msgid "CAMERA"
-msgstr "Kamera"
-
-#: scenes/game/resources/cards/generic_items/CameraCard.tres
-msgid "CAMERA_DESCRIPTION"
-msgstr "Eine Kamera um von etwas einen Film anzufertigen"
-
-#: scenes/game/resources/cards/generic_items/CdCard.tres
-msgid "CD"
-msgstr "Compact Disc (CD)"
-
-#: scenes/game/resources/cards/generic_items/CdCard.tres
-msgid "CD_DESCRIPTION"
-msgstr "Ein rundes Speichermedium auf dem Daten gespeichert werden können"
-
-#: scenes/game/resources/cards/generic_items/ComputerCard.tres
-msgid "COMPUTER"
-msgstr "Computer"
-
-#: scenes/game/resources/cards/generic_items/ComputerCard.tres
-msgid "COMPUTER_DESCRIPTION"
-msgstr ""
-"Ein elektronisches Gerät, das zur Verarbeitung und Speicherung von Daten "
-"verwendet wird"
-
-#: scenes/game/resources/cards/generic_items/HeadphoneCard.tres
-msgid "HEADPHONE"
-msgstr "Kopfhörer"
-
-#: scenes/game/resources/cards/generic_items/HeadphoneCard.tres
-msgid "HEADPHONE_DESCRIPTION"
-msgstr ""
-"Ein Gerät, das über die Ohren getragen wird, um Musik oder andere "
-"Audiosignale direkt zu hören"
-
-#: scenes/game/resources/cards/generic_items/MicrophoneCard.tres
-msgid "MICROPHONE"
-msgstr "Mikrofon"
-
-#: scenes/game/resources/cards/generic_items/MicrophoneCard.tres
-msgid "MICROPHONE_DESCRIPTION"
-msgstr ""
-"Ein Gerät, das Schallwellen in elektrische Signale umwandelt und zur "
-"Tonaufnahme oder -verstärkung verwendet wird"
-
-#: scenes/game/resources/cards/generic_items/MicroscopeCard.tres
-msgid "MICROSCOPE"
-msgstr "Mikroskop"
-
-#: scenes/game/resources/cards/generic_items/MicroscopeCard.tres
-msgid "MICROSCOPE_DESCRIPTION"
-msgstr ""
-"Ein optisches Instrument, das zur Vergrößerung und Untersuchung kleiner "
-"Objekte verwendet wird"
-
-#: scenes/game/resources/cards/generic_items/ModernControllerCard.tres
-msgid "MODERN_CONTROLLER"
-msgstr "Controller"
-
-#: scenes/game/resources/cards/generic_items/ModernControllerCard.tres
-msgid "MODERN_CONTROLLER_DESCRIPTION"
-msgstr ""
-"Ein Gerät um eigaben an einer Spielekonsole oder an einem Computer zu machen"
-
-#: scenes/game/resources/cards/generic_items/MoneyCard.tres
-msgid "MONEY"
-msgstr "Geld"
-
-#: scenes/game/resources/cards/generic_items/MoneyCard.tres
-msgid "MONEY_DESCRIPTION"
-msgstr "Ein stück Papier mit dem man Dinge in einem Laden kaufen kann"
-
-#: scenes/game/resources/cards/generic_items/MortarAndPestleCard.tres
-msgid "MORTAR_AND_PESTLE"
-msgstr "Mörser und Stößel"
-
-#: scenes/game/resources/cards/generic_items/MortarAndPestleCard.tres
-msgid "MORTAR_AND_PESTLE_DESCRIPTION"
-msgstr ""
-"Ein Gerät, das aus einer Schale (Mörser) und einem schweren Stab (Stößel) "
-"besteht, und zum Zerkleinern und Mischen von Substanzen verwendet wird"
-
-#: scenes/game/resources/cards/generic_items/NotebookCard.tres
-msgid "NOTEBOOK"
-msgstr "Notebook"
-
-#: scenes/game/resources/cards/generic_items/NotebookCard.tres
-msgid "NOTEBOOK_DESCRIPTION"
-msgstr ""
-"Ein tragbarer Computer, der für den mobilen Einsatz konzipiert ist und alle "
-"Funktionen eines Desktop-Computers bietet"
-
-#: scenes/game/resources/cards/generic_items/PanCard.tres
-msgid "PAN"
-msgstr "Pfanne"
-
-#: scenes/game/resources/cards/generic_items/PanCard.tres
-msgid "PAN_DESCRIPTION"
-msgstr ""
-"Ein flaches Kochgeschirr mit einem langen Griff, das zum Braten oder Kochen "
-"verwendet wird"
-
-#: scenes/game/resources/cards/generic_items/PhoneCard.tres
-msgid "PHONE"
-msgstr "Telefon"
-
-#: scenes/game/resources/cards/generic_items/PhoneCard.tres
-msgid "PHONE_DESCRIPTION"
-msgstr ""
-"Ein Gerät, das zur Übertragung von Schall über große Entfernungen mithilfe "
-"elektrischer Signale verwendet wird"
-
-#: scenes/game/resources/cards/generic_items/PickaxeCard.tres
-msgid "PICKAXE"
-msgstr "Spitzhacke"
-
-#: scenes/game/resources/cards/generic_items/PickaxeCard.tres
-msgid "PICKAXE_DESCRIPTION"
-msgstr ""
-"Ein Werkzeug mit einem langen Griff und einem schweren Kopf, das zum Graben "
-"und Zerkleinern harter Materialien wie Stein und Erde verwendet wird"
-
-#: scenes/game/resources/cards/generic_items/PotCard.tres
-msgid "POT"
-msgstr "Topf"
-
-#: scenes/game/resources/cards/generic_items/PotCard.tres
-msgid "POT_DESCRIPTION"
-msgstr ""
-"Ein Kochgefäß mit hohen Seiten und oft mit einem Deckel, das zum Kochen und "
-"Schmoren von Speisen verwendet wird"
-
-#: scenes/game/resources/cards/generic_items/SawCard.tres
-msgid "SAW"
-msgstr "Säge"
-
-#: scenes/game/resources/cards/generic_items/SawCard.tres
-msgid "SAW_DESCRIPTION"
-msgstr ""
-"Ein Werkzeug mit einer gezahnten Klinge, das zum Schneiden von Holz, Metall "
-"oder anderen Materialien verwendet wird"
-
-#: scenes/game/resources/cards/generic_items/ShovleCard.tres
-msgid "SHOVEL"
-msgstr "Schaufel"
-
-#: scenes/game/resources/cards/generic_items/ShovleCard.tres
-msgid "SHOVEL_DESCRIPTION"
-msgstr ""
-"Ein Werkzeug mit einem breiten, flachen Blatt und einem langen Griff, das "
-"zum Graben und Bewegen von losem Material wie Erde, Sand oder Schnee "
-"verwendet wird"
-
-#: scenes/game/resources/cards/generic_items/SledgehammerCard.tres
-msgid "SLEDGEHAMMER"
-msgstr "Vorschlagshammer"
-
-#: scenes/game/resources/cards/generic_items/SledgehammerCard.tres
-msgid "SLEDGEHAMMER_DESCRIPTION"
-msgstr ""
-"Ein schweres Werkzeug mit einem langen Griff und einem massiven Kopf, das "
-"zum Zerstören und Brechen von harten Materialien wie Beton oder Stein "
-"verwendet wird"
-
-#: scenes/game/resources/cards/generic_items/TeaPotCard.tres
-msgid "TEA_POT"
-msgstr "Tee Kanne"
-
-#: scenes/game/resources/cards/generic_items/TeaPotCard.tres
-msgid "TEA_POT_DESCRIPTION"
-msgstr ""
-"Ein Gefäß mit einem Ausguss und einem Griff, das verwendet wird, um Tee "
-"aufzubrühen und zu servieren"
-
-#: scenes/game/resources/cards/generic_items/ThoothbrushCard.tres
-msgid "THOOTHBRUSH"
-msgstr "Zahnbürste"
-
-#: scenes/game/resources/cards/generic_items/ThoothbrushCard.tres
-msgid "THOOTHBRUSH_DESCRIPTION"
-msgstr ""
-"Ein Werkzeug mit Borsten auf einem Griff, das zur Reinigung der Zähne und "
-"des Zahnfleisches verwendet wird"
-
-#: scenes/game/overlay/AutoClosePopup.tscn
+#: entities/game/auto_close_popup/scenes/AutoClosePopup.tscn
 msgid "AUTO_CLOSE_POPUP_BODY"
 msgstr ""
 "Möchten Sie eine Runde automatisch beenden, wenn alle möglichen Karten "
@@ -736,180 +79,103 @@ msgstr ""
 "Um diese Einstellung später anzupassen, gehe bitte in die Spieleinstellungen "
 "im Hauptmenü"
 
-#: scenes/game/overlay/AutoClosePopup.tscn scenes/game/overlay/FinishGame.tscn
-#: scenes/game/templates/TutorialWindow.tscn scenes/menu/NewPlayer.tscn
-#: scenes/menu/SelectAiPlayer.tscn
+#: entities/game/auto_close_popup/scenes/AutoClosePopup.tscn
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "AUTO_COMPLETE_ROUND"
+msgstr "Runde automatisch abschließen"
+
+#: entities/game/auto_close_popup/scenes/AutoClosePopup.tscn
+#: entities/game/finish_game/scenes/FinishGame.tscn
+#: entities/game/tutorial_window/scenes/TutorialWindow.tscn
+#: entities/ui/new_player/scenes/NewPlayer.tscn
+#: entities/ui/select_ai_player/scenes/SelectAiPlayer.tscn
 msgid "OK"
 msgstr "Ok"
 
-#: scenes/game/overlay/FinishGame.tscn
+#: entities/game/bottom_message_banner/scenes/BottomMessageBanner.tscn
+msgid "LABEL_TEXT"
+msgstr ""
+
+#: entities/game/finish_game/scenes/FinishGame.tscn
 msgid "GAME_STATISTIC"
 msgstr "[center]Spiele Statistik[/center]"
 
-#: scenes/game/overlay/FinishGame.tscn
+#: entities/game/finish_game/scenes/FinishGame.tscn
 msgid "PLAYER_TITLE"
 msgstr "Spielername"
 
-#: scenes/game/overlay/FinishGame.tscn
+#: entities/game/finish_game/scenes/FinishGame.tscn
 msgid "PLAYER_SCORE"
 msgstr "[right]Punktzahl[/right]"
 
-#: scenes/game/overlay/FinishGame.tscn
+#: entities/game/finish_game/scenes/FinishGame.tscn
 msgid "REPLAY"
 msgstr "Erneut spielen"
 
-#: scenes/game/overlay/GamePauseMenu.tscn
+#: entities/game/game_pause_menu/scenes/GamePauseMenu.tscn
 msgid "TOGGLE_DEBUG"
 msgstr "Debug aktivieren/deaktivieren"
 
-#: scenes/game/overlay/GamePauseMenu.tscn
+#: entities/game/game_pause_menu/scenes/GamePauseMenu.tscn
 msgid "MAIN_MENU_TOOLTIP"
 msgstr "Gehe zurück ins Hauptmenü des Spieles"
 
-#: scenes/game/overlay/GamePauseMenu.tscn
+#: entities/game/game_pause_menu/scenes/GamePauseMenu.tscn
 msgid "MAIN_MENU"
 msgstr "Hauptmenü"
 
-#: scenes/game/overlay/GamePauseMenu.tscn
+#: entities/game/game_pause_menu/scenes/GamePauseMenu.tscn
 msgid "CLOSE_MENU_TOOLTIP"
 msgstr "Schließe diese Menü"
 
-#: scenes/game/overlay/GamePauseMenu.tscn
+#: entities/game/game_pause_menu/scenes/GamePauseMenu.tscn
 msgid "CLOSE_MENU"
 msgstr "Menü schließen"
 
-#: scenes/game/overlay/PlayersOverlay.tscn
+#: entities/game/memory_game/scenes/MemoryGame.tscn
+msgid "PAUSE_MENU"
+msgstr "Pause Menü"
+
+#: entities/game/players_overlay/scenes/PlayersOverlay.tscn
 msgid "Players"
 msgstr "Spieler"
 
-#: scenes/game/overlay/PlayersOverlay.tscn scenes/menu/PlayerCard.tscn
+#: entities/game/players_overlay/scenes/PlayersOverlay.tscn
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+#: entities/ui/multiplayer_lobby/scenes/MultiplayerLobby.tscn
+msgid "PLAYER_LIST"
+msgstr "Spieler"
+
+#: entities/game/players_overlay/scenes/PlayersOverlay.tscn
+#: entities/ui/player_card/scenes/PlayerCard.tscn
 msgid "PLACEHOLDER"
 msgstr "Platzhalter"
 
-#: scenes/menu/DeckPreview.tscn
-msgid "DECK_INFO"
-msgstr "Deck Informationen"
-
-#: scenes/menu/DeckPreview.tscn
-msgid "BUILT_IN"
-msgstr "Eingebettetes:"
-
-#: scenes/menu/DeckPreview.tscn scenes/translations/No.tres
-msgid "NO"
-msgstr "Nein"
-
-#: scenes/menu/DeckPreview.tscn
-msgid "CARD_COUNT"
-msgstr "Kartenanzahl:"
-
-#: scenes/menu/DeckPreview.tscn
-msgid "DECK_NAME"
-msgstr "Deck name"
-
-#: scenes/menu/DeckPreview.tscn
-msgid "DESCRIPTION"
-msgstr "Beschreibung"
-
-#: scenes/game/resources/decks/AnimalDeck.tres
-msgid "ANIMALS"
-msgstr "Tiere"
-
-#: scenes/game/resources/decks/AnimalDeck.tres
-msgid "ANIMALS_DESCRIPTION"
-msgstr "Ein deck welches Tierbilder enthält"
-
-#: scenes/game/resources/decks/GenericItemDeckFull.tres
-msgid "GENERIC_ITEMS_FULL"
-msgstr "Haushaltsgegenstände"
-
-#: scenes/game/resources/decks/GenericItemDeckFull.tres
-msgid "GENERIC_ITEMS_FULL_DESCRIPTION"
-msgstr ""
-"Eine Sammlung von Gegenständen welche in nahezu jedem Haushalt gefunden "
-"werden können"
-
-#: scenes/game/resources/tutorials/FirstCardTurnedTutorial.tres
-msgid "FIRST_CARD_TURNED"
-msgstr "Deine erste Karte umgedreht"
-
-#: scenes/game/resources/tutorials/FirstCardTurnedTutorial.tres
-msgid "FIRST_CARD_TURNED_BODY"
-msgstr ""
-"Du hast soeben deine erste Karte umgedreht, versuche nun die Zweite mit dem "
-"selben Bild zu finden."
-
-#: scenes/game/resources/tutorials/PlayerFirstMatchFound.tres
-msgid "FIRST_MATCHING_CARD"
-msgstr "Erstes Kartenpaar gefunden"
-
-#: scenes/game/resources/tutorials/PlayerFirstMatchFound.tres
-msgid "FIRST_MATCHING_CARD_BODY"
-msgstr ""
-"Du hast die erste passende Karte gefunden, die dir einen Punkt einbringt. "
-"Überprüfe deinen Punktestand in der oberen linken Ecke neben deinem "
-"Spielernamen.\n"
-"\n"
-"Da du ein übereinstimmendes Paar gefunden hast, wird deine Runde "
-"fortgesetzt. Entsprechend darfst du erneut zwei Karten drehen, findest du "
-"erneut ein Pärchen, wird deine Runde fortgesetzt. Deine Runde endet sobald "
-"du kein Paar gefunden hast."
-
-#: scenes/game/resources/tutorials/PlayerFirstRoundEnd.tres
-msgid "FIRST_ROUND_END"
-msgstr "Die erste Runde hat geendet"
-
-#: scenes/game/resources/tutorials/PlayerFirstRoundEnd.tres
-msgid "FIRST_ROUND_END_BODY"
-msgstr ""
-"Die erste Runde ist beendet, der nächste Spieler kann jetzt spielen.\n"
-"\n"
-"Um zu sehen, welcher Spieler gerade spielt, schaue in die obere linke Ecke, "
-"der Spieler mit einem hellen Namen ist der Aktive."
-
-#: scenes/game/resources/tutorials/PlayerTurnTutorial.tres
-msgid "PLAYER_TURN"
-msgstr "Dein erster Zug"
-
-#: scenes/game/resources/tutorials/PlayerTurnTutorial.tres
-msgid "PLAYER_TURN_BODY"
-msgstr ""
-"Das ist dein erster Spielzug. Wie du im Hintergrund sehen kannst sind hier "
-"einige Karten zu finden.\n"
-"\n"
-"Deine Aufgabe ist es nun eine dieser Karten anzuklicken und sich das Bild "
-"darauf zu merken. Das Ziel des Spiels ist es die beiden passenden Karten zu "
-"finden, wenn du dies schaffst bekommst du einen Punkt."
-
-#: scenes/game/templates/TutorialWindow.tscn
+#: entities/game/tutorial_window/scenes/TutorialWindow.tscn
 msgid "TITLE"
 msgstr "Title"
 
-#: scenes/game/templates/TutorialWindow.tscn
+#: entities/game/tutorial_window/scenes/TutorialWindow.tscn
 msgid "BODY"
 msgstr "Körper"
 
-#: scenes/game/templates/TutorialWindow.tscn
+#: entities/game/tutorial_window/scenes/TutorialWindow.tscn
 msgid "COMPLETE_TUTORIAL_TOOLTIP"
 msgstr "Das Tutorial wird abgebrochen und es wird keine weitere Hilfe geben"
 
-#: scenes/game/templates/TutorialWindow.tscn
+#: entities/game/tutorial_window/scenes/TutorialWindow.tscn
 msgid "COMPLETE_TUTORIAL"
 msgstr "Tutorial als abgeschlossen markieren"
 
-#. TRANSLATORS: You need to add "%1.0" once as a placeholder, it will contain the seconds until the next turn will start
-#: scenes/translations/TurnEndBannerMessage.tres
-msgid "ROUND_END_BANNER_MESSAGE"
-msgid_plural "ROUND_END_BANNER_MESSAGE_PLURAL"
-msgstr[0] ""
-"Um die Runde abzuschließen warte %1.0f Sekunde oder drücke die Aktions taste"
-msgstr[1] ""
-"Um die Runde abzuschließen warte %1.0f Sekunden oder drücke die Aktions taste"
+#: entities/ui/card_preview/scenes/CardPreview.tscn
+msgid "CARD_NAME"
+msgstr ""
 
-#: scenes/translations/TurnEndBannerMessageNoAutoComplete.tres
-msgid "ROUND_END_BANNER_MESSAGE_NO_COMPLETE"
-msgstr "Um die Runde abzuschließen, drücke die Aktions Taste"
+#: entities/ui/card_preview/scenes/CardPreview.tscn
+msgid "CARD_DESCRIPTION"
+msgstr ""
 
-#: scenes/menu/Credits.tscn
+#: entities/ui/credits/scenes/Credits.tscn
 msgid "CREDITS_ROLL_TEXT"
 msgstr ""
 "[center][b]Credits[/b][/center]\n"
@@ -937,112 +203,844 @@ msgstr ""
 "[center]Meine Frau, die mir den Rücken freihielt und mir die Zeit gab,\n"
 "die ich für die Entwicklung benötigt habe[/center]"
 
-#: scenes/menu/Credits.tscn
+#: entities/ui/credits/scenes/Credits.tscn
 msgid "Kenney.nl"
 msgstr ""
 
-#: scenes/menu/Credits.tscn
+#: entities/ui/credits/scenes/Credits.tscn
 msgid "Axuree"
 msgstr ""
 
-#: scenes/menu/Credits.tscn
+#: entities/ui/credits/scenes/Credits.tscn
 msgid "Abstraction"
 msgstr ""
 
-#: scenes/menu/Credits.tscn
+#: entities/ui/credits/scenes/Credits.tscn
 msgid "Material Maker"
 msgstr ""
 
-#: scenes/menu/NewPlayer.tscn
+#: entities/ui/credits/scenes/Credits.tscn
+#: entities/ui/deck_viewer/scenes/DeckViewer.tscn
+#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "CLOSE"
+msgstr "Schließen"
+
+#: entities/ui/deck_preview/scenes/DeckPreview.tscn
+msgid "DECK_INFO"
+msgstr "Deck Informationen"
+
+#: entities/ui/deck_preview/scenes/DeckPreview.tscn
+msgid "BUILT_IN"
+msgstr "Eingebettetes:"
+
+#: entities/ui/deck_preview/scenes/DeckPreview.tscn
+#: shared/resources/translations/assets/No.tres
+msgid "NO"
+msgstr "Nein"
+
+#: entities/ui/deck_preview/scenes/DeckPreview.tscn
+msgid "CARD_COUNT"
+msgstr "Kartenanzahl:"
+
+#: entities/ui/deck_preview/scenes/DeckPreview.tscn
+msgid "DECK_NAME"
+msgstr "Deck name"
+
+#: entities/ui/deck_preview/scenes/DeckPreview.tscn
+msgid "DESCRIPTION"
+msgstr "Beschreibung"
+
+#: entities/ui/deck_viewer/scenes/DeckViewer.tscn
+msgid "RELOAD_CUSTOM_DECKS_TOOLTIP"
+msgstr ""
+"Lade deine eigenen Decks neu, diese Funktionalität steht nur zur Verfügung "
+"wenn du eigene Decks aktiviert hast."
+
+#: entities/ui/deck_viewer/scenes/DeckViewer.tscn
+msgid "RELOAD_CUSTOM_DECKS"
+msgstr "Eigene Decks neu laden"
+
+#: entities/ui/deck_viewer/scenes/DeckViewer.tscn
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+#: entities/ui/multiplayer_lobby/scenes/MultiplayerLobby.tscn
+msgid "FILTER_DECKS"
+msgstr "Decks anhand ihres Namens filtern"
+
+#: entities/ui/deck_viewer/scenes/DeckViewer.tscn
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+msgid "SHOW_ALL_TOOLTIP"
+msgstr ""
+"Zeige alle Decks an die das Spiel zu bieten hat, dies beinhaltet die "
+"eingebauten sowie eigene Decks"
+
+#: entities/ui/deck_viewer/scenes/DeckViewer.tscn
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+msgid "SHOW_ALL"
+msgstr "Alle Anzeigen"
+
+#: entities/ui/deck_viewer/scenes/DeckViewer.tscn
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+msgid "SHOW_BUILT_IN_TOOLTIP"
+msgstr "Zeige nur Decks welche teil des Spiels sind"
+
+#: entities/ui/deck_viewer/scenes/DeckViewer.tscn
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+msgid "SHOW_BUILT_IN"
+msgstr "Nur eingebaute anzeigen"
+
+#: entities/ui/deck_viewer/scenes/DeckViewer.tscn
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+msgid "SHOW_CUSTOM_TOOLTIP"
+msgstr "Zeige nur deine eigenen Decks an"
+
+#: entities/ui/deck_viewer/scenes/DeckViewer.tscn
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+msgid "SHOW_CUSTOM"
+msgstr "Nur eigene anzeigen"
+
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+msgid "PLAYER_LIST_HELP"
+msgstr ""
+"Die Reihenfolge innerhalb dieser liste gibt an in welcher Reihenfolge die "
+"Spieler an der reihe sind"
+
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+msgid "ADD_NEW_PLAYER_TOOLTIP"
+msgstr "Erlaubt es dir einen neuen Spieler zu konfigurieren und hinzuzufügen"
+
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+msgid "ADD_NEW_PLAYER"
+msgstr "Neuen Spieler hinzufügen"
+
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+msgid "ADD_RANDOM_PLAYER_TOOLTIP"
+msgstr ""
+"Füge einen zufälligen Spieler mit einem zufälligen Namen dem Spiel hinzu"
+
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+msgid "ADD_RANDOM_PLAYER"
+msgstr "Zufälligen Spieler hinzufügen"
+
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+msgid "ADD_AI_PLAYER_TOOLTIP"
+msgstr ""
+"Füge einen KI Spieler hinzu, du hast die Möglichkeit die Schwierigkeit "
+"auszuwählen"
+
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+msgid "ADD_AI_PLAYER"
+msgstr "Ki Spieler hinzufügen"
+
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+#: entities/ui/multiplayer_lobby/scenes/MultiplayerLobby.tscn
+msgid "START_GAME_TOOLTIP"
+msgstr "Starte das spiel mit allen momentan aufgelisteten Spielern"
+
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+#: entities/ui/multiplayer_lobby/scenes/MultiplayerLobby.tscn
+msgid "START_GAME"
+msgstr "Spiel starten"
+
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+#: entities/ui/new_player/scenes/NewPlayer.tscn
+#: entities/ui/select_ai_player/scenes/SelectAiPlayer.tscn
+msgid "CANCEL"
+msgstr "Abbrechen"
+
+#: entities/ui/loading_screen/scenes/LoadingScreen.tscn
+msgid "LOADING"
+msgstr "Lade"
+
+#: entities/ui/loading_screen/scenes/LoadingScreen.tscn
+#: entities/ui/multiplayer_chat/scenes/MultiplayerChat.tscn
+msgid "MESSAGE"
+msgstr "Nachricht"
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "CUSTOM_GAME_TOOLTIP"
+msgstr ""
+"Erstelle ein eigenes Spiel gegen die KI oder andere Menschliche Spieler"
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "CUSTOM_GAME"
+msgstr "Eigenes Spiel erstellen"
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "LOCAL_MULTIPLAYER_TOOLTIP"
+msgstr "Starten ein LAN Multiplayer spiel (experimental)"
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "LOCAL_MULTIPLAYER"
+msgstr "LAN Multiplayer"
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "QUICK_GAME_TOOLTIP"
+msgstr ""
+"Erstelle ein schnelles Spiel gegen einen anderen Menschen, es wird hierfür "
+"ein zufälliges Deck genutzt"
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "QUICK_GAME"
+msgstr "Schnelles Spiel"
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "DECK_VIEWER_TOOLTIP"
+msgstr ""
+"Schaue dir all deine Decks an, hier kannst du auch die Karten beschreibungen "
+"lesen"
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "DECK_VIEWER"
+msgstr "Deckbetrachter"
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "CREDITS_TOOLTIP"
+msgstr "Schaue wer schuld an all den bugs im Spiel ist, worauf wartest du?"
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "CREDITS"
+msgstr "Credits"
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "QUIT_GAME_TOOLTIP"
+msgstr "Das Spiel beenden"
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "QUIT_GAME"
+msgstr "Spiel beenden"
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "GAME_SETTINGS"
+msgstr "Spieleinstellungen"
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "HOW_TO_PLAY"
+msgstr "Spielanleitung"
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "GITHUB_REPOSITORY_BUTTON"
+msgstr "GitHub Repository mit dem Quellcode des Spiels"
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "GAME_PAGE"
+msgstr "Spielseite"
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "REPORT_BUG"
+msgstr "Fehler melden"
+
+#: entities/ui/multiplayer_chat/scenes/MultiplayerChat.tscn
+msgid "SEND"
+msgstr "Senden"
+
+#: entities/ui/multiplayer_connection_state_message/scenes/MultiplayerConnectionStateMessage.tscn
+#: shared/resources/translations/assets/MultiplayerConnectingToServer.tres
+msgid "CONNECTING_TO_SERVER"
+msgstr "Verbinde mit Server"
+
+#: entities/ui/multiplayer_connection_state_message/scenes/MultiplayerConnectionStateMessage.tscn
+msgid "ABORT_CONNECTION_TOOLTIP"
+msgstr "Diese Aktion bricht den Verbindungsversuch mit dem Server ab"
+
+#: entities/ui/multiplayer_connection_state_message/scenes/MultiplayerConnectionStateMessage.tscn
+msgid "ABORT_CONNECTION"
+msgstr "Verbindung abbrechen"
+
+#: entities/ui/multiplayer_lobby/scenes/MultiplayerLobby.tscn
+msgid "ABORT_TOOLTIP"
+msgstr ""
+"Die aktuelle Aktion wird abgebrochen oder das aktuelle Fenster geschlossen"
+
+#: entities/ui/multiplayer_lobby/scenes/MultiplayerLobby.tscn
+msgid "ABORT"
+msgstr "Abbrechen"
+
+#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
+#: entities/ui/new_player/scenes/NewPlayer.tscn
 msgid "PLAYER_NAME"
 msgstr "Spielername"
 
-#: scenes/menu/NewPlayer.tscn
+#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
+msgid "AVAILABLE_SERVERS"
+msgstr "Verfügbare Server"
+
+#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
+msgid "SERVER_ADDRESS"
+msgstr "Server Adresse"
+
+#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
+msgid "CONNECT_TOOLTIP"
+msgstr "Mit der angegebenen IP Adresse verbinden"
+
+#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
+#: entities/ui/multiplayer_server_entry/scenes/MultiplayerServerEntry.tscn
+msgid "CONNECT"
+msgstr "Verbinden"
+
+#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
+msgid "HOST_TOOLTIP"
+msgstr "Erstelle einen neuen Server andere Spieler können diesem beitretten"
+
+#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
+msgid "HOST"
+msgstr "Host"
+
+#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
+msgid "CLOSE_TOOLTIP"
+msgstr "Schließe dieses Menü"
+
+#: entities/ui/multiplayer_server_entry/scenes/MultiplayerServerEntry.tscn
+msgid "SERVER_NAME"
+msgstr "Servername"
+
+#: entities/ui/multiplayer_server_entry/scenes/MultiplayerServerEntry.tscn
+#: shared/resources/translations/assets/Version.tres
+msgid "VERSION"
+msgstr "Version"
+
+#: entities/ui/new_player/scenes/NewPlayer.tscn
 msgid "ERROR"
 msgstr "Fehler"
 
-#: scenes/menu/SelectAiPlayer.tscn
-msgid "ADD_AI_CANCEL_TOOLTIP"
-msgstr "Entferne den aktuellen KI Spieler"
-
-#: scenes/menu/PlayerCard.tscn
+#: entities/ui/player_card/scenes/PlayerCard.tscn
 msgid "MOVE_PLAYER_UP"
 msgstr "Spieler nach oben schieben"
 
-#: scenes/menu/PlayerCard.tscn
+#: entities/ui/player_card/scenes/PlayerCard.tscn
 msgid "MOVE_PLAYER_DOWN"
 msgstr "Spieler nach unten schieben"
 
-#: scenes/menu/PlayerCard.tscn
+#: entities/ui/player_card/scenes/PlayerCard.tscn
 msgid "DELETE_LOBBY_PLAYER_TOOLTIP"
 msgstr ""
 "Lösche den Spieler aus der Lobby, dieser kann danach nicht wiederhergestellt "
 "werden"
 
-#: scenes/translations/ErrorNoNameWasEntered.tres
-msgid "NO_NAME_WAS_ENTERED"
-msgstr "Der Spielername wird benötigt"
+#: entities/ui/quick_game_selection/scenes/QuickGameSelection.tscn
+msgid "VS_PLAYER_TOOLTIP"
+msgstr "Spiele ein HotSeat Spiel gegen einen anderen Spieler"
 
-#: scenes/translations/ErrorOnlyLetterAndNumbersAllowed.tres
-msgid "ONLY_LETTER_AND_NUMBERS_ALLOWED_FOR_PLAYER_NAME"
-msgstr "Nur Buchstaben und Zahlen sind für einen Spielernamen erlaubt"
+#: entities/ui/quick_game_selection/scenes/QuickGameSelection.tscn
+msgid "VS_PLAYER"
+msgstr "Menschlicher Spieler"
 
-#: scenes/game/levels/LoadingScreen.tscn
-msgid "LOADING"
-msgstr "Lade"
+#: entities/ui/quick_game_selection/scenes/QuickGameSelection.tscn
+msgid "MATCH_AGAINST_EASY_AI_TOOLTIP"
+msgstr "Starte eine schnelles Spiel gegen einen einfachen KI Gegner."
 
-#: scenes/game/levels/LoadingScreen.tscn
-msgid "MESSAGE"
-msgstr "Nachricht"
+#: entities/ui/quick_game_selection/scenes/QuickGameSelection.tscn
+#: entities/ui/select_ai_player/scenes/SelectAiPlayer.tscn
+msgid "EASY_AI"
+msgstr "Einfach"
 
-#. TRANSLATORS: This will be used after the "LOADING" string, keep in mind to keep that as lower case
-#: scenes/translations/LoadDecks.tres
-msgid "LOAD_DECKS"
-msgstr "eigene Kartendecks"
+#: entities/ui/quick_game_selection/scenes/QuickGameSelection.tscn
+msgid "MATCH_AGAINST_NORMAL_AI_TOOLTIP"
+msgstr "Starte eine schnelles Spiel gegen einen normalen KI Gegner."
 
-#: scenes/translations/Yes.tres
-msgid "YES"
-msgstr "Ja"
+#: entities/ui/quick_game_selection/scenes/QuickGameSelection.tscn
+#: entities/ui/select_ai_player/scenes/SelectAiPlayer.tscn
+msgid "NORMAL_AI"
+msgstr "Normal"
 
-#: scenes/translations/Version.tres
-msgid "VERSION"
-msgstr "Version"
+#: entities/ui/quick_game_selection/scenes/QuickGameSelection.tscn
+msgid "MATCH_AGAINST_HARD_AI_TOOLTIP"
+msgstr "Starte eine schnelles Spiel gegen einen schweren KI Gegner."
 
-#. TRANSLATORS: Requires a single placeholder "%1.0" containing the seconds
-#: scenes/translations/TimeForCompletion.tres
-msgid "TIME_FOR_COMPLETION"
-msgstr "Zeit bis beenden: %1.0f s"
+#: entities/ui/quick_game_selection/scenes/QuickGameSelection.tscn
+#: entities/ui/select_ai_player/scenes/SelectAiPlayer.tscn
+msgid "HARD_AI"
+msgstr "Schwer"
 
-#: scenes/game/levels/MemoryGameScene.tscn
-msgid "PAUSE_MENU"
-msgstr "Pause Menü"
+#: entities/ui/select_ai_player/scenes/SelectAiPlayer.tscn
+msgid "ADD_AI_CANCEL_TOOLTIP"
+msgstr "Entferne den aktuellen KI Spieler"
 
-#: scenes/game/resources/cards/hardware/Calculator.tres
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "SETTINGS"
+msgstr "Einstellungen"
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "SELECT_LANGUAGE_SETTING_TOOLTIP"
+msgstr "Wähle die Sprache des Spiels aus in der diese angezeigt werden soll."
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "ENGLISH"
+msgstr "Englisch"
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "GERMAN"
+msgstr "Deutsch"
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "GRAPHIC_SETTINGS"
+msgstr "Grafikeinstellungen"
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "WINDOW_MODE_SETTING_TOOLTIP"
+msgstr "Ein dropdown um den gewünschten Fenster Modus auszuwählen."
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "FULL_SCREEN"
+msgstr "Vollbild"
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "BORDERLESS"
+msgstr "Randlos"
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "MAXIMIZED"
+msgstr "Maximiert"
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "VSYNC_SETTING_TOOLTIP"
+msgstr "Aktiviere oder deaktiviere VSync für das Spiel"
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "V_SYNC"
+msgstr "V Sync"
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "UI_SCALE_TOOLTIP"
+msgstr ""
+"Diese Einstellung legt fest in wie weit das UI skaliert werden soll, eine "
+"Einstellung auf 100% entspricht der vorgesehenen Einstellung"
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "UI_SCALE"
+msgstr "UI: %03.0f %%"
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "GAMEPLAY_SETTINGS"
+msgstr "Spieleinstellungen"
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "LOAD_CUSTOM_DECK_SETTING_TOOLTIP"
+msgstr "Erlaube dem Spiel eigene Decks zu laden"
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "LOAD_CUSTOM_DECKS"
+msgstr "Eigene decks laden"
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "AUTO_COMPLETE_ROUND_TOOLTIP"
+msgstr ""
+"Wenn diese Aktion aktiv ist, wird die Runde automatisch nach n Sekunden "
+"beendet"
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "RESET_TUTORIAL_TOOLTIP"
+msgstr "Wenn du diesen Knopf drückst wird das Tutorial zurückgesetzt"
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "RESET_TUTORIAL"
+msgstr "Tutorial zurücksetzten"
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "AUDIO"
+msgstr "Audio"
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "MASTER_VOLUME_TOOLTIP"
+msgstr ""
+"Option zum setzten der Master Lautstärke, diese Einstellung hat eine "
+"Auswirkung auf alle anderen Audio Einstellungen"
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "MASTER_VOLUME"
+msgstr "Gesamtlautstärke"
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "EFFECT_VOLUME_TOOLTIP"
+msgstr ""
+"Option zum setzten der Effekt Lautstärke, hiervon sind alle Effekte des "
+"Spiels betroffen."
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "EFFECT_VOLUME"
+msgstr "Effektlautstärke"
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "MUSIC_VOLUME_TOOLTIP"
+msgstr ""
+"Option zum setzten der Musik Lautstärke, hiervon ist die Hintergrundmusik "
+"betroffen."
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "MUSIC_VOLUME"
+msgstr "Musiklautstärke"
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "TEST_EFFECTS_TOOLTIP"
+msgstr ""
+"Spielt einen Effekt Ton ab, hiermit kannst du testen ob die Einstellungen "
+"für dich korrekt sind"
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "TEST_EFFECTS"
+msgstr "Effekt Lautstärke testen"
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "APPLY_SETTING_TOOLTIP"
+msgstr "Speichere die aktuellen Einstellungen und schließe das Menü"
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "APPLY"
+msgstr "Annehmen"
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "CLOSE_SETTING_TOOLTIP"
+msgstr "Schließe die Einstellungen ohne diese zu speichern."
+
+#: shared/resources/cards/assets/animals/ElephantCard.tres
+msgid "ELEPHANT"
+msgstr "Der Elefant"
+
+#: shared/resources/cards/assets/animals/ElephantCard.tres
+msgid "ELEPHANT_DESCRIPTION"
+msgstr ""
+"Elefanten sind die größten Landsäugetiere, erkennbar an ihrem massiven "
+"Körper, den großen Ohren und dem langen Rüssel. Sie leben in Afrika und "
+"Asien und sind bekannt für ihre Intelligenz und ihr soziales Verhalten."
+
+#: shared/resources/cards/assets/animals/GiraffeCard.tres
+msgid "GIRAFFE"
+msgstr "Die Giraffe"
+
+#: shared/resources/cards/assets/animals/GiraffeCard.tres
+msgid "GIRAFFE_DESCRIPTION"
+msgstr ""
+"Giraffen sind die höchsten landlebenden Tiere der Welt, erkennbar an ihrem "
+"extrem langen Hals und den langen Beinen. Sie leben in den Savannen Afrikas "
+"und ernähren sich hauptsächlich von Blättern, die sie von hohen Bäumen "
+"pflücken."
+
+#: shared/resources/cards/assets/animals/HippoCard.tres
+msgid "HIPPO"
+msgstr "Das Nilpferd"
+
+#: shared/resources/cards/assets/animals/HippoCard.tres
+msgid "HIPPO_DESCRIPTION"
+msgstr ""
+"Nilpferde sind große, schwergewichtige Säugetiere, die in Afrika südlich der "
+"Sahara leben und sich durch ihre massiven Körper und großen Köpfe "
+"auszeichnen. Sie verbringen viel Zeit im Wasser, sind Pflanzenfresser und "
+"gelten als eines der gefährlichsten Tiere Afrikas."
+
+#: shared/resources/cards/assets/animals/MonkeyCard.tres
+msgid "MONKEY"
+msgstr "Der Affe"
+
+#: shared/resources/cards/assets/animals/MonkeyCard.tres
+msgid "MONKEY_DESCRIPTION"
+msgstr ""
+"Affen sind intelligente und gesellige Säugetiere aus der Ordnung der "
+"Primaten, die sich hauptsächlich von Pflanzen und Früchten ernähren. Sie "
+"leben meist in Gruppen und zeigen komplexe soziale Verhaltensweisen."
+
+#: shared/resources/cards/assets/animals/PandaCard.tres
+msgid "PANDA"
+msgstr "Der Pandabär"
+
+#: shared/resources/cards/assets/animals/PandaCard.tres
+msgid "PANDA_DESCRIPTION"
+msgstr ""
+"Pandabären sind große, schwarz-weiße Bären, die hauptsächlich in den "
+"Bambuswäldern Chinas leben und sich fast ausschließlich von Bambus ernähren. "
+"Sie sind bekannt für ihr friedliches Wesen und ihre seltene, vom Aussterben "
+"bedrohte Population."
+
+#: shared/resources/cards/assets/animals/ParrotCard.tres
+msgid "PARROT"
+msgstr "Der Papagei"
+
+#: shared/resources/cards/assets/animals/ParrotCard.tres
+msgid "PARROT_DESCRIPTION"
+msgstr ""
+"Papageien sind farbenfrohe Vögel aus der Ordnung Psittaciformes, die für "
+"ihre Intelligenz und ihre Fähigkeit, menschliche Stimmen nachzuahmen, "
+"bekannt sind. Sie leben meist in tropischen und subtropischen Regionen und "
+"ernähren sich von Samen, Früchten und manchmal auch Insekten."
+
+#: shared/resources/cards/assets/animals/PenguinCard.tres
+msgid "PENGUIN"
+msgstr "Der Pinguin"
+
+#: shared/resources/cards/assets/animals/PenguinCard.tres
+msgid "PENGUIN_DESCRIPTION"
+msgstr ""
+"Pinguine sind flugunfähige Seevögel der Südhalbkugel, die sich durch ihre "
+"schwarz-weiße Färbung und ihre Anpassung an das Leben im Wasser auszeichnen. "
+"Sie nutzen ihre Flügel als Flossen zum Schwimmen und leben hauptsächlich in "
+"kalten Meeresregionen."
+
+#: shared/resources/cards/assets/animals/PigCard.tres
+msgid "PIG"
+msgstr "Das Schwein"
+
+#: shared/resources/cards/assets/animals/PigCard.tres
+msgid "PIG_DESCRIPTION"
+msgstr ""
+"Schweine sind kurzbeinige Säugetiere mit einem gedrungenen Körper, einer "
+"rüsselartigen Schnauze und meist einem geringelten Schwanz. Sie sind "
+"Allesfresser und werden weltweit sowohl in freier Wildbahn als auch als "
+"Nutztiere gehalten."
+
+#: shared/resources/cards/assets/animals/RabbitCard.tres
+msgid "RABBIT"
+msgstr "Der Hase"
+
+#: shared/resources/cards/assets/animals/RabbitCard.tres
+msgid "RABBIT_DESCRIPTION"
+msgstr ""
+"Hasen sind flinke Säugetiere aus der Familie der Hasenartigen, die durch "
+"ihre langen Ohren und kräftigen Hinterbeine auffallen. Sie leben in "
+"verschiedenen Lebensräumen weltweit und ernähren sich hauptsächlich von "
+"Gräsern und Kräutern."
+
+#: shared/resources/cards/assets/animals/SnakeCard.tres
+msgid "SNAKE"
+msgstr "Die Schlange"
+
+#: shared/resources/cards/assets/animals/SnakeCard.tres
+msgid "SNAKE_DESCRIPTION"
+msgstr ""
+"Schlangen sind langgestreckte, beinlose Reptilien aus der Unterordnung "
+"Serpentes, die sich durch ihre schuppige Haut und ihre Fähigkeit, sich "
+"geschmeidig fortzubewegen, auszeichnen. Sie sind weltweit in verschiedenen "
+"Lebensräumen anzutreffen, außer in extrem kalten Regionen wie der Arktis und "
+"Antarktis."
+
+#: shared/resources/cards/assets/generic_items/BriefcaseCard.tres
+msgid "BRIEFCASE"
+msgstr "Aktentasche"
+
+#: shared/resources/cards/assets/generic_items/BriefcaseCard.tres
+msgid "BRIEFCASE_DESCRIPTION"
+msgstr ""
+"Eine aktentasche die du benötigst um all deine Gegenstände für die Büro "
+"arbeit zu transportieren"
+
+#: shared/resources/cards/assets/generic_items/BrushCard.tres
+msgid "BRUSH"
+msgstr "Pinsel"
+
+#: shared/resources/cards/assets/generic_items/BrushCard.tres
+msgid "BRUSH_DESCRIPTION"
+msgstr "Ein Pinsel wird benötigt um etwas auf eine Leinwand zu malen"
+
+#: shared/resources/cards/assets/generic_items/CameraCard.tres
+msgid "CAMERA"
+msgstr "Kamera"
+
+#: shared/resources/cards/assets/generic_items/CameraCard.tres
+msgid "CAMERA_DESCRIPTION"
+msgstr "Eine Kamera um von etwas einen Film anzufertigen"
+
+#: shared/resources/cards/assets/generic_items/CdCard.tres
+msgid "CD"
+msgstr "Compact Disc (CD)"
+
+#: shared/resources/cards/assets/generic_items/CdCard.tres
+msgid "CD_DESCRIPTION"
+msgstr "Ein rundes Speichermedium auf dem Daten gespeichert werden können"
+
+#: shared/resources/cards/assets/generic_items/ComputerCard.tres
+msgid "COMPUTER"
+msgstr "Computer"
+
+#: shared/resources/cards/assets/generic_items/ComputerCard.tres
+msgid "COMPUTER_DESCRIPTION"
+msgstr ""
+"Ein elektronisches Gerät, das zur Verarbeitung und Speicherung von Daten "
+"verwendet wird"
+
+#: shared/resources/cards/assets/generic_items/HeadphoneCard.tres
+msgid "HEADPHONE"
+msgstr "Kopfhörer"
+
+#: shared/resources/cards/assets/generic_items/HeadphoneCard.tres
+msgid "HEADPHONE_DESCRIPTION"
+msgstr ""
+"Ein Gerät, das über die Ohren getragen wird, um Musik oder andere "
+"Audiosignale direkt zu hören"
+
+#: shared/resources/cards/assets/generic_items/MicrophoneCard.tres
+msgid "MICROPHONE"
+msgstr "Mikrofon"
+
+#: shared/resources/cards/assets/generic_items/MicrophoneCard.tres
+msgid "MICROPHONE_DESCRIPTION"
+msgstr ""
+"Ein Gerät, das Schallwellen in elektrische Signale umwandelt und zur "
+"Tonaufnahme oder -verstärkung verwendet wird"
+
+#: shared/resources/cards/assets/generic_items/MicroscopeCard.tres
+msgid "MICROSCOPE"
+msgstr "Mikroskop"
+
+#: shared/resources/cards/assets/generic_items/MicroscopeCard.tres
+msgid "MICROSCOPE_DESCRIPTION"
+msgstr ""
+"Ein optisches Instrument, das zur Vergrößerung und Untersuchung kleiner "
+"Objekte verwendet wird"
+
+#: shared/resources/cards/assets/generic_items/ModernControllerCard.tres
+msgid "MODERN_CONTROLLER"
+msgstr "Controller"
+
+#: shared/resources/cards/assets/generic_items/ModernControllerCard.tres
+msgid "MODERN_CONTROLLER_DESCRIPTION"
+msgstr ""
+"Ein Gerät um eigaben an einer Spielekonsole oder an einem Computer zu machen"
+
+#: shared/resources/cards/assets/generic_items/MoneyCard.tres
+msgid "MONEY"
+msgstr "Geld"
+
+#: shared/resources/cards/assets/generic_items/MoneyCard.tres
+msgid "MONEY_DESCRIPTION"
+msgstr "Ein stück Papier mit dem man Dinge in einem Laden kaufen kann"
+
+#: shared/resources/cards/assets/generic_items/MortarAndPestleCard.tres
+msgid "MORTAR_AND_PESTLE"
+msgstr "Mörser und Stößel"
+
+#: shared/resources/cards/assets/generic_items/MortarAndPestleCard.tres
+msgid "MORTAR_AND_PESTLE_DESCRIPTION"
+msgstr ""
+"Ein Gerät, das aus einer Schale (Mörser) und einem schweren Stab (Stößel) "
+"besteht, und zum Zerkleinern und Mischen von Substanzen verwendet wird"
+
+#: shared/resources/cards/assets/generic_items/NotebookCard.tres
+msgid "NOTEBOOK"
+msgstr "Notebook"
+
+#: shared/resources/cards/assets/generic_items/NotebookCard.tres
+msgid "NOTEBOOK_DESCRIPTION"
+msgstr ""
+"Ein tragbarer Computer, der für den mobilen Einsatz konzipiert ist und alle "
+"Funktionen eines Desktop-Computers bietet"
+
+#: shared/resources/cards/assets/generic_items/PanCard.tres
+msgid "PAN"
+msgstr "Pfanne"
+
+#: shared/resources/cards/assets/generic_items/PanCard.tres
+msgid "PAN_DESCRIPTION"
+msgstr ""
+"Ein flaches Kochgeschirr mit einem langen Griff, das zum Braten oder Kochen "
+"verwendet wird"
+
+#: shared/resources/cards/assets/generic_items/PhoneCard.tres
+msgid "PHONE"
+msgstr "Telefon"
+
+#: shared/resources/cards/assets/generic_items/PhoneCard.tres
+msgid "PHONE_DESCRIPTION"
+msgstr ""
+"Ein Gerät, das zur Übertragung von Schall über große Entfernungen mithilfe "
+"elektrischer Signale verwendet wird"
+
+#: shared/resources/cards/assets/generic_items/PickaxeCard.tres
+msgid "PICKAXE"
+msgstr "Spitzhacke"
+
+#: shared/resources/cards/assets/generic_items/PickaxeCard.tres
+msgid "PICKAXE_DESCRIPTION"
+msgstr ""
+"Ein Werkzeug mit einem langen Griff und einem schweren Kopf, das zum Graben "
+"und Zerkleinern harter Materialien wie Stein und Erde verwendet wird"
+
+#: shared/resources/cards/assets/generic_items/PotCard.tres
+msgid "POT"
+msgstr "Topf"
+
+#: shared/resources/cards/assets/generic_items/PotCard.tres
+msgid "POT_DESCRIPTION"
+msgstr ""
+"Ein Kochgefäß mit hohen Seiten und oft mit einem Deckel, das zum Kochen und "
+"Schmoren von Speisen verwendet wird"
+
+#: shared/resources/cards/assets/generic_items/SawCard.tres
+msgid "SAW"
+msgstr "Säge"
+
+#: shared/resources/cards/assets/generic_items/SawCard.tres
+msgid "SAW_DESCRIPTION"
+msgstr ""
+"Ein Werkzeug mit einer gezahnten Klinge, das zum Schneiden von Holz, Metall "
+"oder anderen Materialien verwendet wird"
+
+#: shared/resources/cards/assets/generic_items/ShovleCard.tres
+msgid "SHOVEL"
+msgstr "Schaufel"
+
+#: shared/resources/cards/assets/generic_items/ShovleCard.tres
+msgid "SHOVEL_DESCRIPTION"
+msgstr ""
+"Ein Werkzeug mit einem breiten, flachen Blatt und einem langen Griff, das "
+"zum Graben und Bewegen von losem Material wie Erde, Sand oder Schnee "
+"verwendet wird"
+
+#: shared/resources/cards/assets/generic_items/SledgehammerCard.tres
+msgid "SLEDGEHAMMER"
+msgstr "Vorschlagshammer"
+
+#: shared/resources/cards/assets/generic_items/SledgehammerCard.tres
+msgid "SLEDGEHAMMER_DESCRIPTION"
+msgstr ""
+"Ein schweres Werkzeug mit einem langen Griff und einem massiven Kopf, das "
+"zum Zerstören und Brechen von harten Materialien wie Beton oder Stein "
+"verwendet wird"
+
+#: shared/resources/cards/assets/generic_items/TeaPotCard.tres
+msgid "TEA_POT"
+msgstr "Tee Kanne"
+
+#: shared/resources/cards/assets/generic_items/TeaPotCard.tres
+msgid "TEA_POT_DESCRIPTION"
+msgstr ""
+"Ein Gefäß mit einem Ausguss und einem Griff, das verwendet wird, um Tee "
+"aufzubrühen und zu servieren"
+
+#: shared/resources/cards/assets/generic_items/ThoothbrushCard.tres
+msgid "THOOTHBRUSH"
+msgstr "Zahnbürste"
+
+#: shared/resources/cards/assets/generic_items/ThoothbrushCard.tres
+msgid "THOOTHBRUSH_DESCRIPTION"
+msgstr ""
+"Ein Werkzeug mit Borsten auf einem Griff, das zur Reinigung der Zähne und "
+"des Zahnfleisches verwendet wird"
+
+#: shared/resources/cards/assets/hardware/Calculator.tres
 msgid "CALCULATOR"
 msgstr "Taschenrechner"
 
-#: scenes/game/resources/cards/hardware/Calculator.tres
+#: shared/resources/cards/assets/hardware/Calculator.tres
 msgid "CALCULATOR_DESCRIPTION"
 msgstr ""
 "Ein Gerät welches dafür genutzt wird Berechnungen auszuführen. Diese Geräte "
 "waren im Büros sehr häufig bevor Smartphones allgegenwärtig geworden sind. "
 "Heutzutage werden diese Geräte weitaus seltener gefunden"
 
-#: scenes/game/resources/cards/hardware/ComputerMonitor.tres
+#: shared/resources/cards/assets/hardware/ComputerMonitor.tres
 msgid "USB_STICK"
 msgstr "USB-Stick"
 
-#: scenes/game/resources/cards/hardware/ComputerMonitor.tres
+#: shared/resources/cards/assets/hardware/ComputerMonitor.tres
 msgid "USB_STICK_DESCRIPTION"
 msgstr ""
 "Ein digitales Speichergerät. Das Gerät erlaubt es große mengen an Daten auf "
 "einem kleinen Gerät zu speichern"
 
-#: scenes/game/resources/cards/hardware/GraphicCard.tres
+#: shared/resources/cards/assets/hardware/GraphicCard.tres
 msgid "GRAPHIC_CARD"
 msgstr "Grafikkarte (GPU)"
 
-#: scenes/game/resources/cards/hardware/GraphicCard.tres
+#: shared/resources/cards/assets/hardware/GraphicCard.tres
 msgid "GRAPHIC_CARD_DESCRIPTION"
 msgstr ""
 "Eine PC Komponente welche dafür zuständig ist das Bild zu generieren. Diese "
@@ -1050,19 +1048,19 @@ msgstr ""
 "Bauteil wird auch öfter \"GPU\" bezeichnet, dies ist eine Abkürzung für das "
 "Wort Graphic Processor Unit"
 
-#: scenes/game/resources/cards/hardware/Keyboard.tres
+#: shared/resources/cards/assets/hardware/Keyboard.tres
 msgid "KEYBOARD"
 msgstr "Tastatur"
 
-#: scenes/game/resources/cards/hardware/Keyboard.tres
+#: shared/resources/cards/assets/hardware/Keyboard.tres
 msgid "KEYBOARD_DESCRIPTION"
 msgstr "Ein Gerät welche Texteingaben an einem PC erlaubt"
 
-#: scenes/game/resources/cards/hardware/Ram.tres
+#: shared/resources/cards/assets/hardware/Ram.tres
 msgid "RAM"
 msgstr "Arbeitsspeicher"
 
-#: scenes/game/resources/cards/hardware/Ram.tres
+#: shared/resources/cards/assets/hardware/Ram.tres
 msgid "RAM_DESCRIPTION"
 msgstr ""
 "Der Arbeitsspeicher ist eine Ansammlung an chips welche Daten speichern "
@@ -1070,25 +1068,165 @@ msgstr ""
 "der Computer auch aktiv ist, sobald man Ihn ausschaltet sind die hier "
 "gespeicherten Daten verloren"
 
-#: scenes/game/resources/cards/hardware/UsbStick.tres
+#: shared/resources/cards/assets/hardware/UsbStick.tres
 msgid "COMPUTER_MONITOR"
 msgstr "Monitor"
 
-#: scenes/game/resources/cards/hardware/UsbStick.tres
+#: shared/resources/cards/assets/hardware/UsbStick.tres
 msgid "COMPUTER_MONITOR_DESCRIPTION"
 msgstr ""
 "Ein Gerät welches die visuelle Ausgabe des PC's darstellt was gerade auf dem "
 "Gerät passiert"
 
-#: scenes/game/resources/decks/HardwareDeck.tres
+#: shared/resources/decks/assets/AnimalDeck.tres
+msgid "ANIMALS"
+msgstr "Tiere"
+
+#: shared/resources/decks/assets/AnimalDeck.tres
+msgid "ANIMALS_DESCRIPTION"
+msgstr "Ein deck welches Tierbilder enthält"
+
+#: shared/resources/decks/assets/GenericItemDeckFull.tres
+msgid "GENERIC_ITEMS_FULL"
+msgstr "Haushaltsgegenstände"
+
+#: shared/resources/decks/assets/GenericItemDeckFull.tres
+msgid "GENERIC_ITEMS_FULL_DESCRIPTION"
+msgstr ""
+"Eine Sammlung von Gegenständen welche in nahezu jedem Haushalt gefunden "
+"werden können"
+
+#: shared/resources/decks/assets/HardwareDeck.tres
 msgid "HARDWARE_DECK"
 msgstr "Hardware Deck"
 
-#: scenes/game/resources/decks/HardwareDeck.tres
+#: shared/resources/decks/assets/HardwareDeck.tres
 msgid "HARDWARE_DECK_DESCRIPTION"
 msgstr ""
 "Ein Kartendeck welches Gegenstände beinhaltet die mit PC Hardware zu tun "
 "haben oder häufig ins Büros gefunden werden"
+
+#: shared/resources/translations/assets/ErrorNoNameWasEntered.tres
+msgid "NO_NAME_WAS_ENTERED"
+msgstr "Der Spielername wird benötigt"
+
+#: shared/resources/translations/assets/ErrorOnlyLetterAndNumbersAllowed.tres
+msgid "ONLY_LETTER_AND_NUMBERS_ALLOWED_FOR_PLAYER_NAME"
+msgstr "Nur Buchstaben und Zahlen sind für einen Spielernamen erlaubt"
+
+#. TRANSLATORS: This will be used after the "LOADING" string, keep in mind to keep that as lower case
+#: shared/resources/translations/assets/LoadDecks.tres
+msgid "LOAD_DECKS"
+msgstr "eigene Kartendecks"
+
+#. TRANSLATORS: Single placeholder %s required to add the ip address
+#: shared/resources/translations/assets/MultiplayerConnectionFailed.tres
+msgid "MUTLIPLAYER_CONNECTION_FAILED"
+msgstr "Die Verbindung mit der IP %s ist fehlgeschlagen"
+
+#. TRANSLATORS: Requires a single %s placeholder to add the name of the new deck
+#: shared/resources/translations/assets/MultiplayerDeckHasBeenChanged.tres
+msgid "DECK_HAS_BEEN_CHANGED"
+msgstr "Deck was changed to %s"
+
+#. TRANSLATORS: Requires a single %s placeholder conng the player nametaini
+#: shared/resources/translations/assets/MultiplayerPlayerJoined.tres
+msgid "MULTIPLAYER_PLAYER_JOINED"
+msgstr "Player %s joined the lobby"
+
+#. TRANSLATORS: Requires a single %s placeholder containing the player name
+#: shared/resources/translations/assets/MultiplayerPlayerKicked.tres
+msgid "MULTIPLAYER_PLAYER_KICKED"
+msgstr "Player %s was kicked from the lobby"
+
+#. TRANSLATORS: Requires a single %s placeholder for player name
+#: shared/resources/translations/assets/MultiplayerPlayerLeft.tres
+msgid "MULTIPLAYER_PLAYER_LEFT"
+msgstr "Player %s left the lobby"
+
+#. TRANSLATORS: Message client gets if he was kicked from the server
+#: shared/resources/translations/assets/MultiplayerServerKicked.tres
+msgid "MULTIPLAYER_KICKED_BY_SERVER"
+msgstr "Du wurdest vom Server geworfen"
+
+#. TRANSLATORS: Player got kicked from the server, because the game version is different, requires two %s placeholders for game versions of client and server
+#: shared/resources/translations/assets/MultiplayerWrongVersion.tres
+msgid "MULTIPLAYER_WRONG_VERSION"
+msgstr "Du nutzt aktuell die version %s während der Server %s nutzt."
+
+#. TRANSLATORS: Requires a single placeholder "%1.0" containing the seconds
+#: shared/resources/translations/assets/TimeForCompletion.tres
+msgid "TIME_FOR_COMPLETION"
+msgstr "Zeit bis beenden: %1.0f s"
+
+#. TRANSLATORS: You need to add "%1.0" once as a placeholder, it will contain the seconds until the next turn will start
+#: shared/resources/translations/assets/TurnEndBannerMessage.tres
+msgid "ROUND_END_BANNER_MESSAGE"
+msgid_plural "ROUND_END_BANNER_MESSAGE_PLURAL"
+msgstr[0] ""
+"Um die Runde abzuschließen warte %1.0f Sekunde oder drücke die Aktions taste"
+msgstr[1] ""
+"Um die Runde abzuschließen warte %1.0f Sekunden oder drücke die Aktions taste"
+
+#: shared/resources/translations/assets/TurnEndBannerMessageNoAutoComplete.tres
+msgid "ROUND_END_BANNER_MESSAGE_NO_COMPLETE"
+msgstr "Um die Runde abzuschließen, drücke die Aktions Taste"
+
+#: shared/resources/translations/assets/Yes.tres
+msgid "YES"
+msgstr "Ja"
+
+#: entities/game/tutorial_window/assets/FirstCardTurnedTutorial.tres
+msgid "FIRST_CARD_TURNED"
+msgstr "Deine erste Karte umgedreht"
+
+#: entities/game/tutorial_window/assets/FirstCardTurnedTutorial.tres
+msgid "FIRST_CARD_TURNED_BODY"
+msgstr ""
+"Du hast soeben deine erste Karte umgedreht, versuche nun die Zweite mit dem "
+"selben Bild zu finden."
+
+#: entities/game/tutorial_window/assets/PlayerFirstMatchFound.tres
+msgid "FIRST_MATCHING_CARD"
+msgstr "Erstes Kartenpaar gefunden"
+
+#: entities/game/tutorial_window/assets/PlayerFirstMatchFound.tres
+msgid "FIRST_MATCHING_CARD_BODY"
+msgstr ""
+"Du hast die erste passende Karte gefunden, die dir einen Punkt einbringt. "
+"Überprüfe deinen Punktestand in der oberen linken Ecke neben deinem "
+"Spielernamen.\n"
+"\n"
+"Da du ein übereinstimmendes Paar gefunden hast, wird deine Runde "
+"fortgesetzt. Entsprechend darfst du erneut zwei Karten drehen, findest du "
+"erneut ein Pärchen, wird deine Runde fortgesetzt. Deine Runde endet sobald "
+"du kein Paar gefunden hast."
+
+#: entities/game/tutorial_window/assets/PlayerFirstRoundEnd.tres
+msgid "FIRST_ROUND_END"
+msgstr "Die erste Runde hat geendet"
+
+#: entities/game/tutorial_window/assets/PlayerFirstRoundEnd.tres
+msgid "FIRST_ROUND_END_BODY"
+msgstr ""
+"Die erste Runde ist beendet, der nächste Spieler kann jetzt spielen.\n"
+"\n"
+"Um zu sehen, welcher Spieler gerade spielt, schaue in die obere linke Ecke, "
+"der Spieler mit einem hellen Namen ist der Aktive."
+
+#: entities/game/tutorial_window/assets/PlayerTurnTutorial.tres
+msgid "PLAYER_TURN"
+msgstr "Dein erster Zug"
+
+#: entities/game/tutorial_window/assets/PlayerTurnTutorial.tres
+msgid "PLAYER_TURN_BODY"
+msgstr ""
+"Das ist dein erster Spielzug. Wie du im Hintergrund sehen kannst sind hier "
+"einige Karten zu finden.\n"
+"\n"
+"Deine Aufgabe ist es nun eine dieser Karten anzuklicken und sich das Bild "
+"darauf zu merken. Das Ziel des Spiels ist es die beiden passenden Karten zu "
+"finden, wenn du dies schaffst bekommst du einen Punkt."
 
 #~ msgid "QUICK_AI_GAME_TOOLTIP"
 #~ msgstr ""
