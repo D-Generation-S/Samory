@@ -139,14 +139,16 @@ tooltip_text = "LOCAL_MULTIPLAYER_TOOLTIP"
 text = "LOCAL_MULTIPLAYER"
 script = ExtResource("4_b7t05")
 active = 2
+animation_resource = ExtResource("5_sugc0")
 pressed_action = SubResource("Resource_cu1bk")
 
-[node name="Quick Game AI" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Quick Game AI" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" node_paths=PackedStringArray("dynamic_neighbor_right")]
 layout_mode = 2
 tooltip_text = "QUICK_GAME_TOOLTIP"
 text = "QUICK_GAME"
 icon = ExtResource("9_e2yd3")
 script = ExtResource("10_wemfb")
+dynamic_neighbor_right = NodePath("../../../../../AvailableAiModes/PanelContainer/AvailableAis/Normal_AI")
 animation_resource = ExtResource("5_sugc0")
 
 [node name="Deck Viewer" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
@@ -303,3 +305,5 @@ pressed_action = SubResource("Resource_q0p35")
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI" to="AvailableAiModes" method="toggle_menu"]
 [connection signal="hiding_container" from="AvailableAiModes" to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI" method="neighbor_hidden"]
 [connection signal="showing_container" from="AvailableAiModes" to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI" method="neighbor_shown"]
+
+[editable path="AvailableAiModes"]

@@ -1,8 +1,12 @@
 extends ClickableButton
 
+## If neighbor shown is getting triggered this will be used as top neighbor
 @export var dynamic_neighbor_top: Control
+## If neighbor shown is getting triggered this will be used as right neighbor
 @export var dynamic_neighbor_right: Control
+## If neighbor shown is getting triggered this will be used as bottom neighbor
 @export var dynamic_neighbor_bottom: Control
+## If neighbor shown is getting triggered this will be used as left neighbor
 @export var dynamic_neighbor_left: Control
 
 var _initial_top_neighbor: NodePath
