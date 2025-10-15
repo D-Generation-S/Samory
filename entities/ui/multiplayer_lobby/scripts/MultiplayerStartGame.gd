@@ -1,11 +1,18 @@
-class_name MultiplayerStartGame extends MultiplayerButton
+class_name MultiplayerStartGame extends ClickableButton
 
 signal start_game(position: Vector2)
 
+@export var is_server_only: bool = false
 var _deck_valid: bool = false
 
 func _ready() -> void:
 	super()
+	if !is_server_only:
+		return
+	await get_tree().physics_frame
+	if !multiplayer.is_server():
+		queue_free()
+		return
 	_validate_button()
 
 func players_updated() -> void:

@@ -1,11 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://scnjjf50me2r"]
+[gd_scene load_steps=18 format=3 uid="uid://scnjjf50me2r"]
 
 [ext_resource type="Script" uid="uid://cibsw0b7xb6wl" path="res://entities/ui/deck_viewer/scripts/DeckViewer.gd" id="1_yrncy"]
 [ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://entities/ui/menu_background/scenes/MenuBackground.tscn" id="2_c7b6s"]
 [ext_resource type="ButtonGroup" uid="uid://68g48rm5eqcv" path="res://entities/ui/deck_viewer/button_groups/DeckViewerFilter.tres" id="2_t7m8t"]
 [ext_resource type="Script" uid="uid://dbyhklficaq52" path="res://entities/ui/deck_viewer/scripts/ReloadDecks.gd" id="2_v68ni"]
 [ext_resource type="Script" uid="uid://duoapsvxmnpca" path="res://shared/entities/deck_viewer_filter_box/scripts/DeckViewerFilterBox.gd" id="3_44ipw"]
-[ext_resource type="Script" uid="uid://dh2cklyjbtt3o" path="res://entities/ui/deck_viewer/scripts/CloseDeckViewer.gd" id="4_br1ba"]
 [ext_resource type="Script" uid="uid://cjuiuh4s0clue" path="res://shared/entities/deck_view_checkbox/scripts/DeckViewCheckbox.gd" id="4_dd2y2"]
 [ext_resource type="Script" uid="uid://bt7h8k61frlxw" path="res://shared/entities/deck_container/scripts/DeckContainer.gd" id="4_m2ntb"]
 [ext_resource type="PackedScene" uid="uid://b3cv1g0a284mq" path="res://entities/ui/deck_preview/scenes/DeckPreview.tscn" id="6_wx8yk"]
@@ -13,8 +12,14 @@
 [ext_resource type="Script" uid="uid://jnafxba4mcje" path="res://entities/ui/deck_viewer/scripts/DeckViewerCards.gd" id="7_tnjvp"]
 [ext_resource type="PackedScene" uid="uid://bkpf0f8bvau6t" path="res://entities/ui/card_preview/scenes/CardPreview.tscn" id="8_51rxv"]
 [ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="10_rf5ea"]
+[ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="13_p3eji"]
 [ext_resource type="Resource" uid="uid://b0gd4uwnid78l" path="res://shared/entities/clickable_button/assets/animations/DefaultButtonAnimation.tres" id="13_sb03g"]
+[ext_resource type="Script" uid="uid://ct3xq8li5qn6f" path="res://entities/ui/deck_viewer/scripts/button_actions/CloseDeckViewerAction.gd" id="15_j8b63"]
 [ext_resource type="PackedScene" uid="uid://dduji7120t8dc" path="res://entities/ui/loading_spinner/scenes/LoadingSpinner.tscn" id="15_pfh8f"]
+
+[sub_resource type="Resource" id="Resource_ibu2e"]
+script = ExtResource("15_j8b63")
+metadata/_custom_type_script = "uid://ct3xq8li5qn6f"
 
 [node name="DeckViewer" type="CanvasLayer"]
 script = ExtResource("1_yrncy")
@@ -150,8 +155,9 @@ size_flags_horizontal = 10
 shortcut = ExtResource("10_rf5ea")
 shortcut_in_tooltip = false
 text = "CLOSE"
-script = ExtResource("4_br1ba")
+script = ExtResource("13_p3eji")
 animation_resource = ExtResource("13_sb03g")
+pressed_action = SubResource("Resource_ibu2e")
 
 [node name="preloaded_cards" type="Control" parent="."]
 visible = false
@@ -182,6 +188,7 @@ offset_bottom = 40.0
 [connection signal="decks_loading" from="." to="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Show Custom" method="loading_decks"]
 [connection signal="decks_loading" from="." to="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/ScrollContainer/Cards" method="clear_all_system_cards"]
 [connection signal="decks_loading" from="." to="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/ScrollContainer/Cards" method="decks_loading"]
+[connection signal="decks_loading" from="." to="VBoxContainer/MarginContainer3/PanelContainer3/View Controls/Close" method="disable_button"]
 [connection signal="decks_loading" from="." to="LoadingSpinner" method="show"]
 [connection signal="scene_ready" from="." to="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Reload Decks" method="enable_button"]
 [connection signal="scene_ready" from="." to="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Filter Decks" method="enable"]
@@ -189,6 +196,7 @@ offset_bottom = 40.0
 [connection signal="scene_ready" from="." to="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Show Built In" method="loading_decks_done"]
 [connection signal="scene_ready" from="." to="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Show Custom" method="loading_decks_done"]
 [connection signal="scene_ready" from="." to="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/Decks/DeckContainer" method="make_decks_visible"]
+[connection signal="scene_ready" from="." to="VBoxContainer/MarginContainer3/PanelContainer3/View Controls/Close" method="enable_button"]
 [connection signal="scene_ready" from="." to="LoadingSpinner" method="hide"]
 [connection signal="decks_loading" from="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Reload Decks" to="." method="load_decks"]
 [connection signal="text_changed" from="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Filter Decks" to="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/Decks/DeckContainer" method="filter_decks_by_name"]
