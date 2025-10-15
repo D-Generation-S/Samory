@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0lbya108prwh"]
+
+[ext_resource type="Script" uid="uid://jsrrwttj0kv" path="res://shared/global_entities/screen_transition_manager/scripts/ScreenTransitionManager.gd" id="1_rb6cu"]
+[ext_resource type="PackedScene" uid="uid://eoxlxr16h0t7" path="res://shared/global_entities/screen_transition_manager/transitions/screen_transition_scene/scenes/ScreenTransitionScene.tscn" id="2_1v8o8"]
+[ext_resource type="PackedScene" uid="uid://bpcsbfe0f63oo" path="res://shared/global_entities/screen_transition_manager/transitions/burn_screen_transition/scenes/BurnScreenTransition.tscn" id="2_quth8"]
+
+[node name="ScreenTransitionManager" type="Node"]
+script = ExtResource("1_rb6cu")
+animation_scene = ExtResource("2_quth8")
+low_performance_scene = ExtResource("2_1v8o8")

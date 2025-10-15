@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dduji7120t8dc"]
+
+[ext_resource type="Script" uid="uid://ce0jmp3ktbwov" path="res://entities/ui/loading_spinner/scripts/CloseByTrigger.gd" id="1_g6k8s"]
+[ext_resource type="Script" uid="uid://bqs6yx0a7j03m" path="res://entities/ui/loading_spinner/scripts/LoadingSpinner.gd" id="2_mp376"]
+[ext_resource type="Resource" uid="uid://lufbdld5awkx" path="res://entities/ui/loading_spinner/assets/spinners/ControllerSpinner.tres" id="3_7enmj"]
+
+[node name="LoadingSpinner" type="CenterContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g6k8s")
+
+[node name="SpinnerTexture" type="TextureRect" parent="."]
+layout_mode = 2
+script = ExtResource("2_mp376")
+animation = ExtResource("3_7enmj")

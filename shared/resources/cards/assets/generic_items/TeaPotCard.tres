@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MemoryCardResource" load_steps=4 format=3 uid="uid://cd0pqakylhtxh"]
+
+[ext_resource type="Script" uid="uid://d3u4837pgjc3d" path="res://shared/resources/cards/MemoryCardResource.gd" id="1_6mmpx"]
+[ext_resource type="Texture2D" uid="uid://dv4h5xis22ax1" path="res://assets/sprites/genericItems_spritesheet_colored.png" id="2_m0s8m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ij28r"]
+atlas = ExtResource("2_m0s8m")
+region = Rect2(0, 620, 152, 116)
+
+[resource]
+script = ExtResource("1_6mmpx")
+name = "TEA_POT"
+description = "TEA_POT_DESCRIPTION"
+texture = SubResource("AtlasTexture_ij28r")

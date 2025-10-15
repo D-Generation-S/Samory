@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://sjjc4vd4h47c"]
+
+[ext_resource type="Script" uid="uid://ban52tbaqetaw" path="res://entities/ui/select_ai_player/scripts/AiPlayerSelect.gd" id="1_kcv8v"]
+[ext_resource type="Script" uid="uid://cdfjopy7ky024" path="res://entities/ui/select_ai_player/scripts/SelectAiPlayer.gd" id="1_p83k3"]
+[ext_resource type="Script" uid="uid://cagpu6d10g55o" path="res://shared/entities/ai_difficulty/resources/AiDifficultyResource.gd" id="2_6r6ar"]
+[ext_resource type="Resource" uid="uid://bvccy0uqye5ff" path="res://shared/entities/ai_difficulty/assets/EasyAi.tres" id="3_4lsn0"]
+[ext_resource type="Resource" uid="uid://dlrxaqb0lgbif" path="res://shared/entities/ai_difficulty/assets/NormalAi.tres" id="4_cfdgj"]
+[ext_resource type="Resource" uid="uid://gy5cebbq2aed" path="res://shared/entities/ai_difficulty/assets/HardAi.tres" id="5_8nd7x"]
+[ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="7_qxik2"]
+[ext_resource type="Script" uid="uid://cy5dgp0bon7sj" path="res://entities/ui/select_ai_player/scripts/ConfirmAiPlayer.gd" id="7_wv3gv"]
+
+[node name="PanelContainer" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p83k3")
+
+[node name="VBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "EASY_AI"
+popup/item_0/id = 0
+popup/item_1/text = "NORMAL_AI"
+popup/item_1/id = 1
+popup/item_2/text = "HARD_AI"
+popup/item_2/id = 2
+script = ExtResource("1_kcv8v")
+ai_options = Array[ExtResource("2_6r6ar")]([ExtResource("3_4lsn0"), ExtResource("4_cfdgj"), ExtResource("5_8nd7x")])
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Confirm" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "OK"
+script = ExtResource("7_wv3gv")
+
+[node name="Close" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+tooltip_text = "ADD_AI_CANCEL_TOOLTIP"
+shortcut_in_tooltip = false
+text = "CANCEL"
+script = ExtResource("7_qxik2")
+
+[connection signal="item_changed" from="VBoxContainer/OptionButton" to="VBoxContainer/HBoxContainer/Confirm" method="ai_changed"]
+[connection signal="closing" from="VBoxContainer/HBoxContainer/Confirm" to="." method="close_dialog"]
+[connection signal="player_was_selected" from="VBoxContainer/HBoxContainer/Confirm" to="." method="confirm_ai_player"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Close" to="." method="close_dialog"]

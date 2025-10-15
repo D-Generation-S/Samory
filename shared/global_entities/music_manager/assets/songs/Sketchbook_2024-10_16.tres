@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SongResource" load_steps=3 format=3 uid="uid://cfh5a6ymixhrd"]
+
+[ext_resource type="Script" uid="uid://cwttngkan54rk" path="res://shared/global_entities/music_manager/resources/SongResource.gd" id="1_4qhss"]
+[ext_resource type="AudioStream" uid="uid://c8wrp65bw4po4" path="res://assets/audio/music/Sketchbook 2024-10-16.ogg" id="2_wjci4"]
+
+[resource]
+script = ExtResource("1_4qhss")
+song_name = "Sketchbook_2024-10_16"
+interpret = "Abstraction"
+song_data = ExtResource("2_wjci4")

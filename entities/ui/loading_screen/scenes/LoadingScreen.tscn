@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://bv4jg7bjubrrr"]
+
+[ext_resource type="Script" uid="uid://bkiuisbx2cguy" path="res://entities/ui/loading_screen/scripts/LoadingScreen.gd" id="1_3p735"]
+[ext_resource type="AudioStream" uid="uid://lboryp8cbdxe" path="res://assets/audio/effect/card-shuffle.ogg" id="2_db4j2"]
+[ext_resource type="Script" uid="uid://bsn7w2sres7n1" path="res://entities/ui/loading_screen/scripts/LoadingPath.gd" id="3_nruto"]
+[ext_resource type="Script" uid="uid://br6qahelfupby" path="res://entities/ui/loading_screen/scripts/PathSpawner.gd" id="4_vcpb5"]
+[ext_resource type="PackedScene" uid="uid://8yxfao2fwwod" path="res://entities/ui/falling_card/scenes/FallingCard.tscn" id="5_jrchq"]
+[ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://entities/ui/menu_background/scenes/MenuBackground.tscn" id="6_t26u2"]
+
+[sub_resource type="Curve2D" id="Curve2D_27oxi"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -50, -350, 0, 0, 0, 0, 1970, -350)
+}
+point_count = 2
+
+[node name="LoadingScreen" type="Node2D" node_paths=PackedStringArray("screen_message", "static_label")]
+process_mode = 3
+z_index = 1000
+script = ExtResource("1_3p735")
+screen_message = NodePath("CanvasLayer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/LoadingMessage")
+static_label = NodePath("CanvasLayer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/LoadingStatic")
+sound_effect = ExtResource("2_db4j2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 127
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 50
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LoadingStatic" type="Label" parent="CanvasLayer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+text = "LOADING"
+
+[node name="LoadingMessage" type="Label" parent="CanvasLayer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 8
+text = "MESSAGE"
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_27oxi")
+script = ExtResource("3_nruto")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" node_paths=PackedStringArray("spawn_target")]
+position = Vector2(-50, -350)
+script = ExtResource("4_vcpb5")
+spawn_template = ExtResource("5_jrchq")
+spawn_target = NodePath("../../CardNode")
+
+[node name="CardNode" type="Node2D" parent="."]
+z_index = 1000
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -3
+
+[node name="MenuBackground" parent="BackgroundLayer" instance=ExtResource("6_t26u2")]
+z_index = -3

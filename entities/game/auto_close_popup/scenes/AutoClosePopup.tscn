@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=3 uid="uid://bnyopmj36gs07"]
+
+[ext_resource type="Script" uid="uid://b44lnl21k5vc" path="res://entities/game/auto_close_popup/scripts/AutoClosePopup.gd" id="1_q838q"]
+[ext_resource type="Script" uid="uid://cdf84o2qp0vdc" path="res://entities/ui/settings_menu/scripts/AutoCompleteRound.gd" id="2_6fyx6"]
+[ext_resource type="Script" uid="uid://g8dk5ckx5t4d" path="res://entities/ui/settings_menu/scripts/AutoCloseRoundSlider.gd" id="3_sgjc8"]
+[ext_resource type="Resource" uid="uid://t4b63t07og3" path="res://shared/resources/translations/assets/TimeForCompletion.tres" id="4_1kcrw"]
+[ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="5_tp0ur"]
+
+[node name="AutoClosePopup" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q838q")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "AUTO_CLOSE_POPUP_BODY"
+fit_content = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="AutoCompleteRound" type="CheckButton" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "AUTO_COMPLETE_ROUND"
+script = ExtResource("2_6fyx6")
+
+[node name="AutoCompleteTimer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+script = ExtResource("3_sgjc8")
+completion_time_translation = ExtResource("4_1kcrw")
+
+[node name="TimeForCompletion" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer"]
+auto_translate_mode = 2
+layout_mode = 2
+tooltip_auto_translate_mode = 2
+text = "TIME_FOR_COMPLETION"
+
+[node name="SecondsSlider" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+text = "OK"
+script = ExtResource("5_tp0ur")
+
+[connection signal="settings_loaded" from="." to="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteRound" method="settings_loaded"]
+[connection signal="settings_loaded" from="." to="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer" method="settings_loaded"]
+[connection signal="toggled" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteRound" to="." method="auto_complete_state_changed"]
+[connection signal="toggled" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteRound" to="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer" method="toggle_visibility"]
+[connection signal="completion_time_changed" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer" to="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer/TimeForCompletion" method="set_text"]
+[connection signal="update_max_slider_value" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer" to="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer/SecondsSlider" method="set_max"]
+[connection signal="update_min_slider_value" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer" to="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer/SecondsSlider" method="set_min"]
+[connection signal="update_slider_value" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer" to="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer/SecondsSlider" method="set_value"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer/SecondsSlider" to="." method="auto_complete_time_changed"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer/SecondsSlider" to="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer" method="slider_changed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="close_now"]

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TutorialInformation" load_steps=2 format=3 uid="uid://bo13l4s4ffjrn"]
+
+[ext_resource type="Script" uid="uid://bsilbayat31i4" path="res://entities/game/tutorial_window/resources/TutorialInformation.gd" id="1_hf6he"]
+
+[resource]
+script = ExtResource("1_hf6he")
+tutorial_type = 4
+allow_abort = false
+title = "FIRST_ROUND_END"
+body = "FIRST_ROUND_END_BODY"
+metadata/_custom_type_script = "uid://bsilbayat31i4"

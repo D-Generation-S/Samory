@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TextTranslation" load_steps=2 format=3 uid="uid://bj4jw2ro5u4eq"]
+
+[ext_resource type="Script" uid="uid://b3ccmsvxi5x8x" path="res://shared/resources/translations/TextTranslation.gd" id="1_aja0l"]
+
+[resource]
+script = ExtResource("1_aja0l")
+key = "MULTIPLAYER_PLAYER_KICKED"
+comment = "Requires a single %s placeholder containing the player name"
+metadata/_custom_type_script = "uid://b3ccmsvxi5x8x"

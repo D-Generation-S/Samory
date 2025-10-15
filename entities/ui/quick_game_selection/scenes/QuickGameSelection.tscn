@@ -1,0 +1,90 @@
+[gd_scene load_steps=16 format=3 uid="uid://h7rp3u8spcvv"]
+
+[ext_resource type="Script" uid="uid://ynr2qtnvrl2d" path="res://entities/ui/quick_game_selection/scripts/AutoAlignContainer.gd" id="1_7454m"]
+[ext_resource type="Texture2D" uid="uid://bk6hr6v5raff5" path="res://assets/icons/QuickGameIcon.tres" id="2_cu7tq"]
+[ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="3_cu7tq"]
+[ext_resource type="Texture2D" uid="uid://wa0qa5dgmjgk" path="res://assets/icons/AiIcon.tres" id="4_aeksx"]
+[ext_resource type="Script" uid="uid://bftxc2q2j26m7" path="res://entities/ui/quick_game_selection/resources/PlayerResource.gd" id="4_xn3xf"]
+[ext_resource type="Resource" uid="uid://cpws52lpjtyk2" path="res://entities/ui/quick_game_selection/assets/Player1.tres" id="5_pfiv7"]
+[ext_resource type="Resource" uid="uid://4eedrcwjevdv" path="res://entities/ui/quick_game_selection/assets/Player2.tres" id="6_b7gp7"]
+[ext_resource type="Script" uid="uid://b81iqtysjgerq" path="res://shared/entities/clickable_button/resources/actions/StartGameAction.gd" id="7_tyk5u"]
+[ext_resource type="Resource" uid="uid://dyvxj1se1pkhk" path="res://entities/ui/quick_game_selection/assets/EasyAiPlayer.tres" id="9_xn3xf"]
+[ext_resource type="Resource" uid="uid://cfwklxtc01411" path="res://entities/ui/quick_game_selection/assets/NormalAiPlayer.tres" id="10_xn3xf"]
+[ext_resource type="Resource" uid="uid://ilmb724usqpk" path="res://entities/ui/quick_game_selection/assets/HardAiPlayer.tres" id="11_aeksx"]
+
+[sub_resource type="Resource" id="Resource_syufq"]
+script = ExtResource("7_tyk5u")
+players = Array[ExtResource("4_xn3xf")]([ExtResource("5_pfiv7"), ExtResource("6_b7gp7")])
+metadata/_custom_type_script = "uid://b81iqtysjgerq"
+
+[sub_resource type="Resource" id="Resource_pfiv7"]
+script = ExtResource("7_tyk5u")
+players = Array[ExtResource("4_xn3xf")]([ExtResource("5_pfiv7"), ExtResource("9_xn3xf")])
+metadata/_custom_type_script = "uid://b81iqtysjgerq"
+
+[sub_resource type="Resource" id="Resource_b7gp7"]
+script = ExtResource("7_tyk5u")
+players = Array[ExtResource("4_xn3xf")]([ExtResource("5_pfiv7"), ExtResource("10_xn3xf")])
+metadata/_custom_type_script = "uid://b81iqtysjgerq"
+
+[sub_resource type="Resource" id="Resource_uf7ve"]
+script = ExtResource("7_tyk5u")
+players = Array[ExtResource("4_xn3xf")]([ExtResource("5_pfiv7"), ExtResource("11_aeksx")])
+metadata/_custom_type_script = "uid://b81iqtysjgerq"
+
+[node name="AvailableAiModes" type="CenterContainer"]
+offset_right = 36.0
+offset_bottom = 36.0
+size_flags_horizontal = 10
+size_flags_vertical = 6
+script = ExtResource("1_7454m")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="AvailableAis" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="AgainstPlayer" type="Button" parent="PanelContainer/AvailableAis"]
+layout_mode = 2
+tooltip_text = "VS_PLAYER_TOOLTIP"
+focus_neighbor_left = NodePath("../../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI")
+focus_neighbor_top = NodePath("../Hard_AI")
+focus_neighbor_bottom = NodePath("../Easy_AI")
+text = "VS_PLAYER"
+icon = ExtResource("2_cu7tq")
+script = ExtResource("3_cu7tq")
+pressed_action = SubResource("Resource_syufq")
+
+[node name="Easy_AI" type="Button" parent="PanelContainer/AvailableAis"]
+layout_mode = 2
+tooltip_text = "MATCH_AGAINST_EASY_AI_TOOLTIP"
+focus_neighbor_left = NodePath("../../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI")
+focus_neighbor_top = NodePath("../AgainstPlayer")
+focus_neighbor_bottom = NodePath("../Normal_AI")
+text = "EASY_AI"
+icon = ExtResource("4_aeksx")
+script = ExtResource("3_cu7tq")
+pressed_action = SubResource("Resource_pfiv7")
+
+[node name="Normal_AI" type="Button" parent="PanelContainer/AvailableAis"]
+layout_mode = 2
+tooltip_text = "MATCH_AGAINST_NORMAL_AI_TOOLTIP"
+focus_neighbor_left = NodePath("../../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI")
+focus_neighbor_top = NodePath("../Easy_AI")
+focus_neighbor_bottom = NodePath("../Hard_AI")
+text = "NORMAL_AI"
+icon = ExtResource("4_aeksx")
+script = ExtResource("3_cu7tq")
+pressed_action = SubResource("Resource_b7gp7")
+
+[node name="Hard_AI" type="Button" parent="PanelContainer/AvailableAis"]
+layout_mode = 2
+tooltip_text = "MATCH_AGAINST_HARD_AI_TOOLTIP"
+focus_neighbor_left = NodePath("../../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI")
+focus_neighbor_top = NodePath("../Normal_AI")
+focus_neighbor_bottom = NodePath("../AgainstPlayer")
+text = "HARD_AI"
+icon = ExtResource("4_aeksx")
+script = ExtResource("3_cu7tq")
+pressed_action = SubResource("Resource_uf7ve")

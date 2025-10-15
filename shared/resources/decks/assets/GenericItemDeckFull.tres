@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="MemoryDeckResource" load_steps=25 format=3 uid="uid://bhkoclualncm3"]
+
+[ext_resource type="Texture2D" uid="uid://cahkopk46qk6k" path="res://assets/sprites/Axuree/back_card_2.png" id="1_cxicu"]
+[ext_resource type="Script" uid="uid://d3u4837pgjc3d" path="res://shared/resources/cards/MemoryCardResource.gd" id="1_xwtne"]
+[ext_resource type="Script" uid="uid://bpimk4xlfh3xc" path="res://shared/resources/decks/MemoryDeckResource.gd" id="2_1y2ok"]
+[ext_resource type="Resource" uid="uid://bi07necohgv76" path="res://shared/resources/cards/assets/generic_items/ComputerCard.tres" id="3_h00bb"]
+[ext_resource type="Resource" uid="uid://cvulxb1epwmdw" path="res://shared/resources/cards/assets/generic_items/SawCard.tres" id="4_1qrq1"]
+[ext_resource type="Resource" uid="uid://bx8upxfh0e0jg" path="res://shared/resources/cards/assets/generic_items/MicrophoneCard.tres" id="5_6nnq5"]
+[ext_resource type="Resource" uid="uid://bqm3vhwb85p7m" path="res://shared/resources/cards/assets/generic_items/ModernControllerCard.tres" id="6_d1bkf"]
+[ext_resource type="Resource" uid="uid://chxne0udrs8jr" path="res://shared/resources/cards/assets/generic_items/MoneyCard.tres" id="7_y3wst"]
+[ext_resource type="Resource" uid="uid://qmm6cy0vyfhx" path="res://shared/resources/cards/assets/generic_items/HeadphoneCard.tres" id="8_qimtq"]
+[ext_resource type="Resource" uid="uid://oxrnjtqftays" path="res://shared/resources/cards/assets/generic_items/MortarAndPestleCard.tres" id="9_x4wre"]
+[ext_resource type="Resource" uid="uid://t0i7bis7c8jm" path="res://shared/resources/cards/assets/generic_items/BriefcaseCard.tres" id="10_y0w1y"]
+[ext_resource type="Resource" uid="uid://uh4xlrleuvqs" path="res://shared/resources/cards/assets/generic_items/MicroscopeCard.tres" id="11_hh3pa"]
+[ext_resource type="Resource" uid="uid://csd56njbfcl77" path="res://shared/resources/cards/assets/generic_items/PotCard.tres" id="12_84x1j"]
+[ext_resource type="Resource" uid="uid://kcssx3ss1hyc" path="res://shared/resources/cards/assets/generic_items/PanCard.tres" id="13_aulkb"]
+[ext_resource type="Resource" uid="uid://si3w4ut4o3lb" path="res://shared/resources/cards/assets/generic_items/ThoothbrushCard.tres" id="14_cbtxt"]
+[ext_resource type="Resource" uid="uid://bskgl050rc3rn" path="res://shared/resources/cards/assets/generic_items/CameraCard.tres" id="15_k0iqp"]
+[ext_resource type="Resource" uid="uid://cd0pqakylhtxh" path="res://shared/resources/cards/assets/generic_items/TeaPotCard.tres" id="16_yipsv"]
+[ext_resource type="Resource" uid="uid://b8jo5vna4u8r6" path="res://shared/resources/cards/assets/generic_items/BrushCard.tres" id="17_p4eg2"]
+[ext_resource type="Resource" uid="uid://r4714ni4lm22" path="res://shared/resources/cards/assets/generic_items/SledgehammerCard.tres" id="18_bq2lm"]
+[ext_resource type="Resource" uid="uid://cqif8a425crwn" path="res://shared/resources/cards/assets/generic_items/ShovleCard.tres" id="19_2kyx3"]
+[ext_resource type="Resource" uid="uid://djbvm828hnwc0" path="res://shared/resources/cards/assets/generic_items/PickaxeCard.tres" id="20_3sv4o"]
+[ext_resource type="Resource" uid="uid://ckk2d27jq2hcu" path="res://shared/resources/cards/assets/generic_items/CdCard.tres" id="21_alop0"]
+[ext_resource type="Resource" uid="uid://cj6x44b6htab5" path="res://shared/resources/cards/assets/generic_items/NotebookCard.tres" id="22_84uvg"]
+[ext_resource type="Resource" uid="uid://bn83vd52k12bk" path="res://shared/resources/cards/assets/generic_items/PhoneCard.tres" id="23_wmyng"]
+
+[resource]
+script = ExtResource("2_1y2ok")
+name = "GENERIC_ITEMS_FULL"
+description = "GENERIC_ITEMS_FULL_DESCRIPTION"
+card_back = ExtResource("1_cxicu")
+cards = Array[ExtResource("1_xwtne")]([ExtResource("3_h00bb"), ExtResource("4_1qrq1"), ExtResource("5_6nnq5"), ExtResource("6_d1bkf"), ExtResource("7_y3wst"), ExtResource("8_qimtq"), ExtResource("9_x4wre"), ExtResource("10_y0w1y"), ExtResource("11_hh3pa"), ExtResource("12_84x1j"), ExtResource("13_aulkb"), ExtResource("14_cbtxt"), ExtResource("15_k0iqp"), ExtResource("16_yipsv"), ExtResource("17_p4eg2"), ExtResource("18_bq2lm"), ExtResource("19_2kyx3"), ExtResource("20_3sv4o"), ExtResource("21_alop0"), ExtResource("22_84uvg"), ExtResource("23_wmyng")])

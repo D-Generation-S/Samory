@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MemoryCardResource" load_steps=4 format=3 uid="uid://b8jo5vna4u8r6"]
+
+[ext_resource type="Script" uid="uid://d3u4837pgjc3d" path="res://shared/resources/cards/MemoryCardResource.gd" id="1_y1wdi"]
+[ext_resource type="Texture2D" uid="uid://dv4h5xis22ax1" path="res://assets/sprites/genericItems_spritesheet_colored.png" id="2_q26j0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3htl"]
+atlas = ExtResource("2_q26j0")
+region = Rect2(690, 1470, 54, 98)
+
+[resource]
+script = ExtResource("1_y1wdi")
+name = "BRUSH"
+description = "BRUSH_DESCRIPTION"
+texture = SubResource("AtlasTexture_u3htl")

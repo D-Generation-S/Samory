@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://y8ij2nqvugsq"]
+
+[ext_resource type="Script" uid="uid://c1kkrbjif2hoe" path="res://entities/ui/multiplayer_connection_state_message/scripts/ConnectingServer.gd" id="1_rlbm4"]
+[ext_resource type="Resource" uid="uid://cjlpuofci4ubw" path="res://shared/resources/translations/assets/MultiplayerConnectingToServer.tres" id="2_i0gcs"]
+[ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="3_cxqwx"]
+[ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="4_sfpas"]
+
+[node name="MultiplayerConnectionStateMessage" type="PanelContainer"]
+custom_minimum_size = Vector2(500, 0)
+script = ExtResource("1_rlbm4")
+text_template = ExtResource("2_i0gcs")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ConnectingServer" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "CONNECTING_TO_SERVER"
+
+[node name="AbortConnection" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+tooltip_text = "ABORT_CONNECTION_TOOLTIP"
+shortcut = ExtResource("3_cxqwx")
+text = "ABORT_CONNECTION"
+script = ExtResource("4_sfpas")
+
+[connection signal="text_updated" from="." to="VBoxContainer/ConnectingServer" method="set_text"]

@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="AiDifficultyResource" load_steps=16 format=3 uid="uid://dlrxaqb0lgbif"]
+
+[ext_resource type="Script" uid="uid://c1te0iu0444y4" path="res://shared/entities/ai_behavior/resources/AiBehaviorNode.gd" id="1_qk5mp"]
+[ext_resource type="Script" uid="uid://cvnxi5g1235m6" path="res://shared/entities/ai_behavior/resources/behaviors/OpenRandomCard.gd" id="2_ovakn"]
+[ext_resource type="Script" uid="uid://bda4016im6e8w" path="res://shared/entities/ai_behavior/resources/behaviors/OpenRandomBlackboardCard.gd" id="3_lhahp"]
+[ext_resource type="Script" uid="uid://d0vjenabf7c5i" path="res://shared/entities/ai_behavior/resources/behaviors/OpenLastRevealedCard.gd" id="4_4h6yg"]
+[ext_resource type="Script" uid="uid://7biix5hsjheq" path="res://shared/entities/ai_behavior/resources/behaviors/GetMatchingCard.gd" id="5_do2nh"]
+[ext_resource type="Script" uid="uid://b27mb346tnwgt" path="res://shared/entities/ai_behavior/resources/behaviors/OpenUnknownCard.gd" id="6_8anug"]
+[ext_resource type="Script" uid="uid://cnc4s4mdqoccc" path="res://shared/entities/ai_behavior/resources/behaviors/OpenFirstMatchingCard.gd" id="7_g4f26"]
+[ext_resource type="Script" uid="uid://cagpu6d10g55o" path="res://shared/entities/ai_difficulty/resources/AiDifficultyResource.gd" id="8_sv3b7"]
+
+[sub_resource type="Resource" id="Resource_4nkae"]
+script = ExtResource("2_ovakn")
+
+[sub_resource type="Resource" id="Resource_uddj3"]
+script = ExtResource("3_lhahp")
+backup_action = SubResource("Resource_4nkae")
+probability = 7
+
+[sub_resource type="Resource" id="Resource_s2nqo"]
+script = ExtResource("4_4h6yg")
+probability = 2
+
+[sub_resource type="Resource" id="Resource_y13pc"]
+script = ExtResource("2_ovakn")
+probability = 15
+
+[sub_resource type="Resource" id="Resource_2wkxe"]
+script = ExtResource("5_do2nh")
+probability = 8
+
+[sub_resource type="Resource" id="Resource_coya5"]
+script = ExtResource("6_8anug")
+probability = 10
+
+[sub_resource type="Resource" id="Resource_nqkde"]
+script = ExtResource("7_g4f26")
+probability = 5
+
+[resource]
+script = ExtResource("8_sv3b7")
+name = "NORMAL_AI"
+card_memory = 10
+actions = Array[ExtResource("1_qk5mp")]([SubResource("Resource_uddj3"), SubResource("Resource_s2nqo"), SubResource("Resource_y13pc"), SubResource("Resource_2wkxe"), SubResource("Resource_coya5"), SubResource("Resource_nqkde")])

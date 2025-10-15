@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="TextTranslation" load_steps=2 format=3 uid="uid://dbt1hbebn0dvj"]
-
-[ext_resource type="Script" uid="uid://b3ccmsvxi5x8x" path="res://src/templates/TextTranslation.gd" id="1_lrar6"]
-
-[resource]
-script = ExtResource("1_lrar6")
-key = "DECK_HAS_BEEN_CHANGED"
-comment = "Requires a single %s placeholder to add the name of the new deck"
-metadata/_custom_type_script = "uid://b3ccmsvxi5x8x"

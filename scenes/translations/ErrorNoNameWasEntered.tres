@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="TextTranslation" load_steps=2 format=3 uid="uid://8spi7c2n5owb"]
-
-[ext_resource type="Script" uid="uid://b3ccmsvxi5x8x" path="res://src/templates/TextTranslation.gd" id="1_xkfii"]
-
-[resource]
-script = ExtResource("1_xkfii")
-key = "NO_NAME_WAS_ENTERED"
-metadata/_custom_type_script = "uid://b3ccmsvxi5x8x"

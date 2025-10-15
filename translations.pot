@@ -1,87 +1,93 @@
 # LANGUAGE translation for Samory for the following files:
-# res://scenes/menu/DeckViewer.tscn
-# res://scenes/menu/GameLobby.tscn
-# res://scenes/menu/MainMenu.tscn
-# res://scenes/menu/SettingsMenu.tscn
-# res://scenes/game/resources/cards/animals/ElephantCard.tres
-# res://scenes/game/resources/cards/animals/GiraffeCard.tres
-# res://scenes/game/resources/cards/animals/HippoCard.tres
-# res://scenes/game/resources/cards/animals/MonkeyCard.tres
-# res://scenes/game/resources/cards/animals/PandaCard.tres
-# res://scenes/game/resources/cards/animals/ParrotCard.tres
-# res://scenes/game/resources/cards/animals/PenguinCard.tres
-# res://scenes/game/resources/cards/animals/PigCard.tres
-# res://scenes/game/resources/cards/animals/RabbitCard.tres
-# res://scenes/game/resources/cards/animals/SnakeCard.tres
-# res://scenes/game/resources/cards/generic_items/BriefcaseCard.tres
-# res://scenes/game/resources/cards/generic_items/BrushCard.tres
-# res://scenes/game/resources/cards/generic_items/CameraCard.tres
-# res://scenes/game/resources/cards/generic_items/CdCard.tres
-# res://scenes/game/resources/cards/generic_items/ComputerCard.tres
-# res://scenes/game/resources/cards/generic_items/HeadphoneCard.tres
-# res://scenes/game/resources/cards/generic_items/MicrophoneCard.tres
-# res://scenes/game/resources/cards/generic_items/MicroscopeCard.tres
-# res://scenes/game/resources/cards/generic_items/ModernControllerCard.tres
-# res://scenes/game/resources/cards/generic_items/MoneyCard.tres
-# res://scenes/game/resources/cards/generic_items/MortarAndPestleCard.tres
-# res://scenes/game/resources/cards/generic_items/NotebookCard.tres
-# res://scenes/game/resources/cards/generic_items/PanCard.tres
-# res://scenes/game/resources/cards/generic_items/PhoneCard.tres
-# res://scenes/game/resources/cards/generic_items/PickaxeCard.tres
-# res://scenes/game/resources/cards/generic_items/PotCard.tres
-# res://scenes/game/resources/cards/generic_items/SawCard.tres
-# res://scenes/game/resources/cards/generic_items/ShovleCard.tres
-# res://scenes/game/resources/cards/generic_items/SledgehammerCard.tres
-# res://scenes/game/resources/cards/generic_items/TeaPotCard.tres
-# res://scenes/game/resources/cards/generic_items/ThoothbrushCard.tres
-# res://scenes/game/overlay/AutoClosePopup.tscn
-# res://scenes/game/overlay/FinishGame.tscn
-# res://scenes/game/overlay/GamePauseMenu.tscn
-# res://scenes/game/overlay/PlayersOverlay.tscn
-# res://scenes/menu/DeckPreview.tscn
-# res://scenes/game/resources/decks/AnimalDeck.tres
-# res://scenes/game/resources/decks/GenericItemDeckFull.tres
-# res://scenes/game/resources/tutorials/FirstCardTurnedTutorial.tres
-# res://scenes/game/resources/tutorials/PlayerFirstMatchFound.tres
-# res://scenes/game/resources/tutorials/PlayerFirstRoundEnd.tres
-# res://scenes/game/resources/tutorials/PlayerTurnTutorial.tres
-# res://scenes/game/templates/TutorialWindow.tscn
-# res://scenes/translations/TurnEndBannerMessage.tres
-# res://scenes/translations/TurnEndBannerMessageNoAutoComplete.tres
-# res://scenes/menu/Credits.tscn
-# res://scenes/game/resources/ai/EasyAi.tres
-# res://scenes/game/resources/ai/HardAi.tres
-# res://scenes/game/resources/ai/NormalAi.tres
-# res://scenes/menu/NewPlayer.tscn
-# res://scenes/menu/SelectAiPlayer.tscn
-# res://scenes/menu/PlayerCard.tscn
-# res://scenes/translations/ErrorNoNameWasEntered.tres
-# res://scenes/translations/ErrorOnlyLetterAndNumbersAllowed.tres
-# res://scenes/game/levels/LoadingScreen.tscn
-# res://scenes/translations/LoadDecks.tres
-# res://scenes/translations/No.tres
-# res://scenes/translations/Yes.tres
-# res://scenes/translations/Version.tres
-# res://scenes/translations/TimeForCompletion.tres
-# res://scenes/game/levels/MemoryGameScene.tscn
-# res://scenes/game/resources/cards/hardware/Calculator.tres
-# res://scenes/game/resources/cards/hardware/ComputerMonitor.tres
-# res://scenes/game/resources/cards/hardware/GraphicCard.tres
-# res://scenes/game/resources/cards/hardware/Keyboard.tres
-# res://scenes/game/resources/cards/hardware/Ram.tres
-# res://scenes/game/resources/cards/hardware/UsbStick.tres
-# res://scenes/game/resources/decks/HardwareDeck.tres
-# res://scenes/translations/MultiplayerDeckHasBeenChanged.tres
-# res://scenes/translations/MultiplayerPlayerJoined.tres
-# res://scenes/translations/MultiplayerPlayerKicked.tres
-# res://scenes/translations/MultiplayerServerKicked.tres
-# res://scenes/translations/MultiplayerWrongVersion.tres
-# res://scenes/menu/multiplayer/MultiplayerLobby.tscn
-# res://scenes/menu/multiplayer/MultiplayerStart.tscn
-# res://scenes/translations/MultiplayerConnectionFailed.tres
-# res://scenes/translations/MultiplayerConnectingToServer.tres
-# res://scenes/translations/MultiplayerPlayerLeft.tres
-# res://scenes/menu/AvailableAiModes.tscn
+# res://entities/game/auto_close_popup/scenes/AutoClosePopup.tscn
+# res://entities/game/bottom_message_banner/scenes/BottomMessageBanner.tscn
+# res://entities/game/finish_game/scenes/FinishGame.tscn
+# res://entities/game/game_pause_menu/scenes/GamePauseMenu.tscn
+# res://entities/game/memory_game/scenes/MemoryGame.tscn
+# res://entities/game/players_overlay/scenes/PlayersOverlay.tscn
+# res://entities/game/tutorial_window/scenes/TutorialWindow.tscn
+# res://entities/ui/card_preview/scenes/CardPreview.tscn
+# res://entities/ui/credits/scenes/Credits.tscn
+# res://entities/ui/deck_preview/scenes/DeckPreview.tscn
+# res://entities/ui/deck_viewer/scenes/DeckViewer.tscn
+# res://entities/ui/falling_card/scenes/FallingCard.tscn
+# res://entities/ui/game_lobby/scenes/GameLobby.tscn
+# res://entities/ui/game_version/scenes/GameVersion.tscn
+# res://entities/ui/loading_screen/scenes/LoadingScreen.tscn
+# res://entities/ui/loading_spinner/assets/spinners/ControllerSpinner.tres
+# res://entities/ui/main_menu/scenes/MainMenu.tscn
+# res://entities/ui/menu_background/scenes/MenuBackground.tscn
+# res://entities/ui/multiplayer_chat/scenes/MultiplayerChat.tscn
+# res://entities/ui/multiplayer_connection_state_message/scenes/MultiplayerConnectionStateMessage.tscn
+# res://entities/ui/multiplayer_lobby/scenes/MultiplayerLobby.tscn
+# res://entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
+# res://entities/ui/multiplayer_server_entry/scenes/MultiplayerServerEntry.tscn
+# res://entities/ui/new_player/scenes/NewPlayer.tscn
+# res://entities/ui/player_card/scenes/PlayerCard.tscn
+# res://entities/ui/quick_game_selection/scenes/QuickGameSelection.tscn
+# res://entities/ui/select_ai_player/scenes/SelectAiPlayer.tscn
+# res://entities/ui/settings_menu/scenes/SettingsMenu.tscn
+# res://shared/resources/cards/assets/animals/ElephantCard.tres
+# res://shared/resources/cards/assets/animals/GiraffeCard.tres
+# res://shared/resources/cards/assets/animals/HippoCard.tres
+# res://shared/resources/cards/assets/animals/MonkeyCard.tres
+# res://shared/resources/cards/assets/animals/PandaCard.tres
+# res://shared/resources/cards/assets/animals/ParrotCard.tres
+# res://shared/resources/cards/assets/animals/PenguinCard.tres
+# res://shared/resources/cards/assets/animals/PigCard.tres
+# res://shared/resources/cards/assets/animals/RabbitCard.tres
+# res://shared/resources/cards/assets/animals/SnakeCard.tres
+# res://shared/resources/cards/assets/generic_items/BriefcaseCard.tres
+# res://shared/resources/cards/assets/generic_items/BrushCard.tres
+# res://shared/resources/cards/assets/generic_items/CameraCard.tres
+# res://shared/resources/cards/assets/generic_items/CdCard.tres
+# res://shared/resources/cards/assets/generic_items/ComputerCard.tres
+# res://shared/resources/cards/assets/generic_items/HeadphoneCard.tres
+# res://shared/resources/cards/assets/generic_items/MicrophoneCard.tres
+# res://shared/resources/cards/assets/generic_items/MicroscopeCard.tres
+# res://shared/resources/cards/assets/generic_items/ModernControllerCard.tres
+# res://shared/resources/cards/assets/generic_items/MoneyCard.tres
+# res://shared/resources/cards/assets/generic_items/MortarAndPestleCard.tres
+# res://shared/resources/cards/assets/generic_items/NotebookCard.tres
+# res://shared/resources/cards/assets/generic_items/PanCard.tres
+# res://shared/resources/cards/assets/generic_items/PhoneCard.tres
+# res://shared/resources/cards/assets/generic_items/PickaxeCard.tres
+# res://shared/resources/cards/assets/generic_items/PotCard.tres
+# res://shared/resources/cards/assets/generic_items/SawCard.tres
+# res://shared/resources/cards/assets/generic_items/ShovleCard.tres
+# res://shared/resources/cards/assets/generic_items/SledgehammerCard.tres
+# res://shared/resources/cards/assets/generic_items/TeaPotCard.tres
+# res://shared/resources/cards/assets/generic_items/ThoothbrushCard.tres
+# res://shared/resources/cards/assets/hardware/Calculator.tres
+# res://shared/resources/cards/assets/hardware/ComputerMonitor.tres
+# res://shared/resources/cards/assets/hardware/GraphicCard.tres
+# res://shared/resources/cards/assets/hardware/Keyboard.tres
+# res://shared/resources/cards/assets/hardware/Ram.tres
+# res://shared/resources/cards/assets/hardware/UsbStick.tres
+# res://shared/resources/decks/assets/AnimalDeck.tres
+# res://shared/resources/decks/assets/GenericItemDeckFull.tres
+# res://shared/resources/decks/assets/HardwareDeck.tres
+# res://shared/resources/translations/assets/ErrorNoNameWasEntered.tres
+# res://shared/resources/translations/assets/ErrorOnlyLetterAndNumbersAllowed.tres
+# res://shared/resources/translations/assets/LoadDecks.tres
+# res://shared/resources/translations/assets/MultiplayerConnectingToServer.tres
+# res://shared/resources/translations/assets/MultiplayerConnectionFailed.tres
+# res://shared/resources/translations/assets/MultiplayerDeckHasBeenChanged.tres
+# res://shared/resources/translations/assets/MultiplayerPlayerJoined.tres
+# res://shared/resources/translations/assets/MultiplayerPlayerKicked.tres
+# res://shared/resources/translations/assets/MultiplayerPlayerLeft.tres
+# res://shared/resources/translations/assets/MultiplayerServerKicked.tres
+# res://shared/resources/translations/assets/MultiplayerWrongVersion.tres
+# res://shared/resources/translations/assets/No.tres
+# res://shared/resources/translations/assets/TimeForCompletion.tres
+# res://shared/resources/translations/assets/TurnEndBannerMessage.tres
+# res://shared/resources/translations/assets/TurnEndBannerMessageNoAutoComplete.tres
+# res://shared/resources/translations/assets/Version.tres
+# res://shared/resources/translations/assets/Yes.tres
+# res://entities/game/tutorial_window/assets/FirstCardTurnedTutorial.tres
+# res://entities/game/tutorial_window/assets/PlayerFirstMatchFound.tres
+# res://entities/game/tutorial_window/assets/PlayerFirstRoundEnd.tres
+# res://entities/game/tutorial_window/assets/PlayerTurnTutorial.tres
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -93,958 +99,987 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8-bit\n"
 
-#: scenes/menu/DeckViewer.tscn
-msgid "RELOAD_CUSTOM_DECKS_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/DeckViewer.tscn
-msgid "RELOAD_CUSTOM_DECKS"
-msgstr ""
-
-#: scenes/menu/DeckViewer.tscn
-#: scenes/menu/GameLobby.tscn
-#: scenes/menu/multiplayer/MultiplayerLobby.tscn
-msgid "FILTER_DECKS"
-msgstr ""
-
-#: scenes/menu/DeckViewer.tscn
-#: scenes/menu/GameLobby.tscn
-msgid "SHOW_ALL_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/DeckViewer.tscn
-#: scenes/menu/GameLobby.tscn
-msgid "SHOW_ALL"
-msgstr ""
-
-#: scenes/menu/DeckViewer.tscn
-#: scenes/menu/GameLobby.tscn
-msgid "SHOW_BUILT_IN_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/DeckViewer.tscn
-#: scenes/menu/GameLobby.tscn
-msgid "SHOW_BUILT_IN"
-msgstr ""
-
-#: scenes/menu/DeckViewer.tscn
-#: scenes/menu/GameLobby.tscn
-msgid "SHOW_CUSTOM_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/DeckViewer.tscn
-#: scenes/menu/GameLobby.tscn
-msgid "SHOW_CUSTOM"
-msgstr ""
-
-#: scenes/menu/DeckViewer.tscn
-#: scenes/menu/SettingsMenu.tscn
-#: scenes/menu/Credits.tscn
-#: scenes/menu/multiplayer/MultiplayerStart.tscn
-msgid "CLOSE"
-msgstr ""
-
-#: scenes/menu/GameLobby.tscn
-#: scenes/game/overlay/PlayersOverlay.tscn
-#: scenes/menu/multiplayer/MultiplayerLobby.tscn
-msgid "PLAYER_LIST"
-msgstr ""
-
-#: scenes/menu/GameLobby.tscn
-msgid "PLAYER_LIST_HELP"
-msgstr ""
-
-#: scenes/menu/GameLobby.tscn
-msgid "ADD_NEW_PLAYER_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/GameLobby.tscn
-msgid "ADD_NEW_PLAYER"
-msgstr ""
-
-#: scenes/menu/GameLobby.tscn
-msgid "ADD_RANDOM_PLAYER_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/GameLobby.tscn
-msgid "ADD_RANDOM_PLAYER"
-msgstr ""
-
-#: scenes/menu/GameLobby.tscn
-msgid "ADD_AI_PLAYER_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/GameLobby.tscn
-msgid "ADD_AI_PLAYER"
-msgstr ""
-
-#: scenes/menu/GameLobby.tscn
-#: scenes/menu/multiplayer/MultiplayerLobby.tscn
-msgid "START_GAME_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/GameLobby.tscn
-#: scenes/menu/multiplayer/MultiplayerLobby.tscn
-msgid "START_GAME"
-msgstr ""
-
-#: scenes/menu/GameLobby.tscn
-#: scenes/menu/NewPlayer.tscn
-#: scenes/menu/SelectAiPlayer.tscn
-msgid "CANCEL"
-msgstr ""
-
-#: scenes/menu/MainMenu.tscn
-msgid "CUSTOM_GAME_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/MainMenu.tscn
-msgid "CUSTOM_GAME"
-msgstr ""
-
-#: scenes/menu/MainMenu.tscn
-msgid "LOCAL_MULTIPLAYER_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/MainMenu.tscn
-msgid "LOCAL_MULTIPLAYER"
-msgstr ""
-
-#: scenes/menu/MainMenu.tscn
-msgid "QUICK_GAME_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/MainMenu.tscn
-msgid "QUICK_GAME"
-msgstr ""
-
-#: scenes/menu/MainMenu.tscn
-msgid "DECK_VIEWER_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/MainMenu.tscn
-msgid "DECK_VIEWER"
-msgstr ""
-
-#: scenes/menu/MainMenu.tscn
-msgid "CREDITS_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/MainMenu.tscn
-msgid "CREDITS"
-msgstr ""
-
-#: scenes/menu/MainMenu.tscn
-msgid "QUIT_GAME_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/MainMenu.tscn
-msgid "QUIT_GAME"
-msgstr ""
-
-#: scenes/menu/MainMenu.tscn
-#: scenes/menu/SettingsMenu.tscn
-msgid "GAME_SETTINGS"
-msgstr ""
-
-#: scenes/menu/MainMenu.tscn
-msgid "HOW_TO_PLAY"
-msgstr ""
-
-#: scenes/menu/MainMenu.tscn
-msgid "GITHUB_REPOSITORY_BUTTON"
-msgstr ""
-
-#: scenes/menu/MainMenu.tscn
-msgid "GAME_PAGE"
-msgstr ""
-
-#: scenes/menu/MainMenu.tscn
-msgid "REPORT_BUG"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "SETTINGS"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "SELECT_LANGUAGE_SETTING_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "ENGLISH"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "GERMAN"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "GRAPHIC_SETTINGS"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "WINDOW_MODE_SETTING_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "FULL_SCREEN"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "BORDERLESS"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "MAXIMIZED"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "VSYNC_SETTING_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "V_SYNC"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "UI_SCALE_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "UI_SCALE"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "GAMEPLAY_SETTINGS"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "LOAD_CUSTOM_DECK_SETTING_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "LOAD_CUSTOM_DECKS"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "AUTO_COMPLETE_ROUND_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-#: scenes/game/overlay/AutoClosePopup.tscn
-msgid "AUTO_COMPLETE_ROUND"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "RESET_TUTORIAL_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "RESET_TUTORIAL"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "AUDIO"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "MASTER_VOLUME_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "MASTER_VOLUME"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "EFFECT_VOLUME_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "EFFECT_VOLUME"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "MUSIC_VOLUME_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "MUSIC_VOLUME"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "TEST_EFFECTS_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "TEST_EFFECTS"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "APPLY_SETTING_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "APPLY"
-msgstr ""
-
-#: scenes/menu/SettingsMenu.tscn
-msgid "CLOSE_SETTING_TOOLTIP"
-msgstr ""
-
-#: scenes/game/resources/cards/animals/ElephantCard.tres
-msgid "ELEPHANT"
-msgstr ""
-
-#: scenes/game/resources/cards/animals/ElephantCard.tres
-msgid "ELEPHANT_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/cards/animals/GiraffeCard.tres
-msgid "GIRAFFE"
-msgstr ""
-
-#: scenes/game/resources/cards/animals/GiraffeCard.tres
-msgid "GIRAFFE_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/cards/animals/HippoCard.tres
-msgid "HIPPO"
-msgstr ""
-
-#: scenes/game/resources/cards/animals/HippoCard.tres
-msgid "HIPPO_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/cards/animals/MonkeyCard.tres
-msgid "MONKEY"
-msgstr ""
-
-#: scenes/game/resources/cards/animals/MonkeyCard.tres
-msgid "MONKEY_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/cards/animals/PandaCard.tres
-msgid "PANDA"
-msgstr ""
-
-#: scenes/game/resources/cards/animals/PandaCard.tres
-msgid "PANDA_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/cards/animals/ParrotCard.tres
-msgid "PARROT"
-msgstr ""
-
-#: scenes/game/resources/cards/animals/ParrotCard.tres
-msgid "PARROT_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/cards/animals/PenguinCard.tres
-msgid "PENGUIN"
-msgstr ""
-
-#: scenes/game/resources/cards/animals/PenguinCard.tres
-msgid "PENGUIN_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/cards/animals/PigCard.tres
-msgid "PIG"
-msgstr ""
-
-#: scenes/game/resources/cards/animals/PigCard.tres
-msgid "PIG_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/cards/animals/RabbitCard.tres
-msgid "RABBIT"
-msgstr ""
-
-#: scenes/game/resources/cards/animals/RabbitCard.tres
-msgid "RABBIT_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/cards/animals/SnakeCard.tres
-msgid "SNAKE"
-msgstr ""
-
-#: scenes/game/resources/cards/animals/SnakeCard.tres
-msgid "SNAKE_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/BriefcaseCard.tres
-msgid "BRIEFCASE"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/BriefcaseCard.tres
-msgid "BRIEFCASE_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/BrushCard.tres
-msgid "BRUSH"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/BrushCard.tres
-msgid "BRUSH_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/CameraCard.tres
-msgid "CAMERA"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/CameraCard.tres
-msgid "CAMERA_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/CdCard.tres
-msgid "CD"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/CdCard.tres
-msgid "CD_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/ComputerCard.tres
-msgid "COMPUTER"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/ComputerCard.tres
-msgid "COMPUTER_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/HeadphoneCard.tres
-msgid "HEADPHONE"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/HeadphoneCard.tres
-msgid "HEADPHONE_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/MicrophoneCard.tres
-msgid "MICROPHONE"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/MicrophoneCard.tres
-msgid "MICROPHONE_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/MicroscopeCard.tres
-msgid "MICROSCOPE"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/MicroscopeCard.tres
-msgid "MICROSCOPE_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/ModernControllerCard.tres
-msgid "MODERN_CONTROLLER"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/ModernControllerCard.tres
-msgid "MODERN_CONTROLLER_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/MoneyCard.tres
-msgid "MONEY"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/MoneyCard.tres
-msgid "MONEY_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/MortarAndPestleCard.tres
-msgid "MORTAR_AND_PESTLE"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/MortarAndPestleCard.tres
-msgid "MORTAR_AND_PESTLE_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/NotebookCard.tres
-msgid "NOTEBOOK"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/NotebookCard.tres
-msgid "NOTEBOOK_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/PanCard.tres
-msgid "PAN"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/PanCard.tres
-msgid "PAN_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/PhoneCard.tres
-msgid "PHONE"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/PhoneCard.tres
-msgid "PHONE_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/PickaxeCard.tres
-msgid "PICKAXE"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/PickaxeCard.tres
-msgid "PICKAXE_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/PotCard.tres
-msgid "POT"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/PotCard.tres
-msgid "POT_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/SawCard.tres
-msgid "SAW"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/SawCard.tres
-msgid "SAW_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/ShovleCard.tres
-msgid "SHOVEL"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/ShovleCard.tres
-msgid "SHOVEL_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/SledgehammerCard.tres
-msgid "SLEDGEHAMMER"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/SledgehammerCard.tres
-msgid "SLEDGEHAMMER_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/TeaPotCard.tres
-msgid "TEA_POT"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/TeaPotCard.tres
-msgid "TEA_POT_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/ThoothbrushCard.tres
-msgid "THOOTHBRUSH"
-msgstr ""
-
-#: scenes/game/resources/cards/generic_items/ThoothbrushCard.tres
-msgid "THOOTHBRUSH_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/overlay/AutoClosePopup.tscn
+#: entities/game/auto_close_popup/scenes/AutoClosePopup.tscn
 msgid "AUTO_CLOSE_POPUP_BODY"
 msgstr ""
 
-#: scenes/game/overlay/AutoClosePopup.tscn
-#: scenes/game/overlay/FinishGame.tscn
-#: scenes/game/templates/TutorialWindow.tscn
-#: scenes/menu/NewPlayer.tscn
-#: scenes/menu/SelectAiPlayer.tscn
+#: entities/game/auto_close_popup/scenes/AutoClosePopup.tscn
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "AUTO_COMPLETE_ROUND"
+msgstr ""
+
+#: entities/game/auto_close_popup/scenes/AutoClosePopup.tscn
+#: entities/game/finish_game/scenes/FinishGame.tscn
+#: entities/game/tutorial_window/scenes/TutorialWindow.tscn
+#: entities/ui/new_player/scenes/NewPlayer.tscn
+#: entities/ui/select_ai_player/scenes/SelectAiPlayer.tscn
 msgid "OK"
 msgstr ""
 
-#: scenes/game/overlay/FinishGame.tscn
+#: entities/game/bottom_message_banner/scenes/BottomMessageBanner.tscn
+msgid "LABEL_TEXT"
+msgstr ""
+
+#: entities/game/finish_game/scenes/FinishGame.tscn
 msgid "GAME_STATISTIC"
 msgstr ""
 
-#: scenes/game/overlay/FinishGame.tscn
+#: entities/game/finish_game/scenes/FinishGame.tscn
 msgid "PLAYER_TITLE"
 msgstr ""
 
-#: scenes/game/overlay/FinishGame.tscn
+#: entities/game/finish_game/scenes/FinishGame.tscn
 msgid "PLAYER_SCORE"
 msgstr ""
 
-#: scenes/game/overlay/FinishGame.tscn
+#: entities/game/finish_game/scenes/FinishGame.tscn
 msgid "REPLAY"
 msgstr ""
 
-#: scenes/game/overlay/GamePauseMenu.tscn
+#: entities/game/game_pause_menu/scenes/GamePauseMenu.tscn
 msgid "TOGGLE_DEBUG"
 msgstr ""
 
-#: scenes/game/overlay/GamePauseMenu.tscn
+#: entities/game/game_pause_menu/scenes/GamePauseMenu.tscn
 msgid "MAIN_MENU_TOOLTIP"
 msgstr ""
 
-#: scenes/game/overlay/GamePauseMenu.tscn
+#: entities/game/game_pause_menu/scenes/GamePauseMenu.tscn
 msgid "MAIN_MENU"
 msgstr ""
 
-#: scenes/game/overlay/GamePauseMenu.tscn
+#: entities/game/game_pause_menu/scenes/GamePauseMenu.tscn
 msgid "CLOSE_MENU_TOOLTIP"
 msgstr ""
 
-#: scenes/game/overlay/GamePauseMenu.tscn
+#: entities/game/game_pause_menu/scenes/GamePauseMenu.tscn
 msgid "CLOSE_MENU"
 msgstr ""
 
-#: scenes/game/overlay/PlayersOverlay.tscn
+#: entities/game/memory_game/scenes/MemoryGame.tscn
+msgid "PAUSE_MENU"
+msgstr ""
+
+#: entities/game/players_overlay/scenes/PlayersOverlay.tscn
 msgid "Players"
 msgstr ""
 
-#: scenes/game/overlay/PlayersOverlay.tscn
-#: scenes/menu/PlayerCard.tscn
+#: entities/game/players_overlay/scenes/PlayersOverlay.tscn
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+#: entities/ui/multiplayer_lobby/scenes/MultiplayerLobby.tscn
+msgid "PLAYER_LIST"
+msgstr ""
+
+#: entities/game/players_overlay/scenes/PlayersOverlay.tscn
+#: entities/ui/player_card/scenes/PlayerCard.tscn
 msgid "PLACEHOLDER"
 msgstr ""
 
-#: scenes/menu/DeckPreview.tscn
-msgid "DECK_INFO"
-msgstr ""
-
-#: scenes/menu/DeckPreview.tscn
-msgid "BUILT_IN"
-msgstr ""
-
-#: scenes/menu/DeckPreview.tscn
-#: scenes/translations/No.tres
-msgid "NO"
-msgstr ""
-
-#: scenes/menu/DeckPreview.tscn
-msgid "CARD_COUNT"
-msgstr ""
-
-#: scenes/menu/DeckPreview.tscn
-msgid "DECK_NAME"
-msgstr ""
-
-#: scenes/menu/DeckPreview.tscn
-msgid "DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/decks/AnimalDeck.tres
-msgid "ANIMALS"
-msgstr ""
-
-#: scenes/game/resources/decks/AnimalDeck.tres
-msgid "ANIMALS_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/decks/GenericItemDeckFull.tres
-msgid "GENERIC_ITEMS_FULL"
-msgstr ""
-
-#: scenes/game/resources/decks/GenericItemDeckFull.tres
-msgid "GENERIC_ITEMS_FULL_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/tutorials/FirstCardTurnedTutorial.tres
-msgid "FIRST_CARD_TURNED"
-msgstr ""
-
-#: scenes/game/resources/tutorials/FirstCardTurnedTutorial.tres
-msgid "FIRST_CARD_TURNED_BODY"
-msgstr ""
-
-#: scenes/game/resources/tutorials/PlayerFirstMatchFound.tres
-msgid "FIRST_MATCHING_CARD"
-msgstr ""
-
-#: scenes/game/resources/tutorials/PlayerFirstMatchFound.tres
-msgid "FIRST_MATCHING_CARD_BODY"
-msgstr ""
-
-#: scenes/game/resources/tutorials/PlayerFirstRoundEnd.tres
-msgid "FIRST_ROUND_END"
-msgstr ""
-
-#: scenes/game/resources/tutorials/PlayerFirstRoundEnd.tres
-msgid "FIRST_ROUND_END_BODY"
-msgstr ""
-
-#: scenes/game/resources/tutorials/PlayerTurnTutorial.tres
-msgid "PLAYER_TURN"
-msgstr ""
-
-#: scenes/game/resources/tutorials/PlayerTurnTutorial.tres
-msgid "PLAYER_TURN_BODY"
-msgstr ""
-
-#: scenes/game/templates/TutorialWindow.tscn
+#: entities/game/tutorial_window/scenes/TutorialWindow.tscn
 msgid "TITLE"
 msgstr ""
 
-#: scenes/game/templates/TutorialWindow.tscn
+#: entities/game/tutorial_window/scenes/TutorialWindow.tscn
 msgid "BODY"
 msgstr ""
 
-#: scenes/game/templates/TutorialWindow.tscn
+#: entities/game/tutorial_window/scenes/TutorialWindow.tscn
 msgid "COMPLETE_TUTORIAL_TOOLTIP"
 msgstr ""
 
-#: scenes/game/templates/TutorialWindow.tscn
+#: entities/game/tutorial_window/scenes/TutorialWindow.tscn
 msgid "COMPLETE_TUTORIAL"
 msgstr ""
 
+#: entities/ui/card_preview/scenes/CardPreview.tscn
+msgid "CARD_NAME"
+msgstr ""
+
+#: entities/ui/card_preview/scenes/CardPreview.tscn
+msgid "CARD_DESCRIPTION"
+msgstr ""
+
+#: entities/ui/credits/scenes/Credits.tscn
+msgid "CREDITS_ROLL_TEXT"
+msgstr ""
+
+#: entities/ui/credits/scenes/Credits.tscn
+msgid "Kenney.nl"
+msgstr ""
+
+#: entities/ui/credits/scenes/Credits.tscn
+msgid "Axuree"
+msgstr ""
+
+#: entities/ui/credits/scenes/Credits.tscn
+msgid "Abstraction"
+msgstr ""
+
+#: entities/ui/credits/scenes/Credits.tscn
+msgid "Material Maker"
+msgstr ""
+
+#: entities/ui/credits/scenes/Credits.tscn
+#: entities/ui/deck_viewer/scenes/DeckViewer.tscn
+#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "CLOSE"
+msgstr ""
+
+#: entities/ui/deck_preview/scenes/DeckPreview.tscn
+msgid "DECK_INFO"
+msgstr ""
+
+#: entities/ui/deck_preview/scenes/DeckPreview.tscn
+msgid "BUILT_IN"
+msgstr ""
+
+#: entities/ui/deck_preview/scenes/DeckPreview.tscn
+#: shared/resources/translations/assets/No.tres
+msgid "NO"
+msgstr ""
+
+#: entities/ui/deck_preview/scenes/DeckPreview.tscn
+msgid "CARD_COUNT"
+msgstr ""
+
+#: entities/ui/deck_preview/scenes/DeckPreview.tscn
+msgid "DECK_NAME"
+msgstr ""
+
+#: entities/ui/deck_preview/scenes/DeckPreview.tscn
+msgid "DESCRIPTION"
+msgstr ""
+
+#: entities/ui/deck_viewer/scenes/DeckViewer.tscn
+msgid "RELOAD_CUSTOM_DECKS_TOOLTIP"
+msgstr ""
+
+#: entities/ui/deck_viewer/scenes/DeckViewer.tscn
+msgid "RELOAD_CUSTOM_DECKS"
+msgstr ""
+
+#: entities/ui/deck_viewer/scenes/DeckViewer.tscn
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+#: entities/ui/multiplayer_lobby/scenes/MultiplayerLobby.tscn
+msgid "FILTER_DECKS"
+msgstr ""
+
+#: entities/ui/deck_viewer/scenes/DeckViewer.tscn
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+msgid "SHOW_ALL_TOOLTIP"
+msgstr ""
+
+#: entities/ui/deck_viewer/scenes/DeckViewer.tscn
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+msgid "SHOW_ALL"
+msgstr ""
+
+#: entities/ui/deck_viewer/scenes/DeckViewer.tscn
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+msgid "SHOW_BUILT_IN_TOOLTIP"
+msgstr ""
+
+#: entities/ui/deck_viewer/scenes/DeckViewer.tscn
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+msgid "SHOW_BUILT_IN"
+msgstr ""
+
+#: entities/ui/deck_viewer/scenes/DeckViewer.tscn
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+msgid "SHOW_CUSTOM_TOOLTIP"
+msgstr ""
+
+#: entities/ui/deck_viewer/scenes/DeckViewer.tscn
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+msgid "SHOW_CUSTOM"
+msgstr ""
+
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+msgid "PLAYER_LIST_HELP"
+msgstr ""
+
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+msgid "ADD_NEW_PLAYER_TOOLTIP"
+msgstr ""
+
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+msgid "ADD_NEW_PLAYER"
+msgstr ""
+
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+msgid "ADD_RANDOM_PLAYER_TOOLTIP"
+msgstr ""
+
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+msgid "ADD_RANDOM_PLAYER"
+msgstr ""
+
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+msgid "ADD_AI_PLAYER_TOOLTIP"
+msgstr ""
+
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+msgid "ADD_AI_PLAYER"
+msgstr ""
+
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+#: entities/ui/multiplayer_lobby/scenes/MultiplayerLobby.tscn
+msgid "START_GAME_TOOLTIP"
+msgstr ""
+
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+#: entities/ui/multiplayer_lobby/scenes/MultiplayerLobby.tscn
+msgid "START_GAME"
+msgstr ""
+
+#: entities/ui/game_lobby/scenes/GameLobby.tscn
+#: entities/ui/new_player/scenes/NewPlayer.tscn
+#: entities/ui/select_ai_player/scenes/SelectAiPlayer.tscn
+msgid "CANCEL"
+msgstr ""
+
+#: entities/ui/loading_screen/scenes/LoadingScreen.tscn
+msgid "LOADING"
+msgstr ""
+
+#: entities/ui/loading_screen/scenes/LoadingScreen.tscn
+#: entities/ui/multiplayer_chat/scenes/MultiplayerChat.tscn
+msgid "MESSAGE"
+msgstr ""
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "CUSTOM_GAME_TOOLTIP"
+msgstr ""
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "CUSTOM_GAME"
+msgstr ""
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "LOCAL_MULTIPLAYER_TOOLTIP"
+msgstr ""
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "LOCAL_MULTIPLAYER"
+msgstr ""
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "QUICK_GAME_TOOLTIP"
+msgstr ""
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "QUICK_GAME"
+msgstr ""
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "DECK_VIEWER_TOOLTIP"
+msgstr ""
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "DECK_VIEWER"
+msgstr ""
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "CREDITS_TOOLTIP"
+msgstr ""
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "CREDITS"
+msgstr ""
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "QUIT_GAME_TOOLTIP"
+msgstr ""
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "QUIT_GAME"
+msgstr ""
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "GAME_SETTINGS"
+msgstr ""
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "HOW_TO_PLAY"
+msgstr ""
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "GITHUB_REPOSITORY_BUTTON"
+msgstr ""
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "GAME_PAGE"
+msgstr ""
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "REPORT_BUG"
+msgstr ""
+
+#: entities/ui/multiplayer_chat/scenes/MultiplayerChat.tscn
+msgid "SEND"
+msgstr ""
+
+#: entities/ui/multiplayer_connection_state_message/scenes/MultiplayerConnectionStateMessage.tscn
+#: shared/resources/translations/assets/MultiplayerConnectingToServer.tres
+msgid "CONNECTING_TO_SERVER"
+msgstr ""
+
+#: entities/ui/multiplayer_connection_state_message/scenes/MultiplayerConnectionStateMessage.tscn
+msgid "ABORT_CONNECTION_TOOLTIP"
+msgstr ""
+
+#: entities/ui/multiplayer_connection_state_message/scenes/MultiplayerConnectionStateMessage.tscn
+msgid "ABORT_CONNECTION"
+msgstr ""
+
+#: entities/ui/multiplayer_lobby/scenes/MultiplayerLobby.tscn
+msgid "ABORT_TOOLTIP"
+msgstr ""
+
+#: entities/ui/multiplayer_lobby/scenes/MultiplayerLobby.tscn
+msgid "ABORT"
+msgstr ""
+
+#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
+#: entities/ui/new_player/scenes/NewPlayer.tscn
+msgid "PLAYER_NAME"
+msgstr ""
+
+#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
+msgid "AVAILABLE_SERVERS"
+msgstr ""
+
+#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
+msgid "SERVER_ADDRESS"
+msgstr ""
+
+#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
+msgid "CONNECT_TOOLTIP"
+msgstr ""
+
+#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
+#: entities/ui/multiplayer_server_entry/scenes/MultiplayerServerEntry.tscn
+msgid "CONNECT"
+msgstr ""
+
+#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
+msgid "HOST_TOOLTIP"
+msgstr ""
+
+#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
+msgid "HOST"
+msgstr ""
+
+#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
+msgid "CLOSE_TOOLTIP"
+msgstr ""
+
+#: entities/ui/multiplayer_server_entry/scenes/MultiplayerServerEntry.tscn
+msgid "SERVER_NAME"
+msgstr ""
+
+#: entities/ui/multiplayer_server_entry/scenes/MultiplayerServerEntry.tscn
+#: shared/resources/translations/assets/Version.tres
+msgid "VERSION"
+msgstr ""
+
+#: entities/ui/new_player/scenes/NewPlayer.tscn
+msgid "ERROR"
+msgstr ""
+
+#: entities/ui/player_card/scenes/PlayerCard.tscn
+msgid "MOVE_PLAYER_UP"
+msgstr ""
+
+#: entities/ui/player_card/scenes/PlayerCard.tscn
+msgid "MOVE_PLAYER_DOWN"
+msgstr ""
+
+#: entities/ui/player_card/scenes/PlayerCard.tscn
+msgid "DELETE_LOBBY_PLAYER_TOOLTIP"
+msgstr ""
+
+#: entities/ui/quick_game_selection/scenes/QuickGameSelection.tscn
+msgid "VS_PLAYER_TOOLTIP"
+msgstr ""
+
+#: entities/ui/quick_game_selection/scenes/QuickGameSelection.tscn
+msgid "VS_PLAYER"
+msgstr ""
+
+#: entities/ui/quick_game_selection/scenes/QuickGameSelection.tscn
+msgid "MATCH_AGAINST_EASY_AI_TOOLTIP"
+msgstr ""
+
+#: entities/ui/quick_game_selection/scenes/QuickGameSelection.tscn
+#: entities/ui/select_ai_player/scenes/SelectAiPlayer.tscn
+msgid "EASY_AI"
+msgstr ""
+
+#: entities/ui/quick_game_selection/scenes/QuickGameSelection.tscn
+msgid "MATCH_AGAINST_NORMAL_AI_TOOLTIP"
+msgstr ""
+
+#: entities/ui/quick_game_selection/scenes/QuickGameSelection.tscn
+#: entities/ui/select_ai_player/scenes/SelectAiPlayer.tscn
+msgid "NORMAL_AI"
+msgstr ""
+
+#: entities/ui/quick_game_selection/scenes/QuickGameSelection.tscn
+msgid "MATCH_AGAINST_HARD_AI_TOOLTIP"
+msgstr ""
+
+#: entities/ui/quick_game_selection/scenes/QuickGameSelection.tscn
+#: entities/ui/select_ai_player/scenes/SelectAiPlayer.tscn
+msgid "HARD_AI"
+msgstr ""
+
+#: entities/ui/select_ai_player/scenes/SelectAiPlayer.tscn
+msgid "ADD_AI_CANCEL_TOOLTIP"
+msgstr ""
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "SETTINGS"
+msgstr ""
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "SELECT_LANGUAGE_SETTING_TOOLTIP"
+msgstr ""
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "ENGLISH"
+msgstr ""
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "GERMAN"
+msgstr ""
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "GRAPHIC_SETTINGS"
+msgstr ""
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "WINDOW_MODE_SETTING_TOOLTIP"
+msgstr ""
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "FULL_SCREEN"
+msgstr ""
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "BORDERLESS"
+msgstr ""
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "MAXIMIZED"
+msgstr ""
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "VSYNC_SETTING_TOOLTIP"
+msgstr ""
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "V_SYNC"
+msgstr ""
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "UI_SCALE_TOOLTIP"
+msgstr ""
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "UI_SCALE"
+msgstr ""
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "GAMEPLAY_SETTINGS"
+msgstr ""
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "LOAD_CUSTOM_DECK_SETTING_TOOLTIP"
+msgstr ""
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "LOAD_CUSTOM_DECKS"
+msgstr ""
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "AUTO_COMPLETE_ROUND_TOOLTIP"
+msgstr ""
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "RESET_TUTORIAL_TOOLTIP"
+msgstr ""
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "RESET_TUTORIAL"
+msgstr ""
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "AUDIO"
+msgstr ""
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "MASTER_VOLUME_TOOLTIP"
+msgstr ""
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "MASTER_VOLUME"
+msgstr ""
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "EFFECT_VOLUME_TOOLTIP"
+msgstr ""
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "EFFECT_VOLUME"
+msgstr ""
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "MUSIC_VOLUME_TOOLTIP"
+msgstr ""
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "MUSIC_VOLUME"
+msgstr ""
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "TEST_EFFECTS_TOOLTIP"
+msgstr ""
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "TEST_EFFECTS"
+msgstr ""
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "APPLY_SETTING_TOOLTIP"
+msgstr ""
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "APPLY"
+msgstr ""
+
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "CLOSE_SETTING_TOOLTIP"
+msgstr ""
+
+#: shared/resources/cards/assets/animals/ElephantCard.tres
+msgid "ELEPHANT"
+msgstr ""
+
+#: shared/resources/cards/assets/animals/ElephantCard.tres
+msgid "ELEPHANT_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/animals/GiraffeCard.tres
+msgid "GIRAFFE"
+msgstr ""
+
+#: shared/resources/cards/assets/animals/GiraffeCard.tres
+msgid "GIRAFFE_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/animals/HippoCard.tres
+msgid "HIPPO"
+msgstr ""
+
+#: shared/resources/cards/assets/animals/HippoCard.tres
+msgid "HIPPO_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/animals/MonkeyCard.tres
+msgid "MONKEY"
+msgstr ""
+
+#: shared/resources/cards/assets/animals/MonkeyCard.tres
+msgid "MONKEY_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/animals/PandaCard.tres
+msgid "PANDA"
+msgstr ""
+
+#: shared/resources/cards/assets/animals/PandaCard.tres
+msgid "PANDA_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/animals/ParrotCard.tres
+msgid "PARROT"
+msgstr ""
+
+#: shared/resources/cards/assets/animals/ParrotCard.tres
+msgid "PARROT_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/animals/PenguinCard.tres
+msgid "PENGUIN"
+msgstr ""
+
+#: shared/resources/cards/assets/animals/PenguinCard.tres
+msgid "PENGUIN_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/animals/PigCard.tres
+msgid "PIG"
+msgstr ""
+
+#: shared/resources/cards/assets/animals/PigCard.tres
+msgid "PIG_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/animals/RabbitCard.tres
+msgid "RABBIT"
+msgstr ""
+
+#: shared/resources/cards/assets/animals/RabbitCard.tres
+msgid "RABBIT_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/animals/SnakeCard.tres
+msgid "SNAKE"
+msgstr ""
+
+#: shared/resources/cards/assets/animals/SnakeCard.tres
+msgid "SNAKE_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/BriefcaseCard.tres
+msgid "BRIEFCASE"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/BriefcaseCard.tres
+msgid "BRIEFCASE_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/BrushCard.tres
+msgid "BRUSH"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/BrushCard.tres
+msgid "BRUSH_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/CameraCard.tres
+msgid "CAMERA"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/CameraCard.tres
+msgid "CAMERA_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/CdCard.tres
+msgid "CD"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/CdCard.tres
+msgid "CD_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/ComputerCard.tres
+msgid "COMPUTER"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/ComputerCard.tres
+msgid "COMPUTER_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/HeadphoneCard.tres
+msgid "HEADPHONE"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/HeadphoneCard.tres
+msgid "HEADPHONE_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/MicrophoneCard.tres
+msgid "MICROPHONE"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/MicrophoneCard.tres
+msgid "MICROPHONE_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/MicroscopeCard.tres
+msgid "MICROSCOPE"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/MicroscopeCard.tres
+msgid "MICROSCOPE_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/ModernControllerCard.tres
+msgid "MODERN_CONTROLLER"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/ModernControllerCard.tres
+msgid "MODERN_CONTROLLER_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/MoneyCard.tres
+msgid "MONEY"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/MoneyCard.tres
+msgid "MONEY_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/MortarAndPestleCard.tres
+msgid "MORTAR_AND_PESTLE"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/MortarAndPestleCard.tres
+msgid "MORTAR_AND_PESTLE_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/NotebookCard.tres
+msgid "NOTEBOOK"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/NotebookCard.tres
+msgid "NOTEBOOK_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/PanCard.tres
+msgid "PAN"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/PanCard.tres
+msgid "PAN_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/PhoneCard.tres
+msgid "PHONE"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/PhoneCard.tres
+msgid "PHONE_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/PickaxeCard.tres
+msgid "PICKAXE"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/PickaxeCard.tres
+msgid "PICKAXE_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/PotCard.tres
+msgid "POT"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/PotCard.tres
+msgid "POT_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/SawCard.tres
+msgid "SAW"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/SawCard.tres
+msgid "SAW_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/ShovleCard.tres
+msgid "SHOVEL"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/ShovleCard.tres
+msgid "SHOVEL_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/SledgehammerCard.tres
+msgid "SLEDGEHAMMER"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/SledgehammerCard.tres
+msgid "SLEDGEHAMMER_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/TeaPotCard.tres
+msgid "TEA_POT"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/TeaPotCard.tres
+msgid "TEA_POT_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/ThoothbrushCard.tres
+msgid "THOOTHBRUSH"
+msgstr ""
+
+#: shared/resources/cards/assets/generic_items/ThoothbrushCard.tres
+msgid "THOOTHBRUSH_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/hardware/Calculator.tres
+msgid "CALCULATOR"
+msgstr ""
+
+#: shared/resources/cards/assets/hardware/Calculator.tres
+msgid "CALCULATOR_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/hardware/ComputerMonitor.tres
+msgid "USB_STICK"
+msgstr ""
+
+#: shared/resources/cards/assets/hardware/ComputerMonitor.tres
+msgid "USB_STICK_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/hardware/GraphicCard.tres
+msgid "GRAPHIC_CARD"
+msgstr ""
+
+#: shared/resources/cards/assets/hardware/GraphicCard.tres
+msgid "GRAPHIC_CARD_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/hardware/Keyboard.tres
+msgid "KEYBOARD"
+msgstr ""
+
+#: shared/resources/cards/assets/hardware/Keyboard.tres
+msgid "KEYBOARD_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/hardware/Ram.tres
+msgid "RAM"
+msgstr ""
+
+#: shared/resources/cards/assets/hardware/Ram.tres
+msgid "RAM_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/cards/assets/hardware/UsbStick.tres
+msgid "COMPUTER_MONITOR"
+msgstr ""
+
+#: shared/resources/cards/assets/hardware/UsbStick.tres
+msgid "COMPUTER_MONITOR_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/decks/assets/AnimalDeck.tres
+msgid "ANIMALS"
+msgstr ""
+
+#: shared/resources/decks/assets/AnimalDeck.tres
+msgid "ANIMALS_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/decks/assets/GenericItemDeckFull.tres
+msgid "GENERIC_ITEMS_FULL"
+msgstr ""
+
+#: shared/resources/decks/assets/GenericItemDeckFull.tres
+msgid "GENERIC_ITEMS_FULL_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/decks/assets/HardwareDeck.tres
+msgid "HARDWARE_DECK"
+msgstr ""
+
+#: shared/resources/decks/assets/HardwareDeck.tres
+msgid "HARDWARE_DECK_DESCRIPTION"
+msgstr ""
+
+#: shared/resources/translations/assets/ErrorNoNameWasEntered.tres
+msgid "NO_NAME_WAS_ENTERED"
+msgstr ""
+
+#: shared/resources/translations/assets/ErrorOnlyLetterAndNumbersAllowed.tres
+msgid "ONLY_LETTER_AND_NUMBERS_ALLOWED_FOR_PLAYER_NAME"
+msgstr ""
+
+#. TRANSLATORS: This will be used after the "LOADING" string, keep in mind to keep that as lower case
+#: shared/resources/translations/assets/LoadDecks.tres
+msgid "LOAD_DECKS"
+msgstr ""
+
+#. TRANSLATORS: Single placeholder %s required to add the ip address
+#: shared/resources/translations/assets/MultiplayerConnectionFailed.tres
+msgid "MUTLIPLAYER_CONNECTION_FAILED"
+msgstr ""
+
+#. TRANSLATORS: Requires a single %s placeholder to add the name of the new deck
+#: shared/resources/translations/assets/MultiplayerDeckHasBeenChanged.tres
+msgid "DECK_HAS_BEEN_CHANGED"
+msgstr ""
+
+#. TRANSLATORS: Requires a single %s placeholder conng the player nametaini
+#: shared/resources/translations/assets/MultiplayerPlayerJoined.tres
+msgid "MULTIPLAYER_PLAYER_JOINED"
+msgstr ""
+
+#. TRANSLATORS: Requires a single %s placeholder containing the player name
+#: shared/resources/translations/assets/MultiplayerPlayerKicked.tres
+msgid "MULTIPLAYER_PLAYER_KICKED"
+msgstr ""
+
+#. TRANSLATORS: Requires a single %s placeholder for player name
+#: shared/resources/translations/assets/MultiplayerPlayerLeft.tres
+msgid "MULTIPLAYER_PLAYER_LEFT"
+msgstr ""
+
+#. TRANSLATORS: Message client gets if he was kicked from the server
+#: shared/resources/translations/assets/MultiplayerServerKicked.tres
+msgid "MULTIPLAYER_KICKED_BY_SERVER"
+msgstr ""
+
+#. TRANSLATORS: Player got kicked from the server, because the game version is different, requires two %s placeholders for game versions of client and server
+#: shared/resources/translations/assets/MultiplayerWrongVersion.tres
+msgid "MULTIPLAYER_WRONG_VERSION"
+msgstr ""
+
+#. TRANSLATORS: Requires a single placeholder "%1.0" containing the seconds
+#: shared/resources/translations/assets/TimeForCompletion.tres
+msgid "TIME_FOR_COMPLETION"
+msgstr ""
+
 #. TRANSLATORS: You need to add "%1.0" once as a placeholder, it will contain the seconds until the next turn will start
-#: scenes/translations/TurnEndBannerMessage.tres
+#: shared/resources/translations/assets/TurnEndBannerMessage.tres
 msgid "ROUND_END_BANNER_MESSAGE"
 msgid_plural "ROUND_END_BANNER_MESSAGE_PLURAL"
 msgstr[0] ""
 msgstr[1] ""
 
-#: scenes/translations/TurnEndBannerMessageNoAutoComplete.tres
+#: shared/resources/translations/assets/TurnEndBannerMessageNoAutoComplete.tres
 msgid "ROUND_END_BANNER_MESSAGE_NO_COMPLETE"
 msgstr ""
 
-#: scenes/menu/Credits.tscn
-msgid "CREDITS_ROLL_TEXT"
-msgstr ""
-
-#: scenes/menu/Credits.tscn
-msgid "Kenney.nl"
-msgstr ""
-
-#: scenes/menu/Credits.tscn
-msgid "Axuree"
-msgstr ""
-
-#: scenes/menu/Credits.tscn
-msgid "Abstraction"
-msgstr ""
-
-#: scenes/menu/Credits.tscn
-msgid "Material Maker"
-msgstr ""
-
-#: scenes/game/resources/ai/EasyAi.tres
-#: scenes/menu/SelectAiPlayer.tscn
-#: scenes/menu/AvailableAiModes.tscn
-msgid "EASY_AI"
-msgstr ""
-
-#: scenes/game/resources/ai/HardAi.tres
-#: scenes/menu/SelectAiPlayer.tscn
-#: scenes/menu/AvailableAiModes.tscn
-msgid "HARD_AI"
-msgstr ""
-
-#: scenes/game/resources/ai/NormalAi.tres
-#: scenes/menu/SelectAiPlayer.tscn
-#: scenes/menu/AvailableAiModes.tscn
-msgid "NORMAL_AI"
-msgstr ""
-
-#: scenes/menu/NewPlayer.tscn
-#: scenes/menu/multiplayer/MultiplayerStart.tscn
-msgid "PLAYER_NAME"
-msgstr ""
-
-#: scenes/menu/NewPlayer.tscn
-msgid "ERROR"
-msgstr ""
-
-#: scenes/menu/SelectAiPlayer.tscn
-msgid "ADD_AI_CANCEL_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/PlayerCard.tscn
-msgid "MOVE_PLAYER_UP"
-msgstr ""
-
-#: scenes/menu/PlayerCard.tscn
-msgid "MOVE_PLAYER_DOWN"
-msgstr ""
-
-#: scenes/menu/PlayerCard.tscn
-msgid "DELETE_LOBBY_PLAYER_TOOLTIP"
-msgstr ""
-
-#: scenes/translations/ErrorNoNameWasEntered.tres
-msgid "NO_NAME_WAS_ENTERED"
-msgstr ""
-
-#: scenes/translations/ErrorOnlyLetterAndNumbersAllowed.tres
-msgid "ONLY_LETTER_AND_NUMBERS_ALLOWED_FOR_PLAYER_NAME"
-msgstr ""
-
-#: scenes/game/levels/LoadingScreen.tscn
-msgid "LOADING"
-msgstr ""
-
-#: scenes/game/levels/LoadingScreen.tscn
-msgid "MESSAGE"
-msgstr ""
-
-#. TRANSLATORS: This will be used after the "LOADING" string, keep in mind to keep that as lower case
-#: scenes/translations/LoadDecks.tres
-msgid "LOAD_DECKS"
-msgstr ""
-
-#: scenes/translations/Yes.tres
+#: shared/resources/translations/assets/Yes.tres
 msgid "YES"
 msgstr ""
 
-#: scenes/translations/Version.tres
-msgid "VERSION"
+#: entities/game/tutorial_window/assets/FirstCardTurnedTutorial.tres
+msgid "FIRST_CARD_TURNED"
 msgstr ""
 
-#. TRANSLATORS: Requires a single placeholder "%1.0" containing the seconds
-#: scenes/translations/TimeForCompletion.tres
-msgid "TIME_FOR_COMPLETION"
+#: entities/game/tutorial_window/assets/FirstCardTurnedTutorial.tres
+msgid "FIRST_CARD_TURNED_BODY"
 msgstr ""
 
-#: scenes/game/levels/MemoryGameScene.tscn
-msgid "PAUSE_MENU"
+#: entities/game/tutorial_window/assets/PlayerFirstMatchFound.tres
+msgid "FIRST_MATCHING_CARD"
 msgstr ""
 
-#: scenes/game/resources/cards/hardware/Calculator.tres
-msgid "CALCULATOR"
+#: entities/game/tutorial_window/assets/PlayerFirstMatchFound.tres
+msgid "FIRST_MATCHING_CARD_BODY"
 msgstr ""
 
-#: scenes/game/resources/cards/hardware/Calculator.tres
-msgid "CALCULATOR_DESCRIPTION"
+#: entities/game/tutorial_window/assets/PlayerFirstRoundEnd.tres
+msgid "FIRST_ROUND_END"
 msgstr ""
 
-#: scenes/game/resources/cards/hardware/ComputerMonitor.tres
-msgid "USB_STICK"
+#: entities/game/tutorial_window/assets/PlayerFirstRoundEnd.tres
+msgid "FIRST_ROUND_END_BODY"
 msgstr ""
 
-#: scenes/game/resources/cards/hardware/ComputerMonitor.tres
-msgid "USB_STICK_DESCRIPTION"
+#: entities/game/tutorial_window/assets/PlayerTurnTutorial.tres
+msgid "PLAYER_TURN"
 msgstr ""
 
-#: scenes/game/resources/cards/hardware/GraphicCard.tres
-msgid "GRAPHIC_CARD"
-msgstr ""
-
-#: scenes/game/resources/cards/hardware/GraphicCard.tres
-msgid "GRAPHIC_CARD_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/cards/hardware/Keyboard.tres
-msgid "KEYBOARD"
-msgstr ""
-
-#: scenes/game/resources/cards/hardware/Keyboard.tres
-msgid "KEYBOARD_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/cards/hardware/Ram.tres
-msgid "RAM"
-msgstr ""
-
-#: scenes/game/resources/cards/hardware/Ram.tres
-msgid "RAM_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/cards/hardware/UsbStick.tres
-msgid "COMPUTER_MONITOR"
-msgstr ""
-
-#: scenes/game/resources/cards/hardware/UsbStick.tres
-msgid "COMPUTER_MONITOR_DESCRIPTION"
-msgstr ""
-
-#: scenes/game/resources/decks/HardwareDeck.tres
-msgid "HARDWARE_DECK"
-msgstr ""
-
-#: scenes/game/resources/decks/HardwareDeck.tres
-msgid "HARDWARE_DECK_DESCRIPTION"
-msgstr ""
-
-#. TRANSLATORS: Requires a single %s placeholder to add the name of the new deck
-#: scenes/translations/MultiplayerDeckHasBeenChanged.tres
-msgid "DECK_HAS_BEEN_CHANGED"
-msgstr ""
-
-#. TRANSLATORS: Requires a single %s placeholder conng the player nametaini
-#: scenes/translations/MultiplayerPlayerJoined.tres
-msgid "MULTIPLAYER_PLAYER_JOINED"
-msgstr ""
-
-#. TRANSLATORS: Requires a single %s placeholder containing the player name
-#: scenes/translations/MultiplayerPlayerKicked.tres
-msgid "MULTIPLAYER_PLAYER_KICKED"
-msgstr ""
-
-#. TRANSLATORS: Message client gets if he was kicked from the server
-#: scenes/translations/MultiplayerServerKicked.tres
-msgid "MULTIPLAYER_KICKED_BY_SERVER"
-msgstr ""
-
-#. TRANSLATORS: Player got kicked from the server, because the game version is different, requires two %s placeholders for game versions of client and server
-#: scenes/translations/MultiplayerWrongVersion.tres
-msgid "MULTIPLAYER_WRONG_VERSION"
-msgstr ""
-
-#: scenes/menu/multiplayer/MultiplayerLobby.tscn
-msgid "ABORT_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/multiplayer/MultiplayerLobby.tscn
-msgid "ABORT"
-msgstr ""
-
-#: scenes/menu/multiplayer/MultiplayerStart.tscn
-msgid "AVAILABLE_SERVERS"
-msgstr ""
-
-#: scenes/menu/multiplayer/MultiplayerStart.tscn
-msgid "SERVER_ADDRESS"
-msgstr ""
-
-#: scenes/menu/multiplayer/MultiplayerStart.tscn
-msgid "CONNECT_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/multiplayer/MultiplayerStart.tscn
-msgid "CONNECT"
-msgstr ""
-
-#: scenes/menu/multiplayer/MultiplayerStart.tscn
-msgid "HOST_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/multiplayer/MultiplayerStart.tscn
-msgid "HOST"
-msgstr ""
-
-#: scenes/menu/multiplayer/MultiplayerStart.tscn
-msgid "CLOSE_TOOLTIP"
-msgstr ""
-
-#. TRANSLATORS: Single placeholder %s required to add the ip address
-#: scenes/translations/MultiplayerConnectionFailed.tres
-msgid "MUTLIPLAYER_CONNECTION_FAILED"
-msgstr ""
-
-#: scenes/translations/MultiplayerConnectingToServer.tres
-msgid "CONNECTING_TO_SERVER"
-msgstr ""
-
-#. TRANSLATORS: Requires a single %s placeholder for player name
-#: scenes/translations/MultiplayerPlayerLeft.tres
-msgid "MULTIPLAYER_PLAYER_LEFT"
-msgstr ""
-
-#: scenes/menu/AvailableAiModes.tscn
-msgid "VS_PLAYER_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/AvailableAiModes.tscn
-msgid "VS_PLAYER"
-msgstr ""
-
-#: scenes/menu/AvailableAiModes.tscn
-msgid "MATCH_AGAINST_EASY_AI_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/AvailableAiModes.tscn
-msgid "MATCH_AGAINST_NORMAL_AI_TOOLTIP"
-msgstr ""
-
-#: scenes/menu/AvailableAiModes.tscn
-msgid "MATCH_AGAINST_HARD_AI_TOOLTIP"
+#: entities/game/tutorial_window/assets/PlayerTurnTutorial.tres
+msgid "PLAYER_TURN_BODY"
 msgstr ""

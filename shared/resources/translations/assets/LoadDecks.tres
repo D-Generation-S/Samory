@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TextTranslation" load_steps=2 format=3 uid="uid://bbbp71h1j4kp"]
+
+[ext_resource type="Script" uid="uid://b3ccmsvxi5x8x" path="res://shared/resources/translations/TextTranslation.gd" id="1_y7fcn"]
+
+[resource]
+script = ExtResource("1_y7fcn")
+key = "LOAD_DECKS"
+context = ""
+plural = ""
+comment = "This will be used after the \"LOADING\" string, keep in mind to keep that as lower case"
+metadata/_custom_type_script = "uid://b3ccmsvxi5x8x"

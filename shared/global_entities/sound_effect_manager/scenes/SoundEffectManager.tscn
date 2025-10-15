@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfqgavjicy8wm"]
+
+[ext_resource type="Script" uid="uid://drdnu7rtkkq0e" path="res://shared/global_entities/sound_effect_manager/scripts/SoundManager.gd" id="1_x8wxi"]
+
+[node name="SoundEffectManager" type="Node2D"]
+script = ExtResource("1_x8wxi")
+audio_bus = "sfx"

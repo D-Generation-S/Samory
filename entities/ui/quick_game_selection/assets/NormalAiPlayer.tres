@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PlayerResource" load_steps=3 format=3 uid="uid://cfwklxtc01411"]
+
+[ext_resource type="Script" uid="uid://bftxc2q2j26m7" path="res://entities/ui/quick_game_selection/resources/PlayerResource.gd" id="1_4ui00"]
+[ext_resource type="Resource" uid="uid://dlrxaqb0lgbif" path="res://shared/entities/ai_difficulty/assets/NormalAi.tres" id="1_itdo1"]
+
+[resource]
+script = ExtResource("1_4ui00")
+ai_difficulty = ExtResource("1_itdo1")
+name = "Normal Ai"
+metadata/_custom_type_script = "uid://bftxc2q2j26m7"
