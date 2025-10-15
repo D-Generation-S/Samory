@@ -35,6 +35,9 @@ func _ready() -> void:
 	if button_behavior == null:
 		button_behavior = DefaultButtonBehavior.new()
 	button_behavior.init(self, pressed_action)
+	if pressed_action != null:
+		pressed_action.can_execute_changed.connect(check_if_can_execute)
+		check_if_can_execute()
 
 	_is_animated = animation_resource != null
 	if _is_animated:
