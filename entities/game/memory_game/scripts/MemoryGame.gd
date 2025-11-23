@@ -98,6 +98,8 @@ func card_was_triggered() -> void:
 		card_triggered.emit(GameState.ROUND_START, get_clicked_cards())
 		return
 	if current_game_state == GameState.ROUND_END:
+		if multiplayer.is_server():
+			game_state_changed.emit(GameState.ROUND_END)		
 		return
 	triggered_cards = triggered_cards + 1
 	
