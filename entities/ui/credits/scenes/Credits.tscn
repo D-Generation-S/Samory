@@ -77,7 +77,7 @@ layout_mode = 2
 [node name="Kenney_nl" type="Button" parent="ButtonArea/LinkList"]
 layout_mode = 2
 focus_neighbor_left = NodePath("../CloseButton")
-focus_neighbor_right = NodePath("../Abstraction")
+focus_neighbor_right = NodePath("../Auxree")
 text = "Kenney.nl"
 script = ExtResource("3_ntyq1")
 animation_resource = ExtResource("4_5w3yf")
@@ -85,7 +85,7 @@ pressed_action = SubResource("Resource_gul80")
 
 [node name="Auxree" type="Button" parent="ButtonArea/LinkList"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../CloseButton")
+focus_neighbor_left = NodePath("../Kenney_nl")
 focus_neighbor_right = NodePath("../Abstraction")
 text = "Axuree"
 script = ExtResource("3_ntyq1")
@@ -94,7 +94,7 @@ pressed_action = SubResource("Resource_ntyq1")
 
 [node name="Abstraction" type="Button" parent="ButtonArea/LinkList"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../Kenney_nl")
+focus_neighbor_left = NodePath("../Auxree")
 focus_neighbor_right = NodePath("../MaterialMaker")
 text = "Abstraction"
 script = ExtResource("3_ntyq1")
