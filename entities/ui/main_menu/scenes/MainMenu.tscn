@@ -178,6 +178,7 @@ focus_next = NodePath("../Start Game")
 text = "QUIT_GAME"
 icon = ExtResource("15_lppid")
 script = ExtResource("4_b7t05")
+active = 2
 animation_resource = ExtResource("5_sugc0")
 pressed_action = SubResource("Resource_jopkp")
 
