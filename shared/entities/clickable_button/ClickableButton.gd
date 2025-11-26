@@ -68,7 +68,7 @@ func _check_for_valid_platform() -> bool:
 	return true
 
 func _is_desktop() -> bool:
-	return OS.has_feature("windows")
+	return OS.has_feature("windows") or OS.has_feature("linux")
 
 func _is_mobile() -> bool:
 	return OS.has_feature("web_android") or OS.has_feature("web_ios")
