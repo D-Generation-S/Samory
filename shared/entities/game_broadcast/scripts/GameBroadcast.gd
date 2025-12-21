@@ -41,16 +41,26 @@ func _build_package_data() -> Dictionary:
 
 func get_network_ip() -> String:
 	var ip_address: String = "127.0.0.1"
-	if OS.has_feature("windows"):
-		if OS.has_environment("COMPUTERNAME"):
-			ip_address = IP.resolve_hostname(str(OS.get_environment("COMPUTERNAME")), IP.TYPE_IPV4)
-	elif OS.has_feature("x11"):
-		if OS.has_environment("HOSTNAME"):
-			ip_address = IP.resolve_hostname(str(OS.get_environment("HOSTNAME")), IP.TYPE_IPV4)
+	var hostname: String = ""
+	var environment_variables: Array[String] = ["COMPUTERNAME", "HOSTNAME", "HOST"]
+	for variable: String in environment_variables:
+		if OS.has_environment(variable):
+			hostname = OS.get_environment(variable)
+			if not hostname.is_empty():
+				break
 
+		
+	if not hostname.is_empty():
+		ip_address = IP.resolve_hostname(hostname, IP.TYPE_IPV4)
+	if is_local_or_invalid_ip(ip_address):
+		for address: String in IP.get_local_addresses():
+			if (address.split('.').size() == 4) and not is_local_or_invalid_ip(address):
+				ip_address = address
+	
 	return ip_address
 
-	
+func is_local_or_invalid_ip(ip_address: String) -> bool:
+	return ip_address == "127.0.0.1" or ip_address == "0.0.0.0"
 
 func _send_broadcast(data: Dictionary) -> void:	
 	var raw_data: String = JSON.stringify(data)
