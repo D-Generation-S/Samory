@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://scnjjf50me2r"]
+[gd_scene format=3 uid="uid://scnjjf50me2r"]
 
 [ext_resource type="Script" uid="uid://cibsw0b7xb6wl" path="res://entities/ui/deck_viewer/scripts/DeckViewer.gd" id="1_yrncy"]
 [ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://entities/ui/menu_background/scenes/MenuBackground.tscn" id="2_c7b6s"]
@@ -21,12 +21,12 @@
 script = ExtResource("15_j8b63")
 metadata/_custom_type_script = "uid://ct3xq8li5qn6f"
 
-[node name="DeckViewer" type="CanvasLayer"]
+[node name="DeckViewer" type="CanvasLayer" unique_id=845898335]
 script = ExtResource("1_yrncy")
 
-[node name="MenuBackground" parent="." instance=ExtResource("2_c7b6s")]
+[node name="MenuBackground" parent="." unique_id=796944061 instance=ExtResource("2_c7b6s")]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1775871900]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -34,34 +34,34 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=949986452]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer" unique_id=1509326865]
 layout_mode = 2
 
-[node name="Deck Controls" type="HBoxContainer" parent="VBoxContainer/MarginContainer/PanelContainer"]
+[node name="Deck Controls" type="HBoxContainer" parent="VBoxContainer/MarginContainer/PanelContainer" unique_id=1873155486]
 layout_mode = 2
 alignment = 1
 
-[node name="Reload Decks" type="Button" parent="VBoxContainer/MarginContainer/PanelContainer/Deck Controls"]
+[node name="Reload Decks" type="Button" parent="VBoxContainer/MarginContainer/PanelContainer/Deck Controls" unique_id=2146976608]
 layout_mode = 2
 tooltip_text = "RELOAD_CUSTOM_DECKS_TOOLTIP"
 text = "RELOAD_CUSTOM_DECKS"
 script = ExtResource("2_v68ni")
 is_focused = true
 
-[node name="Filter Decks" type="LineEdit" parent="VBoxContainer/MarginContainer/PanelContainer/Deck Controls"]
+[node name="Filter Decks" type="LineEdit" parent="VBoxContainer/MarginContainer/PanelContainer/Deck Controls" unique_id=1898127144]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "FILTER_DECKS"
 script = ExtResource("3_44ipw")
 
-[node name="Show All" type="CheckButton" parent="VBoxContainer/MarginContainer/PanelContainer/Deck Controls"]
+[node name="Show All" type="CheckButton" parent="VBoxContainer/MarginContainer/PanelContainer/Deck Controls" unique_id=306004452]
 layout_mode = 2
 tooltip_text = "SHOW_ALL_TOOLTIP"
 button_pressed = true
@@ -69,21 +69,21 @@ button_group = ExtResource("2_t7m8t")
 text = "SHOW_ALL"
 script = ExtResource("4_dd2y2")
 
-[node name="Show Built In" type="CheckButton" parent="VBoxContainer/MarginContainer/PanelContainer/Deck Controls"]
+[node name="Show Built In" type="CheckButton" parent="VBoxContainer/MarginContainer/PanelContainer/Deck Controls" unique_id=748547569]
 layout_mode = 2
 tooltip_text = "SHOW_BUILT_IN_TOOLTIP"
 button_group = ExtResource("2_t7m8t")
 text = "SHOW_BUILT_IN"
 script = ExtResource("4_dd2y2")
 
-[node name="Show Custom" type="CheckButton" parent="VBoxContainer/MarginContainer/PanelContainer/Deck Controls"]
+[node name="Show Custom" type="CheckButton" parent="VBoxContainer/MarginContainer/PanelContainer/Deck Controls" unique_id=824227670]
 layout_mode = 2
 tooltip_text = "SHOW_CUSTOM_TOOLTIP"
 button_group = ExtResource("2_t7m8t")
 text = "SHOW_CUSTOM"
 script = ExtResource("4_dd2y2")
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer" unique_id=1004471552]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 5
@@ -91,26 +91,27 @@ theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/MarginContainer2"]
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/MarginContainer2" unique_id=1360238059]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1
 
-[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/MarginContainer2/PanelContainer2"]
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/MarginContainer2/PanelContainer2" unique_id=1186931563]
 layout_mode = 2
-split_offset = -420
+split_offsets = PackedInt32Array(-420)
 dragger_visibility = 2
+split_offset = -420
 script = ExtResource("7_88bf3")
 default_split_size = -420
 mobile_split_size = 0
 
-[node name="Decks" type="ScrollContainer" parent="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer"]
+[node name="Decks" type="ScrollContainer" parent="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer" unique_id=1726643090]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="DeckContainer" type="GridContainer" parent="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/Decks"]
+[node name="DeckContainer" type="GridContainer" parent="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/Decks" unique_id=2075055244]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -119,12 +120,12 @@ deck_preview_template = ExtResource("6_wx8yk")
 scroll_speed = 15.0
 decks_visible_on_start = false
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer" unique_id=1121401604]
 layout_mode = 2
 size_flags_horizontal = 3
 horizontal_scroll_mode = 0
 
-[node name="Cards" type="GridContainer" parent="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/ScrollContainer" node_paths=PackedStringArray("deck_container", "system_card_container", "built_in_card_container")]
+[node name="Cards" type="GridContainer" parent="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/ScrollContainer" unique_id=264875022 node_paths=PackedStringArray("deck_container", "system_card_container", "built_in_card_container")]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
@@ -136,20 +137,20 @@ scroll_speed = 15.0
 system_card_container = NodePath("../../../../../../preloaded_cards/system")
 built_in_card_container = NodePath("../../../../../../preloaded_cards/built_in")
 
-[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer"]
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer" unique_id=1692926097]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="PanelContainer3" type="PanelContainer" parent="VBoxContainer/MarginContainer3"]
+[node name="PanelContainer3" type="PanelContainer" parent="VBoxContainer/MarginContainer3" unique_id=1994881098]
 layout_mode = 2
 
-[node name="View Controls" type="HBoxContainer" parent="VBoxContainer/MarginContainer3/PanelContainer3"]
+[node name="View Controls" type="HBoxContainer" parent="VBoxContainer/MarginContainer3/PanelContainer3" unique_id=1860342104]
 layout_mode = 2
 
-[node name="Close" type="Button" parent="VBoxContainer/MarginContainer3/PanelContainer3/View Controls"]
+[node name="Close" type="Button" parent="VBoxContainer/MarginContainer3/PanelContainer3/View Controls" unique_id=680636626]
 layout_mode = 2
 size_flags_horizontal = 10
 shortcut = ExtResource("10_rf5ea")
@@ -159,7 +160,7 @@ script = ExtResource("13_p3eji")
 animation_resource = ExtResource("13_sb03g")
 pressed_action = SubResource("Resource_ibu2e")
 
-[node name="preloaded_cards" type="Control" parent="."]
+[node name="preloaded_cards" type="Control" parent="." unique_id=1562451898]
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -168,25 +169,24 @@ offset_top = 121.0
 offset_right = 560.0
 offset_bottom = 121.0
 
-[node name="system" type="Control" parent="preloaded_cards"]
+[node name="system" type="Control" parent="preloaded_cards" unique_id=814502985]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="built_in" type="Control" parent="preloaded_cards"]
+[node name="built_in" type="Control" parent="preloaded_cards" unique_id=718421396]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="LoadingSpinner" parent="." instance=ExtResource("15_pfh8f")]
+[node name="LoadingSpinner" parent="." unique_id=566179172 instance=ExtResource("15_pfh8f")]
 
-[connection signal="deck_loading_done" from="." to="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/ScrollContainer/Cards" method="cards_loaded"]
+[connection signal="deck_loading_done" from="." to="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/ScrollContainer/Cards" method="decks_loaded"]
 [connection signal="decks_loading" from="." to="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Reload Decks" method="disable_button"]
 [connection signal="decks_loading" from="." to="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Filter Decks" method="disable"]
 [connection signal="decks_loading" from="." to="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Show All" method="loading_decks"]
 [connection signal="decks_loading" from="." to="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Show Built In" method="loading_decks"]
 [connection signal="decks_loading" from="." to="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Show Custom" method="loading_decks"]
-[connection signal="decks_loading" from="." to="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/ScrollContainer/Cards" method="clear_all_system_cards"]
 [connection signal="decks_loading" from="." to="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/ScrollContainer/Cards" method="decks_loading"]
 [connection signal="decks_loading" from="." to="VBoxContainer/MarginContainer3/PanelContainer3/View Controls/Close" method="disable_button"]
 [connection signal="decks_loading" from="." to="LoadingSpinner" method="show"]
@@ -195,7 +195,7 @@ offset_bottom = 40.0
 [connection signal="scene_ready" from="." to="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Show All" method="loading_decks_done"]
 [connection signal="scene_ready" from="." to="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Show Built In" method="loading_decks_done"]
 [connection signal="scene_ready" from="." to="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Show Custom" method="loading_decks_done"]
-[connection signal="scene_ready" from="." to="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/Decks/DeckContainer" method="make_decks_visible"]
+[connection signal="scene_ready" from="." to="VBoxContainer/MarginContainer2/PanelContainer2/HSplitContainer/Decks/DeckContainer" method="show"]
 [connection signal="scene_ready" from="." to="VBoxContainer/MarginContainer3/PanelContainer3/View Controls/Close" method="enable_button"]
 [connection signal="scene_ready" from="." to="LoadingSpinner" method="hide"]
 [connection signal="decks_loading" from="VBoxContainer/MarginContainer/PanelContainer/Deck Controls/Reload Decks" to="." method="load_decks"]

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="MemoryCardResource" load_steps=4 format=3 uid="uid://t0i7bis7c8jm"]
+[gd_resource type="Resource" script_class="MemoryCardResource" format=3 uid="uid://t0i7bis7c8jm"]
 
 [ext_resource type="Script" uid="uid://d3u4837pgjc3d" path="res://shared/resources/cards/MemoryCardResource.gd" id="1_lq32d"]
 [ext_resource type="Texture2D" uid="uid://dv4h5xis22ax1" path="res://assets/sprites/genericItems_spritesheet_colored.png" id="2_wls20"]

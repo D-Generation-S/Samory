@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SpinnerAnimation" load_steps=7 format=3 uid="uid://lufbdld5awkx"]
+[gd_resource type="Resource" script_class="SpinnerAnimation" format=3 uid="uid://lufbdld5awkx"]
 
 [ext_resource type="Texture2D" uid="uid://cg0l7tvqmtghr" path="res://assets/sprites/sheet_white1x.png" id="1_8ovgt"]
 [ext_resource type="Script" uid="uid://cvyg36ojlpo8c" path="res://entities/ui/loading_spinner/resources/SpinnerAnimation.gd" id="1_hbhed"]

@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://dhujjr84hm1we"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dhujjr84hm1we"]
 
 [ext_resource type="Shader" uid="uid://co0csoribq5dm" path="res://assets/shaders/CardDissolve.gdshader" id="1_mmlyb"]
 

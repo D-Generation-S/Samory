@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AiDifficultyResource" load_steps=16 format=3 uid="uid://gy5cebbq2aed"]
+[gd_resource type="Resource" script_class="AiDifficultyResource" format=3 uid="uid://gy5cebbq2aed"]
 
 [ext_resource type="Script" uid="uid://c1te0iu0444y4" path="res://shared/entities/ai_behavior/resources/AiBehaviorNode.gd" id="1_a4d02"]
 [ext_resource type="Script" uid="uid://7biix5hsjheq" path="res://shared/entities/ai_behavior/resources/behaviors/GetMatchingCard.gd" id="2_omeps"]

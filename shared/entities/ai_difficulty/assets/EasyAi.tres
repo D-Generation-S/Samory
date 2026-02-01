@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AiDifficultyResource" load_steps=9 format=3 uid="uid://bvccy0uqye5ff"]
+[gd_resource type="Resource" script_class="AiDifficultyResource" format=3 uid="uid://bvccy0uqye5ff"]
 
 [ext_resource type="Script" uid="uid://c1te0iu0444y4" path="res://shared/entities/ai_behavior/resources/AiBehaviorNode.gd" id="1_hial1"]
 [ext_resource type="Script" uid="uid://cvnxi5g1235m6" path="res://shared/entities/ai_behavior/resources/behaviors/OpenRandomCard.gd" id="2_qtr07"]
