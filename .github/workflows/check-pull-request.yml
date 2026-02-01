@@ -5,7 +5,7 @@ on:
     branches: [ "main", "develop" ]
 
 env:
-  GODOT_VERSION: 4.5
+  GODOT_VERSION: 4.6
   PROJECT_PATH: .
 
 jobs:
@@ -19,7 +19,7 @@ jobs:
           os: windows
           file: samory.exe
     container:
-      image: barichello/godot-ci:4.5
+      image: barichello/godot-ci:4.6
     steps:
       - uses: actions/checkout@v3
         with:

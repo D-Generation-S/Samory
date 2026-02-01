@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DissolveEffectResource" load_steps=5 format=3 uid="uid://0hefyj7q57o6"]
+[gd_resource type="Resource" script_class="DissolveEffectResource" format=3 uid="uid://0hefyj7q57o6"]
 
 [ext_resource type="Shader" uid="uid://cen4xj62iwrff" path="res://assets/shaders/DisolveCard.gdshader" id="1_6pdnx"]
 [ext_resource type="AudioStream" uid="uid://4hh1xtj8ac4j" path="res://assets/audio/effect/card-slide-6.ogg" id="2_5sofb"]

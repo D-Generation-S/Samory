@@ -1,4 +1,4 @@
-[gd_resource type="Shortcut" load_steps=2 format=3 uid="uid://2i2jk61uyyn2"]
+[gd_resource type="Shortcut" format=3 uid="uid://2i2jk61uyyn2"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_nvnuj"]
 action = &"back"

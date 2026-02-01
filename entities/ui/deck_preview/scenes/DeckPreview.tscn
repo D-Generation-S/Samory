@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3cv1g0a284mq"]
+[gd_scene format=3 uid="uid://b3cv1g0a284mq"]
 
 [ext_resource type="Script" uid="uid://dmuuwlyuofchc" path="res://entities/ui/deck_preview/scripts/DeckPreview.gd" id="1_k0qju"]
 [ext_resource type="Resource" uid="uid://jetuptwqlhnw" path="res://shared/resources/translations/assets/Yes.tres" id="2_s0fjc"]
@@ -9,7 +9,7 @@
 [ext_resource type="Resource" uid="uid://b6uuk6xw16ak4" path="res://shared/resources/colors/assets/ItemFocusColor.tres" id="6_i8t08"]
 [ext_resource type="Resource" uid="uid://62hlbto7b8c6" path="res://shared/resources/colors/assets/ItemSelectionColor.tres" id="7_5qsbf"]
 
-[node name="DeckPreview" type="MarginContainer" node_paths=PackedStringArray("deck_name", "card_count", "buildin", "texture_rect", "deck_description", "selection_button")]
+[node name="DeckPreview" type="MarginContainer" unique_id=2103321128 node_paths=PackedStringArray("deck_name", "card_count", "buildin", "texture_rect", "deck_description", "selection_button")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -33,27 +33,27 @@ selection_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxCo
 yes_translation = ExtResource("2_s0fjc")
 no_translation = ExtResource("3_m027l")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1384200825]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=2044174284]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=445972776]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1848132443]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=139990933]
 layout_mode = 2
 
-[node name="Control" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("deck_preview")]
+[node name="Control" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=127093190 node_paths=PackedStringArray("deck_preview")]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 expand_mode = 1
@@ -64,31 +64,31 @@ deck_preview = NodePath("../../../../../..")
 color_on_focus = ExtResource("6_i8t08")
 color_on_select = ExtResource("7_5qsbf")
 
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1345128874]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("4_hcvyd")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer" unique_id=38864623]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2"]
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2" unique_id=1052734290]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "DECK_INFO"
 
-[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2"]
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2" unique_id=1512892390]
 layout_mode = 2
 columns = 2
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/GridContainer"]
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/GridContainer" unique_id=1802589047]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "BUILT_IN"
 
-[node name="IsBuildIn" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/GridContainer"]
+[node name="IsBuildIn" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/GridContainer" unique_id=933358934]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
@@ -96,38 +96,38 @@ bbcode_enabled = true
 text = "NO"
 fit_content = true
 
-[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/GridContainer"]
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/GridContainer" unique_id=1474655784]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "CARD_COUNT"
 
-[node name="CardCounter" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/GridContainer"]
+[node name="CardCounter" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/GridContainer" unique_id=313389326]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 bbcode_enabled = true
 fit_content = true
 
-[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/GridContainer"]
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/GridContainer" unique_id=2099545288]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 mouse_filter = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1313421460]
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = ExtResource("4_hcvyd")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer" unique_id=1066390050]
 layout_mode = 2
 
-[node name="DeckName" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer"]
+[node name="DeckName" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1484023747]
 layout_mode = 2
 text = "DECK_NAME"
 
-[node name="DeckDescription" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer"]
+[node name="DeckDescription" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer" unique_id=2062641895]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1

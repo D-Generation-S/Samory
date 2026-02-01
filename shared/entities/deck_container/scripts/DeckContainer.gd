@@ -49,6 +49,8 @@ func is_scroll_focus() -> bool:
 	return _is_in_focus	
 
 func place_all_decks() -> void:
+	if not decks_visible_on_start:
+		hide()
 	deck_unselected.emit()
 	var decks: Array[MemoryDeckResource] = GlobalGameManagerAccess.game_manager.get_available_decks()
 	decks_getting_placed.emit(decks)
@@ -57,15 +59,10 @@ func place_all_decks() -> void:
 		var template: DeckPreview = deck_preview_template.instantiate() as DeckPreview
 		template.set_deck(deck)
 		template.deck_selected.connect(deck_was_selected)
-		template.visible = decks_visible_on_start
+		template.name = deck.name
 		add_child(template)
 
-
 	data_reloaded.emit()
-
-func make_decks_visible() -> void:
-	for deck: Node in get_children():
-		deck.visible = true
 
 func deck_was_selected(deck: MemoryDeckResource) -> void:
 	for current_deck: Node in get_children():

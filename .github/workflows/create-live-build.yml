@@ -7,7 +7,7 @@ on:
 env:
   REF_CHECKOUT_BRANCH: main
   RELEASE_ARTIFACT_FOLDER: artifacts
-  GODOT_VERSION: 4.5
+  GODOT_VERSION: 4.6
   PROJECT_PATH: .
   DEBUG: false
 
@@ -31,7 +31,7 @@ jobs:
           os: web
           file: index.html
     container:
-      image: barichello/godot-ci:4.5
+      image: barichello/godot-ci:4.6
     steps:
       - uses: actions/checkout@v3
         with:
