@@ -6,15 +6,38 @@ signal settings_updated(settings: SettingsResource)
 
 var loaded_settings: SettingsResource
 
-const settings_file: String = "user://options.dat"
+const settings_file: String = "user://options.tres"
+const legacy_settings_file: String = "user://options.dat"
 
 func load_settings() -> SettingsResource:
 	if loaded_settings != null:
 		return loaded_settings
+	if FileAccess.file_exists(legacy_settings_file):
+		convert_legacy_setting()
+
 	if !FileAccess.file_exists(settings_file):
 		return default_settings
 
-	var save_file: FileAccess = FileAccess.open(settings_file, FileAccess.READ)
+	var return_settings: SettingsResource = Save._impl_load(settings_file) as SettingsResource
+	if return_settings == null:
+		return_settings = default_settings.duplicate_deep()
+
+	settings_updated.emit(return_settings)
+	return return_settings
+
+func save_settings(settings: SettingsResource) -> bool:
+	return settings.save(settings_file)
+
+func convert_legacy_setting() -> void:
+	var settings: SettingsResource = load_legacy_setting()
+	if settings.save(settings_file):
+		DirAccess.remove_absolute(legacy_settings_file)
+
+func load_legacy_setting() -> SettingsResource:
+	if not FileAccess.file_exists(legacy_settings_file):
+		return null
+
+	var save_file: FileAccess = FileAccess.open(legacy_settings_file, FileAccess.READ)
 	var data: Dictionary = JSON.parse_string(save_file.get_as_text())
 	save_file.close()
 	var return_settings: SettingsResource = default_settings.duplicate_deep()
@@ -43,37 +66,7 @@ func load_settings() -> SettingsResource:
 	
 	loaded_settings = return_settings
 	
-	settings_updated.emit(return_settings)
-	return return_settings
-
-func save_settings(settings: SettingsResource) -> bool:
-	var data_to_save: Dictionary = {
-		"window_mode": settings.window_mode,
-		"vsync_active": settings.vsync_active,
-		"ui_scale_factor": settings.ui_scale_factor,
-		"language": settings.language_code,
-		"load_custom_decks": settings.load_custom_decks,
-		"auto_close_popup_shown": settings.auto_close_popup_shown,
-		"auto_close_round": settings.auto_close_round,
-		"close_round_after_seconds": settings.close_round_after_seconds,
-		"master_volume": settings.master_volume,
-		"effect_volume": settings.effect_volume,
-		"music_volume": settings.music_volume,
-		"tutorial_aborted": settings.tutorial_aborted,
-		"completed_tutorials": settings.tutorials,
-		"multiplayer_name": settings.default_multiplayer_name,
-		"last_used_ip": settings.last_used_ip
-	}
-
-	var file: FileAccess = FileAccess.open(settings_file, FileAccess.WRITE)
-	var indent: String = ""
-	if OS.is_debug_build():
-		indent = "\t"
-	file.store_line(JSON.stringify(data_to_save, indent))
-	file.close()
-
-	loaded_settings = null
-	return load_settings() != null
+	return loaded_settings
 
 func save_current_settings() -> void:
 	var settings: SettingsResource = load_settings()

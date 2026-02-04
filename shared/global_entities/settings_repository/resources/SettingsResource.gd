@@ -1,4 +1,4 @@
-class_name SettingsResource extends Resource
+class_name SettingsResource extends Save
 
 @export var window_mode: DisplayServer.WindowMode
 @export var vsync_active: bool = false
@@ -14,7 +14,7 @@ class_name SettingsResource extends Resource
 @export_group("Audio")
 @export_range(0,1) var master_volume: float = 1
 @export_range(0,1) var effect_volume: float = 1
-@export_range(0,1) var music_volume: float = 1
+@export_range(0,1) var music_volume: float = 0.15
 
 @export_group("Multiplayer")
 @export var default_multiplayer_name: String = ""
