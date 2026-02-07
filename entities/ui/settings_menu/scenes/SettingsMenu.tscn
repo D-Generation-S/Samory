@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://ded0xyxbb1om1"]
+[gd_scene format=3 uid="uid://ded0xyxbb1om1"]
 
 [ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://entities/ui/menu_background/scenes/MenuBackground.tscn" id="2_cootk"]
 [ext_resource type="Script" uid="uid://be1ipi8ub0y8n" path="res://entities/ui/settings_menu/scripts/SettingsMenu.gd" id="2_hfhds"]
@@ -38,58 +38,58 @@ script = ExtResource("18_acki3")
 test_effects = Array[AudioStream]([ExtResource("5_fls2r"), ExtResource("6_0bdhr"), ExtResource("7_vbnlv"), ExtResource("8_obkpv"), ExtResource("9_plrjf"), ExtResource("10_3mytq"), ExtResource("11_bbgb2"), ExtResource("12_05mi4"), ExtResource("13_jbvf7"), ExtResource("14_vb64j"), ExtResource("15_b5nta")])
 metadata/_custom_type_script = "uid://bph2k7t8o4vhj"
 
-[node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("accept_button", "close_button")]
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1734913648 node_paths=PackedStringArray("accept_button", "close_button")]
 script = ExtResource("2_hfhds")
 accept_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2/SaveAndClose")
 close_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2/Close")
 
-[node name="MenuBackground" parent="." instance=ExtResource("2_cootk")]
+[node name="MenuBackground" parent="." unique_id=956902518 instance=ExtResource("2_cootk")]
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=126637498]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=1144011745]
 custom_minimum_size = Vector2(0, 670)
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer" unique_id=211621674]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer" unique_id=436687651]
 layout_mode = 2
 
-[node name="SettingsLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2"]
+[node name="SettingsLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2" unique_id=1490187412]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 1
 text = "SETTINGS"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2" unique_id=10871843]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="GameSettings" type="PanelContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer"]
+[node name="GameSettings" type="PanelContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer" unique_id=406805772]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_hn4qe")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings" unique_id=988074924]
 layout_mode = 2
 
-[node name="GameSettingsLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer"]
+[node name="GameSettingsLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer" unique_id=17463115]
 layout_mode = 2
 text = "GAME_SETTINGS"
 horizontal_alignment = 1
 
-[node name="LanguageSelection" type="OptionButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer"]
+[node name="LanguageSelection" type="OptionButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer" unique_id=1820230889]
 layout_mode = 2
 tooltip_text = "SELECT_LANGUAGE_SETTING_TOOLTIP"
 selected = 0
@@ -101,23 +101,23 @@ popup/item_1/id = 1
 script = ExtResource("6_cw3wv")
 should_grab_focus = true
 
-[node name="GraphicSettings" type="FoldableContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer" groups=["auto_fold"]]
+[node name="GraphicSettings" type="FoldableContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer" unique_id=538665824 groups=["auto_fold"]]
 layout_mode = 2
 title = "GRAPHIC_SETTINGS"
 foldable_group = ExtResource("6_01oec")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings"]
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings" unique_id=903522349]
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 follow_focus = true
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/ScrollContainer" unique_id=44782754]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="WindowModeSelection" type="OptionButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/ScrollContainer/VBoxContainer"]
+[node name="WindowModeSelection" type="OptionButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/ScrollContainer/VBoxContainer" unique_id=1088300976]
 layout_mode = 2
 tooltip_text = "WINDOW_MODE_SETTING_TOOLTIP"
 selected = 0
@@ -130,20 +130,20 @@ popup/item_2/text = "MAXIMIZED"
 popup/item_2/id = 2
 script = ExtResource("4_br808")
 
-[node name="VSync" type="CheckButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/ScrollContainer/VBoxContainer"]
+[node name="VSync" type="CheckButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/ScrollContainer/VBoxContainer" unique_id=1308273059]
 layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "VSYNC_SETTING_TOOLTIP"
 text = "V_SYNC"
 script = ExtResource("4_cwx70")
 
-[node name="UiScale" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/ScrollContainer/VBoxContainer"]
+[node name="UiScale" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/ScrollContainer/VBoxContainer" unique_id=1666440278]
 layout_mode = 2
 script = ExtResource("6_br808")
 min_value = 0.5
 max_value = 1.8
 
-[node name="UiScaleLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/ScrollContainer/VBoxContainer/UiScale"]
+[node name="UiScaleLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/ScrollContainer/VBoxContainer/UiScale" unique_id=239796250]
 layout_mode = 2
 size_flags_horizontal = 0
 tooltip_text = "UI_SCALE_TOOLTIP"
@@ -152,49 +152,49 @@ text = "UI_SCALE"
 vertical_alignment = 3
 script = ExtResource("7_mbv6n")
 
-[node name="UiScaleSlider" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/ScrollContainer/VBoxContainer/UiScale"]
+[node name="UiScaleSlider" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/ScrollContainer/VBoxContainer/UiScale" unique_id=828805491]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 step = 0.05
 
-[node name="GameplaySettings" type="FoldableContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer" groups=["auto_fold"]]
+[node name="GameplaySettings" type="FoldableContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer" unique_id=2102507000 groups=["auto_fold"]]
 layout_mode = 2
 folded = true
 title = "GAMEPLAY_SETTINGS"
 foldable_group = ExtResource("6_01oec")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GameplaySettings"]
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GameplaySettings" unique_id=204972064]
 visible = false
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 follow_focus = true
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GameplaySettings/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GameplaySettings/ScrollContainer" unique_id=1141557712]
 layout_mode = 2
 
-[node name="LoadCustomDecks" type="CheckButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GameplaySettings/ScrollContainer/VBoxContainer"]
+[node name="LoadCustomDecks" type="CheckButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GameplaySettings/ScrollContainer/VBoxContainer" unique_id=1788566146]
 layout_mode = 2
 tooltip_text = "LOAD_CUSTOM_DECK_SETTING_TOOLTIP"
 text = "LOAD_CUSTOM_DECKS"
 script = ExtResource("4_xqb7h")
 
-[node name="HBoxContainer2" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GameplaySettings/ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GameplaySettings/ScrollContainer/VBoxContainer" unique_id=1201918360]
 layout_mode = 2
 
-[node name="AutoCompleteRound" type="CheckButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GameplaySettings/ScrollContainer/VBoxContainer/HBoxContainer2"]
+[node name="AutoCompleteRound" type="CheckButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GameplaySettings/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=1050406268]
 layout_mode = 2
 tooltip_text = "AUTO_COMPLETE_ROUND_TOOLTIP"
 text = "AUTO_COMPLETE_ROUND"
 script = ExtResource("8_83bh0")
 
-[node name="TimeForCompletionGroup" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GameplaySettings/ScrollContainer/VBoxContainer/HBoxContainer2"]
+[node name="TimeForCompletionGroup" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GameplaySettings/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=1038563635]
 layout_mode = 2
 script = ExtResource("9_adf7j")
 completion_time_translation = ExtResource("10_12fsg")
 
-[node name="TimeForCompletionLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GameplaySettings/ScrollContainer/VBoxContainer/HBoxContainer2/TimeForCompletionGroup"]
+[node name="TimeForCompletionLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GameplaySettings/ScrollContainer/VBoxContainer/HBoxContainer2/TimeForCompletionGroup" unique_id=1312807998]
 auto_translate_mode = 2
 layout_mode = 2
 size_flags_vertical = 1
@@ -202,74 +202,74 @@ tooltip_auto_translate_mode = 2
 text = "TIME_FOR_COMPLETION"
 vertical_alignment = 1
 
-[node name="TimeForCompletionSlider" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GameplaySettings/ScrollContainer/VBoxContainer/HBoxContainer2/TimeForCompletionGroup"]
+[node name="TimeForCompletionSlider" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GameplaySettings/ScrollContainer/VBoxContainer/HBoxContainer2/TimeForCompletionGroup" unique_id=1771713825]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 step = 0.1
 
-[node name="ResetTutorial" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GameplaySettings/ScrollContainer/VBoxContainer"]
+[node name="ResetTutorial" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GameplaySettings/ScrollContainer/VBoxContainer" unique_id=1729213796]
 layout_mode = 2
 tooltip_text = "RESET_TUTORIAL_TOOLTIP"
 text = "RESET_TUTORIAL"
 icon = ExtResource("10_mdkqv")
 script = ExtResource("19_3ip51")
 
-[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer" unique_id=82082035]
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_hn4qe")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer" unique_id=287746301]
 layout_mode = 2
 
-[node name="AudioLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer"]
+[node name="AudioLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer" unique_id=504593164]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "AUDIO"
 
-[node name="Audio Control" type="GridContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer"]
+[node name="Audio Control" type="GridContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer" unique_id=1291225175]
 layout_mode = 2
 columns = 2
 
-[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer/Audio Control"]
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer/Audio Control" unique_id=1173415565]
 layout_mode = 2
 tooltip_text = "MASTER_VOLUME_TOOLTIP"
 mouse_filter = 1
 text = "MASTER_VOLUME"
 
-[node name="Master" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer/Audio Control"]
+[node name="Master" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer/Audio Control" unique_id=722523979]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 script = ExtResource("3_qrm32")
 
-[node name="Label2" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer/Audio Control"]
+[node name="Label2" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer/Audio Control" unique_id=196064593]
 layout_mode = 2
 tooltip_text = "EFFECT_VOLUME_TOOLTIP"
 mouse_filter = 1
 text = "EFFECT_VOLUME"
 
-[node name="Effects" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer/Audio Control"]
+[node name="Effects" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer/Audio Control" unique_id=710029424]
 layout_mode = 2
 size_flags_vertical = 4
 script = ExtResource("3_qrm32")
 bus_name = 1
 
-[node name="Label3" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer/Audio Control"]
+[node name="Label3" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer/Audio Control" unique_id=414637270]
 layout_mode = 2
 tooltip_text = "MUSIC_VOLUME_TOOLTIP"
 mouse_filter = 1
 text = "MUSIC_VOLUME"
 
-[node name="Music" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer/Audio Control"]
+[node name="Music" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer/Audio Control" unique_id=1281673730]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 script = ExtResource("3_qrm32")
 bus_name = 2
 
-[node name="TestEffectVolume" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer"]
+[node name="TestEffectVolume" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/PanelContainer/VBoxContainer" unique_id=889321316]
 layout_mode = 2
 size_flags_vertical = 10
 tooltip_text = "TEST_EFFECTS_TOOLTIP"
@@ -278,18 +278,18 @@ icon = ExtResource("13_12fsg")
 script = ExtResource("19_3ip51")
 pressed_action = SubResource("Resource_2s828")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2" unique_id=1415217321]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="SaveAndClose" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2"]
+[node name="SaveAndClose" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2" unique_id=1331015082]
 layout_mode = 2
 tooltip_text = "APPLY_SETTING_TOOLTIP"
 text = "APPLY"
 icon = ExtResource("26_br808")
 script = ExtResource("19_3ip51")
 
-[node name="Close" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2"]
+[node name="Close" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2" unique_id=1077927402]
 layout_mode = 2
 tooltip_text = "CLOSE_SETTING_TOOLTIP"
 shortcut = ExtResource("28_12fsg")
@@ -312,6 +312,7 @@ script = ExtResource("19_3ip51")
 [connection signal="language_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/LanguageSelection" to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/ScrollContainer/VBoxContainer/UiScale/UiScaleLabel" method="language_changed"]
 [connection signal="language_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/LanguageSelection" to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GameplaySettings/ScrollContainer/VBoxContainer/HBoxContainer2/TimeForCompletionGroup" method="language_changed"]
 [connection signal="window_mode_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/ScrollContainer/VBoxContainer/WindowModeSelection" to="." method="window_mode_changed"]
+[connection signal="toggled" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/ScrollContainer/VBoxContainer/VSync" to="." method="v_sync_changed"]
 [connection signal="max_value_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/ScrollContainer/VBoxContainer/UiScale" to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/ScrollContainer/VBoxContainer/UiScale/UiScaleSlider" method="set_max"]
 [connection signal="min_value_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/ScrollContainer/VBoxContainer/UiScale" to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/ScrollContainer/VBoxContainer/UiScale/UiScaleSlider" method="set_min"]
 [connection signal="value_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/ScrollContainer/VBoxContainer/UiScale" to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/GameSettings/VBoxContainer/GraphicSettings/ScrollContainer/VBoxContainer/UiScale/UiScaleSlider" method="set_value"]

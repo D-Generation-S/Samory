@@ -67,3 +67,9 @@ func time_for_completion_changed(new_time: float) -> void:
 
 func ui_scale_changed(new_value: float) -> void:
 	_current_settings.ui_scale_factor = new_value
+
+func v_sync_changed(new_value: bool) -> void:
+	var mode: DisplayServer.VSyncMode = DisplayServer.VSYNC_ENABLED
+	if not new_value:
+		mode = DisplayServer.VSYNC_DISABLED
+	DisplayServer.window_set_vsync_mode(mode)
