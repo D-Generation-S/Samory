@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://co10o6j0oxeep"]
+[gd_scene format=3 uid="uid://co10o6j0oxeep"]
 
 [ext_resource type="Script" uid="uid://bim3h163beyst" path="res://entities/ui/main_menu/scripts/MainMenu.gd" id="1_0c7m2"]
 [ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://entities/ui/menu_background/scenes/MenuBackground.tscn" id="2_3apnu"]
@@ -17,16 +17,10 @@
 [ext_resource type="Texture2D" uid="uid://doybax1rt0tgn" path="res://assets/icons/QuitIcon.tres" id="15_lppid"]
 [ext_resource type="Script" uid="uid://bchdi0iwchadm" path="res://shared/entities/clickable_button/resources/actions/QuitGameAction.gd" id="16_hnnon"]
 [ext_resource type="PackedScene" uid="uid://h7rp3u8spcvv" path="res://entities/ui/quick_game_selection/scenes/QuickGameSelection.tscn" id="17_iuo3f"]
-[ext_resource type="PackedScene" uid="uid://cn2mtwmpg34g8" path="res://entities/ui/game_version/scenes/GameVersion.tscn" id="18_xihug"]
-[ext_resource type="Script" uid="uid://dwmcgt21j0l0l" path="res://entities/ui/main_menu/scripts/DebugData.gd" id="19_4yik1"]
+[ext_resource type="PackedScene" uid="uid://bxcbomgu0eom0" path="res://entities/ui/game_information/scenes/game_information.tscn" id="18_gciok"]
 [ext_resource type="Texture2D" uid="uid://dmmfqt6ictpos" path="res://assets/icons/SettingsIcon.tres" id="20_vm73v"]
+[ext_resource type="PackedScene" uid="uid://da8m8gpy2rlvo" path="res://entities/ui/links/scenes/links.tscn" id="21_fr5td"]
 [ext_resource type="PackedScene" uid="uid://ded0xyxbb1om1" path="res://entities/ui/settings_menu/scenes/SettingsMenu.tscn" id="21_plb04"]
-[ext_resource type="Shortcut" uid="uid://nq3pb8cwdj1m" path="res://entities/ui/main_menu/shortcuts/help.tres" id="22_b3maq"]
-[ext_resource type="Texture2D" uid="uid://d1fc7nwftgx4y" path="res://assets/icons/QuestionIcon.tres" id="23_ovpt2"]
-[ext_resource type="Script" uid="uid://dvrn3p7xl4tpl" path="res://shared/entities/clickable_button/resources/actions/OpenLinkAction.gd" id="24_w82b6"]
-[ext_resource type="Texture2D" uid="uid://cln3v63hwble8" path="res://assets/icons/HomeIcon.tres" id="25_wbamn"]
-[ext_resource type="Texture2D" uid="uid://cswswoet5pppp" path="res://assets/icons/ShareIcon.tres" id="26_lu8u5"]
-[ext_resource type="Texture2D" uid="uid://cat86qdkpvga8" path="res://assets/icons/WarningIcon.tres" id="27_t7inv"]
 
 [sub_resource type="Resource" id="Resource_btaf3"]
 script = ExtResource("7_bdxeb")
@@ -66,33 +60,13 @@ scene_template = ExtResource("21_plb04")
 transmit_click_position = true
 metadata/_custom_type_script = "uid://cymc6ui77jfei"
 
-[sub_resource type="Resource" id="Resource_ssyfv"]
-script = ExtResource("24_w82b6")
-link = "https://d-generation-s.github.io/Samory/manual/how-to-play/"
-metadata/_custom_type_script = "uid://dvrn3p7xl4tpl"
-
-[sub_resource type="Resource" id="Resource_bmgck"]
-script = ExtResource("24_w82b6")
-link = "https://github.com/D-Generation-S/Samory"
-metadata/_custom_type_script = "uid://dvrn3p7xl4tpl"
-
-[sub_resource type="Resource" id="Resource_7m08p"]
-script = ExtResource("24_w82b6")
-link = "https://xanatos.itch.io/samory"
-metadata/_custom_type_script = "uid://dvrn3p7xl4tpl"
-
-[sub_resource type="Resource" id="Resource_q0p35"]
-script = ExtResource("24_w82b6")
-link = "https://github.com/D-Generation-S/Samory/issues"
-metadata/_custom_type_script = "uid://dvrn3p7xl4tpl"
-
-[node name="MainMenu" type="CanvasLayer" node_paths=PackedStringArray("game_buttons") groups=["active_scene"]]
+[node name="MainMenu" type="CanvasLayer" unique_id=674321008 node_paths=PackedStringArray("game_buttons") groups=["active_scene"]]
 script = ExtResource("1_0c7m2")
-game_buttons = [NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Start Game"), NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI"), NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Deck Viewer")]
+game_buttons = [NodePath("CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Start Game"), NodePath("CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI"), NodePath("CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Deck Viewer")]
 
-[node name="MenuBackground" parent="." instance=ExtResource("2_3apnu")]
+[node name="MenuBackground" parent="." unique_id=631677142 instance=ExtResource("2_3apnu")]
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterMainMenu" type="CenterContainer" parent="." unique_id=1231333668]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -105,22 +79,22 @@ offset_bottom = 213.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="CenterMainMenu" unique_id=1606515170]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterMainMenu/PanelContainer" unique_id=1719613101]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterMainMenu/PanelContainer/MarginContainer" unique_id=998582858]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Start Game" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Start Game" type="Button" parent="CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=1762910006]
 layout_mode = 2
 size_flags_vertical = 4
 tooltip_text = "CUSTOM_GAME_TOOLTIP"
@@ -133,7 +107,7 @@ is_focused = true
 animation_resource = ExtResource("5_sugc0")
 pressed_action = SubResource("Resource_btaf3")
 
-[node name="LocalMultiplayer" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="LocalMultiplayer" type="Button" parent="CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=1982123706]
 layout_mode = 2
 tooltip_text = "LOCAL_MULTIPLAYER_TOOLTIP"
 text = "LOCAL_MULTIPLAYER"
@@ -142,7 +116,7 @@ active = 2
 animation_resource = ExtResource("5_sugc0")
 pressed_action = SubResource("Resource_cu1bk")
 
-[node name="Quick Game AI" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" node_paths=PackedStringArray("dynamic_neighbor_right")]
+[node name="Quick Game AI" type="Button" parent="CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=983813731 node_paths=PackedStringArray("dynamic_neighbor_right")]
 layout_mode = 2
 tooltip_text = "QUICK_GAME_TOOLTIP"
 text = "QUICK_GAME"
@@ -151,7 +125,7 @@ script = ExtResource("10_wemfb")
 dynamic_neighbor_right = NodePath("../../../../../AvailableAiModes/PanelContainer/AvailableAis/Normal_AI")
 animation_resource = ExtResource("5_sugc0")
 
-[node name="Deck Viewer" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Deck Viewer" type="Button" parent="CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=1428377626]
 layout_mode = 2
 tooltip_text = "DECK_VIEWER_TOOLTIP"
 text = "DECK_VIEWER"
@@ -160,7 +134,7 @@ script = ExtResource("4_b7t05")
 animation_resource = ExtResource("5_sugc0")
 pressed_action = SubResource("Resource_7yvqx")
 
-[node name="Credits" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Credits" type="Button" parent="CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=2286552]
 layout_mode = 2
 tooltip_text = "CREDITS_TOOLTIP"
 text = "CREDITS"
@@ -169,11 +143,11 @@ script = ExtResource("4_b7t05")
 animation_resource = ExtResource("5_sugc0")
 pressed_action = SubResource("Resource_ukivn")
 
-[node name="Quit" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=1120827469]
 layout_mode = 2
 tooltip_text = "QUIT_GAME_TOOLTIP"
-focus_neighbor_right = NodePath("../../../../../BottomDock/HBoxContainer/HowToPlay")
-focus_neighbor_bottom = NodePath("../../../../../BottomDock/HBoxContainer/HowToPlay")
+focus_neighbor_right = NodePath("../../../../../BottomDock/Links/HowToPlay")
+focus_neighbor_bottom = NodePath("../../../../../BottomDock/Links/HowToPlay")
 focus_next = NodePath("../Start Game")
 text = "QUIT_GAME"
 icon = ExtResource("15_lppid")
@@ -182,10 +156,22 @@ active = 2
 animation_resource = ExtResource("5_sugc0")
 pressed_action = SubResource("Resource_jopkp")
 
-[node name="AvailableAiModes" parent="." node_paths=PackedStringArray("align_source") instance=ExtResource("17_iuo3f")]
-align_source = NodePath("../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI")
+[node name="AvailableAiModes" parent="." unique_id=162745716 node_paths=PackedStringArray("align_source") instance=ExtResource("17_iuo3f")]
+align_source = NodePath("../CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI")
 
-[node name="TopDock" type="MarginContainer" parent="."]
+[node name="AgainstPlayer" parent="AvailableAiModes/PanelContainer/AvailableAis" index="0"]
+focus_neighbor_left = NodePath("../../../../CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI")
+
+[node name="Easy_AI" parent="AvailableAiModes/PanelContainer/AvailableAis" index="1"]
+focus_neighbor_left = NodePath("../../../../CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI")
+
+[node name="Normal_AI" parent="AvailableAiModes/PanelContainer/AvailableAis" index="2"]
+focus_neighbor_left = NodePath("../../../../CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI")
+
+[node name="Hard_AI" parent="AvailableAiModes/PanelContainer/AvailableAis" index="3"]
+focus_neighbor_left = NodePath("../../../../CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI")
+
+[node name="TopDock" type="MarginContainer" parent="." unique_id=1013339364]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 36.0
@@ -196,47 +182,28 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TopDock"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TopDock" unique_id=901416429]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TopDock/HBoxContainer"]
+[node name="GameInformation" parent="TopDock/HBoxContainer" unique_id=1374302754 instance=ExtResource("18_gciok")]
 layout_mode = 2
 
-[node name="GameVersion" parent="TopDock/HBoxContainer/VBoxContainer" instance=ExtResource("18_xihug")]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="ResolutionDisplay" type="Label" parent="TopDock/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-script = ExtResource("19_4yik1")
-
-[node name="UiZoom" type="Label" parent="TopDock/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-script = ExtResource("19_4yik1")
-type = 1
-
-[node name="ZoomMultiplier" type="Label" parent="TopDock/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-script = ExtResource("19_4yik1")
-type = 2
-
-[node name="SettingsButton" type="Button" parent="TopDock/HBoxContainer"]
+[node name="SettingsButton" type="Button" parent="TopDock/HBoxContainer" unique_id=412396064]
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 0
 tooltip_text = "GAME_SETTINGS"
-focus_neighbor_left = NodePath("../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Start Game")
-focus_neighbor_bottom = NodePath("../../../BottomDock/HBoxContainer/HowToPlay")
-focus_next = NodePath("../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Start Game")
-focus_previous = NodePath("../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Start Game")
+focus_neighbor_left = NodePath("../../../CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Start Game")
+focus_neighbor_bottom = NodePath("../../../BottomDock/Links/HowToPlay")
+focus_next = NodePath("../../../CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Start Game")
+focus_previous = NodePath("../../../CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Start Game")
 icon = ExtResource("20_vm73v")
 script = ExtResource("4_b7t05")
 animation_resource = ExtResource("5_sugc0")
 pressed_action = SubResource("Resource_ev11c")
 
-[node name="BottomDock" type="MarginContainer" parent="."]
+[node name="BottomDock" type="MarginContainer" parent="." unique_id=1158314847]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -251,60 +218,11 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="BottomDock"]
+[node name="Links" parent="BottomDock" unique_id=31784573 instance=ExtResource("21_fr5td")]
 layout_mode = 2
-size_flags_horizontal = 8
 
-[node name="HowToPlay" type="Button" parent="BottomDock/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
-tooltip_text = "HOW_TO_PLAY"
-focus_neighbor_left = NodePath("../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit")
-focus_neighbor_top = NodePath("../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit")
-focus_neighbor_right = NodePath("../GitHubRepository")
-focus_next = NodePath("../GitHubRepository")
-focus_previous = NodePath("../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit")
-shortcut = ExtResource("22_b3maq")
-icon = ExtResource("23_ovpt2")
-script = ExtResource("4_b7t05")
-animation_resource = ExtResource("5_sugc0")
-pressed_action = SubResource("Resource_ssyfv")
-
-[node name="GitHubRepository" type="Button" parent="BottomDock/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
-tooltip_text = "GITHUB_REPOSITORY_BUTTON"
-focus_neighbor_left = NodePath("../HowToPlay")
-focus_neighbor_top = NodePath("../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit")
-focus_neighbor_right = NodePath("../OpenGameSite")
-icon = ExtResource("25_wbamn")
-script = ExtResource("4_b7t05")
-animation_resource = ExtResource("5_sugc0")
-pressed_action = SubResource("Resource_bmgck")
-
-[node name="OpenGameSite" type="Button" parent="BottomDock/HBoxContainer"]
-layout_mode = 2
-tooltip_text = "GAME_PAGE"
-focus_neighbor_left = NodePath("../GitHubRepository")
-focus_neighbor_top = NodePath("../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit")
-focus_neighbor_right = NodePath("../ReportBug")
-icon = ExtResource("26_lu8u5")
-script = ExtResource("4_b7t05")
-pressed_action = SubResource("Resource_7m08p")
-
-[node name="ReportBug" type="Button" parent="BottomDock/HBoxContainer"]
-layout_mode = 2
-tooltip_text = "REPORT_BUG"
-focus_neighbor_left = NodePath("../OpenGameSite")
-focus_neighbor_top = NodePath("../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit")
-focus_neighbor_right = NodePath("../HowToPlay")
-icon = ExtResource("27_t7inv")
-script = ExtResource("4_b7t05")
-animation_resource = ExtResource("5_sugc0")
-pressed_action = SubResource("Resource_q0p35")
-
-[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI" to="AvailableAiModes" method="toggle_menu"]
-[connection signal="hiding_container" from="AvailableAiModes" to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI" method="neighbor_hidden"]
-[connection signal="showing_container" from="AvailableAiModes" to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI" method="neighbor_shown"]
+[connection signal="pressed" from="CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI" to="AvailableAiModes" method="toggle_menu"]
+[connection signal="hiding_container" from="AvailableAiModes" to="CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI" method="neighbor_hidden"]
+[connection signal="showing_container" from="AvailableAiModes" to="CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI" method="neighbor_shown"]
 
 [editable path="AvailableAiModes"]

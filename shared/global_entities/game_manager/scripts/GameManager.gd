@@ -86,8 +86,11 @@ func initial_settings_setup() -> void:
 	var settings: SettingsResource = SettingsRepository.load_settings()
 	DisplayServer.window_set_mode(settings.window_mode)
 
-	if settings.vsync_active:
-		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+	var v_sync_mode: DisplayServer.VSyncMode = DisplayServer.VSYNC_ENABLED
+	if not settings.vsync_active:
+		v_sync_mode = DisplayServer.VSYNC_DISABLED
+
+	DisplayServer.window_set_vsync_mode(v_sync_mode)
 
 	var master_bus_id: int = AudioServer.get_bus_index(master_bus)
 	var effect_bus_id: int = AudioServer.get_bus_index(effect_bus)

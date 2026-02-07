@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bxcbomgu0eom0"]
+
+[ext_resource type="PackedScene" uid="uid://cn2mtwmpg34g8" path="res://entities/ui/game_version/scenes/GameVersion.tscn" id="1_fhy67"]
+[ext_resource type="Script" uid="uid://dwmcgt21j0l0l" path="res://entities/ui/game_information/scripts/DebugData.gd" id="2_hy46w"]
+
+[node name="VBoxContainer" type="VBoxContainer" unique_id=1374302754]
+
+[node name="GameVersion" parent="." unique_id=318702394 instance=ExtResource("1_fhy67")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="ResolutionDisplay" type="Label" parent="." unique_id=949104445]
+layout_mode = 2
+script = ExtResource("2_hy46w")
+
+[node name="UiZoom" type="Label" parent="." unique_id=1060651823]
+layout_mode = 2
+script = ExtResource("2_hy46w")
+type = 1
+
+[node name="ZoomMultiplier" type="Label" parent="." unique_id=1985101912]
+layout_mode = 2
+script = ExtResource("2_hy46w")
+type = 2
+
+[node name="VSyncActive" type="Label" parent="." unique_id=1680443902]
+layout_mode = 2
+script = ExtResource("2_hy46w")
+type = 3
+
+[node name="ScreenMode" type="Label" parent="." unique_id=111515811]
+layout_mode = 2
+script = ExtResource("2_hy46w")
+type = 4
