@@ -1,6 +1,6 @@
 extends Label
 
-@export_enum("Resolution", "UI Zoom", "Zoom Multiplier") var type: int
+@export_enum("Resolution", "UI Zoom", "Zoom Multiplier", "V Sync Mode", "Screen Mode") var type: int
 
 var _game_manager: GameManager
 
@@ -11,6 +11,8 @@ func _ready() -> void:
 	_set_resolution()
 	_set_ui_zoom()
 	_set_zoom_multiplier()
+	_set_vsync_mode()
+	_set_screen_mode()
 
 	if text == "":
 		queue_free()
@@ -31,3 +33,13 @@ func _set_zoom_multiplier() -> void:
 	if type != 2:
 		return
 	text = "Camera zoom factor: %s" % _game_manager.get_camera_zoom_adjustment()		
+
+func _set_vsync_mode() -> void:
+	if type != 3:
+		return
+	text = "VSync: %s" % (DisplayServer.window_get_vsync_mode() == DisplayServer.VSYNC_ENABLED)
+
+func _set_screen_mode() -> void:
+	if type != 4:
+		return
+	text = "Screen Mode: %s" % DisplayServer.window_get_mode()
