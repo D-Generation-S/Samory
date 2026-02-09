@@ -114,7 +114,7 @@ jobs:
         with: 
           name: Samory_${{ GITHUB.REF_NAME  }}-${{ matrix.platform.name }}
           path: ${{ env.RELEASE_ARTIFACT_FOLDER }}/Samory_${{ GITHUB.REF_NAME  }}-${{ matrix.platform.name }}
-      - uses: manleydev/butler-publish-itchio-action@master
+      - uses: XanatosX/butler-publish-itchio-action@master
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
           CHANNEL: ${{ matrix.platform.channel }}
