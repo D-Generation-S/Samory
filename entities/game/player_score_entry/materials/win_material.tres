@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bcry1v2yx1t6w"]
+
+[ext_resource type="Shader" uid="uid://u0duqjndk87c" path="res://assets/shaders/ColorReplaceAndShine.gdshader" id="1_dvrtj"]
+
+[resource]
+shader = ExtResource("1_dvrtj")
+shader_parameter/always_replace = true
+shader_parameter/base_color = Color(0, 0, 0, 0)
+shader_parameter/target_color = Color(1, 0.9254902, 0.3019608, 1)
+shader_parameter/tolerance = 0.02000000095
+shader_parameter/should_shine = true
+shader_parameter/shine_color = Color(1, 1, 1, 0.25)
+shader_parameter/line_width = 0.010000000475
+shader_parameter/angle = 1.17809727787971
+shader_parameter/speed = 0.30000000447036
+shader_parameter/wait_cycles = 0.30000000447036

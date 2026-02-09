@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://csamt2tu6hlpo"]
+[gd_scene format=3 uid="uid://csamt2tu6hlpo"]
 
 [ext_resource type="Script" uid="uid://bdscbjvvsy3cn" path="res://entities/game/finish_game/scripts/GameFinished.gd" id="1_fioaw"]
 [ext_resource type="Script" uid="uid://bqg7gcbgquncx" path="res://entities/game/finish_game/scripts/PlayerScoreList.gd" id="2_ohkho"]
 [ext_resource type="PackedScene" uid="uid://pwy03e08f1ov" path="res://entities/game/player_score_entry/scenes/PlayerScoreEntry.tscn" id="3_6aww1"]
+[ext_resource type="AudioStream" uid="uid://bj3dmrhpuali6" path="res://assets/audio/effect/mihacappy/sfx_win.wav" id="3_c0tg7"]
 [ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="4_udvsw"]
 [ext_resource type="Script" uid="uid://b03sehux5xslr" path="res://shared/entities/clickable_button/resources/actions/OpenMainMenu.gd" id="5_yk1ea"]
 [ext_resource type="Script" uid="uid://cy2n7p0twry43" path="res://entities/game/finish_game/scripts/ReplayGame.gd" id="6_f0a12"]
@@ -11,7 +12,7 @@
 script = ExtResource("5_yk1ea")
 metadata/_custom_type_script = "uid://b03sehux5xslr"
 
-[node name="FinishGame" type="Control"]
+[node name="FinishGame" type="Control" unique_id=350758937]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,7 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fioaw")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1024098218]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -34,79 +35,80 @@ offset_bottom = 219.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1793659314]
 layout_mode = 2
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=804886058]
 layout_mode = 2
 
-[node name="BodyContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer2"]
+[node name="BodyContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer2" unique_id=2112546919]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer" unique_id=1395794457]
 layout_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer" unique_id=1505021312]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Header" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer/VBoxContainer2"]
+[node name="Header" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer/VBoxContainer2" unique_id=392666168]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer/VBoxContainer2/Header"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer/VBoxContainer2/Header" unique_id=1622690508]
 layout_mode = 2
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer/VBoxContainer2/Header/MarginContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer/VBoxContainer2/Header/MarginContainer" unique_id=931979411]
 layout_mode = 2
 size_flags_vertical = 4
 bbcode_enabled = true
 text = "GAME_STATISTIC"
 fit_content = true
 
-[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer/VBoxContainer2/Header"]
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer/VBoxContainer2/Header" unique_id=1439470366]
 layout_mode = 2
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_right = 25
 
-[node name="VBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer/VBoxContainer2/Header/MarginContainer2"]
+[node name="VBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer/VBoxContainer2/Header/MarginContainer2" unique_id=790566321]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="PlayerNameTitle" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer/VBoxContainer2/Header/MarginContainer2/VBoxContainer2"]
+[node name="PlayerNameTitle" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer/VBoxContainer2/Header/MarginContainer2/VBoxContainer2" unique_id=18815397]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "PLAYER_TITLE"
 fit_content = true
 
-[node name="PlayerScoreTitle" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer/VBoxContainer2/Header/MarginContainer2/VBoxContainer2"]
+[node name="PlayerScoreTitle" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer/VBoxContainer2/Header/MarginContainer2/VBoxContainer2" unique_id=2089612080]
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
 text = "PLAYER_SCORE"
 
-[node name="Player List" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer/VBoxContainer2"]
+[node name="Player List" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer/VBoxContainer2" unique_id=193919905]
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("2_ohkho")
+winning_sound = ExtResource("3_c0tg7")
 player_template = ExtResource("3_6aww1")
 
-[node name="Footer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer2"]
+[node name="Footer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer2" unique_id=1985405490]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_top = 5
 
-[node name="Buttons" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer2/Footer"]
+[node name="Buttons" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer2/Footer" unique_id=167812590]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 
-[node name="OkButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer2/Footer/Buttons"]
+[node name="OkButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer2/Footer/Buttons" unique_id=256365131]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
@@ -115,7 +117,7 @@ script = ExtResource("4_udvsw")
 is_focused = true
 pressed_action = SubResource("Resource_0uvj0")
 
-[node name="ReplayGame" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer2/Footer/Buttons" node_paths=PackedStringArray("finish_game_node")]
+[node name="ReplayGame" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer2/Footer/Buttons" unique_id=534478019 node_paths=PackedStringArray("finish_game_node")]
 layout_mode = 2
 text = "REPLAY"
 script = ExtResource("6_f0a12")

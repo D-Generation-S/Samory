@@ -1,19 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://pwy03e08f1ov"]
+[gd_scene format=3 uid="uid://pwy03e08f1ov"]
 
 [ext_resource type="Script" uid="uid://mkhadapjv12d" path="res://entities/game/player_score_entry/scripts/PlayerScoreEntry.gd" id="1_4epdj"]
 [ext_resource type="StyleBox" uid="uid://d1rhal5rp1608" path="res://assets/styles/panel/MetalBox.tres" id="2_5y1a8"]
 [ext_resource type="Resource" uid="uid://c0eqsic62hvl0" path="res://shared/resources/colors/assets/PlayerHighlightColor.tres" id="2_nkn6w"]
-[ext_resource type="Shader" uid="uid://c68i873by7j7q" path="res://assets/shaders/ColorReplace.gdshader" id="4_c8bdi"]
+[ext_resource type="Script" uid="uid://b3vlxulgtqk1f" path="res://entities/game/player_score_entry/scripts/player_score_player_name.gd" id="4_pscha"]
+[ext_resource type="Material" uid="uid://bcry1v2yx1t6w" path="res://entities/game/player_score_entry/materials/win_material.tres" id="5_qfumn"]
 [ext_resource type="Texture2D" uid="uid://dpwyddj6yhp8r" path="res://assets/icons/TrophyIcon.tres" id="5_sqauh"]
+[ext_resource type="Script" uid="uid://bujvldkvi65fi" path="res://entities/game/player_score_entry/scripts/player_score_counter.gd" id="6_qfumn"]
+[ext_resource type="Script" uid="uid://bceoil1fal6gh" path="res://entities/game/player_score_entry/scripts/player_score_winning_icon.gd" id="7_60cck"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uf65b"]
-shader = ExtResource("4_c8bdi")
-shader_parameter/always_replace = true
-shader_parameter/base_color = Color(0, 0, 0, 0)
-shader_parameter/target_color = Color(1, 0.9254902, 0.3019608, 1)
-shader_parameter/tolerance = 0.02000000095
-
-[node name="MarginContainer" type="MarginContainer" node_paths=PackedStringArray("player_name", "player_score", "player_win_icon")]
+[node name="MarginContainer" type="MarginContainer" unique_id=558595318]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 75.0
@@ -23,38 +19,49 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 0
 script = ExtResource("1_4epdj")
-player_name = NodePath("PanelContainer/HBoxContainer/PlayerName")
-player_score = NodePath("PanelContainer/HBoxContainer/PlayerScore")
-player_win_icon = NodePath("PanelContainer/HBoxContainer/MarginContainer/TextureRect")
 player_win_color = ExtResource("2_nkn6w")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1862978136]
+custom_minimum_size = Vector2(0, 85)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_5y1a8")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=169401834]
 layout_mode = 2
 
-[node name="PlayerName" type="Label" parent="PanelContainer/HBoxContainer"]
+[node name="PlayerName" type="Label" parent="PanelContainer/HBoxContainer" unique_id=1142208151]
 layout_mode = 2
 text = "PLAYER_NAME"
+script = ExtResource("4_pscha")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/HBoxContainer" unique_id=1125081868]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/HBoxContainer/MarginContainer"]
-material = SubResource("ShaderMaterial_uf65b")
+[node name="WinningIcon" type="TextureRect" parent="PanelContainer/HBoxContainer/MarginContainer" unique_id=1076927301]
+material = ExtResource("5_qfumn")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("5_sqauh")
 stretch_mode = 3
+script = ExtResource("7_60cck")
 
-[node name="PlayerScore" type="RichTextLabel" parent="PanelContainer/HBoxContainer"]
+[node name="PlayerScore" type="RichTextLabel" parent="PanelContainer/HBoxContainer" unique_id=408698693]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 bbcode_enabled = true
-text = "[right]PLAYER_SCORE"
+text = "PLAYER_SCORE"
 fit_content = true
+scroll_active = false
+horizontal_alignment = 2
+script = ExtResource("6_qfumn")
+
+[connection signal="player_changed" from="." to="PanelContainer/HBoxContainer/PlayerName" method="set_text"]
+[connection signal="player_did_win" from="." to="PanelContainer/HBoxContainer/PlayerName" method="player_did_win"]
+[connection signal="player_did_win" from="." to="PanelContainer/HBoxContainer/MarginContainer/WinningIcon" method="player_did_win"]
+[connection signal="player_did_win" from="." to="PanelContainer/HBoxContainer/PlayerScore" method="is_winning_player"]
+[connection signal="set_player_score" from="." to="PanelContainer/HBoxContainer/PlayerScore" method="set_counter_target"]
+[connection signal="counter_done" from="PanelContainer/HBoxContainer/PlayerScore" to="." method="winner_is_selected"]
+[connection signal="counter_done" from="PanelContainer/HBoxContainer/PlayerScore" to="PanelContainer/HBoxContainer/MarginContainer/WinningIcon" method="scoring_is_done"]

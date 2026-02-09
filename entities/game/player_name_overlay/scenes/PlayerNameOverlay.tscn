@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cynb8xjpxqa6w"]
+[gd_scene format=3 uid="uid://cynb8xjpxqa6w"]
 
 [ext_resource type="Script" uid="uid://c04wthgck8mhp" path="res://entities/game/player_name_overlay/scripts/PlayerGameLabel.gd" id="1_d33rg"]
 [ext_resource type="Texture2D" uid="uid://bmxqeqo65xwt" path="res://assets/sprites/spritesheet-default.png" id="2_blt2s"]
@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://b1sl7tihdwhil" path="res://entities/game/player_name_overlay/scripts/ScoreAndName.gd" id="7_h8pn1"]
 [ext_resource type="Script" uid="uid://cpx0qtreblopk" path="res://entities/game/player_name_overlay/scripts/PlayerScoreInformation.gd" id="8_4u670"]
 [ext_resource type="Resource" uid="uid://85njf66kd3s1" path="res://shared/resources/colors/assets/PlayerDefaultColor.tres" id="9_2q0hc"]
-[ext_resource type="Shader" uid="uid://c68i873by7j7q" path="res://assets/shaders/ColorReplace.gdshader" id="11_2q0hc"]
+[ext_resource type="Shader" uid="uid://c68i873by7j7q" path="res://assets/shaders/ColorReplaceAndShine.gdshader" id="11_2q0hc"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qprtf"]
 texture = ExtResource("2_blt2s")
