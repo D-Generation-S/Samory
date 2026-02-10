@@ -10,8 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://bcc3pe48h2wb8" path="res://entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn" id="8_a83js"]
 [ext_resource type="Texture2D" uid="uid://wa0qa5dgmjgk" path="res://assets/icons/AiIcon.tres" id="9_e2yd3"]
 [ext_resource type="Script" uid="uid://5tb48e2wts7" path="res://entities/ui/main_menu/scripts/QuickAiGame.gd" id="10_wemfb"]
+[ext_resource type="Script" uid="uid://d0jijr8wa6o8v" path="res://shared/entities/clickable_button/resources/behaviors/DefaultButtonBehavior.gd" id="11_3ka4x"]
 [ext_resource type="Texture2D" uid="uid://cg0l7tvqmtghr" path="res://assets/sprites/sheet_white1x.png" id="11_38aya"]
 [ext_resource type="PackedScene" uid="uid://scnjjf50me2r" path="res://entities/ui/deck_viewer/scenes/DeckViewer.tscn" id="12_b51cj"]
+[ext_resource type="PackedScene" uid="uid://c4cq1tu4j2y7r" path="res://entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn" id="12_pcola"]
 [ext_resource type="Texture2D" uid="uid://fp6wosrlx177" path="res://assets/icons/CreditsIcon.tres" id="13_nwt3x"]
 [ext_resource type="PackedScene" uid="uid://n2r2v72dltn8" path="res://entities/ui/credits/scenes/Credits.tscn" id="14_exos4"]
 [ext_resource type="Texture2D" uid="uid://doybax1rt0tgn" path="res://assets/icons/QuitIcon.tres" id="15_lppid"]
@@ -32,6 +34,15 @@ metadata/_custom_type_script = "uid://cymc6ui77jfei"
 script = ExtResource("7_bdxeb")
 scene_template = ExtResource("8_a83js")
 transmit_click_position = true
+metadata/_custom_type_script = "uid://cymc6ui77jfei"
+
+[sub_resource type="Resource" id="Resource_88f22"]
+script = ExtResource("11_3ka4x")
+metadata/_custom_type_script = "uid://d0jijr8wa6o8v"
+
+[sub_resource type="Resource" id="Resource_gciok"]
+script = ExtResource("7_bdxeb")
+scene_template = ExtResource("12_pcola")
 metadata/_custom_type_script = "uid://cymc6ui77jfei"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pb5pf"]
@@ -124,6 +135,15 @@ icon = ExtResource("9_e2yd3")
 script = ExtResource("10_wemfb")
 dynamic_neighbor_right = NodePath("../../../../../AvailableAiModes/PanelContainer/AvailableAis/Normal_AI")
 animation_resource = ExtResource("5_sugc0")
+
+[node name="Create Custom Deck" type="Button" parent="CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=187735525]
+layout_mode = 2
+text = "CREATE_CUSTOM_DECK
+"
+script = ExtResource("4_b7t05")
+active = 2
+button_behavior = SubResource("Resource_88f22")
+pressed_action = SubResource("Resource_gciok")
 
 [node name="Deck Viewer" type="Button" parent="CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=1428377626]
 layout_mode = 2

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dm30nveb0uwwt"]
+
+[ext_resource type="Script" uid="uid://dinrl0roigxp1" path="res://entities/ui/edit_custom_deck/scripts/EditCustomDeck.gd" id="1_ehkr0"]
+[ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://entities/ui/menu_background/scenes/MenuBackground.tscn" id="2_dqo5i"]
+
+[node name="EditCustomDeck" type="CanvasLayer" unique_id=146379773]
+script = ExtResource("1_ehkr0")
+
+[node name="MenuBackground" parent="." unique_id=1056163621 instance=ExtResource("2_dqo5i")]

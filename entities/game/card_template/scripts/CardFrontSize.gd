@@ -13,6 +13,7 @@ func _ready() -> void:
 func set_and_scale_texture(new_texture: Texture2D) -> void:
 	if new_texture.get_width() <= max_width and new_texture.get_height() < max_height:
 		texture = new_texture
+		return
 	var ratio: float = min(max_width / new_texture.get_width(), max_height / new_texture.get_height())
 	var new_image_size: Vector2i = Vector2i(int(new_texture.get_width() * ratio), int(new_texture.get_height() * ratio))
 	var scaled_texture: Image = new_texture.get_image()
