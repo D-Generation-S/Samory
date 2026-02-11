@@ -6,9 +6,6 @@ signal card_updated(card: CustomDeckResource)
 signal hiding()
 signal showing()
 
-@export var initial_card_name: TextTranslation = null
-@export var initial_card_description: TextTranslation = null
-
 var is_edit: bool = false
 var _current_card_resource: CustomDeckResource = null
 
@@ -18,7 +15,7 @@ func _ready() -> void:
 func show_add_card() -> void:
 	is_edit = false
 	_make_visible()
-	load_card(CustomDeckResource.new(-1, false, tr(initial_card_name.key), tr(initial_card_description.key), ""))
+	load_card(CustomDeckResource.new(-1, false, "", "", ""))
 
 func show_edit_card(deck_resource: CustomDeckResource) -> void:
 	is_edit = true
@@ -44,7 +41,6 @@ func save_card() -> void:
 		update_card.emit(_current_card_resource)
 		cancel()
 		return
-	print(_current_card_resource.get_resource_name())
 	add_new_card.emit(_current_card_resource)
 	cancel()
 

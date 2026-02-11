@@ -1,4 +1,4 @@
-class_name LineEditValidation extends LineEdit
+class_name TextEditValidation extends TextEdit
 
 @warning_ignore("unused_signal")
 signal validation_error(error_message: String)
@@ -6,7 +6,7 @@ signal validation_error(error_message: String)
 signal validation_failed()
 signal valid()
 
-signal got_submitted()
+signal text_is_changed(text: String)
 
 @export var is_focused: bool = false
 @export var validation: Validation = null
@@ -16,16 +16,12 @@ var _is_valid: bool = true
 func _ready() -> void:
 	if is_focused:
 		grab_focus()
-	text_submitted.connect(_text_submitted)
 	text_changed.connect(_on_text_changed)
 	_validate_and_trigger(text)
 
-func _on_text_changed(new_text: String) -> void:
-	_validate_and_trigger(new_text)
-
-func _text_submitted(new_text: String) -> void:
-	_validate_and_trigger(new_text)
-	got_submitted.emit()
+func _on_text_changed() -> void:
+	_validate_and_trigger(text)
+	text_is_changed.emit(text)
 
 func _validate_and_trigger(new_text: String) -> void:
 	_is_valid = _validate(new_text)

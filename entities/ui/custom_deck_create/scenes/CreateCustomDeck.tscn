@@ -4,15 +4,38 @@
 [ext_resource type="Script" uid="uid://cchf8amhqm0s" path="res://entities/ui/custom_deck_create/scripts/CreateCustomDeck.gd" id="1_u40oq"]
 [ext_resource type="PackedScene" uid="uid://dm30nveb0uwwt" path="res://entities/ui/edit_custom_deck/scenes/EditCustomDeck.tscn" id="2_3b6i1"]
 [ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://entities/ui/menu_background/scenes/MenuBackground.tscn" id="2_v8hna"]
-[ext_resource type="Resource" uid="uid://b1jnohd18jied" path="res://shared/resources/translations/assets/NewDeckName.tres" id="2_wtadk"]
-[ext_resource type="Resource" uid="uid://cduvwyhd5wqbx" path="res://shared/resources/translations/assets/NewDeckDescription.tres" id="3_3baql"]
 [ext_resource type="Script" uid="uid://bnsnhypypbo4c" path="res://shared/entities/custom_deck/scripts/CustomDeckLoadImage.gd" id="3_mqaqh"]
 [ext_resource type="Texture2D" uid="uid://b0lfebra6adhv" path="res://assets/sprites/Axuree/back_card_1.png" id="3_u40oq"]
-[ext_resource type="Script" uid="uid://bvp2maxoi8yco" path="res://shared/entities/custom_deck/scripts/CustomDeckNameText.gd" id="3_v4uxc"]
 [ext_resource type="Script" uid="uid://cky8chsg088ia" path="res://shared/entities/custom_deck/scripts/CustomDeckDescriptionText.gd" id="4_n4d2i"]
+[ext_resource type="Script" uid="uid://tjo0r1gwyjls" path="res://shared/resources/validations/MultiAndValidation.gd" id="5_k6nxf"]
+[ext_resource type="Script" uid="uid://cci4ryxp2ob7m" path="res://shared/resources/validations/Validation.gd" id="6_y3kgi"]
+[ext_resource type="Resource" uid="uid://bfylp3ooxs1ua" path="res://shared/resources/translations/assets/MaxSizeTranslation.tres" id="7_mrfij"]
 [ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="7_n4d2i"]
 [ext_resource type="Script" uid="uid://d0jijr8wa6o8v" path="res://shared/entities/clickable_button/resources/behaviors/DefaultButtonBehavior.gd" id="8_nhxkq"]
+[ext_resource type="Resource" uid="uid://h0lfh3suh0v5" path="res://shared/resources/translations/assets/MinSizeTranslation.tres" id="8_npkkf"]
 [ext_resource type="Script" uid="uid://b03sehux5xslr" path="res://shared/entities/clickable_button/resources/actions/OpenMainMenu.gd" id="9_nhxkq"]
+[ext_resource type="Script" uid="uid://dgu6d3fl16qev" path="res://shared/resources/validations/TextSizeValidation.gd" id="9_ybycn"]
+[ext_resource type="Resource" uid="uid://ck0uqkqfdqve3" path="res://shared/resources/validations/templates/DefaultTextRegexValidation.tres" id="10_y3kgi"]
+
+[sub_resource type="GDScript" id="GDScript_m034a"]
+script/source = "extends LineEditValidation
+
+func deck_updated(deck: CustomDeckResource) -> void:
+	text = deck.get_resource_name()
+
+func _validate(_new_text: String) -> bool:
+	return _new_text.length() > 5"
+
+[sub_resource type="Resource" id="Resource_vf6dt"]
+script = ExtResource("9_ybycn")
+min_size = 5
+max_size = 30
+metadata/_custom_type_script = "uid://dgu6d3fl16qev"
+
+[sub_resource type="Resource" id="Resource_g1qnm"]
+script = ExtResource("5_k6nxf")
+validators = Array[ExtResource("6_y3kgi")]([SubResource("Resource_vf6dt"), ExtResource("10_y3kgi")])
+metadata/_custom_type_script = "uid://tjo0r1gwyjls"
 
 [sub_resource type="Resource" id="Resource_nhxkq"]
 script = ExtResource("8_nhxkq")
@@ -36,8 +59,6 @@ metadata/_custom_type_script = "uid://b03sehux5xslr"
 
 [node name="CreateCustomDeck" type="CanvasLayer" unique_id=542649282]
 script = ExtResource("1_u40oq")
-initial_name = ExtResource("2_wtadk")
-initial_description = ExtResource("3_3baql")
 edit_deck_scene = ExtResource("2_3b6i1")
 
 [node name="MenuBackground" parent="." unique_id=401543927 instance=ExtResource("2_v8hna")]
@@ -80,26 +101,30 @@ size_flags_horizontal = 3
 
 [node name="Name" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/GridContainer" unique_id=1452138386]
 layout_mode = 2
-tooltip_text = "NAME_DESCRIPTION"
+tooltip_text = "DECK_NAME_DESCRIPTION"
 mouse_filter = 1
-text = "NAME"
+text = "DECK_NAME"
 
 [node name="TextEdit" type="LineEdit" parent="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/GridContainer" unique_id=7520212]
 layout_mode = 2
 size_flags_horizontal = 3
-script = ExtResource("3_v4uxc")
+placeholder_text = "NEW_DECK_NAME"
+script = SubResource("GDScript_m034a")
+validation = SubResource("Resource_g1qnm")
 
 [node name="Description" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/GridContainer" unique_id=156949862]
 layout_mode = 2
-tooltip_text = "MOD_DESCRIPTION_DESCRIPTION"
+tooltip_text = "DECK_DESCRIPTION_DESCRIPTION"
 mouse_filter = 1
-text = "MOD_DESCRIPTION"
+text = "DECK_DESCRIPTION"
 
 [node name="DescriptionEdit" type="TextEdit" parent="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/GridContainer" unique_id=264817074]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+placeholder_text = "NEW_DECK_DESCRIPTION"
 script = ExtResource("4_n4d2i")
+validation = ExtResource("10_y3kgi")
 
 [node name="HBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1167933948]
 layout_mode = 2
@@ -117,8 +142,8 @@ image = ExtResource("3_u40oq")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-tooltip_text = "LOAD_IMAGE_DESCRIPTION"
-text = "LOAD_IMAGE"
+tooltip_text = "LOAD_DECK_IMAGE_DESCRIPTION"
+text = "LOAD_DECK_IMAGE"
 script = ExtResource("7_n4d2i")
 button_behavior = SubResource("Resource_nhxkq")
 

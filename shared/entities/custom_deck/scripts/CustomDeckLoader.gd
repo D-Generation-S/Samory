@@ -27,7 +27,7 @@ func save_deck(deck_information: CustomDeckResource, deck_data: Array[CustomDeck
 		save_card(packer,card)
 
 	packer.close()
-	return false
+	return true
 
 func save_card(packer: ZIPPacker, card: CustomDeckResource) -> bool:
 	var image_name: String = "%s_%s.png" % [card.get_id(), card.get_resource_name()]
@@ -128,8 +128,6 @@ func _load_resource_information(reader: ZIPReader, card_path: String) -> CustomD
 	var deck_info_data: Dictionary = JSON.parse_string(read_data.get_string_from_utf8())
 	var deck_resource: CustomDeckResource = _create_deck_info_from_dictionary(deck_info_data)
 	deck_resource.loaded_texture = load_image(reader, deck_resource.get_image_path())
-	print(deck_resource.loaded_texture)
-
 
 	return deck_resource
 
@@ -144,6 +142,19 @@ func load_image(reader: ZIPReader, image_path: String) -> Texture2D:
 	loaded_image.load_png_from_buffer(read_data)
 	var loaded_texture: ImageTexture = ImageTexture.create_from_image(loaded_image)
 	return loaded_texture as Texture2D
+
+func convert_to_playable_card(resource: CustomDeckResource) -> MemoryCardResource:
+	if resource == null or resource.get_is_deck():
+		return
+	var return_resource: MemoryCardResource = MemoryCardResource.new()
+	return_resource.name = resource.get_resource_name()
+	return_resource.description = resource.get_description()
+	var image: Texture2D = resource.loaded_texture
+	if image == null:
+		image = _load_asset_from_disc(resource.get_image_path())
+	return_resource.texture = image
+
+	return return_resource
 
 func load_playable_deck(deck_path: String) -> MemoryDeckResource:
 	return null

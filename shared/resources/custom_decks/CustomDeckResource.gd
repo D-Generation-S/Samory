@@ -23,7 +23,6 @@ func set_id(id: int) -> void:
 
 func set_deck_name(name: String) -> void:
 	_name = name
-	print(_name)
 
 func set_description(description: String) -> void:
 	_description = description

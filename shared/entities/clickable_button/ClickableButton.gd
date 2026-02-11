@@ -125,3 +125,7 @@ func animate_out() -> void:
 func _exit_tree() -> void:
 	if button_behavior != null:
 		button_behavior.destroy()
+
+func simulate_click() -> void:
+	pressed.emit()
+	

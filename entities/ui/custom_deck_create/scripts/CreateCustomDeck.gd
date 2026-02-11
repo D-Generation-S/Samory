@@ -3,9 +3,6 @@ extends CanvasLayer
 signal was_reset()
 signal currently_editing()
 
-@export var initial_name: TextTranslation = null
-@export var initial_description: TextTranslation = null
-
 @export var edit_deck_scene: PackedScene = null
 
 var _current_deck: CustomDeckResource = null
@@ -18,7 +15,7 @@ func _ready() -> void:
 
 func _reset() -> void:
 	_last_loaded_deck = []
-	set_deck(CustomDeckResource.new(0, true, tr(initial_name.key), tr(initial_description.key), ""))
+	set_deck(CustomDeckResource.new(0, true, "", "", ""))
 	was_reset.emit()
 
 func deck_back_path_changed(path: String) -> void:
@@ -46,7 +43,6 @@ func edit_deck() -> void:
 		return
 	var scene_instance: EditCustomDeck = edit_deck_scene.instantiate() as EditCustomDeck
 	
-	print(_current_deck.get_resource_name())
 	scene_instance.set_deck(_current_deck)
 	for card: CustomDeckResource in _last_loaded_deck:
 		if card.get_is_deck():

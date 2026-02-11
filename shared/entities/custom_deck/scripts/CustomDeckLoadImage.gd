@@ -29,7 +29,6 @@ func new_image_selected(image_path: String) -> void:
 func set_image(new_image: Texture2D) -> void:
 	if new_image == null:
 		return
-	print(new_image)
 	if new_image.get_width() <= max_width and new_image.get_height() < max_height:
 		texture = new_image
 		return

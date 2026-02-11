@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="TextTranslation" format=3 uid="uid://dmwkoj8jjp52q"]
-
-[ext_resource type="Script" uid="uid://b3ccmsvxi5x8x" path="res://shared/resources/translations/TextTranslation.gd" id="1_otyn2"]
-
-[resource]
-script = ExtResource("1_otyn2")
-key = "NEW_CARD_DESCRIPTION"
-metadata/_custom_type_script = "uid://b3ccmsvxi5x8x"

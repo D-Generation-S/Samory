@@ -136,7 +136,6 @@ func announce_card_field() -> void:
 
 @rpc("authority", "reliable")
 func _rpc_rebuild_field(field: Dictionary) -> void:
-	print(field)
 	if multiplayer.is_server():
 		return
 	for card: Dictionary in field["cards"]:

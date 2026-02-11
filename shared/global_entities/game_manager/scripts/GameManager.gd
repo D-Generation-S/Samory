@@ -107,7 +107,6 @@ func translate_built_in_decks() -> void:
 	for deck: MemoryDeckResource in build_in_decks:
 		var new_deck: MemoryDeckResource = deck.duplicate_deep() as MemoryDeckResource
 		new_deck.take_over_path(deck.resource_path)
-		print(new_deck.resource_path)
 		new_deck.name = tr(deck.name)
 		new_deck.description = tr(deck.description)
 		var cards: Array[MemoryCardResource] = deck.cards

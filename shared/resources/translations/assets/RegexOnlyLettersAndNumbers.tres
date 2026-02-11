@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TextTranslation" format=3 uid="uid://dkqwatqifmgr"]
+
+[ext_resource type="Script" uid="uid://b3ccmsvxi5x8x" path="res://shared/resources/translations/TextTranslation.gd" id="1_gqh6h"]
+
+[resource]
+script = ExtResource("1_gqh6h")
+key = "ONLY_LETTERS_AND_NUMBERS_ALLOWED"
+metadata/_custom_type_script = "uid://b3ccmsvxi5x8x"

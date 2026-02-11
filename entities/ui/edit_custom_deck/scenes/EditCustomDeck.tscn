@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://d0jijr8wa6o8v" path="res://shared/entities/clickable_button/resources/behaviors/DefaultButtonBehavior.gd" id="5_rkv3r"]
 [ext_resource type="Script" uid="uid://b03sehux5xslr" path="res://shared/entities/clickable_button/resources/actions/OpenMainMenu.gd" id="6_pgiyy"]
 [ext_resource type="PackedScene" uid="uid://k8xh53yapv5h" path="res://entities/ui/custom_deck_edit_card/scenes/CustomDeckEditCard.tscn" id="7_0wuy1"]
+[ext_resource type="Script" uid="uid://cj4m8p2qipv6j" path="res://entities/ui/edit_custom_deck/scripts/CustomCardPreview.gd" id="8_ipec7"]
+[ext_resource type="PackedScene" uid="uid://bkpf0f8bvau6t" path="res://entities/ui/card_preview/scenes/CardPreview.tscn" id="9_wcv3f"]
 
 [sub_resource type="Resource" id="Resource_0wuy1"]
 script = ExtResource("5_rkv3r")
@@ -61,7 +63,7 @@ layout_mode = 2
 
 [node name="DeckName" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/DeckInformationMargin/PanelContainer/Deck Information" unique_id=1253960440]
 layout_mode = 2
-tooltip_text = "DECK_NAME_DESCRIPTIOn"
+tooltip_text = "DECK_NAME_DESCRIPTION"
 mouse_filter = 1
 text = "DECK_NAME"
 
@@ -114,11 +116,12 @@ script = ExtResource("4_nuni8")
 button_behavior = SubResource("Resource_0wuy1")
 
 [node name="CardPreview" type="Control" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=205375391]
-visible = false
 custom_minimum_size = Vector2(1000, 0)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("8_ipec7")
+card_template = ExtResource("9_wcv3f")
 
 [node name="EditCard" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=114676978 instance=ExtResource("7_0wuy1")]
 layout_mode = 2
@@ -149,13 +152,17 @@ pressed_action = SubResource("Resource_wcv3f")
 
 [connection signal="card_added" from="." to="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/MarginContainer/ScrollContainer/CardList" method="add_card_entry"]
 [connection signal="card_updated" from="." to="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/MarginContainer/ScrollContainer/CardList" method="update_card_entry"]
+[connection signal="close" from="." to="MarginContainer/PanelContainer/VBoxContainer/ButtonMargin/Buttons/Abort" method="simulate_click"]
 [connection signal="deck_name_changed" from="." to="MarginContainer/PanelContainer/VBoxContainer/DeckInformationMargin/PanelContainer/Deck Information/RealDeckName" method="set_text"]
+[connection signal="show_card" from="." to="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/CardPreview" method="load_card"]
 [connection signal="delete_card_requested" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/MarginContainer/ScrollContainer/CardList" to="." method="delete_card"]
 [connection signal="edit_card_requested" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/MarginContainer/ScrollContainer/CardList" to="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/EditCard" method="show_edit_card"]
+[connection signal="view_card_requested" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/MarginContainer/ScrollContainer/CardList" to="." method="view_card"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/NewCard" to="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/CardPreview" method="hide"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/NewCard" to="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/EditCard" method="show_add_card"]
+[connection signal="show_preview_card" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/CardPreview" to="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/EditCard" method="hide"]
 [connection signal="add_new_card" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/EditCard" to="." method="add_or_update_card"]
-[connection signal="hiding" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/EditCard" to="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/CardPreview" method="show"]
-[connection signal="showing" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/EditCard" to="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/CardPreview" method="hide"]
+[connection signal="hiding" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/EditCard" to="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/CardPreview" method="show_empty"]
+[connection signal="showing" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/EditCard" to="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/CardPreview" method="_hide_self"]
 [connection signal="update_card" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/EditCard" to="." method="add_or_update_card"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/ButtonMargin/Buttons/Save Deck" to="." method="save_deck"]
