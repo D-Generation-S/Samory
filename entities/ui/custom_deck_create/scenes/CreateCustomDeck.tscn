@@ -4,15 +4,25 @@
 [ext_resource type="Script" uid="uid://cchf8amhqm0s" path="res://entities/ui/custom_deck_create/scripts/CreateCustomDeck.gd" id="1_u40oq"]
 [ext_resource type="PackedScene" uid="uid://dm30nveb0uwwt" path="res://entities/ui/edit_custom_deck/scenes/EditCustomDeck.tscn" id="2_3b6i1"]
 [ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://entities/ui/menu_background/scenes/MenuBackground.tscn" id="2_v8hna"]
-[ext_resource type="Script" uid="uid://bnsnhypypbo4c" path="res://entities/ui/custom_deck_create/scripts/CustomDeckCardBack.gd" id="3_mqaqh"]
+[ext_resource type="Resource" uid="uid://b1jnohd18jied" path="res://shared/resources/translations/assets/NewDeckName.tres" id="2_wtadk"]
+[ext_resource type="Resource" uid="uid://cduvwyhd5wqbx" path="res://shared/resources/translations/assets/NewDeckDescription.tres" id="3_3baql"]
+[ext_resource type="Script" uid="uid://bnsnhypypbo4c" path="res://shared/entities/custom_deck/scripts/CustomDeckLoadImage.gd" id="3_mqaqh"]
 [ext_resource type="Texture2D" uid="uid://b0lfebra6adhv" path="res://assets/sprites/Axuree/back_card_1.png" id="3_u40oq"]
-[ext_resource type="Script" uid="uid://bvp2maxoi8yco" path="res://entities/ui/custom_deck_create/scripts/CustomDeckNameText.gd" id="3_v4uxc"]
-[ext_resource type="Script" uid="uid://cky8chsg088ia" path="res://entities/ui/custom_deck_create/scripts/CustomDeckDescriptionText.gd" id="4_n4d2i"]
+[ext_resource type="Script" uid="uid://bvp2maxoi8yco" path="res://shared/entities/custom_deck/scripts/CustomDeckNameText.gd" id="3_v4uxc"]
+[ext_resource type="Script" uid="uid://cky8chsg088ia" path="res://shared/entities/custom_deck/scripts/CustomDeckDescriptionText.gd" id="4_n4d2i"]
 [ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="7_n4d2i"]
 [ext_resource type="Script" uid="uid://d0jijr8wa6o8v" path="res://shared/entities/clickable_button/resources/behaviors/DefaultButtonBehavior.gd" id="8_nhxkq"]
 [ext_resource type="Script" uid="uid://b03sehux5xslr" path="res://shared/entities/clickable_button/resources/actions/OpenMainMenu.gd" id="9_nhxkq"]
 
 [sub_resource type="Resource" id="Resource_nhxkq"]
+script = ExtResource("8_nhxkq")
+metadata/_custom_type_script = "uid://d0jijr8wa6o8v"
+
+[sub_resource type="Resource" id="Resource_3baql"]
+script = ExtResource("8_nhxkq")
+metadata/_custom_type_script = "uid://d0jijr8wa6o8v"
+
+[sub_resource type="Resource" id="Resource_wtadk"]
 script = ExtResource("8_nhxkq")
 metadata/_custom_type_script = "uid://d0jijr8wa6o8v"
 
@@ -26,6 +36,8 @@ metadata/_custom_type_script = "uid://b03sehux5xslr"
 
 [node name="CreateCustomDeck" type="CanvasLayer" unique_id=542649282]
 script = ExtResource("1_u40oq")
+initial_name = ExtResource("2_wtadk")
+initial_description = ExtResource("3_3baql")
 edit_deck_scene = ExtResource("2_3b6i1")
 
 [node name="MenuBackground" parent="." unique_id=401543927 instance=ExtResource("2_v8hna")]
@@ -83,7 +95,7 @@ tooltip_text = "MOD_DESCRIPTION_DESCRIPTION"
 mouse_filter = 1
 text = "MOD_DESCRIPTION"
 
-[node name="TextEdit2" type="TextEdit" parent="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/GridContainer" unique_id=264817074]
+[node name="DescriptionEdit" type="TextEdit" parent="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/GridContainer" unique_id=264817074]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -94,6 +106,7 @@ layout_mode = 2
 size_flags_horizontal = 8
 
 [node name="CardBack" type="TextureRect" parent="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/HBoxContainer" unique_id=631581318]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -104,8 +117,8 @@ image = ExtResource("3_u40oq")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-tooltip_text = "SELECT_BACK_DESCRIPTION"
-text = "SELECT_BACK"
+tooltip_text = "LOAD_IMAGE_DESCRIPTION"
+text = "LOAD_IMAGE"
 script = ExtResource("7_n4d2i")
 button_behavior = SubResource("Resource_nhxkq")
 
@@ -114,11 +127,25 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 
+[node name="Edit Deck" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/Buttons" unique_id=2050620723]
+layout_mode = 2
+tooltip_text = "EDIT_CUSTOM_DECK_DESCRIPTION"
+text = "EDIT_CUSTOM_DECK"
+script = ExtResource("7_n4d2i")
+button_behavior = SubResource("Resource_3baql")
+
 [node name="Create" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/Buttons" unique_id=164475535]
 layout_mode = 2
-tooltip_text = "CREATE_DESCRIPTION"
-text = "CREATE"
+tooltip_text = "CREATE_NEW_CUSTOM_DECK_DESCRIPTION"
+text = "CREATE_NEW_CUSTOM_DECK"
 script = ExtResource("7_n4d2i")
+
+[node name="Button" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/Buttons" unique_id=387285691]
+layout_mode = 2
+tooltip_text = "LOAD_CUSTOM_DECK_DESCRIPTION"
+text = "LOAD_CUSTOM_DECK"
+script = ExtResource("7_n4d2i")
+button_behavior = SubResource("Resource_wtadk")
 
 [node name="Back" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/Buttons" unique_id=197447390]
 layout_mode = 2
@@ -128,7 +155,7 @@ script = ExtResource("7_n4d2i")
 button_behavior = SubResource("Resource_3b6i1")
 pressed_action = SubResource("Resource_v8hna")
 
-[node name="FileDialog" type="FileDialog" parent="." unique_id=1124511785]
+[node name="ImageLoader" type="FileDialog" parent="." unique_id=1124511785]
 title = "Open a File"
 file_mode = 0
 display_mode = 1
@@ -136,10 +163,27 @@ access = 2
 filters = PackedStringArray("*.png", "*.jpg")
 use_native_dialog = true
 
+[node name="DeckLoader" type="FileDialog" parent="." unique_id=1327151534]
+title = "Open a File"
+file_mode = 0
+display_mode = 1
+access = 1
+root_subfolder = "custom_decks"
+filters = PackedStringArray("*.sdeck")
+use_native_dialog = true
+
+[connection signal="currently_editing" from="." to="CenterContainer/PanelContainer/VBoxContainer/Buttons/Edit Deck" method="show"]
 [connection signal="deck_updated" from="." to="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/GridContainer/TextEdit" method="deck_updated"]
-[connection signal="deck_updated" from="." to="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/GridContainer/TextEdit2" method="deck_updated"]
+[connection signal="deck_updated" from="." to="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/GridContainer/DescriptionEdit" method="deck_updated"]
 [connection signal="deck_updated" from="." to="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/HBoxContainer/CardBack" method="deck_updated"]
-[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/HBoxContainer/SelectBack" to="FileDialog" method="show"]
+[connection signal="was_reset" from="." to="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/HBoxContainer/CardBack" method="_reset"]
+[connection signal="was_reset" from="." to="CenterContainer/PanelContainer/VBoxContainer/Buttons/Edit Deck" method="hide"]
+[connection signal="text_changed" from="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/GridContainer/TextEdit" to="." method="deck_name_changed"]
+[connection signal="text_is_changed" from="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/GridContainer/DescriptionEdit" to="." method="deck_description_changed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/HBoxContainer/SelectBack" to="ImageLoader" method="show"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/Buttons/Edit Deck" to="." method="edit_deck"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/Buttons/Create" to="." method="create_deck"]
-[connection signal="file_selected" from="FileDialog" to="." method="deck_back_path_changed"]
-[connection signal="file_selected" from="FileDialog" to="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/HBoxContainer/CardBack" method="new_image_selected"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/Buttons/Button" to="DeckLoader" method="show"]
+[connection signal="file_selected" from="ImageLoader" to="." method="deck_back_path_changed"]
+[connection signal="file_selected" from="ImageLoader" to="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/HBoxContainer/CardBack" method="new_image_selected"]
+[connection signal="file_selected" from="DeckLoader" to="." method="load_existing_deck"]

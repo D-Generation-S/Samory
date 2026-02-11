@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://de0if4rovyxsv"]
+[gd_scene format=3 uid="uid://de0if4rovyxsv"]
 
 [ext_resource type="StyleBox" uid="uid://d1rhal5rp1608" path="res://assets/styles/panel/MetalBox.tres" id="1_ewh1k"]
 [ext_resource type="Script" uid="uid://c711jib2emmd3" path="res://entities/ui/player_card/scripts/PlayerCard.gd" id="2_qcphe"]
@@ -7,13 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://dpa7nk5wwkgvj" path="res://assets/icons/UpIcon.tres" id="5_4i8r0"]
 [ext_resource type="Script" uid="uid://dkvyqntuwrpro" path="res://entities/ui/player_card/scripts/RegainFocusButton.gd" id="6_wt8fj"]
 [ext_resource type="Texture2D" uid="uid://cgyq8ual4eu0m" path="res://assets/icons/DownIcon.tres" id="7_j4meo"]
-[ext_resource type="Texture2D" uid="uid://cg0l7tvqmtghr" path="res://assets/sprites/sheet_white1x.png" id="8_cp4kg"]
+[ext_resource type="Texture2D" uid="uid://bksl4a0sqfn5p" path="res://assets/icons/TrashIcon.tres" id="8_ewh1k"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fb3y2"]
-atlas = ExtResource("8_cp4kg")
-region = Rect2(110, 204, 28, 41)
-
-[node name="PlayerCard" type="PanelContainer" node_paths=PackedStringArray("icon_target", "player_name_field")]
+[node name="PlayerCard" type="PanelContainer" unique_id=577358948 node_paths=PackedStringArray("icon_target", "player_name_field")]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 111.0
@@ -27,29 +23,29 @@ ai_player_icon = ExtResource("4_n6jmm")
 icon_target = NodePath("PanelContainer/HBoxContainer/MarginContainer/TextureRect")
 player_name_field = NodePath("PanelContainer/HBoxContainer/Name")
 
-[node name="PanelContainer" type="MarginContainer" parent="."]
+[node name="PanelContainer" type="MarginContainer" parent="." unique_id=1641687547]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=482623949]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Name" type="Label" parent="PanelContainer/HBoxContainer"]
+[node name="Name" type="Label" parent="PanelContainer/HBoxContainer" unique_id=1499213585]
 layout_mode = 2
 text = "PLACEHOLDER"
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/HBoxContainer" unique_id=1923354034]
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_constants/margin_right = 5
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/HBoxContainer/MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/HBoxContainer/MarginContainer" unique_id=180886555]
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 4
 
-[node name="MoveUp" type="Button" parent="PanelContainer/HBoxContainer"]
+[node name="MoveUp" type="Button" parent="PanelContainer/HBoxContainer" unique_id=1984508915]
 layout_mode = 2
 size_flags_horizontal = 4
 tooltip_text = "MOVE_PLAYER_UP"
@@ -60,7 +56,7 @@ icon = ExtResource("5_4i8r0")
 icon_alignment = 1
 script = ExtResource("6_wt8fj")
 
-[node name="MoveDown" type="Button" parent="PanelContainer/HBoxContainer"]
+[node name="MoveDown" type="Button" parent="PanelContainer/HBoxContainer" unique_id=793108535]
 layout_mode = 2
 size_flags_horizontal = 4
 tooltip_text = "MOVE_PLAYER_DOWN"
@@ -71,13 +67,13 @@ icon = ExtResource("7_j4meo")
 icon_alignment = 1
 script = ExtResource("6_wt8fj")
 
-[node name="RemovePlayer" type="Button" parent="PanelContainer/HBoxContainer"]
+[node name="RemovePlayer" type="Button" parent="PanelContainer/HBoxContainer" unique_id=166991273]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 tooltip_text = "DELETE_LOBBY_PLAYER_TOOLTIP"
 focus_neighbor_left = NodePath("../MoveUp")
-icon = SubResource("AtlasTexture_fb3y2")
+icon = ExtResource("8_ewh1k")
 icon_alignment = 1
 script = ExtResource("6_wt8fj")
 

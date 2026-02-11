@@ -10,15 +10,21 @@ extends TextureRect
 @export var max_height: float = 200
 
 var _image: Texture2D
+var _initial_image: Texture2D
 
 func _ready() -> void:
+	_initial_image = texture
 	set_image(image)
 
+func _reset() -> void:
+	texture = _initial_image
+
 func new_image_selected(image_path: String) -> void:
+	if image_path == "":
+		return
 	var loaded_image: Image = Image.load_from_file(image_path)
 	var loaded_texture: ImageTexture = ImageTexture.create_from_image(loaded_image)
 	image = loaded_texture as Texture2D
-	pass
 
 func set_image(new_image: Texture2D) -> void:
 	if new_image == null:
@@ -33,5 +39,8 @@ func set_image(new_image: Texture2D) -> void:
 	scaled_texture.resize(new_image_size.x, new_image_size.y)
 	texture = ImageTexture.create_from_image(scaled_texture) as Texture2D
 
-func deck_updated(_deck: CustomDeckResource) -> void:
-	pass
+func deck_updated(deck: CustomDeckResource) -> void:
+	if deck.loaded_texture != null:
+		set_image(deck.loaded_texture)
+		return
+	new_image_selected(deck.get_image_path())
