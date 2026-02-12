@@ -165,7 +165,6 @@ horizontal_alignment = 2
 script = ExtResource("18_8fn1p")
 
 [node name="MatchingFoundEffect" type="GPUParticles2D" parent="." unique_id=1713421395]
-visible = false
 position = Vector2(250, 275)
 amount = 800
 texture = ExtResource("20_ja01p")
