@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://5tb48e2wts7" path="res://entities/ui/main_menu/scripts/QuickAiGame.gd" id="10_wemfb"]
 [ext_resource type="Script" uid="uid://d0jijr8wa6o8v" path="res://shared/entities/clickable_button/resources/behaviors/DefaultButtonBehavior.gd" id="11_3ka4x"]
 [ext_resource type="Texture2D" uid="uid://cg0l7tvqmtghr" path="res://assets/sprites/sheet_white1x.png" id="11_38aya"]
+[ext_resource type="Script" uid="uid://bo2i1r57xlsqc" path="res://shared/entities/clickable_button/resources/animations/ControlScaleAnimation.gd" id="12_88f22"]
 [ext_resource type="PackedScene" uid="uid://scnjjf50me2r" path="res://entities/ui/deck_viewer/scenes/DeckViewer.tscn" id="12_b51cj"]
 [ext_resource type="PackedScene" uid="uid://c4cq1tu4j2y7r" path="res://entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn" id="12_pcola"]
 [ext_resource type="Texture2D" uid="uid://fp6wosrlx177" path="res://assets/icons/CreditsIcon.tres" id="13_nwt3x"]
@@ -39,6 +40,10 @@ metadata/_custom_type_script = "uid://cymc6ui77jfei"
 [sub_resource type="Resource" id="Resource_88f22"]
 script = ExtResource("11_3ka4x")
 metadata/_custom_type_script = "uid://d0jijr8wa6o8v"
+
+[sub_resource type="Resource" id="Resource_aqmwr"]
+script = ExtResource("12_88f22")
+metadata/_custom_type_script = "uid://bo2i1r57xlsqc"
 
 [sub_resource type="Resource" id="Resource_gciok"]
 script = ExtResource("7_bdxeb")
@@ -146,6 +151,7 @@ script = ExtResource("4_b7t05")
 active = 2
 only_visible_if_custom_deck_active = true
 button_behavior = SubResource("Resource_88f22")
+animation_resource = SubResource("Resource_aqmwr")
 pressed_action = SubResource("Resource_gciok")
 
 [node name="Deck Viewer" type="Button" parent="CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=1428377626]

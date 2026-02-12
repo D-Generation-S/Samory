@@ -20,7 +20,6 @@ func _ready() -> void:
 	set_image(image)
 
 func _reset() -> void:
-	print(_initial_image)
 	set_image(_initial_image)
 
 func new_image_selected(image_path: String) -> void:
@@ -32,7 +31,6 @@ func new_image_selected(image_path: String) -> void:
 	image = loaded_texture as Texture2D
 
 func set_image(new_image: Texture2D) -> void:
-	print(new_image)
 	if new_image == null:
 		image_is_empty.emit()
 		texture = null

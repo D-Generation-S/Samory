@@ -161,7 +161,6 @@ func _build_network_game_package(players: Array[PlayerResource], deck: MemoryDec
 	var network_players: Array[Dictionary] = []
 	for player: PlayerResource in players:
 		network_players.append(player.get_network_data_set())
-	print(deck.name)
 	return {
 		"players": network_players,
 		"deck-path": deck.resource_path,
