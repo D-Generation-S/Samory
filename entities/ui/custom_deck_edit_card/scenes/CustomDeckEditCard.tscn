@@ -11,14 +11,14 @@
 [ext_resource type="Resource" uid="uid://bfylp3ooxs1ua" path="res://shared/resources/translations/assets/MaxSizeTranslation.tres" id="6_yxglr"]
 [ext_resource type="Resource" uid="uid://h0lfh3suh0v5" path="res://shared/resources/translations/assets/MinSizeTranslation.tres" id="7_4y2v2"]
 [ext_resource type="Script" uid="uid://dgu6d3fl16qev" path="res://shared/resources/validations/TextSizeValidation.gd" id="7_46p3t"]
-[ext_resource type="Resource" uid="uid://ck0uqkqfdqve3" path="res://shared/resources/validations/templates/DefaultTextRegexValidation.tres" id="9_4y2v2"]
+[ext_resource type="Resource" uid="uid://b2n23ddculs6s" path="res://shared/resources/validations/templates/DescriptionRegexValidation.tres" id="9_4y2v2"]
 [ext_resource type="Script" uid="uid://d0jijr8wa6o8v" path="res://shared/entities/clickable_button/resources/behaviors/DefaultButtonBehavior.gd" id="9_jkgfh"]
-[ext_resource type="Script" uid="uid://b5y35d40fsrp4" path="res://entities/ui/custom_deck_edit_card/scripts/CustomCardValidation.gd" id="12_3fi5b"]
+[ext_resource type="Script" uid="uid://b5y35d40fsrp4" path="res://shared/entities/validation_text_edit/scripts/MultiValidationNode.gd" id="12_3fi5b"]
 
 [sub_resource type="Resource" id="Resource_4y2v2"]
 script = ExtResource("7_46p3t")
 min_size = 5
-max_size = 25
+max_size = 35
 metadata/_custom_type_script = "uid://dgu6d3fl16qev"
 
 [sub_resource type="Resource" id="Resource_35kq6"]
@@ -96,6 +96,7 @@ text = "CARD_DESCRIPTION"
 layout_mode = 2
 size_flags_vertical = 3
 placeholder_text = "NEW_CARD_DESCRIPTION"
+wrap_mode = 1
 script = ExtResource("4_dhv4o")
 validation = ExtResource("9_4y2v2")
 
@@ -110,6 +111,7 @@ size_flags_vertical = 0
 [node name="CardImage" type="TextureRect" parent="VBoxContainer/HBoxContainer/Image" unique_id=1901833897]
 custom_minimum_size = Vector2(250, 250)
 layout_mode = 2
+stretch_mode = 3
 script = ExtResource("3_lidqe")
 
 [node name="LoadCard" type="Button" parent="VBoxContainer/HBoxContainer/Image" unique_id=319160580]
@@ -143,6 +145,7 @@ button_behavior = SubResource("Resource_3rdw3")
 
 [node name="Validation" type="Control" parent="VBoxContainer/HBoxContainer2" unique_id=152475487 node_paths=PackedStringArray("validation_fields", "validation_text_edit")]
 layout_mode = 2
+mouse_filter = 2
 script = ExtResource("12_3fi5b")
 validation_fields = [NodePath("../../HBoxContainer/VBoxContainer/NameInput")]
 validation_text_edit = [NodePath("../../HBoxContainer/VBoxContainer/CardDescriptionInput")]
@@ -150,6 +153,7 @@ validation_text_edit = [NodePath("../../HBoxContainer/VBoxContainer/CardDescript
 [connection signal="card_updated" from="." to="VBoxContainer/HBoxContainer/VBoxContainer/NameInput" method="deck_updated"]
 [connection signal="card_updated" from="." to="VBoxContainer/HBoxContainer/VBoxContainer/CardDescriptionInput" method="deck_updated"]
 [connection signal="card_updated" from="." to="VBoxContainer/HBoxContainer/Image/CardImage" method="deck_updated"]
+[connection signal="showing" from="." to="VBoxContainer/HBoxContainer/Image/CardImage" method="_reset"]
 [connection signal="file_selected" from="FileDialog" to="." method="update_card_image"]
 [connection signal="file_selected" from="FileDialog" to="VBoxContainer/HBoxContainer/Image/CardImage" method="new_image_selected"]
 [connection signal="text_changed" from="VBoxContainer/HBoxContainer/VBoxContainer/NameInput" to="." method="update_card_name"]
@@ -160,6 +164,8 @@ validation_text_edit = [NodePath("../../HBoxContainer/VBoxContainer/CardDescript
 [connection signal="valid" from="VBoxContainer/HBoxContainer/VBoxContainer/CardDescriptionInput" to="VBoxContainer/HBoxContainer/VBoxContainer/DescriptionError" method="hide"]
 [connection signal="validation_error" from="VBoxContainer/HBoxContainer/VBoxContainer/CardDescriptionInput" to="VBoxContainer/HBoxContainer/VBoxContainer/DescriptionError" method="set_text"]
 [connection signal="validation_failed" from="VBoxContainer/HBoxContainer/VBoxContainer/CardDescriptionInput" to="VBoxContainer/HBoxContainer/VBoxContainer/DescriptionError" method="show"]
+[connection signal="image_is_empty" from="VBoxContainer/HBoxContainer/Image/CardImage" to="VBoxContainer/HBoxContainer2/Validation" method="additional_resource_invalid"]
+[connection signal="image_is_set" from="VBoxContainer/HBoxContainer/Image/CardImage" to="VBoxContainer/HBoxContainer2/Validation" method="additional_resource_valid"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Image/LoadCard" to="FileDialog" method="show"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/Save" to="." method="save_card"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/Abort" to="." method="cancel"]

@@ -1,26 +1,40 @@
-[gd_scene load_steps=13 format=3 uid="uid://bcc3pe48h2wb8"]
+[gd_scene format=3 uid="uid://bcc3pe48h2wb8"]
 
 [ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://entities/ui/menu_background/scenes/MenuBackground.tscn" id="1_j1a2p"]
 [ext_resource type="Script" uid="uid://hk7dh5tm8rt5" path="res://entities/ui/multiplayer_server_browser/scripts/MultiplayerNameInputValidator.gd" id="2_jxhed"]
 [ext_resource type="Script" uid="uid://c2ktjyu2rwdmb" path="res://entities/ui/multiplayer_server_browser/scripts/MultiplayerValidateIpAddress.gd" id="3_jxhed"]
 [ext_resource type="PackedScene" uid="uid://1jf4yyijbnie" path="res://entities/ui/multiplayer_lobby/scenes/MultiplayerLobby.tscn" id="4_osryj"]
+[ext_resource type="Resource" uid="uid://b04q73n0hqf3f" path="res://shared/resources/validations/templates/PlayerNameValidation.tres" id="4_tmlor"]
 [ext_resource type="Script" uid="uid://d0jkx58w1a850" path="res://entities/ui/multiplayer_server_browser/scripts/HostMultiplayerGame.gd" id="5_h86l2"]
+[ext_resource type="Resource" uid="uid://b5g0m2v43gs48" path="res://shared/resources/validations/templates/IPValidation.tres" id="6_bnkhv"]
 [ext_resource type="Script" uid="uid://co2n040hy5hu4" path="res://shared/entities/game_broadcast/scripts/GameBroadcast.gd" id="6_c3rh4"]
 [ext_resource type="Script" uid="uid://cjad7cr753o0w" path="res://entities/ui/multiplayer_server_browser/scripts/BroadcastServerList.gd" id="6_g4ywp"]
 [ext_resource type="PackedScene" uid="uid://bg3c8ubx25e01" path="res://entities/ui/multiplayer_server_entry/scenes/MultiplayerServerEntry.tscn" id="7_8t68q"]
 [ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="8_yw5u2"]
 [ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="9_rwnah"]
 [ext_resource type="Script" uid="uid://b03sehux5xslr" path="res://shared/entities/clickable_button/resources/actions/OpenMainMenu.gd" id="10_q6trj"]
+[ext_resource type="Script" uid="uid://b5y35d40fsrp4" path="res://shared/entities/validation_text_edit/scripts/MultiValidationNode.gd" id="12_bnkhv"]
 
 [sub_resource type="Resource" id="Resource_duj62"]
 script = ExtResource("10_q6trj")
 metadata/_custom_type_script = "uid://b03sehux5xslr"
 
-[node name="MultiplayerServerBrowser" type="CanvasLayer"]
+[node name="MultiplayerServerBrowser" type="CanvasLayer" unique_id=1775291438]
 
-[node name="MenuBackground" parent="." instance=ExtResource("1_j1a2p")]
+[node name="MenuBackground" parent="." unique_id=1134510553 instance=ExtResource("1_j1a2p")]
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="ConnectValidation" type="Control" parent="." unique_id=586001493 node_paths=PackedStringArray("validation_fields")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 219.0
+offset_top = 71.0
+offset_right = 933.0
+offset_bottom = 577.0
+mouse_filter = 2
+script = ExtResource("12_bnkhv")
+validation_fields = [NodePath("../PanelContainer/VBoxContainer/MultiplayerNameInputValidator"), NodePath("../PanelContainer/VBoxContainer/HBoxContainer/MultiplayerValidateIpAddress")]
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=741252926]
 custom_minimum_size = Vector2(750, 0)
 anchors_preset = 8
 anchor_left = 0.5
@@ -34,26 +48,27 @@ offset_bottom = 42.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=388151223]
 layout_mode = 2
 
-[node name="MultiplayerNameInputValidator" type="LineEdit" parent="PanelContainer/VBoxContainer"]
+[node name="MultiplayerNameInputValidator" type="LineEdit" parent="PanelContainer/VBoxContainer" unique_id=744496801]
 layout_mode = 2
 placeholder_text = "PLAYER_NAME"
 script = ExtResource("2_jxhed")
 is_focused = true
+validation = ExtResource("4_tmlor")
 metadata/_custom_type_script = "uid://hk7dh5tm8rt5"
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1621459654]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "AVAILABLE_SERVERS"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer" unique_id=53270351]
 custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/ScrollContainer" node_paths=PackedStringArray("timer_target_node")]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/ScrollContainer" unique_id=1601959675 node_paths=PackedStringArray("timer_target_node")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -61,17 +76,18 @@ script = ExtResource("6_g4ywp")
 server_entry_template = ExtResource("7_8t68q")
 timer_target_node = NodePath("../../../../GameBroadcast")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1298925908]
 layout_mode = 2
 
-[node name="MultiplayerValidateIpAddress" type="LineEdit" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="MultiplayerValidateIpAddress" type="LineEdit" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1655706687]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "SERVER_ADDRESS"
 script = ExtResource("3_jxhed")
+validation = ExtResource("6_bnkhv")
 metadata/_custom_type_script = "uid://c2ktjyu2rwdmb"
 
-[node name="Connect" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="Connect" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=329046151]
 layout_mode = 2
 tooltip_text = "CONNECT_TOOLTIP"
 text = "CONNECT"
@@ -79,10 +95,10 @@ script = ExtResource("5_h86l2")
 game_lobby_template = ExtResource("4_osryj")
 is_connect_button = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=329480208]
 layout_mode = 2
 
-[node name="Host" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer2"]
+[node name="Host" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer2" unique_id=1832713224]
 layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "HOST_TOOLTIP"
@@ -90,7 +106,7 @@ text = "HOST"
 script = ExtResource("5_h86l2")
 game_lobby_template = ExtResource("4_osryj")
 
-[node name="Close" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer2"]
+[node name="Close" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer2" unique_id=1018583298]
 layout_mode = 2
 tooltip_text = "CLOSE_TOOLTIP"
 shortcut = ExtResource("8_yw5u2")
@@ -98,15 +114,19 @@ text = "CLOSE"
 script = ExtResource("9_rwnah")
 pressed_action = SubResource("Resource_duj62")
 
-[node name="GameBroadcast" type="Node" parent="."]
+[node name="GameBroadcast" type="Node" parent="." unique_id=1049643996]
 script = ExtResource("6_c3rh4")
 is_receiver = true
 metadata/_custom_type_script = "uid://co2n040hy5hu4"
 
+[connection signal="invalid" from="ConnectValidation" to="PanelContainer/VBoxContainer/HBoxContainer/Connect" method="disable_button"]
+[connection signal="valid" from="ConnectValidation" to="PanelContainer/VBoxContainer/HBoxContainer/Connect" method="enable_button"]
 [connection signal="text_changed" from="PanelContainer/VBoxContainer/MultiplayerNameInputValidator" to="PanelContainer/VBoxContainer/HBoxContainer/Connect" method="name_updated"]
 [connection signal="text_changed" from="PanelContainer/VBoxContainer/MultiplayerNameInputValidator" to="PanelContainer/VBoxContainer/HBoxContainer2/Host" method="name_updated"]
 [connection signal="text_submitted" from="PanelContainer/VBoxContainer/MultiplayerNameInputValidator" to="PanelContainer/VBoxContainer/HBoxContainer/Connect" method="name_updated"]
 [connection signal="text_submitted" from="PanelContainer/VBoxContainer/MultiplayerNameInputValidator" to="PanelContainer/VBoxContainer/HBoxContainer2/Host" method="name_updated"]
+[connection signal="valid" from="PanelContainer/VBoxContainer/MultiplayerNameInputValidator" to="PanelContainer/VBoxContainer/HBoxContainer2/Host" method="enable_button"]
+[connection signal="validation_failed" from="PanelContainer/VBoxContainer/MultiplayerNameInputValidator" to="PanelContainer/VBoxContainer/HBoxContainer2/Host" method="disable_button"]
 [connection signal="address_requested" from="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer" to="PanelContainer/VBoxContainer/HBoxContainer/Connect" method="ip_updated"]
 [connection signal="connection_triggered" from="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer" to="PanelContainer/VBoxContainer/HBoxContainer/Connect" method="_pressed"]
 [connection signal="got_submitted" from="PanelContainer/VBoxContainer/HBoxContainer/MultiplayerValidateIpAddress" to="PanelContainer/VBoxContainer/HBoxContainer/Connect" method="_pressed"]

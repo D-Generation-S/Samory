@@ -152,7 +152,6 @@ pressed_action = SubResource("Resource_wcv3f")
 
 [connection signal="card_added" from="." to="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/MarginContainer/ScrollContainer/CardList" method="add_card_entry"]
 [connection signal="card_updated" from="." to="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/MarginContainer/ScrollContainer/CardList" method="update_card_entry"]
-[connection signal="close" from="." to="MarginContainer/PanelContainer/VBoxContainer/ButtonMargin/Buttons/Abort" method="simulate_click"]
 [connection signal="deck_name_changed" from="." to="MarginContainer/PanelContainer/VBoxContainer/DeckInformationMargin/PanelContainer/Deck Information/RealDeckName" method="set_text"]
 [connection signal="show_card" from="." to="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/CardPreview" method="load_card"]
 [connection signal="delete_card_requested" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/MarginContainer/ScrollContainer/CardList" to="." method="delete_card"]

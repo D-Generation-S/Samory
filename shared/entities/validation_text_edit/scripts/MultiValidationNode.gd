@@ -6,6 +6,8 @@ signal invalid()
 @export var validation_fields: Array[LineEditValidation]
 @export var validation_text_edit: Array[TextEditValidation]
 
+var _additional_resource_valid: bool = true
+
 func _ready() -> void:
 	_setup_validation_fields()
 	_setup_text_edits()
@@ -25,9 +27,14 @@ func _setup_text_edits() -> void:
 			invalid.emit()
 
 func _validate_all() -> void:
+	if not _additional_resource_valid:
+		invalid.emit()
+		return
+
 	var is_valid: bool = _field_validated()
 	if is_valid:
 		is_valid = _text_edit_validate()
+
 	if is_valid:
 		valid.emit()
 		return
@@ -45,3 +52,11 @@ func _text_edit_validate() -> bool:
 			return false
 
 	return true
+
+func additional_resource_valid() -> void:
+	_additional_resource_valid = true
+	_validate_all()
+
+func additional_resource_invalid() -> void:
+	_additional_resource_valid = false
+	_validate_all()

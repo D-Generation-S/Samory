@@ -24,6 +24,7 @@ func _on_text_changed() -> void:
 	text_is_changed.emit(text)
 
 func _validate_and_trigger(new_text: String) -> void:
+	new_text = new_text.trim_prefix(" ").trim_suffix(" ")
 	_is_valid = _validate(new_text)
 	if _is_valid:
 		valid.emit()

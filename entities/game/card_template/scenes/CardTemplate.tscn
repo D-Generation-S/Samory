@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://ubmqrubcq2a2"]
+[gd_scene format=3 uid="uid://ubmqrubcq2a2"]
 
 [ext_resource type="Script" uid="uid://dpct6bkajq8et" path="res://entities/game/card_template/scripts/CardTemplate.gd" id="1_fmo68"]
 [ext_resource type="AudioStream" uid="uid://dhlalkc173c3p" path="res://assets/audio/effect/card-turn-1.ogg" id="2_7bwi6"]
@@ -79,18 +79,19 @@ scale_max = 1.5
 color_ramp = SubResource("GradientTexture1D_vcvmk")
 alpha_curve = SubResource("CurveTexture_bmj37")
 
-[node name="CardTemplate" type="Node2D" node_paths=PackedStringArray("front_side", "back_side") groups=["game_card"]]
+[node name="CardTemplate" type="Node2D" unique_id=598916214 node_paths=PackedStringArray("front_side", "back_side") groups=["game_card"]]
 script = ExtResource("1_fmo68")
 front_side = NodePath("CanvasGroup/CardFront")
 back_side = NodePath("CardBack")
 flip_effects = Array[AudioStream]([ExtResource("2_7bwi6"), ExtResource("3_hh2fg"), ExtResource("4_s61ka")])
 
-[node name="CanvasGroup" type="CanvasGroup" parent="."]
+[node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=2022425032]
+z_index = -2
 material = SubResource("ShaderMaterial_sgpsy")
 script = ExtResource("6_7ry7r")
 possible_effects = Array[ExtResource("7_71qre")]([ExtResource("8_nugiu")])
 
-[node name="DropShadow" type="Sprite2D" parent="CanvasGroup"]
+[node name="DropShadow" type="Sprite2D" parent="CanvasGroup" unique_id=1120611109]
 material = SubResource("ShaderMaterial_bmj37")
 position = Vector2(250, 275)
 texture = ExtResource("14_bmj37")
@@ -98,11 +99,11 @@ script = ExtResource("9_ja01p")
 target_offset = Vector2(13, 13)
 animation_time = 0.1
 
-[node name="CardBackground" type="Sprite2D" parent="CanvasGroup" groups=["card_content"]]
+[node name="CardBackground" type="Sprite2D" parent="CanvasGroup" unique_id=914357819 groups=["card_content"]]
 position = Vector2(250, 275)
 texture = SubResource("GradientTexture2D_vp4ck")
 
-[node name="CardText" type="RichTextLabel" parent="CanvasGroup" groups=["card_content"]]
+[node name="CardText" type="RichTextLabel" parent="CanvasGroup" unique_id=557375108 groups=["card_content"]]
 offset_top = 500.0
 offset_right = 500.0
 offset_bottom = 550.0
@@ -114,12 +115,12 @@ text = "[center]placeholder[/center]"
 fit_content = true
 script = ExtResource("3_4fnc2")
 
-[node name="CardFront" type="Sprite2D" parent="CanvasGroup" groups=["card_content"]]
+[node name="CardFront" type="Sprite2D" parent="CanvasGroup" unique_id=1601101173 groups=["card_content"]]
 position = Vector2(250, 250)
 texture = ExtResource("4_e8l51")
 script = ExtResource("4_kxmgl")
 
-[node name="CardBack" type="Sprite2D" parent="."]
+[node name="CardBack" type="Sprite2D" parent="." unique_id=597243811]
 material = ExtResource("5_b0osi")
 position = Vector2(250, 275)
 texture = ExtResource("14_bmj37")
@@ -127,19 +128,21 @@ script = ExtResource("8_pw264")
 focus_animation_time = 0.1
 toggle_material = ExtResource("5_b0osi")
 focus_material = ExtResource("16_ja01p")
+enforced_back_color = Color(1, 0.8745098, 0.7372549, 1)
 
-[node name="Area2D" type="Area2D" parent="CardBack"]
+[node name="Collider" type="Area2D" parent="CardBack" unique_id=1050148911]
+unique_name_in_owner = true
 script = ExtResource("9_mu0q4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CardBack/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CardBack/Collider" unique_id=876216407]
 shape = SubResource("RectangleShape2D_phkhd")
 
-[node name="DebugInformation" type="Node2D" parent="." node_paths=PackedStringArray("card_id_label", "card_position_label")]
+[node name="DebugInformation" type="Node2D" parent="." unique_id=1036970705 node_paths=PackedStringArray("card_id_label", "card_position_label")]
 script = ExtResource("18_tqsbp")
 card_id_label = NodePath("CardIdLabel")
 card_position_label = NodePath("CardPositionLabel")
 
-[node name="CardIdLabel" type="Label" parent="DebugInformation"]
+[node name="CardIdLabel" type="Label" parent="DebugInformation" unique_id=1325513938]
 offset_left = 20.0
 offset_top = 390.0
 offset_right = 218.0
@@ -150,7 +153,7 @@ text = "0"
 vertical_alignment = 2
 script = ExtResource("18_8fn1p")
 
-[node name="CardPositionLabel" type="Label" parent="DebugInformation"]
+[node name="CardPositionLabel" type="Label" parent="DebugInformation" unique_id=250293733]
 offset_left = 136.0
 offset_top = 22.0
 offset_right = 479.0
@@ -161,7 +164,8 @@ text = "[0,0]"
 horizontal_alignment = 2
 script = ExtResource("18_8fn1p")
 
-[node name="MatchingFoundEffect" type="GPUParticles2D" parent="."]
+[node name="MatchingFoundEffect" type="GPUParticles2D" parent="." unique_id=1713421395]
+visible = false
 position = Vector2(250, 275)
 amount = 800
 texture = ExtResource("20_ja01p")
@@ -171,7 +175,7 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_bmj37")
 script = ExtResource("21_ja01p")
 
-[node name="FocusEffect" type="Node" parent="."]
+[node name="FocusEffect" type="Node" parent="." unique_id=1968140702]
 script = ExtResource("23_bmj37")
 effect_pool = Array[AudioStream]([ExtResource("24_7o8gd"), ExtResource("25_o4ple"), ExtResource("26_7cddj"), ExtResource("27_7sao1")])
 volume = -15.0
@@ -198,6 +202,6 @@ volume = -15.0
 [connection signal="hide_started" from="CardBack" to="CanvasGroup/DropShadow" method="lost_focus"]
 [connection signal="in_focus" from="CardBack" to="CanvasGroup/DropShadow" method="got_focus"]
 [connection signal="in_focus" from="CardBack" to="FocusEffect" method="trigger_random_effect"]
-[connection signal="clicked" from="CardBack/Area2D" to="." method="card_was_clicked"]
-[connection signal="mouse_entered" from="CardBack/Area2D" to="." method="selected_by_mouse"]
-[connection signal="mouse_entered" from="CardBack/Area2D" to="CardBack" method="is_focused"]
+[connection signal="clicked" from="CardBack/Collider" to="." method="card_was_clicked"]
+[connection signal="mouse_entered" from="CardBack/Collider" to="." method="selected_by_mouse"]
+[connection signal="mouse_entered" from="CardBack/Collider" to="CardBack" method="is_focused"]

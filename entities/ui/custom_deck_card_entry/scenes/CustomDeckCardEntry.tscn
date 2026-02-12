@@ -34,17 +34,20 @@ text = "CARD_NAME"
 
 [node name="View" type="Button" parent="HBoxContainer" unique_id=792109127]
 layout_mode = 2
+tooltip_text = "VIEW_CARD_TOOLTIP"
 icon = SubResource("AtlasTexture_0wuy1")
 script = ExtResource("3_oynso")
 
 [node name="Edit" type="Button" parent="HBoxContainer" unique_id=1307700358]
 layout_mode = 2
+tooltip_text = "EDIT_CARD_TOOLTIP"
 icon = SubResource("AtlasTexture_r0wk1")
 script = ExtResource("3_oynso")
 
 [node name="Delete" type="Button" parent="HBoxContainer" unique_id=13695540]
 layout_mode = 2
 size_flags_horizontal = 8
+tooltip_text = "DELETE_CARD_TOOLTIP"
 icon = ExtResource("2_ox2an")
 script = ExtResource("3_oynso")
 

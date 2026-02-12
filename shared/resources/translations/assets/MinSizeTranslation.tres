@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_3bx0f")
 key = "MIN_SIZE_VALIDATION"
-comment = "Must contain a single %o placeholder to be replaced with the min limit"
+comment = "Must contain a single %s placeholder to be replaced with the min limit"
 metadata/_custom_type_script = "uid://b3ccmsvxi5x8x"

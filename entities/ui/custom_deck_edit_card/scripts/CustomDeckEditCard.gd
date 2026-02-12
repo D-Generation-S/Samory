@@ -19,8 +19,8 @@ func show_add_card() -> void:
 
 func show_edit_card(deck_resource: CustomDeckResource) -> void:
 	is_edit = true
-	load_card(deck_resource)
 	_make_visible()
+	load_card(deck_resource)
 
 func load_card(deck_resource: CustomDeckResource) -> void:
 	_current_card_resource = deck_resource

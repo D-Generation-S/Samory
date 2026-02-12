@@ -13,6 +13,7 @@ signal focus_lost()
 @export var focus_scale: float = 1.03
 @export var toggle_material: ShaderMaterial
 @export var focus_material: ShaderMaterial
+@export var enforced_back_color: Color = Color(0,0,0,1)
 
 var _internal_toggle_material: ShaderMaterial
 var _internal_focus_material: ShaderMaterial
@@ -27,8 +28,11 @@ var currently_ai: bool = false
 var animation_tween: Tween = null
 var _focus_tween: Tween = null
 
+var _target_width: int = 500
+var _target_height: int = 550
+
 func _ready() -> void:
-	collider = get_children()[0]
+	collider = %Collider# get_children()[0]
 	visible = true
 	_internal_focus_material = focus_material.duplicate_deep()
 	_internal_toggle_material = toggle_material.duplicate_deep()
@@ -37,7 +41,22 @@ func _ready() -> void:
 
 func deck_changed(deck: MemoryDeckResource) -> void:
 	if deck.card_back != null:
+		var image: Image = deck.card_back.get_image()
+		if image.get_width() < _target_width or image.get_height() < _target_height:
+			image = _fix_image(image)
+			var loaded_texture: ImageTexture = ImageTexture.create_from_image(image)
+			texture = loaded_texture as Texture2D
+			return
 		texture = deck.card_back
+
+func _fix_image(image: Image) -> Image:
+	var new_image: Image  = Image.create(_target_width, _target_height, false, image.get_format())
+	new_image.fill(enforced_back_color)
+
+	var offset_x: float = (_target_width - image.get_width()) / 2.0
+	var offset_y: float = (_target_height - image.get_height()) / 2.0
+	new_image.blit_rect(image, image.get_used_rect(), Vector2i(int(offset_x), int(offset_y)))
+	return new_image
 
 func toggle_on() -> void:
 	can_remove = false

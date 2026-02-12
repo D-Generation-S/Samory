@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="MultiAndValidation" format=3 uid="uid://b04q73n0hqf3f"]
+
+[ext_resource type="Script" uid="uid://tjo0r1gwyjls" path="res://shared/resources/validations/MultiAndValidation.gd" id="1_jkm4g"]
+[ext_resource type="Script" uid="uid://cci4ryxp2ob7m" path="res://shared/resources/validations/Validation.gd" id="2_y3hqb"]
+[ext_resource type="Resource" uid="uid://bfylp3ooxs1ua" path="res://shared/resources/translations/assets/MaxSizeTranslation.tres" id="3_qmu7l"]
+[ext_resource type="Resource" uid="uid://h0lfh3suh0v5" path="res://shared/resources/translations/assets/MinSizeTranslation.tres" id="4_1fng4"]
+[ext_resource type="Script" uid="uid://dgu6d3fl16qev" path="res://shared/resources/validations/TextSizeValidation.gd" id="5_7hwe4"]
+[ext_resource type="Resource" uid="uid://dkqwatqifmgr" path="res://shared/resources/translations/assets/RegexOnlyLettersAndNumbers.tres" id="6_g1dbn"]
+[ext_resource type="Script" uid="uid://gvswey3hf5eo" path="res://shared/resources/validations/RegexValidation.gd" id="7_8kfcq"]
+
+[sub_resource type="Resource" id="Resource_p382m"]
+script = ExtResource("5_7hwe4")
+min_size = 2
+max_size = 20
+metadata/_custom_type_script = "uid://dgu6d3fl16qev"
+
+[sub_resource type="Resource" id="Resource_e0m5k"]
+script = ExtResource("7_8kfcq")
+regex_rules = "^[a-zA-Z0-9]+$"
+regex_validation_error = ExtResource("6_g1dbn")
+metadata/_custom_type_script = "uid://gvswey3hf5eo"
+
+[resource]
+script = ExtResource("1_jkm4g")
+validators = Array[ExtResource("2_y3hqb")]([SubResource("Resource_p382m"), SubResource("Resource_e0m5k")])
+metadata/_custom_type_script = "uid://tjo0r1gwyjls"

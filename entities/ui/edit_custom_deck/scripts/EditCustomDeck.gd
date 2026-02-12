@@ -4,9 +4,7 @@ signal deck_name_changed(new_name: String)
 signal card_added(card: CustomDeckResource)
 signal card_updated(card: CustomDeckResource)
 signal show_card(card: MemoryCardResource)
-signal close()
 
-var _base_path: String = "user://custom_decks/"
 var _resources: Array[CustomDeckResource] = []
 var _deck_loader: CustomDeckLoader = CustomDeckLoader.new()
 
@@ -50,7 +48,7 @@ func _get_next_card_id() -> int:
 
 func save_deck() -> void:
 	if _deck_loader.save_deck(get_deck(), _resources):
-		close.emit()
+		GlobalGameManagerAccess.get_game_manager().reload_system_decks()
 
 func view_card(resource: CustomDeckResource) -> void:
 	var card: MemoryCardResource = _deck_loader.convert_to_playable_card(resource)

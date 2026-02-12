@@ -12,6 +12,7 @@ enum {
 ## If this is set to true, the button will listen to the debug signal, showing itself if requested
 @export var can_request_debug_view: bool = false
 @export_flags("Web", "Desktop", "Mobile", "Debug") var active: int = 7
+@export var only_visible_if_custom_deck_active: bool = false
 
 @export_group("Behavior")
 @export var is_focused: bool = false
@@ -50,6 +51,7 @@ func _check_for_valid_platform() -> bool:
 		print_debug("debug only")
 		queue_free()
 		return false
+
 	var visibility: bool = false
 	visible = false
 	if active & (1 << WEB) && OS.has_feature("web"):
@@ -63,6 +65,10 @@ func _check_for_valid_platform() -> bool:
 
 	if active & (1 << DEBUG) && OS.is_debug_build():
 		visibility = true
+
+	if visibility and only_visible_if_custom_deck_active:
+		var settings: SettingsResource = SettingsRepository.load_settings()
+		visibility = settings.load_custom_decks
 
 	visible = visibility
 	return true

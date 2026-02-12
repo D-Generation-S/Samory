@@ -1,5 +1,8 @@
 extends TextureRect
 
+signal image_is_empty()
+signal image_is_set()
+
 @export var image: Texture2D = null:
 	set(value):
 		_image = value
@@ -17,18 +20,24 @@ func _ready() -> void:
 	set_image(image)
 
 func _reset() -> void:
-	texture = _initial_image
+	print(_initial_image)
+	set_image(_initial_image)
 
 func new_image_selected(image_path: String) -> void:
 	if image_path == "":
+		_reset()
 		return
 	var loaded_image: Image = Image.load_from_file(image_path)
 	var loaded_texture: ImageTexture = ImageTexture.create_from_image(loaded_image)
 	image = loaded_texture as Texture2D
 
 func set_image(new_image: Texture2D) -> void:
+	print(new_image)
 	if new_image == null:
+		image_is_empty.emit()
+		texture = null
 		return
+	image_is_set.emit()
 	if new_image.get_width() <= max_width and new_image.get_height() < max_height:
 		texture = new_image
 		return

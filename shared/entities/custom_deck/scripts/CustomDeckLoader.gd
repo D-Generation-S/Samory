@@ -3,6 +3,7 @@ class_name CustomDeckLoader extends Resource
 var _max_image_width: float = 500
 var _max_image_height: float = 500
 var _base_path: String = "user://custom_decks/"
+var _deck_extension: String = "sdeck"
 var _back_image_name: String = "back.png"
 var _deck_information_file_name: String = "deck_info"
 var _card_base_path: String = "cards/"
@@ -17,7 +18,7 @@ func save_deck(deck_information: CustomDeckResource, deck_data: Array[CustomDeck
 	
 	var save_file_name: String =deck_information.get_file_name().replace(" ", "_")
 	save_file_name = save_file_name.to_lower()
-	var path: String = "%s%s.sdeck" % [_base_path, save_file_name]
+	var path: String = "%s%s.%s" % [_base_path, save_file_name, _deck_extension]
 	var packer: ZIPPacker = ZIPPacker.new()
 	DirAccess.make_dir_absolute(_base_path)
 	packer.open(path)
@@ -128,6 +129,8 @@ func _load_resource_information(reader: ZIPReader, card_path: String) -> CustomD
 	var deck_info_data: Dictionary = JSON.parse_string(read_data.get_string_from_utf8())
 	var deck_resource: CustomDeckResource = _create_deck_info_from_dictionary(deck_info_data)
 	deck_resource.loaded_texture = load_image(reader, deck_resource.get_image_path())
+	if deck_resource.loaded_texture == null:
+		deck_resource.set_image("")
 
 	return deck_resource
 
@@ -156,5 +159,49 @@ func convert_to_playable_card(resource: CustomDeckResource) -> MemoryCardResourc
 
 	return return_resource
 
+func list_decks() -> Array[String]:
+	if not DirAccess.dir_exists_absolute(_base_path):
+		return []
+	var deck_files: Array[String] = []
+	for file: String in DirAccess.get_files_at(_base_path):
+		if file.get_extension() == _deck_extension:
+			deck_files.append("%s%s" % [_base_path, file])
+
+	return deck_files
+
+func load_decks() -> Array[MemoryDeckResource]:
+	var return_decks: Array[MemoryDeckResource] = []
+	for deck: String in list_decks():
+		var playable_deck: MemoryDeckResource = load_playable_deck(deck)
+		if playable_deck != null and playable_deck.cards.size() > 2:
+			return_decks.append(playable_deck)
+	return return_decks
+
 func load_playable_deck(deck_path: String) -> MemoryDeckResource:
-	return null
+	var deck_data: Array[CustomDeckResource] = load_editable_deck(deck_path)
+	if deck_data.size() < 3:
+		return null
+	
+	var information: CustomDeckResource = null
+	for data: CustomDeckResource in deck_data:
+		if data.get_is_deck():
+			information = data
+			break
+
+	if information == null:
+		return	
+		
+	var return_deck: MemoryDeckResource = MemoryDeckResource.new()
+	return_deck.built_in = false
+	return_deck.name = information.get_resource_name()
+	return_deck.description = information.get_description()
+	return_deck.card_back = information.loaded_texture
+
+	for data: CustomDeckResource in deck_data:
+		if data.get_is_deck():
+			continue
+		var card_data: MemoryCardResource = convert_to_playable_card(data)
+		return_deck.cards.append(card_data)
+
+
+	return return_deck

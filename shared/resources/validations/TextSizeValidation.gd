@@ -11,6 +11,9 @@ func validate(new_text: String) -> bool:
 		_add_error(tr(min_size_error.key) % min_size)
 		return false
 	if new_text.length() > max_size:
+		print(tr(max_size_error.key) % max_size)
+		print(tr(max_size_error.key))
+		print(max_size)
 		_add_error(tr(max_size_error.key) % max_size)
 		return false
 	return true
