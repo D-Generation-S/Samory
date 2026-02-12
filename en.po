@@ -1202,8 +1202,8 @@ msgstr "Edit deck"
 #: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
 msgid "CREATE_NEW_CUSTOM_DECK_DESCRIPTION"
 msgstr ""
-"Create a new deck from scratch, if you already did enter a name you will be "
-"send to the card edit screen"
+"Create a new deck from scratch, if you did load a deck before all changes "
+"will be lost"
 
 #: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
 msgid "CREATE_NEW_CUSTOM_DECK"
@@ -1230,7 +1230,7 @@ msgstr ""
 
 #: entities/ui/custom_deck_edit_card/scenes/CustomDeckEditCard.tscn
 msgid "CARD_NAME_DESCRIPTION"
-msgstr "This will be the name of your card, displayed ingame"
+msgstr "This will be the name of your card, displayed in game"
 
 #: entities/ui/custom_deck_edit_card/scenes/CustomDeckEditCard.tscn
 msgid "NEW_CARD_NAME"
