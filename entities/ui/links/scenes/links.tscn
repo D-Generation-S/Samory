@@ -1,13 +1,26 @@
 [gd_scene format=3 uid="uid://da8m8gpy2rlvo"]
 
+[ext_resource type="Texture2D" uid="uid://1nkrrs4eeibb" path="res://assets/icons/SearchIcon.tres" id="1_1cih1"]
 [ext_resource type="Shortcut" uid="uid://nq3pb8cwdj1m" path="res://entities/ui/main_menu/shortcuts/help.tres" id="1_2ay2a"]
 [ext_resource type="Texture2D" uid="uid://d1fc7nwftgx4y" path="res://assets/icons/QuestionIcon.tres" id="2_1cih1"]
+[ext_resource type="Script" uid="uid://qgxq73rkwfr3" path="res://shared/entities/clickable_button/resources/OpenSystemFolder.gd" id="3_f67t6"]
 [ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="3_l56ar"]
+[ext_resource type="Script" uid="uid://bo2i1r57xlsqc" path="res://shared/entities/clickable_button/resources/animations/ControlScaleAnimation.gd" id="3_m7voa"]
 [ext_resource type="Resource" uid="uid://b0gd4uwnid78l" path="res://shared/entities/clickable_button/assets/animations/DefaultButtonAnimation.tres" id="4_f67t6"]
 [ext_resource type="Script" uid="uid://dvrn3p7xl4tpl" path="res://shared/entities/clickable_button/resources/actions/OpenLinkAction.gd" id="5_m7voa"]
 [ext_resource type="Texture2D" uid="uid://cln3v63hwble8" path="res://assets/icons/HomeIcon.tres" id="6_6wbyd"]
 [ext_resource type="Texture2D" uid="uid://cswswoet5pppp" path="res://assets/icons/ShareIcon.tres" id="7_dpv13"]
 [ext_resource type="Texture2D" uid="uid://cat86qdkpvga8" path="res://assets/icons/WarningIcon.tres" id="8_63oac"]
+
+[sub_resource type="Resource" id="Resource_6wbyd"]
+script = ExtResource("3_m7voa")
+metadata/_custom_type_script = "uid://bo2i1r57xlsqc"
+
+[sub_resource type="Resource" id="Resource_m7voa"]
+script = ExtResource("3_f67t6")
+user_path = "user://custom_decks/"
+force_create_folder = true
+metadata/_custom_type_script = "uid://qgxq73rkwfr3"
 
 [sub_resource type="Resource" id="Resource_ssyfv"]
 script = ExtResource("5_m7voa")
@@ -31,6 +44,16 @@ metadata/_custom_type_script = "uid://dvrn3p7xl4tpl"
 
 [node name="Links" type="HBoxContainer" unique_id=31784573]
 size_flags_horizontal = 8
+
+[node name="OpenCustomDeckFolder" type="Button" parent="." unique_id=2116555998]
+layout_mode = 2
+tooltip_text = "OPEN_DECK_FOLDER_TOOLTIP"
+icon = ExtResource("1_1cih1")
+script = ExtResource("3_l56ar")
+active = 2
+only_visible_if_custom_deck_active = true
+animation_resource = SubResource("Resource_6wbyd")
+pressed_action = SubResource("Resource_m7voa")
 
 [node name="HowToPlay" type="Button" parent="." unique_id=1979169242]
 layout_mode = 2

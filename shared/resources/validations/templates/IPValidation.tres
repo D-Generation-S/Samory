@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RegexValidation" format=3 uid="uid://b5g0m2v43gs48"]
+
+[ext_resource type="Resource" uid="uid://b22ff6v76015g" path="res://shared/resources/translations/assets/RegexValidationError.tres" id="1_n14xo"]
+[ext_resource type="Script" uid="uid://gvswey3hf5eo" path="res://shared/resources/validations/RegexValidation.gd" id="2_dcams"]
+
+[resource]
+script = ExtResource("2_dcams")
+regex_rules = "^(((?!25?[6-9])[12]\\d|[1-9])?\\d\\.?\\b){4}$"
+metadata/_custom_type_script = "uid://gvswey3hf5eo"

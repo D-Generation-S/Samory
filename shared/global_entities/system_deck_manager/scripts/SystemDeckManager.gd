@@ -29,10 +29,8 @@ func reload_system_decks() -> void:
 
 	loading_system_decks.emit()
 	var decks: Array[String] = deck_loader.list_decks()
-	if decks.size() == 0:
-		loading_system_decks_done.emit()
-		return
 	system_decks = []
+	load_threads.append(deck_loader.load_custom_decks_async())
 	for deck: String in decks:
 		load_threads.append(deck_loader.load_deck_async(deck))
 
@@ -50,10 +48,17 @@ func _process(delta: float) -> void:
 				break
 		if loading_done:
 			for thread: Thread in load_threads:
-				var data: MemoryDeckResource = thread.wait_to_finish() as MemoryDeckResource
-				if data != null:
-					data.id = deck_id
-					system_decks.append(data)
-					deck_id = deck_id + 1
+				var thread_data: Variant = thread.wait_to_finish()
+				if thread_data is Array[MemoryDeckResource]:
+					for deck: MemoryDeckResource in thread_data:
+						deck.id = deck_id
+						system_decks.append(deck)
+						deck_id = deck_id + 1
+				if thread_data is MemoryDeckResource:
+					if thread_data != null:
+						thread_data.id = deck_id
+						system_decks.append(thread_data)
+						deck_id = deck_id + 1
+
 			load_threads = []
 			loading_system_decks_done.emit()

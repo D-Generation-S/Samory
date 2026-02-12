@@ -1,0 +1,53 @@
+class_name CustomDeckEditCard extends PanelContainer
+
+signal add_new_card(card: CustomDeckResource)
+signal update_card(card: CustomDeckResource)
+signal card_updated(card: CustomDeckResource)
+signal hiding()
+signal showing()
+
+var is_edit: bool = false
+var _current_card_resource: CustomDeckResource = null
+
+func _ready() -> void:
+	cancel()
+
+func show_add_card() -> void:
+	is_edit = false
+	_make_visible()
+	load_card(CustomDeckResource.new(-1, false, "", "", ""))
+
+func show_edit_card(deck_resource: CustomDeckResource) -> void:
+	is_edit = true
+	_make_visible()
+	load_card(deck_resource)
+
+func load_card(deck_resource: CustomDeckResource) -> void:
+	_current_card_resource = deck_resource
+	card_updated.emit(_current_card_resource)
+
+func update_card_name(new_name: String) -> void:
+	_current_card_resource.set_deck_name(new_name)
+
+func update_card_description(new_description: String) -> void:
+	_current_card_resource.set_description(new_description)
+
+func update_card_image(path: String) -> void:
+	_current_card_resource.loaded_texture = null
+	_current_card_resource.set_image(path)
+
+func save_card() -> void:
+	if is_edit:
+		update_card.emit(_current_card_resource)
+		cancel()
+		return
+	add_new_card.emit(_current_card_resource)
+	cancel()
+
+func cancel() -> void:
+	hiding.emit()
+	hide()
+
+func _make_visible() -> void:
+	showing.emit()
+	show()

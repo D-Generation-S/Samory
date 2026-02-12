@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TextTranslation" format=3 uid="uid://h0lfh3suh0v5"]
+
+[ext_resource type="Script" uid="uid://b3ccmsvxi5x8x" path="res://shared/resources/translations/TextTranslation.gd" id="1_3bx0f"]
+
+[resource]
+script = ExtResource("1_3bx0f")
+key = "MIN_SIZE_VALIDATION"
+comment = "Must contain a single %s placeholder to be replaced with the min limit"
+metadata/_custom_type_script = "uid://b3ccmsvxi5x8x"

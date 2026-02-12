@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://bcshvc0icanvp"]
+
+[ext_resource type="Script" uid="uid://cagdcpwwtv1tm" path="res://entities/ui/custom_deck_card_entry/scripts/CustomDeckCardEntry.gd" id="1_ox2an"]
+[ext_resource type="Texture2D" uid="uid://cg0l7tvqmtghr" path="res://assets/sprites/sheet_white1x.png" id="1_tfxyp"]
+[ext_resource type="Texture2D" uid="uid://bksl4a0sqfn5p" path="res://assets/icons/TrashIcon.tres" id="2_ox2an"]
+[ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="3_oynso"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wuy1"]
+atlas = ExtResource("1_tfxyp")
+region = Rect2(150, 300, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0wk1"]
+atlas = ExtResource("1_tfxyp")
+region = Rect2(50, 300, 50, 50)
+
+[node name="CustomDeckCardEntry" type="PanelContainer" unique_id=1320678092]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -56.5
+offset_bottom = 56.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ox2an")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1331192464]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer" unique_id=1377699201]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "CARD_NAME"
+
+[node name="View" type="Button" parent="HBoxContainer" unique_id=792109127]
+layout_mode = 2
+tooltip_text = "VIEW_CARD_TOOLTIP"
+icon = SubResource("AtlasTexture_0wuy1")
+script = ExtResource("3_oynso")
+
+[node name="Edit" type="Button" parent="HBoxContainer" unique_id=1307700358]
+layout_mode = 2
+tooltip_text = "EDIT_CARD_TOOLTIP"
+icon = SubResource("AtlasTexture_r0wk1")
+script = ExtResource("3_oynso")
+
+[node name="Delete" type="Button" parent="HBoxContainer" unique_id=13695540]
+layout_mode = 2
+size_flags_horizontal = 8
+tooltip_text = "DELETE_CARD_TOOLTIP"
+icon = ExtResource("2_ox2an")
+script = ExtResource("3_oynso")
+
+[connection signal="_name_changed" from="." to="HBoxContainer/Label" method="set_text"]
+[connection signal="pressed" from="HBoxContainer/View" to="." method="view_card"]
+[connection signal="pressed" from="HBoxContainer/Edit" to="." method="edit_card"]
+[connection signal="pressed" from="HBoxContainer/Delete" to="." method="delete_card"]

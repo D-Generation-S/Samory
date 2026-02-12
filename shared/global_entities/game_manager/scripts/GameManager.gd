@@ -107,7 +107,6 @@ func translate_built_in_decks() -> void:
 	for deck: MemoryDeckResource in build_in_decks:
 		var new_deck: MemoryDeckResource = deck.duplicate_deep() as MemoryDeckResource
 		new_deck.take_over_path(deck.resource_path)
-		print(new_deck.resource_path)
 		new_deck.name = tr(deck.name)
 		new_deck.description = tr(deck.description)
 		var cards: Array[MemoryCardResource] = deck.cards
@@ -162,7 +161,6 @@ func _build_network_game_package(players: Array[PlayerResource], deck: MemoryDec
 	var network_players: Array[Dictionary] = []
 	for player: PlayerResource in players:
 		network_players.append(player.get_network_data_set())
-	print(deck.name)
 	return {
 		"players": network_players,
 		"deck-path": deck.resource_path,

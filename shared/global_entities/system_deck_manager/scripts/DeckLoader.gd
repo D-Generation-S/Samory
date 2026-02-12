@@ -2,6 +2,9 @@ extends Node
 
 class_name DeckLoader 
 
+func _get_default_cover() -> Texture2D:
+	return load("res://assets/sprites/Axuree/back_card_3.png") as Texture2D
+
 func list_decks() -> Array[String]:
 	var base_path: String = build_deck_base_path("")
 	DirAccess.make_dir_absolute(base_path)
@@ -67,6 +70,20 @@ func build_card_base_path(deck_directory: String) -> String:
 func validate_deck(deck_folder: String) -> bool:
 	return validate_deck_meta_data(deck_folder) and list_deck_cards(deck_folder).size() >= 2
 
+func load_custom_decks() -> Array[MemoryDeckResource]:
+	var custom_deck_loader: CustomDeckLoader = CustomDeckLoader.new()
+	var data: Array[MemoryDeckResource] = custom_deck_loader.load_decks()
+	for deck: MemoryDeckResource in data:
+		if deck.card_back == null:
+			deck.card_back = _get_default_cover()
+	return data
+
+func load_custom_decks_async() -> Thread:
+	var thread: Thread = Thread.new()
+	thread.start(load_custom_decks)
+
+	return thread
+
 func load_deck(deck_name: String) -> MemoryDeckResource:
 	var path: String = build_deck_base_path(deck_name)
 	var deck_found: bool = DirAccess.dir_exists_absolute(path)
@@ -105,7 +122,7 @@ func get_cover_image(deck_name: String) -> Texture2D:
 		var image: Image = Image.load_from_file(image_source_path)
 		return ImageTexture.create_from_image(image) as Texture2D
 		
-	return load("res://assets/sprites/Axuree/back_card_3.png") as Texture2D
+	return _get_default_cover()
 
 func load_card(deck_name: String, card_name: String) -> MemoryCardResource:
 	var base_path: String = "%s/%s" % [build_card_base_path(deck_name), card_name]

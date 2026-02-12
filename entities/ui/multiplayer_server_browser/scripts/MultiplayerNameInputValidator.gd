@@ -12,8 +12,7 @@ func _get_player_name() -> String:
 	var name_generator: NameGenerator= NameGenerator.new()
 	return name_generator.get_random_name()
 
-func _validate(_new_text: String) -> bool:
-	
+func _validate(new_text: String) -> bool:
 	var settings: SettingsResource = SettingsRepository.load_settings()
 	settings.default_multiplayer_name = text
-	return true
+	return super(new_text)

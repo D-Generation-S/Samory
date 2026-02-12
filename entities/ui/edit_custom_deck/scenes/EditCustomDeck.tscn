@@ -1,0 +1,167 @@
+[gd_scene format=3 uid="uid://dm30nveb0uwwt"]
+
+[ext_resource type="Script" uid="uid://dinrl0roigxp1" path="res://entities/ui/edit_custom_deck/scripts/EditCustomDeck.gd" id="1_ehkr0"]
+[ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://entities/ui/menu_background/scenes/MenuBackground.tscn" id="2_dqo5i"]
+[ext_resource type="StyleBox" uid="uid://d1rhal5rp1608" path="res://assets/styles/panel/MetalBox.tres" id="3_3lwiu"]
+[ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="4_nuni8"]
+[ext_resource type="Script" uid="uid://brscx1kejvoc" path="res://entities/ui/edit_custom_deck/scripts/CustomCardList.gd" id="4_pgiyy"]
+[ext_resource type="PackedScene" uid="uid://bcshvc0icanvp" path="res://entities/ui/custom_deck_card_entry/scenes/CustomDeckCardEntry.tscn" id="5_r0wk1"]
+[ext_resource type="Script" uid="uid://d0jijr8wa6o8v" path="res://shared/entities/clickable_button/resources/behaviors/DefaultButtonBehavior.gd" id="5_rkv3r"]
+[ext_resource type="Script" uid="uid://b03sehux5xslr" path="res://shared/entities/clickable_button/resources/actions/OpenMainMenu.gd" id="6_pgiyy"]
+[ext_resource type="PackedScene" uid="uid://k8xh53yapv5h" path="res://entities/ui/custom_deck_edit_card/scenes/CustomDeckEditCard.tscn" id="7_0wuy1"]
+[ext_resource type="Script" uid="uid://cj4m8p2qipv6j" path="res://entities/ui/edit_custom_deck/scripts/CustomCardPreview.gd" id="8_ipec7"]
+[ext_resource type="PackedScene" uid="uid://bkpf0f8bvau6t" path="res://entities/ui/card_preview/scenes/CardPreview.tscn" id="9_wcv3f"]
+
+[sub_resource type="Resource" id="Resource_0wuy1"]
+script = ExtResource("5_rkv3r")
+metadata/_custom_type_script = "uid://d0jijr8wa6o8v"
+
+[sub_resource type="Resource" id="Resource_r0wk1"]
+script = ExtResource("5_rkv3r")
+metadata/_custom_type_script = "uid://d0jijr8wa6o8v"
+
+[sub_resource type="Resource" id="Resource_ipec7"]
+script = ExtResource("5_rkv3r")
+metadata/_custom_type_script = "uid://d0jijr8wa6o8v"
+
+[sub_resource type="Resource" id="Resource_wcv3f"]
+script = ExtResource("6_pgiyy")
+metadata/_custom_type_script = "uid://b03sehux5xslr"
+
+[node name="EditCustomDeck" type="CanvasLayer" unique_id=146379773]
+script = ExtResource("1_ehkr0")
+
+[node name="MenuBackground" parent="." unique_id=1056163621 instance=ExtResource("2_dqo5i")]
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1206444009]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=1152523095]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer" unique_id=1156178596]
+layout_mode = 2
+
+[node name="DeckInformationMargin" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=1849053600]
+layout_mode = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/DeckInformationMargin" unique_id=484059525]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_3lwiu")
+
+[node name="Deck Information" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/DeckInformationMargin/PanelContainer" unique_id=1492666202]
+layout_mode = 2
+
+[node name="DeckName" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/DeckInformationMargin/PanelContainer/Deck Information" unique_id=1253960440]
+layout_mode = 2
+tooltip_text = "DECK_NAME_DESCRIPTION"
+mouse_filter = 1
+text = "DECK_NAME"
+
+[node name="RealDeckName" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/DeckInformationMargin/PanelContainer/Deck Information" unique_id=896801783]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "CUSTOM_DECK_NAME"
+horizontal_alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=745960710]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1021509818]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("3_3lwiu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer" unique_id=2066631915]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer" unique_id=1420809433]
+layout_mode = 2
+size_flags_vertical = 0
+tooltip_text = "DECK_CARDS_DESCRIPTION"
+mouse_filter = 1
+text = "DECK_CARDS"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer" unique_id=664438656]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/MarginContainer" unique_id=2085340752]
+layout_mode = 2
+
+[node name="CardList" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/MarginContainer/ScrollContainer" unique_id=990046772]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("4_pgiyy")
+card_entry_scene = ExtResource("5_r0wk1")
+
+[node name="NewCard" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer" unique_id=1815257548]
+layout_mode = 2
+size_flags_vertical = 8
+tooltip_text = "CREATE_NEW_CARD_DESCRIPTION"
+text = "CREATE_NEW_CARD"
+script = ExtResource("4_nuni8")
+button_behavior = SubResource("Resource_0wuy1")
+
+[node name="CardPreview" type="Control" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=205375391]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("8_ipec7")
+card_template = ExtResource("9_wcv3f")
+
+[node name="EditCard" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=114676978 instance=ExtResource("7_0wuy1")]
+layout_mode = 2
+
+[node name="ButtonMargin" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=1908460688]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="Buttons" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/ButtonMargin" unique_id=399026637]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Save Deck" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/ButtonMargin/Buttons" unique_id=1494752749]
+layout_mode = 2
+tooltip_text = "SAVE_DESCRIPTION"
+text = "SAVE"
+script = ExtResource("4_nuni8")
+button_behavior = SubResource("Resource_r0wk1")
+
+[node name="Abort" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/ButtonMargin/Buttons" unique_id=355372475]
+layout_mode = 2
+tooltip_text = "ABORT_DESCRIPTION"
+text = "ABORT"
+script = ExtResource("4_nuni8")
+button_behavior = SubResource("Resource_ipec7")
+pressed_action = SubResource("Resource_wcv3f")
+
+[connection signal="card_added" from="." to="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/MarginContainer/ScrollContainer/CardList" method="add_card_entry"]
+[connection signal="card_updated" from="." to="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/MarginContainer/ScrollContainer/CardList" method="update_card_entry"]
+[connection signal="deck_name_changed" from="." to="MarginContainer/PanelContainer/VBoxContainer/DeckInformationMargin/PanelContainer/Deck Information/RealDeckName" method="set_text"]
+[connection signal="show_card" from="." to="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/CardPreview" method="load_card"]
+[connection signal="delete_card_requested" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/MarginContainer/ScrollContainer/CardList" to="." method="delete_card"]
+[connection signal="edit_card_requested" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/MarginContainer/ScrollContainer/CardList" to="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/EditCard" method="show_edit_card"]
+[connection signal="view_card_requested" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/MarginContainer/ScrollContainer/CardList" to="." method="view_card"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/NewCard" to="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/CardPreview" method="hide"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/NewCard" to="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/EditCard" method="show_add_card"]
+[connection signal="show_preview_card" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/CardPreview" to="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/EditCard" method="hide"]
+[connection signal="add_new_card" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/EditCard" to="." method="add_or_update_card"]
+[connection signal="hiding" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/EditCard" to="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/CardPreview" method="show_empty"]
+[connection signal="showing" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/EditCard" to="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/CardPreview" method="_hide_self"]
+[connection signal="update_card" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/EditCard" to="." method="add_or_update_card"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/ButtonMargin/Buttons/Save Deck" to="." method="save_deck"]

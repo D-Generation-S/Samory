@@ -122,12 +122,15 @@ msgid "COMPLETE_TUTORIAL"
 msgstr "Mark Tutorial as completed"
 
 #: entities/ui/card_preview/scenes/CardPreview.tscn
+#: entities/ui/custom_deck_edit_card/scenes/CustomDeckEditCard.tscn
+#: entities/ui/custom_deck_card_entry/scenes/CustomDeckCardEntry.tscn
 msgid "CARD_NAME"
-msgstr ""
+msgstr "Card name"
 
 #: entities/ui/card_preview/scenes/CardPreview.tscn
+#: entities/ui/custom_deck_edit_card/scenes/CustomDeckEditCard.tscn
 msgid "CARD_DESCRIPTION"
-msgstr ""
+msgstr "Card Description"
 
 #: entities/ui/credits/scenes/Credits.tscn
 msgid "CREDITS_ROLL_TEXT"
@@ -197,8 +200,10 @@ msgid "CARD_COUNT"
 msgstr "Card count"
 
 #: entities/ui/deck_preview/scenes/DeckPreview.tscn
+#: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
+#: entities/ui/edit_custom_deck/scenes/EditCustomDeck.tscn
 msgid "DECK_NAME"
-msgstr "Deck Info"
+msgstr "Deck name"
 
 #: entities/ui/deck_preview/scenes/DeckPreview.tscn
 msgid "DESCRIPTION"
@@ -333,6 +338,14 @@ msgid "QUICK_GAME"
 msgstr "Quick Game"
 
 #: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "CREATE_CUSTOM_DECK_DESCRIPTION"
+msgstr "Create a new deck from scratch, this can be used to play the game."
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "CREATE_CUSTOM_DECK\n"
+msgstr "Create a custom deck\n"
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
 msgid "DECK_VIEWER_TOOLTIP"
 msgstr "View all your decks with the card description"
 
@@ -361,22 +374,6 @@ msgstr "Quit Game"
 msgid "GAME_SETTINGS"
 msgstr "Game Settings"
 
-#: entities/ui/main_menu/scenes/MainMenu.tscn
-msgid "HOW_TO_PLAY"
-msgstr "How to play"
-
-#: entities/ui/main_menu/scenes/MainMenu.tscn
-msgid "GITHUB_REPOSITORY_BUTTON"
-msgstr "GitHub Repository containing game code"
-
-#: entities/ui/main_menu/scenes/MainMenu.tscn
-msgid "GAME_PAGE"
-msgstr "Game page"
-
-#: entities/ui/main_menu/scenes/MainMenu.tscn
-msgid "REPORT_BUG"
-msgstr "Report bug"
-
 #: entities/ui/multiplayer_chat/scenes/MultiplayerChat.tscn
 msgid "SEND"
 msgstr "Send"
@@ -399,6 +396,9 @@ msgid "ABORT_TOOLTIP"
 msgstr "Abort the current action or close the current Window"
 
 #: entities/ui/multiplayer_lobby/scenes/MultiplayerLobby.tscn
+#: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
+#: entities/ui/custom_deck_edit_card/scenes/CustomDeckEditCard.tscn
+#: entities/ui/edit_custom_deck/scenes/EditCustomDeck.tscn
 msgid "ABORT"
 msgstr "Abort"
 
@@ -1026,10 +1026,6 @@ msgstr "A deck containing items used in a office or with/within a pc"
 msgid "NO_NAME_WAS_ENTERED"
 msgstr "A Playername is required"
 
-#: shared/resources/translations/assets/ErrorOnlyLetterAndNumbersAllowed.tres
-msgid "ONLY_LETTER_AND_NUMBERS_ALLOWED_FOR_PLAYER_NAME"
-msgstr "A player name can only contain letters and numbers"
-
 #. TRANSLATORS: This will be used after the "LOADING" string, keep in mind to keep that as lower case
 #: shared/resources/translations/assets/LoadDecks.tres
 msgid "LOAD_DECKS"
@@ -1141,6 +1137,197 @@ msgstr ""
 "Your task is to click on one of these cards and memorize the picture on it. "
 "The goal of the game is to find the two matching cards, if you manage to do "
 "this within your turn you get a point."
+
+#. TRANSLATORS: Must contain a single %s placeholder to be replaced with the max limit
+#: shared/resources/translations/assets/MaxSizeTranslation.tres
+msgid "MAX_SIZE_VALIDATION"
+msgstr "Can't be larger than %s chars"
+
+#. TRANSLATORS: Must contain a single %s placeholder to be replaced with the min limit
+#: shared/resources/translations/assets/MinSizeTranslation.tres
+msgid "MIN_SIZE_VALIDATION"
+msgstr "Must be larger than %s chars"
+
+#: shared/resources/translations/assets/RegexValidationError.tres
+msgid "GENERIC_REGEX_VALIDATION_ERROR"
+msgstr "The data entered is not allowed for this text box"
+
+#: shared/resources/translations/assets/RegexOnlyLettersAndNumbers.tres
+msgid "ONLY_LETTERS_AND_NUMBERS_ALLOWED"
+msgstr "Only letters and numbers are allowed"
+
+#: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
+#: entities/ui/edit_custom_deck/scenes/EditCustomDeck.tscn
+msgid "DECK_NAME_DESCRIPTION"
+msgstr "This will be the name of your deck displayed in the game later on"
+
+#: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
+msgid "NEW_DECK_NAME"
+msgstr "Name of your deck"
+
+#: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
+msgid "DECK_DESCRIPTION_DESCRIPTION"
+msgstr ""
+"This will be the description of your deck, use it to add additional "
+"information to it"
+
+#: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
+msgid "DECK_DESCRIPTION"
+msgstr "Description"
+
+#: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
+msgid "NEW_DECK_DESCRIPTION"
+msgstr "The description of your deck"
+
+#: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
+msgid "LOAD_DECK_IMAGE_DESCRIPTION"
+msgstr ""
+"The image selected, will be the back face of your cards. If left empty the "
+"default one will be used"
+
+#: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
+msgid "LOAD_DECK_IMAGE"
+msgstr "Load card back"
+
+#: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
+msgid "EDIT_CUSTOM_DECK_DESCRIPTION"
+msgstr ""
+"Edit the deck you loaded, you can change the name, description or edit the "
+"cards of the deck"
+
+#: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
+msgid "EDIT_CUSTOM_DECK"
+msgstr "Edit deck"
+
+#: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
+msgid "CREATE_NEW_CUSTOM_DECK_DESCRIPTION"
+msgstr ""
+"Create a new deck from scratch, if you did load a deck before all changes "
+"will be lost"
+
+#: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
+msgid "CREATE_NEW_CUSTOM_DECK"
+msgstr "Create new custom deck"
+
+#: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
+msgid "LOAD_CUSTOM_DECK_DESCRIPTION"
+msgstr "Load a deck you already did create in the past"
+
+#: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
+msgid "LOAD_CUSTOM_DECK"
+msgstr "Load a custom deck"
+
+#: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
+#: entities/ui/custom_deck_edit_card/scenes/CustomDeckEditCard.tscn
+#: entities/ui/edit_custom_deck/scenes/EditCustomDeck.tscn
+msgid "ABORT_DESCRIPTION"
+msgstr "Abort the current task"
+
+#: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
+#: entities/ui/custom_deck_edit_card/scenes/CustomDeckEditCard.tscn
+msgid "Open a File"
+msgstr ""
+
+#: entities/ui/custom_deck_edit_card/scenes/CustomDeckEditCard.tscn
+msgid "CARD_NAME_DESCRIPTION"
+msgstr "This will be the name of your card, displayed in game"
+
+#: entities/ui/custom_deck_edit_card/scenes/CustomDeckEditCard.tscn
+msgid "NEW_CARD_NAME"
+msgstr "Name of your card"
+
+#: entities/ui/custom_deck_edit_card/scenes/CustomDeckEditCard.tscn
+msgid "CARD_DESCRIPTION_DESCRIPTION"
+msgstr "The description of your card, this will be viewable in the deck viewer"
+
+#: entities/ui/custom_deck_edit_card/scenes/CustomDeckEditCard.tscn
+msgid "NEW_CARD_DESCRIPTION"
+msgstr "Description of your card"
+
+#: entities/ui/custom_deck_edit_card/scenes/CustomDeckEditCard.tscn
+msgid "LOAD_IMAGE_DESCRIPTION"
+msgstr "Load a image to be used as the card itself"
+
+#: entities/ui/custom_deck_edit_card/scenes/CustomDeckEditCard.tscn
+msgid "LOAD_IMAGE"
+msgstr "Load image"
+
+#: entities/ui/custom_deck_edit_card/scenes/CustomDeckEditCard.tscn
+msgid "SAVE_CARD_DESCRIPTION"
+msgstr "Save the current card to the deck"
+
+#: entities/ui/custom_deck_edit_card/scenes/CustomDeckEditCard.tscn
+msgid "SAVE_CARD"
+msgstr "Save card"
+
+#: entities/ui/custom_deck_card_entry/scenes/CustomDeckCardEntry.tscn
+msgid "VIEW_CARD_TOOLTIP"
+msgstr "View the card as it would be shown in the deck viewer"
+
+#: entities/ui/custom_deck_card_entry/scenes/CustomDeckCardEntry.tscn
+msgid "EDIT_CARD_TOOLTIP"
+msgstr ""
+"Edit this exact card, you can change the image, name or description as you "
+"like"
+
+#: entities/ui/custom_deck_card_entry/scenes/CustomDeckCardEntry.tscn
+msgid "DELETE_CARD_TOOLTIP"
+msgstr "Delete this card from the deck"
+
+#: entities/ui/edit_custom_deck/scenes/EditCustomDeck.tscn
+msgid "CUSTOM_DECK_NAME"
+msgstr ""
+
+#: entities/ui/edit_custom_deck/scenes/EditCustomDeck.tscn
+msgid "DECK_CARDS_DESCRIPTION"
+msgstr "A list with all the cards currently in your deck"
+
+#: entities/ui/edit_custom_deck/scenes/EditCustomDeck.tscn
+msgid "DECK_CARDS"
+msgstr "Cards"
+
+#: entities/ui/edit_custom_deck/scenes/EditCustomDeck.tscn
+msgid "CREATE_NEW_CARD_DESCRIPTION"
+msgstr "Create a new card which can be added to your deck"
+
+#: entities/ui/edit_custom_deck/scenes/EditCustomDeck.tscn
+msgid "CREATE_NEW_CARD"
+msgstr "Create new card"
+
+#: entities/ui/edit_custom_deck/scenes/EditCustomDeck.tscn
+msgid "SAVE_DESCRIPTION"
+msgstr "Save the deck to the disc"
+
+#: entities/ui/edit_custom_deck/scenes/EditCustomDeck.tscn
+msgid "SAVE"
+msgstr "Save"
+
+#: entities/ui/links/scenes/links.tscn
+msgid "OPEN_DECK_FOLDER_TOOLTIP"
+msgstr ""
+"Open folder with custom decks, you can copy \"sdeck\" files for this game "
+"from the internet into this folder.\n"
+"Please make sure that the source you got the decks from is thrustworthy\n"
+"Go to the deck viewer and reload to view those decks."
+
+#: entities/ui/links/scenes/links.tscn
+msgid "HOW_TO_PLAY"
+msgstr "How to play"
+
+#: entities/ui/links/scenes/links.tscn
+msgid "GITHUB_REPOSITORY_BUTTON"
+msgstr "GitHub Repository containing game code"
+
+#: entities/ui/links/scenes/links.tscn
+msgid "GAME_PAGE"
+msgstr "Game page"
+
+#: entities/ui/links/scenes/links.tscn
+msgid "REPORT_BUG"
+msgstr "Report bug"
+
+msgid "Samory"
+msgstr ""
 
 #~ msgid "PLAYER_NAME_TOOLTIP"
 #~ msgstr "The "

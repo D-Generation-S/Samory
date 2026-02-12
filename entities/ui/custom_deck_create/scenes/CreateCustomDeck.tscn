@@ -1,0 +1,220 @@
+[gd_scene format=3 uid="uid://c4cq1tu4j2y7r"]
+
+[ext_resource type="StyleBox" uid="uid://d1rhal5rp1608" path="res://assets/styles/panel/MetalBox.tres" id="1_icf35"]
+[ext_resource type="Script" uid="uid://cchf8amhqm0s" path="res://entities/ui/custom_deck_create/scripts/CreateCustomDeck.gd" id="1_u40oq"]
+[ext_resource type="PackedScene" uid="uid://dm30nveb0uwwt" path="res://entities/ui/edit_custom_deck/scenes/EditCustomDeck.tscn" id="2_3b6i1"]
+[ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://entities/ui/menu_background/scenes/MenuBackground.tscn" id="2_v8hna"]
+[ext_resource type="Script" uid="uid://bnsnhypypbo4c" path="res://shared/entities/custom_deck/scripts/CustomDeckLoadImage.gd" id="3_mqaqh"]
+[ext_resource type="Texture2D" uid="uid://b0lfebra6adhv" path="res://assets/sprites/Axuree/back_card_1.png" id="3_u40oq"]
+[ext_resource type="Script" uid="uid://cky8chsg088ia" path="res://shared/entities/custom_deck/scripts/CustomDeckDescriptionText.gd" id="4_n4d2i"]
+[ext_resource type="Script" uid="uid://tjo0r1gwyjls" path="res://shared/resources/validations/MultiAndValidation.gd" id="5_k6nxf"]
+[ext_resource type="Script" uid="uid://du57tqk57jbql" path="res://shared/entities/custom_deck/scripts/CustomDeckNameText.gd" id="5_y3kgi"]
+[ext_resource type="Script" uid="uid://cci4ryxp2ob7m" path="res://shared/resources/validations/Validation.gd" id="6_y3kgi"]
+[ext_resource type="Resource" uid="uid://bfylp3ooxs1ua" path="res://shared/resources/translations/assets/MaxSizeTranslation.tres" id="7_mrfij"]
+[ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="7_n4d2i"]
+[ext_resource type="Script" uid="uid://d0jijr8wa6o8v" path="res://shared/entities/clickable_button/resources/behaviors/DefaultButtonBehavior.gd" id="8_nhxkq"]
+[ext_resource type="Resource" uid="uid://h0lfh3suh0v5" path="res://shared/resources/translations/assets/MinSizeTranslation.tres" id="8_npkkf"]
+[ext_resource type="Script" uid="uid://b03sehux5xslr" path="res://shared/entities/clickable_button/resources/actions/OpenMainMenu.gd" id="9_nhxkq"]
+[ext_resource type="Script" uid="uid://dgu6d3fl16qev" path="res://shared/resources/validations/TextSizeValidation.gd" id="9_ybycn"]
+[ext_resource type="Resource" uid="uid://ck0uqkqfdqve3" path="res://shared/resources/validations/templates/DefaultTextRegexValidation.tres" id="10_k6nxf"]
+[ext_resource type="Resource" uid="uid://b2n23ddculs6s" path="res://shared/resources/validations/templates/DescriptionRegexValidation.tres" id="10_nhvdj"]
+
+[sub_resource type="Resource" id="Resource_vf6dt"]
+script = ExtResource("9_ybycn")
+min_size = 5
+max_size = 30
+metadata/_custom_type_script = "uid://dgu6d3fl16qev"
+
+[sub_resource type="Resource" id="Resource_g1qnm"]
+script = ExtResource("5_k6nxf")
+validators = Array[ExtResource("6_y3kgi")]([SubResource("Resource_vf6dt"), ExtResource("10_k6nxf")])
+metadata/_custom_type_script = "uid://tjo0r1gwyjls"
+
+[sub_resource type="Resource" id="Resource_nhxkq"]
+script = ExtResource("8_nhxkq")
+metadata/_custom_type_script = "uid://d0jijr8wa6o8v"
+
+[sub_resource type="Resource" id="Resource_3baql"]
+script = ExtResource("8_nhxkq")
+metadata/_custom_type_script = "uid://d0jijr8wa6o8v"
+
+[sub_resource type="Resource" id="Resource_wtadk"]
+script = ExtResource("8_nhxkq")
+metadata/_custom_type_script = "uid://d0jijr8wa6o8v"
+
+[sub_resource type="Resource" id="Resource_3b6i1"]
+script = ExtResource("8_nhxkq")
+metadata/_custom_type_script = "uid://d0jijr8wa6o8v"
+
+[sub_resource type="Resource" id="Resource_v8hna"]
+script = ExtResource("9_nhxkq")
+metadata/_custom_type_script = "uid://b03sehux5xslr"
+
+[node name="CreateCustomDeck" type="CanvasLayer" unique_id=542649282]
+script = ExtResource("1_u40oq")
+edit_deck_scene = ExtResource("2_3b6i1")
+
+[node name="MenuBackground" parent="." unique_id=401543927 instance=ExtResource("2_v8hna")]
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=2069999069]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=1816530422]
+custom_minimum_size = Vector2(800, 600)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer" unique_id=70151033]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1876677541]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("1_icf35")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer/PanelContainer" unique_id=1995963339]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer" unique_id=441571224]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1865811198]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Name" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/GridContainer" unique_id=1452138386]
+layout_mode = 2
+tooltip_text = "DECK_NAME_DESCRIPTION"
+mouse_filter = 1
+text = "DECK_NAME"
+
+[node name="TextEdit" type="LineEdit" parent="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/GridContainer" unique_id=7520212]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "NEW_DECK_NAME"
+script = ExtResource("5_y3kgi")
+validation = SubResource("Resource_g1qnm")
+
+[node name="NameError" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/GridContainer" unique_id=948700080]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/GridContainer" unique_id=156949862]
+layout_mode = 2
+tooltip_text = "DECK_DESCRIPTION_DESCRIPTION"
+mouse_filter = 1
+text = "DECK_DESCRIPTION"
+
+[node name="DescriptionEdit" type="TextEdit" parent="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/GridContainer" unique_id=264817074]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+placeholder_text = "NEW_DECK_DESCRIPTION"
+script = ExtResource("4_n4d2i")
+validation = ExtResource("10_nhvdj")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1167933948]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="CardBack" type="TextureRect" parent="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/HBoxContainer" unique_id=631581318]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+stretch_mode = 3
+script = ExtResource("3_mqaqh")
+image = ExtResource("3_u40oq")
+
+[node name="SelectBack" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/HBoxContainer" unique_id=206970121]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+tooltip_text = "LOAD_DECK_IMAGE_DESCRIPTION"
+text = "LOAD_DECK_IMAGE"
+script = ExtResource("7_n4d2i")
+button_behavior = SubResource("Resource_nhxkq")
+
+[node name="Buttons" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=591046425]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Edit Deck" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/Buttons" unique_id=2050620723]
+layout_mode = 2
+tooltip_text = "EDIT_CUSTOM_DECK_DESCRIPTION"
+text = "EDIT_CUSTOM_DECK"
+script = ExtResource("7_n4d2i")
+button_behavior = SubResource("Resource_3baql")
+
+[node name="Create" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/Buttons" unique_id=164475535]
+layout_mode = 2
+tooltip_text = "CREATE_NEW_CUSTOM_DECK_DESCRIPTION"
+text = "CREATE_NEW_CUSTOM_DECK"
+script = ExtResource("7_n4d2i")
+
+[node name="LoadCustomDeck" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/Buttons" unique_id=387285691]
+layout_mode = 2
+tooltip_text = "LOAD_CUSTOM_DECK_DESCRIPTION"
+text = "LOAD_CUSTOM_DECK"
+script = ExtResource("7_n4d2i")
+button_behavior = SubResource("Resource_wtadk")
+
+[node name="Back" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/Buttons" unique_id=197447390]
+layout_mode = 2
+tooltip_text = "ABORT_DESCRIPTION"
+text = "ABORT"
+script = ExtResource("7_n4d2i")
+button_behavior = SubResource("Resource_3b6i1")
+pressed_action = SubResource("Resource_v8hna")
+
+[node name="ImageLoader" type="FileDialog" parent="." unique_id=1124511785]
+title = "Open a File"
+file_mode = 0
+display_mode = 1
+access = 2
+filters = PackedStringArray("*.png", "*.jpg")
+use_native_dialog = true
+
+[node name="DeckLoader" type="FileDialog" parent="." unique_id=1327151534]
+title = "Open a File"
+file_mode = 0
+display_mode = 1
+access = 1
+root_subfolder = "custom_decks"
+filters = PackedStringArray("*.sdeck")
+use_native_dialog = true
+
+[connection signal="create_is_invalid" from="." to="CenterContainer/PanelContainer/VBoxContainer/Buttons/Create" method="disable_button"]
+[connection signal="create_is_valid" from="." to="CenterContainer/PanelContainer/VBoxContainer/Buttons/Create" method="enable_button"]
+[connection signal="currently_editing" from="." to="CenterContainer/PanelContainer/VBoxContainer/Buttons/Edit Deck" method="show"]
+[connection signal="deck_updated" from="." to="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/GridContainer/TextEdit" method="deck_updated"]
+[connection signal="deck_updated" from="." to="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/GridContainer/DescriptionEdit" method="deck_updated"]
+[connection signal="deck_updated" from="." to="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/HBoxContainer/CardBack" method="deck_updated"]
+[connection signal="was_reset" from="." to="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/HBoxContainer/CardBack" method="_reset"]
+[connection signal="was_reset" from="." to="CenterContainer/PanelContainer/VBoxContainer/Buttons/Edit Deck" method="hide"]
+[connection signal="text_changed" from="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/GridContainer/TextEdit" to="." method="deck_name_changed"]
+[connection signal="valid" from="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/GridContainer/TextEdit" to="." method="set_name_is_valid"]
+[connection signal="valid" from="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/GridContainer/TextEdit" to="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/GridContainer/NameError" method="hide"]
+[connection signal="valid" from="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/GridContainer/TextEdit" to="CenterContainer/PanelContainer/VBoxContainer/Buttons/Edit Deck" method="enable_button"]
+[connection signal="validation_error" from="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/GridContainer/TextEdit" to="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/GridContainer/NameError" method="set_text"]
+[connection signal="validation_failed" from="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/GridContainer/TextEdit" to="." method="set_name_is_invalid"]
+[connection signal="validation_failed" from="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/GridContainer/TextEdit" to="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/GridContainer/NameError" method="show"]
+[connection signal="validation_failed" from="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/GridContainer/TextEdit" to="CenterContainer/PanelContainer/VBoxContainer/Buttons/Edit Deck" method="disable_button"]
+[connection signal="text_is_changed" from="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/GridContainer/DescriptionEdit" to="." method="deck_description_changed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/HBoxContainer/SelectBack" to="ImageLoader" method="show"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/Buttons/Edit Deck" to="." method="edit_deck"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/Buttons/Create" to="." method="create_deck"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/Buttons/LoadCustomDeck" to="DeckLoader" method="show"]
+[connection signal="file_selected" from="ImageLoader" to="." method="deck_back_path_changed"]
+[connection signal="file_selected" from="ImageLoader" to="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/HBoxContainer/CardBack" method="new_image_selected"]
+[connection signal="file_selected" from="DeckLoader" to="." method="load_existing_deck"]

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TextTranslation" format=3 uid="uid://b1jnohd18jied"]
+
+[ext_resource type="Script" uid="uid://b3ccmsvxi5x8x" path="res://shared/resources/translations/TextTranslation.gd" id="1_om8c6"]
+
+[resource]
+script = ExtResource("1_om8c6")
+key = "NEW_DECK_NAME"
+metadata/_custom_type_script = "uid://b3ccmsvxi5x8x"

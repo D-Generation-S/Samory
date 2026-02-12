@@ -30,7 +30,6 @@ func add_animated_text(new_text: String) -> void:
 	var translated: String = tr(new_text)
 	text_queue.append(translated)
 	if animating:
-		print("multi")
 		is_multi_text.emit()
 		return
 	display_animated_text(text_queue.pop_front())

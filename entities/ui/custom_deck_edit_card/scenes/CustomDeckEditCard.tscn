@@ -1,0 +1,173 @@
+[gd_scene format=3 uid="uid://k8xh53yapv5h"]
+
+[ext_resource type="StyleBox" uid="uid://d1rhal5rp1608" path="res://assets/styles/panel/MetalBox.tres" id="1_73cy2"]
+[ext_resource type="Script" uid="uid://nstfcyh0yvl8" path="res://entities/ui/custom_deck_edit_card/scripts/CustomDeckEditCard.gd" id="2_e58mf"]
+[ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="3_cv4bc"]
+[ext_resource type="Script" uid="uid://bnsnhypypbo4c" path="res://shared/entities/custom_deck/scripts/CustomDeckLoadImage.gd" id="3_lidqe"]
+[ext_resource type="Script" uid="uid://du57tqk57jbql" path="res://shared/entities/custom_deck/scripts/CustomDeckNameText.gd" id="3_moxuo"]
+[ext_resource type="Script" uid="uid://cky8chsg088ia" path="res://shared/entities/custom_deck/scripts/CustomDeckDescriptionText.gd" id="4_dhv4o"]
+[ext_resource type="Script" uid="uid://tjo0r1gwyjls" path="res://shared/resources/validations/MultiAndValidation.gd" id="4_ga01i"]
+[ext_resource type="Script" uid="uid://cci4ryxp2ob7m" path="res://shared/resources/validations/Validation.gd" id="5_yxglr"]
+[ext_resource type="Resource" uid="uid://bfylp3ooxs1ua" path="res://shared/resources/translations/assets/MaxSizeTranslation.tres" id="6_yxglr"]
+[ext_resource type="Resource" uid="uid://h0lfh3suh0v5" path="res://shared/resources/translations/assets/MinSizeTranslation.tres" id="7_4y2v2"]
+[ext_resource type="Script" uid="uid://dgu6d3fl16qev" path="res://shared/resources/validations/TextSizeValidation.gd" id="7_46p3t"]
+[ext_resource type="Resource" uid="uid://b2n23ddculs6s" path="res://shared/resources/validations/templates/DescriptionRegexValidation.tres" id="9_4y2v2"]
+[ext_resource type="Script" uid="uid://d0jijr8wa6o8v" path="res://shared/entities/clickable_button/resources/behaviors/DefaultButtonBehavior.gd" id="9_jkgfh"]
+[ext_resource type="Script" uid="uid://b5y35d40fsrp4" path="res://shared/entities/validation_text_edit/scripts/MultiValidationNode.gd" id="12_3fi5b"]
+
+[sub_resource type="Resource" id="Resource_4y2v2"]
+script = ExtResource("7_46p3t")
+min_size = 5
+max_size = 35
+metadata/_custom_type_script = "uid://dgu6d3fl16qev"
+
+[sub_resource type="Resource" id="Resource_35kq6"]
+script = ExtResource("4_ga01i")
+validators = Array[ExtResource("5_yxglr")]([SubResource("Resource_4y2v2"), ExtResource("9_4y2v2")])
+metadata/_custom_type_script = "uid://tjo0r1gwyjls"
+
+[sub_resource type="Resource" id="Resource_ga01i"]
+script = ExtResource("9_jkgfh")
+metadata/_custom_type_script = "uid://d0jijr8wa6o8v"
+
+[sub_resource type="Resource" id="Resource_6yt6b"]
+script = ExtResource("9_jkgfh")
+metadata/_custom_type_script = "uid://d0jijr8wa6o8v"
+
+[sub_resource type="Resource" id="Resource_3rdw3"]
+script = ExtResource("9_jkgfh")
+metadata/_custom_type_script = "uid://d0jijr8wa6o8v"
+
+[node name="EditCard" type="PanelContainer" unique_id=114676978]
+custom_minimum_size = Vector2(1000, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_73cy2")
+script = ExtResource("2_e58mf")
+
+[node name="FileDialog" type="FileDialog" parent="." unique_id=120820904]
+oversampling_override = 1.0
+title = "Open a File"
+size = Vector2i(764, 360)
+file_mode = 0
+display_mode = 1
+access = 2
+filters = PackedStringArray("*.png", "*.jpg")
+use_native_dialog = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1103292871]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1919982817]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=1138252543]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CardName" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1211846507]
+layout_mode = 2
+tooltip_text = "CARD_NAME_DESCRIPTION"
+mouse_filter = 1
+text = "CARD_NAME"
+
+[node name="NameInput" type="LineEdit" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1579399260]
+layout_mode = 2
+placeholder_text = "NEW_CARD_NAME"
+script = ExtResource("3_moxuo")
+is_focused = true
+validation = SubResource("Resource_35kq6")
+
+[node name="NameError" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=84478649]
+visible = false
+layout_mode = 2
+
+[node name="CardDescription" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=2074452447]
+layout_mode = 2
+tooltip_text = "CARD_DESCRIPTION_DESCRIPTION"
+mouse_filter = 1
+text = "CARD_DESCRIPTION"
+
+[node name="CardDescriptionInput" type="TextEdit" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=868889855]
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "NEW_CARD_DESCRIPTION"
+wrap_mode = 1
+script = ExtResource("4_dhv4o")
+validation = ExtResource("9_4y2v2")
+
+[node name="DescriptionError" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=514533585]
+visible = false
+layout_mode = 2
+
+[node name="Image" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=1420202392]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="CardImage" type="TextureRect" parent="VBoxContainer/HBoxContainer/Image" unique_id=1901833897]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+stretch_mode = 3
+script = ExtResource("3_lidqe")
+
+[node name="LoadCard" type="Button" parent="VBoxContainer/HBoxContainer/Image" unique_id=319160580]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+tooltip_text = "LOAD_IMAGE_DESCRIPTION"
+text = "LOAD_IMAGE"
+script = ExtResource("3_cv4bc")
+button_behavior = SubResource("Resource_ga01i")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=1409923387]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Save" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=470189851]
+layout_mode = 2
+size_flags_horizontal = 0
+tooltip_text = "SAVE_CARD_DESCRIPTION"
+text = "SAVE_CARD"
+script = ExtResource("3_cv4bc")
+button_behavior = SubResource("Resource_6yt6b")
+
+[node name="Abort" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=1694274247]
+layout_mode = 2
+tooltip_text = "ABORT_DESCRIPTION"
+text = "ABORT"
+script = ExtResource("3_cv4bc")
+button_behavior = SubResource("Resource_3rdw3")
+
+[node name="Validation" type="Control" parent="VBoxContainer/HBoxContainer2" unique_id=152475487 node_paths=PackedStringArray("validation_fields", "validation_text_edit")]
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("12_3fi5b")
+validation_fields = [NodePath("../../HBoxContainer/VBoxContainer/NameInput")]
+validation_text_edit = [NodePath("../../HBoxContainer/VBoxContainer/CardDescriptionInput")]
+
+[connection signal="card_updated" from="." to="VBoxContainer/HBoxContainer/VBoxContainer/NameInput" method="deck_updated"]
+[connection signal="card_updated" from="." to="VBoxContainer/HBoxContainer/VBoxContainer/CardDescriptionInput" method="deck_updated"]
+[connection signal="card_updated" from="." to="VBoxContainer/HBoxContainer/Image/CardImage" method="deck_updated"]
+[connection signal="showing" from="." to="VBoxContainer/HBoxContainer/Image/CardImage" method="_reset"]
+[connection signal="file_selected" from="FileDialog" to="." method="update_card_image"]
+[connection signal="file_selected" from="FileDialog" to="VBoxContainer/HBoxContainer/Image/CardImage" method="new_image_selected"]
+[connection signal="text_changed" from="VBoxContainer/HBoxContainer/VBoxContainer/NameInput" to="." method="update_card_name"]
+[connection signal="valid" from="VBoxContainer/HBoxContainer/VBoxContainer/NameInput" to="VBoxContainer/HBoxContainer/VBoxContainer/NameError" method="hide"]
+[connection signal="validation_error" from="VBoxContainer/HBoxContainer/VBoxContainer/NameInput" to="VBoxContainer/HBoxContainer/VBoxContainer/NameError" method="set_text"]
+[connection signal="validation_failed" from="VBoxContainer/HBoxContainer/VBoxContainer/NameInput" to="VBoxContainer/HBoxContainer/VBoxContainer/NameError" method="show"]
+[connection signal="text_is_changed" from="VBoxContainer/HBoxContainer/VBoxContainer/CardDescriptionInput" to="." method="update_card_description"]
+[connection signal="valid" from="VBoxContainer/HBoxContainer/VBoxContainer/CardDescriptionInput" to="VBoxContainer/HBoxContainer/VBoxContainer/DescriptionError" method="hide"]
+[connection signal="validation_error" from="VBoxContainer/HBoxContainer/VBoxContainer/CardDescriptionInput" to="VBoxContainer/HBoxContainer/VBoxContainer/DescriptionError" method="set_text"]
+[connection signal="validation_failed" from="VBoxContainer/HBoxContainer/VBoxContainer/CardDescriptionInput" to="VBoxContainer/HBoxContainer/VBoxContainer/DescriptionError" method="show"]
+[connection signal="image_is_empty" from="VBoxContainer/HBoxContainer/Image/CardImage" to="VBoxContainer/HBoxContainer2/Validation" method="additional_resource_invalid"]
+[connection signal="image_is_set" from="VBoxContainer/HBoxContainer/Image/CardImage" to="VBoxContainer/HBoxContainer2/Validation" method="additional_resource_valid"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Image/LoadCard" to="FileDialog" method="show"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/Save" to="." method="save_card"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/Abort" to="." method="cancel"]
+[connection signal="invalid" from="VBoxContainer/HBoxContainer2/Validation" to="VBoxContainer/HBoxContainer2/Save" method="disable_button"]
+[connection signal="valid" from="VBoxContainer/HBoxContainer2/Validation" to="VBoxContainer/HBoxContainer2/Save" method="enable_button"]
