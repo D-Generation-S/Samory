@@ -18,7 +18,7 @@
 [ext_resource type="Shader" uid="uid://djs1o5pxaguit" path="res://assets/shaders/SingleColorShader.gdshader" id="9_vcvmk"]
 [ext_resource type="Texture2D" uid="uid://bmxqeqo65xwt" path="res://assets/sprites/spritesheet-default.png" id="12_h72da"]
 [ext_resource type="Texture2D" uid="uid://b0lfebra6adhv" path="res://assets/sprites/Axuree/back_card_1.png" id="14_bmj37"]
-[ext_resource type="Shader" path="res://assets/shaders/SoftAlphaBorder.gdshader" id="14_l7f2y"]
+[ext_resource type="Shader" uid="uid://c7ms87q12jcrh" path="res://assets/shaders/SoftAlphaBorder.gdshader" id="14_l7f2y"]
 [ext_resource type="Material" uid="uid://ceraa2tomrum8" path="res://entities/game/card_template/assets/materials/SelectionShader.tres" id="16_ja01p"]
 [ext_resource type="Script" uid="uid://bipcmxhkarmo3" path="res://entities/game/card_template/scripts/DebugControl.gd" id="18_8fn1p"]
 [ext_resource type="Script" uid="uid://oqb8v04e4sw6" path="res://entities/game/card_template/scripts/CardTemplateDebug.gd" id="18_tqsbp"]
@@ -39,14 +39,6 @@ shader_parameter/progress = 0.0
 shader = ExtResource("9_vcvmk")
 shader_parameter/alpha_threshold = 0.58
 shader_parameter/replace_color = Color(0, 0, 0, 0.4627451)
-
-[sub_resource type="Gradient" id="Gradient_0sfg2"]
-colors = PackedColorArray(0.955955, 0.929103, 0.857593, 1, 0.955955, 0.929103, 0.857593, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_vp4ck"]
-gradient = SubResource("Gradient_0sfg2")
-width = 500
-height = 500
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h72da"]
 atlas = ExtResource("12_h72da")
@@ -113,12 +105,7 @@ script = ExtResource("9_ja01p")
 target_offset = Vector2(13, 13)
 animation_time = 0.1
 
-[node name="CardBackground" type="Sprite2D" parent="CanvasGroup" unique_id=914357819 groups=["card_content"]]
-visible = false
-position = Vector2(250, 250)
-texture = SubResource("GradientTexture2D_vp4ck")
-
-[node name="CardBackground2" type="NinePatchRect" parent="CanvasGroup" unique_id=589517874]
+[node name="CardBackground" type="NinePatchRect" parent="CanvasGroup" unique_id=589517874 groups=["card_content"]]
 offset_right = 500.0
 offset_bottom = 500.0
 texture = SubResource("AtlasTexture_h72da")
@@ -127,7 +114,7 @@ patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
 
-[node name="TextFrame" type="NinePatchRect" parent="CanvasGroup" unique_id=1031246576]
+[node name="TextFrame" type="NinePatchRect" parent="CanvasGroup" unique_id=1031246576 groups=["card_content"]]
 offset_top = 500.0
 offset_right = 500.0
 offset_bottom = 550.0

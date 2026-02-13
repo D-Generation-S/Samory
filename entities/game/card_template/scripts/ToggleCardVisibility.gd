@@ -43,7 +43,8 @@ func deck_changed(deck: MemoryDeckResource) -> void:
 	if deck.card_back != null:
 		var image: Image = deck.card_back.get_image()
 		if image.get_width() < _target_width or image.get_height() < _target_height:
-			image = _fix_image(image)
+			if not deck.built_in:
+				image = _fix_image(image)
 			var loaded_texture: ImageTexture = ImageTexture.create_from_image(image)
 			texture = loaded_texture as Texture2D
 			return
