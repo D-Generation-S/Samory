@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://dgu6d3fl16qev" path="res://shared/resources/validations/TextSizeValidation.gd" id="9_ybycn"]
 [ext_resource type="Resource" uid="uid://ck0uqkqfdqve3" path="res://shared/resources/validations/templates/DefaultTextRegexValidation.tres" id="10_k6nxf"]
 [ext_resource type="Resource" uid="uid://b2n23ddculs6s" path="res://shared/resources/validations/templates/DescriptionRegexValidation.tres" id="10_nhvdj"]
+[ext_resource type="Script" uid="uid://bt4j4glj2fn64" path="res://entities/ui/custom_deck_create/scripts/CustomDeckButtonControl.gd" id="18_mrfij"]
 
 [sub_resource type="Resource" id="Resource_vf6dt"]
 script = ExtResource("9_ybycn")
@@ -148,6 +149,7 @@ button_behavior = SubResource("Resource_nhxkq")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+script = ExtResource("18_mrfij")
 
 [node name="Edit Deck" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/Buttons" unique_id=2050620723]
 layout_mode = 2
@@ -197,9 +199,13 @@ use_native_dialog = true
 [connection signal="create_is_invalid" from="." to="CenterContainer/PanelContainer/VBoxContainer/Buttons/Create" method="disable_button"]
 [connection signal="create_is_valid" from="." to="CenterContainer/PanelContainer/VBoxContainer/Buttons/Create" method="enable_button"]
 [connection signal="currently_editing" from="." to="CenterContainer/PanelContainer/VBoxContainer/Buttons/Edit Deck" method="show"]
+[connection signal="deck_loaded" from="." to="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/HBoxContainer/SelectBack" method="enable_button"]
+[connection signal="deck_loaded" from="." to="CenterContainer/PanelContainer/VBoxContainer/Buttons" method="enable_buttons"]
 [connection signal="deck_updated" from="." to="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/GridContainer/TextEdit" method="deck_updated"]
 [connection signal="deck_updated" from="." to="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/GridContainer/DescriptionEdit" method="deck_updated"]
 [connection signal="deck_updated" from="." to="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/HBoxContainer/CardBack" method="deck_updated"]
+[connection signal="load_deck" from="." to="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/HBoxContainer/SelectBack" method="disable_button"]
+[connection signal="load_deck" from="." to="CenterContainer/PanelContainer/VBoxContainer/Buttons" method="disable_buttons"]
 [connection signal="was_reset" from="." to="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/HBoxContainer/CardBack" method="_reset"]
 [connection signal="was_reset" from="." to="CenterContainer/PanelContainer/VBoxContainer/Buttons/Edit Deck" method="hide"]
 [connection signal="text_changed" from="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/GridContainer/TextEdit" to="." method="deck_name_changed"]

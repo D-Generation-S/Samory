@@ -96,6 +96,11 @@ func convert_image_to_resource(real_texture: Texture2D) -> Texture2D:
 	scaled_texture.resize(new_image_size.x, new_image_size.y)
 	return ImageTexture.create_from_image(scaled_texture) as Texture2D
 
+func load_editable_deck_async(deck_path: String) -> Thread:
+	var thread: Thread = Thread.new()
+	thread.start(load_editable_deck.bind(deck_path)	)
+	return thread
+
 func load_editable_deck(deck_path: String) -> Array[CustomDeckResource]:
 	if not FileAccess.file_exists(deck_path):
 		return []
