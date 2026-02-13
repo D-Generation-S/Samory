@@ -13,6 +13,8 @@ func _ready() -> void:
 		set_and_scale_texture(texture, false)
 
 func set_and_scale_texture(new_texture: Texture2D, is_built_in: bool) -> void:
+	if is_built_in:
+		material = null
 	var max_width: float = max_build_in_width
 	var max_height: float = max_build_in_height
 	if not is_built_in:
