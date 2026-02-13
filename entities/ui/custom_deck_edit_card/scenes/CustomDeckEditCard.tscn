@@ -14,6 +14,9 @@
 [ext_resource type="Resource" uid="uid://b2n23ddculs6s" path="res://shared/resources/validations/templates/DescriptionRegexValidation.tres" id="9_4y2v2"]
 [ext_resource type="Script" uid="uid://d0jijr8wa6o8v" path="res://shared/entities/clickable_button/resources/behaviors/DefaultButtonBehavior.gd" id="9_jkgfh"]
 [ext_resource type="Script" uid="uid://b5y35d40fsrp4" path="res://shared/entities/validation_text_edit/scripts/MultiValidationNode.gd" id="12_3fi5b"]
+[ext_resource type="Texture2D" uid="uid://dmbvvlspsl0yu" path="res://assets/icons/LoadIcon.tres" id="12_icey1"]
+[ext_resource type="Texture2D" uid="uid://mpl5wj48e5i4" path="res://assets/icons/SaveIcon.tres" id="15_ngtq7"]
+[ext_resource type="Texture2D" uid="uid://b6vwa7x6vgpfd" path="res://assets/icons/DenyIcon.tres" id="16_7n4uw"]
 
 [sub_resource type="Resource" id="Resource_4y2v2"]
 script = ExtResource("7_46p3t")
@@ -120,6 +123,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 tooltip_text = "LOAD_IMAGE_DESCRIPTION"
 text = "LOAD_IMAGE"
+icon = ExtResource("12_icey1")
 script = ExtResource("3_cv4bc")
 button_behavior = SubResource("Resource_ga01i")
 
@@ -133,6 +137,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 tooltip_text = "SAVE_CARD_DESCRIPTION"
 text = "SAVE_CARD"
+icon = ExtResource("15_ngtq7")
 script = ExtResource("3_cv4bc")
 button_behavior = SubResource("Resource_6yt6b")
 
@@ -140,6 +145,7 @@ button_behavior = SubResource("Resource_6yt6b")
 layout_mode = 2
 tooltip_text = "ABORT_DESCRIPTION"
 text = "ABORT"
+icon = ExtResource("16_7n4uw")
 script = ExtResource("3_cv4bc")
 button_behavior = SubResource("Resource_3rdw3")
 

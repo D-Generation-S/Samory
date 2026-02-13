@@ -1,17 +1,10 @@
 [gd_scene format=3 uid="uid://bcshvc0icanvp"]
 
 [ext_resource type="Script" uid="uid://cagdcpwwtv1tm" path="res://entities/ui/custom_deck_card_entry/scripts/CustomDeckCardEntry.gd" id="1_ox2an"]
-[ext_resource type="Texture2D" uid="uid://cg0l7tvqmtghr" path="res://assets/sprites/sheet_white1x.png" id="1_tfxyp"]
+[ext_resource type="Texture2D" uid="uid://bqr6lsufgf38v" path="res://assets/icons/ViewIcon.tres" id="2_bkiiy"]
 [ext_resource type="Texture2D" uid="uid://bksl4a0sqfn5p" path="res://assets/icons/TrashIcon.tres" id="2_ox2an"]
 [ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="3_oynso"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0wuy1"]
-atlas = ExtResource("1_tfxyp")
-region = Rect2(150, 300, 50, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r0wk1"]
-atlas = ExtResource("1_tfxyp")
-region = Rect2(50, 300, 50, 50)
+[ext_resource type="Texture2D" uid="uid://b2goxx3el463y" path="res://assets/icons/EditIcon.tres" id="4_d0sqg"]
 
 [node name="CustomDeckCardEntry" type="PanelContainer" unique_id=1320678092]
 anchors_preset = 14
@@ -35,13 +28,13 @@ text = "CARD_NAME"
 [node name="View" type="Button" parent="HBoxContainer" unique_id=792109127]
 layout_mode = 2
 tooltip_text = "VIEW_CARD_TOOLTIP"
-icon = SubResource("AtlasTexture_0wuy1")
+icon = ExtResource("2_bkiiy")
 script = ExtResource("3_oynso")
 
 [node name="Edit" type="Button" parent="HBoxContainer" unique_id=1307700358]
 layout_mode = 2
 tooltip_text = "EDIT_CARD_TOOLTIP"
-icon = SubResource("AtlasTexture_r0wk1")
+icon = ExtResource("4_d0sqg")
 script = ExtResource("3_oynso")
 
 [node name="Delete" type="Button" parent="HBoxContainer" unique_id=13695540]

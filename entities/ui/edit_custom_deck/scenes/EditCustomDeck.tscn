@@ -7,11 +7,14 @@
 [ext_resource type="Script" uid="uid://brscx1kejvoc" path="res://entities/ui/edit_custom_deck/scripts/CustomCardList.gd" id="4_pgiyy"]
 [ext_resource type="PackedScene" uid="uid://bcshvc0icanvp" path="res://entities/ui/custom_deck_card_entry/scenes/CustomDeckCardEntry.tscn" id="5_r0wk1"]
 [ext_resource type="Script" uid="uid://d0jijr8wa6o8v" path="res://shared/entities/clickable_button/resources/behaviors/DefaultButtonBehavior.gd" id="5_rkv3r"]
+[ext_resource type="Texture2D" uid="uid://b6xl5vukmvlku" path="res://assets/icons/AddIcon.tres" id="6_3lc3t"]
 [ext_resource type="Script" uid="uid://b03sehux5xslr" path="res://shared/entities/clickable_button/resources/actions/OpenMainMenu.gd" id="6_pgiyy"]
 [ext_resource type="PackedScene" uid="uid://k8xh53yapv5h" path="res://entities/ui/custom_deck_edit_card/scenes/CustomDeckEditCard.tscn" id="7_0wuy1"]
 [ext_resource type="Script" uid="uid://cj4m8p2qipv6j" path="res://entities/ui/edit_custom_deck/scripts/CustomCardPreview.gd" id="8_ipec7"]
 [ext_resource type="PackedScene" uid="uid://bkpf0f8bvau6t" path="res://entities/ui/card_preview/scenes/CardPreview.tscn" id="9_wcv3f"]
 [ext_resource type="PackedScene" uid="uid://dduji7120t8dc" path="res://entities/ui/loading_spinner/scenes/LoadingSpinner.tscn" id="12_aoyiv"]
+[ext_resource type="Texture2D" uid="uid://mpl5wj48e5i4" path="res://assets/icons/SaveIcon.tres" id="12_ei6k7"]
+[ext_resource type="Texture2D" uid="uid://cln3v63hwble8" path="res://assets/icons/HomeIcon.tres" id="13_m067u"]
 
 [sub_resource type="Resource" id="Resource_0wuy1"]
 script = ExtResource("5_rkv3r")
@@ -113,6 +116,7 @@ layout_mode = 2
 size_flags_vertical = 8
 tooltip_text = "CREATE_NEW_CARD_DESCRIPTION"
 text = "CREATE_NEW_CARD"
+icon = ExtResource("6_3lc3t")
 script = ExtResource("4_nuni8")
 button_behavior = SubResource("Resource_0wuy1")
 
@@ -140,6 +144,7 @@ size_flags_vertical = 4
 layout_mode = 2
 tooltip_text = "SAVE_DESCRIPTION"
 text = "SAVE"
+icon = ExtResource("12_ei6k7")
 script = ExtResource("4_nuni8")
 button_behavior = SubResource("Resource_r0wk1")
 
@@ -147,6 +152,7 @@ button_behavior = SubResource("Resource_r0wk1")
 layout_mode = 2
 tooltip_text = "ABORT_DESCRIPTION"
 text = "ABORT"
+icon = ExtResource("13_m067u")
 script = ExtResource("4_nuni8")
 button_behavior = SubResource("Resource_ipec7")
 pressed_action = SubResource("Resource_wcv3f")

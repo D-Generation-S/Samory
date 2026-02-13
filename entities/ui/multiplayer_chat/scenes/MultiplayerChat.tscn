@@ -1,33 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjuq64u16spk4"]
+[gd_scene format=3 uid="uid://cjuq64u16spk4"]
 
 [ext_resource type="Script" uid="uid://dnkq0vi7xlkh1" path="res://entities/ui/multiplayer_chat/scripts/ChatController.gd" id="1_0rmtm"]
 [ext_resource type="Script" uid="uid://btfxdq2gyiddl" path="res://entities/ui/multiplayer_chat/scripts/Chat.gd" id="1_06hh4"]
+[ext_resource type="Texture2D" uid="uid://hks31f7fkm8a" path="res://assets/icons/SendButton.tres" id="3_pjigb"]
 
-[node name="MultiplayerChat" type="VBoxContainer"]
+[node name="MultiplayerChat" type="VBoxContainer" unique_id=963049778]
 size_flags_vertical = 3
 script = ExtResource("1_06hh4")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1814157814]
 layout_mode = 2
 size_flags_vertical = 3
 scroll_following = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=952684354]
 layout_mode = 2
 
-[node name="ChatController" type="Node" parent="HBoxContainer" node_paths=PackedStringArray("edit_field", "send_button")]
+[node name="ChatController" type="Node" parent="HBoxContainer" unique_id=425637468 node_paths=PackedStringArray("edit_field", "send_button")]
 script = ExtResource("1_0rmtm")
 edit_field = NodePath("../LineEdit")
 send_button = NodePath("../Button")
 
-[node name="LineEdit" type="LineEdit" parent="HBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer" unique_id=2130757328]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "MESSAGE"
+keep_editing_on_text_submit = true
 
-[node name="Button" type="Button" parent="HBoxContainer"]
+[node name="Button" type="Button" parent="HBoxContainer" unique_id=611499757]
 layout_mode = 2
 text = "SEND"
+icon = ExtResource("3_pjigb")
+icon_alignment = 2
 
 [connection signal="message_requested" from="." to="HBoxContainer/ChatController" method="_send_text"]
 [connection signal="new_player_joined" from="." to="HBoxContainer/ChatController" method="player_added"]

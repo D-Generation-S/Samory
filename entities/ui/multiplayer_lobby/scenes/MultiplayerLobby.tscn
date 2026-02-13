@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://1jf4yyijbnie"]
+[gd_scene format=3 uid="uid://1jf4yyijbnie"]
 
 [ext_resource type="Script" uid="uid://cdk7431i5avu5" path="res://entities/ui/multiplayer_lobby/scripts/MultiplayerGameLobby.gd" id="1_fujdv"]
 [ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="1_nefmw"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://nqldsuknnfh6" path="res://entities/ui/multiplayer_lobby/scripts/MultiplayerDecks.gd" id="14_j5g3f"]
 [ext_resource type="Script" uid="uid://bt7h8k61frlxw" path="res://shared/entities/deck_container/scripts/DeckContainer.gd" id="15_m3g0j"]
 [ext_resource type="PackedScene" uid="uid://b3cv1g0a284mq" path="res://entities/ui/deck_preview/scenes/DeckPreview.tscn" id="16_h314c"]
+[ext_resource type="Texture2D" uid="uid://1nkrrs4eeibb" path="res://assets/icons/SearchIcon.tres" id="17_jnh0f"]
 [ext_resource type="Script" uid="uid://ep7mvi0mvj1a" path="res://entities/ui/multiplayer_lobby/scripts/MultiplayerStartGame.gd" id="17_vmvut"]
 [ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="18_3ilta"]
 [ext_resource type="Script" uid="uid://6fa28680utd5" path="res://shared/entities/popup_manager/scripts/PopupManager.gd" id="20_qmoly"]
@@ -29,13 +30,13 @@
 script = ExtResource("2_057pv")
 metadata/_custom_type_script = "uid://b03sehux5xslr"
 
-[node name="MultiplayerLobby" type="CanvasLayer"]
+[node name="MultiplayerLobby" type="CanvasLayer" unique_id=157917005]
 script = ExtResource("1_fujdv")
 metadata/_edit_horizontal_guides_ = [289.0]
 
-[node name="MenuBackground" parent="." instance=ExtResource("2_udaat")]
+[node name="MenuBackground" parent="." unique_id=1256188634 instance=ExtResource("2_udaat")]
 
-[node name="MultiplayerLobby" type="Node" parent="."]
+[node name="MultiplayerLobby" type="Node" parent="." unique_id=974977759]
 script = ExtResource("3_5oy8v")
 popup_window_template = ExtResource("4_nmt54")
 wrong_version_translation = ExtResource("5_nefmw")
@@ -47,10 +48,10 @@ player_kicked_message = ExtResource("9_cpxv2")
 deck_has_been_changed = ExtResource("10_rtr8t")
 metadata/_custom_type_script = "uid://pik1xooq47eq"
 
-[node name="Node" type="Node" parent="."]
+[node name="Node" type="Node" parent="." unique_id=1663986250]
 script = ExtResource("11_5oy8v")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2001350395]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -61,60 +62,61 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer" unique_id=901726338]
 layout_mode = 2
 
-[node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer2"]
+[node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer2" unique_id=882904077]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="LeftArea" type="VBoxContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer"]
+[node name="LeftArea" type="VBoxContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer" unique_id=1161874743]
 layout_mode = 2
 
-[node name="Players" type="PanelContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer/LeftArea"]
+[node name="Players" type="PanelContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer/LeftArea" unique_id=135170543]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PlayerList" type="VBoxContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer/LeftArea/Players"]
+[node name="PlayerList" type="VBoxContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer/LeftArea/Players" unique_id=1777458230]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PlayerList" type="Label" parent="MarginContainer/VBoxContainer2/VBoxContainer/LeftArea/Players/PlayerList"]
+[node name="PlayerList" type="Label" parent="MarginContainer/VBoxContainer2/VBoxContainer/LeftArea/Players/PlayerList" unique_id=671371575]
 layout_mode = 2
 text = "PLAYER_LIST"
 
-[node name="Players" type="ScrollContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer/LeftArea/Players/PlayerList"]
+[node name="Players" type="ScrollContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer/LeftArea/Players/PlayerList" unique_id=953934507]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PlayerList" type="VBoxContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer/LeftArea/Players/PlayerList/Players"]
+[node name="PlayerList" type="VBoxContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer/LeftArea/Players/PlayerList/Players" unique_id=171223904]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("11_f7rnu")
 player_template = ExtResource("12_tupvp")
 
-[node name="ChatArea" type="PanelContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer/LeftArea"]
+[node name="ChatArea" type="PanelContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer/LeftArea" unique_id=154368815]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Chat" parent="MarginContainer/VBoxContainer2/VBoxContainer/LeftArea/ChatArea" instance=ExtResource("13_udaat")]
+[node name="Chat" parent="MarginContainer/VBoxContainer2/VBoxContainer/LeftArea/ChatArea" unique_id=123888134 instance=ExtResource("13_udaat")]
 layout_mode = 2
 
-[node name="Decks" type="PanelContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer"]
+[node name="Decks" type="PanelContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer" unique_id=97133053]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("14_j5g3f")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer/Decks"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer/Decks" unique_id=247406275]
 layout_mode = 2
 
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer2/VBoxContainer/Decks/VBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer2/VBoxContainer/Decks/VBoxContainer" unique_id=1535864569]
 layout_mode = 2
 placeholder_text = "FILTER_DECKS"
+right_icon = ExtResource("17_jnh0f")
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer/Decks/VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer/Decks/VBoxContainer" unique_id=983618697]
 layout_mode = 2
 size_flags_vertical = 3
 columns = 2
@@ -122,13 +124,13 @@ script = ExtResource("15_m3g0j")
 deck_preview_template = ExtResource("16_h314c")
 show_custom = false
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer2"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer2" unique_id=435833541]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer2/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer2/PanelContainer" unique_id=1996671631]
 layout_mode = 2
 
-[node name="StartGame" type="Button" parent="MarginContainer/VBoxContainer2/PanelContainer/HBoxContainer"]
+[node name="StartGame" type="Button" parent="MarginContainer/VBoxContainer2/PanelContainer/HBoxContainer" unique_id=1957601585]
 layout_mode = 2
 size_flags_horizontal = 0
 tooltip_text = "START_GAME_TOOLTIP"
@@ -136,7 +138,7 @@ text = "START_GAME"
 script = ExtResource("17_vmvut")
 is_server_only = true
 
-[node name="Back" type="Button" parent="MarginContainer/VBoxContainer2/PanelContainer/HBoxContainer"]
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer2/PanelContainer/HBoxContainer" unique_id=1201626479]
 layout_mode = 2
 size_flags_horizontal = 10
 tooltip_text = "ABORT_TOOLTIP"
@@ -145,7 +147,7 @@ text = "ABORT"
 script = ExtResource("1_nefmw")
 pressed_action = SubResource("Resource_nefmw")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=175292176]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -159,7 +161,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("20_qmoly")
 
-[node name="ConnectingMessage" parent="CenterContainer" instance=ExtResource("21_udaat")]
+[node name="ConnectingMessage" parent="CenterContainer" unique_id=327023514 instance=ExtResource("21_udaat")]
 layout_mode = 2
 
 [connection signal="connect_server" from="." to="MultiplayerLobby" method="connect_to_server"]

@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dbyhklficaq52" path="res://entities/ui/deck_viewer/scripts/ReloadDecks.gd" id="2_v68ni"]
 [ext_resource type="Script" uid="uid://duoapsvxmnpca" path="res://shared/entities/deck_viewer_filter_box/scripts/DeckViewerFilterBox.gd" id="3_44ipw"]
 [ext_resource type="Script" uid="uid://cjuiuh4s0clue" path="res://shared/entities/deck_view_checkbox/scripts/DeckViewCheckbox.gd" id="4_dd2y2"]
+[ext_resource type="Texture2D" uid="uid://1nkrrs4eeibb" path="res://assets/icons/SearchIcon.tres" id="4_j8b63"]
 [ext_resource type="Script" uid="uid://bt7h8k61frlxw" path="res://shared/entities/deck_container/scripts/DeckContainer.gd" id="4_m2ntb"]
 [ext_resource type="PackedScene" uid="uid://b3cv1g0a284mq" path="res://entities/ui/deck_preview/scenes/DeckPreview.tscn" id="6_wx8yk"]
 [ext_resource type="Script" uid="uid://f8gdbcwdx8oy" path="res://shared/entities/lobby_splitter/scripts/LobbySplitter.gd" id="7_88bf3"]
@@ -59,6 +60,7 @@ is_focused = true
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "FILTER_DECKS"
+right_icon = ExtResource("4_j8b63")
 script = ExtResource("3_44ipw")
 
 [node name="Show All" type="CheckButton" parent="VBoxContainer/MarginContainer/PanelContainer/Deck Controls" unique_id=306004452]
