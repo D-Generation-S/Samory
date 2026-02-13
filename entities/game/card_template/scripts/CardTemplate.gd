@@ -50,7 +50,7 @@ func _ready() -> void:
 	card_tooltip_changed.emit(memory_card.description)
 
 	var real_texture: Texture2D = memory_card.texture
-	front_side.set_and_scale_texture(real_texture)
+	front_side.set_and_scale_texture(real_texture, card_deck.built_in)
 	deck_changed.emit(card_deck)
 
 func _enter_tree() -> void:

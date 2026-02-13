@@ -1,6 +1,7 @@
 extends GPUParticles2D
 
 func _ready() -> void:
+	visible = true
 	emitting = false
 	one_shot = true
 	finished.connect(queue_free)
