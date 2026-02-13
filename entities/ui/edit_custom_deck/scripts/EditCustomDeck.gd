@@ -5,8 +5,22 @@ signal card_added(card: CustomDeckResource)
 signal card_updated(card: CustomDeckResource)
 signal show_card(card: MemoryCardResource)
 
+signal saving()
+signal saved()
+
 var _resources: Array[CustomDeckResource] = []
 var _deck_loader: CustomDeckLoader = CustomDeckLoader.new()
+var _save_thread: Thread = null
+
+func _process(_delta: float) -> void:
+	
+	if _save_thread == null or _save_thread.is_alive():
+		return
+	var result: bool = _save_thread.wait_to_finish() as bool
+	_save_thread = null
+	saved.emit()
+	if result:
+		GlobalGameManagerAccess.get_game_manager().reload_system_decks()
 
 func set_deck(deck: CustomDeckResource) -> void:
 	_resources.append(deck)
@@ -47,8 +61,10 @@ func _get_next_card_id() -> int:
 
 
 func save_deck() -> void:
-	if _deck_loader.save_deck(get_deck(), _resources):
-		GlobalGameManagerAccess.get_game_manager().reload_system_decks()
+	if _save_thread != null:
+		return
+	saving.emit()
+	_save_thread = _deck_loader.save_deck_async(get_deck(), _resources)
 
 func view_card(resource: CustomDeckResource) -> void:
 	var card: MemoryCardResource = _deck_loader.convert_to_playable_card(resource)

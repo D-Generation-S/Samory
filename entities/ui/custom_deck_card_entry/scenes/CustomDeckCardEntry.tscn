@@ -51,6 +51,12 @@ tooltip_text = "DELETE_CARD_TOOLTIP"
 icon = ExtResource("2_ox2an")
 script = ExtResource("3_oynso")
 
+[connection signal="_disable_button" from="." to="HBoxContainer/View" method="disable_button"]
+[connection signal="_disable_button" from="." to="HBoxContainer/Edit" method="disable_button"]
+[connection signal="_disable_button" from="." to="HBoxContainer/Delete" method="disable_button"]
+[connection signal="_enable_button" from="." to="HBoxContainer/View" method="enable_button"]
+[connection signal="_enable_button" from="." to="HBoxContainer/Edit" method="enable_button"]
+[connection signal="_enable_button" from="." to="HBoxContainer/Delete" method="enable_button"]
 [connection signal="_name_changed" from="." to="HBoxContainer/Label" method="set_text"]
 [connection signal="pressed" from="HBoxContainer/View" to="." method="view_card"]
 [connection signal="pressed" from="HBoxContainer/Edit" to="." method="edit_card"]

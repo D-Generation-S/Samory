@@ -9,6 +9,11 @@ var _deck_information_file_name: String = "deck_info"
 var _card_base_path: String = "cards/"
 var _asset_base_folder: String = "assets/"
 
+func save_deck_async(deck_information: CustomDeckResource, deck_data: Array[CustomDeckResource]) -> Thread:
+	var thread: Thread = Thread.new()
+	thread.start(save_deck.bind(deck_information, deck_data))
+	return thread
+
 func save_deck(deck_information: CustomDeckResource, deck_data: Array[CustomDeckResource]) -> bool:
 	print("Saving deck with name: " + deck_information.get_resource_name())
 	var cards: Array[CustomDeckResource] = []
