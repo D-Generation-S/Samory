@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="MemoryDeckResource" load_steps=14 format=3 uid="uid://dgbigggpvj0rk"]
+[gd_resource type="Resource" script_class="MemoryDeckResource" format=3 uid="uid://dgbigggpvj0rk"]
 
 [ext_resource type="Texture2D" uid="uid://b0lfebra6adhv" path="res://assets/sprites/Axuree/back_card_1.png" id="1_ov7sq"]
 [ext_resource type="Script" uid="uid://d3u4837pgjc3d" path="res://shared/resources/cards/MemoryCardResource.gd" id="2_mfcoj"]

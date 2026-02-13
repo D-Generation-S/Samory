@@ -16,7 +16,9 @@
 [ext_resource type="Script" uid="uid://b5mhdwdn1h8fo" path="res://entities/game/card_template/scripts/CardDropShadow.gd" id="9_ja01p"]
 [ext_resource type="Script" uid="uid://dni6lxtacurf1" path="res://entities/game/card_template/scripts/CardHandler.gd" id="9_mu0q4"]
 [ext_resource type="Shader" uid="uid://djs1o5pxaguit" path="res://assets/shaders/SingleColorShader.gdshader" id="9_vcvmk"]
+[ext_resource type="Texture2D" uid="uid://bmxqeqo65xwt" path="res://assets/sprites/spritesheet-default.png" id="12_h72da"]
 [ext_resource type="Texture2D" uid="uid://b0lfebra6adhv" path="res://assets/sprites/Axuree/back_card_1.png" id="14_bmj37"]
+[ext_resource type="Shader" path="res://assets/shaders/SoftAlphaBorder.gdshader" id="14_l7f2y"]
 [ext_resource type="Material" uid="uid://ceraa2tomrum8" path="res://entities/game/card_template/assets/materials/SelectionShader.tres" id="16_ja01p"]
 [ext_resource type="Script" uid="uid://bipcmxhkarmo3" path="res://entities/game/card_template/scripts/DebugControl.gd" id="18_8fn1p"]
 [ext_resource type="Script" uid="uid://oqb8v04e4sw6" path="res://entities/game/card_template/scripts/CardTemplateDebug.gd" id="18_tqsbp"]
@@ -44,7 +46,19 @@ colors = PackedColorArray(0.955955, 0.929103, 0.857593, 1, 0.955955, 0.929103, 0
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_vp4ck"]
 gradient = SubResource("Gradient_0sfg2")
 width = 500
-height = 550
+height = 500
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h72da"]
+atlas = ExtResource("12_h72da")
+region = Rect2(192, 432, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7f2y"]
+atlas = ExtResource("12_h72da")
+region = Rect2(384, 256, 64, 64)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ucd15"]
+shader = ExtResource("14_l7f2y")
+shader_parameter/edge_fade_width = 0.05
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phkhd"]
 size = Vector2(500, 550)
@@ -100,22 +114,52 @@ target_offset = Vector2(13, 13)
 animation_time = 0.1
 
 [node name="CardBackground" type="Sprite2D" parent="CanvasGroup" unique_id=914357819 groups=["card_content"]]
-position = Vector2(250, 275)
+visible = false
+position = Vector2(250, 250)
 texture = SubResource("GradientTexture2D_vp4ck")
 
-[node name="CardText" type="RichTextLabel" parent="CanvasGroup" unique_id=557375108 groups=["card_content"]]
+[node name="CardBackground2" type="NinePatchRect" parent="CanvasGroup" unique_id=589517874]
+offset_right = 500.0
+offset_bottom = 500.0
+texture = SubResource("AtlasTexture_h72da")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="TextFrame" type="NinePatchRect" parent="CanvasGroup" unique_id=1031246576]
 offset_top = 500.0
 offset_right = 500.0
 offset_bottom = 550.0
+texture = SubResource("AtlasTexture_l7f2y")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="CardText" type="RichTextLabel" parent="CanvasGroup/TextFrame" unique_id=557375108 groups=["card_content"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -25.0
+offset_right = 250.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
 tooltip_auto_translate_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "[center]placeholder[/center]"
 fit_content = true
 script = ExtResource("3_4fnc2")
 
 [node name="CardFront" type="Sprite2D" parent="CanvasGroup" unique_id=1601101173 groups=["card_content"]]
+material = SubResource("ShaderMaterial_ucd15")
 position = Vector2(250, 250)
 texture = ExtResource("4_e8l51")
 script = ExtResource("4_kxmgl")
@@ -165,6 +209,7 @@ horizontal_alignment = 2
 script = ExtResource("18_8fn1p")
 
 [node name="MatchingFoundEffect" type="GPUParticles2D" parent="." unique_id=1713421395]
+visible = false
 position = Vector2(250, 275)
 amount = 800
 texture = ExtResource("20_ja01p")
@@ -185,13 +230,13 @@ volume = -15.0
 [connection signal="card_in_focus" from="." to="CardBack" method="is_focused"]
 [connection signal="card_in_focus" from="." to="FocusEffect" method="trigger_random_effect"]
 [connection signal="card_lost_focus" from="." to="CardBack" method="lost_focus"]
-[connection signal="card_text_changed" from="." to="CanvasGroup/CardText" method="set_card_text"]
-[connection signal="card_tooltip_changed" from="." to="CanvasGroup/CardText" method="set_tooltip"]
+[connection signal="card_text_changed" from="." to="CanvasGroup/TextFrame/CardText" method="set_card_text"]
+[connection signal="card_tooltip_changed" from="." to="CanvasGroup/TextFrame/CardText" method="set_tooltip"]
 [connection signal="card_triggered" from="." to="CanvasGroup" method="show_card_content"]
-[connection signal="card_triggered" from="." to="CanvasGroup/CardText" method="card_revealed"]
+[connection signal="card_triggered" from="." to="CanvasGroup/TextFrame/CardText" method="card_revealed"]
 [connection signal="deck_changed" from="." to="CanvasGroup/DropShadow" method="deck_changed"]
 [connection signal="deck_changed" from="." to="CardBack" method="deck_changed"]
-[connection signal="hide_card" from="." to="CanvasGroup/CardText" method="card_hidden"]
+[connection signal="hide_card" from="." to="CanvasGroup/TextFrame/CardText" method="card_hidden"]
 [connection signal="hide_card" from="." to="CardBack" method="toggle_on"]
 [connection signal="input_active" from="." to="CardBack" method="input_active"]
 [connection signal="input_active" from="." to="FocusEffect" method="toggle_state"]
