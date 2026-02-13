@@ -10,10 +10,13 @@ func _ready() -> void:
 		return
 
 	var card_information: CardTemplate = get_parent() as CardTemplate
-	if card_information.is_ghost:
+	if card_information == null or card_information.is_ghost:
 		queue_free()
 		return
 	var card: MemoryCardResource = card_information.memory_card
+	if card == null:
+		queue_free()
+		return
 	var card_position: Point = card_information.grid_position
 
 	card_id_label.text = str(card.get_id())
