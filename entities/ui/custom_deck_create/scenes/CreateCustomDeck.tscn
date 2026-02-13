@@ -18,7 +18,11 @@
 [ext_resource type="Script" uid="uid://dgu6d3fl16qev" path="res://shared/resources/validations/TextSizeValidation.gd" id="9_ybycn"]
 [ext_resource type="Resource" uid="uid://ck0uqkqfdqve3" path="res://shared/resources/validations/templates/DefaultTextRegexValidation.tres" id="10_k6nxf"]
 [ext_resource type="Resource" uid="uid://b2n23ddculs6s" path="res://shared/resources/validations/templates/DescriptionRegexValidation.tres" id="10_nhvdj"]
+[ext_resource type="Texture2D" uid="uid://dmbvvlspsl0yu" path="res://assets/icons/LoadIcon.tres" id="16_a0n72"]
 [ext_resource type="Script" uid="uid://bt4j4glj2fn64" path="res://entities/ui/custom_deck_create/scripts/CustomDeckButtonControl.gd" id="18_mrfij"]
+[ext_resource type="Texture2D" uid="uid://b6xl5vukmvlku" path="res://assets/icons/AddIcon.tres" id="20_6v5nn"]
+[ext_resource type="Texture2D" uid="uid://b2goxx3el463y" path="res://assets/icons/EditIcon.tres" id="20_vf6dt"]
+[ext_resource type="Texture2D" uid="uid://cln3v63hwble8" path="res://assets/icons/HomeIcon.tres" id="21_vf6dt"]
 
 [sub_resource type="Resource" id="Resource_vf6dt"]
 script = ExtResource("9_ybycn")
@@ -142,6 +146,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 tooltip_text = "LOAD_DECK_IMAGE_DESCRIPTION"
 text = "LOAD_DECK_IMAGE"
+icon = ExtResource("16_a0n72")
 script = ExtResource("7_n4d2i")
 button_behavior = SubResource("Resource_nhxkq")
 
@@ -155,6 +160,7 @@ script = ExtResource("18_mrfij")
 layout_mode = 2
 tooltip_text = "EDIT_CUSTOM_DECK_DESCRIPTION"
 text = "EDIT_CUSTOM_DECK"
+icon = ExtResource("20_vf6dt")
 script = ExtResource("7_n4d2i")
 button_behavior = SubResource("Resource_3baql")
 
@@ -162,12 +168,14 @@ button_behavior = SubResource("Resource_3baql")
 layout_mode = 2
 tooltip_text = "CREATE_NEW_CUSTOM_DECK_DESCRIPTION"
 text = "CREATE_NEW_CUSTOM_DECK"
+icon = ExtResource("20_6v5nn")
 script = ExtResource("7_n4d2i")
 
 [node name="LoadCustomDeck" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/Buttons" unique_id=387285691]
 layout_mode = 2
 tooltip_text = "LOAD_CUSTOM_DECK_DESCRIPTION"
 text = "LOAD_CUSTOM_DECK"
+icon = ExtResource("16_a0n72")
 script = ExtResource("7_n4d2i")
 button_behavior = SubResource("Resource_wtadk")
 
@@ -175,6 +183,7 @@ button_behavior = SubResource("Resource_wtadk")
 layout_mode = 2
 tooltip_text = "ABORT_DESCRIPTION"
 text = "ABORT"
+icon = ExtResource("21_vf6dt")
 script = ExtResource("7_n4d2i")
 button_behavior = SubResource("Resource_3b6i1")
 pressed_action = SubResource("Resource_v8hna")

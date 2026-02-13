@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dkd4cftggpymb"]
+[gd_scene format=3 uid="uid://dkd4cftggpymb"]
 
 [ext_resource type="Script" uid="uid://lae7d6ybthx1" path="res://entities/ui/game_lobby/scripts/GameLobby.gd" id="1_0oi2l"]
 [ext_resource type="Script" uid="uid://dob4ydfgei44n" path="res://entities/ui/game_lobby/scripts/AddNewPlayerButton.gd" id="1_2n3u5"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://bt7h8k61frlxw" path="res://shared/entities/deck_container/scripts/DeckContainer.gd" id="11_3fbum"]
 [ext_resource type="Texture2D" uid="uid://wa0qa5dgmjgk" path="res://assets/icons/AiIcon.tres" id="11_3vpqe"]
 [ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="11_eein8"]
+[ext_resource type="Texture2D" uid="uid://1nkrrs4eeibb" path="res://assets/icons/SearchIcon.tres" id="14_olqdt"]
 [ext_resource type="Resource" uid="uid://b0gd4uwnid78l" path="res://shared/entities/clickable_button/assets/animations/DefaultButtonAnimation.tres" id="17_to3in"]
 [ext_resource type="Texture2D" uid="uid://dkm1d2mijfcuq" path="res://assets/icons/PlayIcon.tres" id="19_ef40l"]
 [ext_resource type="Texture2D" uid="uid://b6vwa7x6vgpfd" path="res://assets/icons/DenyIcon.tres" id="23_k5aev"]
@@ -33,12 +34,12 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 script = ExtResource("25_ef40l")
 metadata/_custom_type_script = "uid://b03sehux5xslr"
 
-[node name="GameLobby" type="CanvasLayer"]
+[node name="GameLobby" type="CanvasLayer" unique_id=2003024864]
 script = ExtResource("1_0oi2l")
 
-[node name="MenuBackground" parent="." instance=ExtResource("2_q7a4k")]
+[node name="MenuBackground" parent="." unique_id=571072071 instance=ExtResource("2_q7a4k")]
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2074192764]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -49,22 +50,23 @@ size_flags_vertical = 3
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_s33bc")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=266214878]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1806762973]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HSplitContainer" type="HSplitContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="HSplitContainer" type="HSplitContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1321354106]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-split_offset = -300
+split_offsets = PackedInt32Array(-300)
 dragger_visibility = 2
+split_offset = -300
 script = ExtResource("3_muy8l")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer" unique_id=1806646243]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 15
@@ -72,51 +74,51 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer" unique_id=942947471]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer" unique_id=2104970047]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer" unique_id=903067714]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=321286249]
 layout_mode = 2
 
-[node name="Playerlist" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Playerlist" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=505398786]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "PLAYER_LIST"
 horizontal_alignment = 1
 
-[node name="PlayerListHelp" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="PlayerListHelp" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2101148403]
 layout_mode = 2
 tooltip_text = "PLAYER_LIST_HELP"
 texture = ExtResource("3_bvnvj")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1123697286]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Players" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+[node name="Players" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer" unique_id=350196434]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("3_1ax0d")
 player_card_template = ExtResource("4_l5ybk")
 
-[node name="HBoxContainer2" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1911356026]
 layout_mode = 2
 
-[node name="AddNewPlayer" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" node_paths=PackedStringArray("root_node", "player_node")]
+[node name="AddNewPlayer" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=2048023391 node_paths=PackedStringArray("root_node", "player_node")]
 layout_mode = 2
 tooltip_text = "ADD_NEW_PLAYER_TOOLTIP"
 text = "ADD_NEW_PLAYER"
@@ -128,14 +130,14 @@ player_template = ExtResource("3_vi7sw")
 player_card_template = ExtResource("4_l5ybk")
 is_focused = true
 
-[node name="AddRandomPlayer" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="AddRandomPlayer" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=2145766461]
 layout_mode = 2
 tooltip_text = "ADD_RANDOM_PLAYER_TOOLTIP"
 text = "ADD_RANDOM_PLAYER"
 icon = ExtResource("7_soh36")
 script = ExtResource("7_6tvv5")
 
-[node name="AddAiPlayer" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="AddAiPlayer" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1940681455]
 layout_mode = 2
 tooltip_text = "ADD_AI_PLAYER_TOOLTIP"
 text = "ADD_AI_PLAYER"
@@ -143,26 +145,27 @@ icon = ExtResource("11_3vpqe")
 script = ExtResource("8_prt8c")
 ai_selecion_dialog = ExtResource("9_2gndk")
 
-[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer" unique_id=566625591]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2" unique_id=663080883]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer" unique_id=1709090131]
 layout_mode = 2
 
-[node name="Filter Decks" type="LineEdit" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/HBoxContainer"]
+[node name="Filter Decks" type="LineEdit" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=1339842408]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "FILTER_DECKS"
+right_icon = ExtResource("14_olqdt")
 script = ExtResource("8_7nqqi")
 
-[node name="Show All" type="CheckButton" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/HBoxContainer"]
+[node name="Show All" type="CheckButton" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=1134358906]
 layout_mode = 2
 tooltip_text = "SHOW_ALL_TOOLTIP"
 button_pressed = true
@@ -170,54 +173,54 @@ button_group = ExtResource("9_b0hcr")
 text = "SHOW_ALL"
 script = ExtResource("10_nuo64")
 
-[node name="Show Build In" type="CheckButton" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/HBoxContainer"]
+[node name="Show Build In" type="CheckButton" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=148146965]
 layout_mode = 2
 tooltip_text = "SHOW_BUILT_IN_TOOLTIP"
 button_group = ExtResource("9_b0hcr")
 text = "SHOW_BUILT_IN"
 script = ExtResource("10_nuo64")
 
-[node name="Show Custom" type="CheckButton" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/HBoxContainer"]
+[node name="Show Custom" type="CheckButton" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=226994724]
 layout_mode = 2
 tooltip_text = "SHOW_CUSTOM_TOOLTIP"
 button_group = ExtResource("9_b0hcr")
 text = "SHOW_CUSTOM"
 script = ExtResource("10_nuo64")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer" unique_id=379481256]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Decks" type="GridContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/ScrollContainer"]
+[node name="Decks" type="GridContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/ScrollContainer" unique_id=1153005114]
 layout_mode = 2
 size_flags_horizontal = 3
 columns = 2
 script = ExtResource("11_3fbum")
 deck_preview_template = ExtResource("1_uo1dm")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer" unique_id=1933354144]
 layout_mode = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/MarginContainer" unique_id=188462225]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/MarginContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/MarginContainer/PanelContainer" unique_id=321343760]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer" unique_id=228144574]
 layout_mode = 2
 
-[node name="StartGame" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2" node_paths=PackedStringArray("player_list", "deck_manager")]
+[node name="StartGame" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2" unique_id=1870055884 node_paths=PackedStringArray("player_list", "deck_manager")]
 layout_mode = 2
 tooltip_text = "START_GAME_TOOLTIP"
 text = "START_GAME"
@@ -225,10 +228,9 @@ icon = ExtResource("19_ef40l")
 script = ExtResource("8_6tuah")
 player_list = NodePath("../../../../../HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/Players")
 deck_manager = NodePath("../../../../../HBoxContainer/HSplitContainer/MarginContainer2/VBoxContainer/ScrollContainer/Decks")
-can_multi_click = false
 animation_resource = ExtResource("17_to3in")
 
-[node name="Cancel" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2"]
+[node name="Cancel" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer2" unique_id=481510265]
 layout_mode = 2
 size_flags_horizontal = 10
 shortcut = ExtResource("11_eein8")
