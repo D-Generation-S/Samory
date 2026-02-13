@@ -18,7 +18,7 @@
 [ext_resource type="Shader" uid="uid://djs1o5pxaguit" path="res://assets/shaders/SingleColorShader.gdshader" id="9_vcvmk"]
 [ext_resource type="Texture2D" uid="uid://bmxqeqo65xwt" path="res://assets/sprites/spritesheet-default.png" id="12_h72da"]
 [ext_resource type="Texture2D" uid="uid://b0lfebra6adhv" path="res://assets/sprites/Axuree/back_card_1.png" id="14_bmj37"]
-[ext_resource type="Shader" uid="uid://c7ms87q12jcrh" path="res://assets/shaders/SoftAlphaBorder.gdshader" id="14_l7f2y"]
+[ext_resource type="Shader" path="res://assets/shaders/SoftAlphaBorder.gdshader" id="14_l7f2y"]
 [ext_resource type="Material" uid="uid://ceraa2tomrum8" path="res://entities/game/card_template/assets/materials/SelectionShader.tres" id="16_ja01p"]
 [ext_resource type="Script" uid="uid://bipcmxhkarmo3" path="res://entities/game/card_template/scripts/DebugControl.gd" id="18_8fn1p"]
 [ext_resource type="Script" uid="uid://oqb8v04e4sw6" path="res://entities/game/card_template/scripts/CardTemplateDebug.gd" id="18_tqsbp"]
