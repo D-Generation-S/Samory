@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dnkq0vi7xlkh1" path="res://entities/ui/multiplayer_chat/scripts/ChatController.gd" id="1_0rmtm"]
 [ext_resource type="Script" uid="uid://btfxdq2gyiddl" path="res://entities/ui/multiplayer_chat/scripts/Chat.gd" id="1_06hh4"]
+[ext_resource type="Script" uid="uid://brbcc8bllpjah" path="res://shared/entities/line_edit_validation/scripts/LineEditValidation.gd" id="3_32rud"]
 [ext_resource type="Texture2D" uid="uid://hks31f7fkm8a" path="res://assets/icons/SendButton.tres" id="3_pjigb"]
 
 [node name="MultiplayerChat" type="VBoxContainer" unique_id=963049778]
@@ -26,6 +27,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "MESSAGE"
 keep_editing_on_text_submit = true
+script = ExtResource("3_32rud")
 
 [node name="Button" type="Button" parent="HBoxContainer" unique_id=611499757]
 layout_mode = 2

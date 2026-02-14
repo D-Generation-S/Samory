@@ -86,10 +86,6 @@ func play_new_song(song: SongResource) -> void:
 		if active_audio_stream is AudioStreamPlayer2D:
 			var tween_disable_audio: Tween = create_tween()
 			tween_disable_audio.tween_property(active_audio_stream, "volume_db", disabled_db_value, fade_duration);
-			tween_disable_audio.finished.connect(func(stream: AudioStreamPlayer2D) -> void:
-				if stream is AudioStreamPlayer2D:
-					stream.stop()
-			)
 
 
 	var new_audio_manager: AudioStreamPlayer2D = _get_unused_audio_node()

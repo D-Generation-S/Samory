@@ -59,8 +59,6 @@ text = "ERROR"
 fit_content = true
 script = ExtResource("3_37146")
 
-[connection signal="text_changed" from="VBoxContainer2/VBoxContainer/PlayerName" to="VBoxContainer2/VBoxContainer/PlayerName" method="_on_text_changed"]
-[connection signal="text_submitted" from="VBoxContainer2/VBoxContainer/PlayerName" to="VBoxContainer2/VBoxContainer/HBoxContainer3/AddPlayer" method="text_submitted"]
 [connection signal="valid" from="VBoxContainer2/VBoxContainer/PlayerName" to="VBoxContainer2/VBoxContainer/HBoxContainer3/AddPlayer" method="validate"]
 [connection signal="valid" from="VBoxContainer2/VBoxContainer/PlayerName" to="VBoxContainer2/PlayerNameError" method="reset"]
 [connection signal="validation_error" from="VBoxContainer2/VBoxContainer/PlayerName" to="VBoxContainer2/PlayerNameError" method="set_error"]

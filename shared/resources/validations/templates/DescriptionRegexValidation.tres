@@ -5,6 +5,6 @@
 
 [resource]
 script = ExtResource("2_haqbj")
-regex_rules = "^[a-zA-Z0-9\\\\., ]*$"
+regex_rules = "^[a-zA-Z0-9,\\n\\. \\-]*$"
 regex_validation_error = ExtResource("1_aplbc")
 metadata/_custom_type_script = "uid://gvswey3hf5eo"

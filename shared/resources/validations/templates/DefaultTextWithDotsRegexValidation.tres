@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="RegexValidation" format=3 uid="uid://e50u6qnjyg86"]
+
+[ext_resource type="Resource" uid="uid://dkqwatqifmgr" path="res://shared/resources/translations/assets/RegexOnlyLettersAndNumbers.tres" id="1_o6073"]
+[ext_resource type="Script" uid="uid://gvswey3hf5eo" path="res://shared/resources/validations/RegexValidation.gd" id="2_4s1bo"]
+
+[resource]
+script = ExtResource("2_4s1bo")
+regex_rules = "^[a-zA-Z0-9\\., \\-]*$"
+regex_validation_error = ExtResource("1_o6073")
+metadata/_custom_type_script = "uid://dgu6d3fl16qev"

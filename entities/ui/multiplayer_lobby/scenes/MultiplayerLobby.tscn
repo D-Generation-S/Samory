@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://1nkrrs4eeibb" path="res://assets/icons/SearchIcon.tres" id="17_jnh0f"]
 [ext_resource type="Script" uid="uid://ep7mvi0mvj1a" path="res://entities/ui/multiplayer_lobby/scripts/MultiplayerStartGame.gd" id="17_vmvut"]
 [ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="18_3ilta"]
+[ext_resource type="Script" uid="uid://duoapsvxmnpca" path="res://shared/entities/deck_viewer_filter_box/scripts/DeckViewerFilterBox.gd" id="18_168wr"]
 [ext_resource type="Script" uid="uid://6fa28680utd5" path="res://shared/entities/popup_manager/scripts/PopupManager.gd" id="20_qmoly"]
 [ext_resource type="PackedScene" uid="uid://y8ij2nqvugsq" path="res://entities/ui/multiplayer_connection_state_message/scenes/MultiplayerConnectionStateMessage.tscn" id="21_udaat"]
 
@@ -115,6 +116,7 @@ layout_mode = 2
 layout_mode = 2
 placeholder_text = "FILTER_DECKS"
 right_icon = ExtResource("17_jnh0f")
+script = ExtResource("18_168wr")
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer/Decks/VBoxContainer" unique_id=983618697]
 layout_mode = 2

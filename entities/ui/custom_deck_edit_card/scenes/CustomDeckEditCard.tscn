@@ -8,9 +8,7 @@
 [ext_resource type="Script" uid="uid://cky8chsg088ia" path="res://shared/entities/custom_deck/scripts/CustomDeckDescriptionText.gd" id="4_dhv4o"]
 [ext_resource type="Script" uid="uid://tjo0r1gwyjls" path="res://shared/resources/validations/MultiAndValidation.gd" id="4_ga01i"]
 [ext_resource type="Script" uid="uid://cci4ryxp2ob7m" path="res://shared/resources/validations/Validation.gd" id="5_yxglr"]
-[ext_resource type="Resource" uid="uid://bfylp3ooxs1ua" path="res://shared/resources/translations/assets/MaxSizeTranslation.tres" id="6_yxglr"]
-[ext_resource type="Resource" uid="uid://h0lfh3suh0v5" path="res://shared/resources/translations/assets/MinSizeTranslation.tres" id="7_4y2v2"]
-[ext_resource type="Script" uid="uid://dgu6d3fl16qev" path="res://shared/resources/validations/TextSizeValidation.gd" id="7_46p3t"]
+[ext_resource type="Resource" uid="uid://e50u6qnjyg86" path="res://shared/resources/validations/templates/DefaultTextWithDotsRegexValidation.tres" id="6_3fi5b"]
 [ext_resource type="Resource" uid="uid://b2n23ddculs6s" path="res://shared/resources/validations/templates/DescriptionRegexValidation.tres" id="9_4y2v2"]
 [ext_resource type="Script" uid="uid://d0jijr8wa6o8v" path="res://shared/entities/clickable_button/resources/behaviors/DefaultButtonBehavior.gd" id="9_jkgfh"]
 [ext_resource type="Script" uid="uid://b5y35d40fsrp4" path="res://shared/entities/validation_text_edit/scripts/MultiValidationNode.gd" id="12_3fi5b"]
@@ -18,15 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://mpl5wj48e5i4" path="res://assets/icons/SaveIcon.tres" id="15_ngtq7"]
 [ext_resource type="Texture2D" uid="uid://b6vwa7x6vgpfd" path="res://assets/icons/DenyIcon.tres" id="16_7n4uw"]
 
-[sub_resource type="Resource" id="Resource_4y2v2"]
-script = ExtResource("7_46p3t")
-min_size = 5
-max_size = 35
-metadata/_custom_type_script = "uid://dgu6d3fl16qev"
-
 [sub_resource type="Resource" id="Resource_35kq6"]
 script = ExtResource("4_ga01i")
-validators = Array[ExtResource("5_yxglr")]([SubResource("Resource_4y2v2"), ExtResource("9_4y2v2")])
+validators = Array[ExtResource("5_yxglr")]([ExtResource("6_3fi5b"), ExtResource("6_3fi5b")])
 metadata/_custom_type_script = "uid://tjo0r1gwyjls"
 
 [sub_resource type="Resource" id="Resource_ga01i"]
