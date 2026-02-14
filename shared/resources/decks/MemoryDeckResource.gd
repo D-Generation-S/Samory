@@ -14,6 +14,7 @@ class_name MemoryDeckResource
 @export var file_system_folder: String
 
 var is_ready: bool = false
+var using_default_texture: bool = false
 
 func ready_up() -> void:
 	if is_ready:
@@ -23,3 +24,6 @@ func ready_up() -> void:
 	for card: MemoryCardResource in cards:
 		card.set_id(cid)
 		cid = cid + 1
+
+func is_using_default_texture() -> bool:
+	return using_default_texture or built_in

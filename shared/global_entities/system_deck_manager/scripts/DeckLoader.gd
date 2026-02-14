@@ -75,6 +75,7 @@ func load_custom_decks() -> Array[MemoryDeckResource]:
 	var data: Array[MemoryDeckResource] = custom_deck_loader.load_decks()
 	for deck: MemoryDeckResource in data:
 		if deck.card_back == null:
+			deck.using_default_texture = true
 			deck.card_back = _get_default_cover()
 	return data
 
@@ -98,6 +99,9 @@ func load_deck(deck_name: String) -> MemoryDeckResource:
 	return_deck.file_system_folder = deck_name
 
 	return_deck.card_back = get_cover_image(deck_name)
+	if return_deck.card_back == null:
+		return_deck.using_default_texture = true
+		return_deck.card_back = _get_default_cover()
 	for card_name: String in list_deck_cards(deck_name):
 		var card: MemoryCardResource = load_card(deck_name, card_name)
 		if card != null:
@@ -122,7 +126,7 @@ func get_cover_image(deck_name: String) -> Texture2D:
 		var image: Image = Image.load_from_file(image_source_path)
 		return ImageTexture.create_from_image(image) as Texture2D
 		
-	return _get_default_cover()
+	return null
 
 func load_card(deck_name: String, card_name: String) -> MemoryCardResource:
 	var base_path: String = "%s/%s" % [build_card_base_path(deck_name), card_name]
