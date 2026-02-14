@@ -51,7 +51,7 @@ func destroy() -> void:
 	loading_done.emit()
 	if loading_target_node == null:
 		return
-	var transition: AnimationScene = await ScreenTransitionManager.transit_screen_by_node_with_position(loading_target_node, DisplayServer.window_get_size() / 2, false)
+	var transition: AnimationScene = await ScreenTransitionManager.transit_screen_by_node_with_position(loading_target_node, DisplayServer.window_get_size() / 2.0, false)
 	transition.animation_done.connect(func(_scene: Node) -> void:
 		queue_free()
 		if not loading_target_node.is_in_group("active_scene"):

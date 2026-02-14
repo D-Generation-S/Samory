@@ -33,6 +33,8 @@ var _viewport_size: Vector2i = Vector2i(1920, 1080)
 var _ui_scale: float = 1
 var _camera_zoom_factor: float = 1
 
+var _deck_reload_connected: bool = false
+
 func _ready() -> void:
 	_calculate_resolution_values()
 	get_viewport().content_scale_size = _viewport_size
@@ -79,7 +81,9 @@ func reload_system_decks() -> void:
 	if OS.has_feature("web") or !settings.load_custom_decks:
 		loading_data_done()
 	else:
-		GlobalSystemDeckManager.loading_system_decks_done.connect(loading_data_done)
+		if not _deck_reload_connected:
+			_deck_reload_connected = true
+			GlobalSystemDeckManager.loading_system_decks_done.connect(loading_data_done)
 		GlobalSystemDeckManager.reload_system_decks()
 
 func initial_settings_setup() -> void:

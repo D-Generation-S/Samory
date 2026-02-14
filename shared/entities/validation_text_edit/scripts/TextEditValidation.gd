@@ -21,6 +21,7 @@ func _ready() -> void:
 
 func _on_text_changed() -> void:
 	_validate_and_trigger(text)
+	GlobalSoundBridge.play_text_input()
 	text_is_changed.emit(text)
 
 func _validate_and_trigger(new_text: String) -> void:

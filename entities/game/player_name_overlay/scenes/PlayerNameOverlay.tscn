@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://b1sl7tihdwhil" path="res://entities/game/player_name_overlay/scripts/ScoreAndName.gd" id="7_h8pn1"]
 [ext_resource type="Script" uid="uid://cpx0qtreblopk" path="res://entities/game/player_name_overlay/scripts/PlayerScoreInformation.gd" id="8_4u670"]
 [ext_resource type="Resource" uid="uid://85njf66kd3s1" path="res://shared/resources/colors/assets/PlayerDefaultColor.tres" id="9_2q0hc"]
-[ext_resource type="Shader" uid="uid://c68i873by7j7q" path="res://assets/shaders/ColorReplaceAndShine.gdshader" id="11_2q0hc"]
+[ext_resource type="Shader" uid="uid://u0duqjndk87c" path="res://assets/shaders/ColorReplaceAndShine.gdshader" id="11_2q0hc"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qprtf"]
 texture = ExtResource("2_blt2s")
@@ -35,8 +35,14 @@ shader_parameter/always_replace = true
 shader_parameter/base_color = Color(0, 0, 0, 0)
 shader_parameter/target_color = Color(0, 0, 0, 0)
 shader_parameter/tolerance = 0.1
+shader_parameter/should_shine = false
+shader_parameter/shine_color = Color(1, 1, 1, 0.25)
+shader_parameter/line_width = 0.1
+shader_parameter/angle = 0.7853982
+shader_parameter/speed = 1.0
+shader_parameter/wait_cycles = 1.0
 
-[node name="MarginContainer" type="MarginContainer" node_paths=PackedStringArray("player_type_icon_box")]
+[node name="MarginContainer" type="MarginContainer" unique_id=1999660126 node_paths=PackedStringArray("player_type_icon_box")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -53,30 +59,30 @@ human_player_icon = ExtResource("2_urml8")
 ai_player_icon = ExtResource("3_nldki")
 player_round_color = ExtResource("4_e0a06")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=383609008]
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_qprtf")
 script = ExtResource("6_jynke")
 style_to_use = SubResource("StyleBoxTexture_xjctk")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=1233121116]
 layout_mode = 2
 
-[node name="ScoreAndName" type="HBoxContainer" parent="PanelContainer/HBoxContainer"]
+[node name="ScoreAndName" type="HBoxContainer" parent="PanelContainer/HBoxContainer" unique_id=1255581315]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 script = ExtResource("7_h8pn1")
 
-[node name="Name" type="Label" parent="PanelContainer/HBoxContainer/ScoreAndName"]
+[node name="Name" type="Label" parent="PanelContainer/HBoxContainer/ScoreAndName" unique_id=326864164]
 layout_mode = 2
 text = "NAME_PLACEHOLDER"
 script = ExtResource("8_4u670")
 inactive_color = ExtResource("9_2q0hc")
 active_color = ExtResource("4_e0a06")
 
-[node name="LeftBracket" type="Label" parent="PanelContainer/HBoxContainer/ScoreAndName"]
+[node name="LeftBracket" type="Label" parent="PanelContainer/HBoxContainer/ScoreAndName" unique_id=672300167]
 layout_mode = 2
 size_flags_horizontal = 8
 text = "("
@@ -84,7 +90,7 @@ script = ExtResource("8_4u670")
 inactive_color = ExtResource("9_2q0hc")
 active_color = ExtResource("4_e0a06")
 
-[node name="Score" type="Label" parent="PanelContainer/HBoxContainer/ScoreAndName"]
+[node name="Score" type="Label" parent="PanelContainer/HBoxContainer/ScoreAndName" unique_id=52366694]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 25
@@ -93,7 +99,7 @@ script = ExtResource("7_clybx")
 inactive_color = ExtResource("9_2q0hc")
 active_color = ExtResource("4_e0a06")
 
-[node name="RightBracket" type="Label" parent="PanelContainer/HBoxContainer/ScoreAndName"]
+[node name="RightBracket" type="Label" parent="PanelContainer/HBoxContainer/ScoreAndName" unique_id=1282868630]
 layout_mode = 2
 size_flags_horizontal = 0
 text = ")"
@@ -101,7 +107,7 @@ script = ExtResource("8_4u670")
 inactive_color = ExtResource("9_2q0hc")
 active_color = ExtResource("4_e0a06")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/HBoxContainer" unique_id=919225589]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
@@ -110,7 +116,7 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 2
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/HBoxContainer/MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/HBoxContainer/MarginContainer" unique_id=706341339]
 material = SubResource("ShaderMaterial_iisri")
 layout_mode = 2
 size_flags_horizontal = 8
