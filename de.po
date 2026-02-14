@@ -397,7 +397,7 @@ msgstr ""
 
 #: entities/ui/main_menu/scenes/MainMenu.tscn
 msgid "CREATE_CUSTOM_DECK\n"
-msgstr "Eigene Deck erstellen\n"
+msgstr "Eigenes Deck erstellen\n"
 
 #: entities/ui/main_menu/scenes/MainMenu.tscn
 msgid "DECK_VIEWER_TOOLTIP"
@@ -623,7 +623,7 @@ msgstr "Erlaube dem Spiel eigene Decks zu laden"
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
 msgid "LOAD_CUSTOM_DECKS"
-msgstr "Eigene decks laden"
+msgstr "Eigenes Deck laden"
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
 msgid "AUTO_COMPLETE_ROUND_TOOLTIP"
@@ -1286,7 +1286,7 @@ msgstr ""
 
 #: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
 msgid "EDIT_CUSTOM_DECK"
-msgstr "Deck editieren"
+msgstr "Deck bearbeiten"
 
 #: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
 msgid "CREATE_NEW_CUSTOM_DECK_DESCRIPTION"
@@ -1304,7 +1304,7 @@ msgstr "Lade ein deck das du bereits in der Vergangenheit erstellt hast"
 
 #: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
 msgid "LOAD_CUSTOM_DECK"
-msgstr "Eigene decks laden"
+msgstr "Eigenes Deck laden"
 
 #: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
 #: entities/ui/custom_deck_edit_card/scenes/CustomDeckEditCard.tscn
@@ -1359,7 +1359,7 @@ msgstr ""
 #: entities/ui/custom_deck_card_entry/scenes/CustomDeckCardEntry.tscn
 msgid "EDIT_CARD_TOOLTIP"
 msgstr ""
-"Editiere diese Karte, du kannst hierbei das Bild, den Namen oder die "
+"Bearbeite diese Karte, du kannst hierbei das Bild, den Namen oder die "
 "Beschreibung ändern"
 
 #: entities/ui/custom_deck_card_entry/scenes/CustomDeckCardEntry.tscn
