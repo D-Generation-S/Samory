@@ -1210,6 +1210,17 @@ msgid "CREATE_NEW_CUSTOM_DECK"
 msgstr "Create new custom deck"
 
 #: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
+msgid "RESET_LOADED_CURRENT_DECK_DESCRIPTION"
+msgstr ""
+"The currently loaded deck will be discarded, which means your changes will "
+"be reset.\n"
+"You will have the opportunity to create a new deck."
+
+#: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
+msgid "RESET_LOADED_CURRENT_DECK"
+msgstr "Discard currently loaded deck"
+
+#: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
 msgid "LOAD_CUSTOM_DECK_DESCRIPTION"
 msgstr "Load a deck you already did create in the past"
 

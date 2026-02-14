@@ -1299,6 +1299,17 @@ msgid "CREATE_NEW_CUSTOM_DECK"
 msgstr "Erstelle ein neues eigenes Deck"
 
 #: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
+msgid "RESET_LOADED_CURRENT_DECK_DESCRIPTION"
+msgstr ""
+"Das aktuell geladene Deck wird verworfen, das bedeutet das deine Änderungen "
+"zurückgesetzt.\n"
+"Du bekommst wieder die Möglichkeit ein neues Deck zu erstellen."
+
+#: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
+msgid "RESET_LOADED_CURRENT_DECK"
+msgstr "Aktuell geladenes Deck verwerfen"
+
+#: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
 msgid "LOAD_CUSTOM_DECK_DESCRIPTION"
 msgstr "Lade ein deck das du bereits in der Vergangenheit erstellt hast"
 
