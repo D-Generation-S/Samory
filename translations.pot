@@ -1152,6 +1152,14 @@ msgid "CREATE_NEW_CUSTOM_DECK"
 msgstr ""
 
 #: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
+msgid "RESET_LOADED_CURRENT_DECK_DESCRIPTION"
+msgstr ""
+
+#: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
+msgid "RESET_LOADED_CURRENT_DECK"
+msgstr ""
+
+#: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
 msgid "LOAD_CUSTOM_DECK_DESCRIPTION"
 msgstr ""
 
