@@ -8,7 +8,7 @@ It will list most information required to play the game.
 Samory is a memory game, the game was created as an digital memory game for my son.
 The idea behind this was to allow me to use photos he did create with his camera or drawn himself
 as images for a memory card. To do this and also allow me to share this game to you the game does allow to
-side load custom images for the memory cards. This functiallity allows me to keep his images offline and
+side load custom images for the memory cards. This functionality allows me to keep his images offline and
 still use them in the game.
 
 This mechanic also allows you, as a player, to create custom decks. Check the documentation down below

@@ -126,6 +126,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 placeholder_text = "NEW_DECK_DESCRIPTION"
+wrap_mode = 1
 script = ExtResource("4_n4d2i")
 validation = ExtResource("10_nhvdj")
 
