@@ -4,6 +4,8 @@ class_name DecKViewerCardImage extends TextureRect
 @export var max_height: float = 500.0
 
 func set_image(new_texture: Texture) -> void:
+	if new_texture == null:
+		return
 	if new_texture.get_width() <= max_width and new_texture.get_height() < max_height:
 		texture = new_texture
 	var ratio: float = min(max_width / new_texture.get_width(), max_height / new_texture.get_height())
