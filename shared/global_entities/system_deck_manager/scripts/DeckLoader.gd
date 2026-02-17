@@ -150,6 +150,8 @@ func load_card(deck_name: String, card_name: String) -> MemoryCardResource:
 	var description: String = FileAccess.get_file_as_string(description_path)
 
 	var image: Image = Image.load_from_file(image_path)
+	if image == null:
+		return null
 	var texture: ImageTexture = ImageTexture.create_from_image(image)
 
 	var card: MemoryCardResource = MemoryCardResource.new()
