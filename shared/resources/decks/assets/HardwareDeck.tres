@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="MemoryDeckResource" load_steps=16 format=3 uid="uid://55igt6df2ilr"]
+[gd_resource type="Resource" script_class="MemoryDeckResource" format=3 uid="uid://55igt6df2ilr"]
 
 [ext_resource type="Script" uid="uid://d3u4837pgjc3d" path="res://shared/resources/cards/MemoryCardResource.gd" id="1_5chdw"]
+[ext_resource type="Resource" uid="uid://b2mjeor2q1pcp" path="res://shared/resources/decks/settings/assets/DefaultDeckSettings.tres" id="1_je7fu"]
 [ext_resource type="Texture2D" uid="uid://cpdy0umtx233e" path="res://assets/sprites/Axuree/back_card_3.png" id="1_ljd8o"]
 [ext_resource type="Script" uid="uid://bpimk4xlfh3xc" path="res://shared/resources/decks/MemoryDeckResource.gd" id="2_ljd8o"]
 [ext_resource type="Resource" uid="uid://bi07necohgv76" path="res://shared/resources/cards/assets/generic_items/ComputerCard.tres" id="3_dy4pe"]

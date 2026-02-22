@@ -9,6 +9,8 @@ signal card_placing_done()
 
 @export var card_template: PackedScene
 @export var separation: int = 25
+# A artificial wait time between each card placement, this does prevent a total blockage of the game
+@export var artificial_wait_time: int = 4
 @onready var _card_target_node: Node2D = self.get_parent() as Node2D
 
 var _load_thread: Thread = null
@@ -51,6 +53,8 @@ func _add_cards_to_field_async(cards: Array[CardTemplate], target: Node2D) -> vo
 		target.call_deferred("add_child", card)
 		
 		call_deferred("emit_signal","card_placed", card)
+		for i: int in artificial_wait_time:
+			await get_tree().physics_frame
 	call_deferred("emit_signal","card_placing_done")
 
 func _calculate_field_size(cards_on_x: int, cards_on_y: int) -> void:

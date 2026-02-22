@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="DeckSettings" format=3 uid="uid://b2mjeor2q1pcp"]
+
+[ext_resource type="Script" uid="uid://c2y5jyft6c1l7" path="res://shared/resources/decks/settings/DeckSettings.gd" id="1_35bbk"]
+
+[resource]
+script = ExtResource("1_35bbk")
+metadata/_custom_type_script = "uid://c2y5jyft6c1l7"
