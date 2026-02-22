@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Samory"
-config/version="0.19.3"
+config/version="0.19.4"
 config/tags=PackedStringArray("public")
 run/main_scene="res://shared/global_entities/game_manager/scenes/GameManager.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
