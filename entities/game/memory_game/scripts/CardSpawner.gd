@@ -5,12 +5,14 @@ signal field_constructed(cards_on_x: int, cards_on_y: int)
 signal card_loading_done()
 signal announce_field_size(area: Rect2)
 signal card_placed(card: CardTemplate)
+signal card_placing_done()
 
 @export var card_template: PackedScene
 @export var separation: int = 25
 @onready var _card_target_node: Node2D = self.get_parent() as Node2D
 
-var load_thread: Thread = null
+var _load_thread: Thread = null
+var _place_thread: Thread = null
 var _current_deck: MemoryDeckResource
 
 func _ready() -> void:
@@ -20,25 +22,36 @@ func place_cards_from_deck(deck_to_use: MemoryDeckResource) -> void:
 	_current_deck = deck_to_use
 	if multiplayer.is_server():
 		_rpc_announce_deck.rpc(deck_to_use.resource_path)
-	load_thread = Thread.new()
-	load_thread.start(build_card_layout.bind(deck_to_use, card_template, separation))
+
+
+	_load_thread = Thread.new()
+	_load_thread.start(build_card_layout.bind(deck_to_use, card_template, separation))
 
 	await field_constructed
-
 	process_mode = PROCESS_MODE_INHERIT
 
-	var cards: Array[CardTemplate] = load_thread.wait_to_finish() as Array[CardTemplate]
-	for card: CardTemplate in cards:
-		_card_target_node.add_child(card)
-		card.visible = false
-		card_placed.emit(card)
-		
-	load_thread = null
+	var cards: Array[CardTemplate] = _load_thread.wait_to_finish() as Array[CardTemplate]
+	_load_thread = null
+	
+	_place_thread = Thread.new()
+	_place_thread.start(_add_cards_to_field_async.bind(cards, _card_target_node))
+	
+	await card_placing_done
+	_place_thread = null
+	
 	for card: CardTemplate in cards:
 		card.visible = true
 	announce_card_field()
 	card_loading_done.emit()
 	queue_free()
+
+func _add_cards_to_field_async(cards: Array[CardTemplate], target: Node2D) -> void:
+	for card: CardTemplate in cards:
+		card.visible = false
+		target.call_deferred("add_child", card)
+		
+		call_deferred("emit_signal","card_placed", card)
+	call_deferred("emit_signal","card_placing_done")
 
 func _calculate_field_size(cards_on_x: int, cards_on_y: int) -> void:
 	if card_template == null:
