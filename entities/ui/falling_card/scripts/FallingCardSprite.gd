@@ -4,8 +4,11 @@ extends Sprite2D
 @export var card_pool: Array[Texture] = []
 @export var max_width: int = 150
 @export var max_height: int = 150
+@export var burn_sound: AudioStream
+@export var sound_volume: float = 0
 
-var tween: Tween = null
+var _tween: Tween = null
+var _burn_time: float = 1.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready()  -> void:
@@ -15,6 +18,9 @@ func _ready()  -> void:
 		return
 	if material:
 		material = material.duplicate_deep()
+
+	if burn_sound != null:
+		_burn_time = burn_sound.get_length()
 	
 	if card_pool.size() > 0:
 		var current_image: Texture = card_pool.pick_random()
@@ -30,15 +36,17 @@ func _ready()  -> void:
 		real_collision_shape.size = texture.get_size()
 
 func reset() -> void:
-	if tween and tween.is_running():
-		tween.kill()
-	tween = null
+	if _tween and _tween.is_running():
+		_tween.kill()
+	_tween = null
 	update_radius(0)
 	collision_shape.disabled = false
 
 func dissolve(mouse_position: Vector2) -> void:
-	if tween != null:
+	if _tween != null:
 		return
+	if burn_sound != null:
+		GlobalSoundManager.play_sound_effect(burn_sound, sound_volume)
 	collision_shape.disabled = true
 	if get_rect().has_point(mouse_position):
 		var uv: Vector2 = get_local_uv(mouse_position)
@@ -52,10 +60,10 @@ func get_local_uv(local_click_pos: Vector2) -> Vector2:
 
 func burn_card(uv: Vector2) -> void:
 	if material and material is ShaderMaterial:
-		tween = create_tween()
-		tween.set_ease(Tween.EASE_IN)
+		_tween = create_tween()
+		_tween.set_ease(Tween.EASE_IN)
 		material.set_shader_parameter("position", uv)
-		tween.tween_method(update_radius, 0.0, 2.0, 1.5)
+		_tween.tween_method(update_radius, 0.0, 2.0, _burn_time)
 
 func update_radius(value: float) -> void:
 	if material and material is ShaderMaterial:

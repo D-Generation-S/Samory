@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://8yxfao2fwwod"]
+[gd_scene format=3 uid="uid://8yxfao2fwwod"]
 
 [ext_resource type="Script" uid="uid://hiwp8p7e35oc" path="res://entities/ui/falling_card/scripts/FallingCard.gd" id="1_5pc70"]
 [ext_resource type="Texture2D" uid="uid://dpcfrsq40moii" path="res://assets/sprites/CardDefaultBack.png" id="1_f7o75"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b0lfebra6adhv" path="res://assets/sprites/Axuree/back_card_1.png" id="5_723xn"]
 [ext_resource type="Texture2D" uid="uid://cahkopk46qk6k" path="res://assets/sprites/Axuree/back_card_2.png" id="6_56p1m"]
 [ext_resource type="Texture2D" uid="uid://cpdy0umtx233e" path="res://assets/sprites/Axuree/back_card_3.png" id="7_bec50"]
+[ext_resource type="AudioStream" uid="uid://bh8jrtpvkjwam" path="res://assets/audio/effect/hanasmusic/841394__hanasmusic__candle_burn_3_crackle.wav" id="8_ka82y"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_7g1s1"]
 
@@ -25,19 +26,21 @@ shader_parameter/burnColor = Color(1, 0.443137, 0, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ov72a"]
 size = Vector2(150, 150)
 
-[node name="FallingCard" type="RigidBody2D"]
+[node name="FallingCard" type="RigidBody2D" unique_id=722274604]
 input_pickable = true
 gravity_scale = 0.2
 script = ExtResource("1_5pc70")
 
-[node name="Sprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("collision_shape")]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1525450693 node_paths=PackedStringArray("collision_shape")]
 material = SubResource("ShaderMaterial_hhi4s")
 texture = ExtResource("1_f7o75")
 script = ExtResource("2_hxqwv")
 collision_shape = NodePath("../CollisionShape2D")
 card_pool = Array[Texture]([ExtResource("5_723xn"), ExtResource("6_56p1m"), ExtResource("7_bec50")])
+burn_sound = ExtResource("8_ka82y")
+sound_volume = 13.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1371320901]
 position = Vector2(-1, -0.5)
 shape = SubResource("RectangleShape2D_ov72a")
 
