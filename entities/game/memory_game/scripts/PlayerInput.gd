@@ -43,7 +43,7 @@ func game_paused(is_paused: bool) -> void:
 	resumed_from_pause = !is_paused
 
 func _handle_special_player_actions() -> void:
-	if Input.is_action_pressed("back"):
+	if Input.is_action_just_pressed("back"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		Input.action_release("back")
 		game_menu_requested.emit()
