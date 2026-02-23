@@ -176,6 +176,8 @@ visible = false
 [connection signal="saving" from="." to="MarginContainer/PanelContainer/VBoxContainer/ButtonMargin/Buttons/Abort" method="disable_button"]
 [connection signal="saving" from="." to="LoadingSpinner" method="set_active"]
 [connection signal="show_card" from="." to="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/CardPreview" method="load_card"]
+[connection signal="card_amount_invalid" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/MarginContainer/ScrollContainer/CardList" to="MarginContainer/PanelContainer/VBoxContainer/ButtonMargin/Buttons/Save Deck" method="disable_button"]
+[connection signal="card_amount_valid" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/MarginContainer/ScrollContainer/CardList" to="MarginContainer/PanelContainer/VBoxContainer/ButtonMargin/Buttons/Save Deck" method="enable_button"]
 [connection signal="delete_card_requested" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/MarginContainer/ScrollContainer/CardList" to="." method="delete_card"]
 [connection signal="edit_card_requested" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/MarginContainer/ScrollContainer/CardList" to="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/EditCard" method="show_edit_card"]
 [connection signal="view_card_requested" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/MarginContainer/ScrollContainer/CardList" to="." method="view_card"]
