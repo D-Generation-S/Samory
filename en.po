@@ -509,14 +509,17 @@ msgid "SETTINGS"
 msgstr "Settings"
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
 msgid "SELECT_LANGUAGE_SETTING_TOOLTIP"
 msgstr "Select the language the game should be displayed in"
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
 msgid "ENGLISH"
 msgstr "English"
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
 msgid "GERMAN"
 msgstr "German"
 
@@ -525,18 +528,22 @@ msgid "GRAPHIC_SETTINGS"
 msgstr "Graphic Settings"
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
 msgid "WINDOW_MODE_SETTING_TOOLTIP"
 msgstr "Dropdown to select your preferred window mode"
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
 msgid "FULL_SCREEN"
 msgstr "Fullscreen"
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
 msgid "BORDERLESS"
 msgstr "Borderless"
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
 msgid "MAXIMIZED"
 msgstr "Maximized"
 
@@ -563,10 +570,12 @@ msgid "GAMEPLAY_SETTINGS"
 msgstr "Gameplay Settings"
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
 msgid "LOAD_CUSTOM_DECK_SETTING_TOOLTIP"
 msgstr "Allow the game to sideload your custom decks if enabled"
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
 msgid "LOAD_CUSTOM_DECKS"
 msgstr "Load custom decks"
 
@@ -583,52 +592,22 @@ msgid "RESET_TUTORIAL"
 msgstr "Reset Tutorial"
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-msgid "AUDIO"
-msgstr "Audio"
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-msgid "MASTER_VOLUME_TOOLTIP"
-msgstr ""
-"Option to set the master volume, this will affect all other volume settings "
-"as well"
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-msgid "MASTER_VOLUME"
-msgstr "Master volume"
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-msgid "EFFECT_VOLUME_TOOLTIP"
-msgstr ""
-"Option to change the effect volume, this will affect all the short sounds in "
-"the game"
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-msgid "EFFECT_VOLUME"
-msgstr "Effect volume"
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-msgid "MUSIC_VOLUME_TOOLTIP"
-msgstr ""
-"Option to change the music volume, this will asffect  all the background "
-"music"
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-msgid "MUSIC_VOLUME"
-msgstr "Music volume"
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/audio_panel/scenes/AudioControl.tscn
 msgid "TEST_EFFECTS_TOOLTIP"
 msgstr "Play a effect sound, allowing you to test your current effect volume"
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/audio_panel/scenes/AudioControl.tscn
 msgid "TEST_EFFECTS"
 msgstr "Test effect volume"
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
 msgid "APPLY_SETTING_TOOLTIP"
 msgstr "This will save the current settings and close the menu"
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
 msgid "APPLY"
 msgstr "Apply"
 
@@ -1336,6 +1315,50 @@ msgstr "Game page"
 #: entities/ui/links/scenes/links.tscn
 msgid "REPORT_BUG"
 msgstr "Report bug"
+
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
+msgid "INITIAL_GAME_SETUP_DESCRIPTION"
+msgstr ""
+"This will allow you to initially setup your game.\n"
+"The most important settings are listed here."
+
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
+msgid "INITIAL_GAME_SETUP"
+msgstr "Initial Setup"
+
+#: entities/ui/audio_panel/scenes/AudioControl.tscn
+msgid "AUDIO"
+msgstr "Audio"
+
+#: entities/ui/audio_panel/scenes/AudioControl.tscn
+msgid "MASTER_VOLUME_TOOLTIP"
+msgstr ""
+"Option to set the master volume, this will affect all other volume settings "
+"as well"
+
+#: entities/ui/audio_panel/scenes/AudioControl.tscn
+msgid "MASTER_VOLUME"
+msgstr "Master volume"
+
+#: entities/ui/audio_panel/scenes/AudioControl.tscn
+msgid "EFFECT_VOLUME_TOOLTIP"
+msgstr ""
+"Option to change the effect volume, this will affect all the short sounds in "
+"the game"
+
+#: entities/ui/audio_panel/scenes/AudioControl.tscn
+msgid "EFFECT_VOLUME"
+msgstr "Effect volume"
+
+#: entities/ui/audio_panel/scenes/AudioControl.tscn
+msgid "MUSIC_VOLUME_TOOLTIP"
+msgstr ""
+"Option to change the music volume, this will asffect  all the background "
+"music"
+
+#: entities/ui/audio_panel/scenes/AudioControl.tscn
+msgid "MUSIC_VOLUME"
+msgstr "Music volume"
 
 msgid "Samory"
 msgstr ""

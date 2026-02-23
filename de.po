@@ -564,14 +564,17 @@ msgid "SETTINGS"
 msgstr "Einstellungen"
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
 msgid "SELECT_LANGUAGE_SETTING_TOOLTIP"
 msgstr "Wähle die Sprache des Spiels aus in der diese angezeigt werden soll."
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
 msgid "ENGLISH"
 msgstr "Englisch"
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
 msgid "GERMAN"
 msgstr "Deutsch"
 
@@ -580,18 +583,22 @@ msgid "GRAPHIC_SETTINGS"
 msgstr "Grafikeinstellungen"
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
 msgid "WINDOW_MODE_SETTING_TOOLTIP"
 msgstr "Ein dropdown um den gewünschten Fenster Modus auszuwählen."
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
 msgid "FULL_SCREEN"
 msgstr "Vollbild"
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
 msgid "BORDERLESS"
 msgstr "Randlos"
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
 msgid "MAXIMIZED"
 msgstr "Maximiert"
 
@@ -618,12 +625,14 @@ msgid "GAMEPLAY_SETTINGS"
 msgstr "Spieleinstellungen"
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
 msgid "LOAD_CUSTOM_DECK_SETTING_TOOLTIP"
 msgstr "Erlaube dem Spiel eigene Decks zu laden"
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
 msgid "LOAD_CUSTOM_DECKS"
-msgstr "Eigenes Deck laden"
+msgstr "Eigene Decks laden"
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
 msgid "AUTO_COMPLETE_ROUND_TOOLTIP"
@@ -640,54 +649,24 @@ msgid "RESET_TUTORIAL"
 msgstr "Tutorial zurücksetzten"
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-msgid "AUDIO"
-msgstr "Audio"
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-msgid "MASTER_VOLUME_TOOLTIP"
-msgstr ""
-"Option zum setzten der Master Lautstärke, diese Einstellung hat eine "
-"Auswirkung auf alle anderen Audio Einstellungen"
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-msgid "MASTER_VOLUME"
-msgstr "Gesamtlautstärke"
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-msgid "EFFECT_VOLUME_TOOLTIP"
-msgstr ""
-"Option zum setzten der Effekt Lautstärke, hiervon sind alle Effekte des "
-"Spiels betroffen."
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-msgid "EFFECT_VOLUME"
-msgstr "Effektlautstärke"
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-msgid "MUSIC_VOLUME_TOOLTIP"
-msgstr ""
-"Option zum setzten der Musik Lautstärke, hiervon ist die Hintergrundmusik "
-"betroffen."
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-msgid "MUSIC_VOLUME"
-msgstr "Musiklautstärke"
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/audio_panel/scenes/AudioControl.tscn
 msgid "TEST_EFFECTS_TOOLTIP"
 msgstr ""
 "Spielt einen Effekt Ton ab, hiermit kannst du testen ob die Einstellungen "
 "für dich korrekt sind"
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/audio_panel/scenes/AudioControl.tscn
 msgid "TEST_EFFECTS"
 msgstr "Effekt Lautstärke testen"
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
 msgid "APPLY_SETTING_TOOLTIP"
 msgstr "Speichere die aktuellen Einstellungen und schließe das Menü"
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
 msgid "APPLY"
 msgstr "Annehmen"
 
@@ -1429,6 +1408,50 @@ msgstr "Spielseite"
 #: entities/ui/links/scenes/links.tscn
 msgid "REPORT_BUG"
 msgstr "Fehler melden"
+
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
+msgid "INITIAL_GAME_SETUP_DESCRIPTION"
+msgstr ""
+"Dieses Fenster erlaubt es dir das Spiel initial einzurichten.\vDie "
+"wichtigsten Optionen sind hier aufgelistet."
+
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
+msgid "INITIAL_GAME_SETUP"
+msgstr "Initiales Einrichten"
+
+#: entities/ui/audio_panel/scenes/AudioControl.tscn
+msgid "AUDIO"
+msgstr "Audio"
+
+#: entities/ui/audio_panel/scenes/AudioControl.tscn
+msgid "MASTER_VOLUME_TOOLTIP"
+msgstr ""
+"Option zum setzten der Master Lautstärke, diese Einstellung hat eine "
+"Auswirkung auf alle anderen Audio Einstellungen"
+
+#: entities/ui/audio_panel/scenes/AudioControl.tscn
+msgid "MASTER_VOLUME"
+msgstr "Gesamtlautstärke"
+
+#: entities/ui/audio_panel/scenes/AudioControl.tscn
+msgid "EFFECT_VOLUME_TOOLTIP"
+msgstr ""
+"Option zum setzten der Effekt Lautstärke, hiervon sind alle Effekte des "
+"Spiels betroffen."
+
+#: entities/ui/audio_panel/scenes/AudioControl.tscn
+msgid "EFFECT_VOLUME"
+msgstr "Effektlautstärke"
+
+#: entities/ui/audio_panel/scenes/AudioControl.tscn
+msgid "MUSIC_VOLUME_TOOLTIP"
+msgstr ""
+"Option zum setzten der Musik Lautstärke, hiervon ist die Hintergrundmusik "
+"betroffen."
+
+#: entities/ui/audio_panel/scenes/AudioControl.tscn
+msgid "MUSIC_VOLUME"
+msgstr "Musiklautstärke"
 
 msgid "Samory"
 msgstr ""

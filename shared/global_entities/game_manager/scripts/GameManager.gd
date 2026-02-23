@@ -9,6 +9,7 @@ signal debug_mode(on: bool)
 
 @export_group("Scene Templates")
 @export var main_menu_template: PackedScene
+@export var initial_game_setup: PackedScene
 @export var game_scene: PackedScene
 @export var loading_screen_template: PackedScene
 
@@ -34,6 +35,7 @@ var _ui_scale: float = 1
 var _camera_zoom_factor: float = 1
 
 var _deck_reload_connected: bool = false
+var _was_started_before: bool = false
 
 func _ready() -> void:
 	_calculate_resolution_values()
@@ -88,6 +90,8 @@ func reload_system_decks() -> void:
 
 func initial_settings_setup() -> void:
 	var settings: SettingsResource = SettingsRepository.load_settings()
+	if settings.last_write > 0:
+		_was_started_before = true
 	DisplayServer.window_set_mode(settings.window_mode)
 
 	var v_sync_mode: DisplayServer.VSyncMode = DisplayServer.VSYNC_ENABLED
@@ -147,13 +151,24 @@ func open_menu(scene: PackedScene) -> Node:
 	for child: Node in get_children():
 		if child is LoadingScreen:
 			loading_message.connect(child.set_screen_message)
-			child.set_follow_up_screen(main_menu_template)
+			child.set_follow_up_screen(_get_initial_screen())
 			child.loaded_scene.connect(func(node_to_load: Node) -> void:
 				if node_to_load.get_parent() != null:
 					node_to_load.reparent(self)
 			)
 
 	return new_node;
+
+func _get_initial_screen() -> PackedScene:
+	if _game_was_started_before():
+		return main_menu_template
+	if initial_game_setup != null:
+		return initial_game_setup
+
+	return main_menu_template
+
+func _game_was_started_before() -> bool:
+	return _was_started_before
 
 func play_network_game(players: Array[PlayerResource], deck: MemoryDeckResource, click_position: Vector2) -> void:
 	for player: PlayerResource in players:
