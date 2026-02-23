@@ -1,6 +1,6 @@
 extends ClickableOptionButton
 
-signal language_changed(new_language_code: int)
+signal language_changed(new_language_code: String)
 
 @export var should_grab_focus: bool = false
 

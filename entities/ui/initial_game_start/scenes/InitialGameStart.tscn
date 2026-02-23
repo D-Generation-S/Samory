@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://dnh237u7hbiea"]
+
+[ext_resource type="Script" uid="uid://cm0tyfm6n4bpb" path="res://entities/ui/initial_game_start/scripts/InitialGameStart.gd" id="1_6ef48"]
+[ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://entities/ui/menu_background/scenes/MenuBackground.tscn" id="1_ps1cf"]
+[ext_resource type="StyleBox" uid="uid://d1rhal5rp1608" path="res://assets/styles/panel/MetalBox.tres" id="2_mebne"]
+[ext_resource type="Script" uid="uid://b3rk5o6ceqblf" path="res://entities/ui/settings_menu/scripts/LanguageSelection.gd" id="3_qevmq"]
+[ext_resource type="Script" uid="uid://cw4ndue8c4gv4" path="res://entities/ui/settings_menu/scripts/LoadCustomDecks.gd" id="5_hfhe3"]
+[ext_resource type="Texture2D" uid="uid://dqv4i4y66gem" path="res://assets/icons/OkIcon.tres" id="5_wbq20"]
+[ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="6_hfhe3"]
+[ext_resource type="Script" uid="uid://dxepefpl817n7" path="res://entities/ui/settings_menu/scripts/WindowModeSelection.gd" id="6_p41fg"]
+[ext_resource type="PackedScene" uid="uid://dcdo4abwtuxmy" path="res://entities/ui/audio_panel/scenes/AudioControl.tscn" id="6_wqjmo"]
+[ext_resource type="Script" uid="uid://b03sehux5xslr" path="res://shared/entities/clickable_button/resources/actions/OpenMainMenu.gd" id="7_wqjmo"]
+
+[sub_resource type="Resource" id="Resource_p41fg"]
+script = ExtResource("7_wqjmo")
+metadata/_custom_type_script = "uid://b03sehux5xslr"
+
+[node name="InitialGameStart" type="CanvasLayer" unique_id=957095989]
+script = ExtResource("1_6ef48")
+
+[node name="MenuBackground" parent="." unique_id=710599673 instance=ExtResource("1_ps1cf")]
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1974765266]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=242589235]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer" unique_id=1686800488]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1617611057]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_mebne")
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/PanelContainer" unique_id=1396349470]
+layout_mode = 2
+size_flags_horizontal = 4
+tooltip_text = "INITIAL_GAME_SETUP_DESCRIPTION"
+mouse_filter = 1
+text = "INITIAL_GAME_SETUP"
+
+[node name="LanguageSelection" type="OptionButton" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1842188978]
+layout_mode = 2
+tooltip_text = "SELECT_LANGUAGE_SETTING_TOOLTIP"
+selected = 0
+item_count = 2
+popup/item_0/text = "ENGLISH"
+popup/item_0/id = 0
+popup/item_1/text = "GERMAN"
+popup/item_1/id = 1
+script = ExtResource("3_qevmq")
+should_grab_focus = true
+
+[node name="LoadCustomDecks" type="CheckButton" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=911210284]
+layout_mode = 2
+tooltip_text = "LOAD_CUSTOM_DECK_SETTING_TOOLTIP"
+button_pressed = true
+text = "LOAD_CUSTOM_DECKS"
+script = ExtResource("5_hfhe3")
+starts_ready = true
+
+[node name="WindowModeSelection" type="OptionButton" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1175405725]
+layout_mode = 2
+tooltip_text = "WINDOW_MODE_SETTING_TOOLTIP"
+selected = 0
+item_count = 3
+popup/item_0/text = "FULL_SCREEN"
+popup/item_0/id = 0
+popup/item_1/text = "BORDERLESS"
+popup/item_1/id = 1
+popup/item_2/text = "MAXIMIZED"
+popup/item_2/id = 2
+script = ExtResource("6_p41fg")
+
+[node name="PanelContainer2" type="PanelContainer" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1373409559]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_mebne")
+
+[node name="Audio Control" parent="CenterContainer/PanelContainer/VBoxContainer/PanelContainer2" unique_id=953767370 instance=ExtResource("6_wqjmo")]
+layout_mode = 2
+
+[node name="Save" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=542585299]
+layout_mode = 2
+tooltip_text = "APPLY_SETTING_TOOLTIP"
+text = "APPLY"
+icon = ExtResource("5_wbq20")
+script = ExtResource("6_hfhe3")
+pressed_action = SubResource("Resource_p41fg")
+
+[connection signal="language_changed" from="CenterContainer/PanelContainer/VBoxContainer/LanguageSelection" to="." method="set_language"]
+[connection signal="toggled" from="CenterContainer/PanelContainer/VBoxContainer/LoadCustomDecks" to="." method="toggle_custom_deck"]
+[connection signal="window_mode_changed" from="CenterContainer/PanelContainer/VBoxContainer/WindowModeSelection" to="." method="window_mode_changed"]
+[connection signal="audio_bus_changed" from="CenterContainer/PanelContainer/VBoxContainer/PanelContainer2/Audio Control" to="." method="volume_changed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/Save" to="." method="save_settings"]

@@ -14,6 +14,7 @@ func _ready() -> void:
 	super()
 	if OS.has_feature("web"):
 		remove_item(modes.BORDERLESS)
+	selected = modes.MAXIMIZED
 	
 
 func settings_loaded(settings: SettingsResource) -> void:

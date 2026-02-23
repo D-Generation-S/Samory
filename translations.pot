@@ -96,6 +96,8 @@
 # res://entities/ui/custom_deck_card_entry/scenes/CustomDeckCardEntry.tscn
 # res://entities/ui/edit_custom_deck/scenes/EditCustomDeck.tscn
 # res://entities/ui/links/scenes/links.tscn
+# res://entities/ui/initial_game_start/scenes/InitialGameStart.tscn
+# res://entities/ui/audio_panel/scenes/AudioControl.tscn
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -553,14 +555,17 @@ msgid "SETTINGS"
 msgstr ""
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
 msgid "SELECT_LANGUAGE_SETTING_TOOLTIP"
 msgstr ""
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
 msgid "ENGLISH"
 msgstr ""
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
 msgid "GERMAN"
 msgstr ""
 
@@ -569,18 +574,22 @@ msgid "GRAPHIC_SETTINGS"
 msgstr ""
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
 msgid "WINDOW_MODE_SETTING_TOOLTIP"
 msgstr ""
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
 msgid "FULL_SCREEN"
 msgstr ""
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
 msgid "BORDERLESS"
 msgstr ""
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
 msgid "MAXIMIZED"
 msgstr ""
 
@@ -605,10 +614,12 @@ msgid "GAMEPLAY_SETTINGS"
 msgstr ""
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
 msgid "LOAD_CUSTOM_DECK_SETTING_TOOLTIP"
 msgstr ""
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
 msgid "LOAD_CUSTOM_DECKS"
 msgstr ""
 
@@ -625,46 +636,22 @@ msgid "RESET_TUTORIAL"
 msgstr ""
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-msgid "AUDIO"
-msgstr ""
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-msgid "MASTER_VOLUME_TOOLTIP"
-msgstr ""
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-msgid "MASTER_VOLUME"
-msgstr ""
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-msgid "EFFECT_VOLUME_TOOLTIP"
-msgstr ""
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-msgid "EFFECT_VOLUME"
-msgstr ""
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-msgid "MUSIC_VOLUME_TOOLTIP"
-msgstr ""
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-msgid "MUSIC_VOLUME"
-msgstr ""
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/audio_panel/scenes/AudioControl.tscn
 msgid "TEST_EFFECTS_TOOLTIP"
 msgstr ""
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/audio_panel/scenes/AudioControl.tscn
 msgid "TEST_EFFECTS"
 msgstr ""
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
 msgid "APPLY_SETTING_TOOLTIP"
 msgstr ""
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
 msgid "APPLY"
 msgstr ""
 
@@ -1268,6 +1255,42 @@ msgstr ""
 
 #: entities/ui/links/scenes/links.tscn
 msgid "REPORT_BUG"
+msgstr ""
+
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
+msgid "INITIAL_GAME_SETUP_DESCRIPTION"
+msgstr ""
+
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
+msgid "INITIAL_GAME_SETUP"
+msgstr ""
+
+#: entities/ui/audio_panel/scenes/AudioControl.tscn
+msgid "AUDIO"
+msgstr ""
+
+#: entities/ui/audio_panel/scenes/AudioControl.tscn
+msgid "MASTER_VOLUME_TOOLTIP"
+msgstr ""
+
+#: entities/ui/audio_panel/scenes/AudioControl.tscn
+msgid "MASTER_VOLUME"
+msgstr ""
+
+#: entities/ui/audio_panel/scenes/AudioControl.tscn
+msgid "EFFECT_VOLUME_TOOLTIP"
+msgstr ""
+
+#: entities/ui/audio_panel/scenes/AudioControl.tscn
+msgid "EFFECT_VOLUME"
+msgstr ""
+
+#: entities/ui/audio_panel/scenes/AudioControl.tscn
+msgid "MUSIC_VOLUME_TOOLTIP"
+msgstr ""
+
+#: entities/ui/audio_panel/scenes/AudioControl.tscn
+msgid "MUSIC_VOLUME"
 msgstr ""
 
 msgid "Samory"

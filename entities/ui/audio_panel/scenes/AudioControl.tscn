@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://dcdo4abwtuxmy"]
+
+[ext_resource type="Script" uid="uid://jvtgl6kp7bl4" path="res://entities/ui/audio_panel/scripts/AudioPanel.gd" id="1_et5uf"]
+[ext_resource type="Script" uid="uid://bl1m25cil8j5f" path="res://entities/ui/settings_menu/scripts/BusSlider.gd" id="2_mat7n"]
+[ext_resource type="Texture2D" uid="uid://dkm1d2mijfcuq" path="res://assets/icons/PlayIcon.tres" id="3_jb28b"]
+[ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="4_aeofu"]
+[ext_resource type="Script" uid="uid://bph2k7t8o4vhj" path="res://shared/entities/clickable_button/resources/actions/PlayRandomSoundAction.gd" id="5_wofxd"]
+[ext_resource type="AudioStream" uid="uid://dj5j3cwv0a265" path="res://assets/audio/effect/card-slide-1.ogg" id="6_6ql72"]
+[ext_resource type="AudioStream" uid="uid://cihpod1jtdkyn" path="res://assets/audio/effect/card-slide-2.ogg" id="7_iahfp"]
+[ext_resource type="AudioStream" uid="uid://dynepq4bifu2g" path="res://assets/audio/effect/card-slide-3.ogg" id="8_5sm7m"]
+[ext_resource type="AudioStream" uid="uid://dy4vgls6p35ci" path="res://assets/audio/effect/card-slide-4.ogg" id="9_antyx"]
+[ext_resource type="AudioStream" uid="uid://62algo6uwxwy" path="res://assets/audio/effect/card-slide-5.ogg" id="10_pjj6n"]
+[ext_resource type="AudioStream" uid="uid://4hh1xtj8ac4j" path="res://assets/audio/effect/card-slide-6.ogg" id="11_ax1a2"]
+[ext_resource type="AudioStream" uid="uid://dhm4p2ecwyfl3" path="res://assets/audio/effect/card-slide-7.ogg" id="12_v6ap1"]
+[ext_resource type="AudioStream" uid="uid://duqacxqgecl83" path="res://assets/audio/effect/card-slide-8.ogg" id="13_jx30k"]
+[ext_resource type="AudioStream" uid="uid://dhlalkc173c3p" path="res://assets/audio/effect/card-turn-1.ogg" id="14_exry3"]
+[ext_resource type="AudioStream" uid="uid://48iu01xst023" path="res://assets/audio/effect/card-turn-2.ogg" id="15_ctlyx"]
+[ext_resource type="AudioStream" uid="uid://h0louy6yrv3o" path="res://assets/audio/effect/card-turn-3.ogg" id="16_3hih6"]
+
+[sub_resource type="Resource" id="Resource_76276"]
+script = ExtResource("5_wofxd")
+test_effects = Array[AudioStream]([ExtResource("6_6ql72"), ExtResource("7_iahfp"), ExtResource("8_5sm7m"), ExtResource("9_antyx"), ExtResource("10_pjj6n"), ExtResource("11_ax1a2"), ExtResource("12_v6ap1"), ExtResource("13_jx30k"), ExtResource("14_exry3"), ExtResource("15_ctlyx"), ExtResource("16_3hih6")])
+metadata/_custom_type_script = "uid://bph2k7t8o4vhj"
+
+[node name="VBoxContainer" type="VBoxContainer" unique_id=939226985]
+offset_right = 78.0
+offset_bottom = 34.0
+size_flags_vertical = 3
+script = ExtResource("1_et5uf")
+
+[node name="AudioLabel" type="Label" parent="." unique_id=709533612]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "AUDIO"
+
+[node name="Audio Control" type="GridContainer" parent="." unique_id=953767370]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="Audio Control" unique_id=230496540]
+layout_mode = 2
+tooltip_text = "MASTER_VOLUME_TOOLTIP"
+mouse_filter = 1
+text = "MASTER_VOLUME"
+
+[node name="Master" type="HSlider" parent="Audio Control" unique_id=1839947251]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+script = ExtResource("2_mat7n")
+
+[node name="Label2" type="Label" parent="Audio Control" unique_id=1963252095]
+layout_mode = 2
+tooltip_text = "EFFECT_VOLUME_TOOLTIP"
+mouse_filter = 1
+text = "EFFECT_VOLUME"
+
+[node name="Effects" type="HSlider" parent="Audio Control" unique_id=895900820]
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("2_mat7n")
+bus_name = 1
+
+[node name="Label3" type="Label" parent="Audio Control" unique_id=1967000484]
+layout_mode = 2
+tooltip_text = "MUSIC_VOLUME_TOOLTIP"
+mouse_filter = 1
+text = "MUSIC_VOLUME"
+
+[node name="Music" type="HSlider" parent="Audio Control" unique_id=1186739071]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+script = ExtResource("2_mat7n")
+bus_name = 2
+
+[node name="TestEffectVolume" type="Button" parent="." unique_id=1472819079]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+tooltip_text = "TEST_EFFECTS_TOOLTIP"
+text = "TEST_EFFECTS"
+icon = ExtResource("3_jb28b")
+script = ExtResource("4_aeofu")
+pressed_action = SubResource("Resource_76276")
+
+[connection signal="_setting_was_set" from="." to="Audio Control/Master" method="settings_loaded"]
+[connection signal="_setting_was_set" from="." to="Audio Control/Effects" method="settings_loaded"]
+[connection signal="_setting_was_set" from="." to="Audio Control/Music" method="settings_loaded"]
+[connection signal="volume_changed" from="Audio Control/Master" to="." method="audio_updated"]
+[connection signal="volume_changed" from="Audio Control/Effects" to="." method="audio_updated"]
+[connection signal="volume_changed" from="Audio Control/Music" to="." method="audio_updated"]

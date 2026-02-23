@@ -8,12 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://bv4jg7bjubrrr" path="res://entities/ui/loading_screen/scenes/LoadingScreen.tscn" id="4_x4qxi"]
 [ext_resource type="Resource" uid="uid://bhkoclualncm3" path="res://shared/resources/decks/assets/GenericItemDeckFull.tres" id="5_odb18"]
 [ext_resource type="Resource" uid="uid://55igt6df2ilr" path="res://shared/resources/decks/assets/HardwareDeck.tres" id="5_srsje"]
+[ext_resource type="PackedScene" uid="uid://dnh237u7hbiea" path="res://entities/ui/initial_game_start/scenes/InitialGameStart.tscn" id="7_6sxjo"]
 [ext_resource type="Resource" uid="uid://bbbp71h1j4kp" path="res://shared/resources/translations/assets/LoadDecks.tres" id="8_im62x"]
 
 [node name="GameManager" type="Node2D" unique_id=2119689510]
 script = ExtResource("1_34dj2")
 build_in_decks = Array[ExtResource("3_b0cgo")]([ExtResource("4_rticu"), ExtResource("5_odb18"), ExtResource("5_srsje")])
 main_menu_template = ExtResource("2_yr08t")
+initial_game_setup = ExtResource("7_6sxjo")
 game_scene = ExtResource("3_u1w4v")
 loading_screen_template = ExtResource("4_x4qxi")
 loading_decks = ExtResource("8_im62x")
