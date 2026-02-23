@@ -25,7 +25,9 @@
 [ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="18_3ilta"]
 [ext_resource type="Script" uid="uid://duoapsvxmnpca" path="res://shared/entities/deck_viewer_filter_box/scripts/DeckViewerFilterBox.gd" id="18_168wr"]
 [ext_resource type="Script" uid="uid://6fa28680utd5" path="res://shared/entities/popup_manager/scripts/PopupManager.gd" id="20_qmoly"]
+[ext_resource type="Texture2D" uid="uid://dkm1d2mijfcuq" path="res://assets/icons/PlayIcon.tres" id="21_6kboq"]
 [ext_resource type="PackedScene" uid="uid://y8ij2nqvugsq" path="res://entities/ui/multiplayer_connection_state_message/scenes/MultiplayerConnectionStateMessage.tscn" id="21_udaat"]
+[ext_resource type="Texture2D" uid="uid://doybax1rt0tgn" path="res://assets/icons/QuitIcon.tres" id="24_8rvu5"]
 
 [sub_resource type="Resource" id="Resource_nefmw"]
 script = ExtResource("2_057pv")
@@ -137,6 +139,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 tooltip_text = "START_GAME_TOOLTIP"
 text = "START_GAME"
+icon = ExtResource("21_6kboq")
 script = ExtResource("17_vmvut")
 is_server_only = true
 
@@ -146,6 +149,7 @@ size_flags_horizontal = 10
 tooltip_text = "ABORT_TOOLTIP"
 shortcut = ExtResource("18_3ilta")
 text = "ABORT"
+icon = ExtResource("24_8rvu5")
 script = ExtResource("1_nefmw")
 pressed_action = SubResource("Resource_nefmw")
 

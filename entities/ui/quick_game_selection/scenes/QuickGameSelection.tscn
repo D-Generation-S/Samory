@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://h7rp3u8spcvv"]
+[gd_scene format=3 uid="uid://h7rp3u8spcvv"]
 
 [ext_resource type="Script" uid="uid://ynr2qtnvrl2d" path="res://entities/ui/quick_game_selection/scripts/AutoAlignContainer.gd" id="1_7454m"]
 [ext_resource type="Texture2D" uid="uid://bk6hr6v5raff5" path="res://assets/icons/QuickGameIcon.tres" id="2_cu7tq"]
 [ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="3_cu7tq"]
 [ext_resource type="Texture2D" uid="uid://wa0qa5dgmjgk" path="res://assets/icons/AiIcon.tres" id="4_aeksx"]
+[ext_resource type="Resource" uid="uid://b0gd4uwnid78l" path="res://shared/entities/clickable_button/assets/animations/DefaultButtonAnimation.tres" id="4_uagni"]
 [ext_resource type="Script" uid="uid://bftxc2q2j26m7" path="res://entities/ui/quick_game_selection/resources/PlayerResource.gd" id="4_xn3xf"]
 [ext_resource type="Resource" uid="uid://cpws52lpjtyk2" path="res://entities/ui/quick_game_selection/assets/Player1.tres" id="5_pfiv7"]
 [ext_resource type="Resource" uid="uid://4eedrcwjevdv" path="res://entities/ui/quick_game_selection/assets/Player2.tres" id="6_b7gp7"]
@@ -32,20 +33,20 @@ script = ExtResource("7_tyk5u")
 players = Array[ExtResource("4_xn3xf")]([ExtResource("5_pfiv7"), ExtResource("11_aeksx")])
 metadata/_custom_type_script = "uid://b81iqtysjgerq"
 
-[node name="AvailableAiModes" type="CenterContainer"]
+[node name="AvailableAiModes" type="CenterContainer" unique_id=582929030]
 offset_right = 36.0
 offset_bottom = 36.0
 size_flags_horizontal = 10
 size_flags_vertical = 6
 script = ExtResource("1_7454m")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=738958129]
 layout_mode = 2
 
-[node name="AvailableAis" type="VBoxContainer" parent="PanelContainer"]
+[node name="AvailableAis" type="VBoxContainer" parent="PanelContainer" unique_id=2025890688]
 layout_mode = 2
 
-[node name="AgainstPlayer" type="Button" parent="PanelContainer/AvailableAis"]
+[node name="AgainstPlayer" type="Button" parent="PanelContainer/AvailableAis" unique_id=1825865624]
 layout_mode = 2
 tooltip_text = "VS_PLAYER_TOOLTIP"
 focus_neighbor_left = NodePath("../../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI")
@@ -54,9 +55,10 @@ focus_neighbor_bottom = NodePath("../Easy_AI")
 text = "VS_PLAYER"
 icon = ExtResource("2_cu7tq")
 script = ExtResource("3_cu7tq")
+animation_resource = ExtResource("4_uagni")
 pressed_action = SubResource("Resource_syufq")
 
-[node name="Easy_AI" type="Button" parent="PanelContainer/AvailableAis"]
+[node name="Easy_AI" type="Button" parent="PanelContainer/AvailableAis" unique_id=968749708]
 layout_mode = 2
 tooltip_text = "MATCH_AGAINST_EASY_AI_TOOLTIP"
 focus_neighbor_left = NodePath("../../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI")
@@ -65,9 +67,10 @@ focus_neighbor_bottom = NodePath("../Normal_AI")
 text = "EASY_AI"
 icon = ExtResource("4_aeksx")
 script = ExtResource("3_cu7tq")
+animation_resource = ExtResource("4_uagni")
 pressed_action = SubResource("Resource_pfiv7")
 
-[node name="Normal_AI" type="Button" parent="PanelContainer/AvailableAis"]
+[node name="Normal_AI" type="Button" parent="PanelContainer/AvailableAis" unique_id=1726860824]
 layout_mode = 2
 tooltip_text = "MATCH_AGAINST_NORMAL_AI_TOOLTIP"
 focus_neighbor_left = NodePath("../../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI")
@@ -76,9 +79,10 @@ focus_neighbor_bottom = NodePath("../Hard_AI")
 text = "NORMAL_AI"
 icon = ExtResource("4_aeksx")
 script = ExtResource("3_cu7tq")
+animation_resource = ExtResource("4_uagni")
 pressed_action = SubResource("Resource_b7gp7")
 
-[node name="Hard_AI" type="Button" parent="PanelContainer/AvailableAis"]
+[node name="Hard_AI" type="Button" parent="PanelContainer/AvailableAis" unique_id=859255204]
 layout_mode = 2
 tooltip_text = "MATCH_AGAINST_HARD_AI_TOOLTIP"
 focus_neighbor_left = NodePath("../../../../CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI")
@@ -87,4 +91,5 @@ focus_neighbor_bottom = NodePath("../AgainstPlayer")
 text = "HARD_AI"
 icon = ExtResource("4_aeksx")
 script = ExtResource("3_cu7tq")
+animation_resource = ExtResource("4_uagni")
 pressed_action = SubResource("Resource_uf7ve")

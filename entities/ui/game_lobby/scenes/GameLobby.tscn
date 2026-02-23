@@ -238,7 +238,6 @@ shortcut_in_tooltip = false
 text = "CANCEL"
 icon = ExtResource("23_k5aev")
 script = ExtResource("24_3vpqe")
-animation_resource = ExtResource("17_to3in")
 pressed_action = SubResource("Resource_k5aev")
 
 [connection signal="toggle_buttons" from="." to="PanelContainer/VBoxContainer/HBoxContainer/HSplitContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/AddNewPlayer" method="toggle_button"]

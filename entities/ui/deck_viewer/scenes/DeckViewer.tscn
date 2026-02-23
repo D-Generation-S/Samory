@@ -15,6 +15,7 @@
 [ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="10_rf5ea"]
 [ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="13_p3eji"]
 [ext_resource type="Resource" uid="uid://b0gd4uwnid78l" path="res://shared/entities/clickable_button/assets/animations/DefaultButtonAnimation.tres" id="13_sb03g"]
+[ext_resource type="Texture2D" uid="uid://doybax1rt0tgn" path="res://assets/icons/QuitIcon.tres" id="14_ibu2e"]
 [ext_resource type="Script" uid="uid://ct3xq8li5qn6f" path="res://entities/ui/deck_viewer/scripts/button_actions/CloseDeckViewerAction.gd" id="15_j8b63"]
 [ext_resource type="PackedScene" uid="uid://dduji7120t8dc" path="res://entities/ui/loading_spinner/scenes/LoadingSpinner.tscn" id="15_pfh8f"]
 
@@ -158,6 +159,7 @@ size_flags_horizontal = 10
 shortcut = ExtResource("10_rf5ea")
 shortcut_in_tooltip = false
 text = "CLOSE"
+icon = ExtResource("14_ibu2e")
 script = ExtResource("13_p3eji")
 animation_resource = ExtResource("13_sb03g")
 pressed_action = SubResource("Resource_ibu2e")
