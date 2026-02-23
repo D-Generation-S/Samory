@@ -1,11 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://n2r2v72dltn8"]
+[gd_scene format=3 uid="uid://n2r2v72dltn8"]
 
 [ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://entities/ui/menu_background/scenes/MenuBackground.tscn" id="1_n8sdb"]
 [ext_resource type="Script" uid="uid://crh68yicln7tu" path="res://entities/ui/credits/scripts/CreditHandling.gd" id="1_xb4j0"]
 [ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="3_i56v7"]
 [ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="3_ntyq1"]
+[ext_resource type="Texture2D" uid="uid://cswswoet5pppp" path="res://assets/icons/ShareIcon.tres" id="3_vnxeo"]
 [ext_resource type="Resource" uid="uid://b0gd4uwnid78l" path="res://shared/entities/clickable_button/assets/animations/DefaultButtonAnimation.tres" id="4_5w3yf"]
 [ext_resource type="Script" uid="uid://dvrn3p7xl4tpl" path="res://shared/entities/clickable_button/resources/actions/OpenLinkAction.gd" id="5_gggmv"]
+[ext_resource type="Texture2D" uid="uid://doybax1rt0tgn" path="res://assets/icons/QuitIcon.tres" id="7_liw4c"]
 [ext_resource type="Script" uid="uid://b03sehux5xslr" path="res://shared/entities/clickable_button/resources/actions/OpenMainMenu.gd" id="7_xxa1d"]
 
 [sub_resource type="Resource" id="Resource_gul80"]
@@ -32,11 +34,11 @@ metadata/_custom_type_script = "uid://dvrn3p7xl4tpl"
 script = ExtResource("7_xxa1d")
 metadata/_custom_type_script = "uid://b03sehux5xslr"
 
-[node name="Credits" type="CanvasLayer"]
+[node name="Credits" type="CanvasLayer" unique_id=1647596529]
 
-[node name="MenuBackground" parent="." instance=ExtResource("1_n8sdb")]
+[node name="MenuBackground" parent="." unique_id=1813391932 instance=ExtResource("1_n8sdb")]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=54493062]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -57,7 +59,7 @@ script = ExtResource("1_xb4j0")
 timer_tick = 30.0
 scroll_speed = 2
 
-[node name="ButtonArea" type="MarginContainer" parent="."]
+[node name="ButtonArea" type="MarginContainer" parent="." unique_id=2132915574]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -71,46 +73,50 @@ theme_override_constants/margin_left = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="LinkList" type="HBoxContainer" parent="ButtonArea"]
+[node name="LinkList" type="HBoxContainer" parent="ButtonArea" unique_id=75402586]
 layout_mode = 2
 
-[node name="Kenney_nl" type="Button" parent="ButtonArea/LinkList"]
+[node name="Kenney_nl" type="Button" parent="ButtonArea/LinkList" unique_id=1793741721]
 layout_mode = 2
 focus_neighbor_left = NodePath("../CloseButton")
 focus_neighbor_right = NodePath("../Auxree")
 text = "Kenney.nl"
+icon = ExtResource("3_vnxeo")
 script = ExtResource("3_ntyq1")
 animation_resource = ExtResource("4_5w3yf")
 pressed_action = SubResource("Resource_gul80")
 
-[node name="Auxree" type="Button" parent="ButtonArea/LinkList"]
+[node name="Auxree" type="Button" parent="ButtonArea/LinkList" unique_id=1342980662]
 layout_mode = 2
 focus_neighbor_left = NodePath("../Kenney_nl")
 focus_neighbor_right = NodePath("../Abstraction")
 text = "Axuree"
+icon = ExtResource("3_vnxeo")
 script = ExtResource("3_ntyq1")
 animation_resource = ExtResource("4_5w3yf")
 pressed_action = SubResource("Resource_ntyq1")
 
-[node name="Abstraction" type="Button" parent="ButtonArea/LinkList"]
+[node name="Abstraction" type="Button" parent="ButtonArea/LinkList" unique_id=265739547]
 layout_mode = 2
 focus_neighbor_left = NodePath("../Auxree")
 focus_neighbor_right = NodePath("../MaterialMaker")
 text = "Abstraction"
+icon = ExtResource("3_vnxeo")
 script = ExtResource("3_ntyq1")
 animation_resource = ExtResource("4_5w3yf")
 pressed_action = SubResource("Resource_gggmv")
 
-[node name="MaterialMaker" type="Button" parent="ButtonArea/LinkList"]
+[node name="MaterialMaker" type="Button" parent="ButtonArea/LinkList" unique_id=207632722]
 layout_mode = 2
 focus_neighbor_left = NodePath("../Abstraction")
 focus_neighbor_right = NodePath("../CloseButton")
 text = "Material Maker"
+icon = ExtResource("3_vnxeo")
 script = ExtResource("3_ntyq1")
 animation_resource = ExtResource("4_5w3yf")
 pressed_action = SubResource("Resource_xxa1d")
 
-[node name="CloseButton" type="Button" parent="ButtonArea/LinkList"]
+[node name="CloseButton" type="Button" parent="ButtonArea/LinkList" unique_id=584494095]
 layout_mode = 2
 size_flags_horizontal = 10
 focus_neighbor_left = NodePath("../MaterialMaker")
@@ -118,6 +124,7 @@ focus_neighbor_right = NodePath("../Kenney_nl")
 shortcut = ExtResource("3_i56v7")
 shortcut_in_tooltip = false
 text = "CLOSE"
+icon = ExtResource("7_liw4c")
 script = ExtResource("3_ntyq1")
 is_focused = true
 animation_resource = ExtResource("4_5w3yf")

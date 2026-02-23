@@ -8,6 +8,7 @@ var _current_ip: String = ""
 var _current_player_name: String = ""
 
 func _ready() -> void:
+	super()
 	if game_lobby_template == null:
 		printerr("missing game lobby template")
 		queue_free()

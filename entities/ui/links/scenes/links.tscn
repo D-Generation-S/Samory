@@ -90,6 +90,7 @@ focus_neighbor_top = NodePath("../../../CenterMainMenu/PanelContainer/MarginCont
 focus_neighbor_right = NodePath("../ReportBug")
 icon = ExtResource("7_dpv13")
 script = ExtResource("3_l56ar")
+animation_resource = ExtResource("4_f67t6")
 pressed_action = SubResource("Resource_7m08p")
 
 [node name="ReportBug" type="Button" parent="." unique_id=129169406]

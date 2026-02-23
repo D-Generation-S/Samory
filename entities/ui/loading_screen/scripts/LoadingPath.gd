@@ -10,7 +10,7 @@ func _ready() -> void:
 
 func change_curve() -> void:
 	curve.clear_points()
-	var window_size: Vector2i = get_window().size
+	var window_size: Vector2i = get_viewport().get_visible_rect().size
 	curve.add_point(Vector2(-width_margin, target_height))
 	curve.add_point(Vector2(window_size.x + width_margin, target_height))
 
