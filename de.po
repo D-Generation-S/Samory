@@ -80,7 +80,7 @@ msgstr ""
 "im Hauptmenü"
 
 #: entities/game/auto_close_popup/scenes/AutoClosePopup.tscn
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/gameplay_settings/scenes/GameplaySettings.tscn
 msgid "AUTO_COMPLETE_ROUND"
 msgstr "Runde automatisch abschließen"
 
@@ -426,7 +426,6 @@ msgid "QUIT_GAME"
 msgstr "Spiel beenden"
 
 #: entities/ui/main_menu/scenes/MainMenu.tscn
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
 msgid "GAME_SETTINGS"
 msgstr "Spieleinstellungen"
 
@@ -560,105 +559,16 @@ msgid "ADD_AI_CANCEL_TOOLTIP"
 msgstr "Entferne den aktuellen KI Spieler"
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-msgid "SETTINGS"
-msgstr "Einstellungen"
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
-msgid "SELECT_LANGUAGE_SETTING_TOOLTIP"
-msgstr "Wähle die Sprache des Spiels aus in der diese angezeigt werden soll."
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
-msgid "ENGLISH"
-msgstr "Englisch"
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
-msgid "GERMAN"
-msgstr "Deutsch"
+msgid "GAMEPLAY_SETTINGS"
+msgstr "Spieleinstellungen"
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
 msgid "GRAPHIC_SETTINGS"
 msgstr "Grafikeinstellungen"
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
-msgid "WINDOW_MODE_SETTING_TOOLTIP"
-msgstr "Ein dropdown um den gewünschten Fenster Modus auszuwählen."
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
-msgid "FULL_SCREEN"
-msgstr "Vollbild"
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
-msgid "BORDERLESS"
-msgstr "Randlos"
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
-msgid "MAXIMIZED"
-msgstr "Maximiert"
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-msgid "VSYNC_SETTING_TOOLTIP"
-msgstr "Aktiviere oder deaktiviere VSync für das Spiel"
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-msgid "V_SYNC"
-msgstr "V Sync"
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-msgid "UI_SCALE_TOOLTIP"
-msgstr ""
-"Diese Einstellung legt fest in wie weit das UI skaliert werden soll, eine "
-"Einstellung auf 100% entspricht der vorgesehenen Einstellung"
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-msgid "UI_SCALE"
-msgstr "UI: %03.0f %%"
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-msgid "GAMEPLAY_SETTINGS"
-msgstr "Spieleinstellungen"
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
-msgid "LOAD_CUSTOM_DECK_SETTING_TOOLTIP"
-msgstr "Erlaube dem Spiel eigene Decks zu laden"
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
-msgid "LOAD_CUSTOM_DECKS"
-msgstr "Eigene Decks laden"
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-msgid "AUTO_COMPLETE_ROUND_TOOLTIP"
-msgstr ""
-"Wenn diese Aktion aktiv ist, wird die Runde automatisch nach n Sekunden "
-"beendet"
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-msgid "RESET_TUTORIAL_TOOLTIP"
-msgstr "Wenn du diesen Knopf drückst wird das Tutorial zurückgesetzt"
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-msgid "RESET_TUTORIAL"
-msgstr "Tutorial zurücksetzten"
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-#: entities/ui/audio_panel/scenes/AudioControl.tscn
-msgid "TEST_EFFECTS_TOOLTIP"
-msgstr ""
-"Spielt einen Effekt Ton ab, hiermit kannst du testen ob die Einstellungen "
-"für dich korrekt sind"
-
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-#: entities/ui/audio_panel/scenes/AudioControl.tscn
-msgid "TEST_EFFECTS"
-msgstr "Effekt Lautstärke testen"
+msgid "AUDIO_SETTINGS"
+msgstr "Lautstärke Einstellungen"
 
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
 #: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
@@ -1419,6 +1329,51 @@ msgstr ""
 msgid "INITIAL_GAME_SETUP"
 msgstr "Initiales Einrichten"
 
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
+#: entities/ui/gameplay_settings/scenes/GameplaySettings.tscn
+msgid "SELECT_LANGUAGE_SETTING_TOOLTIP"
+msgstr "Wähle die Sprache des Spiels aus in der diese angezeigt werden soll."
+
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
+#: entities/ui/gameplay_settings/scenes/GameplaySettings.tscn
+msgid "ENGLISH"
+msgstr "Englisch"
+
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
+#: entities/ui/gameplay_settings/scenes/GameplaySettings.tscn
+msgid "GERMAN"
+msgstr "Deutsch"
+
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
+#: entities/ui/gameplay_settings/scenes/GameplaySettings.tscn
+msgid "LOAD_CUSTOM_DECK_SETTING_TOOLTIP"
+msgstr "Erlaube dem Spiel eigene Decks zu laden"
+
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
+#: entities/ui/gameplay_settings/scenes/GameplaySettings.tscn
+msgid "LOAD_CUSTOM_DECKS"
+msgstr "Eigene Decks laden"
+
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
+#: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
+msgid "WINDOW_MODE_SETTING_TOOLTIP"
+msgstr "Ein dropdown um den gewünschten Fenster Modus auszuwählen."
+
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
+#: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
+msgid "FULL_SCREEN"
+msgstr "Vollbild"
+
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
+#: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
+msgid "BORDERLESS"
+msgstr "Randlos"
+
+#: entities/ui/initial_game_start/scenes/InitialGameStart.tscn
+#: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
+msgid "MAXIMIZED"
+msgstr "Maximiert"
+
 #: entities/ui/audio_panel/scenes/AudioControl.tscn
 msgid "AUDIO"
 msgstr "Audio"
@@ -1453,8 +1408,65 @@ msgstr ""
 msgid "MUSIC_VOLUME"
 msgstr "Musiklautstärke"
 
+#: entities/ui/audio_panel/scenes/AudioControl.tscn
+msgid "TEST_EFFECTS_TOOLTIP"
+msgstr ""
+"Spielt einen Effekt Ton ab, hiermit kannst du testen ob die Einstellungen "
+"für dich korrekt sind"
+
+#: entities/ui/audio_panel/scenes/AudioControl.tscn
+msgid "TEST_EFFECTS"
+msgstr "Effekt Lautstärke testen"
+
+#: entities/ui/gameplay_settings/scenes/GameplaySettings.tscn
+msgid "AUTO_COMPLETE_ROUND_TOOLTIP"
+msgstr ""
+"Wenn diese Aktion aktiv ist, wird die Runde automatisch nach n Sekunden "
+"beendet"
+
+#: entities/ui/gameplay_settings/scenes/GameplaySettings.tscn
+msgid "RESET_TUTORIAL_TOOLTIP"
+msgstr "Wenn du diesen Knopf drückst wird das Tutorial zurückgesetzt"
+
+#: entities/ui/gameplay_settings/scenes/GameplaySettings.tscn
+msgid "RESET_TUTORIAL"
+msgstr "Tutorial zurücksetzten"
+
+#: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
+msgid "VSYNC_SETTING_TOOLTIP"
+msgstr "Aktiviere oder deaktiviere VSync für das Spiel"
+
+#: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
+msgid "V_SYNC"
+msgstr "V Sync"
+
+#: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
+msgid "UI_SCALE_TOOLTIP"
+msgstr ""
+"Diese Einstellung legt fest in wie weit das UI skaliert werden soll, eine "
+"Einstellung auf 100% entspricht der vorgesehenen Einstellung"
+
+#: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
+msgid "UI_SCALE"
+msgstr "UI: %03.0f %%"
+
+#: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
+msgid "UI_SCALE_DECREASE"
+msgstr "UI Skalierung verkleinern"
+
+#: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
+msgid "UI_SCALE_INCREASE"
+msgstr "UI Skalierung vergrößern"
+
+#: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
+msgid "RESET_SCALING"
+msgstr "UI Skalierung zurücksetzten"
+
 msgid "Samory"
 msgstr ""
+
+#~ msgid "SETTINGS"
+#~ msgstr "Einstellungen"
 
 #~ msgid "QUICK_AI_GAME_TOOLTIP"
 #~ msgstr ""

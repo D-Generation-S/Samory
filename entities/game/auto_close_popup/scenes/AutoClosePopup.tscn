@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bnyopmj36gs07"]
+[gd_scene format=3 uid="uid://bnyopmj36gs07"]
 
 [ext_resource type="Script" uid="uid://b44lnl21k5vc" path="res://entities/game/auto_close_popup/scripts/AutoClosePopup.gd" id="1_q838q"]
-[ext_resource type="Script" uid="uid://cdf84o2qp0vdc" path="res://entities/ui/settings_menu/scripts/AutoCompleteRound.gd" id="2_6fyx6"]
-[ext_resource type="Script" uid="uid://g8dk5ckx5t4d" path="res://entities/ui/settings_menu/scripts/AutoCloseRoundSlider.gd" id="3_sgjc8"]
+[ext_resource type="Script" uid="uid://cdf84o2qp0vdc" path="res://entities/ui/gameplay_settings/scripts/AutoCompleteRound.gd" id="2_6fyx6"]
+[ext_resource type="Script" uid="uid://g8dk5ckx5t4d" path="res://entities/ui/gameplay_settings/scripts/AutoCloseRoundSlider.gd" id="3_sgjc8"]
 [ext_resource type="Resource" uid="uid://t4b63t07og3" path="res://shared/resources/translations/assets/TimeForCompletion.tres" id="4_1kcrw"]
 [ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="5_tp0ur"]
 

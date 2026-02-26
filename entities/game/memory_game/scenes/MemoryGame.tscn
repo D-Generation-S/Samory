@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bnfr8gek24m47"]
+[gd_scene format=3 uid="uid://bnfr8gek24m47"]
 
 [ext_resource type="Script" uid="uid://bhgb4virmkji8" path="res://entities/game/memory_game/scripts/MemoryGame.gd" id="1_13jq5"]
 [ext_resource type="Resource" uid="uid://cnl5uxkf36ely" path="res://shared/resources/translations/assets/TurnEndBannerMessage.tres" id="2_fspeh"]
@@ -58,7 +58,7 @@ script = ExtResource("17_tgl34")
 button_action_name = "zoom_in"
 metadata/_custom_type_script = "uid://cgdnmg4wop2a6"
 
-[node name="MemoryGame" type="Node2D" node_paths=PackedStringArray("game_nodes_to_show", "card_target_node")]
+[node name="MemoryGame" type="Node2D" unique_id=648295195 node_paths=PackedStringArray("game_nodes_to_show", "card_target_node")]
 process_mode = 1
 script = ExtResource("1_13jq5")
 round_end_message = ExtResource("2_fspeh")
@@ -69,27 +69,27 @@ game_nodes_to_show = [NodePath("CanvasLayer"), NodePath("Background")]
 card_target_node = NodePath("Cards")
 sound_effect = ExtResource("6_a3528")
 
-[node name="Players" type="Node" parent="."]
+[node name="Players" type="Node" parent="." unique_id=2122666589]
 unique_name_in_owner = true
 script = ExtResource("4_n744t")
 
-[node name="AI" type="Node" parent="." node_paths=PackedStringArray("cards_node", "players")]
+[node name="AI" type="Node" parent="." unique_id=972785455 node_paths=PackedStringArray("cards_node", "players")]
 script = ExtResource("15_u3ner")
 cards_node = NodePath("../Cards")
 players = NodePath("../Players")
-min_wait_milliseconds = 750.0
+min_wait_seconds = 0.75
 
-[node name="PlayerInput" type="Node" parent="."]
+[node name="PlayerInput" type="Node" parent="." unique_id=990949897]
 script = ExtResource("9_86hnd")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=578924762]
 position = Vector2(600, 0)
 script = ExtResource("4_4ihyn")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1819601620]
 process_mode = 3
 
-[node name="MenuButton" type="Button" parent="CanvasLayer"]
+[node name="MenuButton" type="Button" parent="CanvasLayer" unique_id=650990246]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -104,7 +104,7 @@ active = 4
 button_behavior = SubResource("Resource_kihnp")
 pressed_action = SubResource("Resource_086p8")
 
-[node name="PlayersOverlay" parent="CanvasLayer" instance=ExtResource("7_a7rnv")]
+[node name="PlayersOverlay" parent="CanvasLayer" unique_id=832836552 instance=ExtResource("7_a7rnv")]
 offset_right = 203.0
 offset_bottom = 179.0
 size_flags_horizontal = 0
@@ -112,7 +112,7 @@ size_flags_vertical = 0
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=1780999547]
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
@@ -120,7 +120,7 @@ anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="ZoomIn" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="ZoomIn" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=103762876]
 layout_mode = 2
 size_flags_vertical = 10
 icon = ExtResource("18_pqxyo")
@@ -130,7 +130,7 @@ active = 4
 button_behavior = SubResource("Resource_5dmxa")
 pressed_action = SubResource("Resource_1wouk")
 
-[node name="ZoomOut" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="ZoomOut" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=478318636]
 layout_mode = 2
 size_flags_vertical = 2
 icon = ExtResource("20_ef4f6")
@@ -140,7 +140,7 @@ active = 4
 button_behavior = SubResource("Resource_78e34")
 pressed_action = SubResource("Resource_tgl34")
 
-[node name="PopupManager" type="Control" parent="CanvasLayer"]
+[node name="PopupManager" type="Control" parent="CanvasLayer" unique_id=1052490900]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -150,31 +150,31 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("21_dv4ao")
 
-[node name="Tutorial" type="Node" parent="CanvasLayer"]
+[node name="Tutorial" type="Node" parent="CanvasLayer" unique_id=306007871]
 script = ExtResource("22_0x2pf")
 tutorial_window_scene = ExtResource("22_ubsrg")
 available_tutorials = Array[ExtResource("14_65xsg")]([ExtResource("15_s0u1d"), ExtResource("16_askkq"), ExtResource("17_evx0k"), ExtResource("18_evx0k")])
 
-[node name="Background" type="Node2D" parent="." node_paths=PackedStringArray("camera_node")]
+[node name="Background" type="Node2D" parent="." unique_id=344852813 node_paths=PackedStringArray("camera_node")]
 visible = false
 z_index = -20
 script = ExtResource("7_kxmqb")
 background_texture = ExtResource("23_a3528")
 camera_node = NodePath("../Camera2D")
 
-[node name="Cards" type="Node2D" parent="."]
+[node name="Cards" type="Node2D" parent="." unique_id=2054375941]
 script = ExtResource("19_ploi3")
 
-[node name="CardSpawner" type="Node" parent="Cards"]
+[node name="CardSpawner" type="Node" parent="Cards" unique_id=812443841]
 script = ExtResource("26_a3528")
 card_template = ExtResource("3_ihyl6")
 metadata/_custom_type_script = "uid://btm576yjkyt4j"
 
-[node name="CardTemplateGhost" parent="." groups=["game_initialize_scene"] instance=ExtResource("3_ihyl6")]
+[node name="CardTemplateGhost" parent="." unique_id=155356654 groups=["game_initialize_scene"] instance=ExtResource("3_ihyl6")]
 position = Vector2(-11367, -8587)
 is_ghost = true
 
-[node name="NetworkHandler" type="Node" parent="." node_paths=PackedStringArray("player_node")]
+[node name="NetworkHandler" type="Node" parent="." unique_id=233543300 node_paths=PackedStringArray("player_node")]
 script = ExtResource("29_kihnp")
 finished_game_template = ExtResource("4_6f670")
 player_node = NodePath("../Players")

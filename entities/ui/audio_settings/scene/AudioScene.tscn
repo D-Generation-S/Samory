@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c1052v5kfbk8k"]
+
+[ext_resource type="StyleBox" uid="uid://d1rhal5rp1608" path="res://assets/styles/panel/MetalBox.tres" id="1_krk5c"]
+[ext_resource type="PackedScene" uid="uid://dcdo4abwtuxmy" path="res://entities/ui/audio_panel/scenes/AudioControl.tscn" id="2_j1q7g"]
+[ext_resource type="Script" uid="uid://dwqgsw7x8tcv4" path="res://entities/ui/audio_settings/scripts/AudioScene.gd" id="2_mldal"]
+
+[node name="AudioScene" type="PanelContainer" unique_id=150110347]
+custom_minimum_size = Vector2(0, 450)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_krk5c")
+script = ExtResource("2_mldal")
+
+[node name="VBoxContainer" parent="." unique_id=939226985 instance=ExtResource("2_j1q7g")]
+layout_mode = 2
+
+[connection signal="audio_bus_changed" from="VBoxContainer" to="." method="change_audio_bus"]

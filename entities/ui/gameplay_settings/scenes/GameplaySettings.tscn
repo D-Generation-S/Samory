@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://dy0y8ekiojxid"]
+
+[ext_resource type="Script" uid="uid://cw4ndue8c4gv4" path="res://entities/ui/gameplay_settings/scripts/LoadCustomDecks.gd" id="1_b80m5"]
+[ext_resource type="StyleBox" uid="uid://d1rhal5rp1608" path="res://assets/styles/panel/MetalBox.tres" id="1_rlq5l"]
+[ext_resource type="Script" uid="uid://cdf84o2qp0vdc" path="res://entities/ui/gameplay_settings/scripts/AutoCompleteRound.gd" id="2_6p414"]
+[ext_resource type="Script" uid="uid://de87cunhc8ok1" path="res://entities/ui/gameplay_settings/scripts/GameplaySettings.gd" id="2_dr4ec"]
+[ext_resource type="Script" uid="uid://b3rk5o6ceqblf" path="res://entities/ui/gameplay_settings/scripts/LanguageSelection.gd" id="2_gju51"]
+[ext_resource type="Script" uid="uid://g8dk5ckx5t4d" path="res://entities/ui/gameplay_settings/scripts/AutoCloseRoundSlider.gd" id="3_rlq5l"]
+[ext_resource type="Resource" uid="uid://t4b63t07og3" path="res://shared/resources/translations/assets/TimeForCompletion.tres" id="4_gju51"]
+[ext_resource type="Texture2D" uid="uid://xn3vywapxb7e" path="res://assets/icons/ResetIcon.tres" id="5_dr4ec"]
+[ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="6_jdnnp"]
+
+[node name="GameplaySettings" type="PanelContainer" unique_id=1855353257]
+custom_minimum_size = Vector2(500, 450)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_rlq5l")
+script = ExtResource("2_dr4ec")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=4616886]
+layout_mode = 2
+
+[node name="LanguageSelection" type="OptionButton" parent="VBoxContainer" unique_id=9690297]
+layout_mode = 2
+tooltip_text = "SELECT_LANGUAGE_SETTING_TOOLTIP"
+selected = 0
+item_count = 2
+popup/item_0/text = "ENGLISH"
+popup/item_0/id = 0
+popup/item_1/text = "GERMAN"
+popup/item_1/id = 1
+script = ExtResource("2_gju51")
+should_grab_focus = true
+
+[node name="LoadCustomDecks" type="CheckButton" parent="VBoxContainer" unique_id=1656647982]
+layout_mode = 2
+tooltip_text = "LOAD_CUSTOM_DECK_SETTING_TOOLTIP"
+text = "LOAD_CUSTOM_DECKS"
+script = ExtResource("1_b80m5")
+
+[node name="HBoxContainer2" type="VBoxContainer" parent="VBoxContainer" unique_id=1700082779]
+layout_mode = 2
+
+[node name="AutoCompleteRound" type="CheckButton" parent="VBoxContainer/HBoxContainer2" unique_id=679192431]
+layout_mode = 2
+tooltip_text = "AUTO_COMPLETE_ROUND_TOOLTIP"
+text = "AUTO_COMPLETE_ROUND"
+script = ExtResource("2_6p414")
+
+[node name="TimeForCompletionGroup" type="HBoxContainer" parent="VBoxContainer/HBoxContainer2" unique_id=1184244404]
+layout_mode = 2
+script = ExtResource("3_rlq5l")
+completion_time_translation = ExtResource("4_gju51")
+
+[node name="TimeForCompletionLabel" type="Label" parent="VBoxContainer/HBoxContainer2/TimeForCompletionGroup" unique_id=470050768]
+auto_translate_mode = 2
+layout_mode = 2
+size_flags_vertical = 1
+tooltip_auto_translate_mode = 2
+text = "TIME_FOR_COMPLETION"
+vertical_alignment = 1
+
+[node name="TimeForCompletionSlider" type="HSlider" parent="VBoxContainer/HBoxContainer2/TimeForCompletionGroup" unique_id=1034459348]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="ResetTutorial" type="Button" parent="VBoxContainer" unique_id=1248311269]
+layout_mode = 2
+tooltip_text = "RESET_TUTORIAL_TOOLTIP"
+text = "RESET_TUTORIAL"
+icon = ExtResource("5_dr4ec")
+script = ExtResource("6_jdnnp")
+
+[connection signal="settings_changed" from="." to="VBoxContainer/LanguageSelection" method="settings_loaded"]
+[connection signal="settings_changed" from="." to="VBoxContainer/LoadCustomDecks" method="settings_loaded"]
+[connection signal="settings_changed" from="." to="VBoxContainer/HBoxContainer2/AutoCompleteRound" method="settings_loaded"]
+[connection signal="settings_changed" from="." to="VBoxContainer/HBoxContainer2/TimeForCompletionGroup" method="settings_loaded"]
+[connection signal="language_changed" from="VBoxContainer/LanguageSelection" to="." method="change_language"]
+[connection signal="toggled" from="VBoxContainer/LoadCustomDecks" to="." method="change_custom_deck_loading"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/AutoCompleteRound" to="." method="change_auto_close_round"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/AutoCompleteRound" to="VBoxContainer/HBoxContainer2/TimeForCompletionGroup" method="toggle_visibility"]
+[connection signal="completion_time_changed" from="VBoxContainer/HBoxContainer2/TimeForCompletionGroup" to="VBoxContainer/HBoxContainer2/TimeForCompletionGroup/TimeForCompletionLabel" method="set_text"]
+[connection signal="update_max_slider_value" from="VBoxContainer/HBoxContainer2/TimeForCompletionGroup" to="VBoxContainer/HBoxContainer2/TimeForCompletionGroup/TimeForCompletionSlider" method="set_max"]
+[connection signal="update_min_slider_value" from="VBoxContainer/HBoxContainer2/TimeForCompletionGroup" to="VBoxContainer/HBoxContainer2/TimeForCompletionGroup/TimeForCompletionSlider" method="set_min"]
+[connection signal="update_slider_value" from="VBoxContainer/HBoxContainer2/TimeForCompletionGroup" to="VBoxContainer/HBoxContainer2/TimeForCompletionGroup/TimeForCompletionSlider" method="set_value"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/TimeForCompletionGroup/TimeForCompletionSlider" to="." method="change_time_to_completion"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/TimeForCompletionGroup/TimeForCompletionSlider" to="VBoxContainer/HBoxContainer2/TimeForCompletionGroup" method="slider_changed"]
+[connection signal="pressed" from="VBoxContainer/ResetTutorial" to="." method="tutorial_reset"]
