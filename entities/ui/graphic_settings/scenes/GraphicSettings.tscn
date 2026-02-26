@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://clq1oqr2embyn"]
+
+[ext_resource type="StyleBox" uid="uid://d1rhal5rp1608" path="res://assets/styles/panel/MetalBox.tres" id="1_od5gl"]
+[ext_resource type="Script" uid="uid://db7bplbm3kbc3" path="res://entities/ui/graphic_settings/scripts/GraphicSettings.gd" id="2_20b8e"]
+[ext_resource type="Script" uid="uid://dxepefpl817n7" path="res://entities/ui/graphic_settings/scripts/WindowModeSelection.gd" id="3_cvhsj"]
+[ext_resource type="Script" uid="uid://b6p42kfefnyc0" path="res://entities/ui/graphic_settings/scripts/VsyncButton.gd" id="4_r24jl"]
+[ext_resource type="Script" uid="uid://b3mbd6eeylk66" path="res://entities/ui/graphic_settings/scripts/UiScale.gd" id="5_180xw"]
+[ext_resource type="Script" uid="uid://crpang1vb3yxa" path="res://entities/ui/graphic_settings/scripts/UiScaleLabel.gd" id="6_fnqnv"]
+[ext_resource type="Texture2D" uid="uid://bjgikbiemswhu" path="res://assets/icons/MinusIcon.tres" id="7_180xw"]
+[ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="8_5tilo"]
+[ext_resource type="Texture2D" uid="uid://b6xl5vukmvlku" path="res://assets/icons/AddIcon.tres" id="8_fnqnv"]
+[ext_resource type="Script" uid="uid://bedmwifc0sbpw" path="res://entities/ui/graphic_settings/scripts/UiScaleSlider.gd" id="9_3jwiv"]
+
+[node name="GraphicSettings" type="PanelContainer" unique_id=1365438149]
+custom_minimum_size = Vector2(0, 450)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_od5gl")
+script = ExtResource("2_20b8e")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1845591669]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="WindowModeSelection" type="OptionButton" parent="VBoxContainer" unique_id=438063787]
+layout_mode = 2
+tooltip_text = "WINDOW_MODE_SETTING_TOOLTIP"
+selected = 0
+item_count = 3
+popup/item_0/text = "FULL_SCREEN"
+popup/item_0/id = 0
+popup/item_1/text = "BORDERLESS"
+popup/item_1/id = 1
+popup/item_2/text = "MAXIMIZED"
+popup/item_2/id = 2
+script = ExtResource("3_cvhsj")
+
+[node name="VSync" type="CheckButton" parent="VBoxContainer" unique_id=940899947]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "VSYNC_SETTING_TOOLTIP"
+text = "V_SYNC"
+script = ExtResource("4_r24jl")
+
+[node name="UiScale" type="HBoxContainer" parent="VBoxContainer" unique_id=1692092135]
+layout_mode = 2
+script = ExtResource("5_180xw")
+min_value = 0.5
+max_value = 1.8
+
+[node name="UiScaleLabel" type="Label" parent="VBoxContainer/UiScale" unique_id=1799150806]
+layout_mode = 2
+size_flags_horizontal = 0
+tooltip_text = "UI_SCALE_TOOLTIP"
+mouse_filter = 1
+text = "UI_SCALE"
+vertical_alignment = 3
+script = ExtResource("6_fnqnv")
+
+[node name="Decrease" type="Button" parent="VBoxContainer/UiScale" unique_id=1056069710]
+layout_mode = 2
+tooltip_text = "UI_SCALE_DECREASE"
+icon = ExtResource("7_180xw")
+script = ExtResource("8_5tilo")
+
+[node name="UiScaleSlider" type="HSlider" parent="VBoxContainer/UiScale" unique_id=1660446418]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+step = 0.05
+script = ExtResource("9_3jwiv")
+
+[node name="Increase" type="Button" parent="VBoxContainer/UiScale" unique_id=2094966983]
+layout_mode = 2
+tooltip_text = "UI_SCALE_INCREASE"
+icon = ExtResource("8_fnqnv")
+script = ExtResource("8_5tilo")
+
+[node name="ResetScale" type="Button" parent="VBoxContainer" unique_id=2004485175]
+layout_mode = 2
+text = "RESET_SCALING"
+
+[connection signal="settings_changed" from="." to="VBoxContainer/WindowModeSelection" method="settings_loaded"]
+[connection signal="settings_changed" from="." to="VBoxContainer/VSync" method="settings_loaded"]
+[connection signal="settings_changed" from="." to="VBoxContainer/UiScale" method="settings_changed"]
+[connection signal="window_mode_changed" from="VBoxContainer/WindowModeSelection" to="." method="change_window_mode"]
+[connection signal="toggled" from="VBoxContainer/VSync" to="." method="change_v_sync"]
+[connection signal="max_value_changed" from="VBoxContainer/UiScale" to="VBoxContainer/UiScale/UiScaleSlider" method="set_max"]
+[connection signal="min_value_changed" from="VBoxContainer/UiScale" to="VBoxContainer/UiScale/UiScaleSlider" method="set_min"]
+[connection signal="value_changed" from="VBoxContainer/UiScale" to="VBoxContainer/UiScale/UiScaleSlider" method="set_value"]
+[connection signal="pressed" from="VBoxContainer/UiScale/Decrease" to="VBoxContainer/UiScale/UiScaleSlider" method="decrease"]
+[connection signal="drag_ended" from="VBoxContainer/UiScale/UiScaleSlider" to="VBoxContainer/UiScale" method="update_preview"]
+[connection signal="value_changed" from="VBoxContainer/UiScale/UiScaleSlider" to="." method="change_ui_scale"]
+[connection signal="value_changed" from="VBoxContainer/UiScale/UiScaleSlider" to="VBoxContainer/UiScale" method="value_was_changed"]
+[connection signal="value_changed" from="VBoxContainer/UiScale/UiScaleSlider" to="VBoxContainer/UiScale/UiScaleLabel" method="_update_text_with_scale"]
+[connection signal="pressed" from="VBoxContainer/UiScale/Increase" to="VBoxContainer/UiScale/UiScaleSlider" method="increase"]
+[connection signal="pressed" from="VBoxContainer/ResetScale" to="VBoxContainer/UiScale/UiScaleSlider" method="reset_scaling"]

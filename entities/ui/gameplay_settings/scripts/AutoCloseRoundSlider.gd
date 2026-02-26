@@ -16,7 +16,6 @@ func settings_loaded(settings: SettingsResource) -> void:
 	update_max_slider_value.emit(set_max_value)
 	set_translated_text(settings.close_round_after_seconds)
 	update_slider_value.emit(settings.close_round_after_seconds)
-	
 
 func set_translated_text(value: float) -> void:
 	var translated_text: String = tr(completion_time_translation.key) % value
