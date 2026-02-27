@@ -2,11 +2,13 @@
 
 [ext_resource type="Script" uid="uid://b44lnl21k5vc" path="res://entities/game/auto_close_popup/scripts/AutoClosePopup.gd" id="1_q838q"]
 [ext_resource type="Script" uid="uid://cdf84o2qp0vdc" path="res://entities/ui/gameplay_settings/scripts/AutoCompleteRound.gd" id="2_6fyx6"]
+[ext_resource type="StyleBox" uid="uid://d1rhal5rp1608" path="res://assets/styles/panel/MetalBox.tres" id="2_sgjc8"]
+[ext_resource type="PackedScene" uid="uid://bi2oaoxrcmttm" path="res://entities/game/animated_rich_text/scenes/AnimatedRichText.tscn" id="3_1kcrw"]
 [ext_resource type="Script" uid="uid://g8dk5ckx5t4d" path="res://entities/ui/gameplay_settings/scripts/AutoCloseRoundSlider.gd" id="3_sgjc8"]
 [ext_resource type="Resource" uid="uid://t4b63t07og3" path="res://shared/resources/translations/assets/TimeForCompletion.tres" id="4_1kcrw"]
 [ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="5_tp0ur"]
 
-[node name="AutoClosePopup" type="CenterContainer"]
+[node name="AutoClosePopup" type="CenterContainer" unique_id=1954482098]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -14,54 +16,56 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_q838q")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=459183534]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=519067603]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=800117384]
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=421598363]
 layout_mode = 2
-size_flags_vertical = 3
-bbcode_enabled = true
-text = "AUTO_CLOSE_POPUP_BODY"
-fit_content = true
+theme_override_styles/panel = ExtResource("2_sgjc8")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="AnimatedRichText" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer" unique_id=873433623 instance=ExtResource("3_1kcrw")]
+layout_mode = 2
+initial_text = "AUTO_CLOSE_POPUP_BODY"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=293706623]
 layout_mode = 2
 
-[node name="AutoCompleteRound" type="CheckButton" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="AutoCompleteRound" type="CheckButton" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=978446831]
 layout_mode = 2
 text = "AUTO_COMPLETE_ROUND"
 script = ExtResource("2_6fyx6")
 
-[node name="AutoCompleteTimer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="AutoCompleteTimer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=369697036]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 script = ExtResource("3_sgjc8")
 completion_time_translation = ExtResource("4_1kcrw")
 
-[node name="TimeForCompletion" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer"]
+[node name="TimeForCompletion" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer" unique_id=1975635820]
 auto_translate_mode = 2
 layout_mode = 2
 tooltip_auto_translate_mode = 2
 text = "TIME_FOR_COMPLETION"
 
-[node name="SecondsSlider" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer"]
+[node name="SecondsSlider" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer" unique_id=126651385]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+max_value = 5.0
 
-[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=244490318]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
@@ -70,11 +74,11 @@ script = ExtResource("5_tp0ur")
 
 [connection signal="settings_loaded" from="." to="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteRound" method="settings_loaded"]
 [connection signal="settings_loaded" from="." to="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer" method="settings_loaded"]
+[connection signal="animation_done" from="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/AnimatedRichText" to="PanelContainer/MarginContainer/VBoxContainer/Button" method="enable_button"]
+[connection signal="animation_playing" from="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/AnimatedRichText" to="PanelContainer/MarginContainer/VBoxContainer/Button" method="disable_button"]
 [connection signal="toggled" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteRound" to="." method="auto_complete_state_changed"]
 [connection signal="toggled" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteRound" to="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer" method="toggle_visibility"]
 [connection signal="completion_time_changed" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer" to="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer/TimeForCompletion" method="set_text"]
-[connection signal="update_max_slider_value" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer" to="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer/SecondsSlider" method="set_max"]
-[connection signal="update_min_slider_value" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer" to="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer/SecondsSlider" method="set_min"]
 [connection signal="update_slider_value" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer" to="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer/SecondsSlider" method="set_value"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer/SecondsSlider" to="." method="auto_complete_time_changed"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer/SecondsSlider" to="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteTimer" method="slider_changed"]
