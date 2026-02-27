@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://cf4ydk76w8s3l"]
+
+[ext_resource type="Texture2D" uid="uid://bjgikbiemswhu" path="res://assets/icons/MinusIcon.tres" id="1_ahyx3"]
+[ext_resource type="Script" uid="uid://u0au1nistgqw" path="res://entities/ui/button_scroll_bar/script/ButtonScrollBar.gd" id="1_ostgm"]
+[ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="2_ostgm"]
+[ext_resource type="Script" uid="uid://bedmwifc0sbpw" path="res://entities/ui/graphic_settings/scripts/UiScaleSlider.gd" id="3_bbsmu"]
+[ext_resource type="Texture2D" uid="uid://b6xl5vukmvlku" path="res://assets/icons/AddIcon.tres" id="4_e2lyj"]
+
+[node name="ButtonScrollBar" type="HBoxContainer" unique_id=789511813]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 76.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+script = ExtResource("1_ostgm")
+
+[node name="Decrease" type="Button" parent="." unique_id=927696546]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+tooltip_text = "UI_SCALE_DECREASE"
+icon = ExtResource("1_ahyx3")
+script = ExtResource("2_ostgm")
+
+[node name="SliderMargin" type="MarginContainer" parent="." unique_id=283197819]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="UiScaleSlider" type="HSlider" parent="SliderMargin" unique_id=654303816]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 0.30000000000000004
+max_value = 3.0
+step = 0.05
+value = 0.30000000000000004
+script = ExtResource("3_bbsmu")
+
+[node name="Increase" type="Button" parent="." unique_id=820432779]
+layout_mode = 2
+size_flags_horizontal = 8
+tooltip_text = "UI_SCALE_INCREASE"
+icon = ExtResource("4_e2lyj")
+script = ExtResource("2_ostgm")
+
+[connection signal="force_set_value" from="." to="SliderMargin/UiScaleSlider" method="_set_value"]
+[connection signal="max_value_changed" from="." to="SliderMargin/UiScaleSlider" method="set_max"]
+[connection signal="min_value_changed" from="." to="SliderMargin/UiScaleSlider" method="set_min"]
+[connection signal="step_size_changed" from="." to="SliderMargin/UiScaleSlider" method="set_step"]
+[connection signal="pressed" from="Decrease" to="SliderMargin/UiScaleSlider" method="decrease"]
+[connection signal="drag_ended" from="SliderMargin/UiScaleSlider" to="." method="drag_has_ended"]
+[connection signal="value_changed" from="SliderMargin/UiScaleSlider" to="." method="change_value"]
+[connection signal="pressed" from="Increase" to="SliderMargin/UiScaleSlider" method="increase"]

@@ -1,0 +1,13 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://dc8pswjvva6fs"]
+
+[ext_resource type="Texture2D" uid="uid://bmxqeqo65xwt" path="res://assets/sprites/spritesheet-default.png" id="1_nball"]
+
+[resource]
+texture = ExtResource("1_nball")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(144, 576, 48, 25)

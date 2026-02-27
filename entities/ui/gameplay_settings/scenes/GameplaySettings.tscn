@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://t4b63t07og3" path="res://shared/resources/translations/assets/TimeForCompletion.tres" id="4_gju51"]
 [ext_resource type="Texture2D" uid="uid://xn3vywapxb7e" path="res://assets/icons/ResetIcon.tres" id="5_dr4ec"]
 [ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="6_jdnnp"]
+[ext_resource type="PackedScene" uid="uid://cf4ydk76w8s3l" path="res://entities/ui/button_scroll_bar/scene/ButtonScrollBar.tscn" id="8_dr4ec"]
 
 [node name="GameplaySettings" type="PanelContainer" unique_id=1855353257]
 custom_minimum_size = Vector2(500, 450)
@@ -50,7 +51,7 @@ tooltip_text = "AUTO_COMPLETE_ROUND_TOOLTIP"
 text = "AUTO_COMPLETE_ROUND"
 script = ExtResource("2_6p414")
 
-[node name="TimeForCompletionGroup" type="HBoxContainer" parent="VBoxContainer/HBoxContainer2" unique_id=1184244404]
+[node name="TimeForCompletionGroup" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2" unique_id=878333817]
 layout_mode = 2
 script = ExtResource("3_rlq5l")
 completion_time_translation = ExtResource("4_gju51")
@@ -63,10 +64,12 @@ tooltip_auto_translate_mode = 2
 text = "TIME_FOR_COMPLETION"
 vertical_alignment = 1
 
-[node name="TimeForCompletionSlider" type="HSlider" parent="VBoxContainer/HBoxContainer2/TimeForCompletionGroup" unique_id=1034459348]
+[node name="ButtonScrollBar" parent="VBoxContainer/HBoxContainer2/TimeForCompletionGroup" unique_id=789511813 instance=ExtResource("8_dr4ec")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
+initial_value = 1.0
+min_value = 1.0
+max_value = 5.0
+step_size = 1.0
 
 [node name="ResetTutorial" type="Button" parent="VBoxContainer" unique_id=1248311269]
 layout_mode = 2
@@ -84,9 +87,7 @@ script = ExtResource("6_jdnnp")
 [connection signal="toggled" from="VBoxContainer/HBoxContainer2/AutoCompleteRound" to="." method="change_auto_close_round"]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer2/AutoCompleteRound" to="VBoxContainer/HBoxContainer2/TimeForCompletionGroup" method="toggle_visibility"]
 [connection signal="completion_time_changed" from="VBoxContainer/HBoxContainer2/TimeForCompletionGroup" to="VBoxContainer/HBoxContainer2/TimeForCompletionGroup/TimeForCompletionLabel" method="set_text"]
-[connection signal="update_max_slider_value" from="VBoxContainer/HBoxContainer2/TimeForCompletionGroup" to="VBoxContainer/HBoxContainer2/TimeForCompletionGroup/TimeForCompletionSlider" method="set_max"]
-[connection signal="update_min_slider_value" from="VBoxContainer/HBoxContainer2/TimeForCompletionGroup" to="VBoxContainer/HBoxContainer2/TimeForCompletionGroup/TimeForCompletionSlider" method="set_min"]
-[connection signal="update_slider_value" from="VBoxContainer/HBoxContainer2/TimeForCompletionGroup" to="VBoxContainer/HBoxContainer2/TimeForCompletionGroup/TimeForCompletionSlider" method="set_value"]
-[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/TimeForCompletionGroup/TimeForCompletionSlider" to="." method="change_time_to_completion"]
-[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/TimeForCompletionGroup/TimeForCompletionSlider" to="VBoxContainer/HBoxContainer2/TimeForCompletionGroup" method="slider_changed"]
+[connection signal="update_slider_value" from="VBoxContainer/HBoxContainer2/TimeForCompletionGroup" to="VBoxContainer/HBoxContainer2/TimeForCompletionGroup/ButtonScrollBar" method="set_value"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/TimeForCompletionGroup/ButtonScrollBar" to="." method="change_time_to_completion"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/TimeForCompletionGroup/ButtonScrollBar" to="VBoxContainer/HBoxContainer2/TimeForCompletionGroup" method="slider_changed"]
 [connection signal="pressed" from="VBoxContainer/ResetTutorial" to="." method="tutorial_reset"]
