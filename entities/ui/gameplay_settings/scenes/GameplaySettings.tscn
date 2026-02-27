@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://t4b63t07og3" path="res://shared/resources/translations/assets/TimeForCompletion.tres" id="4_gju51"]
 [ext_resource type="Texture2D" uid="uid://xn3vywapxb7e" path="res://assets/icons/ResetIcon.tres" id="5_dr4ec"]
 [ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="6_jdnnp"]
+[ext_resource type="Script" uid="uid://ccdakiql2b0aa" path="res://entities/ui/gameplay_settings/scripts/AiThinkSpeedLabel.gd" id="6_lwke5"]
 [ext_resource type="PackedScene" uid="uid://cf4ydk76w8s3l" path="res://entities/ui/button_scroll_bar/scene/ButtonScrollBar.tscn" id="8_dr4ec"]
 
 [node name="GameplaySettings" type="PanelContainer" unique_id=1855353257]
@@ -42,21 +43,34 @@ tooltip_text = "LOAD_CUSTOM_DECK_SETTING_TOOLTIP"
 text = "LOAD_CUSTOM_DECKS"
 script = ExtResource("1_b80m5")
 
-[node name="HBoxContainer2" type="VBoxContainer" parent="VBoxContainer" unique_id=1700082779]
-layout_mode = 2
-
-[node name="AutoCompleteRound" type="CheckButton" parent="VBoxContainer/HBoxContainer2" unique_id=679192431]
+[node name="AutoCompleteRound" type="CheckButton" parent="VBoxContainer" unique_id=679192431]
 layout_mode = 2
 tooltip_text = "AUTO_COMPLETE_ROUND_TOOLTIP"
 text = "AUTO_COMPLETE_ROUND"
 script = ExtResource("2_6p414")
 
-[node name="TimeForCompletionGroup" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2" unique_id=878333817]
+[node name="AiThinkSpeed" type="VBoxContainer" parent="VBoxContainer" unique_id=67296299]
+layout_mode = 2
+
+[node name="AiThinkSpeedLabel" type="Label" parent="VBoxContainer/AiThinkSpeed" unique_id=1893052298]
+layout_mode = 2
+tooltip_text = "AI_THINK_SPEED_DESCRIPTION"
+mouse_filter = 1
+text = "AI_THINK_SPEED"
+script = ExtResource("6_lwke5")
+max_allowed_value = 4.0
+
+[node name="AiThinkSpeedSlider" parent="VBoxContainer/AiThinkSpeed" unique_id=789511813 instance=ExtResource("8_dr4ec")]
+layout_mode = 2
+min_value = 1.0
+max_value = 4.0
+
+[node name="TimeForCompletionGroup" type="VBoxContainer" parent="VBoxContainer" unique_id=878333817]
 layout_mode = 2
 script = ExtResource("3_rlq5l")
 completion_time_translation = ExtResource("4_gju51")
 
-[node name="TimeForCompletionLabel" type="Label" parent="VBoxContainer/HBoxContainer2/TimeForCompletionGroup" unique_id=470050768]
+[node name="TimeForCompletionLabel" type="Label" parent="VBoxContainer/TimeForCompletionGroup" unique_id=470050768]
 auto_translate_mode = 2
 layout_mode = 2
 size_flags_vertical = 1
@@ -64,9 +78,8 @@ tooltip_auto_translate_mode = 2
 text = "TIME_FOR_COMPLETION"
 vertical_alignment = 1
 
-[node name="ButtonScrollBar" parent="VBoxContainer/HBoxContainer2/TimeForCompletionGroup" unique_id=789511813 instance=ExtResource("8_dr4ec")]
+[node name="ButtonScrollBar" parent="VBoxContainer/TimeForCompletionGroup" unique_id=62650575 instance=ExtResource("8_dr4ec")]
 layout_mode = 2
-initial_value = 1.0
 min_value = 1.0
 max_value = 5.0
 step_size = 1.0
@@ -78,16 +91,22 @@ text = "RESET_TUTORIAL"
 icon = ExtResource("5_dr4ec")
 script = ExtResource("6_jdnnp")
 
+[connection signal="language_changed" from="." to="VBoxContainer/AiThinkSpeed/AiThinkSpeedLabel" method="language_changed"]
+[connection signal="language_changed" from="." to="VBoxContainer/TimeForCompletionGroup" method="language_changed"]
 [connection signal="settings_changed" from="." to="VBoxContainer/LanguageSelection" method="settings_loaded"]
 [connection signal="settings_changed" from="." to="VBoxContainer/LoadCustomDecks" method="settings_loaded"]
-[connection signal="settings_changed" from="." to="VBoxContainer/HBoxContainer2/AutoCompleteRound" method="settings_loaded"]
-[connection signal="settings_changed" from="." to="VBoxContainer/HBoxContainer2/TimeForCompletionGroup" method="settings_loaded"]
+[connection signal="settings_changed" from="." to="VBoxContainer/AutoCompleteRound" method="settings_loaded"]
+[connection signal="settings_changed" from="." to="VBoxContainer/AiThinkSpeed/AiThinkSpeedLabel" method="settings_updated"]
+[connection signal="settings_changed" from="." to="VBoxContainer/TimeForCompletionGroup" method="settings_loaded"]
 [connection signal="language_changed" from="VBoxContainer/LanguageSelection" to="." method="change_language"]
 [connection signal="toggled" from="VBoxContainer/LoadCustomDecks" to="." method="change_custom_deck_loading"]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/AutoCompleteRound" to="." method="change_auto_close_round"]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer2/AutoCompleteRound" to="VBoxContainer/HBoxContainer2/TimeForCompletionGroup" method="toggle_visibility"]
-[connection signal="completion_time_changed" from="VBoxContainer/HBoxContainer2/TimeForCompletionGroup" to="VBoxContainer/HBoxContainer2/TimeForCompletionGroup/TimeForCompletionLabel" method="set_text"]
-[connection signal="update_slider_value" from="VBoxContainer/HBoxContainer2/TimeForCompletionGroup" to="VBoxContainer/HBoxContainer2/TimeForCompletionGroup/ButtonScrollBar" method="set_value"]
-[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/TimeForCompletionGroup/ButtonScrollBar" to="." method="change_time_to_completion"]
-[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/TimeForCompletionGroup/ButtonScrollBar" to="VBoxContainer/HBoxContainer2/TimeForCompletionGroup" method="slider_changed"]
+[connection signal="toggled" from="VBoxContainer/AutoCompleteRound" to="." method="change_auto_close_round"]
+[connection signal="toggled" from="VBoxContainer/AutoCompleteRound" to="VBoxContainer/TimeForCompletionGroup" method="toggle_visibility"]
+[connection signal="ai_think_time_changed" from="VBoxContainer/AiThinkSpeed/AiThinkSpeedLabel" to="." method="change_ai_think_time"]
+[connection signal="setting_changed" from="VBoxContainer/AiThinkSpeed/AiThinkSpeedLabel" to="VBoxContainer/AiThinkSpeed/AiThinkSpeedSlider" method="set_value"]
+[connection signal="value_changed" from="VBoxContainer/AiThinkSpeed/AiThinkSpeedSlider" to="VBoxContainer/AiThinkSpeed/AiThinkSpeedLabel" method="set_new_value"]
+[connection signal="completion_time_changed" from="VBoxContainer/TimeForCompletionGroup" to="VBoxContainer/TimeForCompletionGroup/TimeForCompletionLabel" method="set_text"]
+[connection signal="update_slider_value" from="VBoxContainer/TimeForCompletionGroup" to="VBoxContainer/TimeForCompletionGroup/ButtonScrollBar" method="set_value"]
+[connection signal="value_changed" from="VBoxContainer/TimeForCompletionGroup/ButtonScrollBar" to="." method="change_time_to_completion"]
+[connection signal="value_changed" from="VBoxContainer/TimeForCompletionGroup/ButtonScrollBar" to="VBoxContainer/TimeForCompletionGroup" method="slider_changed"]
 [connection signal="pressed" from="VBoxContainer/ResetTutorial" to="." method="tutorial_reset"]

@@ -1332,6 +1332,16 @@ msgid "AUTO_COMPLETE_ROUND_TOOLTIP"
 msgstr "If enabled this will automatically wrap up a round after n seconds"
 
 #: entities/ui/gameplay_settings/scenes/GameplaySettings.tscn
+msgid "AI_THINK_SPEED_DESCRIPTION"
+msgstr ""
+"The speed modifier for the AI, higher values will reduce the thinking time "
+"of the AI agents"
+
+#: entities/ui/gameplay_settings/scenes/GameplaySettings.tscn
+msgid "AI_THINK_SPEED"
+msgstr "AI think speed: %03.0f %%"
+
+#: entities/ui/gameplay_settings/scenes/GameplaySettings.tscn
 msgid "RESET_TUTORIAL_TOOLTIP"
 msgstr "If you press this button the tutorial will be reset"
 
@@ -1358,19 +1368,17 @@ msgid "UI_SCALE"
 msgstr "UI Scale: %03.0f %%"
 
 #: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
-msgid "UI_SCALE_DECREASE"
-msgstr "Decrease UI scaling"
-
-#: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
-msgid "UI_SCALE_INCREASE"
-msgstr "Increase UI scaling"
-
-#: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
 msgid "RESET_SCALING"
 msgstr "Reset UI scaling"
 
 msgid "Samory"
 msgstr ""
+
+#~ msgid "UI_SCALE_DECREASE"
+#~ msgstr "Decrease UI scaling"
+
+#~ msgid "UI_SCALE_INCREASE"
+#~ msgstr "Increase UI scaling"
 
 #~ msgid "SETTINGS"
 #~ msgstr "Settings"

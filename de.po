@@ -1425,6 +1425,16 @@ msgstr ""
 "beendet"
 
 #: entities/ui/gameplay_settings/scenes/GameplaySettings.tscn
+msgid "AI_THINK_SPEED_DESCRIPTION"
+msgstr ""
+"Stelle ein wie schnell die KI Ihre Züge vollzieht, ein höhere Wert bedeutet "
+"das die KI weniger Zeit pro Zug benötigt"
+
+#: entities/ui/gameplay_settings/scenes/GameplaySettings.tscn
+msgid "AI_THINK_SPEED"
+msgstr "KI Geschwindigkeit: %03.0f %%"
+
+#: entities/ui/gameplay_settings/scenes/GameplaySettings.tscn
 msgid "RESET_TUTORIAL_TOOLTIP"
 msgstr "Wenn du diesen Knopf drückst wird das Tutorial zurückgesetzt"
 
@@ -1451,19 +1461,17 @@ msgid "UI_SCALE"
 msgstr "UI: %03.0f %%"
 
 #: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
-msgid "UI_SCALE_DECREASE"
-msgstr "UI Skalierung verkleinern"
-
-#: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
-msgid "UI_SCALE_INCREASE"
-msgstr "UI Skalierung vergrößern"
-
-#: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
 msgid "RESET_SCALING"
 msgstr "UI Skalierung zurücksetzten"
 
 msgid "Samory"
 msgstr ""
+
+#~ msgid "UI_SCALE_DECREASE"
+#~ msgstr "UI Skalierung verkleinern"
+
+#~ msgid "UI_SCALE_INCREASE"
+#~ msgstr "UI Skalierung vergrößern"
 
 #~ msgid "SETTINGS"
 #~ msgstr "Einstellungen"

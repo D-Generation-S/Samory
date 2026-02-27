@@ -59,7 +59,6 @@ script = ExtResource("6_fnqnv")
 
 [node name="ButtonScrollBar" parent="VBoxContainer/UiScale" unique_id=789511813 instance=ExtResource("7_r24jl")]
 layout_mode = 2
-initial_value = 1.0
 min_value = 0.7999999999999999
 max_value = 1.8
 
@@ -67,6 +66,7 @@ max_value = 1.8
 layout_mode = 2
 text = "RESET_SCALING"
 
+[connection signal="language_changed" from="." to="VBoxContainer/UiScale/UiScaleLabel" method="language_changed"]
 [connection signal="settings_changed" from="." to="VBoxContainer/WindowModeSelection" method="settings_loaded"]
 [connection signal="settings_changed" from="." to="VBoxContainer/VSync" method="settings_loaded"]
 [connection signal="settings_changed" from="." to="VBoxContainer/UiScale" method="settings_changed"]
