@@ -1,19 +1,13 @@
-extends HBoxContainer
+extends Control
 
 signal completion_time_changed(new_time: String)
-signal update_min_slider_value(new_min: float)
-signal update_max_slider_value(new_max: float)
 signal update_slider_value(new_value: float)
 
-@export_range(1, 2, 1) var set_min_value: float = 1
-@export_range(2, 5, 1) var set_max_value: float = 5
 @export var completion_time_translation: TextTranslation
 
 var _last_stored_value: float = 0
 
 func settings_loaded(settings: SettingsResource) -> void:
-	update_min_slider_value.emit(set_min_value)
-	update_max_slider_value.emit(set_max_value)
 	set_translated_text(settings.close_round_after_seconds)
 	update_slider_value.emit(settings.close_round_after_seconds)
 
