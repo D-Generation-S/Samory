@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://brlkkuu3xnw88" path="res://entities/game/tutorial_window/scripts/TutorialWindow.gd" id="1_rm1ic"]
 [ext_resource type="StyleBox" uid="uid://d1rhal5rp1608" path="res://assets/styles/panel/MetalBox.tres" id="2_a5yjs"]
 [ext_resource type="PackedScene" uid="uid://bi2oaoxrcmttm" path="res://entities/game/animated_rich_text/scenes/AnimatedRichText.tscn" id="3_pqrdi"]
+[ext_resource type="Script" uid="uid://detl5lffpj6ry" path="res://shared/entities/clickable_toggle/scripts/ClickableToggle.gd" id="4_kdust"]
 [ext_resource type="Texture2D" uid="uid://dqv4i4y66gem" path="res://assets/icons/OkIcon.tres" id="7_ky4hq"]
 [ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="7_scsgn"]
 
@@ -52,6 +53,7 @@ layout_mode = 2
 size_flags_horizontal = 2
 tooltip_text = "COMPLETE_TUTORIAL_TOOLTIP"
 text = "COMPLETE_TUTORIAL"
+script = ExtResource("4_kdust")
 
 [node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Controls" unique_id=2097027986]
 layout_mode = 2
@@ -62,5 +64,7 @@ script = ExtResource("7_scsgn")
 
 [connection signal="append_text" from="." to="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/AnimatedRichText" method="add_new_text"]
 [connection signal="title_changed" from="." to="PanelContainer/MarginContainer/VBoxContainer/Title" method="set_text"]
+[connection signal="animation_done" from="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/AnimatedRichText" to="PanelContainer/MarginContainer/VBoxContainer/Controls/Button" method="enable_button"]
+[connection signal="animation_playing" from="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/AnimatedRichText" to="PanelContainer/MarginContainer/VBoxContainer/Controls/Button" method="disable_button"]
 [connection signal="toggled" from="PanelContainer/MarginContainer/VBoxContainer/Controls/CompleteTutorial" to="." method="toggle_abort_tutorial"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Controls/Button" to="." method="close"]
