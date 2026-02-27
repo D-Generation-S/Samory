@@ -31,6 +31,5 @@ func language_changed(_language_code: String) -> void:
 func settings_updated(settings: SettingsResource) -> void:
 	var base_value: float = settings.ai_think_time * max_allowed_value
 	base_value = _convert_value(base_value)
-	print(base_value)
 	_update_text_table(base_value)
 	setting_changed.emit(base_value)

@@ -1,27 +1,25 @@
 class_name TutorialWindow extends PopupWindow
 
 signal abort_tutorial()
+signal append_text(new_text: String)
+signal title_changed(new_title: String)
 
-var title: Label = null
-var body: AnimatedText = null
 var abort_tutorial_check: CheckButton = null
 
 var should_abort_tutorial: bool = false
 var is_ready: bool = false
 
 func _ready() -> void:
-	title = get_node("%Title") as Label
-	body = get_node("%Body") as AnimatedText
 	abort_tutorial_check = get_node("%CompleteTutorial") as CheckButton
 	visible = true
 	is_ready = true
 
-	if !title or !body or !abort_tutorial_check:
+	if !abort_tutorial_check:
 		close()
 
 func show_window(new_title: String, new_body: String, allow_abort: bool = true) -> void:
-	title.text = new_title
-	body.add_animated_text(new_body)
+	title_changed.emit(new_title)
+	append_text.emit(new_body)
 	abort_tutorial_check.button_pressed = false
 	should_abort_tutorial = false
 	abort_tutorial_check.visible = allow_abort
