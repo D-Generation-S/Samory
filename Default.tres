@@ -18,21 +18,12 @@
 [ext_resource type="Texture2D" uid="uid://dnv727mf8n6m0" path="res://assets/icons/RetractIcon.tres" id="13_et63c"]
 [ext_resource type="StyleBox" uid="uid://dnv61aiya5iew" path="res://assets/styles/panel/PopupMenuPanel.tres" id="13_mh8dq"]
 [ext_resource type="StyleBox" uid="uid://pw3tgeatjwgh" path="res://assets/styles/panel/TooltipPanel.tres" id="14_b6aat"]
+[ext_resource type="Texture2D" uid="uid://bwk64fvh6mqmw" path="res://assets/styles/slider/GrabberIcon.tres" id="14_jengi"]
 [ext_resource type="StyleBox" uid="uid://bhv10thfsgndt" path="res://assets/styles/line_edit/WoodLineEditReadOnly.tres" id="14_viwsn"]
 [ext_resource type="StyleBox" uid="uid://dc8pswjvva6fs" path="res://assets/styles/slider/SliderGrabberArea.tres" id="15_8pil1"]
+[ext_resource type="Texture2D" uid="uid://v7pot38x2my5" path="res://assets/styles/slider/GrabberDisabledIcon.tres" id="15_yrw11"]
+[ext_resource type="Texture2D" uid="uid://dvdaifyptlp0u" path="res://assets/styles/slider/GrabberHighlightIcon.tres" id="16_ad8cx"]
 [ext_resource type="StyleBox" uid="uid://c3fk04k2sgqqj" path="res://assets/styles/slider/Slider.tres" id="16_vi0gs"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0x3j8"]
-atlas = ExtResource("1_pdnn8")
-region = Rect2(314, 576, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jengi"]
-atlas = ExtResource("1_pdnn8")
-region = Rect2(362, 576, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yrw11"]
-atlas = ExtResource("1_pdnn8")
-region = Rect2(338, 576, 24, 24)
 
 [sub_resource type="Image" id="Image_8pil1"]
 data = {
@@ -211,9 +202,9 @@ FoldableContainer/styles/title_panel = ExtResource("4_1h74s")
 HSlider/constants/center_grabber = -1
 HSlider/constants/grabber_offset = 0
 HSlider/constants/tick_offset = 0
-HSlider/icons/grabber = SubResource("AtlasTexture_0x3j8")
-HSlider/icons/grabber_disabled = SubResource("AtlasTexture_jengi")
-HSlider/icons/grabber_highlight = SubResource("AtlasTexture_yrw11")
+HSlider/icons/grabber = ExtResource("14_jengi")
+HSlider/icons/grabber_disabled = ExtResource("15_yrw11")
+HSlider/icons/grabber_highlight = ExtResource("16_ad8cx")
 HSlider/icons/tick = null
 HSlider/styles/grabber_area = ExtResource("15_8pil1")
 HSlider/styles/grabber_area_highlight = ExtResource("15_8pil1")
