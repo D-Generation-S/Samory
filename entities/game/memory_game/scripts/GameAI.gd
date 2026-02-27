@@ -2,8 +2,8 @@ class_name AiAgent extends Node
 
 @export var cards_node: GameCardGrid
 @export var players: PlayerManager
-@export var min_wait_milliseconds: float = 500
-@export var max_wait_milliseconds: float = 3000
+@export var min_wait_seconds: float = 0.5
+@export var max_wait_seconds: float = 3
 var timer: Timer = null;
 var triggered_cards: int = 0
 
@@ -56,7 +56,8 @@ func player_changed(current_player:PlayerResource) -> void:
 func prepare_and_start_timer() -> void:
 	if !timer.is_stopped():
 		return
-	timer.wait_time = randf_range(min_wait_milliseconds, max_wait_milliseconds) / 1000
+	var settings: SettingsResource = SettingsRepository.load_settings()
+	timer.wait_time = randf_range(min_wait_seconds * settings.ai_think_time, max_wait_seconds * settings.ai_think_time)
 	timer.start()
 
 func timer_triggered() -> void:

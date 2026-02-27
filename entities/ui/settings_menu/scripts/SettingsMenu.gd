@@ -73,3 +73,6 @@ func v_sync_changed(new_value: bool) -> void:
 	if not new_value:
 		mode = DisplayServer.VSYNC_DISABLED
 	DisplayServer.window_set_vsync_mode(mode)
+
+func ai_think_time_updated(new_value: float) -> void:
+	_current_settings.ai_think_time = new_value

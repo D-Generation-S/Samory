@@ -1270,6 +1270,14 @@ msgid "AUTO_COMPLETE_ROUND_TOOLTIP"
 msgstr ""
 
 #: entities/ui/gameplay_settings/scenes/GameplaySettings.tscn
+msgid "AI_THINK_SPEED_DESCRIPTION"
+msgstr ""
+
+#: entities/ui/gameplay_settings/scenes/GameplaySettings.tscn
+msgid "AI_THINK_SPEED"
+msgstr ""
+
+#: entities/ui/gameplay_settings/scenes/GameplaySettings.tscn
 msgid "RESET_TUTORIAL_TOOLTIP"
 msgstr ""
 
@@ -1291,14 +1299,6 @@ msgstr ""
 
 #: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
 msgid "UI_SCALE"
-msgstr ""
-
-#: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
-msgid "UI_SCALE_DECREASE"
-msgstr ""
-
-#: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
-msgid "UI_SCALE_INCREASE"
 msgstr ""
 
 #: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
