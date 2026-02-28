@@ -36,7 +36,8 @@ func show_next_popup() -> void:
 	check_and_add_id(popup)
 	
 	if popup.should_pause:
-		if multiplayer.multiplayer_peer == null:
+		print(multiplayer.multiplayer_peer)
+		if multiplayer.multiplayer_peer == null or multiplayer.get_peers().size() == 0:
 			pause_game.emit()
 		mouse_filter = MOUSE_FILTER_STOP
 	add_child(popup)
