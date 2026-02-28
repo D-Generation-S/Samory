@@ -192,16 +192,16 @@ pressed_action = SubResource("Resource_jopkp")
 [node name="AvailableAiModes" parent="." unique_id=162745716 node_paths=PackedStringArray("align_source") instance=ExtResource("17_iuo3f")]
 align_source = NodePath("../CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI")
 
-[node name="AgainstPlayer" parent="AvailableAiModes/PanelContainer/AvailableAis" index="0"]
+[node name="AgainstPlayer" parent="AvailableAiModes/PanelContainer/AvailableAis" parent_id_path=PackedInt32Array(162745716, 2025890688) index="0" unique_id=1825865624]
 focus_neighbor_left = NodePath("../../../../CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI")
 
-[node name="Easy_AI" parent="AvailableAiModes/PanelContainer/AvailableAis" index="1"]
+[node name="Easy_AI" parent="AvailableAiModes/PanelContainer/AvailableAis" parent_id_path=PackedInt32Array(162745716, 2025890688) index="1" unique_id=968749708]
 focus_neighbor_left = NodePath("../../../../CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI")
 
-[node name="Normal_AI" parent="AvailableAiModes/PanelContainer/AvailableAis" index="2"]
+[node name="Normal_AI" parent="AvailableAiModes/PanelContainer/AvailableAis" parent_id_path=PackedInt32Array(162745716, 2025890688) index="2" unique_id=1726860824]
 focus_neighbor_left = NodePath("../../../../CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI")
 
-[node name="Hard_AI" parent="AvailableAiModes/PanelContainer/AvailableAis" index="3"]
+[node name="Hard_AI" parent="AvailableAiModes/PanelContainer/AvailableAis" parent_id_path=PackedInt32Array(162745716, 2025890688) index="3" unique_id=859255204]
 focus_neighbor_left = NodePath("../../../../CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI")
 
 [node name="TopDock" type="MarginContainer" parent="." unique_id=1013339364]

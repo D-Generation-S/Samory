@@ -1,4 +1,4 @@
-[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://cqaexm3rvo65s"]
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://cqaexm3rvo65s"]
 
 [ext_resource type="Texture2D" uid="uid://bmxqeqo65xwt" path="res://assets/sprites/spritesheet-default.png" id="1_bi0xk"]
 
@@ -8,4 +8,6 @@ texture_margin_left = 18.0
 texture_margin_top = 18.0
 texture_margin_right = 18.0
 texture_margin_bottom = 18.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 region_rect = Rect2(128, 432, 64, 64)
