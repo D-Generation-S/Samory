@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://d0vijthhc3d38" path="res://entities/game/players_overlay/scenes/PlayersOverlay.tscn" id="7_a7rnv"]
 [ext_resource type="Script" uid="uid://bglvkbo4aydsy" path="res://entities/game/memory_game/scripts/Background.gd" id="7_kxmqb"]
 [ext_resource type="Script" uid="uid://bxrsfyvew4ysu" path="res://entities/game/memory_game/scripts/PlayerInput.gd" id="9_86hnd"]
+[ext_resource type="Texture2D" uid="uid://dat3kg2y636js" path="res://assets/icons/MenuIcon.tres" id="11_da0ji"]
 [ext_resource type="PackedScene" uid="uid://cluwm03j8e11p" path="res://entities/game/game_pause_menu/scenes/GamePauseMenu.tscn" id="12_dfx06"]
 [ext_resource type="Script" uid="uid://bsilbayat31i4" path="res://entities/game/tutorial_window/resources/TutorialInformation.gd" id="14_65xsg"]
 [ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="15_2f3xl"]
@@ -98,6 +99,7 @@ offset_right = 35.5
 offset_bottom = 36.0
 grow_horizontal = 2
 text = "PAUSE_MENU"
+icon = ExtResource("11_da0ji")
 script = ExtResource("15_2f3xl")
 can_request_debug_view = true
 active = 4
@@ -122,9 +124,11 @@ grow_horizontal = 0
 grow_vertical = 2
 
 [node name="ZoomIn" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=103762876]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_vertical = 10
 icon = ExtResource("18_pqxyo")
+icon_alignment = 1
 script = ExtResource("15_2f3xl")
 can_request_debug_view = true
 active = 4
@@ -133,9 +137,11 @@ button_behavior = SubResource("Resource_5dmxa")
 pressed_action = SubResource("Resource_1wouk")
 
 [node name="ZoomOut" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=478318636]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_vertical = 2
 icon = ExtResource("20_ef4f6")
+icon_alignment = 1
 script = ExtResource("15_2f3xl")
 can_request_debug_view = true
 active = 4

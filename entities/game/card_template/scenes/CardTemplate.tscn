@@ -113,6 +113,8 @@ patch_margin_left = 16
 patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [node name="TextFrame" type="NinePatchRect" parent="CanvasGroup" unique_id=1031246576 groups=["card_content"]]
 offset_top = 500.0

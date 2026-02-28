@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://g8dk5ckx5t4d" path="res://entities/ui/gameplay_settings/scripts/AutoCloseRoundSlider.gd" id="3_sgjc8"]
 [ext_resource type="Resource" uid="uid://t4b63t07og3" path="res://shared/resources/translations/assets/TimeForCompletion.tres" id="4_1kcrw"]
 [ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="5_tp0ur"]
+[ext_resource type="Texture2D" uid="uid://dqv4i4y66gem" path="res://assets/icons/OkIcon.tres" id="7_1kcrw"]
 
 [node name="AutoClosePopup" type="CenterContainer" unique_id=1954482098]
 anchors_preset = 15
@@ -46,7 +47,7 @@ layout_mode = 2
 text = "AUTO_COMPLETE_ROUND"
 script = ExtResource("2_6fyx6")
 
-[node name="AutoCompleteTimer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=369697036]
+[node name="AutoCompleteTimer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1295788756]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 script = ExtResource("3_sgjc8")
@@ -63,13 +64,16 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+min_value = 1.0
 max_value = 5.0
+value = 1.0
 
 [node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=244490318]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 text = "OK"
+icon = ExtResource("7_1kcrw")
 script = ExtResource("5_tp0ur")
 
 [connection signal="settings_loaded" from="." to="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/AutoCompleteRound" method="settings_loaded"]
