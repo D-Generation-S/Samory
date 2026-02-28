@@ -101,6 +101,7 @@ text = "PAUSE_MENU"
 script = ExtResource("15_2f3xl")
 can_request_debug_view = true
 active = 4
+initial_visibility = false
 button_behavior = SubResource("Resource_kihnp")
 pressed_action = SubResource("Resource_086p8")
 
@@ -127,6 +128,7 @@ icon = ExtResource("18_pqxyo")
 script = ExtResource("15_2f3xl")
 can_request_debug_view = true
 active = 4
+initial_visibility = false
 button_behavior = SubResource("Resource_5dmxa")
 pressed_action = SubResource("Resource_1wouk")
 
@@ -137,6 +139,7 @@ icon = ExtResource("20_ef4f6")
 script = ExtResource("15_2f3xl")
 can_request_debug_view = true
 active = 4
+initial_visibility = false
 button_behavior = SubResource("Resource_78e34")
 pressed_action = SubResource("Resource_tgl34")
 
@@ -180,9 +183,12 @@ finished_game_template = ExtResource("4_6f670")
 player_node = NodePath("../Players")
 
 [connection signal="card_loading_done" from="." to="Camera2D" method="loading_done"]
+[connection signal="card_loading_done" from="." to="CanvasLayer/MenuButton" method="show_button_if_valid"]
 [connection signal="card_loading_done" from="." to="CanvasLayer/MenuButton" method="show_button"]
 [connection signal="card_loading_done" from="." to="CanvasLayer/PlayersOverlay" method="show"]
+[connection signal="card_loading_done" from="." to="CanvasLayer/VBoxContainer/ZoomIn" method="show_button_if_valid"]
 [connection signal="card_loading_done" from="." to="CanvasLayer/VBoxContainer/ZoomIn" method="show_button"]
+[connection signal="card_loading_done" from="." to="CanvasLayer/VBoxContainer/ZoomOut" method="show_button_if_valid"]
 [connection signal="card_loading_done" from="." to="CanvasLayer/VBoxContainer/ZoomOut" method="show_button"]
 [connection signal="card_loading_done" from="." to="Cards" method="announce_card_field"]
 [connection signal="card_loading_done" from="." to="Cards" method="card_loading_done"]
@@ -218,6 +224,7 @@ player_node = NodePath("../Players")
 [connection signal="end_current_round" from="PlayerInput" to="." method="end_round_now"]
 [connection signal="game_menu_requested" from="PlayerInput" to="." method="show_game_menu"]
 [connection signal="touch_used" from="Camera2D" to="Cards" method="disable_card_effects"]
+[connection signal="pressed" from="CanvasLayer/MenuButton" to="." method="show_game_menu"]
 [connection signal="continue_game" from="CanvasLayer/PopupManager" to="." method="unpause_game"]
 [connection signal="pause_game" from="CanvasLayer/PopupManager" to="." method="pause_game"]
 [connection signal="tutorial_requested" from="CanvasLayer/Tutorial" to="CanvasLayer/PopupManager" method="add_and_show_popup"]

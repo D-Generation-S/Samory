@@ -13,11 +13,12 @@ enum {
 @export var can_request_debug_view: bool = false
 @export_flags("Web", "Desktop", "Mobile", "Debug") var active: int = 7
 @export var only_visible_if_custom_deck_active: bool = false
+@export var initial_visibility: bool = true
 
 @export_group("Behavior")
 @export var is_focused: bool = false
 ## If false the button can only be clicked once
-@export var button_behavior: ButtonBehavior = null
+@export var button_behavior: ButtonBehavior
 
 @export_group("Animations")
 @export var animation_resource: ControlAnimationResource = null
@@ -33,6 +34,8 @@ var _is_animated: bool = false
 func _ready() -> void:
 	if !_check_for_valid_platform():
 		return
+	if !initial_visibility:
+		visible = false
 	if button_behavior == null:
 		button_behavior = DefaultButtonBehavior.new()
 	button_behavior.init(self, pressed_action)
@@ -45,6 +48,9 @@ func _ready() -> void:
 		animation_resource.prepare_animation(self)
 	if is_focused:
 		grab_focus()
+
+func show_button_if_valid() -> void:
+	_check_for_valid_platform()
 
 func _check_for_valid_platform() -> bool:
 	if only_show_on_debug && !OS.is_debug_build():
