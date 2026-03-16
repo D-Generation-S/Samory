@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ControlAnimation" format=3 uid="uid://cakox3m20wk7q"]
+
+[ext_resource type="AudioStream" uid="uid://c07nu4inslkw7" path="res://assets/audio/effect/animation_enter_end.ogg" id="1_bv0ho"]
+[ext_resource type="Script" uid="uid://bcxjaw3jedjv5" path="res://shared/resources/control_animation/ControlAnimation.gd" id="1_sr5nq"]
+
+[resource]
+script = ExtResource("1_sr5nq")
+animation_time = 0.15
+scale = Vector2(-1, -1)
+easing = 1
+transition = 9
+animation_begin_sound = ExtResource("1_bv0ho")
+metadata/_custom_type_script = "uid://bcxjaw3jedjv5"
