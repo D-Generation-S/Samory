@@ -23,10 +23,15 @@ func load_settings() -> SettingsResource:
 		return_settings = default_settings.duplicate_deep()
 
 	settings_updated.emit(return_settings)
+	loaded_settings = return_settings
 	return return_settings
 
 func save_settings(settings: SettingsResource) -> bool:
-	return settings.save(settings_file)
+	var saved: bool = settings.save(settings_file)
+	if saved:
+		loaded_settings = null
+		
+	return saved
 
 func convert_legacy_setting() -> void:
 	var settings: SettingsResource = load_legacy_setting()

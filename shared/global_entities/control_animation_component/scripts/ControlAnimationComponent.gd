@@ -34,6 +34,9 @@ func _ready() -> void:
 	target = get_parent()
 	if controlled_node_override != null:
 		target = controlled_node_override
+	var settings: SettingsResource = SettingsRepository.load_settings()
+	if settings != null:
+		enter_animation_enabled = settings.enter_animate_controls
 	await get_tree().physics_frame
 	_setup()
 
@@ -126,4 +129,4 @@ func _add_tween(target_properties: Dictionary[String, Variant],
 func _call_end_method(end_method: Callable) -> void:
 	if end_method == null or self == null:
 		return
-	end_method.call()	
+	end_method.call()
