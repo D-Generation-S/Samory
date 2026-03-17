@@ -193,10 +193,6 @@ msgid "TITLE"
 msgstr ""
 
 #: entities/game/tutorial_window/scenes/TutorialWindow.tscn
-msgid "BODY"
-msgstr ""
-
-#: entities/game/tutorial_window/scenes/TutorialWindow.tscn
 msgid "COMPLETE_TUTORIAL_TOOLTIP"
 msgstr ""
 
@@ -1291,6 +1287,14 @@ msgstr ""
 
 #: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
 msgid "V_SYNC"
+msgstr ""
+
+#: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
+msgid "ENTER_ANIMATE_CONTROLS_DESCRIPTION"
+msgstr ""
+
+#: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
+msgid "ENTER_ANIMATE_CONTROLS"
 msgstr ""
 
 #: entities/ui/graphic_settings/scenes/GraphicSettings.tscn

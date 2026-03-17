@@ -120,19 +120,13 @@ func toggle_button(on: bool) -> void:
 		return
 	disable_button()
 
+## Deprecated use "ControlAnimationComponent" instead!
 func animate_in() -> void:
-	if !_is_animated or animation_resource.is_animated_in():
-		return
-	_ensure_new_tween()
-	_animation_tween = create_tween()
-	animation_resource.animate_in(_animation_tween, self)
+	return
 
+## Deprecated use "ControlAnimationComponent" instead!
 func animate_out() -> void:
-	if !_is_animated or !animation_resource.is_animated_in():
-		return
-	_ensure_new_tween()
-	_animation_tween = create_tween()
-	animation_resource.animate_out(_animation_tween, self)
+	return
 
 func _exit_tree() -> void:
 	if button_behavior != null:
@@ -141,3 +135,5 @@ func _exit_tree() -> void:
 func simulate_click() -> void:
 	pressed.emit()
 	
+func focused() -> void:
+	grab_focus()

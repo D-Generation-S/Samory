@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dxepefpl817n7" path="res://entities/ui/graphic_settings/scripts/WindowModeSelection.gd" id="3_cvhsj"]
 [ext_resource type="Script" uid="uid://b6p42kfefnyc0" path="res://entities/ui/graphic_settings/scripts/VsyncButton.gd" id="4_r24jl"]
 [ext_resource type="Script" uid="uid://b3mbd6eeylk66" path="res://entities/ui/graphic_settings/scripts/UiScale.gd" id="5_180xw"]
+[ext_resource type="Script" uid="uid://eqtw0pawym83" path="res://entities/ui/graphic_settings/scripts/EnterAnimateControls.gd" id="5_fnqnv"]
 [ext_resource type="Script" uid="uid://crpang1vb3yxa" path="res://entities/ui/graphic_settings/scripts/UiScaleLabel.gd" id="6_fnqnv"]
 [ext_resource type="PackedScene" uid="uid://cf4ydk76w8s3l" path="res://entities/ui/button_scroll_bar/scene/ButtonScrollBar.tscn" id="7_r24jl"]
 
@@ -43,6 +44,12 @@ tooltip_text = "VSYNC_SETTING_TOOLTIP"
 text = "V_SYNC"
 script = ExtResource("4_r24jl")
 
+[node name="EnterAnimate" type="CheckButton" parent="VBoxContainer" unique_id=1293576611]
+layout_mode = 2
+tooltip_text = "ENTER_ANIMATE_CONTROLS_DESCRIPTION"
+text = "ENTER_ANIMATE_CONTROLS"
+script = ExtResource("5_fnqnv")
+
 [node name="UiScale" type="HBoxContainer" parent="VBoxContainer" unique_id=1692092135]
 layout_mode = 2
 script = ExtResource("5_180xw")
@@ -70,8 +77,10 @@ text = "RESET_SCALING"
 [connection signal="settings_changed" from="." to="VBoxContainer/WindowModeSelection" method="settings_loaded"]
 [connection signal="settings_changed" from="." to="VBoxContainer/VSync" method="settings_loaded"]
 [connection signal="settings_changed" from="." to="VBoxContainer/UiScale" method="settings_changed"]
+[connection signal="settings_changed" from="." to="VBoxContainer/EnterAnimate" method="settings_loaded"]
 [connection signal="window_mode_changed" from="VBoxContainer/WindowModeSelection" to="." method="change_window_mode"]
 [connection signal="toggled" from="VBoxContainer/VSync" to="." method="change_v_sync"]
+[connection signal="toggled" from="VBoxContainer/EnterAnimate" to="." method="change_enter_animate"]
 [connection signal="value_changed" from="VBoxContainer/UiScale" to="VBoxContainer/UiScale/ButtonScrollBar" method="set_value"]
 [connection signal="drag_ended" from="VBoxContainer/UiScale/ButtonScrollBar" to="VBoxContainer/UiScale" method="update_preview"]
 [connection signal="value_changed" from="VBoxContainer/UiScale/ButtonScrollBar" to="." method="change_ui_scale"]

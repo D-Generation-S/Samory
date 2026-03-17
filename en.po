@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #: entities/game/auto_close_popup/scenes/AutoClosePopup.tscn
 msgid "AUTO_CLOSE_POPUP_BODY"
@@ -108,10 +108,6 @@ msgstr "PLACEHOLDER"
 #: entities/game/tutorial_window/scenes/TutorialWindow.tscn
 msgid "TITLE"
 msgstr "Title"
-
-#: entities/game/tutorial_window/scenes/TutorialWindow.tscn
-msgid "BODY"
-msgstr "Body"
 
 #: entities/game/tutorial_window/scenes/TutorialWindow.tscn
 msgid "COMPLETE_TUTORIAL_TOOLTIP"
@@ -1358,6 +1354,16 @@ msgid "V_SYNC"
 msgstr "VSync"
 
 #: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
+msgid "ENTER_ANIMATE_CONTROLS_DESCRIPTION"
+msgstr ""
+"If this is set to true menus might play an animation if buttons or panels do "
+"enter. If this is not wanted, disable the option."
+
+#: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
+msgid "ENTER_ANIMATE_CONTROLS"
+msgstr "Animate Menus"
+
+#: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
 msgid "UI_SCALE_TOOLTIP"
 msgstr ""
 "Change how the ui should be scaled, if set to 100% the scale is set as "
@@ -1373,6 +1379,9 @@ msgstr "Reset UI scaling"
 
 msgid "Samory"
 msgstr ""
+
+#~ msgid "BODY"
+#~ msgstr "Body"
 
 #~ msgid "UI_SCALE_DECREASE"
 #~ msgstr "Decrease UI scaling"

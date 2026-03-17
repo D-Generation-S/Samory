@@ -1,7 +1,12 @@
 class_name SettingsResource extends Save
 
+@export_group("graphics")
 @export var window_mode: DisplayServer.WindowMode
 @export var vsync_active: bool = false
+@export var enter_animate_controls: bool = true
+@export_range(0.2, 3) var ui_scale_factor: float = 1
+
+@export_group("Gameplay")
 @export var load_custom_decks: bool = true
 @export var language_code: String = "en"
 @export var tutorials: Dictionary = {}
@@ -9,7 +14,6 @@ class_name SettingsResource extends Save
 @export var auto_close_popup_shown: bool = false
 @export var auto_close_round: bool = true
 @export var close_round_after_seconds: float = 3
-@export_range(0.2, 3) var ui_scale_factor: float = 1
 
 @export_group("Audio")
 @export_range(0,1) var master_volume: float = 1
