@@ -2,10 +2,11 @@ extends Node2D
 
 signal song_changed(song: SongResource)
 
-@export var audio_bus_name: String
-
+@export_group("Audio Setup")
+@export var audio_bus_name: StringName
 @export var tracks_to_skip: int = 0
 @export var tracks: Array[SongResource] = []
+@export_group("Fading")
 @export var initial_song_fade_duration: float = 1;
 @export var song_fade_duration: int = 2
 @export_range(-100, 20) var disabled_db_value: float = -80
@@ -80,6 +81,8 @@ func get_valid_tracks() -> Array[SongResource]:
 	return valid_tracks
 	
 func play_new_song(song: SongResource) -> void:
+	if song == null:
+		return
 	last_tracks.append(song)
 
 	for active_audio_stream: AudioStreamPlayer2D in _get_active_audio_nodes():
@@ -90,7 +93,7 @@ func play_new_song(song: SongResource) -> void:
 
 	var new_audio_manager: AudioStreamPlayer2D = _get_unused_audio_node()
 	new_audio_manager.stream = song.song_data
-	new_audio_manager.volume_db = disabled_db_value
+	new_audio_manager.volume_db = disabled_db_value + song.db_volume_change
 	new_audio_manager.play()
 
 	var tween_new_song_stream: Tween = create_tween()
@@ -124,7 +127,10 @@ func switch_song() -> void:
 	play_new_song(new_track)
 
 func get_next_track() -> SongResource:
-	return get_valid_tracks().pick_random()
+	var valid_tracks: Array[SongResource] = get_valid_tracks()
+	if valid_tracks.is_empty():
+		return null
+	return valid_tracks.pick_random()
 	
 func skip_song() -> void:
 	track_change_time.stop()
