@@ -9,6 +9,24 @@
 [ext_resource type="Script" uid="uid://dvrn3p7xl4tpl" path="res://shared/entities/clickable_button/resources/actions/OpenLinkAction.gd" id="5_gggmv"]
 [ext_resource type="Texture2D" uid="uid://doybax1rt0tgn" path="res://assets/icons/QuitIcon.tres" id="7_liw4c"]
 [ext_resource type="Script" uid="uid://b03sehux5xslr" path="res://shared/entities/clickable_button/resources/actions/OpenMainMenu.gd" id="7_xxa1d"]
+[ext_resource type="Script" uid="uid://rxshx7ma8nn3" path="res://shared/global_entities/control_animation_component/scripts/ControlAnimationComponent.gd" id="8_xrko3"]
+[ext_resource type="Script" uid="uid://bcxjaw3jedjv5" path="res://shared/resources/control_animation/ControlAnimation.gd" id="9_5taea"]
+[ext_resource type="Resource" uid="uid://dvtxx5rwv0aoo" path="res://shared/resources/control_animation/resources/FadeInAnimationDelayed.tres" id="9_chbw5"]
+[ext_resource type="PackedScene" uid="uid://c6411vrwwcrjs" path="res://entities/ui/animation_arrow_up/scenes/AnimationArrowUp.tscn" id="10_5taea"]
+[ext_resource type="Texture2D" uid="uid://cg0l7tvqmtghr" path="res://assets/sprites/sheet_white1x.png" id="11_5taea"]
+
+[sub_resource type="Resource" id="Resource_4lqqu"]
+script = ExtResource("7_xxa1d")
+metadata/_custom_type_script = "uid://b03sehux5xslr"
+
+[sub_resource type="Resource" id="Resource_72uk5"]
+script = ExtResource("9_5taea")
+position = Vector2(0, -95)
+metadata/_custom_type_script = "uid://bcxjaw3jedjv5"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chbw5"]
+atlas = ExtResource("11_5taea")
+region = Rect2(150, 250, 50, 50)
 
 [sub_resource type="Resource" id="Resource_gul80"]
 script = ExtResource("5_gggmv")
@@ -29,10 +47,6 @@ metadata/_custom_type_script = "uid://dvrn3p7xl4tpl"
 script = ExtResource("5_gggmv")
 link = "https://www.materialmaker.org/"
 metadata/_custom_type_script = "uid://dvrn3p7xl4tpl"
-
-[sub_resource type="Resource" id="Resource_4lqqu"]
-script = ExtResource("7_xxa1d")
-metadata/_custom_type_script = "uid://b03sehux5xslr"
 
 [node name="Credits" type="CanvasLayer" unique_id=1647596529]
 
@@ -59,68 +73,25 @@ script = ExtResource("1_xb4j0")
 timer_tick = 30.0
 scroll_speed = 2
 
-[node name="ButtonArea" type="MarginContainer" parent="." unique_id=2132915574]
-anchors_preset = 12
+[node name="ClostButtonMargin" type="MarginContainer" parent="." unique_id=771782369]
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -15.0
-grow_horizontal = 2
+offset_left = -169.0
+offset_top = -91.0
+grow_horizontal = 0
 grow_vertical = 0
-size_flags_horizontal = 3
-size_flags_vertical = 8
-theme_override_constants/margin_left = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="LinkList" type="HBoxContainer" parent="ButtonArea" unique_id=75402586]
-layout_mode = 2
-
-[node name="Kenney_nl" type="Button" parent="ButtonArea/LinkList" unique_id=1793741721]
-layout_mode = 2
-focus_neighbor_left = NodePath("../CloseButton")
-focus_neighbor_right = NodePath("../Auxree")
-text = "Kenney.nl"
-icon = ExtResource("3_vnxeo")
-script = ExtResource("3_ntyq1")
-animation_resource = ExtResource("4_5w3yf")
-pressed_action = SubResource("Resource_gul80")
-
-[node name="Auxree" type="Button" parent="ButtonArea/LinkList" unique_id=1342980662]
-layout_mode = 2
-focus_neighbor_left = NodePath("../Kenney_nl")
-focus_neighbor_right = NodePath("../Abstraction")
-text = "Axuree"
-icon = ExtResource("3_vnxeo")
-script = ExtResource("3_ntyq1")
-animation_resource = ExtResource("4_5w3yf")
-pressed_action = SubResource("Resource_ntyq1")
-
-[node name="Abstraction" type="Button" parent="ButtonArea/LinkList" unique_id=265739547]
-layout_mode = 2
-focus_neighbor_left = NodePath("../Auxree")
-focus_neighbor_right = NodePath("../MaterialMaker")
-text = "Abstraction"
-icon = ExtResource("3_vnxeo")
-script = ExtResource("3_ntyq1")
-animation_resource = ExtResource("4_5w3yf")
-pressed_action = SubResource("Resource_gggmv")
-
-[node name="MaterialMaker" type="Button" parent="ButtonArea/LinkList" unique_id=207632722]
-layout_mode = 2
-focus_neighbor_left = NodePath("../Abstraction")
-focus_neighbor_right = NodePath("../CloseButton")
-text = "Material Maker"
-icon = ExtResource("3_vnxeo")
-script = ExtResource("3_ntyq1")
-animation_resource = ExtResource("4_5w3yf")
-pressed_action = SubResource("Resource_xxa1d")
-
-[node name="CloseButton" type="Button" parent="ButtonArea/LinkList" unique_id=584494095]
+[node name="CloseButton" type="Button" parent="ClostButtonMargin" unique_id=584494095]
 layout_mode = 2
 size_flags_horizontal = 10
-focus_neighbor_left = NodePath("../MaterialMaker")
-focus_neighbor_right = NodePath("../Kenney_nl")
+size_flags_vertical = 8
+focus_neighbor_left = NodePath("../../ButtonArea/VBoxContainer/LinkList/MaterialMaker")
+focus_neighbor_right = NodePath("../../ButtonArea/VBoxContainer/LinkList/Kenney_nl")
 shortcut = ExtResource("3_i56v7")
 shortcut_in_tooltip = false
 text = "CLOSE"
@@ -129,3 +100,85 @@ script = ExtResource("3_ntyq1")
 is_focused = true
 animation_resource = ExtResource("4_5w3yf")
 pressed_action = SubResource("Resource_4lqqu")
+
+[node name="ButtonArea" type="MarginContainer" parent="." unique_id=2132915574]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -50.0
+offset_right = 870.0
+offset_bottom = 95.0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ControlAnimationComponent" type="Node" parent="ButtonArea" unique_id=600937403]
+script = ExtResource("8_xrko3")
+enter_values = ExtResource("9_chbw5")
+hover_values = SubResource("Resource_72uk5")
+metadata/_custom_type_script = "uid://rxshx7ma8nn3"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ButtonArea" unique_id=279835640]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="TextureRect" parent="ButtonArea/VBoxContainer" unique_id=1988116494 instance=ExtResource("10_5taea")]
+layout_mode = 2
+
+[node name="LinkList" type="HBoxContainer" parent="ButtonArea/VBoxContainer" unique_id=75402586]
+layout_mode = 2
+
+[node name="Kenney_nl" type="Button" parent="ButtonArea/VBoxContainer/LinkList" unique_id=1793741721]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../ClostButtonMargin/CloseButton")
+focus_neighbor_right = NodePath("../Auxree")
+mouse_filter = 1
+text = "Kenney.nl"
+icon = SubResource("AtlasTexture_chbw5")
+script = ExtResource("3_ntyq1")
+animation_resource = ExtResource("4_5w3yf")
+pressed_action = SubResource("Resource_gul80")
+
+[node name="Auxree" type="Button" parent="ButtonArea/VBoxContainer/LinkList" unique_id=1342980662]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Kenney_nl")
+focus_neighbor_right = NodePath("../Abstraction")
+mouse_filter = 1
+text = "Axuree"
+icon = ExtResource("3_vnxeo")
+script = ExtResource("3_ntyq1")
+animation_resource = ExtResource("4_5w3yf")
+pressed_action = SubResource("Resource_ntyq1")
+
+[node name="Abstraction" type="Button" parent="ButtonArea/VBoxContainer/LinkList" unique_id=265739547]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Auxree")
+focus_neighbor_right = NodePath("../MaterialMaker")
+mouse_filter = 1
+text = "Abstraction"
+icon = ExtResource("3_vnxeo")
+script = ExtResource("3_ntyq1")
+animation_resource = ExtResource("4_5w3yf")
+pressed_action = SubResource("Resource_gggmv")
+
+[node name="MaterialMaker" type="Button" parent="ButtonArea/VBoxContainer/LinkList" unique_id=207632722]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Abstraction")
+focus_neighbor_right = NodePath("../../../../ClostButtonMargin/CloseButton")
+mouse_filter = 1
+text = "Material Maker"
+icon = ExtResource("3_vnxeo")
+script = ExtResource("3_ntyq1")
+animation_resource = ExtResource("4_5w3yf")
+pressed_action = SubResource("Resource_xxa1d")
+
+[connection signal="focus_entered" from="ButtonArea/VBoxContainer/LinkList/Kenney_nl" to="ButtonArea/ControlAnimationComponent" method="trigger_hover"]
+[connection signal="focus_exited" from="ButtonArea/VBoxContainer/LinkList/Kenney_nl" to="ButtonArea/ControlAnimationComponent" method="trigger_hover_lost"]
+[connection signal="focus_entered" from="ButtonArea/VBoxContainer/LinkList/Auxree" to="ButtonArea/ControlAnimationComponent" method="trigger_hover"]
+[connection signal="focus_entered" from="ButtonArea/VBoxContainer/LinkList/Abstraction" to="ButtonArea/ControlAnimationComponent" method="trigger_hover"]
+[connection signal="focus_entered" from="ButtonArea/VBoxContainer/LinkList/MaterialMaker" to="ButtonArea/ControlAnimationComponent" method="trigger_hover"]
+[connection signal="focus_exited" from="ButtonArea/VBoxContainer/LinkList/MaterialMaker" to="ButtonArea/ControlAnimationComponent" method="trigger_hover_lost"]

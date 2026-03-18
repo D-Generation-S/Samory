@@ -5,11 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://d1fc7nwftgx4y" path="res://assets/icons/QuestionIcon.tres" id="2_1cih1"]
 [ext_resource type="Script" uid="uid://qgxq73rkwfr3" path="res://shared/entities/clickable_button/resources/OpenSystemFolder.gd" id="3_f67t6"]
 [ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="3_l56ar"]
-[ext_resource type="Script" uid="uid://rxshx7ma8nn3" path="res://shared/global_entities/control_animation_component/scripts/ControlAnimationComponent.gd" id="4_m7voa"]
-[ext_resource type="Resource" uid="uid://cakox3m20wk7q" path="res://shared/resources/control_animation/resources/DefaultButtonEnter.tres" id="5_6wbyd"]
 [ext_resource type="Script" uid="uid://dvrn3p7xl4tpl" path="res://shared/entities/clickable_button/resources/actions/OpenLinkAction.gd" id="5_m7voa"]
 [ext_resource type="Texture2D" uid="uid://cln3v63hwble8" path="res://assets/icons/HomeIcon.tres" id="6_6wbyd"]
-[ext_resource type="Resource" uid="uid://by7h6kfigwa21" path="res://shared/resources/control_animation/resources/DefaultButtonAnimation.tres" id="6_dpv13"]
 [ext_resource type="Texture2D" uid="uid://cswswoet5pppp" path="res://assets/icons/ShareIcon.tres" id="7_dpv13"]
 [ext_resource type="Texture2D" uid="uid://cat86qdkpvga8" path="res://assets/icons/WarningIcon.tres" id="8_63oac"]
 
@@ -45,17 +42,12 @@ size_flags_horizontal = 8
 [node name="OpenCustomDeckFolder" type="Button" parent="." unique_id=2116555998]
 layout_mode = 2
 tooltip_text = "OPEN_DECK_FOLDER_TOOLTIP"
+mouse_filter = 1
 icon = ExtResource("1_1cih1")
 script = ExtResource("3_l56ar")
 active = 2
 only_visible_if_custom_deck_active = true
 pressed_action = SubResource("Resource_m7voa")
-
-[node name="ControlAnimationComponent" type="Node" parent="OpenCustomDeckFolder" unique_id=977552176]
-script = ExtResource("4_m7voa")
-enter_values = ExtResource("5_6wbyd")
-hover_values = ExtResource("6_dpv13")
-metadata/_custom_type_script = "uid://rxshx7ma8nn3"
 
 [node name="HowToPlay" type="Button" parent="." unique_id=1979169242]
 layout_mode = 2
@@ -64,17 +56,11 @@ tooltip_text = "HOW_TO_PLAY"
 focus_neighbor_right = NodePath("../GitHubRepository")
 focus_next = NodePath("../GitHubRepository")
 focus_previous = NodePath("../../../CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quit")
+mouse_filter = 1
 shortcut = ExtResource("1_2ay2a")
 icon = ExtResource("2_1cih1")
 script = ExtResource("3_l56ar")
 pressed_action = SubResource("Resource_ssyfv")
-
-[node name="ControlAnimationComponent" type="Node" parent="HowToPlay" unique_id=1737761850 node_paths=PackedStringArray("await_component")]
-script = ExtResource("4_m7voa")
-await_component = NodePath("../../OpenCustomDeckFolder/ControlAnimationComponent")
-enter_values = ExtResource("5_6wbyd")
-hover_values = ExtResource("6_dpv13")
-metadata/_custom_type_script = "uid://rxshx7ma8nn3"
 
 [node name="GitHubRepository" type="Button" parent="." unique_id=511307644]
 layout_mode = 2
@@ -82,45 +68,27 @@ size_flags_horizontal = 8
 tooltip_text = "GITHUB_REPOSITORY_BUTTON"
 focus_neighbor_left = NodePath("../HowToPlay")
 focus_neighbor_right = NodePath("../OpenGameSite")
+mouse_filter = 1
 icon = ExtResource("6_6wbyd")
 script = ExtResource("3_l56ar")
 pressed_action = SubResource("Resource_bmgck")
-
-[node name="ControlAnimationComponent" type="Node" parent="GitHubRepository" unique_id=1581642327 node_paths=PackedStringArray("await_component")]
-script = ExtResource("4_m7voa")
-await_component = NodePath("../../HowToPlay/ControlAnimationComponent")
-enter_values = ExtResource("5_6wbyd")
-hover_values = ExtResource("6_dpv13")
-metadata/_custom_type_script = "uid://rxshx7ma8nn3"
 
 [node name="OpenGameSite" type="Button" parent="." unique_id=540372814]
 layout_mode = 2
 tooltip_text = "GAME_PAGE"
 focus_neighbor_left = NodePath("../GitHubRepository")
 focus_neighbor_right = NodePath("../ReportBug")
+mouse_filter = 1
 icon = ExtResource("7_dpv13")
 script = ExtResource("3_l56ar")
 pressed_action = SubResource("Resource_7m08p")
-
-[node name="ControlAnimationComponent" type="Node" parent="OpenGameSite" unique_id=1020999169 node_paths=PackedStringArray("await_component")]
-script = ExtResource("4_m7voa")
-await_component = NodePath("../../GitHubRepository/ControlAnimationComponent")
-enter_values = ExtResource("5_6wbyd")
-hover_values = ExtResource("6_dpv13")
-metadata/_custom_type_script = "uid://rxshx7ma8nn3"
 
 [node name="ReportBug" type="Button" parent="." unique_id=129169406]
 layout_mode = 2
 tooltip_text = "REPORT_BUG"
 focus_neighbor_left = NodePath("../OpenGameSite")
 focus_neighbor_right = NodePath("../HowToPlay")
+mouse_filter = 1
 icon = ExtResource("8_63oac")
 script = ExtResource("3_l56ar")
 pressed_action = SubResource("Resource_q0p35")
-
-[node name="ControlAnimationComponent" type="Node" parent="ReportBug" unique_id=457431092 node_paths=PackedStringArray("await_component")]
-script = ExtResource("4_m7voa")
-await_component = NodePath("../../OpenGameSite/ControlAnimationComponent")
-enter_values = ExtResource("5_6wbyd")
-hover_values = ExtResource("6_dpv13")
-metadata/_custom_type_script = "uid://rxshx7ma8nn3"

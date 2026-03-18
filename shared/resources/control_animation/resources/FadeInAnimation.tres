@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ControlAnimation" format=3 uid="uid://c1inbmbft2wj0"]
+
+[ext_resource type="Script" uid="uid://bcxjaw3jedjv5" path="res://shared/resources/control_animation/ControlAnimation.gd" id="1_757ol"]
+
+[resource]
+script = ExtResource("1_757ol")
+modulate_add = Color(1, 1, 1, 0)
+metadata/_custom_type_script = "uid://bcxjaw3jedjv5"
