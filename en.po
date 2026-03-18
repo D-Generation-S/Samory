@@ -153,7 +153,7 @@ msgstr ""
 "\n"
 "[center][b]Powered By[/b][/center]\n"
 "[center][img=200x200,center,center]res://icon.svg[/img][/center]\n"
-"[center]Godot Game Engine 4.5[/center]"
+"[center]Godot Game Engine 4.6[/center]"
 
 #: entities/ui/credits/scenes/Credits.tscn
 msgid "Kenney.nl"

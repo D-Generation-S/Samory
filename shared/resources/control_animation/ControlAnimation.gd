@@ -26,7 +26,7 @@ func setup(target: Control) -> void:
 		"position": target.position + position,
 		"size": target.size + size,
 		"rotation": target.rotation + deg_to_rad(rotation_degree),
-		"self_modulate": target.self_modulate * modulate_add
+		"modulate": target.modulate * modulate_add
 	}
 
 func get_data() -> Dictionary[String, Variant]:

@@ -11,7 +11,7 @@ signal enter_animation_done()
 	"position",
 	"size",
 	"rotation",
-	"self_modulate"
+	"modulate"
 ]
 @export_group("Enter Animation")
 @export var enter_animation_enabled: bool = true
@@ -27,6 +27,7 @@ signal enter_animation_done()
 
 var target: Control
 var default_values: Dictionary[String, Variant] = {}
+var _hover_triggered: bool = false
 
 const INSTANT_TRANSITION: Tween.TransitionType = Tween.TransitionType.TRANS_LINEAR
 
@@ -46,7 +47,7 @@ func _setup() -> void:
 		"position": target.position,
 		"size": target.size,
 		"rotation": target.rotation,
-		"self_modulate": target.self_modulate
+		"modulate": target.self_modulate
 	}
 	if use_center:
 		target.pivot_offset = target.size / 2
@@ -130,3 +131,17 @@ func _call_end_method(end_method: Callable) -> void:
 	if end_method == null or self == null:
 		return
 	end_method.call()
+
+func trigger_hover() -> void:
+	_hover_triggered = true
+	target.mouse_entered.emit()
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	_hover_triggered = false
+
+
+func trigger_hover_lost() -> void:
+	await get_tree().physics_frame
+	if _hover_triggered:
+		return
+	target.mouse_exited.emit()

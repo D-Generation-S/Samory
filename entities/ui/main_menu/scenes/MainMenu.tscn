@@ -28,6 +28,8 @@
 [ext_resource type="Texture2D" uid="uid://dmmfqt6ictpos" path="res://assets/icons/SettingsIcon.tres" id="20_vm73v"]
 [ext_resource type="PackedScene" uid="uid://da8m8gpy2rlvo" path="res://entities/ui/links/scenes/links.tscn" id="21_fr5td"]
 [ext_resource type="PackedScene" uid="uid://ded0xyxbb1om1" path="res://entities/ui/settings_menu/scenes/SettingsMenu.tscn" id="21_plb04"]
+[ext_resource type="Resource" uid="uid://c1inbmbft2wj0" path="res://shared/resources/control_animation/resources/FadeInAnimation.tres" id="28_0jj68"]
+[ext_resource type="PackedScene" uid="uid://c6411vrwwcrjs" path="res://entities/ui/animation_arrow_up/scenes/AnimationArrowUp.tscn" id="28_exu4r"]
 
 [sub_resource type="Resource" id="Resource_exu4r"]
 script = ExtResource("4_psgpi")
@@ -88,6 +90,11 @@ metadata/_custom_type_script = "uid://cymc6ui77jfei"
 script = ExtResource("4_psgpi")
 animation_time = 0.3
 position = Vector2(0, -200)
+metadata/_custom_type_script = "uid://bcxjaw3jedjv5"
+
+[sub_resource type="Resource" id="Resource_0jj68"]
+script = ExtResource("4_psgpi")
+position = Vector2(0, -97)
 metadata/_custom_type_script = "uid://bcxjaw3jedjv5"
 
 [node name="MainMenu" type="CanvasLayer" unique_id=674321008 node_paths=PackedStringArray("game_buttons") groups=["active_scene"]]
@@ -230,8 +237,8 @@ metadata/_custom_type_script = "uid://rxshx7ma8nn3"
 [node name="Quit" type="Button" parent="CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=1120827469]
 layout_mode = 2
 tooltip_text = "QUIT_GAME_TOOLTIP"
-focus_neighbor_right = NodePath("../../../../../BottomDock/Links/HowToPlay")
-focus_neighbor_bottom = NodePath("../../../../../BottomDock/Links/HowToPlay")
+focus_neighbor_right = NodePath("../../../../../BottomDock/VBoxContainer/Links/HowToPlay")
+focus_neighbor_bottom = NodePath("../../../../../BottomDock/VBoxContainer/Links/HowToPlay")
 focus_next = NodePath("../Start Game")
 text = "QUIT_GAME"
 icon = ExtResource("15_lppid")
@@ -285,7 +292,7 @@ size_flags_horizontal = 10
 size_flags_vertical = 0
 tooltip_text = "GAME_SETTINGS"
 focus_neighbor_left = NodePath("../../../CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Start Game")
-focus_neighbor_bottom = NodePath("../../../BottomDock/Links/HowToPlay")
+focus_neighbor_bottom = NodePath("../../../BottomDock/VBoxContainer/Links/HowToPlay")
 focus_next = NodePath("../../../CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Start Game")
 focus_previous = NodePath("../../../CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Start Game")
 icon = ExtResource("20_vm73v")
@@ -300,46 +307,70 @@ hover_values = ExtResource("9_exu4r")
 metadata/_custom_type_script = "uid://rxshx7ma8nn3"
 
 [node name="BottomDock" type="MarginContainer" parent="." unique_id=1158314847]
-anchors_preset = 12
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
+offset_left = -416.0
+offset_top = -53.0
+offset_bottom = 97.00037
+grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 3
 size_flags_vertical = 10
-mouse_filter = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Links" parent="BottomDock" unique_id=31784573 instance=ExtResource("21_fr5td")]
+[node name="ControlAnimationComponent" type="Node" parent="BottomDock" unique_id=392816729 node_paths=PackedStringArray("await_component")]
+script = ExtResource("3_aqmwr")
+await_component = NodePath("../../CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quit/ControlAnimationComponent")
+enter_values = ExtResource("28_0jj68")
+hover_values = SubResource("Resource_0jj68")
+metadata/_custom_type_script = "uid://rxshx7ma8nn3"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BottomDock" unique_id=422140136]
 layout_mode = 2
 
-[node name="OpenCustomDeckFolder" parent="BottomDock/Links" index="0" unique_id=2116555998]
-focus_neighbor_left = NodePath("../../../CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quit")
-focus_neighbor_top = NodePath("../../../CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quit")
+[node name="TextureRect" parent="BottomDock/VBoxContainer" unique_id=1988116494 instance=ExtResource("28_exu4r")]
+layout_mode = 2
 
-[node name="ControlAnimationComponent" parent="BottomDock/Links/OpenCustomDeckFolder" index="0" unique_id=977552176 node_paths=PackedStringArray("await_component")]
-await_component = NodePath("../../../../CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quit/ControlAnimationComponent")
+[node name="Links" parent="BottomDock/VBoxContainer" unique_id=31784573 instance=ExtResource("21_fr5td")]
+layout_mode = 2
 
-[node name="HowToPlay" parent="BottomDock/Links" index="1" unique_id=1979169242]
-focus_neighbor_top = NodePath("../../../CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quit")
+[node name="OpenCustomDeckFolder" parent="BottomDock/VBoxContainer/Links" index="0" unique_id=2116555998]
+focus_neighbor_left = NodePath("../../../../CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quit")
+focus_neighbor_top = NodePath("../../../../CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quit")
 
-[node name="GitHubRepository" parent="BottomDock/Links" index="2" unique_id=511307644]
-focus_neighbor_top = NodePath("../../../CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quit")
+[node name="HowToPlay" parent="BottomDock/VBoxContainer/Links" index="1" unique_id=1979169242]
+focus_neighbor_top = NodePath("../../../../CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quit")
+focus_previous = NodePath("../../../../CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quit")
 
-[node name="OpenGameSite" parent="BottomDock/Links" index="3" unique_id=540372814]
-focus_neighbor_top = NodePath("../../../CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quit")
+[node name="GitHubRepository" parent="BottomDock/VBoxContainer/Links" index="2" unique_id=511307644]
+focus_neighbor_top = NodePath("../../../../CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quit")
 
-[node name="ReportBug" parent="BottomDock/Links" index="4" unique_id=129169406]
-focus_neighbor_top = NodePath("../../../CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quit")
+[node name="OpenGameSite" parent="BottomDock/VBoxContainer/Links" index="3" unique_id=540372814]
+focus_neighbor_top = NodePath("../../../../CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quit")
+
+[node name="ReportBug" parent="BottomDock/VBoxContainer/Links" index="4" unique_id=129169406]
+focus_neighbor_top = NodePath("../../../../CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quit")
 
 [connection signal="pressed" from="CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI" to="AvailableAiModes" method="toggle_menu"]
 [connection signal="enter_animation_done" from="CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quit/ControlAnimationComponent" to="CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Start Game" method="focused"]
 [connection signal="hiding_container" from="AvailableAiModes" to="CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI" method="neighbor_hidden"]
 [connection signal="showing_container" from="AvailableAiModes" to="CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI" method="neighbor_shown"]
+[connection signal="focus_entered" from="BottomDock/VBoxContainer/Links/OpenCustomDeckFolder" to="BottomDock/ControlAnimationComponent" method="trigger_hover"]
+[connection signal="focus_exited" from="BottomDock/VBoxContainer/Links/OpenCustomDeckFolder" to="BottomDock/ControlAnimationComponent" method="trigger_hover_lost"]
+[connection signal="focus_entered" from="BottomDock/VBoxContainer/Links/HowToPlay" to="BottomDock/ControlAnimationComponent" method="trigger_hover"]
+[connection signal="focus_exited" from="BottomDock/VBoxContainer/Links/HowToPlay" to="BottomDock/ControlAnimationComponent" method="trigger_hover_lost"]
+[connection signal="focus_entered" from="BottomDock/VBoxContainer/Links/GitHubRepository" to="BottomDock/ControlAnimationComponent" method="trigger_hover"]
+[connection signal="focus_exited" from="BottomDock/VBoxContainer/Links/GitHubRepository" to="BottomDock/ControlAnimationComponent" method="trigger_hover_lost"]
+[connection signal="focus_entered" from="BottomDock/VBoxContainer/Links/OpenGameSite" to="BottomDock/ControlAnimationComponent" method="trigger_hover"]
+[connection signal="focus_exited" from="BottomDock/VBoxContainer/Links/OpenGameSite" to="BottomDock/ControlAnimationComponent" method="trigger_hover_lost"]
+[connection signal="focus_entered" from="BottomDock/VBoxContainer/Links/ReportBug" to="BottomDock/ControlAnimationComponent" method="trigger_hover"]
+[connection signal="focus_exited" from="BottomDock/VBoxContainer/Links/ReportBug" to="BottomDock/ControlAnimationComponent" method="trigger_hover_lost"]
 
 [editable path="AvailableAiModes"]
-[editable path="BottomDock/Links"]
+[editable path="BottomDock/VBoxContainer/Links"]

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c6411vrwwcrjs"]
+
+[ext_resource type="Texture2D" uid="uid://dnv727mf8n6m0" path="res://assets/icons/RetractIcon.tres" id="1_km7ps"]
+
+[node name="TextureRect" type="TextureRect" unique_id=1988116494]
+custom_minimum_size = Vector2(80, 80)
+size_flags_horizontal = 8
+texture = ExtResource("1_km7ps")
