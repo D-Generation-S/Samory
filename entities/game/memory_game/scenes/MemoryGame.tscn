@@ -177,6 +177,7 @@ script = ExtResource("19_ploi3")
 [node name="CardSpawner" type="Node" parent="Cards" unique_id=812443841]
 script = ExtResource("26_a3528")
 card_template = ExtResource("3_ihyl6")
+place_offset = Vector2(250, 250)
 metadata/_custom_type_script = "uid://btm576yjkyt4j"
 
 [node name="CardTemplateGhost" parent="." unique_id=155356654 groups=["game_initialize_scene"] instance=ExtResource("3_ihyl6")]
@@ -196,8 +197,8 @@ player_node = NodePath("../Players")
 [connection signal="card_loading_done" from="." to="CanvasLayer/VBoxContainer/ZoomIn" method="show_button"]
 [connection signal="card_loading_done" from="." to="CanvasLayer/VBoxContainer/ZoomOut" method="show_button_if_valid"]
 [connection signal="card_loading_done" from="." to="CanvasLayer/VBoxContainer/ZoomOut" method="show_button"]
-[connection signal="card_loading_done" from="." to="Cards" method="announce_card_field"]
 [connection signal="card_loading_done" from="." to="Cards" method="card_loading_done"]
+[connection signal="card_loading_done" from="." to="Cards" method="announce_card_field"]
 [connection signal="card_triggered" from="." to="AI" method="card_was_triggered"]
 [connection signal="card_triggered" from="." to="NetworkHandler" method="card_clicked"]
 [connection signal="close_last_message_box" from="." to="CanvasLayer/PopupManager" method="force_close_popup_with_id"]
@@ -237,6 +238,9 @@ player_node = NodePath("../Players")
 [connection signal="announce_field_size" from="Cards/CardSpawner" to="Camera2D" method="adjust_zoom_and_position_to_play_area"]
 [connection signal="card_loading_done" from="Cards/CardSpawner" to="." method="all_cards_placed"]
 [connection signal="card_placed" from="Cards/CardSpawner" to="." method="card_was_placed"]
+[connection signal="deck_changed" from="CardTemplateGhost" to="CardTemplateGhost/CanvasGroup/DropShadow" method="deck_changed"]
+[connection signal="deck_changed" from="CardTemplateGhost" to="CardTemplateGhost/CardBack" method="deck_changed"]
+[connection signal="input_active" from="CardTemplateGhost" to="CardTemplateGhost/CardBack" method="input_active"]
 [connection signal="card_was_clicked" from="NetworkHandler" to="Cards" method="trigger_card_at_position"]
 [connection signal="game_has_been_finished" from="NetworkHandler" to="CanvasLayer/PlayersOverlay" method="game_ended"]
 [connection signal="game_state_has_changed" from="NetworkHandler" to="PlayerInput" method="game_state_changed"]

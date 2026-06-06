@@ -116,7 +116,7 @@ func trigger_card_at_position(grid_position: Point) -> void:
 func remove_card_from_board(grid_position: Point) -> void:
 	for child: CardTemplate in _get_game_card_templates_children():
 		if child.grid_position.is_identical(grid_position):
-			child.remove_from_board()
+			child.remove_from_board(currently_ai_player)
 
 func select_card_at_position(grid_position: Point) -> bool:
 	var found_card: bool = false

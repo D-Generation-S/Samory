@@ -94,6 +94,7 @@ flip_effects = Array[AudioStream]([ExtResource("2_7bwi6"), ExtResource("3_hh2fg"
 [node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=2022425032]
 z_index = -2
 material = SubResource("ShaderMaterial_sgpsy")
+position = Vector2(-250, -250)
 script = ExtResource("6_7ry7r")
 possible_effects = Array[ExtResource("7_71qre")]([ExtResource("8_nugiu")])
 
@@ -155,7 +156,7 @@ script = ExtResource("4_kxmgl")
 
 [node name="CardBack" type="Sprite2D" parent="." unique_id=597243811]
 material = ExtResource("5_b0osi")
-position = Vector2(250, 275)
+position = Vector2(0, 25)
 texture = ExtResource("14_bmj37")
 script = ExtResource("8_pw264")
 focus_animation_time = 0.1
@@ -171,6 +172,7 @@ script = ExtResource("9_mu0q4")
 shape = SubResource("RectangleShape2D_phkhd")
 
 [node name="DebugInformation" type="Node2D" parent="." unique_id=1036970705 node_paths=PackedStringArray("card_id_label", "card_position_label")]
+position = Vector2(-250, -250)
 script = ExtResource("18_tqsbp")
 card_id_label = NodePath("CardIdLabel")
 card_position_label = NodePath("CardPositionLabel")
@@ -199,8 +201,9 @@ script = ExtResource("18_8fn1p")
 
 [node name="MatchingFoundEffect" type="GPUParticles2D" parent="." unique_id=1713421395]
 visible = false
-position = Vector2(250, 275)
-amount = 800
+z_index = 1001
+position = Vector2(0, 25)
+amount = 1600
 texture = ExtResource("20_ja01p")
 lifetime = 3.0
 preprocess = 1.5

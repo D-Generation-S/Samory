@@ -11,6 +11,7 @@ signal card_placing_done()
 @export var separation: int = 25
 # A artificial wait time between each card placement, this does prevent a total blockage of the game
 @export var artificial_wait_time: int = 4
+@export var place_offset: Vector2 = Vector2.ZERO
 @onready var _card_target_node: Node2D = self.get_parent() as Node2D
 
 var _load_thread: Thread = null
@@ -113,6 +114,8 @@ func build_card_layout(deck_of_cards: MemoryDeckResource,
 			var width: float = card_template_node.get_width()
 			var height_to_set: float = y * height + y * card_separation
 			var width_to_set: float = x * width + x * card_separation
+			height_to_set += place_offset.y
+			width_to_set += place_offset.x
 			card_template_node.position = Vector2(width_to_set, height_to_set)
 			card_template_node.grid_position = Point.new(x, y)
 			

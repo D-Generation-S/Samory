@@ -1,6 +1,4 @@
-extends Node2D
-
-class_name CardTemplate
+class_name CardTemplate extends Node2D
 
 signal hide_card()
 signal card_triggered()
@@ -25,12 +23,28 @@ signal deck_changed(deck: MemoryDeckResource)
 @export_range(0,0.5) var max_time_delay: float = 0.5
 
 @export var grid_position: Point
+@export_group("Animation")
+@export var animation_scale: float = 1.5
+
+@export_group("Debug")
+@export var debug_remove: bool = false:
+	set(value):
+		debug_remove = value
+		if debug_remove:
+			remove_from_board(false)
+		
 
 var _timer_for_hide_delay: Timer
 var was_clicked: bool
 var _card_frozen: bool = false
 var getting_removed: bool = false
-var is_ai_turn: bool = false
+
+var _game_manager: GameManager:
+	get():
+		if _game_manager == null:
+			_game_manager = GlobalGameManagerAccess.get_game_manager()
+		return _game_manager
+
 
 func _ready() -> void:
 	_timer_for_hide_delay = Timer.new()
@@ -113,7 +127,6 @@ func force_reveal_card() -> void:
 
 func play_card_turn_sound() -> void:
 	GlobalSoundManager.play_sound_effect(flip_effects.pick_random())
-	
 
 func get_card_id() -> int:
 	var card: MemoryCardResource = memory_card as MemoryCardResource
@@ -122,8 +135,31 @@ func get_card_id() -> int:
 func is_turned() -> bool:
 	return was_clicked
 
-func remove_from_board() -> void:
-	about_to_get_delete.emit()
+func remove_from_board(was_ai: bool) -> void:
+	var settings: SettingsResource = SettingsRepository.load_settings()
+	if not settings.animate_card_matches or was_ai:
+		about_to_get_delete.emit()
+		getting_removed = true
+		return
+	var remove_tween: Tween = create_tween()
+	var camera: Camera2D = get_viewport().get_camera_2d()
+	var center: Vector2 = _game_manager._get_viewport_size() / 2.0
+	var additional_scale: float = 1
+	if camera != null:
+		center = camera.get_screen_center_position()
+		additional_scale = 1.0 / camera.zoom.x
+	z_index = 100
+
+	var target_scale: Vector2 = Vector2(animation_scale * additional_scale, animation_scale * additional_scale)
+	remove_tween.tween_property(self, "scale", scale, settings.animation_time * 2)
+
+	remove_tween.tween_property(self, "global_position", center, settings.animation_time)
+	remove_tween.parallel()
+	remove_tween.tween_property(self, "scale", target_scale, settings.animation_time)
+	## Wait for some time to display card
+	remove_tween.tween_property(self, "scale", target_scale, settings.animation_time)
+	remove_tween.finished.connect(func () -> void: about_to_get_delete.emit())
+	
 	getting_removed = true
 
 func is_getting_removed() -> bool:
