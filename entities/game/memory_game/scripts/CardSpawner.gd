@@ -171,6 +171,7 @@ func _rpc_rebuild_field(field: Dictionary) -> void:
 		card_placed.emit(real_card)
 
 		_card_target_node.add_child(real_card)
+		print("connect signals")
 		queue_free()
 		
 	card_loading_done.emit()

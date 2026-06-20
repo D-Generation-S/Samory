@@ -14,6 +14,8 @@ var can_end_round: bool = false
 var resumed_from_pause: bool = false
 var skipped_frames: int = 0
 
+var _prevent_input: bool = false
+
 func _process(_delta: float) -> void:
 	if resumed_from_pause:
 		if skipped_frames > frames_to_skip_after_pause:
@@ -22,15 +24,19 @@ func _process(_delta: float) -> void:
 		skipped_frames += 1
 		return
 	
-	_handle_player_input_actions()
+	
 	_handle_special_player_actions()
+	_handle_player_input_actions()
 
-func game_state_changed(game_state: int) -> void:
+func game_state_changed(game_state: GameEnum.State) -> void:
 	match game_state:
-		GameState.PREPARE_ROUND_END:
+		GameEnum.State.TURN_COMPLETED:
+			prevent_input(true)
+		GameEnum.State.PREPARE_TURN_END:
 			can_end_round = true
-		GameState.ROUND_START:
+		GameEnum.State.TURN_START:
 			can_end_round = false
+			prevent_input(false)
 
 func player_changed(current_player:PlayerResource) -> void:
 	current_ai_player = current_player.is_ai()
@@ -38,6 +44,9 @@ func player_changed(current_player:PlayerResource) -> void:
 		current_ai_player = true
 	if current_ai_player:
 		disable_input.emit()
+
+func prevent_input(prevent: bool) -> void:
+	_prevent_input = prevent
 
 func game_paused(is_paused: bool) -> void:
 	resumed_from_pause = !is_paused
@@ -52,7 +61,7 @@ func _handle_special_player_actions() -> void:
 		end_current_round.emit()
 
 func _handle_player_input_actions() -> void:
-	if current_ai_player or can_end_round:
+	if current_ai_player or can_end_round or _prevent_input:
 		return
 	var movement: Vector2 = Vector2.ZERO
 	if Input.is_action_just_pressed("move_left"):

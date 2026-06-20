@@ -36,19 +36,16 @@ func next_player() -> void:
 	player_changed.emit(get_current_player().id)
 	player_resource_changed.emit(get_current_player())
 
-func player_scored(scoring_player: PlayerResource) -> void:
-	var selected_player: PlayerResource = null
-	for player: PlayerResource in players:
-		if player.id == scoring_player.id:
-			selected_player = player
-			break
-	set_player_score(selected_player.id, selected_player.score + 1)
+func player_scored() -> void:
+	if get_current_player() == null:
+		return
+	set_player_score(get_current_player().id, get_current_player().score + 1)
 
-func game_state_changed(game_state:int) -> void:
-	if game_state == GameState.ROUND_START and !_initial_announce:
+func game_state_changed(game_state: GameEnum.State) -> void:
+	if game_state == GameEnum.State.TURN_START and not _initial_announce:
 		_initial_announce = true
 		player_resource_changed.emit(get_current_player())
-	if game_state == GameState.ROUND_END:
+	if game_state == GameEnum.State.TURN_END:
 		next_player()
 
 func set_player_by_id(id: int) -> void:

@@ -90,6 +90,7 @@ script = ExtResource("1_fmo68")
 front_side = NodePath("CanvasGroup/CardFront")
 back_side = NodePath("CardBack")
 flip_effects = Array[AudioStream]([ExtResource("2_7bwi6"), ExtResource("3_hh2fg"), ExtResource("4_s61ka")])
+matching_animation_scale = 1.2
 
 [node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=2022425032]
 z_index = -2
@@ -224,17 +225,19 @@ volume = -15.0
 [connection signal="card_lost_focus" from="." to="CardBack" method="lost_focus"]
 [connection signal="card_text_changed" from="." to="CanvasGroup/TextFrame/CardText" method="set_card_text"]
 [connection signal="card_tooltip_changed" from="." to="CanvasGroup/TextFrame/CardText" method="set_tooltip"]
-[connection signal="card_triggered" from="." to="CanvasGroup" method="show_card_content"]
-[connection signal="card_triggered" from="." to="CanvasGroup/TextFrame/CardText" method="card_revealed"]
 [connection signal="deck_changed" from="." to="CanvasGroup/DropShadow" method="deck_changed"]
 [connection signal="deck_changed" from="." to="CardBack" method="deck_changed"]
 [connection signal="hide_card" from="." to="CanvasGroup/TextFrame/CardText" method="card_hidden"]
 [connection signal="hide_card" from="." to="CardBack" method="toggle_on"]
 [connection signal="input_active" from="." to="CardBack" method="input_active"]
 [connection signal="input_active" from="." to="FocusEffect" method="toggle_state"]
+[connection signal="show_card" from="." to="CanvasGroup" method="show_card_content"]
+[connection signal="show_card" from="." to="CardBack" method="toggle_off"]
 [connection signal="ready_for_destruction" from="CanvasGroup" to="." method="destory_now"]
 [connection signal="focus_lost" from="CardBack" to="CanvasGroup/DropShadow" method="lost_focus"]
+[connection signal="fully_hidden" from="CardBack" to="." method="signal_repeater_fully_hidden"]
 [connection signal="fully_hidden" from="CardBack" to="CanvasGroup" method="hide_card_content"]
+[connection signal="fully_shown" from="CardBack" to="." method="signal_repeater_fully_shown"]
 [connection signal="hide_started" from="CardBack" to="CanvasGroup/DropShadow" method="lost_focus"]
 [connection signal="in_focus" from="CardBack" to="CanvasGroup/DropShadow" method="got_focus"]
 [connection signal="in_focus" from="CardBack" to="FocusEffect" method="trigger_random_effect"]

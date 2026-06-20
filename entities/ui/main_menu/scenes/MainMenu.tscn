@@ -8,8 +8,6 @@
 [ext_resource type="Script" uid="uid://bcxjaw3jedjv5" path="res://shared/resources/control_animation/ControlAnimation.gd" id="4_psgpi"]
 [ext_resource type="PackedScene" uid="uid://dkd4cftggpymb" path="res://entities/ui/game_lobby/scenes/GameLobby.tscn" id="6_yklgi"]
 [ext_resource type="Script" uid="uid://cymc6ui77jfei" path="res://shared/entities/clickable_button/resources/actions/OpenSceneAction.gd" id="7_bdxeb"]
-[ext_resource type="PackedScene" uid="uid://bcc3pe48h2wb8" path="res://entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn" id="8_a83js"]
-[ext_resource type="Texture2D" uid="uid://cvvijbfoink4y" path="res://assets/icons/MultiplayerIcon.tres" id="8_gciok"]
 [ext_resource type="Resource" uid="uid://cakox3m20wk7q" path="res://shared/resources/control_animation/resources/DefaultButtonEnter.tres" id="9_0jj68"]
 [ext_resource type="Texture2D" uid="uid://wa0qa5dgmjgk" path="res://assets/icons/AiIcon.tres" id="9_e2yd3"]
 [ext_resource type="Resource" uid="uid://by7h6kfigwa21" path="res://shared/resources/control_animation/resources/DefaultButtonAnimation.tres" id="9_exu4r"]
@@ -41,12 +39,6 @@ metadata/_custom_type_script = "uid://bcxjaw3jedjv5"
 [sub_resource type="Resource" id="Resource_btaf3"]
 script = ExtResource("7_bdxeb")
 scene_template = ExtResource("6_yklgi")
-transmit_click_position = true
-metadata/_custom_type_script = "uid://cymc6ui77jfei"
-
-[sub_resource type="Resource" id="Resource_cu1bk"]
-script = ExtResource("7_bdxeb")
-scene_template = ExtResource("8_a83js")
 transmit_click_position = true
 metadata/_custom_type_script = "uid://cymc6ui77jfei"
 
@@ -180,7 +172,7 @@ dynamic_neighbor_right = NodePath("../../../../../AvailableAiModes/PanelContaine
 
 [node name="ControlAnimationComponent" type="Node" parent="CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/Quick Game AI" unique_id=1338105200 node_paths=PackedStringArray("await_component")]
 script = ExtResource("3_aqmwr")
-await_component = NodePath("../../LocalMultiplayer/ControlAnimationComponent")
+await_component = NodePath("")
 enter_values = ExtResource("9_0jj68")
 hover_values = ExtResource("9_exu4r")
 metadata/_custom_type_script = "uid://rxshx7ma8nn3"

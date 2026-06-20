@@ -4,11 +4,19 @@ class_name ToggleCardVisibility
 
 signal ready_for_removal()
 signal fully_hidden()
+signal fully_shown()
 signal hide_started()
 signal in_focus()
 signal focus_lost()
 
-@export var animation_time: float = 0.7
+enum VisibilityEnum
+{
+	HIDDEN,
+	TRANSITION,
+	SHOWN
+}
+
+@export var animation_time: float = 0.4
 @export var focus_animation_time: float = 0.2
 @export var focus_scale: float = 1.03
 @export var toggle_material: ShaderMaterial
@@ -30,6 +38,8 @@ var _focus_tween: Tween = null
 
 var fix_image_thread: Thread
 
+var visibility: VisibilityEnum = VisibilityEnum.HIDDEN
+
 func _ready() -> void:
 	collider = %Collider
 	visible = true
@@ -46,19 +56,36 @@ func deck_changed(deck: MemoryDeckResource) -> void:
 	texture = real_texture
 	return
 
+# This method will hide a fully shown card
 func toggle_on() -> void:
+	print("toggle on")
 	can_remove = false
 	if is_hidden():
 		return
+		
+	if material is ShaderMaterial:
+		material.set_shader_parameter("threshold", 1.0)	
 	if animation_tween != null:
 		animation_tween.kill()
 	hide_started.emit()
 	lost_focus()
 	animation_tween = create_tween()
+	visibility = VisibilityEnum.TRANSITION
 	animation_tween.tween_method(update_toggle_material, 1.0, 0.0, animation_time)
-	animation_tween.finished.connect(func() -> void: fully_hidden.emit())
+	animation_tween.finished.connect(func() -> void: _animation_finished(true))
 	if currently_in_focus:
 		set_shader_material(_internal_toggle_material)
+
+func _animation_finished(should_hide: bool) -> void:
+	if should_hide:
+		fully_hidden.emit()
+		visibility = VisibilityEnum.HIDDEN
+		print("hidden")
+	if not should_hide:
+		fully_shown.emit()
+		visibility = VisibilityEnum.SHOWN
+		can_remove = true
+		print("shown")
 
 func freeze_card() -> void:
 	collider.visible = false
@@ -68,12 +95,17 @@ func unfreeze_card() -> void:
 		return
 	collider.visible = true
 
+# This method will show a fully hidden card
 func toggle_off() -> void:
+	print("toggle off")
 	if animation_tween != null:
 		animation_tween.kill()
+	if material is ShaderMaterial:
+		material.set_shader_parameter("threshold", 0.0)	
 	animation_tween = create_tween()
+	visibility = VisibilityEnum.TRANSITION
 	animation_tween.tween_method(update_toggle_material, 0.0, 1.0, animation_time)
-	animation_tween.finished.connect(func() -> void: can_remove = true)
+	animation_tween.finished.connect(func() -> void: _animation_finished(false))
 	if currently_in_focus:
 		set_shader_material(_internal_toggle_material)
 
@@ -109,22 +141,10 @@ func set_shader_material(new_material: Material) -> void:
 	material = new_material
 
 func is_hidden() -> bool:
-	var card_back_visible: bool = false
-	if get_shader_threshold() <= 0:
-		card_back_visible = true
-	return card_back_visible
-
-func get_shader_threshold() -> float:
-	var value: float = -1.0
-	if material is ShaderMaterial and material.get_shader_parameter("threshold") != null:
-		value = material.get_shader_parameter("threshold")
-	return value
+	return visibility == VisibilityEnum.HIDDEN
 
 func is_fully_shown() -> bool:
-	var card_back_visible: bool = true
-	if get_shader_threshold() >= 1:
-		card_back_visible = false
-	return !card_back_visible
+	return visibility == VisibilityEnum.SHOWN
 
 func is_currently_in_focus() -> bool:
 	return currently_in_focus
