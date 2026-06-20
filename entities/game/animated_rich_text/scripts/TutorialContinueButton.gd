@@ -6,7 +6,7 @@ extends TextureButton
 
 var animation_tween: Tween
 
-func _ready():
+func _ready() -> void:
 	initial_position = position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

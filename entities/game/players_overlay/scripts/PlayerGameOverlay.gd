@@ -34,6 +34,6 @@ func round_end() -> void:
 func game_ended() -> void:
 	visible = false
 
-func game_state_changed(game_state:int) -> void:
-	if game_state == GameState.ROUND_END:
+func game_state_changed(game_state: GameEnum.State) -> void:
+	if game_state == GameEnum.State.TURN_END:
 		round_end()

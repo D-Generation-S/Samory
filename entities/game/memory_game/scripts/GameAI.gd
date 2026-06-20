@@ -11,6 +11,7 @@ func _ready() -> void:
 	if multiplayer.get_peers().size() > 0 and !multiplayer.is_server():
 		queue_free()
 	timer = Timer.new()
+	timer.one_shot = true
 	timer.timeout.connect(timer_triggered)
 	add_child(timer)
 
@@ -18,32 +19,33 @@ var should_play_round: bool = false
 var current_player_data: PlayerResource = null
 var last_card: MemoryCardResource = null
 
-func card_was_triggered(game_state:int, clicked_cards: Array[CardTemplate]) -> void:
-	for card: CardTemplate in clicked_cards:
-		add_card_to_all_ais(card.grid_position, card.memory_card)
-	if !should_play_round:
-		return
-	if game_state == GameState.ROUND_START and triggered_cards < 2:
-		prepare_and_start_timer()
+func card_was_triggered(card: CardTemplate) -> void:
+	add_card_to_all_ais(card.grid_position, card.memory_card)
+	#for card: CardTemplate in clicked_cards:
+	
+	#if !should_play_round:
+		#return
+	#if game_state == GameEnum.State.TURN_START and triggered_cards < 2:
+		#prepare_and_start_timer()
 
 func card_was_identically(first_card_position: Point, second_card_position: Point) -> void:
 	remove_card_to_all_ais(first_card_position)
 	remove_card_to_all_ais(second_card_position)
 	
 	triggered_cards = 0 
-	if should_play_round:
+	#if should_play_round:
+		#prepare_and_start_timer()
+
+func game_state_changed(game_state: GameEnum.State) -> void:
+	if should_play_round and game_state == GameEnum.State.TURN_START:
+		print("ai turn start")
 		prepare_and_start_timer()
 
-func game_state_changed(game_state:int) -> void:
-	if !should_play_round:
-		return
-
-	if game_state == GameState.PREPARE_ROUND_END or game_state == GameState.ROUND_FREEZE:
+	if game_state == GameEnum.State.PREPARE_TURN_END or game_state == GameEnum.State.TURN_FREEZE:
 		timer.stop()
-		should_play_round = false
+		#should_play_round = false
 		return
-	if game_state == GameState.ROUND_START:
-		prepare_and_start_timer()
+
 
 func get_all_card_positions() -> Array[Point]:
 	return cards_node.get_all_card_positions()
@@ -54,6 +56,8 @@ func player_changed(current_player:PlayerResource) -> void:
 	should_play_round = current_player.is_ai()
 
 func prepare_and_start_timer() -> void:
+	await get_tree().physics_frame
+	await get_tree().physics_frame
 	if !timer.is_stopped():
 		return
 	var settings: SettingsResource = SettingsRepository.load_settings()
@@ -69,6 +73,11 @@ func timer_triggered() -> void:
 	if should_play_round and ai_resource != null:
 		triggered_cards += 1
 		ai_resource.execute_action(cards_node)
+	repeat_if_possible()
+
+func repeat_if_possible() -> void:
+	if triggered_cards < 2:
+		timer.start()
 
 func _call_action_on_all_ais(callback: Callable) -> void:
 	for player: PlayerResource in players.players:

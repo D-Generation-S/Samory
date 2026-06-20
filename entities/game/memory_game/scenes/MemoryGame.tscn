@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bxjrl2ikqn4tk" path="res://entities/game/memory_game/scripts/PlayerManager.gd" id="4_n744t"]
 [ext_resource type="AudioStream" uid="uid://dq3rmjoitwi1a" path="res://assets/audio/effect/confirmation_001.ogg" id="6_a3528"]
 [ext_resource type="PackedScene" uid="uid://d0vijthhc3d38" path="res://entities/game/players_overlay/scenes/PlayersOverlay.tscn" id="7_a7rnv"]
+[ext_resource type="Script" uid="uid://bmwi41kseslkw" path="res://entities/game/memory_game/scripts/GameStateMachine.gd" id="7_j82c0"]
 [ext_resource type="Script" uid="uid://bglvkbo4aydsy" path="res://entities/game/memory_game/scripts/Background.gd" id="7_kxmqb"]
 [ext_resource type="Script" uid="uid://bxrsfyvew4ysu" path="res://entities/game/memory_game/scripts/PlayerInput.gd" id="9_86hnd"]
 [ext_resource type="Texture2D" uid="uid://dat3kg2y636js" path="res://assets/icons/MenuIcon.tres" id="11_da0ji"]
@@ -31,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://vk4fpd7xo01j" path="res://assets/sprites/Axuree/wood_medium.png" id="23_a3528"]
 [ext_resource type="Script" uid="uid://btm576yjkyt4j" path="res://entities/game/memory_game/scripts/CardSpawner.gd" id="26_a3528"]
 [ext_resource type="Script" uid="uid://drr3p4wba2ys3" path="res://entities/game/memory_game/scripts/NetworkHandler.gd" id="29_kihnp"]
+[ext_resource type="Script" uid="uid://p5xd1ppjr4ph" path="res://entities/game/memory_game/scripts/TutorialStateManager.gd" id="40_1resq"]
 
 [sub_resource type="Resource" id="Resource_kihnp"]
 script = ExtResource("16_78e34")
@@ -70,17 +72,29 @@ game_nodes_to_show = [NodePath("CanvasLayer"), NodePath("Background")]
 card_target_node = NodePath("Cards")
 sound_effect = ExtResource("6_a3528")
 
-[node name="Players" type="Node" parent="." unique_id=2122666589]
+[node name="Manager" type="Node" parent="." unique_id=1597793066]
+
+[node name="GameStateMachine" type="Node" parent="Manager" unique_id=2091663874]
+script = ExtResource("7_j82c0")
+round_end_message = ExtResource("2_fspeh")
+round_end_message_no_auto_complete = ExtResource("3_a3528")
+metadata/_custom_type_script = "uid://bmwi41kseslkw"
+
+[node name="TutorialStateManager" type="Node" parent="Manager" unique_id=798634980]
+script = ExtResource("40_1resq")
+metadata/_custom_type_script = "uid://p5xd1ppjr4ph"
+
+[node name="Players" type="Node" parent="Manager" unique_id=2122666589]
 unique_name_in_owner = true
 script = ExtResource("4_n744t")
 
-[node name="AI" type="Node" parent="." unique_id=972785455 node_paths=PackedStringArray("cards_node", "players")]
+[node name="AI" type="Node" parent="Manager" unique_id=972785455 node_paths=PackedStringArray("cards_node", "players")]
 script = ExtResource("15_u3ner")
-cards_node = NodePath("../Cards")
+cards_node = NodePath("../../Cards")
 players = NodePath("../Players")
 min_wait_seconds = 0.75
 
-[node name="PlayerInput" type="Node" parent="." unique_id=990949897]
+[node name="PlayerInput" type="Node" parent="Manager" unique_id=990949897]
 script = ExtResource("9_86hnd")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=578924762]
@@ -171,12 +185,14 @@ script = ExtResource("7_kxmqb")
 background_texture = ExtResource("23_a3528")
 camera_node = NodePath("../Camera2D")
 
-[node name="Cards" type="Node2D" parent="." unique_id=2054375941]
+[node name="Cards" type="Node2D" parent="." unique_id=2054375941 node_paths=PackedStringArray("state_machine")]
 script = ExtResource("19_ploi3")
+state_machine = NodePath("../Manager/GameStateMachine")
 
 [node name="CardSpawner" type="Node" parent="Cards" unique_id=812443841]
 script = ExtResource("26_a3528")
 card_template = ExtResource("3_ihyl6")
+place_offset = Vector2(250, 250)
 metadata/_custom_type_script = "uid://btm576yjkyt4j"
 
 [node name="CardTemplateGhost" parent="." unique_id=155356654 groups=["game_initialize_scene"] instance=ExtResource("3_ihyl6")]
@@ -186,62 +202,77 @@ is_ghost = true
 [node name="NetworkHandler" type="Node" parent="." unique_id=233543300 node_paths=PackedStringArray("player_node")]
 script = ExtResource("29_kihnp")
 finished_game_template = ExtResource("4_6f670")
-player_node = NodePath("../Players")
+player_node = NodePath("../Manager/Players")
 
 [connection signal="card_loading_done" from="." to="Camera2D" method="loading_done"]
-[connection signal="card_loading_done" from="." to="CanvasLayer/MenuButton" method="show_button_if_valid"]
 [connection signal="card_loading_done" from="." to="CanvasLayer/MenuButton" method="show_button"]
+[connection signal="card_loading_done" from="." to="CanvasLayer/MenuButton" method="show_button_if_valid"]
 [connection signal="card_loading_done" from="." to="CanvasLayer/PlayersOverlay" method="show"]
-[connection signal="card_loading_done" from="." to="CanvasLayer/VBoxContainer/ZoomIn" method="show_button_if_valid"]
 [connection signal="card_loading_done" from="." to="CanvasLayer/VBoxContainer/ZoomIn" method="show_button"]
-[connection signal="card_loading_done" from="." to="CanvasLayer/VBoxContainer/ZoomOut" method="show_button_if_valid"]
+[connection signal="card_loading_done" from="." to="CanvasLayer/VBoxContainer/ZoomIn" method="show_button_if_valid"]
 [connection signal="card_loading_done" from="." to="CanvasLayer/VBoxContainer/ZoomOut" method="show_button"]
+[connection signal="card_loading_done" from="." to="CanvasLayer/VBoxContainer/ZoomOut" method="show_button_if_valid"]
 [connection signal="card_loading_done" from="." to="Cards" method="announce_card_field"]
 [connection signal="card_loading_done" from="." to="Cards" method="card_loading_done"]
-[connection signal="card_triggered" from="." to="AI" method="card_was_triggered"]
-[connection signal="card_triggered" from="." to="NetworkHandler" method="card_clicked"]
-[connection signal="close_last_message_box" from="." to="CanvasLayer/PopupManager" method="force_close_popup_with_id"]
-[connection signal="game_paused" from="." to="PlayerInput" method="game_paused"]
+[connection signal="game_paused" from="." to="Manager/PlayerInput" method="game_paused"]
 [connection signal="game_paused" from="." to="Camera2D" method="game_paused"]
-[connection signal="game_state_changed" from="." to="Players" method="game_state_changed"]
-[connection signal="game_state_changed" from="." to="AI" method="game_state_changed"]
-[connection signal="game_state_changed" from="." to="PlayerInput" method="game_state_changed"]
-[connection signal="game_state_changed" from="." to="CanvasLayer/PlayersOverlay" method="game_state_changed"]
-[connection signal="game_state_changed" from="." to="Cards" method="game_state_changed"]
-[connection signal="game_state_changed" from="." to="NetworkHandler" method="game_state_changed"]
-[connection signal="identical_cards" from="." to="AI" method="card_was_identically"]
-[connection signal="identical_cards" from="." to="NetworkHandler" method="matching_pair"]
 [connection signal="load_game" from="." to="Cards/CardSpawner" method="place_cards_from_deck"]
-[connection signal="player_scored" from="." to="Players" method="player_scored"]
-[connection signal="player_scored" from="." to="NetworkHandler" method="player_scored"]
-[connection signal="remove_card" from="." to="Cards" method="remove_card_from_board"]
 [connection signal="request_popup" from="." to="CanvasLayer/PopupManager" method="add_and_show_popup"]
-[connection signal="trigger_tutorial" from="." to="CanvasLayer/Tutorial" method="trigger_tutorial"]
-[connection signal="player_added" from="Players" to="CanvasLayer/PlayersOverlay" method="add_player"]
-[connection signal="player_changed" from="Players" to="CanvasLayer/PlayersOverlay" method="player_changed"]
-[connection signal="player_resource_changed" from="Players" to="AI" method="player_changed"]
-[connection signal="player_resource_changed" from="Players" to="PlayerInput" method="player_changed"]
-[connection signal="player_resource_changed" from="Players" to="Camera2D" method="player_changed"]
-[connection signal="player_resource_changed" from="Players" to="Cards" method="player_changed"]
-[connection signal="player_resource_changed" from="Players" to="NetworkHandler" method="player_changed"]
-[connection signal="player_score_changed" from="Players" to="CanvasLayer/PlayersOverlay" method="player_scored"]
-[connection signal="card_movement" from="PlayerInput" to="Cards" method="parse_movement"]
-[connection signal="confirm_current_card" from="PlayerInput" to="Cards" method="confirm_current_card"]
-[connection signal="end_current_round" from="PlayerInput" to="." method="end_round_now"]
-[connection signal="game_menu_requested" from="PlayerInput" to="." method="show_game_menu"]
+[connection signal="force_close_popup" from="Manager/GameStateMachine" to="CanvasLayer/PopupManager" method="force_close_popup_with_id"]
+[connection signal="request_popup" from="Manager/GameStateMachine" to="CanvasLayer/PopupManager" method="add_and_show_popup"]
+[connection signal="state_changed" from="Manager/GameStateMachine" to="." method="game_state_has_changed"]
+[connection signal="state_changed" from="Manager/GameStateMachine" to="Manager/TutorialStateManager" method="state_changed"]
+[connection signal="state_changed" from="Manager/GameStateMachine" to="Manager/Players" method="game_state_changed"]
+[connection signal="state_changed" from="Manager/GameStateMachine" to="Manager/AI" method="game_state_changed"]
+[connection signal="state_changed" from="Manager/GameStateMachine" to="Manager/PlayerInput" method="game_state_changed"]
+[connection signal="state_changed" from="Manager/GameStateMachine" to="CanvasLayer/PlayersOverlay" method="game_state_changed"]
+[connection signal="state_changed" from="Manager/GameStateMachine" to="Cards" method="game_state_changed"]
+[connection signal="state_changed" from="Manager/GameStateMachine" to="NetworkHandler" method="game_state_changed"]
+[connection signal="trigger_tutorial" from="Manager/TutorialStateManager" to="CanvasLayer/Tutorial" method="trigger_tutorial"]
+[connection signal="player_added" from="Manager/Players" to="CanvasLayer/PlayersOverlay" method="add_player"]
+[connection signal="player_changed" from="Manager/Players" to="CanvasLayer/PlayersOverlay" method="player_changed"]
+[connection signal="player_resource_changed" from="Manager/Players" to="Manager/TutorialStateManager" method="player_changed"]
+[connection signal="player_resource_changed" from="Manager/Players" to="Manager/AI" method="player_changed"]
+[connection signal="player_resource_changed" from="Manager/Players" to="Manager/PlayerInput" method="player_changed"]
+[connection signal="player_resource_changed" from="Manager/Players" to="Camera2D" method="player_changed"]
+[connection signal="player_resource_changed" from="Manager/Players" to="Cards" method="player_changed"]
+[connection signal="player_resource_changed" from="Manager/Players" to="NetworkHandler" method="player_changed"]
+[connection signal="player_score_changed" from="Manager/Players" to="CanvasLayer/PlayersOverlay" method="player_scored"]
+[connection signal="card_movement" from="Manager/PlayerInput" to="Cards" method="parse_movement"]
+[connection signal="confirm_current_card" from="Manager/PlayerInput" to="Cards" method="confirm_current_card"]
+[connection signal="end_current_round" from="Manager/PlayerInput" to="." method="end_round_now"]
+[connection signal="end_current_round" from="Manager/PlayerInput" to="Manager/GameStateMachine" method="force_end_round"]
+[connection signal="game_menu_requested" from="Manager/PlayerInput" to="." method="show_game_menu"]
 [connection signal="touch_used" from="Camera2D" to="Cards" method="disable_card_effects"]
 [connection signal="pressed" from="CanvasLayer/MenuButton" to="." method="show_game_menu"]
 [connection signal="continue_game" from="CanvasLayer/PopupManager" to="." method="unpause_game"]
 [connection signal="pause_game" from="CanvasLayer/PopupManager" to="." method="pause_game"]
 [connection signal="tutorial_requested" from="CanvasLayer/Tutorial" to="CanvasLayer/PopupManager" method="add_and_show_popup"]
+[connection signal="all_matching_cards_removed" from="Cards" to="." method="all_cards_removed"]
+[connection signal="all_matching_cards_removed" from="Cards" to="Manager/GameStateMachine" method="matches_found"]
+[connection signal="all_matching_cards_removed" from="Cards" to="Manager/TutorialStateManager" method="matching_card_found"]
+[connection signal="all_matching_cards_removed" from="Cards" to="Manager/Players" method="player_scored"]
+[connection signal="board_empty" from="Cards" to="." method="show_game_end_screen"]
+[connection signal="board_empty" from="Cards" to="Manager/GameStateMachine" method="board_empty"]
+[connection signal="board_ready" from="Cards" to="Manager/GameStateMachine" method="board_ready"]
+[connection signal="card_activated" from="Cards" to="Manager/GameStateMachine" method="card_was_clicked"]
+[connection signal="card_activated" from="Cards" to="Manager/TutorialStateManager" method="card_triggered"]
+[connection signal="card_triggered" from="Cards" to="Manager/AI" method="card_was_triggered"]
+[connection signal="identical_cards" from="Cards" to="Manager/AI" method="card_was_identically"]
+[connection signal="no_matches_found" from="Cards" to="Manager/GameStateMachine" method="no_matches"]
 [connection signal="announce_field_size" from="Cards/CardSpawner" to="Camera2D" method="adjust_zoom_and_position_to_play_area"]
-[connection signal="card_loading_done" from="Cards/CardSpawner" to="." method="all_cards_placed"]
 [connection signal="card_placed" from="Cards/CardSpawner" to="." method="card_was_placed"]
+[connection signal="card_placed" from="Cards/CardSpawner" to="Cards" method="card_was_placed"]
+[connection signal="card_placing_done" from="Cards/CardSpawner" to="Manager/GameStateMachine" method="game_field_ready"]
+[connection signal="request_state_change" from="Cards/CardSpawner" to="Manager/GameStateMachine" method="change_state"]
+[connection signal="deck_changed" from="CardTemplateGhost" to="CardTemplateGhost/CanvasGroup/DropShadow" method="deck_changed"]
+[connection signal="deck_changed" from="CardTemplateGhost" to="CardTemplateGhost/CardBack" method="deck_changed"]
+[connection signal="input_active" from="CardTemplateGhost" to="CardTemplateGhost/CardBack" method="input_active"]
 [connection signal="card_was_clicked" from="NetworkHandler" to="Cards" method="trigger_card_at_position"]
 [connection signal="game_has_been_finished" from="NetworkHandler" to="CanvasLayer/PlayersOverlay" method="game_ended"]
-[connection signal="game_state_has_changed" from="NetworkHandler" to="PlayerInput" method="game_state_changed"]
+[connection signal="game_state_has_changed" from="NetworkHandler" to="Manager/PlayerInput" method="game_state_changed"]
 [connection signal="game_state_has_changed" from="NetworkHandler" to="Cards" method="game_state_changed"]
-[connection signal="player_has_changed" from="NetworkHandler" to="Players" method="set_player_by_id"]
-[connection signal="player_has_scored" from="NetworkHandler" to="Players" method="set_player_score"]
+[connection signal="player_has_changed" from="NetworkHandler" to="Manager/Players" method="set_player_by_id"]
+[connection signal="player_has_scored" from="NetworkHandler" to="Manager/Players" method="set_player_score"]
 [connection signal="remove_card" from="NetworkHandler" to="Cards" method="remove_card_from_board"]
 [connection signal="request_popup" from="NetworkHandler" to="CanvasLayer/PopupManager" method="add_and_show_popup"]

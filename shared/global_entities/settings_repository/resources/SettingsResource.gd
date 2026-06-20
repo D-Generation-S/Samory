@@ -15,6 +15,10 @@ class_name SettingsResource extends Save
 @export var auto_close_round: bool = true
 @export var close_round_after_seconds: float = 3
 
+@export_group("Animations")
+@export var animate_card_matches: bool = true
+@export var animation_time: float = 0.5
+
 @export_group("Audio")
 @export_range(0,1) var master_volume: float = 1
 @export_range(0,1) var effect_volume: float = 1

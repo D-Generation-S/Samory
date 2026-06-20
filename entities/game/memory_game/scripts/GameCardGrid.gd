@@ -1,9 +1,22 @@
 class_name GameCardGrid extends Node2D
 
+signal card_removed()
+signal all_matching_cards_removed()
+signal card_triggered(CardTemplate: CardTemplate)
+signal identical_cards(first_card_point: Point, set_icon_modulated_card_point: Point)
+signal no_matches_found()
+signal board_ready()
+signal board_empty()
+signal card_activated()
+
+@export var state_machine: GameStateMachine
+
 var current_card: CardTemplate
 
 var controller_input_was_made: bool = false
 var currently_ai_player: bool = false
+
+var number_of_triggered_cards: int = 0
 
 enum Axis {X, Y}
 
@@ -27,8 +40,8 @@ func _move_axis(direction: int, axis: Axis) -> void:
 
 func get_card_grid(current_pos: Point) -> Array[Point]:
 	var all_cards: Array[Point] = []
-	for card: CardTemplate in get_children():
-		if !card.grid_position.is_identical(current_pos):
+	for card: Node2D in get_children():
+		if card is CardTemplate and !card.grid_position.is_identical(current_pos) and not card.is_getting_removed():
 			all_cards.append(card.grid_position)
 
 	return all_cards
@@ -113,10 +126,16 @@ func trigger_card_at_position(grid_position: Point) -> void:
 			return
 		current_card.force_reveal_card()
 
+func remove_cards_from_board(grid_positions: Array[Point]) -> void:
+	for grid_position: Point in grid_positions:
+		remove_card_from_board(grid_position)
+	all_matching_cards_removed.emit()
+	
 func remove_card_from_board(grid_position: Point) -> void:
 	for child: CardTemplate in _get_game_card_templates_children():
 		if child.grid_position.is_identical(grid_position):
-			child.remove_from_board()
+			child.remove_from_board(currently_ai_player)
+			child.about_to_get_delete.connect(func() -> void: card_removed.emit())
 
 func select_card_at_position(grid_position: Point) -> bool:
 	var found_card: bool = false
@@ -137,10 +156,6 @@ func confirm_current_card() -> void:
 	if current_card == null or get_tree().paused:
 		return
 	current_card.card_was_clicked()
-	# Card might have been destroyed by action above
-	if current_card == null:
-		return
-	select_closest_card(current_card.grid_position, false)
 	
 func select_closest_card(source_position: Point, include_source: bool) -> void:
 	if currently_ai_player:
@@ -187,20 +202,84 @@ func card_loading_done() -> void:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		)	
 
-func game_state_changed(game_state: int) -> void:
-	handle_card_state(game_state)
+func game_state_changed(game_state: GameEnum.State) -> void:
 	match game_state:
-		GameState.ROUND_START:
+		GameEnum.State.TURN_START:
 			round_unfrozen()
 			for card: CardTemplate in _get_game_card_templates():
 				card.player_changed(currently_ai_player)
+			print(_get_all_cards().size())
+			if _get_all_cards().size() == 0:
+				board_empty.emit()
 
-		GameState.ROUND_FREEZE:
+		GameEnum.State.TURN_FREEZE:
 			round_frozen()
+		GameEnum.State.TURN_COMPLETED:
+			_validate_grid()
+		GameEnum.State.PREPARE_TURN_END:
+			_prepare_turn_complete()			
+
+func _validate_grid() -> void:
+	for card: CardTemplate in _get_all_cards():
+		if card == null or card.is_queued_for_deletion():
+			continue
+		if card.is_turned() and not card.card_is_fully_shown():
+			print("Waiting")
+			await card.fully_shown
+	if _any_matching():
+		var card_positions: Array[Point] = []
+		for card: CardTemplate in _get_all_cards():
+			if card.is_turned():
+				card_positions.append(card.grid_position)
+		identical_cards.emit(card_positions[0], card_positions[1])
+		remove_cards_from_board(card_positions)
+		var count: int = _get_all_cards().filter(func (card: CardTemplate) -> bool: return not card.getting_removed).size()
+		if count == 0:
+			board_empty.emit()
+			
+		return
+
+
+	no_matches_found.emit()
+
+func _prepare_turn_complete() -> void:
+	for card: CardTemplate in _get_all_cards():
+		if not card.card_is_hidden():
+			print ("wait hidden card")
+			await card.fully_hidden
+	
+	print ("continue prepare turn complete")
+	var all_cards: Array[CardTemplate] = _get_all_cards()
+	if all_cards.size() == 0:
+		board_empty.emit()
+		return
+
+	board_ready.emit()
+
+func _any_matching() -> bool:
+	var first_found: CardTemplate = null
+	for card: CardTemplate in _get_all_cards():
+		if not card.is_turned():
+			continue
+		if first_found == null:
+			first_found = card
+			continue	
+		if card.get_card_id() == first_found.get_card_id():
+			return true
+	return false
+
+func _get_all_cards() -> Array[CardTemplate]:
+	var _templates: Array[CardTemplate] = []
+	for card_node: Node in get_children():
+		if card_node is CardTemplate:
+			_templates.append(card_node)
+	return _templates
 
 func get_all_card_positions(get_turned: bool = false) -> Array[Point]:
 	var return_data: Array[Point] = []
 	for card: CardTemplate in _get_game_card_templates_children():
+		if card.getting_removed:
+			continue
 		if get_turned or !card.is_turned():
 			return_data.append(card.grid_position)
 	return return_data
@@ -221,19 +300,6 @@ func disable_card_effects() -> void:
 	for card: CardTemplate in _get_game_card_templates():
 		card.lost_focus()
 
-func handle_card_state(new_state: int) -> void:
-	if new_state == GameState.PREPARE_ROUND_END:
-		return
-
-	for card: CardTemplate in _get_game_card_templates_children():
-		match new_state:
-			GameState.ROUND_FREEZE:
-				card.freeze_card()
-			GameState.ROUND_START:
-				card.unfreeze_card()
-			GameState.ROUND_END:
-				card.toggle_card_on()
-
 func _get_game_card_templates_children() -> Array[CardTemplate]:
 	var return_data: Array[CardTemplate]
 	for card_template: CardTemplate in get_children().filter(func(data: Node) -> bool: return data is CardTemplate):
@@ -245,3 +311,18 @@ func _get_game_card_templates() -> Array[CardTemplate]:
 	for card_template: CardTemplate in get_tree().get_nodes_in_group("game_card").filter(func(card: Node) -> bool: return card is CardTemplate):
 		return_data.append(card_template)
 	return return_data
+
+func prevent_input(prevent: bool) -> void:
+	for card: CardTemplate in _get_game_card_templates_children():
+		card.input_allowed(!prevent)
+
+func card_was_placed(card: CardTemplate) -> void:
+	card.card_triggered.connect(card_triggered_hook)
+	state_machine.state_changed.connect(card.game_state_changed)
+
+
+func card_triggered_hook(card: CardTemplate) -> void:
+	select_card_at_position(card.grid_position)
+	card_triggered.emit(card)
+	card_activated.emit()
+	

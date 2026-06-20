@@ -49,16 +49,16 @@ func _rpc_card_clicked(position: Dictionary) -> void:
 
 	card_was_clicked.emit(point)
 
-func game_state_changed(state: int) -> void:
+func game_state_changed(state: GameEnum.State) -> void:
 	if multiplayer.is_server():
 		_rpc_game_state_changed.rpc({"state-id": state})
 
 @rpc("authority", "reliable")
 func _rpc_game_state_changed(state: Dictionary) -> void:
 	var state_id: int = state["state-id"]
-	if state_id == GameState.ROUND_FREEZE:
+	if state_id == GameEnum.State.TURN_FREEZE:
 		game_state_has_changed.emit(state_id)
-	if state_id == GameState.ROUND_END:
+	if state_id == GameEnum.State.TURN_END:
 		game_state_has_changed.emit(state_id)
 
 func player_changed(player: PlayerResource) -> void:
@@ -73,20 +73,20 @@ func player_changed(player: PlayerResource) -> void:
 
 	if player.id != multiplayer.get_unique_id():
 		print("freeze")
-		game_state_has_changed.emit(GameState.ROUND_FREEZE)
+		game_state_has_changed.emit(GameEnum.State.TURN_FREEZE)
 		return
 
-	game_state_has_changed.emit(GameState.ROUND_START)
+	game_state_has_changed.emit(GameEnum.State.TURN_START)
 
 @rpc("authority", "reliable")
 func _rpc_player_changed(player: Dictionary) -> void:
 	var player_id: int = player["id"]
 	player_has_changed.emit(player_id)
 	if player_id != multiplayer.get_unique_id():
-		game_state_has_changed.emit(GameState.ROUND_FREEZE)
+		game_state_has_changed.emit(GameEnum.State.TURN_FREEZE)
 		return
 
-	game_state_has_changed.emit(GameState.ROUND_START)
+	game_state_has_changed.emit(GameEnum.State.TURN_START)
 
 func player_scored(player: PlayerResource) -> void:
 	if !multiplayer.is_server():

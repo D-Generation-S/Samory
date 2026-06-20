@@ -90,10 +90,12 @@ script = ExtResource("1_fmo68")
 front_side = NodePath("CanvasGroup/CardFront")
 back_side = NodePath("CardBack")
 flip_effects = Array[AudioStream]([ExtResource("2_7bwi6"), ExtResource("3_hh2fg"), ExtResource("4_s61ka")])
+matching_animation_scale = 1.2
 
 [node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=2022425032]
 z_index = -2
 material = SubResource("ShaderMaterial_sgpsy")
+position = Vector2(-250, -250)
 script = ExtResource("6_7ry7r")
 possible_effects = Array[ExtResource("7_71qre")]([ExtResource("8_nugiu")])
 
@@ -155,7 +157,7 @@ script = ExtResource("4_kxmgl")
 
 [node name="CardBack" type="Sprite2D" parent="." unique_id=597243811]
 material = ExtResource("5_b0osi")
-position = Vector2(250, 275)
+position = Vector2(0, 25)
 texture = ExtResource("14_bmj37")
 script = ExtResource("8_pw264")
 focus_animation_time = 0.1
@@ -171,6 +173,7 @@ script = ExtResource("9_mu0q4")
 shape = SubResource("RectangleShape2D_phkhd")
 
 [node name="DebugInformation" type="Node2D" parent="." unique_id=1036970705 node_paths=PackedStringArray("card_id_label", "card_position_label")]
+position = Vector2(-250, -250)
 script = ExtResource("18_tqsbp")
 card_id_label = NodePath("CardIdLabel")
 card_position_label = NodePath("CardPositionLabel")
@@ -199,8 +202,9 @@ script = ExtResource("18_8fn1p")
 
 [node name="MatchingFoundEffect" type="GPUParticles2D" parent="." unique_id=1713421395]
 visible = false
-position = Vector2(250, 275)
-amount = 800
+z_index = 1001
+position = Vector2(0, 25)
+amount = 1600
 texture = ExtResource("20_ja01p")
 lifetime = 3.0
 preprocess = 1.5
@@ -221,17 +225,19 @@ volume = -15.0
 [connection signal="card_lost_focus" from="." to="CardBack" method="lost_focus"]
 [connection signal="card_text_changed" from="." to="CanvasGroup/TextFrame/CardText" method="set_card_text"]
 [connection signal="card_tooltip_changed" from="." to="CanvasGroup/TextFrame/CardText" method="set_tooltip"]
-[connection signal="card_triggered" from="." to="CanvasGroup" method="show_card_content"]
-[connection signal="card_triggered" from="." to="CanvasGroup/TextFrame/CardText" method="card_revealed"]
 [connection signal="deck_changed" from="." to="CanvasGroup/DropShadow" method="deck_changed"]
 [connection signal="deck_changed" from="." to="CardBack" method="deck_changed"]
 [connection signal="hide_card" from="." to="CanvasGroup/TextFrame/CardText" method="card_hidden"]
 [connection signal="hide_card" from="." to="CardBack" method="toggle_on"]
 [connection signal="input_active" from="." to="CardBack" method="input_active"]
 [connection signal="input_active" from="." to="FocusEffect" method="toggle_state"]
+[connection signal="show_card" from="." to="CanvasGroup" method="show_card_content"]
+[connection signal="show_card" from="." to="CardBack" method="toggle_off"]
 [connection signal="ready_for_destruction" from="CanvasGroup" to="." method="destory_now"]
 [connection signal="focus_lost" from="CardBack" to="CanvasGroup/DropShadow" method="lost_focus"]
+[connection signal="fully_hidden" from="CardBack" to="." method="signal_repeater_fully_hidden"]
 [connection signal="fully_hidden" from="CardBack" to="CanvasGroup" method="hide_card_content"]
+[connection signal="fully_shown" from="CardBack" to="." method="signal_repeater_fully_shown"]
 [connection signal="hide_started" from="CardBack" to="CanvasGroup/DropShadow" method="lost_focus"]
 [connection signal="in_focus" from="CardBack" to="CanvasGroup/DropShadow" method="got_focus"]
 [connection signal="in_focus" from="CardBack" to="FocusEffect" method="trigger_random_effect"]
