@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="AIPersonality" format=3 uid="uid://cb7p5mu7qw70"]
+
+[ext_resource type="Script" uid="uid://c1te0iu0444y4" path="res://shared/entities/ai_behavior/resources/AiBehaviorNode.gd" id="1_ym2ok"]
+[ext_resource type="Script" uid="uid://cvnxi5g1235m6" path="res://shared/entities/ai_behavior/resources/behaviors/OpenRandomCard.gd" id="2_aff3y"]
+[ext_resource type="Script" uid="uid://ge0n5xow746e" path="res://entities/ui/quick_game_selection/resources/AIPersonality.gd" id="2_logt5"]
+[ext_resource type="Script" uid="uid://bda4016im6e8w" path="res://shared/entities/ai_behavior/resources/behaviors/OpenRandomBlackboardCard.gd" id="3_rsvwe"]
+[ext_resource type="Script" uid="uid://d0vjenabf7c5i" path="res://shared/entities/ai_behavior/resources/behaviors/OpenLastRevealedCard.gd" id="4_jpmf5"]
+[ext_resource type="Script" uid="uid://7biix5hsjheq" path="res://shared/entities/ai_behavior/resources/behaviors/GetMatchingCard.gd" id="5_68x6a"]
+[ext_resource type="Script" uid="uid://b27mb346tnwgt" path="res://shared/entities/ai_behavior/resources/behaviors/OpenUnknownCard.gd" id="6_o3elp"]
+[ext_resource type="Script" uid="uid://cnc4s4mdqoccc" path="res://shared/entities/ai_behavior/resources/behaviors/OpenFirstMatchingCard.gd" id="7_231mc"]
+
+[sub_resource type="Resource" id="Resource_4nkae"]
+script = ExtResource("2_aff3y")
+
+[sub_resource type="Resource" id="Resource_uddj3"]
+script = ExtResource("3_rsvwe")
+backup_action = SubResource("Resource_4nkae")
+probability = 7
+
+[sub_resource type="Resource" id="Resource_s2nqo"]
+script = ExtResource("4_jpmf5")
+probability = 2
+
+[sub_resource type="Resource" id="Resource_y13pc"]
+script = ExtResource("2_aff3y")
+probability = 15
+
+[sub_resource type="Resource" id="Resource_2wkxe"]
+script = ExtResource("5_68x6a")
+probability = 8
+
+[sub_resource type="Resource" id="Resource_coya5"]
+script = ExtResource("6_o3elp")
+probability = 10
+
+[sub_resource type="Resource" id="Resource_nqkde"]
+script = ExtResource("7_231mc")
+probability = 5
+
+[resource]
+script = ExtResource("2_logt5")
+_actions = Array[ExtResource("1_ym2ok")]([SubResource("Resource_uddj3"), SubResource("Resource_s2nqo"), SubResource("Resource_y13pc"), SubResource("Resource_2wkxe"), SubResource("Resource_coya5"), SubResource("Resource_nqkde")])
+metadata/_custom_type_script = "uid://ge0n5xow746e"
