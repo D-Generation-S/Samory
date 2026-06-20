@@ -153,6 +153,7 @@ text = "LOCAL_MULTIPLAYER"
 icon = ExtResource("8_gciok")
 script = ExtResource("4_b7t05")
 active = 2
+initial_visibility = false
 pressed_action = SubResource("Resource_cu1bk")
 
 [node name="ControlAnimationComponent" type="Node" parent="CenterMainMenu/PanelContainer/MarginContainer/VBoxContainer/LocalMultiplayer" unique_id=1351329637 node_paths=PackedStringArray("await_component")]
