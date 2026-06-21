@@ -18,12 +18,20 @@ var currently_ai_player: bool = false
 
 var number_of_triggered_cards: int = 0
 
+var _field_size: Vector2i = Vector2i.ZERO
+
 enum Axis {X, Y}
 
 func get_current_grid_position() -> Point:
 	if current_card == null:
 		return Point.new(0,0)
 	return Point.new(current_card.grid_position.get_x_pos(), current_card.grid_position.get_y_pos())
+
+func receive_field_size(x: int, y: int) -> void:
+	_field_size = Vector2i(x - 1, y - 1) # Field size starts at 1 but index starts at 0
+
+func get_field_size() -> Vector2i:
+	return _field_size
 
 func _move_axis(direction: int, axis: Axis) -> void:
 	var clamped_direction: int = clampi(direction, -1, 1)
@@ -129,7 +137,7 @@ func trigger_card_at_position(grid_position: Point) -> void:
 func remove_cards_from_board(grid_positions: Array[Point]) -> void:
 	for grid_position: Point in grid_positions:
 		remove_card_from_board(grid_position)
-	for card: CardTemplate in _get_all_cards():
+	for card: CardTemplate in _get_game_card_templates():
 		if card.is_playing_animation():
 			await card.about_to_get_delete
 	all_matching_cards_removed.emit()
@@ -203,7 +211,7 @@ func card_loading_done() -> void:
 		card.mouse_was_used.connect(func() -> void: 
 			current_card = null
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		)	
+		)
 
 func game_state_changed(game_state: GameEnum.State) -> void:
 	match game_state:
@@ -211,8 +219,8 @@ func game_state_changed(game_state: GameEnum.State) -> void:
 			round_unfrozen()
 			for card: CardTemplate in _get_game_card_templates():
 				card.player_changed(currently_ai_player)
-			print(_get_all_cards().size())
-			if _get_all_cards().size() == 0:
+			print(_get_game_card_templates().size())
+			if _get_game_card_templates().size() == 0:
 				board_empty.emit()
 
 		GameEnum.State.TURN_FREEZE:
@@ -223,7 +231,7 @@ func game_state_changed(game_state: GameEnum.State) -> void:
 			_prepare_turn_complete()			
 
 func _validate_grid() -> void:
-	for card: CardTemplate in _get_all_cards():
+	for card: CardTemplate in _get_game_card_templates():
 		if card == null or card.is_queued_for_deletion():
 			continue
 		if card.is_turned() and not card.card_is_fully_shown():
@@ -231,12 +239,12 @@ func _validate_grid() -> void:
 			await card.fully_shown
 	if _any_matching():
 		var card_positions: Array[Point] = []
-		for card: CardTemplate in _get_all_cards():
+		for card: CardTemplate in _get_game_card_templates():
 			if card.is_turned():
 				card_positions.append(card.grid_position)
 		identical_cards.emit(card_positions[0], card_positions[1])
 		remove_cards_from_board(card_positions)
-		var count: int = _get_all_cards().filter(func (card: CardTemplate) -> bool: return not card.getting_removed).size()
+		var count: int = _get_game_card_templates().filter(func (card: CardTemplate) -> bool: return not card.getting_removed).size()
 		if count == 0:
 			board_empty.emit()
 			
@@ -246,7 +254,7 @@ func _validate_grid() -> void:
 	no_matches_found.emit()
 
 func _prepare_turn_complete() -> void:
-	for card: CardTemplate in _get_all_cards():
+	for card: CardTemplate in _get_game_card_templates():
 		if card == null or card.is_queued_for_deletion():
 			continue
 		if not card.card_is_hidden():
@@ -254,7 +262,7 @@ func _prepare_turn_complete() -> void:
 			await card.fully_hidden
 	
 	print ("continue prepare turn complete")
-	var all_cards: Array[CardTemplate] = _get_all_cards()
+	var all_cards: Array[CardTemplate] = _get_game_card_templates()
 	if all_cards.size() == 0:
 		board_empty.emit()
 		return
@@ -263,7 +271,7 @@ func _prepare_turn_complete() -> void:
 
 func _any_matching() -> bool:
 	var first_found: CardTemplate = null
-	for card: CardTemplate in _get_all_cards():
+	for card: CardTemplate in _get_game_card_templates():
 		if not card.is_turned():
 			continue
 		if first_found == null:
@@ -272,13 +280,6 @@ func _any_matching() -> bool:
 		if card.get_card_id() == first_found.get_card_id():
 			return true
 	return false
-
-func _get_all_cards() -> Array[CardTemplate]:
-	var _templates: Array[CardTemplate] = []
-	for card_node: Node in get_children():
-		if card_node is CardTemplate:
-			_templates.append(card_node)
-	return _templates
 
 func get_all_card_positions(get_turned: bool = false) -> Array[Point]:
 	var return_data: Array[Point] = []
