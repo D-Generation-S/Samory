@@ -18,12 +18,20 @@ var currently_ai_player: bool = false
 
 var number_of_triggered_cards: int = 0
 
+var _field_size: Vector2i = Vector2i.ZERO
+
 enum Axis {X, Y}
 
 func get_current_grid_position() -> Point:
 	if current_card == null:
 		return Point.new(0,0)
 	return Point.new(current_card.grid_position.get_x_pos(), current_card.grid_position.get_y_pos())
+
+func receive_field_size(x: int, y: int) -> void:
+	_field_size = Vector2i(x - 1, y - 1) # Field size starts at 1 but index starts at 0
+
+func get_field_size() -> Vector2i:
+	return _field_size
 
 func _move_axis(direction: int, axis: Axis) -> void:
 	var clamped_direction: int = clampi(direction, -1, 1)
