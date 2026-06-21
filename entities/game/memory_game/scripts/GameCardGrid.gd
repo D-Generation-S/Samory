@@ -129,6 +129,9 @@ func trigger_card_at_position(grid_position: Point) -> void:
 func remove_cards_from_board(grid_positions: Array[Point]) -> void:
 	for grid_position: Point in grid_positions:
 		remove_card_from_board(grid_position)
+	for card: CardTemplate in _get_all_cards():
+		if card.is_playing_animation():
+			await card.about_to_get_delete
 	all_matching_cards_removed.emit()
 	
 func remove_card_from_board(grid_position: Point) -> void:

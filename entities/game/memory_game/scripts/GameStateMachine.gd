@@ -35,17 +35,16 @@ func card_was_clicked() -> void:
 	print("card clicked")
 	_clicked_card_amount += 1
 	if _clicked_card_amount >= _cards_per_turn:
+		_change_state(GameEnum.State.TURN_FREEZE)
 		_change_state(GameEnum.State.TURN_COMPLETED)
 		_clicked_card_amount = 0
 
 func matches_found() -> void:
 	print("match found")
-	_change_state(GameEnum.State.TURN_FREEZE)
 	_change_state(GameEnum.State.TURN_START)
 
 func no_matches() -> void:
 	print("no matches")
-	_change_state(GameEnum.State.TURN_FREEZE)
 	_change_state(GameEnum.State.PREPARE_TURN_END)
 	_show_round_ended_banner()
 
@@ -56,7 +55,6 @@ func board_ready() -> void:
 
 func board_empty() -> void:
 	print("board empty")
-	_change_state(GameEnum.State.TURN_FREEZE)
 	_change_state(GameEnum.State.PREPARE_TURN_END)
 	_change_state(GameEnum.State.GAME_END)
 
