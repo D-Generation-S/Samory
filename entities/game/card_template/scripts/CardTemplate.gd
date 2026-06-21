@@ -238,7 +238,7 @@ func signal_repeater_fully_hidden() -> void:
 	fully_hidden.emit()
 
 func game_state_changed(new_state: GameEnum.State) -> void:
-	if new_state == GameEnum.State.TURN_COMPLETED:
+	if new_state == GameEnum.State.TURN_FREEZE:
 		_valid_game_state = false
 		freeze_card()
 	if new_state == GameEnum.State.TURN_END:
