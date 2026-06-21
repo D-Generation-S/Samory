@@ -18,7 +18,7 @@ config/name="Samory"
 config/version="0.19.8"
 config/tags=PackedStringArray("public")
 run/main_scene="res://shared/global_entities/game_manager/scenes/GameManager.tscn"
-config/features=PackedStringArray("4.6", "GL Compatibility")
+config/features=PackedStringArray("4.7", "GL Compatibility")
 run/max_fps=60
 config/icon="uid://c1ftk6esewq5"
 
