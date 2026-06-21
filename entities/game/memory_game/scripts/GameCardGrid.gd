@@ -244,6 +244,8 @@ func _validate_grid() -> void:
 
 func _prepare_turn_complete() -> void:
 	for card: CardTemplate in _get_all_cards():
+		if card == null or card.is_queued_for_deletion():
+			continue
 		if not card.card_is_hidden():
 			print ("wait hidden card")
 			await card.fully_hidden
