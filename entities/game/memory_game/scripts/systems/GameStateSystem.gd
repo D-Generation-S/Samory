@@ -1,4 +1,4 @@
-class_name GameStateMachine extends Node
+class_name GameStateSystem extends Node
 
 signal state_changed(new_state: GameEnum.State)
 signal request_popup(window: PopupWindow)

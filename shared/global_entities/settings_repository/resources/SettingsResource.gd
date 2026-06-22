@@ -17,7 +17,7 @@ class_name SettingsResource extends Save
 
 @export_group("Animations")
 @export var animate_card_matches: bool = true
-@export var animation_time: float = 0.5
+@export var animation_time: float = 0.25
 
 @export_group("Audio")
 @export_range(0,1) var master_volume: float = 1

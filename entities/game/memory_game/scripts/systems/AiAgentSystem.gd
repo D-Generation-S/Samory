@@ -1,7 +1,7 @@
-class_name AiAgent extends Node
+class_name AiAgentSystem extends Node
 
 @export var cards_node: GameCardGrid
-@export var players: PlayerManager
+@export var players: PlayerSystem
 @export var min_wait_seconds: float = 0.5
 @export var max_wait_seconds: float = 3
 var timer: Timer = null;

@@ -2,7 +2,7 @@ class_name GameFinished extends PopupWindow
 
 signal finish_game_ui_loaded(players: Array[PlayerResource], winner: Array[PlayerResource])
 
-var manager: PlayerManager
+var manager: PlayerSystem
 var played_deck: MemoryDeckResource
 
 # Called when the node enters the scene tree for the first time.
@@ -24,7 +24,7 @@ func _ready() -> void:
 	finish_game_ui_loaded.emit(players, winners)
 
 
-func set_player_manager(player_manager: PlayerManager) -> void:
+func set_player_manager(player_manager: PlayerSystem) -> void:
 	manager = player_manager
 
 func set_played_deck(deck: MemoryDeckResource) -> void:

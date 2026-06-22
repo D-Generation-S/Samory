@@ -1,4 +1,4 @@
-extends Node
+class_name NetworkHandlerSystem extends Node
 
 const IP_ADDRESS: String = "localhost"
 const PORT: int = 8000
@@ -12,7 +12,7 @@ signal game_has_been_finished()
 signal request_popup(window: PopupWindow)
 
 @export var finished_game_template: PackedScene
-@export var player_node: PlayerManager
+@export var player_node: PlayerSystem
 
 var peer: ENetMultiplayerPeer
 var is_started: bool = false

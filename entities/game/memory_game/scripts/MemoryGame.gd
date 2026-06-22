@@ -2,9 +2,7 @@ class_name MemoryGame extends Node2D
 
 signal load_game(card_deck: MemoryDeckResource)
 
-signal game_has_ended()
 signal game_paused(is_paused: bool)
-signal card_loading_done()
 
 signal request_popup(window: PopupWindow)
 
@@ -25,12 +23,10 @@ const CARDS_PER_PLAYER: int = 2
 @export var sound_effect: AudioStream
 
 #var current_game_state: int
-var player_node: PlayerManager
+var player_node: PlayerSystem
 var triggered_cards: int
 var removed_cards: int = 0
 var game_menu: GamePauseMenu = null
-
-var _initial_game_start: bool = true
 
 var ending_round: bool = false
 
@@ -42,7 +38,7 @@ var _is_local_only: bool = true
 
 func _ready() -> void:
 	process_mode = PROCESS_MODE_DISABLED
-	player_node = get_node("%Players")
+	player_node = get_node("%PlayerSystem")
 
 func start_loading_data() -> void:
 	load_game.emit(card_deck)
@@ -63,7 +59,6 @@ func show_initial_setup() -> bool:
 	return true
 
 func show_game_end_screen() -> void:
-	game_has_ended.emit()
 	var finish_node: GameFinished = finished_game_template.instantiate() as GameFinished
 	finish_node.high_priority = true
 	finish_node.set_player_manager(player_node)
@@ -101,8 +96,6 @@ func game_state_has_changed(new_state: GameEnum.State) -> void:
 
 ## This will be triggered if a new turn does start
 func turn_start_trigger() -> void:
-	if _initial_game_start:
-		all_cards_placed()
 	if not execute_logic():
 		return
 	
@@ -111,14 +104,7 @@ func turn_start_trigger() -> void:
 	triggered_cards = 0
 
 func all_cards_placed() -> void:
-	_initial_game_start = false
 	for child: Node in get_tree().get_nodes_in_group("game_initialize_scene"):
 		child.queue_free()
-	for node: Node in game_nodes_to_show:
-		if node is Node2D:
-			node.visible = true 
-		if node is CanvasLayer:
-			node.visible = true
-			
-	card_loading_done.emit()
+	GlobalSoundManager.stop_all_sounds()
 	process_mode = Node.PROCESS_MODE_INHERIT

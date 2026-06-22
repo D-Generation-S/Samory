@@ -24,6 +24,7 @@ var _last_mouse_pos: Vector2
 
 var _initial_position: Vector2
 var _initial_zoom: Vector2
+var _loaded: bool = false
 
 func _ready() -> void:
 	var screen_size: Vector2i = DisplayServer.screen_get_size()
@@ -31,6 +32,9 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_DISABLED
 
 func loading_done() -> void:
+	if _loaded:
+		return
+	_loaded = true
 	process_mode = Node.PROCESS_MODE_INHERIT
 	position = _initial_position
 	var tween: Tween = create_tween()
@@ -105,3 +109,7 @@ func adjust_zoom_and_position_to_play_area(area: Rect2) -> void:
 	var zoom_multiplier: float = GlobalGameManagerAccess.get_game_manager().get_camera_zoom_adjustment()
 
 	_initial_zoom = Vector2(zoom_value * zoom_multiplier, zoom_value * zoom_multiplier)
+
+func game_state_changed(new_state: GameEnum.State) -> void:
+	if new_state == GameEnum.State.TURN_START:
+		loading_done()

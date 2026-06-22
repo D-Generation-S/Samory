@@ -39,3 +39,7 @@ func create_new_sprite() -> Sprite2D:
 	sprite.position = Vector2.ZERO
 
 	return sprite
+
+func game_state_changed(new_state: GameEnum.State) -> void:
+	if new_state == GameEnum.State.TURN_START and not visible:
+		visible = true

@@ -128,7 +128,16 @@ func translate_built_in_decks() -> void:
 		translated_build_in_decks.append(new_deck)
 
 func close_game_with_position(transition_start_position: Vector2) -> void:
-	ScreenTransitionManager.transit_screen_with_position(main_menu_template, transition_start_position)
+	var nodes: Array[Node] = get_children()
+	var animation_scene: AnimationScene = await ScreenTransitionManager.transit_screen_with_position(main_menu_template, transition_start_position)
+	await animation_scene.animation_done
+	for node: Node in nodes:
+		if node == null or node.is_queued_for_deletion():
+			continue
+		if node.name == "GlobalFixedNode" or node.is_in_group("static"):
+			continue
+		node.queue_free()
+
 
 func close_game() -> void:
 	close_game_with_position(Vector2.ZERO)
@@ -228,7 +237,6 @@ func _rpc_load_game(game_data: Dictionary) -> void:
 
 	var loading_screen: LoadingScreen = loading_screen_template.instantiate() as LoadingScreen
 	loading_screen.set_follow_up_node(game_scene_node)
-	game_scene_node.card_loading_done.connect(loading_screen.destroy)
 
 	await ScreenTransitionManager.transit_screen_by_node_with_position(loading_screen, click_position, false)
 	get_tree().root.add_child(game_scene_node)
@@ -249,11 +257,12 @@ func load_game(card_deck: Resource, players: Array[PlayerResource], click_positi
 	
 	
 	var loading_screen: LoadingScreen = loading_screen_template.instantiate() as LoadingScreen
+	loading_screen.add_to_group("game_initialize_scene")
 	loading_screen.set_follow_up_node(game_scene_node)
-	game_scene_node.card_loading_done.connect(loading_screen.destroy)
 
 	await ScreenTransitionManager.transit_screen_by_node_with_position(loading_screen, click_position, false)
-	get_tree().root.add_child(game_scene_node)
+	add_child(game_scene_node)
+
 
 func get_available_decks() -> Array[MemoryDeckResource]:
 	var return_array: Array[MemoryDeckResource] = []

@@ -1,4 +1,4 @@
-extends Node
+class_name PlayerInputSystem extends Node
 
 signal game_menu_requested()
 signal end_current_round()
