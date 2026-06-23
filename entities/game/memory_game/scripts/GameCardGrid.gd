@@ -251,7 +251,7 @@ func _validate_grid() -> void:
 				card_positions.append(card.grid_position)
 		identical_cards.emit(card_positions[0], card_positions[1])
 		remove_cards_from_board(card_positions)
-		var count: int = _get_game_card_templates().filter(func (card: CardTemplate) -> bool: return not card.getting_removed).size()
+		var count: int = _get_game_card_templates().filter(func (card: CardTemplate) -> bool: return not card.is_getting_removed()).size()
 		if count == 0:
 			_announce_empty_board()
 			
@@ -291,7 +291,7 @@ func _any_matching() -> bool:
 func get_all_card_positions(get_turned: bool = false) -> Array[Point]:
 	var return_data: Array[Point] = []
 	for card: CardTemplate in _get_game_card_templates_children():
-		if card.getting_removed:
+		if card.is_getting_removed():
 			continue
 		if get_turned or !card.is_turned():
 			return_data.append(card.grid_position)
