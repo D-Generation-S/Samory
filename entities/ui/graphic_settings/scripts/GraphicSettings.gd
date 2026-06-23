@@ -3,6 +3,7 @@ extends PanelContainer
 signal window_mode_changed(new_mode: DisplayServer.WindowMode)
 signal v_sync_changed(state: bool)
 signal enter_animate_changed(state: bool)
+signal card_match_animation_changed(state: bool)
 signal ui_scale_changed(new_scale: float)
 signal settings_changed(setting: SettingsResource)
 signal language_changed(language_code: String)
@@ -24,3 +25,6 @@ func change_language(language_code: String) -> void:
 
 func change_enter_animate(state: bool) -> void:
 	enter_animate_changed.emit(state)
+
+func change_card_match_animation(new_state: bool) -> void:
+	card_match_animation_changed.emit(new_state)

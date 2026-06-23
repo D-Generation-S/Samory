@@ -203,6 +203,13 @@ msgstr ""
 "[center]Godot Game Engine 4.6[/center]"
 
 #: entities/ui/credits/scenes/Credits.tscn
+#: entities/ui/deck_viewer/scenes/DeckViewer.tscn
+#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "CLOSE"
+msgstr "Schließen"
+
+#: entities/ui/credits/scenes/Credits.tscn
 msgid "Kenney.nl"
 msgstr ""
 
@@ -217,13 +224,6 @@ msgstr ""
 #: entities/ui/credits/scenes/Credits.tscn
 msgid "Material Maker"
 msgstr ""
-
-#: entities/ui/credits/scenes/Credits.tscn
-#: entities/ui/deck_viewer/scenes/DeckViewer.tscn
-#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-msgid "CLOSE"
-msgstr "Schließen"
 
 #: entities/ui/deck_preview/scenes/DeckPreview.tscn
 msgid "DECK_INFO"
@@ -1083,7 +1083,9 @@ msgstr ""
 "Da du ein übereinstimmendes Paar gefunden hast, wird deine Runde "
 "fortgesetzt. Entsprechend darfst du erneut zwei Karten drehen, findest du "
 "erneut ein Pärchen, wird deine Runde fortgesetzt. Deine Runde endet sobald "
-"du kein Paar gefunden hast."
+"du kein Paar gefunden hast.\n"
+"Wenn dir die abgespielte Animation nicht gefallen sollte, kannst du diese in "
+"den Spieleinstellungen deaktivieren."
 
 #: entities/game/tutorial_window/assets/PlayerFirstRoundEnd.tres
 msgid "FIRST_ROUND_END"
@@ -1455,6 +1457,17 @@ msgstr ""
 #: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
 msgid "ENTER_ANIMATE_CONTROLS"
 msgstr "Animierte Menüs"
+
+#: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
+msgid "CARD_MACH_ANIMATION_DESCRIPTION"
+msgstr ""
+"Aktiviert oder deaktiviert die Animation für das Finden passender Karten, "
+"die abgespielt wird, wenn ein Spieler ein Kartenpaar findet.\n"
+"KI-Spieler animieren ihre Treffer unabhängig von dieser Einstellung nicht."
+
+#: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
+msgid "CARD_MACH_ANIMATION"
+msgstr "Karten zusammenführanimation"
 
 #: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
 msgid "UI_SCALE_TOOLTIP"

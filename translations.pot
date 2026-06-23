@@ -216,6 +216,13 @@ msgid "CREDITS_ROLL_TEXT"
 msgstr ""
 
 #: entities/ui/credits/scenes/Credits.tscn
+#: entities/ui/deck_viewer/scenes/DeckViewer.tscn
+#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "CLOSE"
+msgstr ""
+
+#: entities/ui/credits/scenes/Credits.tscn
 msgid "Kenney.nl"
 msgstr ""
 
@@ -229,13 +236,6 @@ msgstr ""
 
 #: entities/ui/credits/scenes/Credits.tscn
 msgid "Material Maker"
-msgstr ""
-
-#: entities/ui/credits/scenes/Credits.tscn
-#: entities/ui/deck_viewer/scenes/DeckViewer.tscn
-#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-msgid "CLOSE"
 msgstr ""
 
 #: entities/ui/deck_preview/scenes/DeckPreview.tscn
@@ -1295,6 +1295,14 @@ msgstr ""
 
 #: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
 msgid "ENTER_ANIMATE_CONTROLS"
+msgstr ""
+
+#: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
+msgid "CARD_MACH_ANIMATION_DESCRIPTION"
+msgstr ""
+
+#: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
+msgid "CARD_MACH_ANIMATION"
 msgstr ""
 
 #: entities/ui/graphic_settings/scenes/GraphicSettings.tscn

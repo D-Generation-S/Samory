@@ -156,6 +156,13 @@ msgstr ""
 "[center]Godot Game Engine 4.6[/center]"
 
 #: entities/ui/credits/scenes/Credits.tscn
+#: entities/ui/deck_viewer/scenes/DeckViewer.tscn
+#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
+#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+msgid "CLOSE"
+msgstr "Close"
+
+#: entities/ui/credits/scenes/Credits.tscn
 msgid "Kenney.nl"
 msgstr ""
 
@@ -170,13 +177,6 @@ msgstr ""
 #: entities/ui/credits/scenes/Credits.tscn
 msgid "Material Maker"
 msgstr ""
-
-#: entities/ui/credits/scenes/Credits.tscn
-#: entities/ui/deck_viewer/scenes/DeckViewer.tscn
-#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
-#: entities/ui/settings_menu/scenes/SettingsMenu.tscn
-msgid "CLOSE"
-msgstr "Close"
 
 #: entities/ui/deck_preview/scenes/DeckPreview.tscn
 msgid "DECK_INFO"
@@ -999,7 +999,9 @@ msgstr ""
 "\n"
 "If you have found a matching pair, your round will continue accordingly, you "
 "may turn two cards again, if you find another pair, your round will "
-"continue. Your round ends as soon as you no longer find a matching pair."
+"continue. Your round ends as soon as you no longer find a matching pair.\n"
+"If you do not like the animation played, you can disable it in the settings "
+"menu"
 
 #: entities/game/tutorial_window/assets/PlayerFirstRoundEnd.tres
 msgid "FIRST_ROUND_END"
@@ -1362,6 +1364,17 @@ msgstr ""
 #: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
 msgid "ENTER_ANIMATE_CONTROLS"
 msgstr "Animate Menus"
+
+#: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
+msgid "CARD_MACH_ANIMATION_DESCRIPTION"
+msgstr ""
+"Enables or disables the card matching animation, which is played if a player "
+"does find a matching card.\n"
+"AI players won't animate there matches regarding this setting."
+
+#: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
+msgid "CARD_MACH_ANIMATION"
+msgstr "Card Matching Animation"
 
 #: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
 msgid "UI_SCALE_TOOLTIP"
