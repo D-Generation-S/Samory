@@ -1,6 +1,4 @@
-extends Node
-
-class_name PlayerManager
+class_name PlayerSystem extends Node
 
 signal player_changed(player_id: int)
 signal player_resource_changed(current_player: PlayerResource)

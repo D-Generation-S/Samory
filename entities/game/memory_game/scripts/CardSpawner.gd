@@ -1,4 +1,4 @@
-class_name CardSpawner extends Node
+class_name CardSpawnerSystem extends Node
 
 
 signal field_constructed(cards_on_x: int, cards_on_y: int)
@@ -12,7 +12,7 @@ signal card_placing_done()
 # A artificial wait time between each card placement, this does prevent a total blockage of the game
 @export var artificial_wait_time: int = 4
 @export var place_offset: Vector2 = Vector2.ZERO
-@onready var _card_target_node: Node2D = self.get_parent() as Node2D
+@onready var _card_target_node: Node2D = get_node("%Cards")
 
 var _load_thread: Thread = null
 var _place_thread: Thread = null
@@ -20,6 +20,9 @@ var _current_deck: MemoryDeckResource
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_DISABLED
+	if _card_target_node == null:
+		push_error("Missing \"Cards\" node")
+		queue_free()
 
 func place_cards_from_deck(deck_to_use: MemoryDeckResource) -> void:
 	_current_deck = deck_to_use

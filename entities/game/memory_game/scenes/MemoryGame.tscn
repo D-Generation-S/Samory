@@ -6,18 +6,18 @@
 [ext_resource type="PackedScene" uid="uid://ubmqrubcq2a2" path="res://entities/game/card_template/scenes/CardTemplate.tscn" id="3_ihyl6"]
 [ext_resource type="Script" uid="uid://6o7nskqm6kd0" path="res://entities/game/memory_game/scripts/CameraController.gd" id="4_4ihyn"]
 [ext_resource type="PackedScene" uid="uid://csamt2tu6hlpo" path="res://entities/game/finish_game/scenes/FinishGame.tscn" id="4_6f670"]
-[ext_resource type="Script" uid="uid://bxjrl2ikqn4tk" path="res://entities/game/memory_game/scripts/PlayerManager.gd" id="4_n744t"]
+[ext_resource type="Script" uid="uid://bxjrl2ikqn4tk" path="res://entities/game/memory_game/scripts/systems/PlayerSystem.gd" id="4_n744t"]
 [ext_resource type="AudioStream" uid="uid://dq3rmjoitwi1a" path="res://assets/audio/effect/confirmation_001.ogg" id="6_a3528"]
 [ext_resource type="PackedScene" uid="uid://d0vijthhc3d38" path="res://entities/game/players_overlay/scenes/PlayersOverlay.tscn" id="7_a7rnv"]
-[ext_resource type="Script" uid="uid://bmwi41kseslkw" path="res://entities/game/memory_game/scripts/GameStateMachine.gd" id="7_j82c0"]
+[ext_resource type="Script" uid="uid://bmwi41kseslkw" path="res://entities/game/memory_game/scripts/systems/GameStateSystem.gd" id="7_j82c0"]
 [ext_resource type="Script" uid="uid://bglvkbo4aydsy" path="res://entities/game/memory_game/scripts/Background.gd" id="7_kxmqb"]
-[ext_resource type="Script" uid="uid://bxrsfyvew4ysu" path="res://entities/game/memory_game/scripts/PlayerInput.gd" id="9_86hnd"]
+[ext_resource type="Script" uid="uid://bxrsfyvew4ysu" path="res://entities/game/memory_game/scripts/systems/PlayerInputSystem.gd" id="9_86hnd"]
 [ext_resource type="Texture2D" uid="uid://dat3kg2y636js" path="res://assets/icons/MenuIcon.tres" id="11_da0ji"]
 [ext_resource type="PackedScene" uid="uid://cluwm03j8e11p" path="res://entities/game/game_pause_menu/scenes/GamePauseMenu.tscn" id="12_dfx06"]
 [ext_resource type="Script" uid="uid://bsilbayat31i4" path="res://entities/game/tutorial_window/resources/TutorialInformation.gd" id="14_65xsg"]
 [ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="15_2f3xl"]
 [ext_resource type="Resource" uid="uid://dmh064uu1p16b" path="res://entities/game/tutorial_window/assets/PlayerTurnTutorial.tres" id="15_s0u1d"]
-[ext_resource type="Script" uid="uid://c3hyh8ifpeuxg" path="res://entities/game/memory_game/scripts/GameAI.gd" id="15_u3ner"]
+[ext_resource type="Script" uid="uid://c3hyh8ifpeuxg" path="res://entities/game/memory_game/scripts/systems/AiAgentSystem.gd" id="15_u3ner"]
 [ext_resource type="Script" uid="uid://bc2d1ad7vpjfc" path="res://shared/entities/clickable_button/resources/behaviors/TouchButtonBehavior.gd" id="16_78e34"]
 [ext_resource type="Resource" uid="uid://s7d15d0nkymx" path="res://entities/game/tutorial_window/assets/FirstCardTurnedTutorial.tres" id="16_askkq"]
 [ext_resource type="Resource" uid="uid://bo13l4s4ffjrn" path="res://entities/game/tutorial_window/assets/PlayerFirstRoundEnd.tres" id="17_evx0k"]
@@ -26,13 +26,12 @@
 [ext_resource type="Texture2D" uid="uid://b6xl5vukmvlku" path="res://assets/icons/AddIcon.tres" id="18_pqxyo"]
 [ext_resource type="Script" uid="uid://xiyurpjwgjnn" path="res://entities/game/memory_game/scripts/GameCardGrid.gd" id="19_ploi3"]
 [ext_resource type="Texture2D" uid="uid://bjgikbiemswhu" path="res://assets/icons/MinusIcon.tres" id="20_ef4f6"]
-[ext_resource type="Script" uid="uid://6fa28680utd5" path="res://shared/entities/popup_manager/scripts/PopupManager.gd" id="21_dv4ao"]
-[ext_resource type="Script" uid="uid://boch5lqi4lvc7" path="res://entities/game/memory_game/scripts/Tutorial.gd" id="22_0x2pf"]
+[ext_resource type="Script" uid="uid://6fa28680utd5" path="res://shared/entities/popup_manager/scripts/PopupSystem.gd" id="21_dv4ao"]
 [ext_resource type="PackedScene" uid="uid://d15qeu4s4bgjk" path="res://entities/game/tutorial_window/scenes/TutorialWindow.tscn" id="22_ubsrg"]
 [ext_resource type="Texture2D" uid="uid://vk4fpd7xo01j" path="res://assets/sprites/Axuree/wood_medium.png" id="23_a3528"]
 [ext_resource type="Script" uid="uid://btm576yjkyt4j" path="res://entities/game/memory_game/scripts/CardSpawner.gd" id="26_a3528"]
-[ext_resource type="Script" uid="uid://drr3p4wba2ys3" path="res://entities/game/memory_game/scripts/NetworkHandler.gd" id="29_kihnp"]
-[ext_resource type="Script" uid="uid://p5xd1ppjr4ph" path="res://entities/game/memory_game/scripts/TutorialStateManager.gd" id="40_1resq"]
+[ext_resource type="Script" uid="uid://drr3p4wba2ys3" path="res://entities/game/memory_game/scripts/systems/NetworkHandler.gd" id="29_kihnp"]
+[ext_resource type="Script" uid="uid://p5xd1ppjr4ph" path="res://entities/game/memory_game/scripts/systems/TutorialStateSystem.gd" id="40_1resq"]
 
 [sub_resource type="Resource" id="Resource_kihnp"]
 script = ExtResource("16_78e34")
@@ -68,43 +67,83 @@ round_end_message = ExtResource("2_fspeh")
 round_end_message_no_auto_complete = ExtResource("3_a3528")
 finished_game_template = ExtResource("4_6f670")
 game_menu_template = ExtResource("12_dfx06")
-game_nodes_to_show = [NodePath("CanvasLayer"), NodePath("Background")]
-card_target_node = NodePath("Cards")
+game_nodes_to_show = [NodePath("UI"), NodePath("World/Background")]
+card_target_node = NodePath("World/Cards")
 sound_effect = ExtResource("6_a3528")
 
-[node name="Manager" type="Node" parent="." unique_id=1597793066]
+[node name="Systems" type="Node" parent="." unique_id=1597793066]
 
-[node name="GameStateMachine" type="Node" parent="Manager" unique_id=2091663874]
+[node name="GameStateSystem" type="Node" parent="Systems" unique_id=2091663874]
 script = ExtResource("7_j82c0")
 round_end_message = ExtResource("2_fspeh")
 round_end_message_no_auto_complete = ExtResource("3_a3528")
 metadata/_custom_type_script = "uid://bmwi41kseslkw"
 
-[node name="TutorialStateManager" type="Node" parent="Manager" unique_id=798634980]
+[node name="TutorialStateSystem" type="Node" parent="Systems" unique_id=798634980]
 script = ExtResource("40_1resq")
+tutorial_window_scene = ExtResource("22_ubsrg")
+available_tutorials = Array[ExtResource("14_65xsg")]([ExtResource("15_s0u1d"), ExtResource("16_askkq"), ExtResource("17_evx0k"), ExtResource("18_evx0k")])
 metadata/_custom_type_script = "uid://p5xd1ppjr4ph"
 
-[node name="Players" type="Node" parent="Manager" unique_id=2122666589]
+[node name="PlayerSystem" type="Node" parent="Systems" unique_id=487810824]
 unique_name_in_owner = true
 script = ExtResource("4_n744t")
+metadata/_custom_type_script = "uid://bxjrl2ikqn4tk"
 
-[node name="AI" type="Node" parent="Manager" unique_id=972785455 node_paths=PackedStringArray("cards_node", "players")]
+[node name="AiAgentSystem" type="Node" parent="Systems" unique_id=1896166842 node_paths=PackedStringArray("cards_node", "players")]
 script = ExtResource("15_u3ner")
-cards_node = NodePath("../../Cards")
-players = NodePath("../Players")
+cards_node = NodePath("../../World/Cards")
+players = NodePath("../PlayerSystem")
 min_wait_seconds = 0.75
+metadata/_custom_type_script = "uid://c3hyh8ifpeuxg"
 
-[node name="PlayerInput" type="Node" parent="Manager" unique_id=990949897]
+[node name="PlayerInputSystem" type="Node" parent="Systems" unique_id=2012902237]
 script = ExtResource("9_86hnd")
+metadata/_custom_type_script = "uid://bxrsfyvew4ysu"
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=578924762]
+[node name="PopupSystem" type="Node" parent="Systems" unique_id=1661355618 node_paths=PackedStringArray("popup_target")]
+script = ExtResource("21_dv4ao")
+popup_target = NodePath("../../UI/PopupHook")
+metadata/_custom_type_script = "uid://6fa28680utd5"
+
+[node name="NetworkHandlerSystem" type="Node" parent="Systems" unique_id=407048212]
+script = ExtResource("29_kihnp")
+finished_game_template = ExtResource("4_6f670")
+metadata/_custom_type_script = "uid://drr3p4wba2ys3"
+
+[node name="CardSpawnerSystem" type="Node" parent="Systems" unique_id=1452917331]
+script = ExtResource("26_a3528")
+card_template = ExtResource("3_ihyl6")
+place_offset = Vector2(250, 250)
+metadata/_custom_type_script = "uid://btm576yjkyt4j"
+
+[node name="World" type="Node2D" parent="." unique_id=997333008]
+unique_name_in_owner = true
+
+[node name="Background" type="Node2D" parent="World" unique_id=344852813 node_paths=PackedStringArray("camera_node")]
+visible = false
+z_index = -20
+script = ExtResource("7_kxmqb")
+background_texture = ExtResource("23_a3528")
+camera_node = NodePath("../Camera2D")
+
+[node name="Cards" type="Node2D" parent="World" unique_id=2054375941 node_paths=PackedStringArray("state_machine")]
+unique_name_in_owner = true
+script = ExtResource("19_ploi3")
+state_machine = NodePath("../../Systems/GameStateSystem")
+
+[node name="CardTemplateGhost" parent="World" unique_id=155356654 groups=["game_initialize_scene"] instance=ExtResource("3_ihyl6")]
+position = Vector2(-11367, -8587)
+is_ghost = true
+
+[node name="Camera2D" type="Camera2D" parent="World" unique_id=578924762]
 position = Vector2(600, 0)
 script = ExtResource("4_4ihyn")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1819601620]
+[node name="UI" type="CanvasLayer" parent="." unique_id=1819601620]
 process_mode = 3
 
-[node name="MenuButton" type="Button" parent="CanvasLayer" unique_id=650990246]
+[node name="PauseMenuButton" type="Button" parent="UI" unique_id=650990246]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -121,7 +160,7 @@ initial_visibility = false
 button_behavior = SubResource("Resource_kihnp")
 pressed_action = SubResource("Resource_086p8")
 
-[node name="PlayersOverlay" parent="CanvasLayer" unique_id=832836552 instance=ExtResource("7_a7rnv")]
+[node name="PlayersOverlay" parent="UI" unique_id=832836552 instance=ExtResource("7_a7rnv")]
 offset_right = 203.0
 offset_bottom = 179.0
 size_flags_horizontal = 0
@@ -129,7 +168,7 @@ size_flags_vertical = 0
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=1780999547]
+[node name="ZoomButtons" type="VBoxContainer" parent="UI" unique_id=1780999547]
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
@@ -137,7 +176,7 @@ anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="ZoomIn" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=103762876]
+[node name="ZoomIn" type="Button" parent="UI/ZoomButtons" unique_id=103762876]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_vertical = 10
@@ -150,7 +189,7 @@ initial_visibility = false
 button_behavior = SubResource("Resource_5dmxa")
 pressed_action = SubResource("Resource_1wouk")
 
-[node name="ZoomOut" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=478318636]
+[node name="ZoomOut" type="Button" parent="UI/ZoomButtons" unique_id=478318636]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_vertical = 2
@@ -163,7 +202,7 @@ initial_visibility = false
 button_behavior = SubResource("Resource_78e34")
 pressed_action = SubResource("Resource_tgl34")
 
-[node name="PopupManager" type="Control" parent="CanvasLayer" unique_id=1052490900]
+[node name="PopupHook" type="Control" parent="UI" unique_id=790398251]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -171,105 +210,69 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("21_dv4ao")
 
-[node name="Tutorial" type="Node" parent="CanvasLayer" unique_id=306007871]
-script = ExtResource("22_0x2pf")
-tutorial_window_scene = ExtResource("22_ubsrg")
-available_tutorials = Array[ExtResource("14_65xsg")]([ExtResource("15_s0u1d"), ExtResource("16_askkq"), ExtResource("17_evx0k"), ExtResource("18_evx0k")])
-
-[node name="Background" type="Node2D" parent="." unique_id=344852813 node_paths=PackedStringArray("camera_node")]
-visible = false
-z_index = -20
-script = ExtResource("7_kxmqb")
-background_texture = ExtResource("23_a3528")
-camera_node = NodePath("../Camera2D")
-
-[node name="Cards" type="Node2D" parent="." unique_id=2054375941 node_paths=PackedStringArray("state_machine")]
-script = ExtResource("19_ploi3")
-state_machine = NodePath("../Manager/GameStateMachine")
-
-[node name="CardSpawner" type="Node" parent="Cards" unique_id=812443841]
-script = ExtResource("26_a3528")
-card_template = ExtResource("3_ihyl6")
-place_offset = Vector2(250, 250)
-metadata/_custom_type_script = "uid://btm576yjkyt4j"
-
-[node name="CardTemplateGhost" parent="." unique_id=155356654 groups=["game_initialize_scene"] instance=ExtResource("3_ihyl6")]
-position = Vector2(-11367, -8587)
-is_ghost = true
-
-[node name="NetworkHandler" type="Node" parent="." unique_id=233543300 node_paths=PackedStringArray("player_node")]
-script = ExtResource("29_kihnp")
-finished_game_template = ExtResource("4_6f670")
-player_node = NodePath("../Manager/Players")
-
-[connection signal="card_loading_done" from="." to="Camera2D" method="loading_done"]
-[connection signal="card_loading_done" from="." to="CanvasLayer/MenuButton" method="show_button"]
-[connection signal="card_loading_done" from="." to="CanvasLayer/MenuButton" method="show_button_if_valid"]
-[connection signal="card_loading_done" from="." to="CanvasLayer/PlayersOverlay" method="show"]
-[connection signal="card_loading_done" from="." to="CanvasLayer/VBoxContainer/ZoomIn" method="show_button"]
-[connection signal="card_loading_done" from="." to="CanvasLayer/VBoxContainer/ZoomIn" method="show_button_if_valid"]
-[connection signal="card_loading_done" from="." to="CanvasLayer/VBoxContainer/ZoomOut" method="show_button"]
-[connection signal="card_loading_done" from="." to="CanvasLayer/VBoxContainer/ZoomOut" method="show_button_if_valid"]
-[connection signal="card_loading_done" from="." to="Cards" method="announce_card_field"]
-[connection signal="card_loading_done" from="." to="Cards" method="card_loading_done"]
-[connection signal="game_paused" from="." to="Manager/PlayerInput" method="game_paused"]
-[connection signal="game_paused" from="." to="Camera2D" method="game_paused"]
-[connection signal="load_game" from="." to="Cards/CardSpawner" method="place_cards_from_deck"]
-[connection signal="request_popup" from="." to="CanvasLayer/PopupManager" method="add_and_show_popup"]
-[connection signal="force_close_popup" from="Manager/GameStateMachine" to="CanvasLayer/PopupManager" method="force_close_popup_with_id"]
-[connection signal="request_popup" from="Manager/GameStateMachine" to="CanvasLayer/PopupManager" method="add_and_show_popup"]
-[connection signal="state_changed" from="Manager/GameStateMachine" to="." method="game_state_has_changed"]
-[connection signal="state_changed" from="Manager/GameStateMachine" to="Manager/TutorialStateManager" method="state_changed"]
-[connection signal="state_changed" from="Manager/GameStateMachine" to="Manager/Players" method="game_state_changed"]
-[connection signal="state_changed" from="Manager/GameStateMachine" to="Manager/AI" method="game_state_changed"]
-[connection signal="state_changed" from="Manager/GameStateMachine" to="Manager/PlayerInput" method="game_state_changed"]
-[connection signal="state_changed" from="Manager/GameStateMachine" to="CanvasLayer/PlayersOverlay" method="game_state_changed"]
-[connection signal="state_changed" from="Manager/GameStateMachine" to="Cards" method="game_state_changed"]
-[connection signal="state_changed" from="Manager/GameStateMachine" to="NetworkHandler" method="game_state_changed"]
-[connection signal="trigger_tutorial" from="Manager/TutorialStateManager" to="CanvasLayer/Tutorial" method="trigger_tutorial"]
-[connection signal="player_added" from="Manager/Players" to="CanvasLayer/PlayersOverlay" method="add_player"]
-[connection signal="player_changed" from="Manager/Players" to="CanvasLayer/PlayersOverlay" method="player_changed"]
-[connection signal="player_resource_changed" from="Manager/Players" to="Manager/TutorialStateManager" method="player_changed"]
-[connection signal="player_resource_changed" from="Manager/Players" to="Manager/AI" method="player_changed"]
-[connection signal="player_resource_changed" from="Manager/Players" to="Manager/PlayerInput" method="player_changed"]
-[connection signal="player_resource_changed" from="Manager/Players" to="Camera2D" method="player_changed"]
-[connection signal="player_resource_changed" from="Manager/Players" to="Cards" method="player_changed"]
-[connection signal="player_resource_changed" from="Manager/Players" to="NetworkHandler" method="player_changed"]
-[connection signal="player_score_changed" from="Manager/Players" to="CanvasLayer/PlayersOverlay" method="player_scored"]
-[connection signal="card_movement" from="Manager/PlayerInput" to="Cards" method="parse_movement"]
-[connection signal="confirm_current_card" from="Manager/PlayerInput" to="Cards" method="confirm_current_card"]
-[connection signal="end_current_round" from="Manager/PlayerInput" to="." method="end_round_now"]
-[connection signal="end_current_round" from="Manager/PlayerInput" to="Manager/GameStateMachine" method="force_end_round"]
-[connection signal="game_menu_requested" from="Manager/PlayerInput" to="." method="show_game_menu"]
-[connection signal="touch_used" from="Camera2D" to="Cards" method="disable_card_effects"]
-[connection signal="pressed" from="CanvasLayer/MenuButton" to="." method="show_game_menu"]
-[connection signal="continue_game" from="CanvasLayer/PopupManager" to="." method="unpause_game"]
-[connection signal="pause_game" from="CanvasLayer/PopupManager" to="." method="pause_game"]
-[connection signal="tutorial_requested" from="CanvasLayer/Tutorial" to="CanvasLayer/PopupManager" method="add_and_show_popup"]
-[connection signal="all_matching_cards_removed" from="Cards" to="." method="all_cards_removed"]
-[connection signal="all_matching_cards_removed" from="Cards" to="Manager/GameStateMachine" method="matches_found"]
-[connection signal="all_matching_cards_removed" from="Cards" to="Manager/TutorialStateManager" method="matching_card_found"]
-[connection signal="all_matching_cards_removed" from="Cards" to="Manager/Players" method="player_scored"]
-[connection signal="board_empty" from="Cards" to="." method="show_game_end_screen"]
-[connection signal="board_empty" from="Cards" to="Manager/GameStateMachine" method="board_empty"]
-[connection signal="board_ready" from="Cards" to="Manager/GameStateMachine" method="board_ready"]
-[connection signal="card_activated" from="Cards" to="Manager/GameStateMachine" method="card_was_clicked"]
-[connection signal="card_activated" from="Cards" to="Manager/TutorialStateManager" method="card_triggered"]
-[connection signal="card_triggered" from="Cards" to="Manager/AI" method="card_was_triggered"]
-[connection signal="identical_cards" from="Cards" to="Manager/AI" method="card_was_identically"]
-[connection signal="no_matches_found" from="Cards" to="Manager/GameStateMachine" method="no_matches"]
-[connection signal="announce_field_size" from="Cards/CardSpawner" to="Camera2D" method="adjust_zoom_and_position_to_play_area"]
-[connection signal="card_placed" from="Cards/CardSpawner" to="." method="card_was_placed"]
-[connection signal="card_placed" from="Cards/CardSpawner" to="Cards" method="card_was_placed"]
-[connection signal="card_placing_done" from="Cards/CardSpawner" to="Manager/GameStateMachine" method="game_field_ready"]
-[connection signal="field_constructed" from="Cards/CardSpawner" to="Cards" method="receive_field_size"]
-[connection signal="card_was_clicked" from="NetworkHandler" to="Cards" method="trigger_card_at_position"]
-[connection signal="game_has_been_finished" from="NetworkHandler" to="CanvasLayer/PlayersOverlay" method="game_ended"]
-[connection signal="game_state_has_changed" from="NetworkHandler" to="Manager/PlayerInput" method="game_state_changed"]
-[connection signal="game_state_has_changed" from="NetworkHandler" to="Cards" method="game_state_changed"]
-[connection signal="player_has_changed" from="NetworkHandler" to="Manager/Players" method="set_player_by_id"]
-[connection signal="player_has_scored" from="NetworkHandler" to="Manager/Players" method="set_player_score"]
-[connection signal="remove_card" from="NetworkHandler" to="Cards" method="remove_card_from_board"]
-[connection signal="request_popup" from="NetworkHandler" to="CanvasLayer/PopupManager" method="add_and_show_popup"]
+[connection signal="game_paused" from="." to="Systems/PlayerInputSystem" method="game_paused"]
+[connection signal="game_paused" from="." to="World/Camera2D" method="game_paused"]
+[connection signal="load_game" from="." to="Systems/CardSpawnerSystem" method="place_cards_from_deck"]
+[connection signal="request_popup" from="." to="Systems/PopupSystem" method="add_and_show_popup"]
+[connection signal="force_close_popup" from="Systems/GameStateSystem" to="Systems/PopupSystem" method="force_close_popup_with_id"]
+[connection signal="request_popup" from="Systems/GameStateSystem" to="Systems/PopupSystem" method="add_and_show_popup"]
+[connection signal="state_changed" from="Systems/GameStateSystem" to="." method="game_state_has_changed"]
+[connection signal="state_changed" from="Systems/GameStateSystem" to="Systems/TutorialStateSystem" method="state_changed"]
+[connection signal="state_changed" from="Systems/GameStateSystem" to="Systems/PlayerSystem" method="game_state_changed"]
+[connection signal="state_changed" from="Systems/GameStateSystem" to="Systems/AiAgentSystem" method="game_state_changed"]
+[connection signal="state_changed" from="Systems/GameStateSystem" to="Systems/PlayerInputSystem" method="game_state_changed"]
+[connection signal="state_changed" from="Systems/GameStateSystem" to="World/Background" method="game_state_changed"]
+[connection signal="state_changed" from="Systems/GameStateSystem" to="World/Cards" method="game_state_changed"]
+[connection signal="state_changed" from="Systems/GameStateSystem" to="World/Camera2D" method="game_state_changed"]
+[connection signal="state_changed" from="Systems/GameStateSystem" to="UI/PlayersOverlay" method="game_state_changed"]
+[connection signal="state_changed" from="Systems/GameStateSystem" to="Systems/NetworkHandlerSystem" method="game_state_changed"]
+[connection signal="tutorial_requested" from="Systems/TutorialStateSystem" to="Systems/PopupSystem" method="add_and_show_popup"]
+[connection signal="player_added" from="Systems/PlayerSystem" to="UI/PlayersOverlay" method="add_player"]
+[connection signal="player_changed" from="Systems/PlayerSystem" to="UI/PlayersOverlay" method="player_changed"]
+[connection signal="player_resource_changed" from="Systems/PlayerSystem" to="Systems/TutorialStateSystem" method="player_changed"]
+[connection signal="player_resource_changed" from="Systems/PlayerSystem" to="Systems/AiAgentSystem" method="player_changed"]
+[connection signal="player_resource_changed" from="Systems/PlayerSystem" to="Systems/PlayerInputSystem" method="player_changed"]
+[connection signal="player_resource_changed" from="Systems/PlayerSystem" to="World/Cards" method="player_changed"]
+[connection signal="player_resource_changed" from="Systems/PlayerSystem" to="World/Camera2D" method="player_changed"]
+[connection signal="player_resource_changed" from="Systems/PlayerSystem" to="Systems/NetworkHandlerSystem" method="player_changed"]
+[connection signal="player_score_changed" from="Systems/PlayerSystem" to="UI/PlayersOverlay" method="player_scored"]
+[connection signal="card_movement" from="Systems/PlayerInputSystem" to="World/Cards" method="parse_movement"]
+[connection signal="confirm_current_card" from="Systems/PlayerInputSystem" to="World/Cards" method="confirm_current_card"]
+[connection signal="end_current_round" from="Systems/PlayerInputSystem" to="." method="end_round_now"]
+[connection signal="end_current_round" from="Systems/PlayerInputSystem" to="Systems/GameStateSystem" method="force_end_round"]
+[connection signal="game_menu_requested" from="Systems/PlayerInputSystem" to="." method="show_game_menu"]
+[connection signal="continue_game" from="Systems/PopupSystem" to="." method="unpause_game"]
+[connection signal="pause_game" from="Systems/PopupSystem" to="." method="pause_game"]
+[connection signal="card_was_clicked" from="Systems/NetworkHandlerSystem" to="World/Cards" method="trigger_card_at_position"]
+[connection signal="game_has_been_finished" from="Systems/NetworkHandlerSystem" to="UI/PlayersOverlay" method="game_ended"]
+[connection signal="game_state_has_changed" from="Systems/NetworkHandlerSystem" to="Systems/PlayerInputSystem" method="game_state_changed"]
+[connection signal="game_state_has_changed" from="Systems/NetworkHandlerSystem" to="World/Cards" method="game_state_changed"]
+[connection signal="player_has_changed" from="Systems/NetworkHandlerSystem" to="Systems/PlayerSystem" method="set_player_by_id"]
+[connection signal="player_has_scored" from="Systems/NetworkHandlerSystem" to="Systems/PlayerSystem" method="set_player_score"]
+[connection signal="remove_card" from="Systems/NetworkHandlerSystem" to="World/Cards" method="remove_card_from_board"]
+[connection signal="announce_field_size" from="Systems/CardSpawnerSystem" to="World/Camera2D" method="adjust_zoom_and_position_to_play_area"]
+[connection signal="card_placed" from="Systems/CardSpawnerSystem" to="." method="card_was_placed"]
+[connection signal="card_placed" from="Systems/CardSpawnerSystem" to="World/Cards" method="card_was_placed"]
+[connection signal="card_placing_done" from="Systems/CardSpawnerSystem" to="." method="all_cards_placed"]
+[connection signal="card_placing_done" from="Systems/CardSpawnerSystem" to="Systems/GameStateSystem" method="game_field_ready"]
+[connection signal="card_placing_done" from="Systems/CardSpawnerSystem" to="World/Cards" method="card_loading_done"]
+[connection signal="card_placing_done" from="Systems/CardSpawnerSystem" to="UI/PauseMenuButton" method="show_button_if_valid"]
+[connection signal="card_placing_done" from="Systems/CardSpawnerSystem" to="UI/PlayersOverlay" method="show"]
+[connection signal="card_placing_done" from="Systems/CardSpawnerSystem" to="UI/ZoomButtons/ZoomIn" method="show_button_if_valid"]
+[connection signal="card_placing_done" from="Systems/CardSpawnerSystem" to="UI/ZoomButtons/ZoomOut" method="show_button_if_valid"]
+[connection signal="field_constructed" from="Systems/CardSpawnerSystem" to="World/Cards" method="receive_field_size"]
+[connection signal="all_matching_cards_removed" from="World/Cards" to="." method="all_cards_removed"]
+[connection signal="all_matching_cards_removed" from="World/Cards" to="Systems/GameStateSystem" method="matches_found"]
+[connection signal="all_matching_cards_removed" from="World/Cards" to="Systems/TutorialStateSystem" method="matching_card_found"]
+[connection signal="all_matching_cards_removed" from="World/Cards" to="Systems/PlayerSystem" method="player_scored"]
+[connection signal="board_empty" from="World/Cards" to="." method="show_game_end_screen"]
+[connection signal="board_empty" from="World/Cards" to="Systems/GameStateSystem" method="board_empty"]
+[connection signal="board_ready" from="World/Cards" to="Systems/GameStateSystem" method="board_ready"]
+[connection signal="card_activated" from="World/Cards" to="Systems/GameStateSystem" method="card_was_clicked"]
+[connection signal="card_activated" from="World/Cards" to="Systems/TutorialStateSystem" method="card_triggered"]
+[connection signal="card_triggered" from="World/Cards" to="Systems/AiAgentSystem" method="card_was_triggered"]
+[connection signal="identical_cards" from="World/Cards" to="Systems/AiAgentSystem" method="card_was_identically"]
+[connection signal="no_matches_found" from="World/Cards" to="Systems/GameStateSystem" method="no_matches"]
+[connection signal="touch_used" from="World/Camera2D" to="World/Cards" method="disable_card_effects"]
+[connection signal="pressed" from="UI/PauseMenuButton" to="." method="show_game_menu"]

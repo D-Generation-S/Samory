@@ -87,7 +87,7 @@ func _setup_timer() -> void:
 func _enter_tree() -> void:
 	if is_ghost:
 		return
-	var parent_node: MemoryGame = get_parent().get_parent() as MemoryGame
+	var parent_node: MemoryGame = get_parent().get_node("%World").get_parent() as MemoryGame
 	if parent_node == null:
 		printerr("No parent node was found!")
 
@@ -139,6 +139,8 @@ func force_reveal_card() -> void:
 	_was_clicked = true
 	freeze_card()
 	play_card_turn_sound()
+	if back_side == null or back_side.is_queued_for_deletion():
+		return
 	back_side.toggle_off()
 	show_card.emit()
 	
@@ -157,8 +159,7 @@ func is_turned() -> bool:
 func remove_from_board(was_ai: bool) -> void:
 	var settings: SettingsResource = SettingsRepository.load_settings()
 	if not settings.animate_card_matches or was_ai:
-		about_to_get_delete.emit()
-		getting_removed = true
+		_trigger_remove()
 		return
 	var remove_tween: Tween = create_tween()
 	var camera: Camera2D = get_viewport().get_camera_2d()
@@ -178,10 +179,15 @@ func remove_from_board(was_ai: bool) -> void:
 	remove_tween.tween_property(self, "scale", target_scale, settings.animation_time)
 	## Wait for some time to display card
 	remove_tween.tween_property(self, "scale", target_scale, settings.animation_time)
-	remove_tween.finished.connect(func () -> void: about_to_get_delete.emit())
-	remove_tween.finished.connect(func () -> void: _playing_animation = false)
+	remove_tween.finished.connect(_trigger_remove)
 	
 	getting_removed = true
+
+func _trigger_remove() -> void:
+	for group: String in get_groups():
+		remove_from_group(group)
+	_playing_animation = false
+	about_to_get_delete.emit()
 
 func is_playing_animation() -> bool:
 	return _playing_animation

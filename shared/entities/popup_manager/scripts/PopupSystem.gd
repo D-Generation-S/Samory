@@ -1,7 +1,9 @@
-class_name PopupManager extends Control
+class_name PopupSystem extends Node
 
 signal pause_game()
 signal continue_game()
+
+@export var popup_target: Control
 
 var popupQueue: Array[PopupWindow] = []
 var current_popup_id: int = 0
@@ -16,14 +18,14 @@ func add_and_show_popup(popup: PopupWindow) -> void:
 
 func show_next_popup() -> void:
 	if popupQueue.size() == 0:
-		for child: Node in get_children():
+		for child: Node in popup_target.get_children():
 			if child is Control:
 				child.visible = false
-				remove_child(child)
+				popup_target.remove_child(child)
 		unpause()
 		return
 	var active_popup: bool = false
-	for child: Node in get_children():
+	for child: Node in popup_target.get_children():
 		if child is PopupWindow:
 			if child.visible:
 				active_popup = true
@@ -38,8 +40,8 @@ func show_next_popup() -> void:
 	if popup.should_pause:
 		if multiplayer.multiplayer_peer == null or multiplayer.get_peers().size() == 0:
 			pause_game.emit()
-		mouse_filter = MOUSE_FILTER_STOP
-	add_child(popup)
+		popup_target.mouse_filter = popup_target.MOUSE_FILTER_STOP
+	popup_target.add_child(popup)
 	popup.show()
 	popup.popup_active()
 
@@ -57,10 +59,10 @@ func is_high_priority_popup_requested() -> bool:
 	return is_requested
 
 func handle_high_priority_popup() -> void:
-	for child: Node in get_children():
+	for child: Node in popup_target.get_children():
 		if child is PopupWindow:
 			child.popup_paused()
-			remove_child(child)
+			popup_target.remove_child(child)
 			popupQueue.append(child)
 	for child: Node in popupQueue:
 		if child.high_priority and child.should_pause:
@@ -68,13 +70,13 @@ func handle_high_priority_popup() -> void:
 			popupQueue.insert(0, child)
 	
 func close_current_popup() -> void:
-	for child: Node in get_children():
+	for child: Node in popup_target.get_children():
 		if child is PopupWindow:
 			child.close_popup()
 			break
 
 func force_close_popup_with_id(id: int) -> void:
-	for child: Node in get_children():
+	for child: Node in popup_target.get_children():
 		if child is PopupWindow:
 			if child.get_id() == id:
 				child.visible = false
@@ -86,7 +88,7 @@ func force_close_popup_with_id(id: int) -> void:
 			break
 
 func unpause() -> void:
-	mouse_filter = MOUSE_FILTER_IGNORE
+	popup_target.mouse_filter = popup_target.MOUSE_FILTER_IGNORE
 	continue_game.emit()
 
 func popup_closed() -> void:

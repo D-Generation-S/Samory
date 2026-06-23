@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bv4jg7bjubrrr"]
+[gd_scene format=3 uid="uid://bv4jg7bjubrrr"]
 
 [ext_resource type="Script" uid="uid://bkiuisbx2cguy" path="res://entities/ui/loading_screen/scripts/LoadingScreen.gd" id="1_3p735"]
 [ext_resource type="AudioStream" uid="uid://lboryp8cbdxe" path="res://assets/audio/effect/card-shuffle.ogg" id="2_db4j2"]
@@ -13,18 +13,18 @@ _data = {
 }
 point_count = 2
 
-[node name="LoadingScreen" type="Node2D" node_paths=PackedStringArray("screen_message", "static_label")]
+[node name="LoadingScreen" type="Node2D" unique_id=405334241 node_paths=PackedStringArray("screen_message", "static_label")]
 process_mode = 3
 z_index = 1000
 script = ExtResource("1_3p735")
-screen_message = NodePath("CanvasLayer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/LoadingMessage")
-static_label = NodePath("CanvasLayer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/LoadingStatic")
+screen_message = NodePath("LoadingBanner/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/LoadingMessage")
+static_label = NodePath("LoadingBanner/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/LoadingStatic")
 sound_effect = ExtResource("2_db4j2")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="LoadingBanner" type="CanvasLayer" parent="." unique_id=1349943623]
 layer = 127
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+[node name="MarginContainer" type="MarginContainer" parent="LoadingBanner" unique_id=1071585864]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -32,49 +32,49 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_bottom = 50
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="LoadingBanner/MarginContainer" unique_id=1010768573]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="LoadingBanner/MarginContainer/PanelContainer" unique_id=1019147893]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/PanelContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="LoadingBanner/MarginContainer/PanelContainer/MarginContainer" unique_id=1810950311]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LoadingStatic" type="Label" parent="CanvasLayer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+[node name="LoadingStatic" type="Label" parent="LoadingBanner/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=574301028]
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 8
 text = "LOADING"
 
-[node name="LoadingMessage" type="Label" parent="CanvasLayer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+[node name="LoadingMessage" type="Label" parent="LoadingBanner/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1193357304]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 8
 text = "MESSAGE"
 
-[node name="Path2D" type="Path2D" parent="."]
+[node name="CardSpawnPath" type="Path2D" parent="." unique_id=747438530]
 curve = SubResource("Curve2D_27oxi")
 script = ExtResource("3_nruto")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" node_paths=PackedStringArray("spawn_target")]
+[node name="CardSpawner" type="PathFollow2D" parent="CardSpawnPath" unique_id=2142730758 node_paths=PackedStringArray("spawn_target")]
 position = Vector2(-50, -350)
 script = ExtResource("4_vcpb5")
 spawn_template = ExtResource("5_jrchq")
 spawn_target = NodePath("../../CardNode")
 
-[node name="CardNode" type="Node2D" parent="."]
+[node name="CardNode" type="Node2D" parent="." unique_id=333424754]
 z_index = 1000
 
-[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+[node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=784792369]
 layer = -3
 
-[node name="MenuBackground" parent="BackgroundLayer" instance=ExtResource("6_t26u2")]
+[node name="MenuBackground" parent="BackgroundLayer" unique_id=222192342 instance=ExtResource("6_t26u2")]
 z_index = -3

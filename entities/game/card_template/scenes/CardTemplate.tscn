@@ -87,19 +87,19 @@ alpha_curve = SubResource("CurveTexture_bmj37")
 
 [node name="CardTemplate" type="Node2D" unique_id=598916214 node_paths=PackedStringArray("front_side", "back_side") groups=["game_card"]]
 script = ExtResource("1_fmo68")
-front_side = NodePath("CanvasGroup/CardFront")
+front_side = NodePath("CardContentGroup/CardFrontImage")
 back_side = NodePath("CardBack")
 flip_effects = Array[AudioStream]([ExtResource("2_7bwi6"), ExtResource("3_hh2fg"), ExtResource("4_s61ka")])
 matching_animation_scale = 1.2
 
-[node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=2022425032]
+[node name="CardContentGroup" type="CanvasGroup" parent="." unique_id=2022425032]
 z_index = -2
 material = SubResource("ShaderMaterial_sgpsy")
 position = Vector2(-250, -250)
 script = ExtResource("6_7ry7r")
 possible_effects = Array[ExtResource("7_71qre")]([ExtResource("8_nugiu")])
 
-[node name="DropShadow" type="Sprite2D" parent="CanvasGroup" unique_id=1120611109]
+[node name="DropShadow" type="Sprite2D" parent="CardContentGroup" unique_id=1120611109]
 material = SubResource("ShaderMaterial_bmj37")
 position = Vector2(250, 275)
 texture = ExtResource("14_bmj37")
@@ -107,7 +107,7 @@ script = ExtResource("9_ja01p")
 target_offset = Vector2(13, 13)
 animation_time = 0.1
 
-[node name="CardBackground" type="NinePatchRect" parent="CanvasGroup" unique_id=589517874 groups=["card_content"]]
+[node name="CardBackground" type="NinePatchRect" parent="CardContentGroup" unique_id=589517874 groups=["card_content"]]
 offset_right = 500.0
 offset_bottom = 500.0
 texture = SubResource("AtlasTexture_h72da")
@@ -118,7 +118,7 @@ patch_margin_bottom = 16
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="TextFrame" type="NinePatchRect" parent="CanvasGroup" unique_id=1031246576 groups=["card_content"]]
+[node name="CardNameBackground" type="NinePatchRect" parent="CardContentGroup" unique_id=1031246576 groups=["card_content"]]
 offset_top = 500.0
 offset_right = 500.0
 offset_bottom = 550.0
@@ -128,7 +128,7 @@ patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
 
-[node name="CardText" type="RichTextLabel" parent="CanvasGroup/TextFrame" unique_id=557375108 groups=["card_content"]]
+[node name="CardName" type="RichTextLabel" parent="CardContentGroup/CardNameBackground" unique_id=557375108 groups=["card_content"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -149,7 +149,7 @@ text = "[center]placeholder[/center]"
 fit_content = true
 script = ExtResource("3_4fnc2")
 
-[node name="CardFront" type="Sprite2D" parent="CanvasGroup" unique_id=1601101173 groups=["card_content"]]
+[node name="CardFrontImage" type="Sprite2D" parent="CardContentGroup" unique_id=1601101173 groups=["card_content"]]
 material = SubResource("ShaderMaterial_ucd15")
 position = Vector2(250, 250)
 texture = ExtResource("4_e8l51")
@@ -217,29 +217,29 @@ script = ExtResource("23_bmj37")
 effect_pool = Array[AudioStream]([ExtResource("24_7o8gd"), ExtResource("25_o4ple"), ExtResource("26_7cddj"), ExtResource("27_7sao1")])
 volume = -15.0
 
-[connection signal="about_to_get_delete" from="." to="CanvasGroup" method="animate_destruction"]
+[connection signal="about_to_get_delete" from="." to="CardContentGroup" method="animate_destruction"]
 [connection signal="about_to_get_delete" from="." to="CardBack" method="remove_from_board"]
 [connection signal="about_to_get_delete" from="." to="MatchingFoundEffect" method="trigger"]
 [connection signal="card_in_focus" from="." to="CardBack" method="is_focused"]
 [connection signal="card_in_focus" from="." to="FocusEffect" method="trigger_random_effect"]
 [connection signal="card_lost_focus" from="." to="CardBack" method="lost_focus"]
-[connection signal="card_text_changed" from="." to="CanvasGroup/TextFrame/CardText" method="set_card_text"]
-[connection signal="card_tooltip_changed" from="." to="CanvasGroup/TextFrame/CardText" method="set_tooltip"]
-[connection signal="deck_changed" from="." to="CanvasGroup/DropShadow" method="deck_changed"]
+[connection signal="card_text_changed" from="." to="CardContentGroup/CardNameBackground/CardName" method="set_card_text"]
+[connection signal="card_tooltip_changed" from="." to="CardContentGroup/CardNameBackground/CardName" method="set_tooltip"]
+[connection signal="deck_changed" from="." to="CardContentGroup/DropShadow" method="deck_changed"]
 [connection signal="deck_changed" from="." to="CardBack" method="deck_changed"]
-[connection signal="hide_card" from="." to="CanvasGroup/TextFrame/CardText" method="card_hidden"]
+[connection signal="hide_card" from="." to="CardContentGroup/CardNameBackground/CardName" method="card_hidden"]
 [connection signal="hide_card" from="." to="CardBack" method="toggle_on"]
 [connection signal="input_active" from="." to="CardBack" method="input_active"]
 [connection signal="input_active" from="." to="FocusEffect" method="toggle_state"]
-[connection signal="show_card" from="." to="CanvasGroup" method="show_card_content"]
+[connection signal="show_card" from="." to="CardContentGroup" method="show_card_content"]
 [connection signal="show_card" from="." to="CardBack" method="toggle_off"]
-[connection signal="ready_for_destruction" from="CanvasGroup" to="." method="destory_now"]
-[connection signal="focus_lost" from="CardBack" to="CanvasGroup/DropShadow" method="lost_focus"]
+[connection signal="ready_for_destruction" from="CardContentGroup" to="." method="destory_now"]
+[connection signal="focus_lost" from="CardBack" to="CardContentGroup/DropShadow" method="lost_focus"]
 [connection signal="fully_hidden" from="CardBack" to="." method="signal_repeater_fully_hidden"]
-[connection signal="fully_hidden" from="CardBack" to="CanvasGroup" method="hide_card_content"]
+[connection signal="fully_hidden" from="CardBack" to="CardContentGroup" method="hide_card_content"]
 [connection signal="fully_shown" from="CardBack" to="." method="signal_repeater_fully_shown"]
-[connection signal="hide_started" from="CardBack" to="CanvasGroup/DropShadow" method="lost_focus"]
-[connection signal="in_focus" from="CardBack" to="CanvasGroup/DropShadow" method="got_focus"]
+[connection signal="hide_started" from="CardBack" to="CardContentGroup/DropShadow" method="lost_focus"]
+[connection signal="in_focus" from="CardBack" to="CardContentGroup/DropShadow" method="got_focus"]
 [connection signal="in_focus" from="CardBack" to="FocusEffect" method="trigger_random_effect"]
 [connection signal="clicked" from="CardBack/Collider" to="." method="card_was_clicked"]
 [connection signal="mouse_entered" from="CardBack/Collider" to="." method="selected_by_mouse"]

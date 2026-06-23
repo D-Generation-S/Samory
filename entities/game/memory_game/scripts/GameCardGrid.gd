@@ -9,7 +9,7 @@ signal board_ready()
 signal board_empty()
 signal card_activated()
 
-@export var state_machine: GameStateMachine
+@export var state_machine: GameStateSystem
 
 var current_card: CardTemplate
 
@@ -19,6 +19,7 @@ var currently_ai_player: bool = false
 var number_of_triggered_cards: int = 0
 
 var _field_size: Vector2i = Vector2i.ZERO
+var _game_completed: bool = false
 
 enum Axis {X, Y}
 
@@ -221,14 +222,20 @@ func game_state_changed(game_state: GameEnum.State) -> void:
 				card.player_changed(currently_ai_player)
 			print(_get_game_card_templates().size())
 			if _get_game_card_templates().size() == 0:
-				board_empty.emit()
+				_announce_empty_board()
 
 		GameEnum.State.TURN_FREEZE:
 			round_frozen()
 		GameEnum.State.TURN_COMPLETED:
 			_validate_grid()
 		GameEnum.State.PREPARE_TURN_END:
-			_prepare_turn_complete()			
+			_prepare_turn_complete()
+
+func _announce_empty_board() -> void:
+	if _game_completed:
+		return
+	_game_completed = true
+	board_empty.emit()
 
 func _validate_grid() -> void:
 	for card: CardTemplate in _get_game_card_templates():
@@ -246,7 +253,7 @@ func _validate_grid() -> void:
 		remove_cards_from_board(card_positions)
 		var count: int = _get_game_card_templates().filter(func (card: CardTemplate) -> bool: return not card.getting_removed).size()
 		if count == 0:
-			board_empty.emit()
+			_announce_empty_board()
 			
 		return
 
@@ -264,7 +271,7 @@ func _prepare_turn_complete() -> void:
 	print ("continue prepare turn complete")
 	var all_cards: Array[CardTemplate] = _get_game_card_templates()
 	if all_cards.size() == 0:
-		board_empty.emit()
+		_announce_empty_board()
 		return
 
 	board_ready.emit()
