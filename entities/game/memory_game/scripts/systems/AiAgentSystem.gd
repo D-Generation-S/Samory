@@ -21,20 +21,12 @@ var last_card: MemoryCardResource = null
 
 func card_was_triggered(card: CardTemplate) -> void:
 	add_card_to_all_ais(card.grid_position, card.memory_card)
-	#for card: CardTemplate in clicked_cards:
-	
-	#if !should_play_round:
-		#return
-	#if game_state == GameEnum.State.TURN_START and triggered_cards < 2:
-		#prepare_and_start_timer()
 
 func card_was_identically(first_card_position: Point, second_card_position: Point) -> void:
 	remove_card_to_all_ais(first_card_position)
 	remove_card_to_all_ais(second_card_position)
 	
-	triggered_cards = 0 
-	#if should_play_round:
-		#prepare_and_start_timer()
+	triggered_cards = 0
 
 func game_state_changed(game_state: GameEnum.State) -> void:
 	if should_play_round and game_state == GameEnum.State.TURN_START:
@@ -43,7 +35,6 @@ func game_state_changed(game_state: GameEnum.State) -> void:
 
 	if game_state == GameEnum.State.PREPARE_TURN_END or game_state == GameEnum.State.TURN_FREEZE:
 		timer.stop()
-		#should_play_round = false
 		return
 
 
