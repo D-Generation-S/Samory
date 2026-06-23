@@ -47,7 +47,7 @@ var grid_position: Point
 var _timer_for_hide_delay: Timer
 var _was_clicked: bool
 var _card_frozen: bool = false
-var getting_removed: bool = false
+var _getting_removed: bool = false
 var _playing_animation: bool = false
 
 var _valid_game_state: bool = false
@@ -157,6 +157,7 @@ func is_turned() -> bool:
 	return _was_clicked
 
 func remove_from_board(was_ai: bool) -> void:
+	_getting_removed = true
 	var settings: SettingsResource = SettingsRepository.load_settings()
 	if not settings.animate_card_matches or was_ai:
 		_trigger_remove()
@@ -180,8 +181,6 @@ func remove_from_board(was_ai: bool) -> void:
 	## Wait for some time to display card
 	remove_tween.tween_property(self, "scale", target_scale, settings.animation_time)
 	remove_tween.finished.connect(_trigger_remove)
-	
-	getting_removed = true
 
 func _trigger_remove() -> void:
 	for group: String in get_groups():
@@ -193,7 +192,7 @@ func is_playing_animation() -> bool:
 	return _playing_animation
 
 func is_getting_removed() -> bool:
-	return getting_removed
+	return _getting_removed
 
 func destory_now() -> void:
 	queue_free()
