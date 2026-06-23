@@ -77,5 +77,8 @@ func v_sync_changed(new_value: bool) -> void:
 func enter_animate_changed(new_value: bool) -> void:
 	_current_settings.enter_animate_controls = new_value
 
+func matching_card_animation_changed(new_value: bool) -> void:
+	_current_settings.animate_card_matches = new_value
+
 func ai_think_time_updated(new_value: float) -> void:
 	_current_settings.ai_think_time = new_value

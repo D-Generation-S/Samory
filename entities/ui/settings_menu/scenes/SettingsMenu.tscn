@@ -119,6 +119,7 @@ script = ExtResource("19_3ip51")
 [connection signal="load_custom_deck_changed" from="CenterContainer/PanelContainer/MarginContainer/SettingsMenu/GameplaySettings" to="." method="load_custom_deck_changed"]
 [connection signal="reset_tutorial" from="CenterContainer/PanelContainer/MarginContainer/SettingsMenu/GameplaySettings" to="." method="reset_tutorial"]
 [connection signal="time_for_completion_changed" from="CenterContainer/PanelContainer/MarginContainer/SettingsMenu/GameplaySettings" to="." method="time_for_completion_changed"]
+[connection signal="card_match_animation_changed" from="CenterContainer/PanelContainer/MarginContainer/SettingsMenu/GraphicSettings" to="." method="matching_card_animation_changed"]
 [connection signal="enter_animate_changed" from="CenterContainer/PanelContainer/MarginContainer/SettingsMenu/GraphicSettings" to="." method="enter_animate_changed"]
 [connection signal="language_changed" from="CenterContainer/PanelContainer/MarginContainer/SettingsMenu/GraphicSettings" to="CenterContainer/PanelContainer/MarginContainer/SettingsMenu/GraphicSettings/VBoxContainer/UiScale/UiScaleLabel" method="language_changed"]
 [connection signal="settings_changed" from="CenterContainer/PanelContainer/MarginContainer/SettingsMenu/GraphicSettings" to="CenterContainer/PanelContainer/MarginContainer/SettingsMenu/GraphicSettings/VBoxContainer/UiScale" method="settings_changed"]
