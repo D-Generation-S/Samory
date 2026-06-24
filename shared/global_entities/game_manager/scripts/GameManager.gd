@@ -128,16 +128,13 @@ func translate_built_in_decks() -> void:
 		translated_build_in_decks.append(new_deck)
 
 func close_game_with_position(transition_start_position: Vector2) -> void:
-	var nodes: Array[Node] = get_children()
+	var previous_children: Array[Node] = _get_active_children()
 	var animation_scene: AnimationScene = await ScreenTransitionManager.transit_screen_with_position(main_menu_template, transition_start_position)
 	await animation_scene.animation_done
-	for node: Node in nodes:
-		if node == null or node.is_queued_for_deletion():
+	for child: Node in previous_children:
+		if child == null or child.is_queued_for_deletion():
 			continue
-		if node.name == "GlobalFixedNode" or node.is_in_group("static"):
-			continue
-		node.queue_free()
-
+		child.queue_free()
 
 func close_game() -> void:
 	close_game_with_position(Vector2.ZERO)
@@ -243,6 +240,7 @@ func _rpc_load_game(game_data: Dictionary) -> void:
 
 func load_game(card_deck: Resource, players: Array[PlayerResource], click_position: Vector2) -> void:
 	var current_player_id: int = 0
+	var active_nodes: Array[Node] = _get_active_children()
 	for player: PlayerResource in players:
 		player.id = current_player_id
 		current_player_id = current_player_id + 1
@@ -256,12 +254,20 @@ func load_game(card_deck: Resource, players: Array[PlayerResource], click_positi
 		)
 	
 	
+	var old_camera: Camera2D = get_viewport().get_camera_2d()
 	var loading_screen: LoadingScreen = loading_screen_template.instantiate() as LoadingScreen
 	loading_screen.add_to_group("game_initialize_scene")
 	loading_screen.set_follow_up_node(game_scene_node)
 
 	await ScreenTransitionManager.transit_screen_by_node_with_position(loading_screen, click_position, false)
+	if old_camera != null and not old_camera.is_queued_for_deletion():
+		old_camera.zoom = Vector2.ONE
+		old_camera.queue_free()
 	add_child(game_scene_node)
+	for node: Node in active_nodes:
+		if node == null or node.is_queued_for_deletion():
+			continue
+		node.queue_free()
 
 
 func get_available_decks() -> Array[MemoryDeckResource]:
@@ -273,10 +279,13 @@ func get_available_decks() -> Array[MemoryDeckResource]:
 	return return_array
 
 func clear_all_nodes() -> void:
-		for child: Node in get_children():
-			if child.name == "GlobalFixedNode" or child.is_in_group("static"):
-				continue
-			remove_child(child)
+	for child: Node in get_children():
+		if child == null or child.is_queued_for_deletion():
+			continue
+		if child.name == "GlobalFixedNode" or child.is_in_group("static"):
+			continue
+		remove_child(child)
+		child.queue_free()
 
 func loading_data_done() -> void:
 	if initial_menu_shown:
@@ -290,4 +299,11 @@ func loading_data_done() -> void:
 		current_loading_node.call("destroy")
 		return
 	current_loading_node.queue_free()
-	#open_menu(main_menu_template)
+
+func _get_active_children() -> Array[Node]:
+	var children: Array[Node] = []
+	for child: Node in get_children():
+		if child == null or child.is_queued_for_deletion():
+			continue
+		children.append(child)
+	return children

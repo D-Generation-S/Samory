@@ -30,7 +30,6 @@ var game_menu: GamePauseMenu = null
 
 var ending_round: bool = false
 
-var message_banner: PackedScene = preload("res://entities/game/bottom_message_banner/scenes/BottomMessageBanner.tscn")
 var auto_close_popup: PackedScene = preload("res://entities/game/auto_close_popup/scenes/AutoClosePopup.tscn")
 var last_message_banner_id: int = -1
 

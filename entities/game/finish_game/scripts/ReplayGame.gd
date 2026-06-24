@@ -4,13 +4,12 @@ extends ClickableButton
 
 func _ready() -> void:
 	await get_tree().physics_frame
-	if finish_game_node.played_deck == null:
+	if finish_game_node.played_deck == null or was_multiplayer_game():
 		queue_free()
 
 func _pressed() -> void:
 	get_tree().paused = false
-	if multiplayer.multiplayer_peer != null:
-		multiplayer.multiplayer_peer.close()
-		GlobalGameManagerAccess.get_game_manager().play_network_game(finish_game_node.manager.get_players(), finish_game_node.played_deck, get_screen_position())
-		return
 	GlobalGameManagerAccess.get_game_manager().play_game_with_position(finish_game_node.manager.get_players(), finish_game_node.played_deck, get_screen_position())
+
+func was_multiplayer_game() -> bool:
+	return not multiplayer.multiplayer_peer is OfflineMultiplayerPeer
