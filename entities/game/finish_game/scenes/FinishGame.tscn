@@ -124,3 +124,5 @@ script = ExtResource("6_f0a12")
 finish_game_node = NodePath("../../../../../..")
 
 [connection signal="finish_game_ui_loaded" from="." to="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer/VBoxContainer2/Player List" method="build_player_statistic"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer2/Footer/Buttons/OkButton" to="." method="hide"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer2/Footer/Buttons/ReplayGame" to="." method="hide"]

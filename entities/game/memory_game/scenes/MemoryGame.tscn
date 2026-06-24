@@ -31,6 +31,9 @@
 [ext_resource type="Texture2D" uid="uid://vk4fpd7xo01j" path="res://assets/sprites/Axuree/wood_medium.png" id="23_a3528"]
 [ext_resource type="Script" uid="uid://btm576yjkyt4j" path="res://entities/game/memory_game/scripts/CardSpawner.gd" id="26_a3528"]
 [ext_resource type="Script" uid="uid://drr3p4wba2ys3" path="res://entities/game/memory_game/scripts/systems/NetworkHandler.gd" id="29_kihnp"]
+[ext_resource type="PackedScene" uid="uid://laeqw1xjwd1b" path="res://entities/game/debug_tool/scenes/DebugPanel.tscn" id="33_j82c0"]
+[ext_resource type="Script" uid="uid://c1wsjd5pkvtiq" path="res://entities/game/debug_tool/scripts/DebugFunctionality.gd" id="34_4hsit"]
+[ext_resource type="Script" uid="uid://ce067cc441ff1" path="res://entities/game/debug_tool/scripts/FinishGameFunction.gd" id="35_imof5"]
 [ext_resource type="Script" uid="uid://p5xd1ppjr4ph" path="res://entities/game/memory_game/scripts/systems/TutorialStateSystem.gd" id="40_1resq"]
 
 [sub_resource type="Resource" id="Resource_kihnp"]
@@ -59,6 +62,10 @@ metadata/_custom_type_script = "uid://bc2d1ad7vpjfc"
 script = ExtResource("17_tgl34")
 button_action_name = "zoom_in"
 metadata/_custom_type_script = "uid://cgdnmg4wop2a6"
+
+[sub_resource type="Resource" id="Resource_8rpam"]
+script = ExtResource("35_imof5")
+metadata/_custom_type_script = "uid://ce067cc441ff1"
 
 [node name="MemoryGame" type="Node2D" unique_id=648295195 node_paths=PackedStringArray("game_nodes_to_show", "card_target_node")]
 process_mode = 1
@@ -211,8 +218,13 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="DebugPanel" parent="UI" unique_id=190453148 node_paths=PackedStringArray("memory_game") instance=ExtResource("33_j82c0")]
+memory_game = NodePath("../..")
+debug_functions = Array[ExtResource("34_4hsit")]([SubResource("Resource_8rpam")])
+
 [connection signal="game_paused" from="." to="Systems/PlayerInputSystem" method="game_paused"]
 [connection signal="game_paused" from="." to="World/Camera2D" method="game_paused"]
+[connection signal="game_was_finished" from="." to="World/Camera2D" method="queue_free"]
 [connection signal="load_game" from="." to="Systems/CardSpawnerSystem" method="place_cards_from_deck"]
 [connection signal="request_popup" from="." to="Systems/PopupSystem" method="add_and_show_popup"]
 [connection signal="force_close_popup" from="Systems/GameStateSystem" to="Systems/PopupSystem" method="force_close_popup_with_id"]
@@ -222,20 +234,20 @@ mouse_filter = 2
 [connection signal="state_changed" from="Systems/GameStateSystem" to="Systems/PlayerSystem" method="game_state_changed"]
 [connection signal="state_changed" from="Systems/GameStateSystem" to="Systems/AiAgentSystem" method="game_state_changed"]
 [connection signal="state_changed" from="Systems/GameStateSystem" to="Systems/PlayerInputSystem" method="game_state_changed"]
+[connection signal="state_changed" from="Systems/GameStateSystem" to="Systems/NetworkHandlerSystem" method="game_state_changed"]
 [connection signal="state_changed" from="Systems/GameStateSystem" to="World/Background" method="game_state_changed"]
 [connection signal="state_changed" from="Systems/GameStateSystem" to="World/Cards" method="game_state_changed"]
 [connection signal="state_changed" from="Systems/GameStateSystem" to="World/Camera2D" method="game_state_changed"]
 [connection signal="state_changed" from="Systems/GameStateSystem" to="UI/PlayersOverlay" method="game_state_changed"]
-[connection signal="state_changed" from="Systems/GameStateSystem" to="Systems/NetworkHandlerSystem" method="game_state_changed"]
 [connection signal="tutorial_requested" from="Systems/TutorialStateSystem" to="Systems/PopupSystem" method="add_and_show_popup"]
 [connection signal="player_added" from="Systems/PlayerSystem" to="UI/PlayersOverlay" method="add_player"]
 [connection signal="player_changed" from="Systems/PlayerSystem" to="UI/PlayersOverlay" method="player_changed"]
 [connection signal="player_resource_changed" from="Systems/PlayerSystem" to="Systems/TutorialStateSystem" method="player_changed"]
 [connection signal="player_resource_changed" from="Systems/PlayerSystem" to="Systems/AiAgentSystem" method="player_changed"]
 [connection signal="player_resource_changed" from="Systems/PlayerSystem" to="Systems/PlayerInputSystem" method="player_changed"]
+[connection signal="player_resource_changed" from="Systems/PlayerSystem" to="Systems/NetworkHandlerSystem" method="player_changed"]
 [connection signal="player_resource_changed" from="Systems/PlayerSystem" to="World/Cards" method="player_changed"]
 [connection signal="player_resource_changed" from="Systems/PlayerSystem" to="World/Camera2D" method="player_changed"]
-[connection signal="player_resource_changed" from="Systems/PlayerSystem" to="Systems/NetworkHandlerSystem" method="player_changed"]
 [connection signal="player_score_changed" from="Systems/PlayerSystem" to="UI/PlayersOverlay" method="player_scored"]
 [connection signal="card_movement" from="Systems/PlayerInputSystem" to="World/Cards" method="parse_movement"]
 [connection signal="confirm_current_card" from="Systems/PlayerInputSystem" to="World/Cards" method="confirm_current_card"]

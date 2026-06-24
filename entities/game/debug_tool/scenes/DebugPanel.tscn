@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://laeqw1xjwd1b"]
+
+[ext_resource type="Script" uid="uid://be2gfsbg286u5" path="res://entities/game/debug_tool/scripts/DebugPanel.gd" id="1_8hepm"]
+
+[node name="DebugPanel" type="Control" unique_id=190453148]
+physics_interpolation_mode = 0
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_8hepm")
+metadata/_custom_type_script = "uid://be2gfsbg286u5"
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=257169691]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="ButtonHook" type="PanelContainer" parent="CenterContainer" unique_id=1406501716]
+unique_name_in_owner = true
+layout_mode = 2

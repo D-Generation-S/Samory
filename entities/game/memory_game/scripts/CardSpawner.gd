@@ -43,7 +43,6 @@ func place_cards_from_deck(deck_to_use: MemoryDeckResource) -> void:
 	_place_thread.start(_add_cards_to_field_async.bind(cards, _card_target_node))
 	
 	await card_placing_done
-	_place_thread = null
 	
 	for card: CardTemplate in cards:
 		card.visible = true
