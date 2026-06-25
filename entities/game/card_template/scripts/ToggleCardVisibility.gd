@@ -31,6 +31,7 @@ var currently_in_focus: bool = false
 var collider: Area2D
 var removal_requested: bool = false
 var can_remove: bool = false
+var removal_planned: bool = false
 var currently_ai: bool = false
 
 var animation_tween: Tween = null
@@ -116,6 +117,8 @@ func update_toggle_material(progress: float) -> void:
 func is_focused() -> void:
 	if animation_tween != null && animation_tween.is_running():
 		return
+	if visibility == VisibilityEnum.TRANSITION:
+		return
 	for card: Node in get_tree().get_nodes_in_group("game_card"):
 		if card is CardTemplate and card.card_is_focused():
 			card.lost_focus()
@@ -152,8 +155,11 @@ func is_currently_in_focus() -> bool:
 func remove_from_board() -> void:
 	removal_requested = true
 
+func removal_planed() -> void:
+	removal_planned = true
+
 func _process(_delta: float) -> void:
-	if removal_requested && can_remove:
+	if removal_planned && can_remove:
 		ready_for_removal.emit()
 		queue_free()
 		

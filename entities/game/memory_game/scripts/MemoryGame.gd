@@ -34,10 +34,19 @@ var auto_close_popup: PackedScene = preload("res://entities/game/auto_close_popu
 var last_message_banner_id: int = -1
 
 var _is_local_only: bool = true
+var _game_scene_group_name: String = "game_scene"
+var _systems: Systems:
+	get():
+		if _systems == null:
+			_systems = get_node("%Systems")
+		return _systems
+
+func _init() -> void:
+	add_to_group(_game_scene_group_name)
 
 func _ready() -> void:
 	process_mode = PROCESS_MODE_DISABLED
-	player_node = get_node("%PlayerSystem")
+	player_node = get_node("%PlayerSystem")	
 
 func start_loading_data() -> void:
 	load_game.emit(card_deck)
@@ -58,6 +67,7 @@ func show_initial_setup() -> bool:
 	return true
 
 func show_game_end_screen() -> void:
+	remove_from_group(_game_scene_group_name)
 	var finish_node: GameFinished = finished_game_template.instantiate() as GameFinished
 	finish_node.high_priority = true
 	finish_node.set_player_manager(player_node)
@@ -107,3 +117,6 @@ func all_cards_placed() -> void:
 		child.queue_free()
 	GlobalSoundManager.stop_all_sounds()
 	process_mode = Node.PROCESS_MODE_INHERIT
+
+func get_systems() -> Systems:
+	return _systems

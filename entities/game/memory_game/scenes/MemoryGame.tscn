@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://csamt2tu6hlpo" path="res://entities/game/finish_game/scenes/FinishGame.tscn" id="4_6f670"]
 [ext_resource type="Script" uid="uid://bxjrl2ikqn4tk" path="res://entities/game/memory_game/scripts/systems/PlayerSystem.gd" id="4_n744t"]
 [ext_resource type="AudioStream" uid="uid://dq3rmjoitwi1a" path="res://assets/audio/effect/confirmation_001.ogg" id="6_a3528"]
+[ext_resource type="Script" uid="uid://cetyf2kvhh70r" path="res://entities/game/memory_game/scripts/Systems.gd" id="7_8jbv8"]
 [ext_resource type="PackedScene" uid="uid://d0vijthhc3d38" path="res://entities/game/players_overlay/scenes/PlayersOverlay.tscn" id="7_a7rnv"]
 [ext_resource type="Script" uid="uid://bmwi41kseslkw" path="res://entities/game/memory_game/scripts/systems/GameStateSystem.gd" id="7_j82c0"]
 [ext_resource type="Script" uid="uid://bglvkbo4aydsy" path="res://entities/game/memory_game/scripts/Background.gd" id="7_kxmqb"]
@@ -34,6 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://laeqw1xjwd1b" path="res://entities/game/debug_tool/scenes/DebugPanel.tscn" id="33_j82c0"]
 [ext_resource type="Script" uid="uid://c1wsjd5pkvtiq" path="res://entities/game/debug_tool/scripts/DebugFunctionality.gd" id="34_4hsit"]
 [ext_resource type="Script" uid="uid://ce067cc441ff1" path="res://entities/game/debug_tool/scripts/FinishGameFunction.gd" id="35_imof5"]
+[ext_resource type="Script" uid="uid://b34wu88vlg03e" path="res://entities/game/memory_game/scripts/systems/UiInformationSystem.gd" id="36_m766l"]
 [ext_resource type="Script" uid="uid://p5xd1ppjr4ph" path="res://entities/game/memory_game/scripts/systems/TutorialStateSystem.gd" id="40_1resq"]
 
 [sub_resource type="Resource" id="Resource_kihnp"]
@@ -78,7 +80,10 @@ game_nodes_to_show = [NodePath("UI"), NodePath("World/Background")]
 card_target_node = NodePath("World/Cards")
 sound_effect = ExtResource("6_a3528")
 
-[node name="Systems" type="Node" parent="." unique_id=1597793066]
+[node name="Systems" type="Node" parent="." unique_id=1325794078]
+unique_name_in_owner = true
+script = ExtResource("7_8jbv8")
+metadata/_custom_type_script = "uid://cetyf2kvhh70r"
 
 [node name="GameStateSystem" type="Node" parent="Systems" unique_id=2091663874]
 script = ExtResource("7_j82c0")
@@ -123,6 +128,11 @@ script = ExtResource("26_a3528")
 card_template = ExtResource("3_ihyl6")
 place_offset = Vector2(250, 250)
 metadata/_custom_type_script = "uid://btm576yjkyt4j"
+
+[node name="UiInformationSystem" type="Node" parent="Systems" unique_id=1812178848]
+unique_name_in_owner = true
+script = ExtResource("36_m766l")
+metadata/_custom_type_script = "uid://b34wu88vlg03e"
 
 [node name="World" type="Node2D" parent="." unique_id=997333008]
 unique_name_in_owner = true
@@ -224,7 +234,6 @@ debug_functions = Array[ExtResource("34_4hsit")]([SubResource("Resource_8rpam")]
 
 [connection signal="game_paused" from="." to="Systems/PlayerInputSystem" method="game_paused"]
 [connection signal="game_paused" from="." to="World/Camera2D" method="game_paused"]
-[connection signal="game_was_finished" from="." to="World/Camera2D" method="queue_free"]
 [connection signal="load_game" from="." to="Systems/CardSpawnerSystem" method="place_cards_from_deck"]
 [connection signal="request_popup" from="." to="Systems/PopupSystem" method="add_and_show_popup"]
 [connection signal="force_close_popup" from="Systems/GameStateSystem" to="Systems/PopupSystem" method="force_close_popup_with_id"]

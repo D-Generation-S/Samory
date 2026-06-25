@@ -20,6 +20,8 @@ signal card_text_changed(new_text: String)
 signal card_tooltip_changed(new_tooltip: String)
 signal deck_changed(deck: MemoryDeckResource)
 
+signal remove_requested()
+
 @export var is_ghost: bool = false
 
 @export_group("Visuals")
@@ -31,6 +33,7 @@ signal deck_changed(deck: MemoryDeckResource)
 @export_range(0,0.25) var card_flip_animation_min_time_delay: float = 0.1
 @export_range(0,0.5) var card_flip_animation_max_time_delay: float = 0.5
 @export var matching_animation_scale: float = 1.5
+@export var shrink_animation_scale: float = 0.3
 
 @export_group("Debug")
 @export var debug_remove: bool = false:
@@ -51,6 +54,22 @@ var _getting_removed: bool = false
 var _playing_animation: bool = false
 
 var _valid_game_state: bool = false
+var _memory_game: MemoryGame:
+	get():
+		if _memory_game == null:
+			_memory_game = get_tree().get_first_node_in_group("game_scene")
+		return _memory_game
+
+var _ui_information: UiInformationSystem:
+	get():
+		if _ui_information == null:
+			if _memory_game == null:
+				return _ui_information
+			for system: Node in _memory_game.get_systems().get_systems():
+				if system is UiInformationSystem:
+					_ui_information = system
+					break
+		return _ui_information
 
 var _game_manager: GameManager:
 	get():
@@ -157,30 +176,63 @@ func is_turned() -> bool:
 	return _was_clicked
 
 func remove_from_board(was_ai: bool) -> void:
+	top_level = true
+	z_index = 100
 	_getting_removed = true
+	remove_requested.emit()
 	var settings: SettingsResource = SettingsRepository.load_settings()
+
 	if not settings.animate_card_matches or was_ai:
-		_trigger_remove()
+		_fast_match_animation(settings)
 		return
+	_player_match_animation(settings)
+
+func _fast_match_animation(settings: SettingsResource) -> void:
 	var remove_tween: Tween = create_tween()
+	remove_tween.tween_property(self, "scale", scale, settings.animation_time)
+	remove_tween.tween_property(self, "scale", Vector2(shrink_animation_scale, shrink_animation_scale), settings.animation_time / 2)
+	remove_tween.parallel()
+	remove_tween.tween_method(_move_to_player_ui, 0.0, 1.0, settings.animation_time * 1.5)
+	remove_tween.finished.connect(_trigger_remove)
+
+func _player_match_animation(settings: SettingsResource) -> void:
 	var camera: Camera2D = get_viewport().get_camera_2d()
-	var center: Vector2 = _game_manager._get_viewport_size() / 2.0
 	var additional_scale: float = 1
 	if camera != null:
-		center = camera.get_screen_center_position()
 		additional_scale = 1.0 / camera.zoom.x
-	z_index = 100
-
 	var target_scale: Vector2 = Vector2(matching_animation_scale * additional_scale, matching_animation_scale * additional_scale)
-	_playing_animation = true
+
+	var remove_tween: Tween = create_tween()
 	remove_tween.tween_property(self, "scale", scale, settings.animation_time)
 
-	remove_tween.tween_property(self, "global_position", center, settings.animation_time)
+	remove_tween.tween_method(_move_to_center, 0.0, 1.0, settings.animation_time)
 	remove_tween.parallel()
 	remove_tween.tween_property(self, "scale", target_scale, settings.animation_time)
 	## Wait for some time to display card
 	remove_tween.tween_property(self, "scale", target_scale, settings.animation_time)
+	remove_tween.tween_property(self, "scale", Vector2(shrink_animation_scale, shrink_animation_scale), settings.animation_time / 2)
+	remove_tween.parallel()
+	remove_tween.tween_method(_move_to_player_ui, 0.0, 1.0, settings.animation_time / 2)
 	remove_tween.finished.connect(_trigger_remove)
+
+func _move_to_center(lerp_weight: float)  -> void:
+	var center: Vector2 = _game_manager._get_viewport_size() / 2.0
+	var camera: Camera2D = get_viewport().get_camera_2d()
+	if camera != null:
+		center = camera.get_screen_center_position()
+
+	global_position = lerp(global_position, center, lerp_weight)
+
+func _move_to_player_ui(lerp_weight: float) -> void:
+	var target_position: Vector2 = _get_global_player_ui_position()
+
+	global_position = lerp(global_position, target_position, lerp_weight)
+
+func _get_global_player_ui_position() -> Vector2:
+	if _ui_information == null:
+		return global_position
+	var player_overlay: PlayerGameOverlay = _ui_information.get_ui_element("PlayersOverlay")
+	return player_overlay.get_global_position_of_current_player()
 
 func _trigger_remove() -> void:
 	for group: String in get_groups():

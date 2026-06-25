@@ -37,7 +37,6 @@ func game_state_changed(game_state: GameEnum.State) -> void:
 		timer.stop()
 		return
 
-
 func get_all_card_positions() -> Array[Point]:
 	return cards_node.get_all_card_positions()
 
