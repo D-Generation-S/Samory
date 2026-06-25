@@ -9,7 +9,12 @@ func _ready() -> void:
 
 func _pressed() -> void:
 	get_tree().paused = false
-	GlobalGameManagerAccess.get_game_manager().play_game_with_position(finish_game_node.manager.get_players(), finish_game_node.played_deck, get_screen_position())
+	var players: Array[PlayerResource] = finish_game_node.manager.get_players()
+	players.sort_custom(sort_by_id)
+	GlobalGameManagerAccess.get_game_manager().play_game_with_position(players, finish_game_node.played_deck, get_screen_position())
+
+func sort_by_id(a: PlayerResource, b: PlayerResource) -> bool:
+	return a.id < b.id
 
 func was_multiplayer_game() -> bool:
 	return not multiplayer.multiplayer_peer is OfflineMultiplayerPeer

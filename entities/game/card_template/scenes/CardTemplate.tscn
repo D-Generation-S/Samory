@@ -204,7 +204,7 @@ script = ExtResource("18_8fn1p")
 visible = false
 z_index = 1001
 position = Vector2(0, 25)
-amount = 1600
+amount = 800
 texture = ExtResource("20_ja01p")
 lifetime = 3.0
 preprocess = 1.5
@@ -231,6 +231,7 @@ volume = -15.0
 [connection signal="hide_card" from="." to="CardBack" method="toggle_on"]
 [connection signal="input_active" from="." to="CardBack" method="input_active"]
 [connection signal="input_active" from="." to="FocusEffect" method="toggle_state"]
+[connection signal="remove_requested" from="." to="CardBack" method="removal_planed"]
 [connection signal="show_card" from="." to="CardContentGroup" method="show_card_content"]
 [connection signal="show_card" from="." to="CardBack" method="toggle_off"]
 [connection signal="ready_for_destruction" from="CardContentGroup" to="." method="destory_now"]

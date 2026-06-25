@@ -10,6 +10,7 @@ signal board_empty()
 signal card_activated()
 
 @export var state_machine: GameStateSystem
+@export var matching_card_sound_effect: AudioStream
 
 var current_card: CardTemplate
 
@@ -142,6 +143,7 @@ func remove_cards_from_board(grid_positions: Array[Point]) -> void:
 		if card.is_playing_animation():
 			await card.about_to_get_delete
 	all_matching_cards_removed.emit()
+	GlobalSoundManager.play_sound_effect(matching_card_sound_effect)
 	
 func remove_card_from_board(grid_position: Point) -> void:
 	for child: CardTemplate in _get_game_card_templates_children():
