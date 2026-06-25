@@ -181,6 +181,7 @@ func remove_from_board(was_ai: bool) -> void:
 	_getting_removed = true
 	remove_requested.emit()
 	var settings: SettingsResource = SettingsRepository.load_settings()
+	_playing_animation = true
 
 	if not settings.animate_card_matches or was_ai:
 		_fast_match_animation(settings)

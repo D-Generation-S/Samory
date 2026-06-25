@@ -19,9 +19,6 @@ const CARDS_PER_PLAYER: int = 2
 @export var game_nodes_to_show: Array[Node]
 @export var card_target_node: Node2D
 
-@export_group("Effect Setup")
-@export var sound_effect: AudioStream
-
 #var current_game_state: int
 var player_node: PlayerSystem
 var triggered_cards: int

@@ -78,7 +78,6 @@ finished_game_template = ExtResource("4_6f670")
 game_menu_template = ExtResource("12_dfx06")
 game_nodes_to_show = [NodePath("UI"), NodePath("World/Background")]
 card_target_node = NodePath("World/Cards")
-sound_effect = ExtResource("6_a3528")
 
 [node name="Systems" type="Node" parent="." unique_id=1325794078]
 unique_name_in_owner = true
@@ -148,6 +147,7 @@ camera_node = NodePath("../Camera2D")
 unique_name_in_owner = true
 script = ExtResource("19_ploi3")
 state_machine = NodePath("../../Systems/GameStateSystem")
+matching_card_sound_effect = ExtResource("6_a3528")
 
 [node name="CardTemplateGhost" parent="World" unique_id=155356654 groups=["game_initialize_scene"] instance=ExtResource("3_ihyl6")]
 position = Vector2(-11367, -8587)
