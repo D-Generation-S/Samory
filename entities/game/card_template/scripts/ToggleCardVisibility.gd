@@ -6,8 +6,6 @@ signal ready_for_removal()
 signal fully_hidden()
 signal fully_shown()
 signal hide_started()
-signal in_focus()
-signal focus_lost()
 
 enum VisibilityEnum
 {
@@ -28,11 +26,10 @@ var _internal_focus_material: ShaderMaterial
 
 var currently_in_focus: bool = false
 
-var collider: Area2D
 var removal_requested: bool = false
 var can_remove: bool = false
 var removal_planned: bool = false
-var currently_ai: bool = false
+#var currently_ai: bool = false
 
 var animation_tween: Tween = null
 var _focus_tween: Tween = null
@@ -42,7 +39,6 @@ var fix_image_thread: Thread
 var visibility: VisibilityEnum = VisibilityEnum.HIDDEN
 
 func _ready() -> void:
-	collider = %Collider
 	visible = true
 	_internal_focus_material = focus_material.duplicate_deep()
 	_internal_toggle_material = toggle_material.duplicate_deep()
@@ -88,14 +84,6 @@ func _animation_finished(should_hide: bool) -> void:
 		can_remove = true
 		print("shown")
 
-func freeze_card() -> void:
-	collider.visible = false
-	
-func unfreeze_card() -> void:
-	if currently_ai:
-		return
-	collider.visible = true
-
 # This method will show a fully hidden card
 func toggle_off() -> void:
 	print("toggle off")
@@ -125,14 +113,11 @@ func is_focused() -> void:
 
 	currently_in_focus = true
 	set_shader_material(_internal_focus_material)
-	in_focus.emit()
 	_animate_focus(focus_scale)
 
 func lost_focus() -> void:
 	currently_in_focus = false
 	set_shader_material(_internal_toggle_material)
-	if collider.visible:
-		focus_lost.emit()
 
 	_animate_focus(1.0)
 
@@ -162,10 +147,3 @@ func _process(_delta: float) -> void:
 	if removal_planned && can_remove:
 		ready_for_removal.emit()
 		queue_free()
-		
-func input_active(is_active: bool) -> void:
-	currently_ai = !is_active
-	if is_active:
-		unfreeze_card()
-		return
-	freeze_card()

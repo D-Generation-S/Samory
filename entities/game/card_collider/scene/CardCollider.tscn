@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://0m4c62oqj4ih"]
+
+[ext_resource type="Script" uid="uid://bdy6xfwtsa3ff" path="res://entities/game/card_collider/scripts/CardCollider.gd" id="1_rityh"]
+
+[node name="CardCollider" type="Node2D" unique_id=620304416]
+script = ExtResource("1_rityh")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=214623478]
+input_pickable = true
+
+[node name="CollisionShape" type="CollisionShape2D" parent="StaticBody2D" unique_id=721046375]
+unique_name_in_owner = true
+
+[connection signal="set_shape" from="." to="StaticBody2D/CollisionShape" method="set_shape"]
+[connection signal="input_event" from="StaticBody2D" to="." method="input_event"]
+[connection signal="mouse_entered" from="StaticBody2D" to="." method="mouse_entered"]
+[connection signal="mouse_exited" from="StaticBody2D" to="." method="mouse_has_left"]

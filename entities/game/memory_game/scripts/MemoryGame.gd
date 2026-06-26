@@ -1,6 +1,6 @@
 class_name MemoryGame extends Node2D
 
-signal load_game(card_deck: MemoryDeckResource)
+signal load_game(card_deck: MemoryDeckResource, separation: int, field_offset: Vector2i)
 
 signal game_paused(is_paused: bool)
 
@@ -8,16 +8,14 @@ signal request_popup(window: PopupWindow)
 
 const CARDS_PER_PLAYER: int = 2
 
-@export_group("Translations")
-@export var round_end_message: TextTranslation
-@export var round_end_message_no_auto_complete: TextTranslation
-
 @export_group("Game Setup")
-@export var card_deck: Resource
+@export var card_separation: int = 25
+@export var field_offset: Vector2i = Vector2i(250, 250)
 @export var finished_game_template: PackedScene
 @export var game_menu_template: PackedScene
-@export var game_nodes_to_show: Array[Node]
-@export var card_target_node: Node2D
+
+
+var _card_deck: Resource
 
 #var current_game_state: int
 var player_node: PlayerSystem
@@ -45,8 +43,11 @@ func _ready() -> void:
 	process_mode = PROCESS_MODE_DISABLED
 	player_node = get_node("%PlayerSystem")	
 
+func set_card_deck(deck: MemoryDeckResource) -> void:
+	_card_deck = deck
+
 func start_loading_data() -> void:
-	load_game.emit(card_deck)
+	load_game.emit(_card_deck, card_separation, field_offset)
 
 func _process(_delta: float) -> void:
 	if !execute_logic():
@@ -68,7 +69,7 @@ func show_game_end_screen() -> void:
 	var finish_node: GameFinished = finished_game_template.instantiate() as GameFinished
 	finish_node.high_priority = true
 	finish_node.set_player_manager(player_node)
-	finish_node.set_played_deck(card_deck)
+	finish_node.set_played_deck(_card_deck)
 	request_popup.emit(finish_node)
 
 func set_players(players_of_game: Array[PlayerResource]) -> void:

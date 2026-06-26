@@ -11,6 +11,7 @@ signal card_activated()
 
 @export var state_machine: GameStateSystem
 @export var matching_card_sound_effect: AudioStream
+@export var visual_card_node: Node2D
 
 var current_card: CardTemplate
 
@@ -50,7 +51,7 @@ func _move_axis(direction: int, axis: Axis) -> void:
 
 func get_card_grid(current_pos: Point) -> Array[Point]:
 	var all_cards: Array[Point] = []
-	for card: Node2D in get_children():
+	for card: Node2D in visual_card_node.get_children():
 		if card is CardTemplate and !card.grid_position.is_identical(current_pos) and not card.is_getting_removed():
 			all_cards.append(card.grid_position)
 
@@ -317,7 +318,7 @@ func disable_card_effects() -> void:
 
 func _get_game_card_templates_children() -> Array[CardTemplate]:
 	var return_data: Array[CardTemplate]
-	for card_template: CardTemplate in get_children().filter(func(data: Node) -> bool: return data is CardTemplate):
+	for card_template: CardTemplate in visual_card_node.get_children().filter(func(data: Node) -> bool: return data is CardTemplate):
 		return_data.append(card_template)
 	return return_data
 

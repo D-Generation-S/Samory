@@ -4,7 +4,7 @@ signal game_menu_requested()
 signal end_current_round()
 signal confirm_current_card()
 signal card_movement(information: Vector2)
-signal disable_input()
+#signal disable_input()
 
 @export var frames_to_skip_after_pause: int = 2
 
@@ -42,8 +42,8 @@ func player_changed(current_player:PlayerResource) -> void:
 	current_ai_player = current_player.is_ai()
 	if multiplayer.get_peers().size() > 0 and current_player.id != multiplayer.get_unique_id():
 		current_ai_player = true
-	if current_ai_player:
-		disable_input.emit()
+	#if current_ai_player:
+		#disable_input.emit()
 
 func prevent_input(prevent: bool) -> void:
 	_prevent_input = prevent
