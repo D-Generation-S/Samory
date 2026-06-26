@@ -200,7 +200,7 @@ msgstr ""
 "\n"
 "[center][b]Powered By[/b][/center]\n"
 "[center][img=200x200,center,center]res://icon.svg[/img][/center]\n"
-"[center]Godot Game Engine 4.6[/center]"
+"[center]Godot Game Engine 4.7[/center]"
 
 #: entities/ui/credits/scenes/Credits.tscn
 #: entities/ui/deck_viewer/scenes/DeckViewer.tscn
