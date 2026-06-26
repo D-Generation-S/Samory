@@ -101,6 +101,9 @@
 # res://entities/ui/gameplay_settings/scenes/GameplaySettings.tscn
 # res://entities/ui/audio_settings/scene/AudioScene.tscn
 # res://entities/ui/graphic_settings/scenes/GraphicSettings.tscn
+# res://shared/resources/translations/assets/SamuelBirthdayEventBody.tres
+# res://shared/resources/translations/assets/BirthdayEventHeadline.tres
+# res://shared/resources/translations/assets/SamoryBirthDayText.tres
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -1315,6 +1318,19 @@ msgstr ""
 
 #: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
 msgid "RESET_SCALING"
+msgstr ""
+
+#. TRANSLATORS: Can contain a "%DATE%" palceholder, which is getting replaced by the event date
+#: shared/resources/translations/assets/SamuelBirthdayEventBody.tres
+msgid "SAMUEL_BIRTHDAY_EVENT_TEXT"
+msgstr ""
+
+#: shared/resources/translations/assets/BirthdayEventHeadline.tres
+msgid "BIRTHDAY_EVENT_HEADLINE"
+msgstr ""
+
+#: shared/resources/translations/assets/SamoryBirthDayText.tres
+msgid "SAMORY_BIRTHDAY_EVENT_TEXT"
 msgstr ""
 
 msgid "Samory"

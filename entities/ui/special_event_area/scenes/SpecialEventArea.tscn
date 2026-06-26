@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://bb8a06skydqwe"]
+
+[ext_resource type="Script" uid="uid://bq7jwpndnhsso" path="res://entities/ui/special_event_area/scripts/SpecialEventArea.gd" id="1_5gav4"]
+[ext_resource type="Script" uid="uid://cbevbiicfyjvm" path="res://entities/ui/special_event_area/scripts/SpecialEvent.gd" id="2_nrjy8"]
+[ext_resource type="Texture2D" uid="uid://dx80soewvmafg" path="res://assets/icons/LeftArrow.tres" id="2_vmcdl"]
+[ext_resource type="Texture2D" uid="uid://dkm1d2mijfcuq" path="res://assets/icons/PlayIcon.tres" id="3_dmn6f"]
+[ext_resource type="Resource" uid="uid://ran18u8hj7hb" path="res://entities/ui/special_event_area/events/SamuelBirthdayEvent.tres" id="3_liv2w"]
+[ext_resource type="Script" uid="uid://r7qpm6e1ckoh" path="res://entities/ui/special_event_area/scripts/ContentArea.gd" id="4_liv2w"]
+
+[node name="SpecialEventArea" type="Control" unique_id=1313493604]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5gav4")
+all_events = Array[ExtResource("2_nrjy8")]([ExtResource("3_liv2w")])
+metadata/_custom_type_script = "uid://bq7jwpndnhsso"
+
+[node name="SpecialEventContainer" type="PanelContainer" parent="." unique_id=1294849520]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -112.0
+offset_right = 289.0
+grow_vertical = 0
+
+[node name="SpecialEventHBox" type="HBoxContainer" parent="SpecialEventContainer" unique_id=1996837038]
+layout_mode = 2
+
+[node name="PreviousEventButton" type="Button" parent="SpecialEventContainer/SpecialEventHBox" unique_id=1014056051]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+icon = ExtResource("2_vmcdl")
+
+[node name="ContentArea" type="MarginContainer" parent="SpecialEventContainer/SpecialEventHBox" unique_id=1352675529]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("4_liv2w")
+metadata/_custom_type_script = "uid://r7qpm6e1ckoh"
+
+[node name="NextEventButton" type="Button" parent="SpecialEventContainer/SpecialEventHBox" unique_id=147454204]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+tooltip_text = "NEXT_EVENT_DESCRIPTION"
+icon = ExtResource("3_dmn6f")
+
+[connection signal="add_event" from="." to="SpecialEventContainer/SpecialEventHBox/ContentArea" method="add_event"]
+[connection signal="single_event" from="." to="SpecialEventContainer/SpecialEventHBox/PreviousEventButton" method="hide"]
+[connection signal="single_event" from="." to="SpecialEventContainer/SpecialEventHBox/NextEventButton" method="hide"]
+[connection signal="pressed" from="SpecialEventContainer/SpecialEventHBox/PreviousEventButton" to="SpecialEventContainer/SpecialEventHBox/ContentArea" method="show_previous"]
+[connection signal="pressed" from="SpecialEventContainer/SpecialEventHBox/NextEventButton" to="SpecialEventContainer/SpecialEventHBox/ContentArea" method="show_next"]

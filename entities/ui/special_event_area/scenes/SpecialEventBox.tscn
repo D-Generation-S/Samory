@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dw55fdvpcr70e"]
+
+[ext_resource type="Script" uid="uid://clqfhgkyd03c8" path="res://entities/ui/special_event_area/scripts/SpecialEventBox.gd" id="1_kmhj8"]
+[ext_resource type="StyleBox" uid="uid://d1rhal5rp1608" path="res://assets/styles/panel/MetalBox.tres" id="1_lrji4"]
+
+[node name="SpecialEventBox" type="PanelContainer" unique_id=1870634146]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -644.0
+offset_right = 33.0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("1_lrji4")
+script = ExtResource("1_kmhj8")
+metadata/_custom_type_script = "uid://clqfhgkyd03c8"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=152967713]
+custom_minimum_size = Vector2(350, 50)
+custom_maximum_size = Vector2(350, 150)
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "EVENT_PLACEHOLDER"
+fit_content = true
+
+[connection signal="text_changed" from="." to="RichTextLabel" method="set_text"]

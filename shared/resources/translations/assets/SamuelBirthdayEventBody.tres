@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TextTranslation" format=3 uid="uid://ipxe810ybd0w"]
+
+[ext_resource type="Script" uid="uid://b3ccmsvxi5x8x" path="res://shared/resources/translations/TextTranslation.gd" id="1_58gbn"]
+
+[resource]
+script = ExtResource("1_58gbn")
+key = "SAMUEL_BIRTHDAY_EVENT_TEXT"
+comment = "Can contain a \"%DATE%\" palceholder, which is getting replaced by the event date"
+metadata/_custom_type_script = "uid://b3ccmsvxi5x8x"
