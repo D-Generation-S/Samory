@@ -238,14 +238,14 @@ func _rpc_load_game(game_data: Dictionary) -> void:
 	await ScreenTransitionManager.transit_screen_by_node_with_position(loading_screen, click_position, false)
 	get_tree().root.add_child(game_scene_node)
 
-func load_game(card_deck: Resource, players: Array[PlayerResource], click_position: Vector2) -> void:
+func load_game(card_deck: MemoryDeckResource, players: Array[PlayerResource], click_position: Vector2) -> void:
 	var current_player_id: int = 0
 	var active_nodes: Array[Node] = _get_active_children()
 	for player: PlayerResource in players:
 		player.id = current_player_id
 		current_player_id = current_player_id + 1
 	var game_scene_node: MemoryGame = game_scene.instantiate() as MemoryGame
-	game_scene_node.card_deck = card_deck
+	game_scene_node.set_card_deck(card_deck)
 
 	
 	game_scene_node.ready.connect(func() -> void:

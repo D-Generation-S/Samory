@@ -130,7 +130,6 @@ func get_height() -> float:
 func freeze_card() -> void:
 	if back_side == null:
 		return
-	back_side.freeze_card()
 	_card_frozen = true
 	lost_focus()
 
@@ -139,7 +138,6 @@ func unfreeze_card() -> void:
 		return
 	_was_clicked = false
 	_card_frozen = false
-	back_side.unfreeze_card()
 
 func get_width() -> float:
 	return back_side.get_rect().size.x

@@ -1,6 +1,5 @@
 class_name CardSpawnerSystem extends Node
 
-
 signal field_constructed(cards_on_x: int, cards_on_y: int)
 signal card_loading_done()
 signal announce_field_size(area: Rect2)
@@ -8,11 +7,11 @@ signal card_placed(card: CardTemplate)
 signal card_placing_done()
 
 @export var card_template: PackedScene
-@export var separation: int = 25
+#@export var separation: int = 25
 # A artificial wait time between each card placement, this does prevent a total blockage of the game
 @export var artificial_wait_time: int = 4
-@export var place_offset: Vector2 = Vector2.ZERO
-@onready var _card_target_node: Node2D = get_node("%Cards")
+#@export var place_offset: Vector2 = Vector2.ZERO
+@onready var _card_target_node: Node2D = get_node("%CardBoard/CardVisuals")
 
 var _load_thread: Thread = null
 var _place_thread: Thread = null
@@ -24,14 +23,14 @@ func _ready() -> void:
 		push_error("Missing \"Cards\" node")
 		queue_free()
 
-func place_cards_from_deck(deck_to_use: MemoryDeckResource) -> void:
+func place_cards_from_deck(deck_to_use: MemoryDeckResource, card_separation: int, field_offset: Vector2i) -> void:
 	_current_deck = deck_to_use
 	if multiplayer.is_server():
 		_rpc_announce_deck.rpc(deck_to_use.resource_path)
 
 
 	_load_thread = Thread.new()
-	_load_thread.start(build_card_layout.bind(deck_to_use, card_template, separation))
+	_load_thread.start(build_card_layout.bind(deck_to_use, card_template, card_separation, field_offset))
 
 	await field_constructed
 	process_mode = PROCESS_MODE_INHERIT
@@ -60,7 +59,7 @@ func _add_cards_to_field_async(cards: Array[CardTemplate], target: Node2D) -> vo
 			await get_tree().physics_frame
 	call_deferred("emit_signal","card_placing_done")
 
-func _calculate_field_size(cards_on_x: int, cards_on_y: int) -> void:
+func _calculate_field_size(cards_on_x: int, cards_on_y: int, separation: int) -> void:
 	if card_template == null:
 		return
 	var card_instance: CardTemplate = card_template.instantiate() as CardTemplate
@@ -85,7 +84,8 @@ func _calculate_field_size(cards_on_x: int, cards_on_y: int) -> void:
 
 func build_card_layout(deck_of_cards: MemoryDeckResource,
 					   template: PackedScene,
-					   card_separation: int
+					   card_separation: int,
+					   offset: Vector2i
 					   ) -> Array[CardTemplate]:
 	var return_cards: Array[CardTemplate] = []
 	var card_pool: Array[MemoryCardResource] = deck_of_cards.cards
@@ -103,7 +103,7 @@ func build_card_layout(deck_of_cards: MemoryDeckResource,
 
 	while row_count * column_count < card_pool.size():
 		column_count = column_count + 1
-	call_deferred("_calculate_field_size", column_count, row_count)
+	call_deferred("_calculate_field_size", column_count, row_count, card_separation)
 	for y: int in row_count:
 		for x: int in column_count:
 			var card_template_node: CardTemplate = template.instantiate() as CardTemplate
@@ -116,8 +116,8 @@ func build_card_layout(deck_of_cards: MemoryDeckResource,
 			var width: float = card_template_node.get_width()
 			var height_to_set: float = y * height + y * card_separation
 			var width_to_set: float = x * width + x * card_separation
-			height_to_set += place_offset.y
-			width_to_set += place_offset.x
+			height_to_set += offset.y
+			width_to_set += offset.x
 			card_template_node.position = Vector2(width_to_set, height_to_set)
 			card_template_node.grid_position = Point.new(x, y)
 			
