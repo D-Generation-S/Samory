@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SpecialEvent" format=3 uid="uid://n7irgub8gja5"]
+
+[ext_resource type="Script" uid="uid://cbevbiicfyjvm" path="res://entities/ui/special_event_area/scripts/SpecialEvent.gd" id="1_bedju"]
+[ext_resource type="Resource" uid="uid://bg2bjo5tx1kuf" path="res://shared/resources/translations/assets/BirthdayEventHeadline.tres" id="1_wcubf"]
+[ext_resource type="Resource" uid="uid://01yj14dlfdyg" path="res://shared/resources/translations/assets/SamoryBirthDayText.tres" id="2_uw6gj"]
+
+[resource]
+script = ExtResource("1_bedju")
+event_name = ExtResource("1_wcubf")
+event_text = ExtResource("2_uw6gj")
+valid_month = 10
+valid_day = 4
+year = 2024
+metadata/_custom_type_script = "uid://cbevbiicfyjvm"
