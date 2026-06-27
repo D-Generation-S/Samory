@@ -22,7 +22,7 @@ var last_card: MemoryCardResource = null
 func card_was_triggered(card: CardTemplate) -> void:
 	add_card_to_all_ais(card.grid_position, card.memory_card)
 
-func card_was_identically(first_card_position: Point, second_card_position: Point) -> void:
+func card_was_identically(first_card_position: Vector2i, second_card_position: Vector2i) -> void:
 	remove_card_to_all_ais(first_card_position)
 	remove_card_to_all_ais(second_card_position)
 	
@@ -37,7 +37,7 @@ func game_state_changed(game_state: GameEnum.State) -> void:
 		timer.stop()
 		return
 
-func get_all_card_positions() -> Array[Point]:
+func get_all_card_positions() -> Array[Vector2i]:
 	return cards_node.get_all_card_positions()
 
 func player_changed(current_player:PlayerResource) -> void:
@@ -78,8 +78,8 @@ func _call_action_on_all_ais(callback: Callable) -> void:
 			continue
 		callback.call(ai)
 
-func add_card_to_all_ais(point: Point, card: MemoryCardResource) -> void:
-	_call_action_on_all_ais(func(ai: AiDifficultyResource) -> void: ai.blackboard.add_card(point, card))
+func add_card_to_all_ais(position: Vector2i, card: MemoryCardResource) -> void:
+	_call_action_on_all_ais(func(ai: AiDifficultyResource) -> void: ai.blackboard.add_card(position, card))
 
-func remove_card_to_all_ais(point: Point) -> void:
-	_call_action_on_all_ais(func(ai: AiDifficultyResource) -> void: ai.blackboard.remove_card(point))
+func remove_card_to_all_ais(position: Vector2i) -> void:
+	_call_action_on_all_ais(func(ai: AiDifficultyResource) -> void: ai.blackboard.remove_card(position))

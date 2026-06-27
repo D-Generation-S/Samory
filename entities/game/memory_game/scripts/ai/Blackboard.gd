@@ -10,9 +10,9 @@ func _init(max_cards: int) -> void:
 	unlimited_memory = max_cards_to_remember == -1
 
 
-func add_card(position: Point, card: MemoryCardResource) -> void:
+func add_card(position: Vector2i, card: MemoryCardResource) -> void:
 	var new_card: CardInformationResource = CardInformationResource.new(position, card)
-	if !cards.any(func(current_card: CardInformationResource) -> bool: return current_card.position.is_identical(position)):
+	if !cards.any(func(current_card: CardInformationResource) -> bool: return current_card.position == position):
 		cards.append(new_card)
 		latest_added_card = new_card
 		ensure_memory_boundry()
@@ -20,11 +20,11 @@ func add_card(position: Point, card: MemoryCardResource) -> void:
 
 	move_card_to_top(position)
 
-func move_card_to_top(card_position: Point) -> void:
+func move_card_to_top(card_position: Vector2i) -> void:
 	var index: int = -1
 	var running_index: int = 0
 	for current_card: CardInformationResource in cards:
-		if card_position.is_identical(current_card.position):
+		if card_position == current_card.position:
 			index = running_index
 			break
 		running_index = running_index + 1
@@ -43,11 +43,11 @@ func ensure_memory_boundry() -> void:
 	for i: int in cards_to_remove:
 		cards.remove_at(0)
 
-func remove_card(position: Point) -> void:
+func remove_card(position: Vector2i) -> void:
 	var index: int = 0
 	var match_found: bool = false
 	for card: CardInformationResource in cards:
-		if card.position.is_identical(position):
+		if card.position == position:
 			match_found = true
 			break
 		index = index + 1
@@ -71,7 +71,7 @@ func get_all_saved_cards() -> Array[CardInformationResource]:
 
 func get_last_saved_card() -> CardInformationResource:
 	for current_card: CardInformationResource in cards:
-		if current_card.position.is_identical(latest_added_card.position):
+		if current_card.position == latest_added_card.position:
 			return current_card
 
 	return null

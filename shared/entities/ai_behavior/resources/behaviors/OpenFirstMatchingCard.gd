@@ -8,7 +8,7 @@ func _get_blackboard_identical_cards(blackboard: Blackboard) -> Array[CardInform
     var pairs: Array[CardInformationResource] = []
     for card: CardInformationResource in known_cards:
         for other_card: CardInformationResource in known_cards:
-            if other_card.card.id == card.card.id and !other_card.position.is_identical(card.position):
+            if other_card.card.id == card.card.id and !other_card.position == card.position:
                 pairs.append(card)
                 pairs.append(other_card)
     return pairs

@@ -45,7 +45,7 @@ signal remove_requested()
 
 var card_deck: MemoryDeckResource	
 var memory_card: MemoryCardResource
-var grid_position: Point
+var grid_position: Vector2i
 
 var _timer_for_hide_delay: Timer
 var _was_clicked: bool

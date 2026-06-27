@@ -11,7 +11,7 @@ func can_execute(_blackboard: Blackboard, _grid: GameCardGrid) -> bool:
 func execute_action(_blackboard: Blackboard, _grid: GameCardGrid) -> void:
 	pass
 
-func _trigger_card(position: Point, _blackboard: Blackboard, grid: GameCardGrid) -> bool:
+func _trigger_card(position: Vector2i, _blackboard: Blackboard, grid: GameCardGrid) -> bool:
 	var card: MemoryCardResource = grid.get_card_on_position(position)
 	if card == null:
 		return false
