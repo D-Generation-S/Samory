@@ -7,7 +7,7 @@ func can_execute(_blackboard: Blackboard, grid: GameCardGrid) -> bool:
 
 func execute_action(blackboard: Blackboard, grid: GameCardGrid) -> void:
     print_debug("OpenRandomCard")
-    var card_positions: Array[Point] = grid.get_all_card_positions(false)
+    var card_positions: Array[Vector2i] = grid.get_all_card_positions(false)
     var index: int = randi() % card_positions.size()
     if !_trigger_card(card_positions[index], blackboard, grid):
         execute_action(blackboard, grid)

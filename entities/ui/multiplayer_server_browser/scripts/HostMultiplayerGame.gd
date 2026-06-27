@@ -26,7 +26,7 @@ func _pressed() -> void:
 	instance.set_player_name(_current_player_name)
 	
 	if is_connect_button:
-		instance.set_connect_endpoint(_current_ip)
+		instance.set_connect_endVector2i(_current_ip)
 		SettingsRepository.save_current_settings()
 	else:
 		instance.start_as_host()

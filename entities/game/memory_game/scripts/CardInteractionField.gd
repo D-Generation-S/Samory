@@ -1,8 +1,8 @@
 class_name CardInteractionField extends Node2D
 
-signal mouse_enter(grid: Point)
-signal mouse_left(grid: Point)
-signal clicked(grid: Point)
+signal mouse_enter(grid: Vector2i)
+signal mouse_left(grid: Vector2i)
+signal clicked(grid: Vector2i)
 
 @export var default_texture_size: Vector2 = Vector2(499, 550)
 @export var collider_template: PackedScene = null
@@ -41,10 +41,9 @@ func build_field(cards_on_x: int, cards_on_y: int) -> void:
 func card_was_added(card: CardTemplate) -> void:
 	card.remove_requested.connect(remove_card.bind(card.grid_position))
 
-func remove_card(grid_position: Point) -> void:
+func remove_card(grid_position: Vector2i) -> void:
 	for child: CardCollider in get_children():
-		var coordinates: Point = Point.new(child.get_grid_coordinate().x, child.get_grid_coordinate().y)
-		if coordinates.is_identical(grid_position):
+		if child.get_grid_coordinate() == grid_position:
 			child.queue_free()
 
 func player_changed(current_player: PlayerResource) -> void:
@@ -68,6 +67,6 @@ func _change_interaction_state(new_state: bool) -> void:
 			child.disable_collider()
 
 func _connect_card_interaction(collider: CardCollider) -> void:
-	collider.mouse_enter.connect(func(data: Vector2i) -> void: mouse_enter.emit(Point.new(data.x, data.y)))
-	collider.mouse_left.connect(func(data: Vector2i) -> void: mouse_left.emit(Point.new(data.x, data.y)))
-	collider.clicked.connect(func(data: Vector2i) -> void: clicked.emit(Point.new(data.x, data.y)))
+	collider.mouse_enter.connect(func(data: Vector2i) -> void: mouse_enter.emit(data))
+	collider.mouse_left.connect(func(data: Vector2i) -> void: mouse_left.emit(data))
+	collider.clicked.connect(func(data: Vector2i) -> void: clicked.emit(data))

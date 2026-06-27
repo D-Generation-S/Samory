@@ -3,7 +3,7 @@ class_name GameCardGrid extends Node2D
 signal card_removed()
 signal all_matching_cards_removed()
 signal card_triggered(CardTemplate: CardTemplate)
-signal identical_cards(first_card_point: Point, set_icon_modulated_card_point: Point)
+signal identical_cards(first_card_Vector2i: Vector2i, set_icon_modulated_card_Vector2i: Vector2i)
 signal no_matches_found()
 signal board_ready()
 signal board_empty()
@@ -25,10 +25,10 @@ var _game_completed: bool = false
 
 enum Axis {X, Y}
 
-func get_current_grid_position() -> Point:
+func get_current_grid_position() -> Vector2i:
 	if current_card == null:
-		return Point.new(0,0)
-	return Point.new(current_card.grid_position.get_x_pos(), current_card.grid_position.get_y_pos())
+		return -Vector2i.ONE
+	return current_card.grid_position
 
 func receive_field_size(x: int, y: int) -> void:
 	_field_size = Vector2i(x - 1, y - 1) # Field size starts at 1 but index starts at 0
@@ -36,61 +36,19 @@ func receive_field_size(x: int, y: int) -> void:
 func get_field_size() -> Vector2i:
 	return _field_size
 
-func _move_axis(direction: int, axis: Axis) -> void:
-	var clamped_direction: int = clampi(direction, -1, 1)
-	if clamped_direction == 0:
-		return
-
-	var grid_position: Point = get_current_grid_position()
-	var is_negative_direction: bool = clamped_direction < 0
-
-	var next_position: Point = _get_next_card_position(grid_position, is_negative_direction, axis)		
-
-	if next_position == null or !select_card_at_position(next_position):
-		current_card = null
-
-func get_card_grid(current_pos: Point) -> Array[Point]:
-	var all_cards: Array[Point] = []
-	for card: Node2D in visual_card_node.get_children():
-		if card is CardTemplate and !card.grid_position.is_identical(current_pos) and not card.is_getting_removed():
-			all_cards.append(card.grid_position)
-
-	return all_cards
-
-func get_closest_card_to_position(current_pos: Point, card_positions: Array[Point]) -> Point:
-	var return_point: Point = null
-	var distance: float = 10000
-		
-	for current_position: Point in card_positions:
-		if current_position.get_distance(current_pos) < distance:
-			return_point = current_position
-			distance = current_position.get_distance(current_pos) 
-
-	return return_point
-
-func _get_next_card_position(current_pos: Point, go_negative: bool, axis: Axis) -> Point:
-	var all_card_positions: Array[Point] = _get_valid_card_positions(current_pos, go_negative, axis)
-
-	var return_point: Point = _get_card_on_same_axis(current_pos, all_card_positions, axis)
-
-	if return_point == null:
-		return_point = get_closest_card_to_position(current_pos, all_card_positions)
-
-	return return_point
-	
-func _get_valid_card_positions(current_pos: Point, go_negative: bool, axis: Axis) -> Array[Point]:
-	var all_card_positions: Array[Point] = get_card_grid(current_pos);
-	var valid_cards: Array[Point] = []
-	for card_position: Point in all_card_positions:
+func _get_valid_card_positions(current_pos: Vector2i, go_negative: bool, axis: Axis) -> Array[Vector2i]:
+	var all_card_positions: Array[Vector2i] = get_card_grid(current_pos);
+	var valid_cards: Array[Vector2i] = []
+	for card_position: Vector2i in all_card_positions:
 		var current_card_position: int = 0
 		var current_position: int = 0
 		match axis:
 			Axis.X:
-				current_card_position = card_position.get_x_pos()
-				current_position = current_pos.get_x_pos()
+				current_card_position = card_position.x
+				current_position = current_pos.x
 			Axis.Y:
-				current_card_position = card_position.get_y_pos()
-				current_position = current_pos.get_y_pos()
+				current_card_position = card_position.y
+				current_position = current_pos.y
 		
 		if go_negative and current_card_position >= current_position:
 			continue
@@ -99,46 +57,22 @@ func _get_valid_card_positions(current_pos: Point, go_negative: bool, axis: Axis
 		valid_cards.append(card_position)
 	return valid_cards
 
-func _get_card_on_same_axis(current_position: Point, valid_positions: Array[Point], axis: Axis) -> Point:
-	var return_point: Point = null;
-	for valid_position: Point in valid_positions:
-		var is_same_axis: bool = false
-		match axis:
-			Axis.X:
-				is_same_axis = current_position.get_x_pos() == valid_position.get_x_pos()
-			Axis.Y:
-				is_same_axis = current_position.get_y_pos() == valid_position.get_y_pos()
+func get_card_grid(current_pos: Vector2i) -> Array[Vector2i]:
+	var all_cards: Array[Vector2i] = []
+	for card: Node2D in visual_card_node.get_children():
+		if card is CardTemplate and card.grid_position != current_pos and not card.is_getting_removed():
+			all_cards.append(card.grid_position)
 
-		if not is_same_axis:
-			continue
+	return all_cards
 
-		if return_point == null:
-			return_point = valid_position
-			continue
-		
-		var current_distance: int = 0
-		var return_point_distance: int = 0
-		match axis:
-			Axis.X:
-				current_distance = absi(valid_position.get_x_pos() - current_position.get_x_pos())
-				return_point_distance = absi(return_point.get_x_pos() - current_position.get_x_pos())
-			Axis.Y:
-				current_distance = absi(valid_position.get_y_pos() - current_position.get_y_pos())
-				return_point_distance = absi(return_point.get_y_pos() - current_position.get_y_pos())
-
-		if current_distance < return_point_distance:
-			return_point = current_position
-
-	return return_point
-
-func trigger_card_at_position(grid_position: Point) -> void:
+func trigger_card_at_position(grid_position: Vector2i) -> void:
 	if select_card_at_position(grid_position):
 		if current_card == null:
 			return
 		current_card.force_reveal_card()
 
-func remove_cards_from_board(grid_positions: Array[Point]) -> void:
-	for grid_position: Point in grid_positions:
+func remove_cards_from_board(grid_positions: Array[Vector2i]) -> void:
+	for grid_position: Vector2i in grid_positions:
 		remove_card_from_board(grid_position)
 	for card: CardTemplate in _get_game_card_templates():
 		if card.is_playing_animation():
@@ -146,18 +80,18 @@ func remove_cards_from_board(grid_positions: Array[Point]) -> void:
 	all_matching_cards_removed.emit()
 	GlobalSoundManager.play_sound_effect(matching_card_sound_effect)
 	
-func remove_card_from_board(grid_position: Point) -> void:
+func remove_card_from_board(grid_position: Vector2i) -> void:
 	for child: CardTemplate in _get_game_card_templates_children():
-		if child.grid_position.is_identical(grid_position):
+		if child.grid_position == grid_position:
 			child.remove_from_board(currently_ai_player)
 			child.about_to_get_delete.connect(func() -> void: card_removed.emit())
 
-func select_card_at_position(grid_position: Point) -> bool:
+func select_card_at_position(grid_position: Vector2i) -> bool:
 	var found_card: bool = false
 	var initial_card: CardTemplate = current_card
 	for card: CardTemplate in _get_game_card_templates_children():
 		card.lost_focus()
-		if grid_position.is_identical(card.grid_position):
+		if grid_position == card.grid_position:
 			card.got_focus()
 			current_card = card
 			found_card = true
@@ -171,21 +105,10 @@ func confirm_current_card() -> void:
 	if current_card == null or get_tree().paused:
 		return
 	current_card.card_was_clicked()
-	
-func select_closest_card(source_position: Point, include_source: bool) -> void:
-	if currently_ai_player:
-		return
-	var cards: Array[Point] = get_card_grid(source_position)
-	if include_source:
-		cards.append(source_position)
-	var return_position: Point = get_closest_card_to_position(source_position, cards)
 
-	if return_position != null:
-		select_card_at_position(return_position)
-
-func get_card_on_position(card_position: Point) -> MemoryCardResource:
+func get_card_on_position(card_position: Vector2i) -> MemoryCardResource:
 	for card: CardTemplate in _get_game_card_templates_children():
-		if card_position.is_identical(card.grid_position):
+		if card_position == card.grid_position:
 			return card.memory_card
 	return null
 		
@@ -196,8 +119,52 @@ func parse_movement(information: Vector2) -> void:
 	if information != Vector2.ZERO:
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
-	_move_axis(sign(information.x), Axis.X)
-	_move_axis(sign(information.y), Axis.Y)
+	var card_position: Vector2i =_get_closest_card_position(information)
+	if card_position == -Vector2i.ONE or !select_card_at_position(card_position):
+		current_card = null
+
+func _get_closest_card_position(movement: Vector2) -> Vector2i:
+	var current_selected_card: Vector2i = get_current_grid_position()
+	var target_position: Vector2i = Vector2i(int(movement.x), int(movement.y)) + current_selected_card
+	if current_selected_card == -Vector2i.ONE:
+		current_selected_card = -Vector2i.ONE
+		target_position = Vector2i.ZERO
+
+	target_position.x = clampi(target_position.x, 0, _field_size.x)
+	target_position.y = clampi(target_position.y, 0, _field_size.y)
+
+	if current_selected_card == target_position:
+		return current_selected_card
+
+	print(target_position)
+	
+	var axis: Axis = Axis.X
+	var is_negative: bool = false
+	var closest_distance: float = 100000.0
+	var return_position: Vector2i = -Vector2i.ONE
+
+	if movement.y != 0:
+		axis = Axis.Y
+
+	if movement.y < -0.0001 or movement.x < -0.0001:
+		is_negative = true
+	for valid_position: Vector2i in _get_valid_card_positions(current_selected_card, is_negative, axis):
+		if valid_position == target_position:
+			return valid_position
+		var calculate_distance: Vector2i = valid_position
+		var weight: int = (_field_size.x + _field_size.y) * 2
+		if axis == Axis.X:
+			if valid_position.x == target_position.x:
+				weight = 0
+		else:
+			if valid_position.y == target_position.y:
+				weight = 0
+		var current_distance: float = calculate_distance.distance_to(target_position) + weight
+		if current_distance < closest_distance:
+			closest_distance = current_distance
+			return_position = valid_position
+
+	return return_position
 
 func round_frozen() -> void:
 	current_card = null
@@ -207,7 +174,7 @@ func round_unfrozen() -> void:
 		controller_input_was_made = false
 		return
 	if controller_input_was_made:
-		select_closest_card(Point.new(0,0), true)
+		_get_closest_card_position(Vector2i(1,0))
 	controller_input_was_made = false
 
 func card_loading_done() -> void:
@@ -248,7 +215,7 @@ func _validate_grid() -> void:
 			print("Waiting")
 			await card.fully_shown
 	if _any_matching():
-		var card_positions: Array[Point] = []
+		var card_positions: Array[Vector2i] = []
 		for card: CardTemplate in _get_game_card_templates():
 			if card.is_turned():
 				card_positions.append(card.grid_position)
@@ -291,8 +258,8 @@ func _any_matching() -> bool:
 			return true
 	return false
 
-func get_all_card_positions(get_turned: bool = false) -> Array[Point]:
-	var return_data: Array[Point] = []
+func get_all_card_positions(get_turned: bool = false) -> Array[Vector2i]:
+	var return_data: Array[Vector2i] = []
 	for card: CardTemplate in _get_game_card_templates_children():
 		if card.is_getting_removed():
 			continue
@@ -300,8 +267,8 @@ func get_all_card_positions(get_turned: bool = false) -> Array[Point]:
 			return_data.append(card.grid_position)
 	return return_data
 
-func get_all_cards_currently_turned() -> Array[Point]:
-	var return_data: Array[Point] = []
+func get_all_cards_currently_turned() -> Array[Vector2i]:
+	var return_data: Array[Vector2i] = []
 	for card: CardTemplate in _get_game_card_templates_children():
 		if card.is_turned():
 			return_data.append(card.grid_position)
@@ -341,4 +308,3 @@ func card_triggered_hook(card: CardTemplate) -> void:
 	select_card_at_position(card.grid_position)
 	card_triggered.emit(card)
 	card_activated.emit()
-	

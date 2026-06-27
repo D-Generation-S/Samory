@@ -18,7 +18,7 @@ func _ready() -> void:
 func set_player_name(local_player_name: String) -> void:
 	_local_user_name = local_player_name
 
-func set_connect_endpoint(ip: String) -> void:
+func set_connect_endVector2i(ip: String) -> void:
 	_connect_ip = ip
 	_is_host = false
 

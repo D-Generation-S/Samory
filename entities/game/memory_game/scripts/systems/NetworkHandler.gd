@@ -5,8 +5,8 @@ const PORT: int = 8000
 
 signal player_has_changed(player_id: int)
 signal player_has_scored(player_id: int, new_score: int)
-signal card_was_clicked(position: Point)
-signal remove_card(position: Point)
+signal card_was_clicked(position: Vector2i)
+signal remove_card(position: Vector2i)
 signal game_state_has_changed(new_state: int)
 signal game_has_been_finished()
 signal request_popup(window: PopupWindow)
@@ -37,7 +37,7 @@ func peer_gone(_id: int) -> void:
 
 func card_clicked(_game_state: int, clicked_cards: Array[CardTemplate]) -> void:
 	for card: CardTemplate in clicked_cards:
-		_rpc_card_clicked.rpc(card.grid_position.get_network_data())
+		_rpc_card_clicked.rpc(card.grid_position)
 
 @rpc("any_peer", "reliable")
 func _rpc_card_clicked(position: Dictionary) -> void:
@@ -45,9 +45,8 @@ func _rpc_card_clicked(position: Dictionary) -> void:
 	print(multiplayer.get_unique_id())
 	if multiplayer.get_remote_sender_id() == multiplayer.get_unique_id():
 		return
-	var point:Point = Point.new(position["x"], position["y"])
 
-	card_was_clicked.emit(point)
+	card_was_clicked.emit(position)
 
 func game_state_changed(state: GameEnum.State) -> void:
 	if multiplayer.is_server():
@@ -101,20 +100,28 @@ func player_scored(player: PlayerResource) -> void:
 func _rpc_player_scored(player: Dictionary) -> void:
 	player_has_scored.emit(player["id"], player["score"])
 
-func matching_pair(first: Point, second: Point) -> void:
+func matching_pair(first: Vector2i, second: Vector2i) -> void:
 	if !multiplayer.is_server():
 		return
-	var card_data: Array[Dictionary] = [first.get_network_data(), second.get_network_data()]
+	var card_data: Array[Dictionary] = [vector2i_to_network_data(first), vector2i_to_network_data(second)]
 
 	var dict: Dictionary = {"cards": card_data}
 	_rpc_remove_cards.rpc(dict)
 
+func vector2i_to_network_data(data: Vector2i) -> Dictionary[String, int]:
+	return {
+			"x": data.x,
+			"y": data.y
+		}
+
+func data_to_vector2i(data: Dictionary[String, int]) -> Vector2i:
+	return Vector2i(data["x"], data["y"])
+
 @rpc("authority", "reliable")
 func _rpc_remove_cards(array_data: Dictionary) -> void:
 	var data: Array[Dictionary] = array_data.get_or_add("cards", []);
-	for card: Dictionary in data:
-		var point: Point = Point.new(card["x"], card["y"])
-		remove_card.emit(point)
+	for card_data: Dictionary in data:
+		remove_card.emit(data_to_vector2i(card_data))
 	
 func end_game() -> void:
 	rpc_game_ended.rpc()

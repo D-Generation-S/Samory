@@ -17,7 +17,7 @@ func _ready() -> void:
 	if card == null:
 		queue_free()
 		return
-	var card_position: Point = card_information.grid_position
+	var card_position: Vector2i = card_information.grid_position
 
 	card_id_label.text = str(card.get_id())
-	card_position_label.text = "[" + str(card_position.get_x_pos()) + "," + str(card_position.get_y_pos()) + "]"
+	card_position_label.text = "[" + str(card_position.x) + "," + str(card_position.y) + "]"

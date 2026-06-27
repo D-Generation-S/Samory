@@ -119,7 +119,7 @@ func build_card_layout(deck_of_cards: MemoryDeckResource,
 			height_to_set += offset.y
 			width_to_set += offset.x
 			card_template_node.position = Vector2(width_to_set, height_to_set)
-			card_template_node.grid_position = Point.new(x, y)
+			card_template_node.grid_position = Vector2i(x, y)
 			
 			return_cards.append(card_template_node)
 			current_card = current_card + 1
@@ -146,7 +146,10 @@ func announce_card_field() -> void:
 		var real_card: MemoryCardResource = card.memory_card
 		network_cards.append({
 			"id": real_card.get_id(),
-			"grid-position": card.grid_position.get_network_data(),
+			"grid-position": {
+				"x": card.grid_position.x,
+				"y": card.grid_position.y,
+			},
 			"world-position": {
 				"x": card.global_position.x,
 				"y": card.global_position.y,
@@ -165,7 +168,7 @@ func _rpc_rebuild_field(field: Dictionary) -> void:
 		var world_pos: Dictionary = card["world-position"]
 		var grid_pos: Dictionary = card["grid-position"]
 		real_card.global_position = Vector2(world_pos["x"], world_pos["y"])
-		real_card.grid_position = Point.new(grid_pos["x"], grid_pos["y"])
+		real_card.grid_position = Vector2i(grid_pos["x"], grid_pos["y"])
 		real_card.memory_card = load(card["card-resource"])
 		real_card.card_deck = _current_deck
 
