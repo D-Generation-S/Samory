@@ -34,8 +34,6 @@ var removal_planned: bool = false
 var animation_tween: Tween = null
 var _focus_tween: Tween = null
 
-var fix_image_thread: Thread
-
 var visibility: VisibilityEnum = VisibilityEnum.HIDDEN
 
 func _ready() -> void:

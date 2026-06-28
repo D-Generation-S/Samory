@@ -13,7 +13,6 @@ signal cards_preloaded()
 
 var is_initial_load: bool = true
 var current_deck: MemoryDeckResource = null
-var card_gen_thread: Thread = null
 
 func _ready() -> void:
 	if is_mobile():
@@ -81,16 +80,13 @@ func decks_loaded(decks: Array[MemoryDeckResource]) -> void:
 	clear_all_system_cards()
 
 	process_mode = Node.PROCESS_MODE_DISABLED
-	card_gen_thread = Thread.new()
-	card_gen_thread.start(get_cards_async.bind(decks, is_initial_load))
-	is_initial_load = false
+	
 
-	await cards_preloaded
+	#await cards_preloaded
 
 	process_mode = Node.PROCESS_MODE_INHERIT
 
-	var data: Array[CardViewerTemplate] = card_gen_thread.wait_to_finish() as Array[CardViewerTemplate]
-	card_gen_thread = null
+	var data: Array[CardViewerTemplate] = await get_card_decks(decks)
 
 	for card: CardViewerTemplate in data:
 		var parent: Control = system_card_container
@@ -98,14 +94,15 @@ func decks_loaded(decks: Array[MemoryDeckResource]) -> void:
 			parent = built_in_card_container
 		parent.add_child(card)
 
-func get_cards_async(decks: Array[MemoryDeckResource], initial_load: bool) -> Array[CardViewerTemplate]:
+func get_card_decks(decks: Array[MemoryDeckResource]) -> Array[CardViewerTemplate]:
 	var return_data: Array[CardViewerTemplate] = []
 	for deck: MemoryDeckResource in decks:
-		if !deck.built_in or initial_load:
+		if !deck.built_in or is_initial_load:
 			return_data.append(load_cards_from_deck(deck))
-	initial_load = false
 
-	call_deferred("emit_signal","cards_preloaded")
+	cards_preloaded.emit()
+	await get_tree().physics_frame
+	is_initial_load = false
 	return return_data
 
 func load_cards_from_deck(deck: MemoryDeckResource) -> CardViewerTemplate:

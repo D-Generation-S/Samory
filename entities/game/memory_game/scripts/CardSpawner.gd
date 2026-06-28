@@ -13,8 +13,7 @@ signal card_placing_done()
 #@export var place_offset: Vector2 = Vector2.ZERO
 @onready var _card_target_node: Node2D = get_node("%CardBoard/CardVisuals")
 
-var _load_thread: Thread = null
-var _place_thread: Thread = null
+var _field_size: Vector2i = Vector2i.ZERO
 var _current_deck: MemoryDeckResource
 
 func _ready() -> void:
@@ -28,22 +27,15 @@ func place_cards_from_deck(deck_to_use: MemoryDeckResource, card_separation: int
 	if multiplayer.is_server():
 		_rpc_announce_deck.rpc(deck_to_use.resource_path)
 
+	var loaded_cards: Array[CardTemplate] = await build_card_layout(deck_to_use, card_template, card_separation, field_offset)
 
-	_load_thread = Thread.new()
-	_load_thread.start(build_card_layout.bind(deck_to_use, card_template, card_separation, field_offset))
-
-	await field_constructed
+	field_constructed.emit(_field_size.x, _field_size.y)
 	process_mode = PROCESS_MODE_INHERIT
-
-	var cards: Array[CardTemplate] = _load_thread.wait_to_finish() as Array[CardTemplate]
-	_load_thread = null
 	
-	_place_thread = Thread.new()
-	_place_thread.start(_add_cards_to_field_async.bind(cards, _card_target_node))
+	await _add_cards_to_field_async(loaded_cards, _card_target_node)
+	card_placing_done.emit()
 	
-	await card_placing_done
-	
-	for card: CardTemplate in cards:
+	for card: CardTemplate in loaded_cards:
 		card.visible = true
 	announce_card_field()
 	card_loading_done.emit()
@@ -52,12 +44,12 @@ func place_cards_from_deck(deck_to_use: MemoryDeckResource, card_separation: int
 func _add_cards_to_field_async(cards: Array[CardTemplate], target: Node2D) -> void:
 	for card: CardTemplate in cards:
 		card.visible = false
-		target.call_deferred("add_child", card)
+		target.add_child(card)
+
+		card_placed.emit(card)
 		
-		call_deferred("emit_signal","card_placed", card)
 		for i: int in artificial_wait_time:
 			await get_tree().physics_frame
-	call_deferred("emit_signal","card_placing_done")
 
 func _calculate_field_size(cards_on_x: int, cards_on_y: int, separation: int) -> void:
 	if card_template == null:
@@ -103,7 +95,7 @@ func build_card_layout(deck_of_cards: MemoryDeckResource,
 
 	while row_count * column_count < card_pool.size():
 		column_count = column_count + 1
-	call_deferred("_calculate_field_size", column_count, row_count, card_separation)
+	_calculate_field_size(column_count, row_count, card_separation)
 	for y: int in row_count:
 		for x: int in column_count:
 			var card_template_node: CardTemplate = template.instantiate() as CardTemplate
@@ -123,7 +115,8 @@ func build_card_layout(deck_of_cards: MemoryDeckResource,
 			
 			return_cards.append(card_template_node)
 			current_card = current_card + 1
-	call_deferred("emit_signal","field_constructed", column_count, row_count)
+	await get_tree().physics_frame
+	_field_size = Vector2i(column_count, row_count)
 	return return_cards
 
 func numbering_cards_from_pool(card_pool: Array[MemoryCardResource]) -> Array[MemoryCardResource]:

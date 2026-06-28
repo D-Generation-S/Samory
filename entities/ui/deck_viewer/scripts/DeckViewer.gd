@@ -4,8 +4,7 @@ signal decks_loading()
 signal deck_loading_done(decks: Array[MemoryDeckResource])
 signal scene_ready()
 
-func _ready() -> void:
-	load_decks()
+var _is_initial_load: bool = true
 
 func load_decks() -> void:
 	decks_loading.emit()
@@ -17,4 +16,7 @@ func cards_preloaded() -> void:
 	scene_ready.emit()
 
 func scene_is_ready() -> void:
+	if _is_initial_load:
+		await get_tree().physics_frame
+		_is_initial_load = false
 	scene_ready.emit()

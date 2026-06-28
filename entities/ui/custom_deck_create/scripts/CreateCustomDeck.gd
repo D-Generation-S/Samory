@@ -14,7 +14,6 @@ var _current_deck: CustomDeckResource = null
 var _last_loaded_deck: Array[CustomDeckResource] = []
 var _name_is_valid: bool = false
 
-var _load_thread: Thread = null
 var _lazy_loader: CustomDeckLoader = null
 
 signal deck_updated(deck: CustomDeckResource)
@@ -26,19 +25,6 @@ func _get_loader() -> CustomDeckLoader:
 	if _lazy_loader == null:
 		_lazy_loader = CustomDeckLoader.new()
 	return _lazy_loader
-
-func _process(_delta: float) -> void:
-	if _load_thread == null or _load_thread.is_alive():
-		return
-
-	var data: Variant = _load_thread.wait_to_finish()
-	_load_thread = null
-	deck_loaded.emit()
-	_sync_name_valid()
-	if data != null and data is Array[CustomDeckResource]:
-		set_deck(find_deck(data))
-		_last_loaded_deck = data
-		currently_editing.emit()
 
 
 func _reset() -> void:
@@ -87,15 +73,19 @@ func set_deck(deck: CustomDeckResource) -> void:
 		deck_updated.emit(_current_deck)
 
 func load_existing_deck(path: String) -> void:
-	if _load_thread != null and _load_thread.is_active():
-		return
 	_last_loaded_deck = []
 	if path == "":
 		return
 	var loader: CustomDeckLoader = _get_loader()
 	load_deck.emit()
-	_load_thread = loader.load_editable_deck_async(path)
+	var data: Array[CustomDeckResource] = await loader.load_editable_deck(path)
+	deck_loaded.emit()
 
+	_sync_name_valid()
+	if data != null:
+		set_deck(find_deck(data))
+		_last_loaded_deck = data
+		currently_editing.emit()
 
 func find_deck(deck_data: Array[CustomDeckResource]) -> CustomDeckResource:
 	for data: CustomDeckResource in deck_data:

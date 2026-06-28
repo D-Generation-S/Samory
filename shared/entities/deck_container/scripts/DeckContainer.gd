@@ -4,6 +4,7 @@ signal data_reloaded()
 signal deck_selected(deck: MemoryDeckResource)
 signal decks_getting_placed(decks: Array[MemoryDeckResource])
 signal deck_unselected()
+signal deck_loading()
 
 @export_group("Container settings")
 @export var deck_preview_template: PackedScene
@@ -51,6 +52,8 @@ func is_scroll_focus() -> bool:
 func place_all_decks() -> void:
 	if not decks_visible_on_start:
 		hide()
+
+	deck_loading.emit()
 	deck_unselected.emit()
 	var decks: Array[MemoryDeckResource] = GlobalGameManagerAccess.game_manager.get_available_decks()
 	decks_getting_placed.emit(decks)

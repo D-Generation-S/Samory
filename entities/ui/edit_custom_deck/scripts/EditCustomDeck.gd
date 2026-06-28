@@ -10,17 +10,6 @@ signal saved()
 
 var _resources: Array[CustomDeckResource] = []
 var _deck_loader: CustomDeckLoader = CustomDeckLoader.new()
-var _save_thread: Thread = null
-
-func _process(_delta: float) -> void:
-	
-	if _save_thread == null or _save_thread.is_alive():
-		return
-	var result: bool = _save_thread.wait_to_finish() as bool
-	_save_thread = null
-	saved.emit()
-	if result:
-		GlobalGameManagerAccess.get_game_manager().reload_system_decks()
 
 func set_deck(deck: CustomDeckResource) -> void:
 	_resources.append(deck)
@@ -37,7 +26,6 @@ func delete_card(card: CustomDeckResource) -> void:
 		if card_resource.get_id() == card.get_id():
 			_resources.erase(card_resource)
 
-
 func add_or_update_card(card: CustomDeckResource) -> void:
 	for card_resource: CustomDeckResource in _resources:
 		if card_resource.get_id() == card.get_id():
@@ -50,7 +38,6 @@ func add_or_update_card(card: CustomDeckResource) -> void:
 	card.set_id(_get_next_card_id())
 	_resources.append(card)
 	card_added.emit(card)
-	
 
 func _get_next_card_id() -> int:
 	var max_id: int = 0
@@ -59,12 +46,12 @@ func _get_next_card_id() -> int:
 			max_id = resource.get_id()
 	return max_id + 1
 
-
 func save_deck() -> void:
-	if _save_thread != null:
-		return
 	saving.emit()
-	_save_thread = _deck_loader.save_deck_async(get_deck(), _resources)
+	var save_successful: bool = await _deck_loader.save_deck(get_deck(), _resources)
+	saved.emit()
+	if save_successful:
+		GlobalGameManagerAccess.get_game_manager().reload_system_decks()
 
 func view_card(resource: CustomDeckResource) -> void:
 	var card: MemoryCardResource = _deck_loader.convert_to_playable_card(resource)

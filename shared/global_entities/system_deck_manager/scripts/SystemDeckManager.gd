@@ -8,7 +8,6 @@ signal loading_system_decks_done()
 const CHECK_INTERVAL_SECONDS: float = 2
 var elapsed_time: float = 0
 var system_decks: Array[MemoryDeckResource] = []
-var load_threads: Array[Thread] = []
 var deck_loader: DeckLoader
 
 func _ready() -> void:
@@ -17,48 +16,17 @@ func _ready() -> void:
 func clear_system_decks() -> void:
 	system_decks = []
 
-func is_loading() -> bool:
-	return load_threads.size() > 0
-
 func get_system_decks() -> Array[MemoryDeckResource]:
 	return system_decks
 
 func reload_system_decks() -> void:
-	if is_loading():
-		return
-
 	loading_system_decks.emit()
 	var decks: Array[String] = deck_loader.list_decks()
 	system_decks = []
-	load_threads.append(deck_loader.load_custom_decks_async())
+	var custom_decks: Array[MemoryDeckResource] = await deck_loader.load_custom_decks()
+	system_decks.append_array(custom_decks)
 	for deck: String in decks:
-		load_threads.append(deck_loader.load_deck_async(deck))
+		var loaded_deck: MemoryDeckResource = await deck_loader.load_deck(deck)
+		custom_decks.append(loaded_deck)
 
-func _process(delta: float) -> void:
-	var deck_id: int = 1000
-	if is_loading():
-		elapsed_time = elapsed_time + delta
-		if elapsed_time < CHECK_INTERVAL_SECONDS:
-			return
-		elapsed_time = 0
-		var loading_done: bool = true
-		for thread: Thread in load_threads:
-			if thread.is_alive():
-				loading_done = false
-				break
-		if loading_done:
-			for thread: Thread in load_threads:
-				var thread_data: Variant = thread.wait_to_finish()
-				if thread_data is Array[MemoryDeckResource]:
-					for deck: MemoryDeckResource in thread_data:
-						deck.id = deck_id
-						system_decks.append(deck)
-						deck_id = deck_id + 1
-				if thread_data is MemoryDeckResource:
-					if thread_data != null:
-						thread_data.id = deck_id
-						system_decks.append(thread_data)
-						deck_id = deck_id + 1
-
-			load_threads = []
-			loading_system_decks_done.emit()
+	loading_system_decks_done.emit()
