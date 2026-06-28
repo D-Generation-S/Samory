@@ -12,4 +12,5 @@ func execute(base: ClickableButton) -> void:
 			template.name = template.ai_difficulty.get_translated_name()
 		player_templates.append(template)
 	var game_manager: GameManager = GlobalGameManagerAccess.get_game_manager()
-	game_manager.play_game_with_position(player_templates, game_manager.get_available_decks().pick_random(), base.get_global_center_position())
+	var decks: Array[MemoryDeckResource] = game_manager.get_available_decks()
+	game_manager.play_game_with_position(player_templates, decks.pick_random(), base.get_global_center_position())

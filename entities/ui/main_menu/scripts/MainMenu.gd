@@ -8,7 +8,6 @@ class_name MainMenu
 func _ready() -> void:
 	GlobalSystemDeckManager.loading_system_decks.connect(loading_cards)
 	GlobalSystemDeckManager.loading_system_decks.connect(loading_cards_done)
-	change_button_state(GlobalSystemDeckManager.is_loading())
 	get_tree().paused = false
 
 func loading_cards() -> void:

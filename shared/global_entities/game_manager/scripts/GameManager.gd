@@ -29,7 +29,6 @@ var initial_menu_shown: bool = false
 var current_loading_node: Node = null
 var is_debug: bool = false
 
-
 var _viewport_size: Vector2i = Vector2i(1920, 1080)
 var _ui_scale: float = 1
 var _camera_zoom_factor: float = 1
@@ -273,7 +272,12 @@ func load_game(card_deck: MemoryDeckResource, players: Array[PlayerResource], cl
 func get_available_decks() -> Array[MemoryDeckResource]:
 	var return_array: Array[MemoryDeckResource] = []
 	return_array.append_array(translated_build_in_decks)
-	return_array.append_array(GlobalSystemDeckManager.get_system_decks())
+	var system_decks: Array[MemoryDeckResource] = GlobalSystemDeckManager.get_system_decks()
+	var start_id: int = 10000
+	for deck: MemoryDeckResource in system_decks:
+		deck.id = start_id
+		start_id += 1
+	return_array.append_array(system_decks)
 	for deck: MemoryDeckResource in return_array:
 		deck.ready_up()
 	return return_array

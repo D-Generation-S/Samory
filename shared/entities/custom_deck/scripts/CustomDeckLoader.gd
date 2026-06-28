@@ -1,5 +1,7 @@
 class_name CustomDeckLoader extends Resource
 
+signal decks_loaded()
+
 var _max_image_width: float = 500
 var _max_image_height: float = 500
 var _base_path: String = "user://custom_decks/"
@@ -8,11 +10,6 @@ var _back_image_name: String = "back.png"
 var _deck_information_file_name: String = "deck_info"
 var _card_base_path: String = "cards/"
 var _asset_base_folder: String = "assets/"
-
-func save_deck_async(deck_information: CustomDeckResource, deck_data: Array[CustomDeckResource]) -> Thread:
-	var thread: Thread = Thread.new()
-	thread.start(save_deck.bind(deck_information, deck_data))
-	return thread
 
 func save_deck(deck_information: CustomDeckResource, deck_data: Array[CustomDeckResource]) -> bool:
 	print("Saving deck with name: " + deck_information.get_resource_name())
@@ -33,6 +30,7 @@ func save_deck(deck_information: CustomDeckResource, deck_data: Array[CustomDeck
 		save_card(packer,card)
 
 	packer.close()
+	await RenderingServer.frame_post_draw
 	return true
 
 func save_card(packer: ZIPPacker, card: CustomDeckResource) -> bool:
@@ -101,11 +99,6 @@ func convert_image_to_resource(real_texture: Texture2D) -> Texture2D:
 	scaled_texture.resize(new_image_size.x, new_image_size.y)
 	return ImageTexture.create_from_image(scaled_texture) as Texture2D
 
-func load_editable_deck_async(deck_path: String) -> Thread:
-	var thread: Thread = Thread.new()
-	thread.start(load_editable_deck.bind(deck_path)	)
-	return thread
-
 func load_editable_deck(deck_path: String) -> Array[CustomDeckResource]:
 	if not FileAccess.file_exists(deck_path):
 		return []
@@ -123,6 +116,7 @@ func load_editable_deck(deck_path: String) -> Array[CustomDeckResource]:
 				loaded_data.append(card_data)
 
 	reader.close()
+	await RenderingServer.frame_post_draw
 	return loaded_data
 
 func load_deck_information(reader: ZIPReader) -> CustomDeckResource:
@@ -182,13 +176,14 @@ func list_decks() -> Array[String]:
 func load_decks() -> Array[MemoryDeckResource]:
 	var return_decks: Array[MemoryDeckResource] = []
 	for deck: String in list_decks():
-		var playable_deck: MemoryDeckResource = load_playable_deck(deck)
+		var playable_deck: MemoryDeckResource = await load_playable_deck(deck)
 		if playable_deck != null and playable_deck.cards.size() > 2:
 			return_decks.append(playable_deck)
+	decks_loaded.emit()
 	return return_decks
 
 func load_playable_deck(deck_path: String) -> MemoryDeckResource:
-	var deck_data: Array[CustomDeckResource] = load_editable_deck(deck_path)
+	var deck_data: Array[CustomDeckResource] = await load_editable_deck(deck_path)
 	if deck_data.size() < 3:
 		return null
 	
@@ -203,6 +198,7 @@ func load_playable_deck(deck_path: String) -> MemoryDeckResource:
 		
 	var return_deck: MemoryDeckResource = MemoryDeckResource.new()
 	return_deck.built_in = false
+	return_deck.id = information.get_id()
 	return_deck.name = information.get_resource_name()
 	return_deck.description = information.get_description()
 	return_deck.card_back = information.loaded_texture

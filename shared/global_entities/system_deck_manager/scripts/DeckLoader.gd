@@ -1,6 +1,6 @@
 extends Node
 
-class_name DeckLoader 
+class_name DeckLoader
 
 func _get_default_cover() -> Texture2D:
 	return load("res://assets/sprites/Axuree/back_card_3.png") as Texture2D
@@ -72,18 +72,13 @@ func validate_deck(deck_folder: String) -> bool:
 
 func load_custom_decks() -> Array[MemoryDeckResource]:
 	var custom_deck_loader: CustomDeckLoader = CustomDeckLoader.new()
-	var data: Array[MemoryDeckResource] = custom_deck_loader.load_decks()
+	var data: Array[MemoryDeckResource] = await custom_deck_loader.load_decks()
 	for deck: MemoryDeckResource in data:
 		if deck.card_back == null:
 			deck.using_default_texture = true
 			deck.card_back = _get_default_cover()
+	await RenderingServer.frame_post_draw
 	return data
-
-func load_custom_decks_async() -> Thread:
-	var thread: Thread = Thread.new()
-	thread.start(load_custom_decks)
-
-	return thread
 
 func load_deck(deck_name: String) -> MemoryDeckResource:
 	var path: String = build_deck_base_path(deck_name)
@@ -106,14 +101,8 @@ func load_deck(deck_name: String) -> MemoryDeckResource:
 		var card: MemoryCardResource = load_card(deck_name, card_name)
 		if card != null:
 			return_deck.cards.append(card)
-
+	await RenderingServer.frame_post_draw
 	return return_deck
-
-func load_deck_async(deck_name: String) -> Thread:
-	var thread: Thread = Thread.new()
-	thread.start(load_deck.bind(deck_name))
-
-	return thread
 
 func get_cover_image(deck_name: String) -> Texture2D:
 	var image_source_path: String = "%s/cover.png" % build_deck_base_path(deck_name)
