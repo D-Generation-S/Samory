@@ -55,6 +55,9 @@ func build_field(cards_on_x: int, cards_on_y: int) -> void:
 			add_child(template)
 			template.disable_collider()
 
+func get_field_size() -> Vector2i:
+	return _field_size
+
 func card_was_added(card: CardTemplate) -> void:
 	card.remove_requested.connect(remove_card.bind(card.grid_position))
 
