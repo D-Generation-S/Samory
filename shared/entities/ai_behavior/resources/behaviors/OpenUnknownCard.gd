@@ -1,11 +1,11 @@
 class_name OpenUnknownCard extends AiBehaviorNode
 
 
-func can_execute(blackboard: Blackboard, grid: GameCardGrid) -> bool:
+func can_execute(blackboard: Blackboard, grid: CardInteractionField) -> bool:
 	var unknown_card_positions: Array[Vector2i] = get_all_unknown_card_positions(blackboard, grid)
 	return unknown_card_positions.size() > 0
 
-func get_all_unknown_card_positions(blackboard: Blackboard, grid: GameCardGrid) -> Array[Vector2i]:
+func get_all_unknown_card_positions(blackboard: Blackboard, grid: CardInteractionField) -> Array[Vector2i]:
 	var return_data: Array[Vector2i] = []
 	var all_positions: Array[Vector2i] = grid.get_all_card_positions()
 	var known_positions: Array[CardInformationResource] = blackboard.get_all_saved_cards()
@@ -17,7 +17,7 @@ func get_all_unknown_card_positions(blackboard: Blackboard, grid: GameCardGrid) 
 
 	return return_data
 
-func execute_action(blackboard: Blackboard, grid: GameCardGrid) -> void:
+func execute_action(blackboard: Blackboard, grid: CardInteractionField) -> void:
 	print_debug("OpenUnknownCard")
 	var cards: Array[Vector2i]  = get_all_unknown_card_positions(blackboard, grid)
 	var card_index: int = randi_range(0, cards.size() - 1)

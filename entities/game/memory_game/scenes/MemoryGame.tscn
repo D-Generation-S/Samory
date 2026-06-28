@@ -101,7 +101,7 @@ metadata/_custom_type_script = "uid://bxjrl2ikqn4tk"
 
 [node name="AiAgentSystem" type="Node" parent="Systems" unique_id=1896166842 node_paths=PackedStringArray("cards_node", "players")]
 script = ExtResource("15_u3ner")
-cards_node = NodePath("../../World/CardBoard")
+cards_node = NodePath("../../World/CardBoard/CardInteractionField")
 players = NodePath("../PlayerSystem")
 min_wait_seconds = 0.75
 metadata/_custom_type_script = "uid://c3hyh8ifpeuxg"
@@ -268,8 +268,8 @@ debug_functions = Array[ExtResource("34_4hsit")]([SubResource("Resource_8rpam")]
 [connection signal="player_resource_changed" from="Systems/PlayerSystem" to="World/CardBoard/CardInteractionField" method="player_changed"]
 [connection signal="player_resource_changed" from="Systems/PlayerSystem" to="World/Camera2D" method="player_changed"]
 [connection signal="player_score_changed" from="Systems/PlayerSystem" to="UI/PlayersOverlay" method="player_scored"]
-[connection signal="card_movement" from="Systems/PlayerInputSystem" to="World/CardBoard" method="parse_movement"]
-[connection signal="confirm_current_card" from="Systems/PlayerInputSystem" to="World/CardBoard" method="confirm_current_card"]
+[connection signal="card_movement" from="Systems/PlayerInputSystem" to="World/CardBoard/CardInteractionField" method="parse_movement"]
+[connection signal="confirm_current_card" from="Systems/PlayerInputSystem" to="World/CardBoard/CardInteractionField" method="confirm_selected_card"]
 [connection signal="end_current_round" from="Systems/PlayerInputSystem" to="." method="end_round_now"]
 [connection signal="end_current_round" from="Systems/PlayerInputSystem" to="Systems/GameStateSystem" method="force_end_round"]
 [connection signal="game_menu_requested" from="Systems/PlayerInputSystem" to="." method="show_game_menu"]

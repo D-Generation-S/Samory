@@ -1,7 +1,7 @@
 class_name OpenFirstMatchingCard extends AiBehaviorNode
 
-func can_execute(blackboard: Blackboard, grid: GameCardGrid) -> bool:
-    return grid.get_all_cards_currently_turned().size() == 0 and _blackboard_contains_identical_cards(blackboard)
+func can_execute(blackboard: Blackboard, grid: CardInteractionField) -> bool:
+    return grid.get_all_disabled_cards().size() == 0 and _blackboard_contains_identical_cards(blackboard)
 
 func _get_blackboard_identical_cards(blackboard: Blackboard) -> Array[CardInformationResource]:
     var known_cards: Array[CardInformationResource] = blackboard.get_all_saved_cards()
@@ -16,7 +16,7 @@ func _get_blackboard_identical_cards(blackboard: Blackboard) -> Array[CardInform
 func _blackboard_contains_identical_cards(blackboard: Blackboard) -> bool:
     return _get_blackboard_identical_cards(blackboard).size() > 0
 
-func execute_action(blackboard: Blackboard, grid: GameCardGrid) -> void:
+func execute_action(blackboard: Blackboard, grid: CardInteractionField) -> void:
     print_debug("OpenFirstMatchingCard")
     var cards: Array[CardInformationResource] = _get_blackboard_identical_cards(blackboard)
     var index: int = randi_range(0, cards.size() - 1)

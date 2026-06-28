@@ -101,81 +101,15 @@ func select_card_at_position(grid_position: Vector2i) -> bool:
 		current_card.got_focus()
 	return found_card
 
-func confirm_current_card() -> void:
-	if current_card == null or get_tree().paused:
-		return
-	current_card.card_was_clicked()
 
 func get_card_on_position(card_position: Vector2i) -> MemoryCardResource:
 	for card: CardTemplate in _get_game_card_templates_children():
 		if card_position == card.grid_position:
 			return card.memory_card
 	return null
-		
-func parse_movement(information: Vector2) -> void:
-	if get_tree().paused or currently_ai_player:
-		return
-	controller_input_was_made = true
-	if information != Vector2.ZERO:
-		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-
-	var card_position: Vector2i =_get_closest_card_position(information)
-	if card_position == -Vector2i.ONE or !select_card_at_position(card_position):
-		current_card = null
-
-func _get_closest_card_position(movement: Vector2) -> Vector2i:
-	var current_selected_card: Vector2i = get_current_grid_position()
-	var target_position: Vector2i = Vector2i(int(movement.x), int(movement.y)) + current_selected_card
-	if current_selected_card == -Vector2i.ONE:
-		current_selected_card = -Vector2i.ONE
-		target_position = Vector2i.ZERO
-
-	target_position.x = clampi(target_position.x, 0, _field_size.x)
-	target_position.y = clampi(target_position.y, 0, _field_size.y)
-
-	if current_selected_card == target_position:
-		return current_selected_card
-
-	print(target_position)
-	
-	var axis: Axis = Axis.X
-	var is_negative: bool = false
-	var closest_distance: float = 100000.0
-	var return_position: Vector2i = -Vector2i.ONE
-
-	if movement.y != 0:
-		axis = Axis.Y
-
-	if movement.y < -0.0001 or movement.x < -0.0001:
-		is_negative = true
-	for valid_position: Vector2i in _get_valid_card_positions(current_selected_card, is_negative, axis):
-		if valid_position == target_position:
-			return valid_position
-		var calculate_distance: Vector2i = valid_position
-		var weight: int = (_field_size.x + _field_size.y) * 2
-		if axis == Axis.X:
-			if valid_position.x == target_position.x:
-				weight = 0
-		else:
-			if valid_position.y == target_position.y:
-				weight = 0
-		var current_distance: float = calculate_distance.distance_to(target_position) + weight
-		if current_distance < closest_distance:
-			closest_distance = current_distance
-			return_position = valid_position
-
-	return return_position
 
 func round_frozen() -> void:
 	current_card = null
-
-func round_unfrozen() -> void:
-	if currently_ai_player:
-		controller_input_was_made = false
-		return
-	if controller_input_was_made:
-		_get_closest_card_position(Vector2i(1,0))
-	controller_input_was_made = false
 
 func card_loading_done() -> void:
 	for card: CardTemplate in _get_game_card_templates():
@@ -187,7 +121,6 @@ func card_loading_done() -> void:
 func game_state_changed(game_state: GameEnum.State) -> void:
 	match game_state:
 		GameEnum.State.TURN_START:
-			round_unfrozen()
 			for card: CardTemplate in _get_game_card_templates():
 				card.player_changed(currently_ai_player)
 			print(_get_game_card_templates().size())
@@ -212,7 +145,6 @@ func _validate_grid() -> void:
 		if card == null or card.is_queued_for_deletion():
 			continue
 		if card.is_turned() and not card.card_is_fully_shown():
-			print("Waiting")
 			await card.fully_shown
 	if _any_matching():
 		var card_positions: Array[Vector2i] = []
@@ -302,7 +234,6 @@ func prevent_input(prevent: bool) -> void:
 func card_was_placed(card: CardTemplate) -> void:
 	card.card_triggered.connect(card_triggered_hook)
 	state_machine.state_changed.connect(card.game_state_changed)
-
 
 func card_triggered_hook(card: CardTemplate) -> void:
 	select_card_at_position(card.grid_position)

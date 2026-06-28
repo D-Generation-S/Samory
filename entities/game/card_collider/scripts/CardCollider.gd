@@ -9,6 +9,7 @@ var _grid_coordinate: Vector2i = Vector2i.ZERO
 var _shape: CollisionShape2D = null
 
 var _mouse_inside: bool = false
+var _active_state: bool = false
 
 func _ready() -> void:
 	_shape = get_node("%CollisionShape")
@@ -31,6 +32,15 @@ func enable_collider() -> void:
 func disable_collider() -> void:
 	_shape.disabled = true
 
+func is_clicked() -> void:
+	_active_state = false
+
+func reset() -> void:
+	_active_state = true
+
+func is_active() -> bool:
+	return _active_state
+
 func mouse_entered() -> void:
 	mouse_enter.emit(_grid_coordinate)
 	_mouse_inside = true
@@ -40,9 +50,10 @@ func mouse_has_left() -> void:
 	_mouse_inside = false
 
 func input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if not _mouse_inside:
+	if not _mouse_inside or not _active_state:
 		return
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == MouseButton.MOUSE_BUTTON_LEFT:
 			clicked.emit(_grid_coordinate)
 			disable_collider()
+			is_clicked()

@@ -4,6 +4,8 @@ signal mouse_enter(grid: Vector2i)
 signal mouse_left(grid: Vector2i)
 signal clicked(grid: Vector2i)
 
+enum Axis {X, Y}
+
 @export var default_texture_size: Vector2 = Vector2(499, 550)
 @export var collider_template: PackedScene = null
 @export var additional_offset: Vector2i = Vector2i(0, 25)
@@ -11,8 +13,22 @@ signal clicked(grid: Vector2i)
 var _separation: int = 0
 var _offset: Vector2i = Vector2i.ZERO
 var _card_size: Vector2
+var _field_size: Vector2i = Vector2i.ZERO
 
 var _is_ai_player: bool = false
+var _selected_grid_position: Vector2i = -Vector2i.ONE
+var _controller_input_was_made: bool = false
+
+var possible_movements: Array[Vector2] = [
+		Vector2.RIGHT,
+		Vector2.DOWN,
+		Vector2.LEFT,
+		Vector2.UP
+	]
+
+
+func _reset_grid_position() -> void:
+	_selected_grid_position = -Vector2i.ONE
 
 func set_board_information(deck_to_use: MemoryDeckResource, card_separation: int, field_offset: Vector2i) -> void:
 	var back_image: Texture2D = deck_to_use.get_back_image()
@@ -23,6 +39,7 @@ func set_board_information(deck_to_use: MemoryDeckResource, card_separation: int
 	_offset = field_offset
 
 func build_field(cards_on_x: int, cards_on_y: int) -> void:
+	_field_size = Vector2i(cards_on_x, cards_on_y)
 	for x: int in cards_on_x:
 		for y: int in cards_on_y:
 			var x_addition: int = _separation * x
@@ -63,10 +80,151 @@ func _change_interaction_state(new_state: bool) -> void:
 	for child: CardCollider in get_children():
 		if new_state:
 			child.enable_collider()
+			child.reset()
 		else:
 			child.disable_collider()
 
+
+
+func parse_movement(information: Vector2) -> void:
+	if get_tree().paused or _is_ai_player:
+		_controller_input_was_made = false
+		return
+	_controller_input_was_made = true
+	if information != Vector2.ZERO:
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
+	mouse_left.emit(_selected_grid_position)
+	var card_position: Vector2i =_get_closest_card_position(information)
+	if card_position == -Vector2i.ONE:  # or !select_card_at_position(card_position):
+		card_position = _selected_grid_position
+
+	_selected_grid_position = card_position
+	mouse_enter.emit(_selected_grid_position)
+
+func _get_closest_card_position(movement: Vector2) -> Vector2i:
+	var target_position: Vector2i = Vector2i(int(movement.x), int(movement.y)) + _selected_grid_position
+	if _selected_grid_position == -Vector2i.ONE:
+		_selected_grid_position = -Vector2i.ONE
+		target_position = Vector2i.ZERO
+
+	target_position.x = clampi(target_position.x, 0, _field_size.x)
+	target_position.y = clampi(target_position.y, 0, _field_size.y)
+
+	if _selected_grid_position == target_position:
+		return _selected_grid_position
+	
+	var axis: Axis = Axis.X
+	var is_negative: bool = false
+	var closest_distance: float = 100000.0
+	var return_position: Vector2i = -Vector2i.ONE
+
+	if movement.y != 0:
+		axis = Axis.Y
+
+	if movement.y < -0.0001 or movement.x < -0.0001:
+		is_negative = true
+	for valid_position: Vector2i in _get_all_relevant_available_cards(_selected_grid_position, is_negative, axis):
+		if valid_position == target_position:
+			return valid_position
+		var calculate_distance: Vector2i = valid_position
+		var weight: int = (_field_size.x + _field_size.y) * 2
+		if axis == Axis.X:
+			if valid_position.x == target_position.x:
+				weight = 0
+		else:
+			if valid_position.y == target_position.y:
+				weight = 0
+		var current_distance: float = calculate_distance.distance_to(target_position) + weight
+		if current_distance < closest_distance:
+			closest_distance = current_distance
+			return_position = valid_position
+
+	return return_position
+
+func get_all_card_positions(get_turned: bool = false) -> Array[Vector2i]:
+	var card_positions: Array[Vector2i] = []
+	for card_collider: CardCollider in get_children():
+		if card_collider != null and not card_collider.is_queued_for_deletion():
+			if get_turned or card_collider.is_active():
+				card_positions.append(card_collider.get_grid_coordinate())
+	return card_positions
+
+func get_all_disabled_cards() -> Array[Vector2i]:
+	var card_positions: Array[Vector2i] = []
+	for card_collider: CardCollider in get_children():
+		if card_collider != null and not card_collider.is_queued_for_deletion():
+			if not card_collider.is_active():
+				card_positions.append(card_collider.get_grid_coordinate())
+	return card_positions
+
+func is_there_a_card_on_position(grid_position: Vector2i) -> bool:
+	for card_collider: CardCollider in get_children():
+		if card_collider.get_grid_coordinate() == grid_position:
+			var active: bool = card_collider.is_active()
+			return active
+	return false
+
+func _get_all_relevant_available_cards(current_pos: Vector2i, go_negative: bool, axis: Axis) -> Array[Vector2i]:
+	var valid_cards: Array[Vector2i] = []
+	for card_collider: Node in get_children():
+		if card_collider != null and not card_collider.is_queued_for_deletion() and card_collider is CardCollider:
+			if _check_if_valid_card(current_pos, go_negative, axis, card_collider):
+				valid_cards.append(card_collider.get_grid_coordinate())
+	return valid_cards
+
+func _check_if_valid_card(current_pos: Vector2i, go_negative: bool, axis: Axis, card: CardCollider) -> bool:
+	if not card.is_active():
+		return false
+	match axis:
+		Axis.X:
+			if go_negative:
+				return card.get_grid_coordinate().x < current_pos.x
+			return card.get_grid_coordinate().x > current_pos.x
+		Axis.Y:
+			if go_negative:
+				return card.get_grid_coordinate().y < current_pos.y
+			return card.get_grid_coordinate().y > current_pos.y
+			
+	return false
+
+func confirm_selected_card() -> void:
+	mouse_has_clicked(_selected_grid_position)
+
 func _connect_card_interaction(collider: CardCollider) -> void:
-	collider.mouse_enter.connect(func(data: Vector2i) -> void: mouse_enter.emit(data))
-	collider.mouse_left.connect(func(data: Vector2i) -> void: mouse_left.emit(data))
-	collider.clicked.connect(func(data: Vector2i) -> void: clicked.emit(data))
+	collider.mouse_enter.connect(mouse_has_entered)
+	collider.mouse_enter.connect(_mouse_movement_was_made)
+	collider.mouse_left.connect(mouse_has_left)
+	collider.mouse_left.connect(_mouse_movement_was_made)
+	collider.clicked.connect(mouse_has_clicked)
+
+func _mouse_movement_was_made(_grid_position: Vector2i) -> void:
+	_controller_input_was_made = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+func mouse_has_clicked(grid_position: Vector2i) -> void:
+	clicked.emit(grid_position)
+	for collider: CardCollider in get_children():
+		if collider.get_grid_coordinate() == grid_position:
+			collider.is_clicked()
+	if not _controller_input_was_made:
+		_reset_grid_position()
+		return
+	_selected_grid_position = _get_closest_card()
+	mouse_has_entered(_selected_grid_position)
+
+func _get_closest_card() -> Vector2i:
+	for direction: Vector2 in possible_movements:
+		var possible_position: Vector2i = _get_closest_card_position(direction)
+		if possible_position != -Vector2i.ONE:
+			return possible_position
+		
+	return -Vector2i.ONE
+
+func mouse_has_entered(grid_position: Vector2i) -> void:
+	mouse_enter.emit(grid_position)
+	_selected_grid_position = grid_position
+
+func mouse_has_left(grid_position: Vector2i) -> void:
+	mouse_left.emit(grid_position)
+	_selected_grid_position = grid_position
