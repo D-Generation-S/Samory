@@ -1,6 +1,6 @@
 class_name RevealUnknownCornerCard extends AiBehaviorNode
 
-func can_execute(blackboard: Blackboard, grid: GameCardGrid) -> bool:
+func can_execute(blackboard: Blackboard, grid: CardInteractionField) -> bool:
 	for position: Vector2i in grid.get_all_card_positions(false):
 		if _get_corner_positions(grid).find(position) != -1 and not _blackboard_card_known(blackboard, position):
 			return true
@@ -12,7 +12,7 @@ func _blackboard_card_known(blackboard: Blackboard, position: Vector2i) -> bool:
 			return true
 	return false
 
-func _get_corner_positions(grid: GameCardGrid) -> Array[Vector2i]:
+func _get_corner_positions(grid: CardInteractionField) -> Array[Vector2i]:
 	var field_size: Vector2i  = grid.get_field_size()
 	var allowed_positions: Array[Vector2i] = [
 		Vector2i.ZERO, # top left
@@ -22,7 +22,7 @@ func _get_corner_positions(grid: GameCardGrid) -> Array[Vector2i]:
 	]
 	return allowed_positions
 
-func execute_action(blackboard: Blackboard, grid: GameCardGrid) -> void:
+func execute_action(blackboard: Blackboard, grid: CardInteractionField) -> void:
 	var allowed_positions: Array[Vector2i] = _get_corner_positions(grid)
 	var valid_positions: Array[Vector2i] = []
 	for position: Vector2i in allowed_positions:
