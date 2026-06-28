@@ -1,7 +1,7 @@
 class_name GetMatchingCard extends AiBehaviorNode
 
-func can_execute(blackboard: Blackboard, grid: GameCardGrid) -> bool:
-    var unrevealed_cards: Array[Vector2i] = grid.get_all_cards_currently_turned()
+func can_execute(blackboard: Blackboard, grid: CardInteractionField) -> bool:
+    var unrevealed_cards: Array[Vector2i] = grid.get_all_disabled_cards()
     if unrevealed_cards.size() != 1:
         return false;
 
@@ -15,9 +15,9 @@ func can_execute(blackboard: Blackboard, grid: GameCardGrid) -> bool:
             return true
     return false
 
-func execute_action(blackboard: Blackboard, grid: GameCardGrid) -> void:
+func execute_action(blackboard: Blackboard, grid: CardInteractionField) -> void:
     print_debug("GetMatchingCard")
-    var unrevealed_cards: Array[Vector2i] = grid.get_all_cards_currently_turned()
+    var unrevealed_cards: Array[Vector2i] = grid.get_al()
     var card_of_focus: Vector2i = unrevealed_cards[0]
     var loaded_card: MemoryCardResource = grid.get_card_on_position(card_of_focus)
     var card_to_reveal: CardInformationResource = null

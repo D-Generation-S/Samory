@@ -5,19 +5,16 @@ class_name AiBehaviorNode extends Resource
 func get_execution_probability() -> int:
 	return probability
 
-func can_execute(_blackboard: Blackboard, _grid: GameCardGrid) -> bool:
+func can_execute(_blackboard: Blackboard, _grid: CardInteractionField) -> bool:
 	return false
 
-func execute_action(_blackboard: Blackboard, _grid: GameCardGrid) -> void:
+func execute_action(_blackboard: Blackboard, _grid: CardInteractionField) -> void:
 	pass
 
-func _trigger_card(position: Vector2i, _blackboard: Blackboard, grid: GameCardGrid) -> bool:
-	var card: MemoryCardResource = grid.get_card_on_position(position)
-	if card == null:
+func _trigger_card(position: Vector2i, _blackboard: Blackboard, grid: CardInteractionField) -> bool:
+	var card_existing: bool = grid.is_there_a_card_on_position(position)
+	if not card_existing:
 		return false
 
-	if grid.select_card_at_position(position):
-		grid.confirm_current_card()
-		return true
-
-	return false
+	grid.mouse_has_clicked(position)
+	return not grid.is_there_a_card_on_position(position)

@@ -21,7 +21,7 @@ func _get_personality() -> AIPersonality:
 
 	return _personality
 
-func execute_action(grid: GameCardGrid) -> void:
+func execute_action(grid: CardInteractionField) -> void:
 	var actions: Array[AiBehaviorNode] = _get_personality().get_actions()
 	var possible_actions: Array[AiBehaviorNode] = actions.filter(func(current_action: AiBehaviorNode) -> bool: return current_action.can_execute(blackboard, grid))
 	var loot_table: LootTable = LootTable.new()

@@ -1,11 +1,11 @@
 class_name OpenRandomCard extends AiBehaviorNode
 
-func can_execute(_blackboard: Blackboard, grid: GameCardGrid) -> bool:
+func can_execute(_blackboard: Blackboard, grid: CardInteractionField) -> bool:
     if grid.get_all_card_positions(false).size() > 0:
         return true
     return false
 
-func execute_action(blackboard: Blackboard, grid: GameCardGrid) -> void:
+func execute_action(blackboard: Blackboard, grid: CardInteractionField) -> void:
     print_debug("OpenRandomCard")
     var card_positions: Array[Vector2i] = grid.get_all_card_positions(false)
     var index: int = randi() % card_positions.size()
