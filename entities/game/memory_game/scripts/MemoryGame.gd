@@ -7,6 +7,8 @@ signal game_paused(is_paused: bool)
 
 signal request_popup(window: PopupWindow)
 
+signal game_loaded()
+
 const CARDS_PER_PLAYER: int = 2
 
 @export_group("Game Setup")
@@ -17,6 +19,7 @@ const CARDS_PER_PLAYER: int = 2
 
 
 var _card_deck: Resource
+var _initial_start: bool = true
 
 #var current_game_state: int
 var player_node: PlayerSystem
@@ -101,7 +104,10 @@ func execute_logic() -> bool:
 
 func game_state_has_changed(new_state: GameEnum.State) -> void:
 	if new_state == GameEnum.State.TURN_START:
+		_handle_initial_start()
 		turn_start_trigger()
+	if new_state == GameEnum.State.ANIMATION_CLEARED:
+		show_game_end_screen()
 
 ## This will be triggered if a new turn does start
 func turn_start_trigger() -> void:
@@ -112,11 +118,12 @@ func turn_start_trigger() -> void:
 	print("Start Round")
 	triggered_cards = 0
 
-func all_cards_placed() -> void:
-	for child: Node in get_tree().get_nodes_in_group("game_initialize_scene"):
-		child.queue_free()
-	GlobalSoundManager.stop_all_sounds()
+func _handle_initial_start() -> void:
+	if not _initial_start:
+		return
+	_initial_start = false
 	process_mode = Node.PROCESS_MODE_INHERIT
+	game_loaded.emit()
 
 func get_systems() -> Systems:
 	return _systems

@@ -3,6 +3,7 @@ class_name GameStateSystem extends Node
 signal state_changed(new_state: GameEnum.State)
 signal request_popup(window: PopupWindow)
 signal force_close_popup(id: int)
+signal game_has_ended()
 
 @export var round_end_message: TextTranslation
 @export var round_end_message_no_auto_complete: TextTranslation
@@ -41,6 +42,8 @@ func card_was_clicked() -> void:
 
 func matches_found() -> void:
 	print("match found")
+	if _current_state == GameEnum.State.GAME_END:
+		animation_cleared()
 	_change_state(GameEnum.State.TURN_START)
 
 func no_matches() -> void:
@@ -52,11 +55,22 @@ func board_ready() -> void:
 	print("board ready")
 	_change_state(GameEnum.State.TURN_START)
 	
-
 func board_empty() -> void:
 	print("board empty")
 	_change_state(GameEnum.State.PREPARE_TURN_END)
 	_change_state(GameEnum.State.GAME_END)
+
+	var emergency_timer: Timer = Timer.new()
+	emergency_timer.one_shot = true
+	emergency_timer.timeout.connect(animation_cleared)
+	add_child(emergency_timer)
+	emergency_timer.start(2)
+
+func animation_cleared() -> void:
+	if _current_state != GameEnum.State.GAME_END:
+		return
+	_change_state(GameEnum.State.ANIMATION_CLEARED)
+	game_has_ended.emit()
 
 func _show_round_ended_banner() -> void:
 	var settings: SettingsResource = SettingsRepository.load_settings() as SettingsResource
