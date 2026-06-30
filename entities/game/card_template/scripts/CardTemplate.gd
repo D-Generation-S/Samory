@@ -281,9 +281,6 @@ func play_sound(audio: AudioStream) -> void:
 		return
 	GlobalSoundManager.play_sound_effect(audio)
 
-func player_changed(ai_player: bool) -> void:
-	input_allowed(!ai_player)
-
 func input_allowed(allowed: bool) -> void:
 	input_active.emit(allowed)
 

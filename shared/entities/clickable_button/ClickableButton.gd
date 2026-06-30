@@ -97,7 +97,7 @@ func check_if_can_execute() -> void:
 func _process(_delta: float) -> void:
 	if button_behavior != null:
 		button_behavior.process()
-	if not can_request_debug_view:
+	if not can_request_debug_view: 
 		return
 
 	if Input.is_action_just_pressed("toggle_debug") and OS.is_debug_build():

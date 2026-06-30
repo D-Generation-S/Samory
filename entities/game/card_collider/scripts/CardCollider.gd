@@ -10,9 +10,18 @@ var _shape: CollisionShape2D = null
 
 var _mouse_inside: bool = false
 var _active_state: bool = false
+var _card_id: int = -1
 
 func _ready() -> void:
 	_shape = get_node("%CollisionShape")
+
+func set_card_id(id: int) -> void:
+	if _card_id != -1:
+		return
+	_card_id = id
+
+func get_card_id() -> int:
+	return _card_id
 
 func set_size(size: Vector2) -> void:
 	var shape: RectangleShape2D = RectangleShape2D.new()

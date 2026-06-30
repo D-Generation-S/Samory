@@ -1,6 +1,7 @@
 class_name MemoryGame extends Node2D
 
 signal load_game(card_deck: MemoryDeckResource, separation: int, field_offset: Vector2i)
+signal announce_deck(card_deck: MemoryDeckResource)
 
 signal game_paused(is_paused: bool)
 
@@ -47,6 +48,7 @@ func set_card_deck(deck: MemoryDeckResource) -> void:
 	_card_deck = deck
 
 func start_loading_data() -> void:
+	announce_deck.emit(_card_deck)
 	load_game.emit(_card_deck, card_separation, field_offset)
 
 func _process(_delta: float) -> void:

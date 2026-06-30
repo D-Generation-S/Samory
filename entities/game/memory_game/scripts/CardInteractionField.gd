@@ -4,6 +4,10 @@ signal mouse_enter(grid: Vector2i)
 signal mouse_left(grid: Vector2i)
 signal clicked(grid: Vector2i)
 
+signal place_card(card: MemoryCardResource, grid_position: Vector2i, world_position: Vector2)
+signal board_area(area: Rect2)
+signal board_build()
+
 enum Axis {X, Y}
 
 @export var default_texture_size: Vector2 = Vector2(499, 550)
@@ -19,6 +23,9 @@ var _is_ai_player: bool = false
 var _selected_grid_position: Vector2i = -Vector2i.ONE
 var _controller_input_was_made: bool = false
 
+var _placed_cards: Dictionary[Vector2i, CardCollider]
+var _current_deck: MemoryDeckResource = null
+
 var possible_movements: Array[Vector2] = [
 		Vector2.RIGHT,
 		Vector2.DOWN,
@@ -26,11 +33,12 @@ var possible_movements: Array[Vector2] = [
 		Vector2.UP
 	]
 
-
 func _reset_grid_position() -> void:
 	_selected_grid_position = -Vector2i.ONE
 
 func set_board_information(deck_to_use: MemoryDeckResource, card_separation: int, field_offset: Vector2i) -> void:
+	_current_deck = deck_to_use
+
 	var back_image: Texture2D = deck_to_use.get_back_image()
 	_card_size = default_texture_size
 	if back_image != null:
@@ -38,10 +46,48 @@ func set_board_information(deck_to_use: MemoryDeckResource, card_separation: int
 	_separation = card_separation
 	_offset = field_offset
 
-func build_field(cards_on_x: int, cards_on_y: int) -> void:
-	_field_size = Vector2i(cards_on_x, cards_on_y)
-	for x: int in cards_on_x:
-		for y: int in cards_on_y:
+	await _create_field()
+	var area: Rect2 = _calculate_field_area()
+	board_area.emit(area)
+	board_build.emit()
+
+func _create_field() -> void:
+	var play_cards: Array[MemoryCardResource] = _create_card_set()
+	_field_size = _calculate_field_size(play_cards.size())
+	
+	build_field(play_cards)
+	await RenderingServer.frame_post_draw
+
+func _calculate_field_size(card_count: int) -> Vector2i:
+	if card_count <= 0:
+		return Vector2i.ZERO
+
+	var side_length: int = floori(sqrt(card_count))
+
+	var row_count: int = side_length
+	var column_count: int = side_length
+
+	while row_count * column_count < card_count:
+		column_count = column_count + 1
+
+	return Vector2i(column_count, row_count)
+
+func _create_card_set() -> Array[MemoryCardResource]:
+	var return_data: Array[MemoryCardResource] = []
+	for card: MemoryCardResource in _current_deck.cards:
+		return_data.append(card)
+		return_data.append(card)
+
+	return_data.shuffle()
+	return return_data
+
+func build_field(cards: Array[MemoryCardResource]) -> void:
+	for x: int in _field_size.x:
+		for y: int in _field_size.y:
+			if cards.size() == 0:
+				return
+			var card: MemoryCardResource = cards.pick_random()
+			_remove_card_from_cards_stack(card.id, cards)
 			var x_addition: int = _separation * x
 			x_addition += int(_card_size.x) * x
 			var y_addition: int = _separation * y
@@ -50,10 +96,24 @@ func build_field(cards_on_x: int, cards_on_y: int) -> void:
 			template.set_size(_card_size)
 			template.position = _offset + additional_offset + Vector2i(x_addition, y_addition)
 			template.set_grid_coordinate(Vector2i(x, y))
+			template.set_card_id(card.id)
 			_connect_card_interaction(template)
-
+			_placed_cards.set(Vector2i(x, y), template)
 			add_child(template)
 			template.disable_collider()
+			place_card.emit(card, Vector2i(x, y), Vector2i(x_addition, y_addition) + _offset)
+
+func _calculate_field_area() -> Rect2:
+	var field_width: float = _card_size.x * _field_size.x
+	var field_height: float = _card_size.y * _field_size.y
+
+	var center_x: float = field_width / 2
+	var center_y: float = field_height / 2
+	return Rect2(center_x, center_y, field_width, field_height)
+
+func _remove_card_from_cards_stack(id: int, cards: Array[MemoryCardResource]) -> void:
+	var index: int = cards.find_custom((func(card: MemoryCardResource) -> bool: return card.id == id))
+	cards.remove_at(index)
 
 func get_field_size() -> Vector2i:
 	return _field_size
@@ -62,28 +122,30 @@ func card_was_added(card: CardTemplate) -> void:
 	card.remove_requested.connect(remove_card.bind(card.grid_position))
 
 func remove_card(grid_position: Vector2i) -> void:
-	for child: CardCollider in get_children():
-		if child.get_grid_coordinate() == grid_position:
-			child.queue_free()
+	if _placed_cards.has(grid_position):
+		var child: CardCollider = _placed_cards.get(grid_position)
+		child.queue_free()
+		_placed_cards.erase(grid_position)
 
 func player_changed(current_player: PlayerResource) -> void:
 	_is_ai_player = current_player.is_ai()
 
 func game_state_changed(new_state: GameEnum.State) -> void:
 	var _new_collider_enabled_state: bool = false
-	if new_state == GameEnum.State.TURN_START and not _is_ai_player:
+	if new_state == GameEnum.State.TURN_START:
 		_new_collider_enabled_state = true
-		
+			
 	if new_state == GameEnum.State.TURN_FREEZE:
 		_new_collider_enabled_state = false
 
 	_change_interaction_state(_new_collider_enabled_state)
 
 func _change_interaction_state(new_state: bool) -> void:
-	for child: CardCollider in get_children():
+	for child: CardCollider in _placed_cards.values():
 		if new_state:
-			child.enable_collider()
 			child.reset()
+			if not _is_ai_player:
+				child.enable_collider()
 		else:
 			child.disable_collider()
 
@@ -145,9 +207,14 @@ func _get_closest_card_position(movement: Vector2) -> Vector2i:
 
 	return return_position
 
+func get_card_id_from_position(grid_position: Vector2i) -> int:
+	if _placed_cards.has(grid_position):
+		return _placed_cards.get(grid_position).get_card_id()
+	return -1
+
 func get_all_card_positions(get_turned: bool = false) -> Array[Vector2i]:
 	var card_positions: Array[Vector2i] = []
-	for card_collider: CardCollider in get_children():
+	for card_collider: CardCollider in _placed_cards.values():
 		if card_collider != null and not card_collider.is_queued_for_deletion():
 			if get_turned or card_collider.is_active():
 				card_positions.append(card_collider.get_grid_coordinate())
@@ -155,14 +222,14 @@ func get_all_card_positions(get_turned: bool = false) -> Array[Vector2i]:
 
 func get_all_disabled_cards() -> Array[Vector2i]:
 	var card_positions: Array[Vector2i] = []
-	for card_collider: CardCollider in get_children():
+	for card_collider: CardCollider in _placed_cards.values():
 		if card_collider != null and not card_collider.is_queued_for_deletion():
 			if not card_collider.is_active():
 				card_positions.append(card_collider.get_grid_coordinate())
 	return card_positions
 
 func is_there_a_card_on_position(grid_position: Vector2i) -> bool:
-	for card_collider: CardCollider in get_children():
+	for card_collider: CardCollider in _placed_cards.values():
 		if card_collider.get_grid_coordinate() == grid_position:
 			var active: bool = card_collider.is_active()
 			return active
@@ -170,7 +237,7 @@ func is_there_a_card_on_position(grid_position: Vector2i) -> bool:
 
 func _get_all_relevant_available_cards(current_pos: Vector2i, go_negative: bool, axis: Axis) -> Array[Vector2i]:
 	var valid_cards: Array[Vector2i] = []
-	for card_collider: Node in get_children():
+	for card_collider: Node in _placed_cards.values():
 		if card_collider != null and not card_collider.is_queued_for_deletion() and card_collider is CardCollider:
 			if _check_if_valid_card(current_pos, go_negative, axis, card_collider):
 				valid_cards.append(card_collider.get_grid_coordinate())
