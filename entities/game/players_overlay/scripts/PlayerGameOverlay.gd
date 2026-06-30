@@ -48,7 +48,7 @@ func game_ended() -> void:
 func game_state_changed(game_state: GameEnum.State) -> void:
 	if game_state == GameEnum.State.TURN_END:
 		round_end()
-	if game_state == GameEnum.State.GAME_END:
+	if game_state == GameEnum.State.ANIMATION_CLEARED:
 		visible = false
 
 func get_global_position_of_current_player() -> Vector2:

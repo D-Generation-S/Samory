@@ -258,16 +258,21 @@ func load_game(card_deck: MemoryDeckResource, players: Array[PlayerResource], cl
 	loading_screen.add_to_group("game_initialize_scene")
 	loading_screen.set_follow_up_node(game_scene_node)
 
+	game_scene_node.game_loaded.connect(_destroy_game_loading_screen.bind(loading_screen, active_nodes))
+
 	await ScreenTransitionManager.transit_screen_by_node_with_position(loading_screen, click_position, false)
 	if old_camera != null and not old_camera.is_queued_for_deletion():
 		old_camera.zoom = Vector2.ONE
 		old_camera.queue_free()
 	add_child(game_scene_node)
-	for node: Node in active_nodes:
+
+func _destroy_game_loading_screen(screen: LoadingScreen, old_nodes: Array[Node]) -> void:
+	screen.queue_free()
+	GlobalSoundManager.stop_all_sounds()
+	for node: Node in old_nodes:
 		if node == null or node.is_queued_for_deletion():
 			continue
 		node.queue_free()
-
 
 func get_available_decks() -> Array[MemoryDeckResource]:
 	var return_array: Array[MemoryDeckResource] = []

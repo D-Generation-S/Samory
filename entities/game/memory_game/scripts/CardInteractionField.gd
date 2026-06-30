@@ -8,6 +8,9 @@ signal place_card(card: MemoryCardResource, grid_position: Vector2i, world_posit
 signal board_area(area: Rect2)
 signal board_build()
 
+## The whole board is empty now
+signal board_empty()
+
 enum Axis {X, Y}
 
 @export var default_texture_size: Vector2 = Vector2(499, 550)
@@ -126,6 +129,12 @@ func remove_card(grid_position: Vector2i) -> void:
 		var child: CardCollider = _placed_cards.get(grid_position)
 		child.queue_free()
 		_placed_cards.erase(grid_position)
+		_check_if_board_empty()
+
+func _check_if_board_empty() -> void:
+	if _placed_cards.size() == 0:
+		board_empty.emit()
+
 
 func player_changed(current_player: PlayerResource) -> void:
 	_is_ai_player = current_player.is_ai()
@@ -148,8 +157,6 @@ func _change_interaction_state(new_state: bool) -> void:
 				child.enable_collider()
 		else:
 			child.disable_collider()
-
-
 
 func parse_movement(information: Vector2) -> void:
 	if get_tree().paused or _is_ai_player:

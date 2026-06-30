@@ -1,6 +1,6 @@
 class_name GameCardGrid extends Node2D
 
-signal card_removed()
+signal card_removed(grid_position: Vector2i)
 signal all_matching_cards_removed()
 signal card_triggered(CardTemplate: CardTemplate)
 signal identical_cards(first_card_Vector2i: Vector2i, set_icon_modulated_card_Vector2i: Vector2i)
@@ -42,7 +42,7 @@ func remove_cards_from_board(grid_positions: Array[Vector2i]) -> void:
 		remove_card_from_board(grid_position)
 	for card: CardTemplate in _get_game_card_templates():
 		if card.is_playing_animation():
-			await card.about_to_get_delete
+			await card.about_to_get_delete	
 	all_matching_cards_removed.emit()
 	GlobalSoundManager.play_sound_effect(matching_card_sound_effect)
 	
@@ -50,7 +50,7 @@ func remove_card_from_board(grid_position: Vector2i) -> void:
 	for child: CardTemplate in _get_game_card_templates_children():
 		if child.grid_position == grid_position:
 			child.remove_from_board(currently_ai_player)
-			child.about_to_get_delete.connect(func() -> void: card_removed.emit())
+			card_removed.emit(child.grid_position)
 
 func select_card_at_position(grid_position: Vector2i) -> bool:
 	var found_card: bool = false
