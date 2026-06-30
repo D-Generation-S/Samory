@@ -13,6 +13,8 @@ signal card_activated()
 @export var matching_card_sound_effect: AudioStream
 @export var visual_card_node: Node2D
 
+@export var card_template: PackedScene
+
 var current_card: CardTemplate
 
 var controller_input_was_made: bool = false
@@ -20,50 +22,14 @@ var currently_ai_player: bool = false
 
 var number_of_triggered_cards: int = 0
 
-var _field_size: Vector2i = Vector2i.ZERO
 var _game_completed: bool = false
+
+var _deck: MemoryDeckResource = null
 
 enum Axis {X, Y}
 
-func get_current_grid_position() -> Vector2i:
-	if current_card == null:
-		return -Vector2i.ONE
-	return current_card.grid_position
-
-func receive_field_size(x: int, y: int) -> void:
-	_field_size = Vector2i(x - 1, y - 1) # Field size starts at 1 but index starts at 0
-
-func get_field_size() -> Vector2i:
-	return _field_size
-
-func _get_valid_card_positions(current_pos: Vector2i, go_negative: bool, axis: Axis) -> Array[Vector2i]:
-	var all_card_positions: Array[Vector2i] = get_card_grid(current_pos);
-	var valid_cards: Array[Vector2i] = []
-	for card_position: Vector2i in all_card_positions:
-		var current_card_position: int = 0
-		var current_position: int = 0
-		match axis:
-			Axis.X:
-				current_card_position = card_position.x
-				current_position = current_pos.x
-			Axis.Y:
-				current_card_position = card_position.y
-				current_position = current_pos.y
-		
-		if go_negative and current_card_position >= current_position:
-			continue
-		if !go_negative and current_card_position <= current_position:
-			continue
-		valid_cards.append(card_position)
-	return valid_cards
-
-func get_card_grid(current_pos: Vector2i) -> Array[Vector2i]:
-	var all_cards: Array[Vector2i] = []
-	for card: Node2D in visual_card_node.get_children():
-		if card is CardTemplate and card.grid_position != current_pos and not card.is_getting_removed():
-			all_cards.append(card.grid_position)
-
-	return all_cards
+func set_deck(deck: MemoryDeckResource) -> void:
+	_deck = deck
 
 func trigger_card_at_position(grid_position: Vector2i) -> void:
 	if select_card_at_position(grid_position):
@@ -101,29 +67,12 @@ func select_card_at_position(grid_position: Vector2i) -> bool:
 		current_card.got_focus()
 	return found_card
 
-
-func get_card_on_position(card_position: Vector2i) -> MemoryCardResource:
-	for card: CardTemplate in _get_game_card_templates_children():
-		if card_position == card.grid_position:
-			return card.memory_card
-	return null
-
 func round_frozen() -> void:
 	current_card = null
-
-func card_loading_done() -> void:
-	for card: CardTemplate in _get_game_card_templates():
-		card.mouse_was_used.connect(func() -> void: 
-			current_card = null
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		)
 
 func game_state_changed(game_state: GameEnum.State) -> void:
 	match game_state:
 		GameEnum.State.TURN_START:
-			for card: CardTemplate in _get_game_card_templates():
-				card.player_changed(currently_ai_player)
-			print(_get_game_card_templates().size())
 			if _get_game_card_templates().size() == 0:
 				_announce_empty_board()
 
@@ -217,23 +166,37 @@ func disable_card_effects() -> void:
 
 func _get_game_card_templates_children() -> Array[CardTemplate]:
 	var return_data: Array[CardTemplate]
-	for card_template: CardTemplate in visual_card_node.get_children().filter(func(data: Node) -> bool: return data is CardTemplate):
-		return_data.append(card_template)
+	for template: CardTemplate in visual_card_node.get_children().filter(func(data: Node) -> bool: return data is CardTemplate):
+		return_data.append(template)
 	return return_data
 
 func _get_game_card_templates() -> Array[CardTemplate]:
 	var return_data: Array[CardTemplate]
-	for card_template: CardTemplate in get_tree().get_nodes_in_group("game_card").filter(func(card: Node) -> bool: return card is CardTemplate):
-		return_data.append(card_template)
+	for template: CardTemplate in get_tree().get_nodes_in_group("game_card").filter(func(card: Node) -> bool: return card is CardTemplate):
+		return_data.append(template)
 	return return_data
 
 func prevent_input(prevent: bool) -> void:
 	for card: CardTemplate in _get_game_card_templates_children():
 		card.input_allowed(!prevent)
 
+# remove
 func card_was_placed(card: CardTemplate) -> void:
 	card.card_triggered.connect(card_triggered_hook)
 	state_machine.state_changed.connect(card.game_state_changed)
+
+func place_card(card: MemoryCardResource, grid_position: Vector2i, world_position: Vector2) -> void:
+	var card_template_node: CardTemplate = card_template.instantiate() as CardTemplate
+	card_template_node.memory_card = card
+	card_template_node.position = world_position
+	card_template_node.grid_position = grid_position
+	card_template_node.card_deck = _deck
+
+	visual_card_node.add_child(card_template_node)
+
+	## Should be changed
+	card_template_node.card_triggered.connect(card_triggered_hook)
+	state_machine.state_changed.connect(card_template_node.game_state_changed)
 
 func card_triggered_hook(card: CardTemplate) -> void:
 	select_card_at_position(card.grid_position)

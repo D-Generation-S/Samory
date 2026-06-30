@@ -30,7 +30,6 @@
 [ext_resource type="Script" uid="uid://6fa28680utd5" path="res://shared/entities/popup_manager/scripts/PopupSystem.gd" id="21_dv4ao"]
 [ext_resource type="PackedScene" uid="uid://d15qeu4s4bgjk" path="res://entities/game/tutorial_window/scenes/TutorialWindow.tscn" id="22_ubsrg"]
 [ext_resource type="Texture2D" uid="uid://vk4fpd7xo01j" path="res://assets/sprites/Axuree/wood_medium.png" id="23_a3528"]
-[ext_resource type="Script" uid="uid://btm576yjkyt4j" path="res://entities/game/memory_game/scripts/CardSpawner.gd" id="26_a3528"]
 [ext_resource type="Script" uid="uid://cf8loyigibdp6" path="res://entities/game/memory_game/scripts/CardInteractionField.gd" id="27_7lv0s"]
 [ext_resource type="PackedScene" uid="uid://0m4c62oqj4ih" path="res://entities/game/card_collider/scene/CardCollider.tscn" id="28_7ou1n"]
 [ext_resource type="Script" uid="uid://drr3p4wba2ys3" path="res://entities/game/memory_game/scripts/systems/NetworkHandler.gd" id="29_kihnp"]
@@ -120,11 +119,6 @@ script = ExtResource("29_kihnp")
 finished_game_template = ExtResource("4_6f670")
 metadata/_custom_type_script = "uid://drr3p4wba2ys3"
 
-[node name="CardSpawnerSystem" type="Node" parent="Systems" unique_id=1452917331]
-script = ExtResource("26_a3528")
-card_template = ExtResource("3_ihyl6")
-metadata/_custom_type_script = "uid://btm576yjkyt4j"
-
 [node name="UiInformationSystem" type="Node" parent="Systems" unique_id=1812178848]
 unique_name_in_owner = true
 script = ExtResource("36_m766l")
@@ -146,6 +140,7 @@ script = ExtResource("19_ploi3")
 state_machine = NodePath("../../Systems/GameStateSystem")
 matching_card_sound_effect = ExtResource("6_a3528")
 visual_card_node = NodePath("CardVisuals")
+card_template = ExtResource("3_ihyl6")
 
 [node name="CardInteractionField" type="Node2D" parent="World/CardBoard" unique_id=1435215390]
 z_index = 10
@@ -239,9 +234,9 @@ mouse_filter = 2
 memory_game = NodePath("../..")
 debug_functions = Array[ExtResource("34_4hsit")]([SubResource("Resource_8rpam")])
 
+[connection signal="announce_deck" from="." to="World/CardBoard" method="set_deck"]
 [connection signal="game_paused" from="." to="Systems/PlayerInputSystem" method="game_paused"]
 [connection signal="game_paused" from="." to="World/Camera2D" method="game_paused"]
-[connection signal="load_game" from="." to="Systems/CardSpawnerSystem" method="place_cards_from_deck"]
 [connection signal="load_game" from="." to="World/CardBoard/CardInteractionField" method="set_board_information"]
 [connection signal="request_popup" from="." to="Systems/PopupSystem" method="add_and_show_popup"]
 [connection signal="force_close_popup" from="Systems/GameStateSystem" to="Systems/PopupSystem" method="force_close_popup_with_id"]
@@ -282,19 +277,6 @@ debug_functions = Array[ExtResource("34_4hsit")]([SubResource("Resource_8rpam")]
 [connection signal="player_has_changed" from="Systems/NetworkHandlerSystem" to="Systems/PlayerSystem" method="set_player_by_id"]
 [connection signal="player_has_scored" from="Systems/NetworkHandlerSystem" to="Systems/PlayerSystem" method="set_player_score"]
 [connection signal="remove_card" from="Systems/NetworkHandlerSystem" to="World/CardBoard" method="remove_card_from_board"]
-[connection signal="announce_field_size" from="Systems/CardSpawnerSystem" to="World/Camera2D" method="adjust_zoom_and_position_to_play_area"]
-[connection signal="card_placed" from="Systems/CardSpawnerSystem" to="." method="card_was_placed"]
-[connection signal="card_placed" from="Systems/CardSpawnerSystem" to="World/CardBoard" method="card_was_placed"]
-[connection signal="card_placed" from="Systems/CardSpawnerSystem" to="World/CardBoard/CardInteractionField" method="card_was_added"]
-[connection signal="card_placing_done" from="Systems/CardSpawnerSystem" to="." method="all_cards_placed"]
-[connection signal="card_placing_done" from="Systems/CardSpawnerSystem" to="Systems/GameStateSystem" method="game_field_ready"]
-[connection signal="card_placing_done" from="Systems/CardSpawnerSystem" to="World/CardBoard" method="card_loading_done"]
-[connection signal="card_placing_done" from="Systems/CardSpawnerSystem" to="UI/PauseMenuButton" method="show_button_if_valid"]
-[connection signal="card_placing_done" from="Systems/CardSpawnerSystem" to="UI/PlayersOverlay" method="show"]
-[connection signal="card_placing_done" from="Systems/CardSpawnerSystem" to="UI/ZoomButtons/ZoomIn" method="show_button_if_valid"]
-[connection signal="card_placing_done" from="Systems/CardSpawnerSystem" to="UI/ZoomButtons/ZoomOut" method="show_button_if_valid"]
-[connection signal="field_constructed" from="Systems/CardSpawnerSystem" to="World/CardBoard" method="receive_field_size"]
-[connection signal="field_constructed" from="Systems/CardSpawnerSystem" to="World/CardBoard/CardInteractionField" method="build_field"]
 [connection signal="all_matching_cards_removed" from="World/CardBoard" to="." method="all_cards_removed"]
 [connection signal="all_matching_cards_removed" from="World/CardBoard" to="Systems/GameStateSystem" method="matches_found"]
 [connection signal="all_matching_cards_removed" from="World/CardBoard" to="Systems/TutorialStateSystem" method="matching_card_found"]
@@ -307,7 +289,15 @@ debug_functions = Array[ExtResource("34_4hsit")]([SubResource("Resource_8rpam")]
 [connection signal="card_triggered" from="World/CardBoard" to="Systems/AiAgentSystem" method="card_was_triggered"]
 [connection signal="identical_cards" from="World/CardBoard" to="Systems/AiAgentSystem" method="card_was_identically"]
 [connection signal="no_matches_found" from="World/CardBoard" to="Systems/GameStateSystem" method="no_matches"]
+[connection signal="board_area" from="World/CardBoard/CardInteractionField" to="World/Camera2D" method="adjust_zoom_and_position_to_play_area"]
+[connection signal="board_build" from="World/CardBoard/CardInteractionField" to="." method="all_cards_placed"]
+[connection signal="board_build" from="World/CardBoard/CardInteractionField" to="Systems/GameStateSystem" method="game_field_ready"]
+[connection signal="board_build" from="World/CardBoard/CardInteractionField" to="UI/PauseMenuButton" method="show_button_if_valid"]
+[connection signal="board_build" from="World/CardBoard/CardInteractionField" to="UI/PlayersOverlay" method="show"]
+[connection signal="board_build" from="World/CardBoard/CardInteractionField" to="UI/ZoomButtons/ZoomIn" method="show_button_if_valid"]
+[connection signal="board_build" from="World/CardBoard/CardInteractionField" to="UI/ZoomButtons/ZoomOut" method="show_button_if_valid"]
 [connection signal="clicked" from="World/CardBoard/CardInteractionField" to="World/CardBoard" method="trigger_card_at_position"]
 [connection signal="mouse_enter" from="World/CardBoard/CardInteractionField" to="World/CardBoard" method="select_card_at_position"]
+[connection signal="place_card" from="World/CardBoard/CardInteractionField" to="World/CardBoard" method="place_card"]
 [connection signal="touch_used" from="World/Camera2D" to="World/CardBoard" method="disable_card_effects"]
 [connection signal="pressed" from="UI/PauseMenuButton" to="." method="show_game_menu"]
