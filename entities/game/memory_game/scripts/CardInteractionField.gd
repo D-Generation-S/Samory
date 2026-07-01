@@ -3,13 +3,27 @@ class_name CardInteractionField extends Node2D
 signal mouse_enter(grid: Vector2i)
 signal mouse_left(grid: Vector2i)
 signal clicked(grid: Vector2i)
+signal card_activated()
+signal remove_cards_at(cards: Array[Vector2i])
+signal ai_information_card_clicked(grid: Vector2i, card: MemoryCardResource)
 
 signal place_card(card: MemoryCardResource, grid_position: Vector2i, world_position: Vector2)
 signal board_area(area: Rect2)
 signal board_build()
 
+# Methods to manage game flow
+
+signal remove_card_at(grid_coordinate: Vector2i)
+
 ## The whole board is empty now
 signal board_empty()
+
+## Player turn did end
+signal turn_ended()
+
+## A match was found
+signal match_found()
+
 
 enum Axis {X, Y}
 
@@ -35,6 +49,9 @@ var possible_movements: Array[Vector2] = [
 		Vector2.LEFT,
 		Vector2.UP
 	]
+
+func _init():
+	remove_card_at.connect(remove_card)
 
 func _reset_grid_position() -> void:
 	_selected_grid_position = -Vector2i.ONE
@@ -99,7 +116,7 @@ func build_field(cards: Array[MemoryCardResource]) -> void:
 			template.set_size(_card_size)
 			template.position = _offset + additional_offset + Vector2i(x_addition, y_addition)
 			template.set_grid_coordinate(Vector2i(x, y))
-			template.set_card_id(card.id)
+			template.set_data(card)
 			_connect_card_interaction(template)
 			_placed_cards.set(Vector2i(x, y), template)
 			add_child(template)
@@ -273,17 +290,58 @@ func _connect_card_interaction(collider: CardCollider) -> void:
 	collider.mouse_enter.connect(_mouse_movement_was_made)
 	collider.mouse_left.connect(mouse_has_left)
 	collider.mouse_left.connect(_mouse_movement_was_made)
-	collider.clicked.connect(mouse_has_clicked)
+	collider.clicked.connect(card_was_clicked)
 
 func _mouse_movement_was_made(_grid_position: Vector2i) -> void:
 	_controller_input_was_made = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
-func mouse_has_clicked(grid_position: Vector2i) -> void:
+func card_was_clicked(grid_position: Vector2i, data: MemoryCardResource) -> void:
 	clicked.emit(grid_position)
-	for collider: CardCollider in get_children():
-		if collider.get_grid_coordinate() == grid_position:
-			collider.is_clicked()
+	ai_information_card_clicked.emit(grid_position, data)
+
+	_check_board_state()
+
+func _check_board_state() -> void:
+	var cards: Array[CardCollider] = _placed_cards.values().filter(func(card: CardCollider) -> bool: return not card.is_active())
+	if cards.size() < 2:
+		return
+	if _check_for_matching(cards):
+		match_found.emit()
+		return
+	
+	turn_ended.emit()
+
+func _check_for_matching(cards: Array[CardCollider]) -> bool:
+	if cards.size() != 2:
+		return false
+	if cards[0].get_card_id() == cards[1].get_card_id():
+		var grid_positions: Array[Vector2i] = []
+		
+		for card: CardCollider in cards:
+			grid_positions.append(card.get_grid_coordinate())
+		remove_cards_at.emit(grid_positions)
+		remove_card_at.emit(grid_positions[0])
+		remove_card_at.emit(grid_positions[1])
+		return true
+	return false
+
+func mouse_has_clicked(grid_position: Vector2i) -> void:
+	if not _placed_cards.has(grid_position):
+		return
+	
+	var card: CardCollider = _placed_cards.get(grid_position)
+	if not card.is_active():
+		return
+	card.activate()
+	card_activated.emit()
+
+	_reset_player_selection()
+
+func _reset_player_selection() -> void:
+	if _is_ai_player:
+		return
+	
 	if not _controller_input_was_made:
 		_reset_grid_position()
 		return

@@ -6,6 +6,7 @@ enum State {
     TURN_FREEZE = 20, # Can go to turn completed turn completed
 	TURN_COMPLETED = 30, # Can only go to prepare turn end or turn start
     PREPARE_TURN_END = 40, # Can go to turn end or end game
+	WAIT_FOR_ANIMATION_FINISH = 45,
     TURN_END = 50, # Can go to  turn start
 	GAME_END = 1000,
 	ANIMATION_CLEARED = 10000

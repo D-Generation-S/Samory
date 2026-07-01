@@ -8,19 +8,27 @@ signal show_card()
 signal fully_hidden()
 ## The process of showing has ended, the card is fully visible now
 signal fully_shown()
-signal card_triggered(card: CardTemplate)
-signal card_in_focus()
-signal card_lost_focus()
-signal mouse_was_used()
-## The card is now queued to be freed
-signal about_to_get_delete()
-signal input_active(is_active: bool)
-
-signal card_text_changed(new_text: String)
-signal card_tooltip_changed(new_tooltip: String)
-signal deck_changed(deck: MemoryDeckResource)
 
 signal remove_requested()
+
+signal animation_done()
+
+## Signals to manage the visual card state
+
+## The card is now queued to be freed
+signal about_to_get_delete()
+
+## The card text was changed
+signal card_text_changed(new_text: String)
+
+## The card tooltip was changed
+signal card_tooltip_changed(new_tooltip: String)
+
+## The card deck was changed
+signal deck_changed(deck: MemoryDeckResource)
+
+signal focus_changed(new_state: bool)
+
 
 @export var is_ghost: bool = false
 
@@ -103,25 +111,23 @@ func _setup_timer() -> void:
 	_timer_for_hide_delay.timeout.connect(hide_card_now)
 	add_child(_timer_for_hide_delay)
 
-func _enter_tree() -> void:
-	if is_ghost:
-		return
-	var parent_node: MemoryGame = get_parent().get_node("%World").get_parent() as MemoryGame
-	if parent_node == null:
-		printerr("No parent node was found!")
+func change_focus(new_state: bool) -> void:
+	focus_changed.emit(new_state)
 
 func toggle_card_on() -> void:
 	var time_range: float = card_flip_animation_max_time_delay - card_flip_animation_min_time_delay
 	var delay: float = randf() * time_range + card_flip_animation_min_time_delay
-	_timer_for_hide_delay.wait_time = delay
-	_timer_for_hide_delay.start()
+	await get_tree().create_timer(delay).timeout
+	hide_card_now()
+	#_timer_for_hide_delay.wait_time = delay
+	#_timer_for_hide_delay.start()
 
 func hide_card_now() -> void:
 	if back_side == null or back_side.is_hidden():
 		return
 	_was_clicked = false
 	hide_card.emit()
-	lost_focus()
+	_playing_animation = true
 	play_card_turn_sound()
 
 func get_height() -> float:
@@ -131,7 +137,6 @@ func freeze_card() -> void:
 	if back_side == null:
 		return
 	_card_frozen = true
-	lost_focus()
 
 func unfreeze_card() -> void:
 	if back_side == null:
@@ -154,14 +159,13 @@ func force_reveal_card() -> void:
 	if _was_clicked or not _valid_game_state:
 		return
 	_was_clicked = true
+	_playing_animation = true
 	freeze_card()
 	play_card_turn_sound()
 	if back_side == null or back_side.is_queued_for_deletion():
 		return
 	back_side.toggle_off()
 	show_card.emit()
-	
-	card_triggered.emit(self)
 
 func play_card_turn_sound() -> void:
 	GlobalSoundManager.play_sound_effect(flip_effects.pick_random())
@@ -237,6 +241,7 @@ func _trigger_remove() -> void:
 	for group: String in get_groups():
 		remove_from_group(group)
 	_playing_animation = false
+	animation_done.emit()
 	about_to_get_delete.emit()
 
 func is_playing_animation() -> bool:
@@ -244,9 +249,6 @@ func is_playing_animation() -> bool:
 
 func is_getting_removed() -> bool:
 	return _getting_removed
-
-func destory_now() -> void:
-	queue_free()
 
 func card_is_hidden() -> bool:
 	if back_side == null:
@@ -263,31 +265,19 @@ func card_is_focused() -> bool:
 		return true
 	return back_side.is_currently_in_focus()
 
-func got_focus() -> void:
-	if _was_clicked or _card_frozen:
-		return
-	card_in_focus.emit()
-
-func lost_focus() -> void:
-	if _was_clicked:
-		return
-	card_lost_focus.emit()
-
-func selected_by_mouse() -> void:
-	mouse_was_used.emit()
-
 func play_sound(audio: AudioStream) -> void:
 	if audio == null:
 		return
 	GlobalSoundManager.play_sound_effect(audio)
 
-func input_allowed(allowed: bool) -> void:
-	input_active.emit(allowed)
-
 func signal_repeater_fully_shown() -> void:
+	_playing_animation = false
+	animation_done.emit()
 	fully_shown.emit()
 
 func signal_repeater_fully_hidden() -> void:
+	_playing_animation = false
+	animation_done.emit()
 	fully_hidden.emit()
 
 func game_state_changed(new_state: GameEnum.State) -> void:

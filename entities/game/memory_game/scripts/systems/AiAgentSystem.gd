@@ -19,8 +19,8 @@ var should_play_round: bool = false
 var current_player_data: PlayerResource = null
 var last_card: MemoryCardResource = null
 
-func card_was_triggered(card: CardTemplate) -> void:
-	add_card_to_all_ais(card.grid_position, card.memory_card)
+func card_was_triggered(grid: Vector2i, card: MemoryCardResource) -> void:
+	add_card_to_all_ais(grid, card)
 
 func card_was_identically(first_card_position: Vector2i, second_card_position: Vector2i) -> void:
 	remove_card_to_all_ais(first_card_position)
@@ -30,7 +30,9 @@ func card_was_identically(first_card_position: Vector2i, second_card_position: V
 
 func game_state_changed(game_state: GameEnum.State) -> void:
 	if should_play_round and game_state == GameEnum.State.TURN_START:
+		await get_tree().physics_frame
 		print("ai turn start")
+		triggered_cards = 0
 		prepare_and_start_timer()
 
 	if game_state == GameEnum.State.PREPARE_TURN_END or game_state == GameEnum.State.TURN_FREEZE:
