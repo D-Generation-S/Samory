@@ -6,6 +6,8 @@ signal player_is_active()
 signal player_is_inactive()
 signal player_score_changed(new_value: int)
 signal player_name_changed(new_player_name: String)
+signal player_did_score()
+signal texture_changed(texture: Texture2D)
 
 @export var player_type_icon_box: TextureRect
 @export var human_player_icon: Texture
@@ -17,10 +19,13 @@ var contained_player: PlayerResource
 
 func _ready() -> void:
 	var icon: Texture = human_player_icon
-	if contained_player.is_ai():
+	if contained_player != null and contained_player.is_ai():
 		icon = ai_player_icon
 	player_type_icon_box.texture = icon
 	round_end()
+
+func set_texture(texture: Texture2D) -> void:
+	texture_changed.emit(texture)
 
 func set_player(current_player: PlayerResource) -> void:
 	contained_player = current_player
@@ -32,9 +37,12 @@ func player_turn(player_id: int) -> void:
 func player_scored(player_id: int, score: int) -> void:
 	if contained_player.id == player_id:
 		player_score_changed.emit(score)
+		player_did_score.emit()
 	set_player_name()
 
 func set_player_name() -> void:
+	if contained_player == null:
+		return
 	player_name_changed.emit(contained_player.get_display_name())
 	if contained_player.id == active_id:
 		player_is_active.emit()

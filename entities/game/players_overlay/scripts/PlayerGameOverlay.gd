@@ -1,5 +1,7 @@
 class_name PlayerGameOverlay extends Control
 
+signal set_card_texture(texture: Texture2D)
+
 @export var player_template: PackedScene
 @export var player_target_control: Control
 
@@ -19,12 +21,16 @@ func _ready() -> void:
 			break
 	_ui_information_system.register_ui_element(name, self)
 
+func set_texture(deck: MemoryDeckResource) -> void:
+	set_card_texture.emit(deck.get_back_image())
+
 func add_player(player: PlayerResource) -> void:
 	var node: PlayerGameLabel = player_template.instantiate() as PlayerGameLabel
 	if node == null:
 		return
 	node.set_player(player)
 	player_target_control.add_child(node)
+	set_card_texture.connect(node.set_texture)
 
 func player_changed(player_id: int) -> void:
 	_current_player = player_id
