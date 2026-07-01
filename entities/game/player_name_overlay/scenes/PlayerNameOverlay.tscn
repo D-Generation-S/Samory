@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://cpx0qtreblopk" path="res://entities/game/player_name_overlay/scripts/PlayerScoreInformation.gd" id="8_4u670"]
 [ext_resource type="Resource" uid="uid://85njf66kd3s1" path="res://shared/resources/colors/assets/PlayerDefaultColor.tres" id="9_2q0hc"]
 [ext_resource type="Shader" uid="uid://u0duqjndk87c" path="res://assets/shaders/ColorReplaceAndShine.gdshader" id="11_2q0hc"]
+[ext_resource type="PackedScene" uid="uid://darv1wt1dlt1s" path="res://entities/game/player_overlay_score_board/scenes/PlayerOverlayScoreBoard.tscn" id="11_4vlvt"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qprtf"]
 texture = ExtResource("2_blt2s")
@@ -83,6 +84,7 @@ inactive_color = ExtResource("9_2q0hc")
 active_color = ExtResource("4_e0a06")
 
 [node name="LeftBracket" type="Label" parent="PanelContainer/HBoxContainer/ScoreAndName" unique_id=672300167]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 text = "("
@@ -91,6 +93,7 @@ inactive_color = ExtResource("9_2q0hc")
 active_color = ExtResource("4_e0a06")
 
 [node name="Score" type="Label" parent="PanelContainer/HBoxContainer/ScoreAndName" unique_id=52366694]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 25
@@ -100,12 +103,19 @@ inactive_color = ExtResource("9_2q0hc")
 active_color = ExtResource("4_e0a06")
 
 [node name="RightBracket" type="Label" parent="PanelContainer/HBoxContainer/ScoreAndName" unique_id=1282868630]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 text = ")"
 script = ExtResource("8_4u670")
 inactive_color = ExtResource("9_2q0hc")
 active_color = ExtResource("4_e0a06")
+
+[node name="PlayerScoreBoard" parent="PanelContainer/HBoxContainer/ScoreAndName" unique_id=574098440 instance=ExtResource("11_4vlvt")]
+layout_mode = 2
+size_flags_horizontal = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(25, 0)
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/HBoxContainer" unique_id=919225589]
 layout_mode = 2
@@ -125,11 +135,15 @@ script = ExtResource("7_4mda4")
 default_color = ExtResource("9_2q0hc")
 highlight_color = ExtResource("4_e0a06")
 
+[connection signal="player_did_score" from="." to="PanelContainer/HBoxContainer/ScoreAndName/PlayerScoreBoard" method="add_score"]
 [connection signal="player_is_active" from="." to="PanelContainer" method="is_active"]
 [connection signal="player_is_active" from="." to="PanelContainer/HBoxContainer/ScoreAndName" method="is_now_active"]
+[connection signal="player_is_active" from="." to="PanelContainer/HBoxContainer/ScoreAndName/PlayerScoreBoard" method="player_is_active"]
 [connection signal="player_is_active" from="." to="PanelContainer/HBoxContainer/MarginContainer/TextureRect" method="set_highlight_color"]
 [connection signal="player_is_inactive" from="." to="PanelContainer" method="is_inactive"]
 [connection signal="player_is_inactive" from="." to="PanelContainer/HBoxContainer/ScoreAndName" method="is_now_inactive"]
+[connection signal="player_is_inactive" from="." to="PanelContainer/HBoxContainer/ScoreAndName/PlayerScoreBoard" method="player_is_inactive"]
 [connection signal="player_is_inactive" from="." to="PanelContainer/HBoxContainer/MarginContainer/TextureRect" method="set_default_color"]
 [connection signal="player_name_changed" from="." to="PanelContainer/HBoxContainer/ScoreAndName/Name" method="set_text"]
 [connection signal="player_score_changed" from="." to="PanelContainer/HBoxContainer/ScoreAndName/Score" method="set_new_score"]
+[connection signal="texture_changed" from="." to="PanelContainer/HBoxContainer/ScoreAndName/PlayerScoreBoard" method="set_texture"]

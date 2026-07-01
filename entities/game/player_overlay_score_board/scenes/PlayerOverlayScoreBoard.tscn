@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://darv1wt1dlt1s"]
+
+[ext_resource type="Script" uid="uid://djok43i733l62" path="res://entities/game/player_overlay_score_board/scripts/PlayerOverlayScoreBoard.gd" id="1_2cdvp"]
+[ext_resource type="Texture2D" uid="uid://b0lfebra6adhv" path="res://assets/sprites/Axuree/back_card_1.png" id="2_t84dm"]
+[ext_resource type="Resource" uid="uid://c0eqsic62hvl0" path="res://shared/resources/colors/assets/PlayerHighlightColor.tres" id="3_wurbt"]
+[ext_resource type="Resource" uid="uid://85njf66kd3s1" path="res://shared/resources/colors/assets/PlayerDefaultColor.tres" id="4_ptxw8"]
+
+[node name="PlayerScoreBoard" type="Control" unique_id=574098440]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2cdvp")
+fallback_texture = ExtResource("2_t84dm")
+active_color = ExtResource("3_wurbt")
+inactive_color = ExtResource("4_ptxw8")
+metadata/_custom_type_script = "uid://djok43i733l62"

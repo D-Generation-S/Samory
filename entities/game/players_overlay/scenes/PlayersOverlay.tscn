@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cynb8xjpxqa6w" path="res://entities/game/player_name_overlay/scenes/PlayerNameOverlay.tscn" id="2_ehytq"]
 
 [node name="MarginContainer" type="MarginContainer" unique_id=1095593491 node_paths=PackedStringArray("player_target_control")]
+custom_minimum_size = Vector2(500, 0)
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/margin_left = 50

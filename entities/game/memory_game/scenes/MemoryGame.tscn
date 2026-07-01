@@ -235,6 +235,7 @@ memory_game = NodePath("../..")
 debug_functions = Array[ExtResource("34_4hsit")]([SubResource("Resource_8rpam")])
 
 [connection signal="announce_deck" from="." to="World/CardBoard" method="set_deck"]
+[connection signal="announce_deck" from="." to="UI/PlayersOverlay" method="set_deck"]
 [connection signal="game_paused" from="." to="Systems/PlayerInputSystem" method="game_paused"]
 [connection signal="game_paused" from="." to="World/Camera2D" method="game_paused"]
 [connection signal="load_game" from="." to="World/CardBoard/CardInteractionField" method="set_board_information"]
