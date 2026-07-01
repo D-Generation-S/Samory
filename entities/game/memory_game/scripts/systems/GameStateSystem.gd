@@ -20,7 +20,7 @@ func _ready() -> void:
 	state_changed.emit(_current_state)
 
 ## This will set the new state and broadcast the new state via signal
-func _change_state(new_state: GameEnum.State) -> void:
+func _change_state(new_state: GameEnum.State) -> void:	
 	_current_state = new_state
 	print("State changed to %s" % str(_current_state))
 	state_changed.emit(_current_state)
@@ -33,6 +33,8 @@ func game_field_ready() -> void:
 		_change_state(GameEnum.State.TURN_START)
 
 func matches_found() -> void:
+	if _current_state == GameEnum.State.GAME_END:
+		return
 	print("match found")
 	_change_state(GameEnum.State.TURN_FREEZE)
 	_change_state(GameEnum.State.TURN_COMPLETED)
@@ -44,6 +46,8 @@ func matches_found() -> void:
 	_change_state(GameEnum.State.TURN_START)
 
 func no_matches() -> void:
+	if _current_state == GameEnum.State.GAME_END:
+		return
 	print("no matches")
 	_change_state(GameEnum.State.TURN_FREEZE)
 	_change_state(GameEnum.State.TURN_COMPLETED)
