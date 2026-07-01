@@ -24,7 +24,8 @@ enum VisibilityEnum
 var _internal_toggle_material: ShaderMaterial
 var _internal_focus_material: ShaderMaterial
 
-var currently_in_focus: bool = false
+## The card is the current focus of the player
+var _current_focus: bool = false
 
 var removal_requested: bool = false
 var can_remove: bool = false
@@ -51,9 +52,8 @@ func deck_changed(deck: MemoryDeckResource) -> void:
 	texture = real_texture
 	return
 
-# This method will hide a fully shown card
+## This method will hide a fully shown card
 func toggle_on() -> void:
-	print("toggle on")
 	can_remove = false
 	if is_hidden():
 		return
@@ -68,23 +68,20 @@ func toggle_on() -> void:
 	visibility = VisibilityEnum.TRANSITION
 	animation_tween.tween_method(update_toggle_material, 1.0, 0.0, animation_time)
 	animation_tween.finished.connect(func() -> void: _animation_finished(true))
-	if currently_in_focus:
+	if _current_focus:
 		set_shader_material(_internal_toggle_material)
 
 func _animation_finished(should_hide: bool) -> void:
 	if should_hide:
 		fully_hidden.emit()
 		visibility = VisibilityEnum.HIDDEN
-		print("hidden")
 	if not should_hide:
 		fully_shown.emit()
 		visibility = VisibilityEnum.SHOWN
 		can_remove = true
-		print("shown")
 
-# This method will show a fully hidden card
+## This method will show a fully hidden card
 func toggle_off() -> void:
-	print("toggle off")
 	if animation_tween != null:
 		animation_tween.kill()
 	if material is ShaderMaterial:
@@ -93,28 +90,31 @@ func toggle_off() -> void:
 	visibility = VisibilityEnum.TRANSITION
 	animation_tween.tween_method(update_toggle_material, 0.0, 1.0, animation_time)
 	animation_tween.finished.connect(func() -> void: _animation_finished(false))
-	if currently_in_focus:
+	if _current_focus:
 		set_shader_material(_internal_toggle_material)
 
 func update_toggle_material(progress: float) -> void:
 	if material is ShaderMaterial:
 		material.set_shader_parameter("threshold", progress)	
 
+func focus_changed(new_focus: bool) -> void:
+	if new_focus:
+		is_focused()
+	else:
+		lost_focus()
+
 func is_focused() -> void:
 	if animation_tween != null && animation_tween.is_running():
 		return
 	if visibility == VisibilityEnum.TRANSITION:
 		return
-	for card: Node in get_tree().get_nodes_in_group("game_card"):
-		if card is CardTemplate and card.card_is_focused():
-			card.lost_focus()
 
-	currently_in_focus = true
+	_current_focus = true
 	set_shader_material(_internal_focus_material)
 	_animate_focus(focus_scale)
 
 func lost_focus() -> void:
-	currently_in_focus = false
+	_current_focus = false
 	set_shader_material(_internal_toggle_material)
 
 	_animate_focus(1.0)
@@ -133,7 +133,7 @@ func is_fully_shown() -> bool:
 	return visibility == VisibilityEnum.SHOWN
 
 func is_currently_in_focus() -> bool:
-	return currently_in_focus
+	return _current_focus
 
 func remove_from_board() -> void:
 	removal_requested = true

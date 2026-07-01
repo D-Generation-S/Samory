@@ -5,6 +5,8 @@ signal player_resource_changed(current_player: PlayerResource)
 signal player_added(player: PlayerResource)
 signal player_score_changed(player_id: int, score: int)
 
+signal _remove_card_animation_completed()
+
 var players: Array[PlayerResource]
 var current_player_index: int
 
@@ -37,6 +39,7 @@ func next_player() -> void:
 func player_scored() -> void:
 	if get_current_player() == null:
 		return
+	await _remove_card_animation_completed
 	set_player_score(get_current_player().id, get_current_player().score + 1)
 
 func game_state_changed(game_state: GameEnum.State) -> void:
@@ -61,3 +64,6 @@ func set_player_score(id: int, score: int) -> void:
 		return
 	players[index].score = score
 	player_score_changed.emit(players[index].id, players[index].score)
+
+func card_animations_completed() -> void:
+	_remove_card_animation_completed.emit()

@@ -85,7 +85,7 @@ func reload_system_decks() -> void:
 		if not _deck_reload_connected:
 			_deck_reload_connected = true
 			GlobalSystemDeckManager.loading_system_decks_done.connect(loading_data_done)
-		GlobalSystemDeckManager.reload_system_decks()
+		await GlobalSystemDeckManager.reload_system_decks()
 
 func initial_settings_setup() -> void:
 	var settings: SettingsResource = SettingsRepository.load_settings()

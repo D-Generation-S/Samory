@@ -5,6 +5,8 @@ signal request_popup(window: PopupWindow)
 signal force_close_popup(id: int)
 signal game_has_ended()
 
+signal _animations_done()
+
 @export var round_end_message: TextTranslation
 @export var round_end_message_no_auto_complete: TextTranslation
 
@@ -12,8 +14,6 @@ var message_banner: PackedScene = preload("res://entities/game/bottom_message_ba
 
 var _current_state: GameEnum.State = GameEnum.State.GAME_INIT
 
-var _cards_per_turn: int = 2
-var _clicked_card_amount: int = 0
 var _popup_id: int = -1
 
 func _ready() -> void:
@@ -32,23 +32,24 @@ func game_field_ready() -> void:
 	if _current_state == GameEnum.State.GAME_INIT:
 		_change_state(GameEnum.State.TURN_START)
 
-func card_was_clicked() -> void:
-	print("card clicked")
-	_clicked_card_amount += 1
-	if _clicked_card_amount >= _cards_per_turn:
-		_change_state(GameEnum.State.TURN_FREEZE)
-		_change_state(GameEnum.State.TURN_COMPLETED)
-		_clicked_card_amount = 0
-
 func matches_found() -> void:
 	print("match found")
+	_change_state(GameEnum.State.TURN_FREEZE)
+	_change_state(GameEnum.State.TURN_COMPLETED)
 	if _current_state == GameEnum.State.GAME_END:
 		animation_cleared()
+	
+	_change_state(GameEnum.State.WAIT_FOR_ANIMATION_FINISH)
+	await _animations_done
 	_change_state(GameEnum.State.TURN_START)
 
 func no_matches() -> void:
 	print("no matches")
+	_change_state(GameEnum.State.TURN_FREEZE)
+	_change_state(GameEnum.State.TURN_COMPLETED)
 	_change_state(GameEnum.State.PREPARE_TURN_END)
+	_change_state(GameEnum.State.WAIT_FOR_ANIMATION_FINISH)
+	await _animations_done
 	_show_round_ended_banner()
 
 func board_ready() -> void:
@@ -67,6 +68,9 @@ func board_empty() -> void:
 	emergency_timer.start(2)
 
 func animation_cleared() -> void:
+	if _current_state == GameEnum.State.WAIT_FOR_ANIMATION_FINISH:
+		_animations_done.emit()
+	
 	if _current_state != GameEnum.State.GAME_END:
 		return
 	_change_state(GameEnum.State.ANIMATION_CLEARED)
@@ -94,5 +98,5 @@ func force_end_round() -> void:
 
 func _begin_new_round() -> void:
 	_change_state(GameEnum.State.TURN_END)
-	_clicked_card_amount = 0
 	_popup_id = -1
+	_change_state(GameEnum.State.TURN_START)
