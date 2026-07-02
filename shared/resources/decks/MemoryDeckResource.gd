@@ -59,4 +59,4 @@ func fix_image(image: Image) -> Image:
 	return new_image
 
 func is_using_default_texture() -> bool:
-	return using_default_texture or built_in
+	return using_default_texture
