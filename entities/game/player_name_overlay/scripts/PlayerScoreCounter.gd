@@ -1,11 +1,14 @@
 class_name PlayerScoreCounter extends PlayerScoreInformation
 
+signal animation_done()
+
 @export var target_font_size: int = 30
 @export var default_font_size: int = 20;
 @export var transition_duration: float = 0.4;
 
 var current_displayed_score: int = 0
 var target_score: int = 0
+var _animation_running: bool = false
 
 func _ready() -> void:
 	super()
@@ -13,12 +16,15 @@ func _ready() -> void:
 
 func set_new_score(new_score: int) -> void:
 	target_score = new_score
+	if _animation_running:
+		await animation_done
 	animate_score()
 
 func animate_score() -> void:
 	if current_displayed_score == target_score:
 		return
 	
+	_animation_running = true
 	var animation_tween: Tween = create_tween()
 	animation_tween.step_finished.connect(func(_step: int) -> void: 
 		text = str(target_score)
@@ -26,3 +32,9 @@ func animate_score() -> void:
 	)
 	animation_tween.tween_property(self, "theme_override_font_sizes/font_size", target_font_size, transition_duration)
 	animation_tween.tween_property(self, "theme_override_font_sizes/font_size", default_font_size, transition_duration)
+	animation_tween.finished.connect(_animation_completed)
+
+
+func _animation_completed() -> void:
+	_animation_running = false
+	animation_done.emit()
