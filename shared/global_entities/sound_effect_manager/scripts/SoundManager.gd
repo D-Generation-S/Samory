@@ -27,7 +27,7 @@ func create_new_audio_stream_player() -> AudioStreamPlayer2D:
 	players += 1
 	return player
 
-func play_sound_effect(sound: AudioStream, volume_db: float = 0) -> void:
+func play_sound_effect(sound: AudioStream, volume_db: float = 0, pitch: float = 1.0) -> void:
 	var free_audio_stream: AudioStreamPlayer2D = null
 	for child: AudioStreamPlayer2D in sound_stream_node.get_children():
 		if !child.playing:
@@ -39,6 +39,7 @@ func play_sound_effect(sound: AudioStream, volume_db: float = 0) -> void:
 
 	free_audio_stream.volume_db = volume_db
 	free_audio_stream.stream = sound
+	free_audio_stream.pitch_scale = pitch
 	free_audio_stream.play()
 
 func stop_all_sounds() -> void:

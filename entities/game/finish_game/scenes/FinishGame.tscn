@@ -70,27 +70,6 @@ bbcode_enabled = true
 text = "GAME_STATISTIC"
 fit_content = true
 
-[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer/VBoxContainer2/Header" unique_id=1439470366]
-layout_mode = 2
-theme_override_constants/margin_left = 25
-theme_override_constants/margin_right = 25
-
-[node name="VBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer/VBoxContainer2/Header/MarginContainer2" unique_id=790566321]
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="PlayerNameTitle" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer/VBoxContainer2/Header/MarginContainer2/VBoxContainer2" unique_id=18815397]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "PLAYER_TITLE"
-fit_content = true
-
-[node name="PlayerScoreTitle" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer/VBoxContainer2/Header/MarginContainer2/VBoxContainer2" unique_id=2089612080]
-layout_mode = 2
-size_flags_horizontal = 3
-bbcode_enabled = true
-text = "PLAYER_SCORE"
-
 [node name="Player List" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer2/BodyContainer/PanelContainer/VBoxContainer2" unique_id=193919905]
 layout_mode = 2
 size_flags_vertical = 3

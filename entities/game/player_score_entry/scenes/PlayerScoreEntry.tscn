@@ -4,10 +4,14 @@
 [ext_resource type="StyleBox" uid="uid://d1rhal5rp1608" path="res://assets/styles/panel/MetalBox.tres" id="2_5y1a8"]
 [ext_resource type="Resource" uid="uid://c0eqsic62hvl0" path="res://shared/resources/colors/assets/PlayerHighlightColor.tres" id="2_nkn6w"]
 [ext_resource type="Script" uid="uid://b3vlxulgtqk1f" path="res://entities/game/player_score_entry/scripts/player_score_player_name.gd" id="4_pscha"]
+[ext_resource type="PackedScene" uid="uid://darv1wt1dlt1s" path="res://entities/game/player_overlay_score_board/scenes/PlayerOverlayScoreBoard.tscn" id="5_p3c6r"]
 [ext_resource type="Material" uid="uid://bcry1v2yx1t6w" path="res://entities/game/player_score_entry/materials/win_material.tres" id="5_qfumn"]
 [ext_resource type="Texture2D" uid="uid://dpwyddj6yhp8r" path="res://assets/icons/TrophyIcon.tres" id="5_sqauh"]
-[ext_resource type="Script" uid="uid://bujvldkvi65fi" path="res://entities/game/player_score_entry/scripts/player_score_counter.gd" id="6_qfumn"]
 [ext_resource type="Script" uid="uid://bceoil1fal6gh" path="res://entities/game/player_score_entry/scripts/player_score_winning_icon.gd" id="7_60cck"]
+[ext_resource type="Script" uid="uid://bfin0rde3y7nw" path="res://entities/game/effect_player/scripts/EffectPlayer.gd" id="9_p3c6r"]
+[ext_resource type="AudioStream" uid="uid://h0louy6yrv3o" path="res://assets/audio/effect/card-turn-3.ogg" id="10_md8wg"]
+[ext_resource type="AudioStream" uid="uid://dhlalkc173c3p" path="res://assets/audio/effect/card-turn-1.ogg" id="11_i1551"]
+[ext_resource type="AudioStream" uid="uid://48iu01xst023" path="res://assets/audio/effect/card-turn-2.ogg" id="12_sajqw"]
 
 [node name="MarginContainer" type="MarginContainer" unique_id=558595318]
 anchors_preset = 10
@@ -34,8 +38,15 @@ layout_mode = 2
 text = "PLAYER_NAME"
 script = ExtResource("4_pscha")
 
+[node name="PlayerScoreBoard" parent="PanelContainer/HBoxContainer" unique_id=574098440 instance=ExtResource("5_p3c6r")]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(10, 0)
+max_visualized_cards = 15
+
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/HBoxContainer" unique_id=1125081868]
 layout_mode = 2
+size_flags_horizontal = 10
 theme_override_constants/margin_left = 20
 
 [node name="WinningIcon" type="TextureRect" parent="PanelContainer/HBoxContainer/MarginContainer" unique_id=1076927301]
@@ -43,25 +54,20 @@ material = ExtResource("5_qfumn")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -3)
 texture = ExtResource("5_sqauh")
 stretch_mode = 3
 script = ExtResource("7_60cck")
 
-[node name="PlayerScore" type="RichTextLabel" parent="PanelContainer/HBoxContainer" unique_id=408698693]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-bbcode_enabled = true
-text = "PLAYER_SCORE"
-fit_content = true
-scroll_active = false
-horizontal_alignment = 2
-script = ExtResource("6_qfumn")
+[node name="EffectPlayer" type="Node" parent="." unique_id=1736066145]
+script = ExtResource("9_p3c6r")
+audio_files = Array[AudioStream]([ExtResource("10_md8wg"), ExtResource("11_i1551"), ExtResource("12_sajqw")])
+metadata/_custom_type_script = "uid://bfin0rde3y7nw"
 
+[connection signal="add_new_score" from="." to="PanelContainer/HBoxContainer/PlayerScoreBoard" method="add_score"]
+[connection signal="add_new_score" from="." to="EffectPlayer" method="play_effect"]
 [connection signal="player_changed" from="." to="PanelContainer/HBoxContainer/PlayerName" method="set_text"]
 [connection signal="player_did_win" from="." to="PanelContainer/HBoxContainer/PlayerName" method="player_did_win"]
 [connection signal="player_did_win" from="." to="PanelContainer/HBoxContainer/MarginContainer/WinningIcon" method="player_did_win"]
-[connection signal="player_did_win" from="." to="PanelContainer/HBoxContainer/PlayerScore" method="is_winning_player"]
-[connection signal="set_player_score" from="." to="PanelContainer/HBoxContainer/PlayerScore" method="set_counter_target"]
-[connection signal="counter_done" from="PanelContainer/HBoxContainer/PlayerScore" to="." method="winner_is_selected"]
-[connection signal="counter_done" from="PanelContainer/HBoxContainer/PlayerScore" to="PanelContainer/HBoxContainer/MarginContainer/WinningIcon" method="scoring_is_done"]
+[connection signal="winner_selected" from="." to="PanelContainer/HBoxContainer/MarginContainer/WinningIcon" method="scoring_is_done"]
