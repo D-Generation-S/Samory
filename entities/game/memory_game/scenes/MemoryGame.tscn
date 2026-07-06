@@ -32,7 +32,11 @@
 [ext_resource type="Texture2D" uid="uid://vk4fpd7xo01j" path="res://assets/sprites/Axuree/wood_medium.png" id="23_a3528"]
 [ext_resource type="Script" uid="uid://cf8loyigibdp6" path="res://entities/game/memory_game/scripts/CardInteractionField.gd" id="27_7lv0s"]
 [ext_resource type="PackedScene" uid="uid://0m4c62oqj4ih" path="res://entities/game/card_collider/scene/CardCollider.tscn" id="28_7ou1n"]
+[ext_resource type="AudioStream" uid="uid://x7uoopn87syx" path="res://assets/audio/effect/card-shove-1.ogg" id="28_ycubg"]
+[ext_resource type="AudioStream" uid="uid://bc2asc1ycehsj" path="res://assets/audio/effect/card-shove-2.ogg" id="29_i3opb"]
 [ext_resource type="Script" uid="uid://drr3p4wba2ys3" path="res://entities/game/memory_game/scripts/systems/NetworkHandler.gd" id="29_kihnp"]
+[ext_resource type="AudioStream" uid="uid://klup7a1js5u1" path="res://assets/audio/effect/card-shove-3.ogg" id="30_6mfqr"]
+[ext_resource type="AudioStream" uid="uid://d2smrpmt773ak" path="res://assets/audio/effect/card-shove-4.ogg" id="31_hms3o"]
 [ext_resource type="PackedScene" uid="uid://laeqw1xjwd1b" path="res://entities/game/debug_tool/scenes/DebugPanel.tscn" id="33_j82c0"]
 [ext_resource type="Script" uid="uid://c1wsjd5pkvtiq" path="res://entities/game/debug_tool/scripts/DebugFunctionality.gd" id="34_4hsit"]
 [ext_resource type="Script" uid="uid://ce067cc441ff1" path="res://entities/game/debug_tool/scripts/FinishGameFunction.gd" id="35_imof5"]
@@ -146,6 +150,7 @@ card_template = ExtResource("3_ihyl6")
 z_index = 10
 script = ExtResource("27_7lv0s")
 collider_template = ExtResource("28_7ou1n")
+card_selection_sounds = Array[AudioStream]([ExtResource("28_ycubg"), ExtResource("29_i3opb"), ExtResource("30_6mfqr"), ExtResource("31_hms3o")])
 metadata/_custom_type_script = "uid://cf8loyigibdp6"
 
 [node name="CardVisuals" type="Node2D" parent="World/CardBoard" unique_id=1427743299]
