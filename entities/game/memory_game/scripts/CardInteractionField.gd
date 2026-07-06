@@ -27,9 +27,15 @@ signal match_found()
 
 enum Axis {X, Y}
 
+@export_group("Field Settings")
 @export var default_texture_size: Vector2 = Vector2(499, 550)
 @export var collider_template: PackedScene = null
 @export var additional_offset: Vector2i = Vector2i(0, 25)
+
+@export_group("Sound Effects")
+@export var card_selection_sounds: Array[AudioStream] = []
+## Set the pitch to change for each sound effect, a value of 0.2, will set the range to 0.8 and 1.2.
+@export var card_selection_sound_pitch: float = 0.2
 
 var _separation: int = 0
 var _offset: Vector2i = Vector2i.ZERO
@@ -50,8 +56,14 @@ var possible_movements: Array[Vector2] = [
 		Vector2.UP
 	]
 
-func _init():
+func _init() -> void:
 	remove_card_at.connect(remove_card)
+	mouse_enter.connect(_play_selection_sound)
+
+func _play_selection_sound(_grid_position: Vector2i) -> void:
+	if card_selection_sounds.size() == 0:
+		return
+	GlobalSoundManager.play_sound_effect(card_selection_sounds.pick_random(), 0.0, randf_range(1.0 - card_selection_sound_pitch, 1.0 + card_selection_sound_pitch))
 
 func _reset_grid_position() -> void:
 	_selected_grid_position = -Vector2i.ONE
