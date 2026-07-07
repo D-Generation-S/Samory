@@ -20,10 +20,12 @@ func _ready() -> void:
 func get_valid_events() -> Array[SpecialEvent]:
 	var valid: Array[SpecialEvent] = []
 	var date_dictionary: Dictionary = Time.get_date_dict_from_system()
+	var year: int = date_dictionary.get("year")
 	var month: int = date_dictionary.get("month")
 	var day: int = date_dictionary.get("day")
 	for event: SpecialEvent in all_events:
-		if event.is_valid_today(day, month):
+		if event.is_valid_today(year, month, day):
 			valid.append(event)
 
 	return valid
+

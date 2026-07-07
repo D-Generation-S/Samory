@@ -3,12 +3,19 @@
 [ext_resource type="Resource" uid="uid://bg2bjo5tx1kuf" path="res://shared/resources/translations/assets/BirthdayEventHeadline.tres" id="1_4v6lf"]
 [ext_resource type="Resource" uid="uid://ipxe810ybd0w" path="res://shared/resources/translations/assets/SamuelBirthdayEventBody.tres" id="2_lb4pf"]
 [ext_resource type="Script" uid="uid://cbevbiicfyjvm" path="res://entities/ui/special_event_area/scripts/SpecialEvent.gd" id="3_vt4fd"]
+[ext_resource type="Script" uid="uid://h56nmivkqfys" path="res://entities/ui/special_event_area/scripts/validations/FixedDateValidation.gd" id="4_lb4pf"]
+
+[sub_resource type="Resource" id="Resource_8rpam"]
+script = ExtResource("4_lb4pf")
+valid_year = 2021
+valid_month = 7
+valid_day = 31
+process_text = true
+metadata/_custom_type_script = "uid://h56nmivkqfys"
 
 [resource]
 script = ExtResource("3_vt4fd")
 event_name = ExtResource("1_4v6lf")
 event_text = ExtResource("2_lb4pf")
-valid_month = 7
-valid_day = 31
-year = 2021
+validation = SubResource("Resource_8rpam")
 metadata/_custom_type_script = "uid://cbevbiicfyjvm"

@@ -10,5 +10,8 @@ func set_event(event: SpecialEvent) -> void:
 func _ready() -> void:
 	if _event == null:
 		queue_free()
-	
-	text_changed.emit(_event.get_text())
+	var date_dictionary: Dictionary = Time.get_date_dict_from_system()
+	var year: int = date_dictionary.get("year")
+	var month: int = date_dictionary.get("month")
+	var day: int = date_dictionary.get("day")
+	text_changed.emit(_event.get_text(year, month, day))
