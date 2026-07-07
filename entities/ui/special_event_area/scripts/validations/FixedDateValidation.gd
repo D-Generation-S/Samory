@@ -29,7 +29,3 @@ func _process_text(translated_text: String, year: int, month: int, day: int) -> 
 	translated_text = translated_text.replace("%DATE%", _get_date_template(year, month, day))
 	translated_text = translated_text.replace("%DIFFERENCE%", str(year - valid_year))
 	return translated_text
-	
-
-func _get_date_template(year: int, month: int, day: int) -> String:
-	return "%02d.%02d.%04d" % [day, month, year]

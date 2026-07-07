@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TextTranslation" format=3 uid="uid://5h1jddv6fiha"]
+
+[ext_resource type="Script" uid="uid://b3ccmsvxi5x8x" path="res://shared/resources/translations/TextTranslation.gd" id="1_ote1s"]
+
+[resource]
+script = ExtResource("1_ote1s")
+key = "EASTERN_EVENT_BODY"
+comment = "Can contain a \"%YEAR%\" variable, getting replaced by the current year"
+metadata/_custom_type_script = "uid://b3ccmsvxi5x8x"

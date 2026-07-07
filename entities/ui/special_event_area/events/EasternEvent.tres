@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="SpecialEvent" format=3 uid="uid://jh7sgg0s0bjs"]
+
+[ext_resource type="Script" uid="uid://cbevbiicfyjvm" path="res://entities/ui/special_event_area/scripts/SpecialEvent.gd" id="1_vb34f"]
+[ext_resource type="Resource" uid="uid://dfmjcesfyd2bc" path="res://shared/resources/translations/assets/EasternEventHeadline.tres" id="1_wim2f"]
+[ext_resource type="Resource" uid="uid://5h1jddv6fiha" path="res://shared/resources/translations/assets/EasternEventBody.tres" id="2_5pghi"]
+[ext_resource type="Script" uid="uid://bs1e8fpwn6ibn" path="res://entities/ui/special_event_area/scripts/validations/EasternDateValidation.gd" id="2_yddd5"]
+
+[sub_resource type="Resource" id="Resource_yddd5"]
+script = ExtResource("2_yddd5")
+process_text = true
+metadata/_custom_type_script = "uid://bs1e8fpwn6ibn"
+
+[resource]
+script = ExtResource("1_vb34f")
+event_name = ExtResource("1_wim2f")
+event_text = ExtResource("2_5pghi")
+validation = SubResource("Resource_yddd5")
+metadata/_custom_type_script = "uid://cbevbiicfyjvm"

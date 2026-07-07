@@ -101,14 +101,6 @@ msgid "GAME_STATISTIC"
 msgstr "[center]Spiele Statistik[/center]"
 
 #: entities/game/finish_game/scenes/FinishGame.tscn
-msgid "PLAYER_TITLE"
-msgstr "Spielername"
-
-#: entities/game/finish_game/scenes/FinishGame.tscn
-msgid "PLAYER_SCORE"
-msgstr "[right]Punktzahl[/right]"
-
-#: entities/game/finish_game/scenes/FinishGame.tscn
 msgid "REPLAY"
 msgstr "Erneut spielen"
 
@@ -1500,8 +1492,23 @@ msgstr ""
 "Der Tag an dem dieses Spiel erstellt worden ist. Samory wird heute also [b]"
 "%DIFFERENCE% Jahre[/b] alt."
 
+#. TRANSLATORS: Can contain a "%YEAR%" variable, getting replaced by the current year
+#: shared/resources/translations/assets/EasternEventBody.tres
+msgid "EASTERN_EVENT_BODY"
+msgstr "Ich wünsche dir frohe Ostern %YEAR%"
+
+#: shared/resources/translations/assets/EasternEventHeadline.tres
+msgid "EASTERN_EVENT_HEADLINE"
+msgstr "Frohe Ostern"
+
 msgid "Samory"
 msgstr ""
+
+#~ msgid "PLAYER_TITLE"
+#~ msgstr "Spielername"
+
+#~ msgid "PLAYER_SCORE"
+#~ msgstr "[right]Punktzahl[/right]"
 
 #~ msgid "BODY"
 #~ msgstr "Körper"
