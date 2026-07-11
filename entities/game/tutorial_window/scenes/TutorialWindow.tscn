@@ -64,6 +64,7 @@ script = ExtResource("7_scsgn")
 
 [connection signal="append_text" from="." to="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/AnimatedRichText" method="add_new_text"]
 [connection signal="title_changed" from="." to="PanelContainer/MarginContainer/VBoxContainer/Title" method="set_text"]
+[connection signal="animation_done" from="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/AnimatedRichText" to="PanelContainer/MarginContainer/VBoxContainer/Controls/Button" method="focused"]
 [connection signal="animation_done" from="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/AnimatedRichText" to="PanelContainer/MarginContainer/VBoxContainer/Controls/Button" method="enable_button"]
 [connection signal="animation_playing" from="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/AnimatedRichText" to="PanelContainer/MarginContainer/VBoxContainer/Controls/Button" method="disable_button"]
 [connection signal="toggled" from="PanelContainer/MarginContainer/VBoxContainer/Controls/CompleteTutorial" to="." method="toggle_abort_tutorial"]

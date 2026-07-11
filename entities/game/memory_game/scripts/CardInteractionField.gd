@@ -310,6 +310,7 @@ func _mouse_movement_was_made(_grid_position: Vector2i) -> void:
 
 func card_was_clicked(grid_position: Vector2i, data: MemoryCardResource) -> void:
 	clicked.emit(grid_position)
+	card_activated.emit()
 	ai_information_card_clicked.emit(grid_position, data)
 
 	_check_board_state()
@@ -346,7 +347,6 @@ func mouse_has_clicked(grid_position: Vector2i) -> void:
 	if not card.is_active():
 		return
 	card.activate()
-	card_activated.emit()
 
 	_reset_player_selection()
 
