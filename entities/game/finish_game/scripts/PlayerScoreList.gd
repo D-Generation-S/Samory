@@ -5,7 +5,7 @@ extends VBoxContainer
 
 var _win_sound_played: bool = false
 
-func build_player_statistic(players: Array[PlayerResource], winners: Array[PlayerResource]) -> void:
+func build_player_statistic(players: Array[PlayerResource], winners: Array[PlayerResource], card_texture: Texture) -> void:
 	players.sort_custom(sort_by_score)
 	for player: PlayerResource in players:
 		var player_node: PlayerScoreEntry = player_template.instantiate() as PlayerScoreEntry
@@ -15,7 +15,7 @@ func build_player_statistic(players: Array[PlayerResource], winners: Array[Playe
 			if player.id == winner.id:
 				did_win = true
 				break
-		player_node.set_player(player, did_win)
+		player_node.set_player(player, did_win, card_texture)
 		add_child(player_node)
 	
 func sort_by_score(a: PlayerResource, b: PlayerResource) -> bool:

@@ -3,6 +3,7 @@ class_name PlayerScoreEntry extends Control
 signal set_player_score(score: int)
 signal player_changed(name: String)
 signal player_did_win(color: ColorResource)
+signal card_back_changed(texture: Texture)
 signal winner_selected()
 signal add_new_score()
 
@@ -24,9 +25,10 @@ func _ready() -> void:
 		if _did_win:
 			player_did_win.emit(player_win_color)
 
-func set_player(player: PlayerResource, did_win: bool) -> void:
+func set_player(player: PlayerResource, did_win: bool, card_texture: Texture) -> void:
 	_player_data = player
 	player_changed.emit(player.get_display_name())
+	card_back_changed.emit(card_texture)
 	set_player_score.emit(player.score)
 	_did_win = did_win
 

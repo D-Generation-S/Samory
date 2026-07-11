@@ -1,6 +1,6 @@
 class_name GameFinished extends PopupWindow
 
-signal finish_game_ui_loaded(players: Array[PlayerResource], winner: Array[PlayerResource])
+signal finish_game_ui_loaded(players: Array[PlayerResource], winner: Array[PlayerResource], deck_texture: Texture)
 
 var manager: PlayerSystem
 var played_deck: MemoryDeckResource
@@ -21,7 +21,7 @@ func _ready() -> void:
 		if player.score == highest_score:
 			winners.append(player)
 
-	finish_game_ui_loaded.emit(players, winners)
+	finish_game_ui_loaded.emit(players, winners, played_deck.get_back_image())
 
 
 func set_player_manager(player_manager: PlayerSystem) -> void:

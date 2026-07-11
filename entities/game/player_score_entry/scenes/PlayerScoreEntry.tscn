@@ -67,6 +67,7 @@ metadata/_custom_type_script = "uid://bfin0rde3y7nw"
 
 [connection signal="add_new_score" from="." to="PanelContainer/HBoxContainer/PlayerScoreBoard" method="add_score"]
 [connection signal="add_new_score" from="." to="EffectPlayer" method="play_effect"]
+[connection signal="card_back_changed" from="." to="PanelContainer/HBoxContainer/PlayerScoreBoard" method="set_texture"]
 [connection signal="player_changed" from="." to="PanelContainer/HBoxContainer/PlayerName" method="set_text"]
 [connection signal="player_did_win" from="." to="PanelContainer/HBoxContainer/PlayerName" method="player_did_win"]
 [connection signal="player_did_win" from="." to="PanelContainer/HBoxContainer/MarginContainer/WinningIcon" method="player_did_win"]
