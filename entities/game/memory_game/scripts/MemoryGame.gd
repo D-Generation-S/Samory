@@ -7,6 +7,9 @@ signal game_paused(is_paused: bool)
 
 signal request_popup(window: PopupWindow)
 
+signal popup_menu_shown()
+signal popup_menu_closed()
+
 signal game_loaded()
 
 const CARDS_PER_PLAYER: int = 2
@@ -92,6 +95,8 @@ func show_game_menu() -> void:
 	game_menu = game_menu_template.instantiate() as GamePauseMenu
 	game_menu.high_priority = true
 	request_popup.emit(game_menu)
+	game_menu.popup_closed.connect(func() -> void: popup_menu_closed.emit())
+	popup_menu_shown.emit()
 
 func set_is_multiplayer() -> void:
 	_is_local_only = false
