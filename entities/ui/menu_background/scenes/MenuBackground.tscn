@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cgqyilfj4ggfa"]
+[gd_scene format=3 uid="uid://cgqyilfj4ggfa"]
 
 [ext_resource type="Texture2D" uid="uid://vk4fpd7xo01j" path="res://assets/sprites/Axuree/wood_medium.png" id="1_82j7h"]
 
-[node name="MenuBackground" type="Control"]
+[node name="MenuBackground" type="Control" unique_id=1942483075]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,7 +10,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1236795620]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
