@@ -105,6 +105,7 @@ target_offset = Vector2(13, 13)
 animation_time = 0.1
 
 [node name="CardBackground" type="NinePatchRect" parent="CardContentGroup" unique_id=589517874 groups=["card_content"]]
+visible = false
 offset_right = 500.0
 offset_bottom = 500.0
 texture = SubResource("AtlasTexture_h72da")
@@ -214,11 +215,14 @@ volume = -15.0
 [connection signal="card_tooltip_changed" from="." to="CardContentGroup/CardNameBackground/CardName" method="set_tooltip"]
 [connection signal="deck_changed" from="." to="CardContentGroup/DropShadow" method="deck_changed"]
 [connection signal="deck_changed" from="." to="CardBack" method="deck_changed"]
+[connection signal="focus_changed" from="." to="CardContentGroup/DropShadow" method="focus_changed"]
 [connection signal="focus_changed" from="." to="CardBack" method="focus_changed"]
+[connection signal="hide_card" from="." to="CardContentGroup/CardBackground" method="hide"]
 [connection signal="hide_card" from="." to="CardContentGroup/CardNameBackground/CardName" method="card_hidden"]
 [connection signal="hide_card" from="." to="CardBack" method="toggle_on"]
 [connection signal="remove_requested" from="." to="CardBack" method="removal_planed"]
 [connection signal="show_card" from="." to="CardContentGroup" method="show_card_content"]
+[connection signal="show_card" from="." to="CardContentGroup/CardBackground" method="show"]
 [connection signal="show_card" from="." to="CardBack" method="toggle_off"]
 [connection signal="ready_for_destruction" from="CardContentGroup" to="." method="destory_now"]
 [connection signal="fully_hidden" from="CardBack" to="." method="signal_repeater_fully_hidden"]

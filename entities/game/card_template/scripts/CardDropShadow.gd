@@ -14,11 +14,8 @@ func deck_changed(deck: MemoryDeckResource) -> void:
 	if deck.card_back != null:
 		texture = deck.card_back
 
-func got_focus() -> void:
-	_animate_shadow(true)	
-
-func lost_focus() -> void:
-	_animate_shadow(false)
+func focus_changed(new_state: bool) -> void:
+	_animate_shadow(new_state)
 
 func _animate_shadow(animate_in: bool) -> void:
 	if animate_in:
