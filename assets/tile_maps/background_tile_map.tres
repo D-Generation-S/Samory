@@ -1,0 +1,12 @@
+[gd_resource type="TileSet" format=3 uid="uid://xv6ga63vi51o"]
+
+[ext_resource type="Texture2D" uid="uid://vk4fpd7xo01j" path="res://assets/sprites/Axuree/wood_medium.png" id="1_8wb7c"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ycubg"]
+texture = ExtResource("1_8wb7c")
+texture_region_size = Vector2i(2048, 2048)
+0:0/0 = 0
+
+[resource]
+tile_size = Vector2i(2048, 2048)
+sources/0 = SubResource("TileSetAtlasSource_ycubg")

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bnfr8gek24m47"]
+[gd_scene format=4 uid="uid://bnfr8gek24m47"]
 
 [ext_resource type="Script" uid="uid://bhgb4virmkji8" path="res://entities/game/memory_game/scripts/MemoryGame.gd" id="1_13jq5"]
 [ext_resource type="Resource" uid="uid://cnl5uxkf36ely" path="res://shared/resources/translations/assets/TurnEndBannerMessage.tres" id="2_fspeh"]
@@ -11,7 +11,6 @@
 [ext_resource type="Script" uid="uid://cetyf2kvhh70r" path="res://entities/game/memory_game/scripts/Systems.gd" id="7_8jbv8"]
 [ext_resource type="PackedScene" uid="uid://d0vijthhc3d38" path="res://entities/game/players_overlay/scenes/PlayersOverlay.tscn" id="7_a7rnv"]
 [ext_resource type="Script" uid="uid://bmwi41kseslkw" path="res://entities/game/memory_game/scripts/systems/GameStateSystem.gd" id="7_j82c0"]
-[ext_resource type="Script" uid="uid://bglvkbo4aydsy" path="res://entities/game/memory_game/scripts/Background.gd" id="7_kxmqb"]
 [ext_resource type="Script" uid="uid://bxrsfyvew4ysu" path="res://entities/game/memory_game/scripts/systems/PlayerInputSystem.gd" id="9_86hnd"]
 [ext_resource type="Texture2D" uid="uid://dat3kg2y636js" path="res://assets/icons/MenuIcon.tres" id="11_da0ji"]
 [ext_resource type="PackedScene" uid="uid://cluwm03j8e11p" path="res://entities/game/game_pause_menu/scenes/GamePauseMenu.tscn" id="12_dfx06"]
@@ -27,9 +26,9 @@
 [ext_resource type="Texture2D" uid="uid://b6xl5vukmvlku" path="res://assets/icons/AddIcon.tres" id="18_pqxyo"]
 [ext_resource type="Script" uid="uid://xiyurpjwgjnn" path="res://entities/game/memory_game/scripts/GameCardGrid.gd" id="19_ploi3"]
 [ext_resource type="Texture2D" uid="uid://bjgikbiemswhu" path="res://assets/icons/MinusIcon.tres" id="20_ef4f6"]
+[ext_resource type="TileSet" uid="uid://xv6ga63vi51o" path="res://assets/tile_maps/background_tile_map.tres" id="21_6nsk4"]
 [ext_resource type="Script" uid="uid://6fa28680utd5" path="res://shared/entities/popup_manager/scripts/PopupSystem.gd" id="21_dv4ao"]
 [ext_resource type="PackedScene" uid="uid://d15qeu4s4bgjk" path="res://entities/game/tutorial_window/scenes/TutorialWindow.tscn" id="22_ubsrg"]
-[ext_resource type="Texture2D" uid="uid://vk4fpd7xo01j" path="res://assets/sprites/Axuree/wood_medium.png" id="23_a3528"]
 [ext_resource type="Script" uid="uid://cf8loyigibdp6" path="res://entities/game/memory_game/scripts/CardInteractionField.gd" id="27_7lv0s"]
 [ext_resource type="PackedScene" uid="uid://0m4c62oqj4ih" path="res://entities/game/card_collider/scene/CardCollider.tscn" id="28_7ou1n"]
 [ext_resource type="AudioStream" uid="uid://x7uoopn87syx" path="res://assets/audio/effect/card-shove-1.ogg" id="28_ycubg"]
@@ -131,12 +130,14 @@ metadata/_custom_type_script = "uid://b34wu88vlg03e"
 [node name="World" type="Node2D" parent="." unique_id=997333008]
 unique_name_in_owner = true
 
-[node name="Background" type="Node2D" parent="World" unique_id=344852813 node_paths=PackedStringArray("camera_node")]
-visible = false
-z_index = -20
-script = ExtResource("7_kxmqb")
-background_texture = ExtResource("23_a3528")
-camera_node = NodePath("../Camera2D")
+[node name="TileMapLayer" type="TileMapLayer" parent="World" unique_id=974175227]
+z_index = -4096
+z_as_relative = false
+tile_map_data = PackedByteArray("AAD8//3/AAAAAAAAAAD9//3/AAAAAAAAAAD+//3/AAAAAAAAAAD///3/AAAAAAAAAAAAAP3/AAAAAAAAAAABAP3/AAAAAAAAAAACAP3/AAAAAAAAAAADAP3/AAAAAAAAAAAEAP3/AAAAAAAAAAAEAP7/AAAAAAAAAAAEAP//AAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAADAAMAAAAAAAAAAAACAAMAAAAAAAAAAAABAAMAAAAAAAAAAAAAAAMAAAAAAAAAAAD//wMAAAAAAAAAAAD+/wMAAAAAAAAAAAD9/wMAAAAAAAAAAAD8/wMAAAAAAAAAAAD7/wMAAAAAAAAAAAD7//3/AAAAAAAAAAD7//7/AAAAAAAAAAD7////AAAAAAAAAAD7/wAAAAAAAAAAAAD7/wEAAAAAAAAAAAD7/wIAAAAAAAAAAAD8/wIAAAAAAAAAAAD9/wIAAAAAAAAAAAD+/wIAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAADAAEAAAAAAAAAAAADAAAAAAAAAAAAAAADAP//AAAAAAAAAAADAP7/AAAAAAAAAAACAP7/AAAAAAAAAAABAP7/AAAAAAAAAAAAAP7/AAAAAAAAAAD///7/AAAAAAAAAAD+//7/AAAAAAAAAAD9//7/AAAAAAAAAAD8//7/AAAAAAAAAAD8////AAAAAAAAAAD8/wAAAAAAAAAAAAD8/wEAAAAAAAAAAAD9/wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAAAAAAAAAAAAAACAP//AAAAAAAAAAABAP//AAAAAAAAAAD/////AAAAAAAAAAD+////AAAAAAAAAAD9////AAAAAAAAAAD9/wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAABAAAAAAAAAAAAAAACAAEAAAAAAAAAAAD7/wQAAAAAAAAAAAD7//z/AAAAAAAAAAD8//z/AAAAAAAAAAD9//z/AAAAAAAAAAD+//z/AAAAAAAAAAD///z/AAAAAAAAAAAAAPz/AAAAAAAAAAABAPz/AAAAAAAAAAACAPz/AAAAAAAAAAADAPz/AAAAAAAAAAAEAPz/AAAAAAAAAAAEAAQAAAAAAAAAAAADAAQAAAAAAAAAAAACAAQAAAAAAAAAAAABAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAD//wQAAAAAAAAAAAD+/wQAAAAAAAAAAAD9/wQAAAAAAAAAAAD8/wQAAAAAAAAAAAAGAPz/AAAAAAAAAAAGAP3/AAAAAAAAAAAGAP7/AAAAAAAAAAAGAP//AAAAAAAAAAAGAAAAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAAAAAAAAAAAAAAFAP//AAAAAAAAAAAFAP7/AAAAAAAAAAAFAP3/AAAAAAAAAAAFAPz/AAAAAAAAAAAFAAQAAAAAAAAAAAD6/wQAAAAAAAAAAAD5/wQAAAAAAAAAAAD5/wMAAAAAAAAAAAD5/wIAAAAAAAAAAAD5/wEAAAAAAAAAAAD5/wAAAAAAAAAAAAD5////AAAAAAAAAAD5//7/AAAAAAAAAAD5//3/AAAAAAAAAAD5//z/AAAAAAAAAAD6//z/AAAAAAAAAAD6//3/AAAAAAAAAAD6//7/AAAAAAAAAAD6////AAAAAAAAAAD6/wAAAAAAAAAAAAD6/wEAAAAAAAAAAAD6/wIAAAAAAAAAAAD6/wMAAAAAAAAAAAA=")
+tile_set = ExtResource("21_6nsk4")
+rendering_quadrant_size = 4
+physics_quadrant_size = 1
+navigation_enabled = false
 
 [node name="CardBoard" type="Node2D" parent="World" unique_id=2054375941 node_paths=PackedStringArray("state_machine", "visual_card_node")]
 unique_name_in_owner = true
@@ -265,7 +266,6 @@ debug_functions = Array[ExtResource("34_4hsit")]([SubResource("Resource_8rpam")]
 [connection signal="state_changed" from="Systems/GameStateSystem" to="Systems/AiAgentSystem" method="game_state_changed"]
 [connection signal="state_changed" from="Systems/GameStateSystem" to="Systems/PlayerInputSystem" method="game_state_changed"]
 [connection signal="state_changed" from="Systems/GameStateSystem" to="Systems/NetworkHandlerSystem" method="game_state_changed"]
-[connection signal="state_changed" from="Systems/GameStateSystem" to="World/Background" method="game_state_changed"]
 [connection signal="state_changed" from="Systems/GameStateSystem" to="World/CardBoard" method="game_state_changed"]
 [connection signal="state_changed" from="Systems/GameStateSystem" to="World/CardBoard/CardInteractionField" method="game_state_changed"]
 [connection signal="state_changed" from="Systems/GameStateSystem" to="World/Camera2D" method="game_state_changed"]

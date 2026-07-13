@@ -105,7 +105,6 @@ target_offset = Vector2(13, 13)
 animation_time = 0.1
 
 [node name="CardBackground" type="NinePatchRect" parent="CardContentGroup" unique_id=589517874 groups=["card_content"]]
-visible = false
 offset_right = 500.0
 offset_bottom = 500.0
 texture = SubResource("AtlasTexture_h72da")
