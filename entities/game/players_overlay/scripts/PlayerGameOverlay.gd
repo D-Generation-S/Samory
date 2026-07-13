@@ -12,7 +12,7 @@ var _current_player: int = -1
 func _ready() -> void:
 	visible = false
 	for child: Node in player_target_control.get_children():
-		player_target_control.remove_child(child)
+		child.queue_free()
 	var scene_parent: MemoryGame = get_tree().get_first_node_in_group("game_scene")
 	var systems: Systems = scene_parent.get_systems()
 	for system: Node in systems.get_systems():

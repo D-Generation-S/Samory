@@ -1,6 +1,4 @@
-extends Node
-
-class_name NameGenerator
+class_name NameGenerator extends RefCounted
 
 const FIRST_NAME_FEMALE_LIST: String = "res://shared/entities/name_generator/assets/names/first_names.female.txt"
 const FIRST_NAME_MALE_LIST: String =   "res://shared/entities/name_generator/assets/names/first_names.male.txt"

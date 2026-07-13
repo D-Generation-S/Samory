@@ -293,7 +293,6 @@ func clear_all_nodes() -> void:
 			continue
 		if child.name == "GlobalFixedNode" or child.is_in_group("static"):
 			continue
-		remove_child(child)
 		child.queue_free()
 
 func loading_data_done() -> void:

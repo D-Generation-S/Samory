@@ -24,6 +24,6 @@ offset_right = 40.0
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="ButtonHook" type="PanelContainer" parent="CenterContainer" unique_id=1406501716]
+[node name="ButtonHook" type="VBoxContainer" parent="CenterContainer" unique_id=406503172]
 unique_name_in_owner = true
 layout_mode = 2
