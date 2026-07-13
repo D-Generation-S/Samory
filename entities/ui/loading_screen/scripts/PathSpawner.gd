@@ -8,11 +8,13 @@ extends PathFollow2D
 
 var current_interval: float = 0
 var cards: Array[RigidBody2D] = []
+var created_cards: Array[RigidBody2D] = []
 
 func _ready() -> void:
 	current_interval = spawn_interval_seconds
 	for i: int in pre_generated_cards:
-		cards.append(spawn_template.instantiate() as RigidBody2D)
+		cards.append(_create_card())
+	tree_exiting.connect(_destroy_cards)
 
 func _process(delta: float) -> void:
 	current_interval = current_interval + delta
@@ -37,8 +39,19 @@ func collect_old_cards() -> void:
 			child.reset_card()
 			cards.append(child)
 
+func _create_card() -> RigidBody2D:
+	var card: RigidBody2D = spawn_template.instantiate() as RigidBody2D
+	created_cards.append(card)
+	return card
+
 func get_card() -> RigidBody2D:
 	var card: RigidBody2D = cards.pop_back() as RigidBody2D
 	if card == null:
-		card = spawn_template.instantiate() as RigidBody2D
+		card = _create_card()
 	return card
+
+func _destroy_cards() -> void:
+	for card: RigidBody2D in created_cards:
+		card.queue_free()
+	created_cards.clear()
+	cards.clear()

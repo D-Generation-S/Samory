@@ -64,3 +64,4 @@ func destroy() -> void:
 		if child is Control or child is CanvasLayer:
 			child.hide()
 	loaded_scene.emit(loading_target_node)
+	queue_free()
