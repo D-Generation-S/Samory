@@ -1,6 +1,4 @@
-extends Node
-
-class_name DeckLoader
+class_name DeckLoader extends RefCounted
 
 func _get_default_cover() -> Texture2D:
 	return load("res://assets/sprites/Axuree/back_card_3.png") as Texture2D

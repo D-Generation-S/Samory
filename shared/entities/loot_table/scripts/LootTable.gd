@@ -1,4 +1,4 @@
-class_name LootTable extends Node
+class_name LootTable extends RefCounted
 
 var loot_table: Array[Variant] = []
 

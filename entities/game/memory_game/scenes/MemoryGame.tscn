@@ -41,6 +41,7 @@
 [ext_resource type="Script" uid="uid://ce067cc441ff1" path="res://entities/game/debug_tool/scripts/FinishGameFunction.gd" id="35_imof5"]
 [ext_resource type="Script" uid="uid://b34wu88vlg03e" path="res://entities/game/memory_game/scripts/systems/UiInformationSystem.gd" id="36_m766l"]
 [ext_resource type="Script" uid="uid://p5xd1ppjr4ph" path="res://entities/game/memory_game/scripts/systems/TutorialStateSystem.gd" id="40_1resq"]
+[ext_resource type="Script" uid="uid://bn0r2qgwnoiax" path="res://entities/game/debug_tool/scripts/ListOrhans.gd" id="42_ycubg"]
 
 [sub_resource type="Resource" id="Resource_kihnp"]
 script = ExtResource("16_78e34")
@@ -72,6 +73,10 @@ metadata/_custom_type_script = "uid://cgdnmg4wop2a6"
 [sub_resource type="Resource" id="Resource_8rpam"]
 script = ExtResource("35_imof5")
 metadata/_custom_type_script = "uid://ce067cc441ff1"
+
+[sub_resource type="Resource" id="Resource_ycubg"]
+script = ExtResource("42_ycubg")
+metadata/_custom_type_script = "uid://bn0r2qgwnoiax"
 
 [node name="MemoryGame" type="Node2D" unique_id=648295195]
 process_mode = 1
@@ -238,7 +243,7 @@ mouse_filter = 2
 
 [node name="DebugPanel" parent="UI" unique_id=190453148 node_paths=PackedStringArray("memory_game") instance=ExtResource("33_j82c0")]
 memory_game = NodePath("../..")
-debug_functions = Array[ExtResource("34_4hsit")]([SubResource("Resource_8rpam")])
+debug_functions = Array[ExtResource("34_4hsit")]([SubResource("Resource_8rpam"), SubResource("Resource_ycubg")])
 
 [connection signal="announce_deck" from="." to="World/CardBoard" method="set_deck"]
 [connection signal="announce_deck" from="." to="UI/PlayersOverlay" method="set_texture"]
