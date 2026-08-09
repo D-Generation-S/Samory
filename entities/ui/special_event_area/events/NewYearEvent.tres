@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="SpecialEvent" format=3 uid="uid://c2urxd3qapfqa"]
+
+[ext_resource type="Resource" uid="uid://b46leg2x5rg5b" path="res://shared/resources/translations/assets/NewYearEventHeadline.tres" id="1_2m5i5"]
+[ext_resource type="Script" uid="uid://cbevbiicfyjvm" path="res://entities/ui/special_event_area/scripts/SpecialEvent.gd" id="1_myoud"]
+[ext_resource type="Resource" uid="uid://cxjmsvhn1r6yc" path="res://shared/resources/translations/assets/NewYearEventBody.tres" id="2_px2v5"]
+[ext_resource type="Script" uid="uid://h56nmivkqfys" path="res://entities/ui/special_event_area/scripts/validations/FixedDateValidation.gd" id="4_px2v5"]
+
+[sub_resource type="Resource" id="Resource_tw4f1"]
+script = ExtResource("4_px2v5")
+process_text = true
+metadata/_custom_type_script = "uid://h56nmivkqfys"
+
+[resource]
+script = ExtResource("1_myoud")
+event_name = ExtResource("1_2m5i5")
+event_text = ExtResource("2_px2v5")
+validation = SubResource("Resource_tw4f1")
+metadata/_custom_type_script = "uid://cbevbiicfyjvm"

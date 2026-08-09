@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TextTranslation" format=3 uid="uid://4sjacs1ekb77"]
+
+[ext_resource type="Script" uid="uid://b3ccmsvxi5x8x" path="res://shared/resources/translations/TextTranslation.gd" id="1_28njc"]
+
+[resource]
+script = ExtResource("1_28njc")
+key = "CHRISTMAS_EVENT_HEADLINE"
+metadata/_custom_type_script = "uid://b3ccmsvxi5x8x"

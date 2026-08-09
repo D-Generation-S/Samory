@@ -36,6 +36,9 @@
 [ext_resource type="Resource" uid="uid://ran18u8hj7hb" path="res://entities/ui/special_event_area/events/SamuelBirthdayEvent.tres" id="33_bpb6p"]
 [ext_resource type="Resource" uid="uid://n7irgub8gja5" path="res://entities/ui/special_event_area/events/SamoryBirthdayEvent.tres" id="34_bpb6p"]
 [ext_resource type="Resource" uid="uid://jh7sgg0s0bjs" path="res://entities/ui/special_event_area/events/EasternEvent.tres" id="36_igcei"]
+[ext_resource type="Resource" uid="uid://dll8hyj5nftb7" path="res://entities/ui/special_event_area/events/ChristmasEvent.tres" id="37_p3x8q"]
+[ext_resource type="Resource" uid="uid://c2urxd3qapfqa" path="res://entities/ui/special_event_area/events/NewYearEvent.tres" id="38_jwxpt"]
+[ext_resource type="Resource" uid="uid://cdiv2nep8i6ff" path="res://entities/ui/special_event_area/events/HalloweenEvent.tres" id="39_atsbr"]
 
 [sub_resource type="Resource" id="Resource_exu4r"]
 script = ExtResource("4_psgpi")
@@ -379,7 +382,7 @@ theme_override_constants/margin_bottom = 10
 
 [node name="SpecialEventArea" parent="BottomLeftDock" unique_id=1164238996 instance=ExtResource("31_seyqs")]
 layout_mode = 2
-all_events = Array[ExtResource("32_v1oo8")]([ExtResource("33_bpb6p"), ExtResource("34_bpb6p"), ExtResource("36_igcei")])
+all_events = Array[ExtResource("32_v1oo8")]([ExtResource("33_bpb6p"), ExtResource("34_bpb6p"), ExtResource("36_igcei"), ExtResource("37_p3x8q"), ExtResource("38_jwxpt"), ExtResource("39_atsbr")])
 
 [connection signal="pressed" from="CenterMainMenu/MainMenuButtonContainer/MainMenuMarginContainer/MainMenuBox/Quick Game AI" to="AvailableAiModes" method="toggle_menu"]
 [connection signal="enter_animation_done" from="CenterMainMenu/MainMenuButtonContainer/MainMenuMarginContainer/MainMenuBox/Quit/ControlAnimationComponent" to="CenterMainMenu/MainMenuButtonContainer/MainMenuMarginContainer/MainMenuBox" method="enable_mouse_input"]

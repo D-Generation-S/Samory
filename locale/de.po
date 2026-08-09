@@ -1130,6 +1130,7 @@ msgstr ""
 "Das ist der name deines Decks wie er später im Spiel angezeigt werden wird"
 
 #: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
+#: shared/resources/translations/assets/NewDeckName.tres
 msgid "NEW_DECK_NAME"
 msgstr "Name deines Decks"
 
@@ -1144,6 +1145,7 @@ msgid "DECK_DESCRIPTION"
 msgstr "Beschreibung"
 
 #: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
+#: shared/resources/translations/assets/NewDeckDescription.tres
 msgid "NEW_DECK_DESCRIPTION"
 msgstr "Die Beschreibung deines Decks"
 
@@ -1492,7 +1494,7 @@ msgstr ""
 "Der Tag an dem dieses Spiel erstellt worden ist. Samory wird heute also [b]"
 "%DIFFERENCE% Jahre[/b] alt."
 
-#. TRANSLATORS: Can contain a "%YEAR%" variable, getting replaced by the current year
+#. TRANSLATORS: Can contain a "%CURRENT_YEAR%" variable, getting replaced by the current year
 #: shared/resources/translations/assets/EasternEventBody.tres
 msgid "EASTERN_EVENT_BODY"
 msgstr "Ich wünsche dir frohe Ostern %YEAR%"
@@ -1500,6 +1502,35 @@ msgstr "Ich wünsche dir frohe Ostern %YEAR%"
 #: shared/resources/translations/assets/EasternEventHeadline.tres
 msgid "EASTERN_EVENT_HEADLINE"
 msgstr "Frohe Ostern"
+
+#. TRANSLATORS: Can contain a "%CURRENT_YEAR%" variable, getting replaced by the current year
+#: shared/resources/translations/assets/ChristmasEventBody.tres
+msgid "CHRISTMAS_EVENT_BODY"
+msgstr "Ich wünsche frohe Weihnachten %CURRENT_YEAR%"
+
+#: shared/resources/translations/assets/ChristmasEventHeadline.tres
+msgid "CHRISTMAS_EVENT_HEADLINE"
+msgstr "Frohe Weihnachten"
+
+#. TRANSLATORS: Add "%CURRENT_DATE%" variable, to write down the current year
+#: shared/resources/translations/assets/NewYearEventBody.tres
+msgid "NEW_YEAR_EVENT_BODY"
+msgstr "Ein frohes neues Jahr %CURRENT_YEAR%"
+
+#: shared/resources/translations/assets/NewYearEventHeadline.tres
+msgid "NEW_YEAR_EVENT_HEADLINE"
+msgstr "Neujahr"
+
+#. TRANSLATORS: Can contain a "%CURRENT_YEAR%" variable, getting replaced by the current year
+#: shared/resources/translations/assets/HalloweenEventBody.tres
+msgid "HALLOWEEN_EVENT_BODY"
+msgstr ""
+"Heute ist zeit für etwas gruseliges, außerdem wünsche ich viel Spaß am "
+"heutigen Tag."
+
+#: shared/resources/translations/assets/HalloweenEventHeadline.tres
+msgid "HALLOWEEN_EVENT_HEADLINE"
+msgstr "Fröhliche Halloween"
 
 msgid "Samory"
 msgstr ""
