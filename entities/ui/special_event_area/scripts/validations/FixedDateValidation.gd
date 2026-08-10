@@ -28,4 +28,5 @@ func validate(year: int, month: int, day: int) -> bool:
 func _process_text(translated_text: String, year: int, month: int, day: int) -> String:
 	translated_text = translated_text.replace("%DATE%", _get_date_template(year, month, day))
 	translated_text = translated_text.replace("%DIFFERENCE%", str(year - valid_year))
+	translated_text = translated_text.replace("%CURRENT_YEAR%", str(year))
 	return translated_text

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="SpecialEvent" format=3 uid="uid://cdiv2nep8i6ff"]
+
+[ext_resource type="Resource" uid="uid://c7alvw65pgdo2" path="res://shared/resources/translations/assets/HalloweenEventHeadline.tres" id="1_5f2l5"]
+[ext_resource type="Resource" uid="uid://ceg2g5o2ljhku" path="res://shared/resources/translations/assets/HalloweenEventBody.tres" id="2_p0jfo"]
+[ext_resource type="Script" uid="uid://cbevbiicfyjvm" path="res://entities/ui/special_event_area/scripts/SpecialEvent.gd" id="3_iwbiu"]
+[ext_resource type="Script" uid="uid://h56nmivkqfys" path="res://entities/ui/special_event_area/scripts/validations/FixedDateValidation.gd" id="4_7ym38"]
+
+[sub_resource type="Resource" id="Resource_nbwfs"]
+script = ExtResource("4_7ym38")
+valid_month = 10
+valid_day = 31
+process_text = true
+metadata/_custom_type_script = "uid://h56nmivkqfys"
+
+[resource]
+script = ExtResource("3_iwbiu")
+event_name = ExtResource("1_5f2l5")
+event_text = ExtResource("2_p0jfo")
+validation = SubResource("Resource_nbwfs")
+metadata/_custom_type_script = "uid://cbevbiicfyjvm"

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TextTranslation" format=3 uid="uid://cxjmsvhn1r6yc"]
+
+[ext_resource type="Script" uid="uid://b3ccmsvxi5x8x" path="res://shared/resources/translations/TextTranslation.gd" id="1_tw4f1"]
+
+[resource]
+script = ExtResource("1_tw4f1")
+key = "NEW_YEAR_EVENT_BODY"
+comment = "Add \"%CURRENT_DATE%\" variable, to write down the current year"
+metadata/_custom_type_script = "uid://b3ccmsvxi5x8x"

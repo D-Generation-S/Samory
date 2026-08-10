@@ -1045,6 +1045,7 @@ msgid "DECK_NAME_DESCRIPTION"
 msgstr "This will be the name of your deck displayed in the game later on"
 
 #: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
+#: shared/resources/translations/assets/NewDeckName.tres
 msgid "NEW_DECK_NAME"
 msgstr "Name of your deck"
 
@@ -1059,6 +1060,7 @@ msgid "DECK_DESCRIPTION"
 msgstr "Description"
 
 #: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
+#: shared/resources/translations/assets/NewDeckDescription.tres
 msgid "NEW_DECK_DESCRIPTION"
 msgstr "The description of your deck"
 
@@ -1399,7 +1401,7 @@ msgstr ""
 "The day this game was created initially. Samory is [b]%DIFFERENCE% years[/b] "
 "old today."
 
-#. TRANSLATORS: Can contain a "%YEAR%" variable, getting replaced by the current year
+#. TRANSLATORS: Can contain a "%CURRENT_YEAR%" variable, getting replaced by the current year
 #: shared/resources/translations/assets/EasternEventBody.tres
 msgid "EASTERN_EVENT_BODY"
 msgstr "Wishing you a very happy Easter %YEAR%"
@@ -1407,6 +1409,35 @@ msgstr "Wishing you a very happy Easter %YEAR%"
 #: shared/resources/translations/assets/EasternEventHeadline.tres
 msgid "EASTERN_EVENT_HEADLINE"
 msgstr "Eastern"
+
+#. TRANSLATORS: Can contain a "%CURRENT_YEAR%" variable, getting replaced by the current year
+#: shared/resources/translations/assets/ChristmasEventBody.tres
+msgid "CHRISTMAS_EVENT_BODY"
+msgstr ""
+"Merry Christmas %CURRENT_YEAR%. Hopefully you do have a good time with "
+"someone you love."
+
+#: shared/resources/translations/assets/ChristmasEventHeadline.tres
+msgid "CHRISTMAS_EVENT_HEADLINE"
+msgstr "Merry Chirstmas"
+
+#. TRANSLATORS: Add "%CURRENT_DATE%" variable, to write down the current year
+#: shared/resources/translations/assets/NewYearEventBody.tres
+msgid "NEW_YEAR_EVENT_BODY"
+msgstr "Happy new Year %CURRENT_YEAR%, hopefully all your whishes come true!"
+
+#: shared/resources/translations/assets/NewYearEventHeadline.tres
+msgid "NEW_YEAR_EVENT_HEADLINE"
+msgstr "Happy New Year"
+
+#. TRANSLATORS: Can contain a "%CURRENT_YEAR%" variable, getting replaced by the current year
+#: shared/resources/translations/assets/HalloweenEventBody.tres
+msgid "HALLOWEEN_EVENT_BODY"
+msgstr "Let's do something spooky today, also have a lot of fun"
+
+#: shared/resources/translations/assets/HalloweenEventHeadline.tres
+msgid "HALLOWEEN_EVENT_HEADLINE"
+msgstr "Halloween"
 
 msgid "Samory"
 msgstr ""

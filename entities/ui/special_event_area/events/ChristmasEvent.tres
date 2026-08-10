@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="SpecialEvent" format=3 uid="uid://dll8hyj5nftb7"]
+
+[ext_resource type="Resource" uid="uid://4sjacs1ekb77" path="res://shared/resources/translations/assets/ChristmasEventHeadline.tres" id="1_d47lh"]
+[ext_resource type="Resource" uid="uid://d3y0lwkasmij1" path="res://shared/resources/translations/assets/ChristmasEventBody.tres" id="2_awqch"]
+[ext_resource type="Script" uid="uid://cbevbiicfyjvm" path="res://entities/ui/special_event_area/scripts/SpecialEvent.gd" id="3_l7hwy"]
+[ext_resource type="Script" uid="uid://h56nmivkqfys" path="res://entities/ui/special_event_area/scripts/validations/FixedDateValidation.gd" id="4_awqch"]
+
+[sub_resource type="Resource" id="Resource_j2dbl"]
+script = ExtResource("4_awqch")
+valid_month = 12
+valid_day = 24
+process_text = true
+metadata/_custom_type_script = "uid://h56nmivkqfys"
+
+[resource]
+script = ExtResource("3_l7hwy")
+event_name = ExtResource("1_d47lh")
+event_text = ExtResource("2_awqch")
+validation = SubResource("Resource_j2dbl")
+metadata/_custom_type_script = "uid://cbevbiicfyjvm"

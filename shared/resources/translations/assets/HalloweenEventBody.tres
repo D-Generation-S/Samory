@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TextTranslation" format=3 uid="uid://ceg2g5o2ljhku"]
+
+[ext_resource type="Script" uid="uid://b3ccmsvxi5x8x" path="res://shared/resources/translations/TextTranslation.gd" id="1_ami1a"]
+
+[resource]
+script = ExtResource("1_ami1a")
+key = "HALLOWEEN_EVENT_BODY"
+comment = "Can contain a \"%CURRENT_YEAR%\" variable, getting replaced by the current year"
+metadata/_custom_type_script = "uid://b3ccmsvxi5x8x"

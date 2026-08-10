@@ -106,6 +106,14 @@
 # res://shared/resources/translations/assets/SamoryBirthDayText.tres
 # res://shared/resources/translations/assets/EasternEventBody.tres
 # res://shared/resources/translations/assets/EasternEventHeadline.tres
+# res://shared/resources/translations/assets/ChristmasEventBody.tres
+# res://shared/resources/translations/assets/ChristmasEventHeadline.tres
+# res://shared/resources/translations/assets/NewDeckDescription.tres
+# res://shared/resources/translations/assets/NewDeckName.tres
+# res://shared/resources/translations/assets/NewYearEventBody.tres
+# res://shared/resources/translations/assets/NewYearEventHeadline.tres
+# res://shared/resources/translations/assets/HalloweenEventBody.tres
+# res://shared/resources/translations/assets/HalloweenEventHeadline.tres
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -1011,6 +1019,7 @@ msgid "DECK_NAME_DESCRIPTION"
 msgstr ""
 
 #: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
+#: shared/resources/translations/assets/NewDeckName.tres
 msgid "NEW_DECK_NAME"
 msgstr ""
 
@@ -1023,6 +1032,7 @@ msgid "DECK_DESCRIPTION"
 msgstr ""
 
 #: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
+#: shared/resources/translations/assets/NewDeckDescription.tres
 msgid "NEW_DECK_DESCRIPTION"
 msgstr ""
 
@@ -1327,13 +1337,40 @@ msgstr ""
 msgid "SAMORY_BIRTHDAY_EVENT_TEXT"
 msgstr ""
 
-#. TRANSLATORS: Can contain a "%YEAR%" variable, getting replaced by the current year
+#. TRANSLATORS: Can contain a "%CURRENT_YEAR%" variable, getting replaced by the current year
 #: shared/resources/translations/assets/EasternEventBody.tres
 msgid "EASTERN_EVENT_BODY"
 msgstr ""
 
 #: shared/resources/translations/assets/EasternEventHeadline.tres
 msgid "EASTERN_EVENT_HEADLINE"
+msgstr ""
+
+#. TRANSLATORS: Can contain a "%CURRENT_YEAR%" variable, getting replaced by the current year
+#: shared/resources/translations/assets/ChristmasEventBody.tres
+msgid "CHRISTMAS_EVENT_BODY"
+msgstr ""
+
+#: shared/resources/translations/assets/ChristmasEventHeadline.tres
+msgid "CHRISTMAS_EVENT_HEADLINE"
+msgstr ""
+
+#. TRANSLATORS: Add "%CURRENT_DATE%" variable, to write down the current year
+#: shared/resources/translations/assets/NewYearEventBody.tres
+msgid "NEW_YEAR_EVENT_BODY"
+msgstr ""
+
+#: shared/resources/translations/assets/NewYearEventHeadline.tres
+msgid "NEW_YEAR_EVENT_HEADLINE"
+msgstr ""
+
+#. TRANSLATORS: Can contain a "%CURRENT_YEAR%" variable, getting replaced by the current year
+#: shared/resources/translations/assets/HalloweenEventBody.tres
+msgid "HALLOWEEN_EVENT_BODY"
+msgstr ""
+
+#: shared/resources/translations/assets/HalloweenEventHeadline.tres
+msgid "HALLOWEEN_EVENT_HEADLINE"
 msgstr ""
 
 msgid "Samory"
