@@ -198,6 +198,7 @@ msgstr ""
 #: entities/ui/deck_viewer/scenes/DeckViewer.tscn
 #: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/changelog_viewer/scenes/ChangelogViewer.tscn
 msgid "CLOSE"
 msgstr "Schließen"
 
@@ -404,6 +405,15 @@ msgstr "Schaue wer schuld an all den bugs im Spiel ist, worauf wartest du?"
 #: entities/ui/main_menu/scenes/MainMenu.tscn
 msgid "CREDITS"
 msgstr "Credits"
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "OPEN_CHANGELOG_TOOLTIP"
+msgstr "Öffne des Changelog Betrachter"
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+#: entities/ui/changelog_viewer/scenes/ChangelogViewer.tscn
+msgid "CHANGELOG"
+msgstr "Changelog"
 
 #: entities/ui/main_menu/scenes/MainMenu.tscn
 msgid "QUIT_GAME_TOOLTIP"
@@ -928,6 +938,10 @@ msgstr "UI: %03.0f %%"
 #: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
 msgid "RESET_SCALING"
 msgstr "UI Skalierung zurücksetzten"
+
+#: entities/ui/changelog_viewer/scenes/ChangelogViewer.tscn
+msgid "CLOSE_CHANGELOG_TOOLTIP"
+msgstr "Schließen des Changelog Betrachters"
 
 msgid "Samory"
 msgstr ""

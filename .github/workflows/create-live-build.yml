@@ -33,15 +33,32 @@ jobs:
     container:
       image: barichello/godot-ci:4.7
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
         with:
            lfs: true
+           fetch-depth: 0
       - name: Setup
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates/
           mkdir -v -p ~/.config/
           mv /root/.config/godot ~/.config/godot
           mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+      - name: Install git cliff
+        run: |
+           wget "https://github.com/orhun/git-cliff/releases/download/v2.13.1/git-cliff-2.13.1-x86_64-unknown-linux-gnu.tar.gz"
+           tar -xvzf git-cliff-*.tar.gz
+           cd "git-cliff-2.13.1"
+           mv ./* /usr/local/bin/
+           cd ..
+           rmdir git-cliff-2.13.1
+           rm git-cliff-2.13.1-x86_64-unknown-linux-gnu.tar.gz
+           ls
+      - name: Generate changelog
+        run: |
+           chmod +x ./ci/linux-changelog.sh
+           git config --global --add safe.directory "$GITHUB_WORKSPACE"
+           ./ci/linux-changelog.sh
+           git config --unset --global safe.directory
       - name: Build ${{ matrix.platform.name }}
         run: |
           mkdir -v -p build/${{ matrix.platform.os }}

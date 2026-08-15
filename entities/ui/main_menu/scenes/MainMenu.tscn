@@ -29,6 +29,8 @@
 [ext_resource type="Texture2D" uid="uid://dmmfqt6ictpos" path="res://assets/icons/SettingsIcon.tres" id="20_vm73v"]
 [ext_resource type="PackedScene" uid="uid://da8m8gpy2rlvo" path="res://entities/ui/links/scenes/links.tscn" id="21_fr5td"]
 [ext_resource type="PackedScene" uid="uid://ded0xyxbb1om1" path="res://entities/ui/settings_menu/scenes/SettingsMenu.tscn" id="21_plb04"]
+[ext_resource type="Texture2D" uid="uid://daihceh1cvfun" path="res://assets/icons/ChangelogIcon.tres" id="23_atsbr"]
+[ext_resource type="PackedScene" uid="uid://dodp2fl287k8b" path="res://entities/ui/changelog_viewer/scenes/ChangelogViewer.tscn" id="24_gt735"]
 [ext_resource type="Resource" uid="uid://c1inbmbft2wj0" path="res://shared/resources/control_animation/resources/FadeInAnimation.tres" id="28_0jj68"]
 [ext_resource type="PackedScene" uid="uid://c6411vrwwcrjs" path="res://entities/ui/animation_arrow_up/scenes/AnimationArrowUp.tscn" id="28_exu4r"]
 [ext_resource type="PackedScene" uid="uid://bb8a06skydqwe" path="res://entities/ui/special_event_area/scenes/SpecialEventArea.tscn" id="31_seyqs"]
@@ -83,6 +85,15 @@ metadata/_custom_type_script = "uid://cymc6ui77jfei"
 script = ExtResource("7_bdxeb")
 scene_template = ExtResource("14_exos4")
 transmit_click_position = true
+metadata/_custom_type_script = "uid://cymc6ui77jfei"
+
+[sub_resource type="Resource" id="Resource_gt735"]
+script = ExtResource("11_3ka4x")
+metadata/_custom_type_script = "uid://d0jijr8wa6o8v"
+
+[sub_resource type="Resource" id="Resource_o6tq2"]
+script = ExtResource("7_bdxeb")
+scene_template = ExtResource("24_gt735")
 metadata/_custom_type_script = "uid://cymc6ui77jfei"
 
 [sub_resource type="Resource" id="Resource_jopkp"]
@@ -245,6 +256,23 @@ enter_values = ExtResource("9_0jj68")
 hover_values = ExtResource("9_exu4r")
 metadata/_custom_type_script = "uid://rxshx7ma8nn3"
 
+[node name="Changelog" type="Button" parent="CenterMainMenu/MainMenuButtonContainer/MainMenuMarginContainer/MainMenuBox" unique_id=1071920682]
+layout_mode = 2
+tooltip_text = "OPEN_CHANGELOG_TOOLTIP"
+text = "CHANGELOG"
+icon = ExtResource("23_atsbr")
+script = ExtResource("4_b7t05")
+button_behavior = SubResource("Resource_gt735")
+pressed_action = SubResource("Resource_o6tq2")
+metadata/_custom_type_script = "uid://chfatpxf8ucxr"
+
+[node name="ControlAnimationComponent" type="Node" parent="CenterMainMenu/MainMenuButtonContainer/MainMenuMarginContainer/MainMenuBox/Changelog" unique_id=1569872074 node_paths=PackedStringArray("await_component")]
+script = ExtResource("3_aqmwr")
+await_component = NodePath("../../Credits/ControlAnimationComponent")
+enter_values = ExtResource("9_0jj68")
+hover_values = ExtResource("9_0jj68")
+metadata/_custom_type_script = "uid://rxshx7ma8nn3"
+
 [node name="Quit" type="Button" parent="CenterMainMenu/MainMenuButtonContainer/MainMenuMarginContainer/MainMenuBox" unique_id=1120827469]
 layout_mode = 2
 tooltip_text = "QUIT_GAME_TOOLTIP"
@@ -259,7 +287,7 @@ pressed_action = SubResource("Resource_jopkp")
 
 [node name="ControlAnimationComponent" type="Node" parent="CenterMainMenu/MainMenuButtonContainer/MainMenuMarginContainer/MainMenuBox/Quit" unique_id=930826110 node_paths=PackedStringArray("await_component")]
 script = ExtResource("3_aqmwr")
-await_component = NodePath("../../Credits/ControlAnimationComponent")
+await_component = NodePath("../../Changelog/ControlAnimationComponent")
 enter_values = ExtResource("9_0jj68")
 hover_values = ExtResource("9_exu4r")
 metadata/_custom_type_script = "uid://rxshx7ma8nn3"

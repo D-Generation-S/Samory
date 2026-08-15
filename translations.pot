@@ -36,6 +36,7 @@
 # res://entities/ui/gameplay_settings/scenes/GameplaySettings.tscn
 # res://entities/ui/audio_settings/scene/AudioScene.tscn
 # res://entities/ui/graphic_settings/scenes/GraphicSettings.tscn
+# res://entities/ui/changelog_viewer/scenes/ChangelogViewer.tscn
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -146,6 +147,7 @@ msgstr ""
 #: entities/ui/deck_viewer/scenes/DeckViewer.tscn
 #: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
+#: entities/ui/changelog_viewer/scenes/ChangelogViewer.tscn
 msgid "CLOSE"
 msgstr ""
 
@@ -335,6 +337,15 @@ msgstr ""
 
 #: entities/ui/main_menu/scenes/MainMenu.tscn
 msgid "CREDITS"
+msgstr ""
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+msgid "OPEN_CHANGELOG_TOOLTIP"
+msgstr ""
+
+#: entities/ui/main_menu/scenes/MainMenu.tscn
+#: entities/ui/changelog_viewer/scenes/ChangelogViewer.tscn
+msgid "CHANGELOG"
 msgstr ""
 
 #: entities/ui/main_menu/scenes/MainMenu.tscn
@@ -813,6 +824,10 @@ msgstr ""
 
 #: entities/ui/graphic_settings/scenes/GraphicSettings.tscn
 msgid "RESET_SCALING"
+msgstr ""
+
+#: entities/ui/changelog_viewer/scenes/ChangelogViewer.tscn
+msgid "CLOSE_CHANGELOG_TOOLTIP"
 msgstr ""
 
 msgid "Samory"
