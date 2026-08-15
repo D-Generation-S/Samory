@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://jot8q8wwtf5l"]
+
+[ext_resource type="Script" uid="uid://dicjvdw70lldq" path="res://entities/ui/changelog_viewer/scripts/ChangelogEntry.gd" id="1_ct7yq"]
+
+[node name="ChangelogEntryTemplate" type="Button" unique_id=1618639699]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 70.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+text = "VERSION"
+script = ExtResource("1_ct7yq")
+metadata/_custom_type_script = "uid://dicjvdw70lldq"

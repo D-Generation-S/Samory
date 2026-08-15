@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://dodp2fl287k8b"]
+
+[ext_resource type="Script" uid="uid://cgr8c05iuwakn" path="res://entities/ui/changelog_viewer/scripts/ChangeLogViewer.gd" id="1_0ajbe"]
+[ext_resource type="Script" uid="uid://c88d061xye1fb" path="res://entities/ui/changelog_viewer/scripts/ChangelogList.gd" id="2_3d0xd"]
+[ext_resource type="StyleBox" uid="uid://d1rhal5rp1608" path="res://assets/styles/panel/MetalBox.tres" id="2_lk6ya"]
+[ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://entities/ui/menu_background/scenes/MenuBackground.tscn" id="2_lp1sn"]
+[ext_resource type="Script" uid="uid://ciwn0xyes7rtl" path="res://entities/ui/changelog_viewer/scripts/ChagelogContent.gd" id="3_hq84m"]
+[ext_resource type="Texture2D" uid="uid://b6vwa7x6vgpfd" path="res://assets/icons/DenyIcon.tres" id="5_lp1sn"]
+[ext_resource type="Shortcut" uid="uid://2i2jk61uyyn2" path="res://assets/shortcuts/Abort.tres" id="5_ralgr"]
+[ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="7_t2gdb"]
+[ext_resource type="Script" uid="uid://d0jijr8wa6o8v" path="res://shared/entities/clickable_button/resources/behaviors/DefaultButtonBehavior.gd" id="9_xs8jv"]
+[ext_resource type="Script" uid="uid://b03sehux5xslr" path="res://shared/entities/clickable_button/resources/actions/OpenMainMenu.gd" id="10_3733e"]
+
+[sub_resource type="Resource" id="Resource_2ly7o"]
+script = ExtResource("9_xs8jv")
+metadata/_custom_type_script = "uid://d0jijr8wa6o8v"
+
+[sub_resource type="Resource" id="Resource_wln7t"]
+script = ExtResource("10_3733e")
+metadata/_custom_type_script = "uid://b03sehux5xslr"
+
+[node name="ChangelogViewer" type="CanvasLayer" unique_id=1128425034]
+
+[node name="MenuBackground" parent="." unique_id=1942483075 instance=ExtResource("2_lp1sn")]
+
+[node name="ChangelogViewer" type="MarginContainer" parent="." unique_id=1639027815]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("1_0ajbe")
+metadata/_custom_type_script = "uid://cgr8c05iuwakn"
+
+[node name="PanelContainer" type="PanelContainer" parent="ChangelogViewer" unique_id=1344381931]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ChangelogViewer/PanelContainer" unique_id=1929372654]
+layout_mode = 2
+
+[node name="Changelog" type="Label" parent="ChangelogViewer/PanelContainer/VBoxContainer" unique_id=2056330814]
+layout_mode = 2
+text = "CHANGELOG"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ChangelogViewer/PanelContainer/VBoxContainer" unique_id=686454352]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VersionPanel" type="PanelContainer" parent="ChangelogViewer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1008556350]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_lk6ya")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ChangelogViewer/PanelContainer/VBoxContainer/HBoxContainer/VersionPanel" unique_id=964675369]
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 2
+
+[node name="Changelogs" type="VBoxContainer" parent="ChangelogViewer/PanelContainer/VBoxContainer/HBoxContainer/VersionPanel/ScrollContainer" unique_id=1729455939 node_paths=PackedStringArray("template")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_3d0xd")
+template = NodePath("ChangelogEntryTemplate")
+metadata/_custom_type_script = "uid://c88d061xye1fb"
+
+[node name="ChangelogEntryTemplate" parent="ChangelogViewer/PanelContainer/VBoxContainer/HBoxContainer/VersionPanel/ScrollContainer/Changelogs" unique_id=1349382410 instance_placeholder="res://entities/ui/changelog_viewer/scenes/ChangelogEntryTemplate.tscn"]
+layout_mode = 2
+
+[node name="ContentMargin" type="MarginContainer" parent="ChangelogViewer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=671108980]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Content" type="RichTextLabel" parent="ChangelogViewer/PanelContainer/VBoxContainer/HBoxContainer/ContentMargin" unique_id=541667295]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("3_hq84m")
+metadata/_custom_type_script = "uid://ciwn0xyes7rtl"
+
+[node name="Close" type="Button" parent="ChangelogViewer/PanelContainer/VBoxContainer" unique_id=756351700]
+layout_mode = 2
+size_flags_horizontal = 8
+tooltip_text = "CLOSE_CHANGELOG_TOOLTIP"
+shortcut = ExtResource("5_ralgr")
+text = "CLOSE"
+icon = ExtResource("5_lp1sn")
+script = ExtResource("7_t2gdb")
+button_behavior = SubResource("Resource_2ly7o")
+pressed_action = SubResource("Resource_wln7t")
+metadata/_custom_type_script = "uid://chfatpxf8ucxr"
+
+[connection signal="change_display_version" from="ChangelogViewer/PanelContainer/VBoxContainer/HBoxContainer/VersionPanel/ScrollContainer/Changelogs" to="ChangelogViewer/PanelContainer/VBoxContainer/HBoxContainer/ContentMargin/Content" method="load_version"]
