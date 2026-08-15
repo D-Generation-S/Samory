@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="TextTranslation" format=3 uid="uid://4sjacs1ekb77"]
 
-[ext_resource type="Script" uid="uid://b3ccmsvxi5x8x" path="res://shared/resources/translations/TextTranslation.gd" id="1_28njc"]
+[ext_resource type="Script" uid="uid://b3ccmsvxi5x8x" path="res://addons/resource_translation_plugin/resources/translation_resource.gd" id="1_28njc"]
 
 [resource]
 script = ExtResource("1_28njc")
