@@ -24,6 +24,8 @@ for ((i=${#tags[@]}-1; i>0; i--)); do
     git cliff "$currentTag..$nextTag" --output "$filename"
 done
 
-# Generate the last changelog
-echo "Generate last changelog from ${tags[0]} to $currentVersion"
-git cliff "${tags[0]}..HEAD" --tag "$currentVersion" --output "$directory/$currentVersion.txt"
+if [ "${tags[0]}" != "$currentVersion" ]; then
+	# Generate the last changelog
+	echo "Generate last changelog from ${tags[0]} to $currentVersion"
+	git cliff "${tags[0]}..HEAD" --tag "$currentVersion" --output "$directory/$currentVersion.txt"
+fi
