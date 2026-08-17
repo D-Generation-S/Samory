@@ -270,7 +270,7 @@ metadata/_custom_type_script = "uid://chfatpxf8ucxr"
 script = ExtResource("3_aqmwr")
 await_component = NodePath("../../Credits/ControlAnimationComponent")
 enter_values = ExtResource("9_0jj68")
-hover_values = ExtResource("9_0jj68")
+hover_values = ExtResource("9_exu4r")
 metadata/_custom_type_script = "uid://rxshx7ma8nn3"
 
 [node name="Quit" type="Button" parent="CenterMainMenu/MainMenuButtonContainer/MainMenuMarginContainer/MainMenuBox" unique_id=1120827469]
