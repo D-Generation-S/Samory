@@ -68,6 +68,7 @@ commit_parsers = [
     { message = "^test", group = "<!-- 6 -->Testing" },
     { message = "^chore\\(release\\): prepare for", skip = true },
     { message = "^chore\\(deps.*\\)", skip = true },
+	{ message = "^\\w*\\(ci\\):.*", skip = true},
     { message = "^chore\\(pr\\)", skip = true },
 	{ message = "^(feat|chore):( )?[iI]ncrease( )?(game|project)? (version)?.*", skip = true },
 	{ message = "^(feat|chore):( )?[uU]pdate( )?(game|project)? (version)?.*", skip = true },
