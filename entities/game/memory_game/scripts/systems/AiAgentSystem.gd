@@ -31,7 +31,7 @@ func card_was_identically(first_card_position: Vector2i, second_card_position: V
 func game_state_changed(game_state: GameEnum.State) -> void:
 	if should_play_round and game_state == GameEnum.State.TURN_START:
 		await get_tree().physics_frame
-		print("ai turn start")
+		print_debug("ai turn start")
 		triggered_cards = 0
 		prepare_and_start_timer()
 

@@ -22,7 +22,7 @@ func _ready() -> void:
 ## This will set the new state and broadcast the new state via signal
 func _change_state(new_state: GameEnum.State) -> void:	
 	_current_state = new_state
-	print("State changed to %s" % str(_current_state))
+	print_debug("State changed to %s" % str(_current_state))
 	state_changed.emit(_current_state)
 
 func get_current_state() -> GameEnum.State:
@@ -35,7 +35,7 @@ func game_field_ready() -> void:
 func matches_found() -> void:
 	if _current_state == GameEnum.State.GAME_END:
 		return
-	print("match found")
+	print_debug("match found")
 	_change_state(GameEnum.State.TURN_FREEZE)
 	_change_state(GameEnum.State.TURN_COMPLETED)
 	if _current_state == GameEnum.State.GAME_END:
@@ -48,7 +48,7 @@ func matches_found() -> void:
 func no_matches() -> void:
 	if _current_state == GameEnum.State.GAME_END:
 		return
-	print("no matches")
+	print_debug("no matches")
 	_change_state(GameEnum.State.TURN_FREEZE)
 	_change_state(GameEnum.State.TURN_COMPLETED)
 	_change_state(GameEnum.State.PREPARE_TURN_END)
@@ -57,11 +57,11 @@ func no_matches() -> void:
 	_show_round_ended_banner()
 
 func board_ready() -> void:
-	print("board ready")
+	print_debug("board ready")
 	_change_state(GameEnum.State.TURN_START)
 	
 func board_empty() -> void:
-	print("board empty")
+	print_debug("board empty")
 	_change_state(GameEnum.State.PREPARE_TURN_END)
 	_change_state(GameEnum.State.GAME_END)
 

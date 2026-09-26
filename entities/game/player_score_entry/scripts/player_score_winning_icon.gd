@@ -27,11 +27,10 @@ func scoring_is_done() -> void:
 	_pulse_icon()
 
 func _pulse_icon() -> void:
-	print("pulse start")
+	print_debug("pulse start")
 	if not should_pulse:
 		return
 	var pulse_tween: Tween = create_tween()
 	pulse_tween.set_loops()
 	pulse_tween.tween_property(self, "offset_transform_scale", Vector2(max_pulse_size, max_pulse_size), pulse_cycle_time)
 	pulse_tween.tween_property(self, "offset_transform_scale", Vector2(min_pulse_size, min_pulse_size), pulse_cycle_time)
-	#tween.finished.connect(_pulse_icon)
