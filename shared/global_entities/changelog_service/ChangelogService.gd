@@ -3,6 +3,7 @@ extends Node
 const default_empty_changelog_text_template: String = "No Information for version %s provided!"
 const changelog_not_existing_template: String = "Changelog %s does not exist!"
 const changelog_directory: String = "res://shared/resources/changelog/"
+const BASE_GITHUB_CHANGELOG_LINK: String = "https://github.com/D-Generation-S/Samory/releases/tag/%s"
 
 const allowed_extensions: Array[String] = [
 	"txt"
@@ -36,11 +37,18 @@ func _load_file_content(version: String) -> String:
 	if file_access == null or file_access.get_error() != OK:
 		return changelog_not_existing_template % version
 
-	var return_data: String = file_access.get_as_text()
+	var return_data: String = _add_github_link(file_access.get_as_text(), version)
 	if return_data.is_empty():
 		return_data = default_empty_changelog_text_template % version
 
 	return return_data
+
+func _add_github_link(changelog: String, version: String) -> String:
+	if changelog.is_empty():
+		return changelog
+	var link: String = BASE_GITHUB_CHANGELOG_LINK % version
+	changelog = "%s[br]Link to online [hint='%s'][url=%s]Release Notes[/url][/hint]" % [changelog, link, link]
+	return changelog
 
 func _scan_for_changelogs() -> void:
 	assert(DirAccess.dir_exists_absolute(changelog_directory), "Missing changelog directory")
