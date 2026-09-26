@@ -3,8 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://cgqyilfj4ggfa" path="res://entities/ui/menu_background/scenes/MenuBackground.tscn" id="2_cootk"]
 [ext_resource type="Script" uid="uid://be1ipi8ub0y8n" path="res://entities/ui/settings_menu/scripts/SettingsMenu.gd" id="2_hfhds"]
 [ext_resource type="ButtonGroup" uid="uid://b82ccwwcy5fiu" path="res://entities/ui/settings_menu/button_groups/settings_group.tres" id="3_3fhgt"]
+[ext_resource type="Texture2D" uid="uid://duwjw8x7cjg3q" path="res://assets/icons/SettingsGameplayIcon.tres" id="4_j8sho"]
 [ext_resource type="PackedScene" uid="uid://clq1oqr2embyn" path="res://entities/ui/graphic_settings/scenes/GraphicSettings.tscn" id="5_fwjxt"]
+[ext_resource type="Texture2D" uid="uid://b3t4yvavrlo1g" path="res://assets/icons/SettingsGraphicOptionIcon.tres" id="6_yusmy"]
 [ext_resource type="PackedScene" uid="uid://c1052v5kfbk8k" path="res://entities/ui/audio_settings/scene/AudioScene.tscn" id="7_1pc0r"]
+[ext_resource type="Texture2D" uid="uid://nm42ws1w4k72" path="res://assets/icons/SettingsAudioOptionIcon.tres" id="7_o1rro"]
 [ext_resource type="PackedScene" uid="uid://dy0y8ekiojxid" path="res://entities/ui/gameplay_settings/scenes/GameplaySettings.tscn" id="10_4fcpx"]
 [ext_resource type="Script" uid="uid://chfatpxf8ucxr" path="res://shared/entities/clickable_button/ClickableButton.gd" id="19_3ip51"]
 [ext_resource type="Texture2D" uid="uid://dqv4i4y66gem" path="res://assets/icons/OkIcon.tres" id="26_br808"]
@@ -51,6 +54,8 @@ toggle_mode = true
 button_pressed = true
 button_group = ExtResource("3_3fhgt")
 text = "GAMEPLAY_SETTINGS"
+icon = ExtResource("4_j8sho")
+icon_alignment = 2
 script = ExtResource("19_3ip51")
 
 [node name="GraphicSettings" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/SettingsMenu/SettingSelection" unique_id=841274336]
@@ -59,6 +64,8 @@ size_flags_vertical = 0
 toggle_mode = true
 button_group = ExtResource("3_3fhgt")
 text = "GRAPHIC_SETTINGS"
+icon = ExtResource("6_yusmy")
+icon_alignment = 2
 script = ExtResource("19_3ip51")
 
 [node name="AudioSettings" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/SettingsMenu/SettingSelection" unique_id=1876457040]
@@ -66,6 +73,8 @@ layout_mode = 2
 toggle_mode = true
 button_group = ExtResource("3_3fhgt")
 text = "AUDIO_SETTINGS"
+icon = ExtResource("7_o1rro")
+icon_alignment = 2
 script = ExtResource("19_3ip51")
 
 [node name="GameplaySettings" parent="CenterContainer/PanelContainer/MarginContainer/SettingsMenu" unique_id=1010033397 instance=ExtResource("10_4fcpx")]
@@ -121,8 +130,6 @@ script = ExtResource("19_3ip51")
 [connection signal="time_for_completion_changed" from="CenterContainer/PanelContainer/MarginContainer/SettingsMenu/GameplaySettings" to="." method="time_for_completion_changed"]
 [connection signal="card_match_animation_changed" from="CenterContainer/PanelContainer/MarginContainer/SettingsMenu/GraphicSettings" to="." method="matching_card_animation_changed"]
 [connection signal="enter_animate_changed" from="CenterContainer/PanelContainer/MarginContainer/SettingsMenu/GraphicSettings" to="." method="enter_animate_changed"]
-[connection signal="language_changed" from="CenterContainer/PanelContainer/MarginContainer/SettingsMenu/GraphicSettings" to="CenterContainer/PanelContainer/MarginContainer/SettingsMenu/GraphicSettings/VBoxContainer/UiScale/UiScaleLabel" method="language_changed"]
-[connection signal="settings_changed" from="CenterContainer/PanelContainer/MarginContainer/SettingsMenu/GraphicSettings" to="CenterContainer/PanelContainer/MarginContainer/SettingsMenu/GraphicSettings/VBoxContainer/UiScale" method="settings_changed"]
 [connection signal="ui_scale_changed" from="CenterContainer/PanelContainer/MarginContainer/SettingsMenu/GraphicSettings" to="." method="ui_scale_changed"]
 [connection signal="v_sync_changed" from="CenterContainer/PanelContainer/MarginContainer/SettingsMenu/GraphicSettings" to="." method="v_sync_changed"]
 [connection signal="window_mode_changed" from="CenterContainer/PanelContainer/MarginContainer/SettingsMenu/GraphicSettings" to="." method="window_mode_changed"]
