@@ -83,7 +83,7 @@ func _create_card_stack() -> void:
 	_current_card_count += 1
 	if _current_card_count >= max_visualized_cards:
 		return
-	print("spawn card")
+	print_debug("spawn card")
 	var cards: Array[TextureRect] = [
 		_create_new_card(),
 		_create_new_card()

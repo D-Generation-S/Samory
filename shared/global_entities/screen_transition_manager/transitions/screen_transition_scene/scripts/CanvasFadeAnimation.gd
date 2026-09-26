@@ -9,6 +9,5 @@ func _ready() -> void:
 
 func transition_step(step_number: float) -> void:
 	if step_number == 1:
-		print("ignore")
 		mouse_filter = MOUSE_FILTER_IGNORE
 	color.a = step_number

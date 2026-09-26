@@ -285,7 +285,7 @@ func game_state_changed(new_state: GameEnum.State) -> void:
 		_valid_game_state = false
 		freeze_card()
 	if new_state == GameEnum.State.TURN_END:
-		print ("hide card by state")
+		print_debug("hide card by state")
 		hide_card_now()
 	if new_state == GameEnum.State.TURN_START:
 		unfreeze_card()

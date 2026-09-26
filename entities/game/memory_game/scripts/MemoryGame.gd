@@ -120,7 +120,7 @@ func turn_start_trigger() -> void:
 		return
 	
 	ending_round = false
-	print("Start Round")
+	print_debug("Start Round")
 	triggered_cards = 0
 
 func _handle_initial_start() -> void:

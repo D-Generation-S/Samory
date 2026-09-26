@@ -12,7 +12,7 @@ var _card_base_path: String = "cards/"
 var _asset_base_folder: String = "assets/"
 
 func save_deck(deck_information: CustomDeckResource, deck_data: Array[CustomDeckResource]) -> bool:
-	print("Saving deck with name: " + deck_information.get_resource_name())
+	print_debug("Saving deck with name: " + deck_information.get_resource_name())
 	var cards: Array[CustomDeckResource] = []
 	for resource: CustomDeckResource in deck_data:
 		if not resource.get_is_deck():

@@ -82,7 +82,7 @@ func _prepare_turn_complete() -> void:
 		if card == null or card.is_queued_for_deletion():
 			continue
 		if not card.card_is_hidden():
-			print ("wait hidden card")
+			print_debug("wait hidden card")
 			await card.fully_hidden
 
 	#board_ready.emit()
