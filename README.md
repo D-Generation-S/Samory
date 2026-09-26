@@ -40,7 +40,7 @@ yay samory-bin
 
 ### Requirements
 
-- [Godot 4.6][godot4_6]
+- [Godot 4.7.2][godot4_7]
 
 ### How to build the project
 
@@ -68,7 +68,7 @@ All assets contained inside of the [Axuree directory][axuree-directory] are lice
 
 [itch-io]: https://xanatos.itch.io/samory
 [itch-app]: https://itch.io/app
-[godot4_6]: https://godotengine.org/download/archive/4.6-stable/
+[godot4_7]: https://godotengine.org/download/archive/4.7.2-stable/
 [latest-release]: https://github.com/D-Generation-S/Samory/releases/latest
 [samory-aur]: https://aur.archlinux.org/packages/samory-bin
 [kenney]: https://www.kenney.nl/
