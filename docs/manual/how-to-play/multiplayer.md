@@ -1,8 +1,8 @@
 # Multiplayer
 
-> :warning: This only works after version 0.18.0 and only with the Desktop version.
+> :warning: This feature is only available on Desktop with version 0.18.0 until 0.20.0
 
-> :warning: This mode is still experimental as I lack the possibility for testing. Expect sync bugs!
+> :warning: This mode was experimental as I lacked testing. Expect it to be broken!
 
 > :information_source: This mode is meant for LAN matches, it should not be used over the internet. It was never tested therefore
 
@@ -35,3 +35,4 @@ Either select a game listed in the `Available Servers` area or connect by ip. Cl
 
 
 [back]: ./index.md
+[multiplayer-removal]: https://xanatos.itch.io/samory/devlog/1609870/state-of-the-game

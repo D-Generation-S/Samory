@@ -88,7 +88,6 @@ msgstr "Players"
 
 #: entities/game/players_overlay/scenes/PlayersOverlay.tscn
 #: entities/ui/game_lobby/scenes/GameLobby.tscn
-#: entities/ui/multiplayer_lobby/scenes/MultiplayerLobby.tscn
 msgid "PLAYER_LIST"
 msgstr "Players"
 
@@ -149,7 +148,6 @@ msgstr ""
 
 #: entities/ui/credits/scenes/Credits.tscn
 #: entities/ui/deck_viewer/scenes/DeckViewer.tscn
-#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
 #: entities/ui/changelog_viewer/scenes/ChangelogViewer.tscn
 msgid "CLOSE"
@@ -210,7 +208,6 @@ msgstr "Reload custom decks"
 
 #: entities/ui/deck_viewer/scenes/DeckViewer.tscn
 #: entities/ui/game_lobby/scenes/GameLobby.tscn
-#: entities/ui/multiplayer_lobby/scenes/MultiplayerLobby.tscn
 msgid "FILTER_DECKS"
 msgstr "Filter decks by deck name"
 
@@ -278,12 +275,10 @@ msgid "ADD_AI_PLAYER"
 msgstr "Add AI Player"
 
 #: entities/ui/game_lobby/scenes/GameLobby.tscn
-#: entities/ui/multiplayer_lobby/scenes/MultiplayerLobby.tscn
 msgid "START_GAME_TOOLTIP"
 msgstr "Start the game with the currently listed players and the selected deck"
 
 #: entities/ui/game_lobby/scenes/GameLobby.tscn
-#: entities/ui/multiplayer_lobby/scenes/MultiplayerLobby.tscn
 msgid "START_GAME"
 msgstr "Start game"
 
@@ -298,7 +293,6 @@ msgid "LOADING"
 msgstr "Loading"
 
 #: entities/ui/loading_screen/scenes/LoadingScreen.tscn
-#: entities/ui/multiplayer_chat/scenes/MultiplayerChat.tscn
 msgid "MESSAGE"
 msgstr "Message"
 
@@ -309,14 +303,6 @@ msgstr "Create a custom game against AI or humans"
 #: entities/ui/main_menu/scenes/MainMenu.tscn
 msgid "CUSTOM_GAME"
 msgstr "Custom game"
-
-#: entities/ui/main_menu/scenes/MainMenu.tscn
-msgid "LOCAL_MULTIPLAYER_TOOLTIP"
-msgstr "Open LAN Multiplayer lobby (Experimental)"
-
-#: entities/ui/main_menu/scenes/MainMenu.tscn
-msgid "LOCAL_MULTIPLAYER"
-msgstr "LAN Multiplayer"
 
 #: entities/ui/main_menu/scenes/MainMenu.tscn
 msgid "QUICK_GAME_TOOLTIP"
@@ -371,76 +357,9 @@ msgstr "Quit Game"
 msgid "GAME_SETTINGS"
 msgstr "Game Settings"
 
-#: entities/ui/multiplayer_chat/scenes/MultiplayerChat.tscn
-msgid "SEND"
-msgstr "Send"
-
-#: entities/ui/multiplayer_connection_state_message/scenes/MultiplayerConnectionStateMessage.tscn
-#: shared/resources/translations/assets/MultiplayerConnectingToServer.tres
-msgid "CONNECTING_TO_SERVER"
-msgstr "Connecting to server"
-
-#: entities/ui/multiplayer_connection_state_message/scenes/MultiplayerConnectionStateMessage.tscn
-msgid "ABORT_CONNECTION_TOOLTIP"
-msgstr "This will abort the connection to the server"
-
-#: entities/ui/multiplayer_connection_state_message/scenes/MultiplayerConnectionStateMessage.tscn
-msgid "ABORT_CONNECTION"
-msgstr "Abort Connection"
-
-#: entities/ui/multiplayer_lobby/scenes/MultiplayerLobby.tscn
-msgid "ABORT_TOOLTIP"
-msgstr "Abort the current action or close the current Window"
-
-#: entities/ui/multiplayer_lobby/scenes/MultiplayerLobby.tscn
-#: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
-#: entities/ui/custom_deck_edit_card/scenes/CustomDeckEditCard.tscn
-#: entities/ui/edit_custom_deck/scenes/EditCustomDeck.tscn
-msgid "ABORT"
-msgstr "Abort"
-
-#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
 #: entities/ui/new_player/scenes/NewPlayer.tscn
 msgid "PLAYER_NAME"
 msgstr "Playername"
-
-#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
-msgid "AVAILABLE_SERVERS"
-msgstr "Available Servers"
-
-#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
-msgid "SERVER_ADDRESS"
-msgstr "Server Address"
-
-#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
-msgid "CONNECT_TOOLTIP"
-msgstr "Connect to a given IP address"
-
-#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
-#: entities/ui/multiplayer_server_entry/scenes/MultiplayerServerEntry.tscn
-msgid "CONNECT"
-msgstr "Connect"
-
-#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
-msgid "HOST_TOOLTIP"
-msgstr "Create a new server other players can join"
-
-#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
-msgid "HOST"
-msgstr "Host"
-
-#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
-msgid "CLOSE_TOOLTIP"
-msgstr "Close this menu"
-
-#: entities/ui/multiplayer_server_entry/scenes/MultiplayerServerEntry.tscn
-msgid "SERVER_NAME"
-msgstr "Server Name"
-
-#: entities/ui/multiplayer_server_entry/scenes/MultiplayerServerEntry.tscn
-#: shared/resources/translations/assets/Version.tres
-msgid "VERSION"
-msgstr "Version"
 
 #: entities/ui/new_player/scenes/NewPlayer.tscn
 msgid "ERROR"
@@ -609,6 +528,12 @@ msgstr "Load a custom deck"
 #: entities/ui/edit_custom_deck/scenes/EditCustomDeck.tscn
 msgid "ABORT_DESCRIPTION"
 msgstr "Abort the current task"
+
+#: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
+#: entities/ui/custom_deck_edit_card/scenes/CustomDeckEditCard.tscn
+#: entities/ui/edit_custom_deck/scenes/EditCustomDeck.tscn
+msgid "ABORT"
+msgstr "Abort"
 
 #: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
 #: entities/ui/custom_deck_edit_card/scenes/CustomDeckEditCard.tscn
@@ -1372,41 +1297,6 @@ msgstr "Can't be larger than %s chars"
 msgid "MIN_SIZE_VALIDATION"
 msgstr "Must be larger than %s chars"
 
-#. TRANSLATORS: Single placeholder %s required to add the ip address
-#: shared/resources/translations/assets/MultiplayerConnectionFailed.tres
-msgid "MUTLIPLAYER_CONNECTION_FAILED"
-msgstr "Connection to server with ip %s failed"
-
-#. TRANSLATORS: Requires a single %s placeholder to add the name of the new deck
-#: shared/resources/translations/assets/MultiplayerDeckHasBeenChanged.tres
-msgid "DECK_HAS_BEEN_CHANGED"
-msgstr "Deck was changed to %s"
-
-#. TRANSLATORS: Requires a single %s placeholder conng the player nametaini
-#: shared/resources/translations/assets/MultiplayerPlayerJoined.tres
-msgid "MULTIPLAYER_PLAYER_JOINED"
-msgstr "Player %s joined the lobby"
-
-#. TRANSLATORS: Requires a single %s placeholder containing the player name
-#: shared/resources/translations/assets/MultiplayerPlayerKicked.tres
-msgid "MULTIPLAYER_PLAYER_KICKED"
-msgstr "Player %s was kicked from the lobby"
-
-#. TRANSLATORS: Requires a single %s placeholder for player name
-#: shared/resources/translations/assets/MultiplayerPlayerLeft.tres
-msgid "MULTIPLAYER_PLAYER_LEFT"
-msgstr "Player %s left the lobby"
-
-#. TRANSLATORS: Message client gets if he was kicked from the server
-#: shared/resources/translations/assets/MultiplayerServerKicked.tres
-msgid "MULTIPLAYER_KICKED_BY_SERVER"
-msgstr "You where kicked from the server"
-
-#. TRANSLATORS: Player got kicked from the server, because the game version is different, requires two %s placeholders for game versions of client and server
-#: shared/resources/translations/assets/MultiplayerWrongVersion.tres
-msgid "MULTIPLAYER_WRONG_VERSION"
-msgstr "You are using version %s while the server is running %s"
-
 #. TRANSLATORS: Add "%CURRENT_DATE%" variable, to write down the current year
 #: shared/resources/translations/assets/NewYearEventBody.tres
 msgid "NEW_YEAR_EVENT_BODY"
@@ -1455,9 +1345,79 @@ msgstr[1] ""
 msgid "ROUND_END_BANNER_MESSAGE_NO_COMPLETE"
 msgstr "To end the round, click the main action button"
 
+#: shared/resources/translations/assets/Version.tres
+msgid "VERSION"
+msgstr "Version"
+
 #: shared/resources/translations/assets/Yes.tres
 msgid "YES"
 msgstr "Yes"
+
+#~ msgid "LOCAL_MULTIPLAYER_TOOLTIP"
+#~ msgstr "Open LAN Multiplayer lobby (Experimental)"
+
+#~ msgid "LOCAL_MULTIPLAYER"
+#~ msgstr "LAN Multiplayer"
+
+#~ msgid "SEND"
+#~ msgstr "Send"
+
+#~ msgid "CONNECTING_TO_SERVER"
+#~ msgstr "Connecting to server"
+
+#~ msgid "ABORT_CONNECTION_TOOLTIP"
+#~ msgstr "This will abort the connection to the server"
+
+#~ msgid "ABORT_CONNECTION"
+#~ msgstr "Abort Connection"
+
+#~ msgid "ABORT_TOOLTIP"
+#~ msgstr "Abort the current action or close the current Window"
+
+#~ msgid "AVAILABLE_SERVERS"
+#~ msgstr "Available Servers"
+
+#~ msgid "SERVER_ADDRESS"
+#~ msgstr "Server Address"
+
+#~ msgid "CONNECT_TOOLTIP"
+#~ msgstr "Connect to a given IP address"
+
+#~ msgid "CONNECT"
+#~ msgstr "Connect"
+
+#~ msgid "HOST_TOOLTIP"
+#~ msgstr "Create a new server other players can join"
+
+#~ msgid "HOST"
+#~ msgstr "Host"
+
+#~ msgid "CLOSE_TOOLTIP"
+#~ msgstr "Close this menu"
+
+#~ msgid "SERVER_NAME"
+#~ msgstr "Server Name"
+
+#~ msgid "MUTLIPLAYER_CONNECTION_FAILED"
+#~ msgstr "Connection to server with ip %s failed"
+
+#~ msgid "DECK_HAS_BEEN_CHANGED"
+#~ msgstr "Deck was changed to %s"
+
+#~ msgid "MULTIPLAYER_PLAYER_JOINED"
+#~ msgstr "Player %s joined the lobby"
+
+#~ msgid "MULTIPLAYER_PLAYER_KICKED"
+#~ msgstr "Player %s was kicked from the lobby"
+
+#~ msgid "MULTIPLAYER_PLAYER_LEFT"
+#~ msgstr "Player %s left the lobby"
+
+#~ msgid "MULTIPLAYER_KICKED_BY_SERVER"
+#~ msgstr "You where kicked from the server"
+
+#~ msgid "MULTIPLAYER_WRONG_VERSION"
+#~ msgstr "You are using version %s while the server is running %s"
 
 #~ msgid "CHANGELOG_TOOLTIP"
 #~ msgstr "Open up the changelog viewer"
