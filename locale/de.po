@@ -867,6 +867,14 @@ msgstr "UI Skalierung zurücksetzten"
 msgid "CLOSE_CHANGELOG_TOOLTIP"
 msgstr "Schließen des Changelog Betrachters"
 
+#: entities/ui/button_scroll_bar/scene/ButtonScrollBar.tscn
+msgid "SLIDEBAR_DECREASE_VALUE"
+msgstr "Wert verringern"
+
+#: entities/ui/button_scroll_bar/scene/ButtonScrollBar.tscn
+msgid "SLIDEBAR_INCREASE_VALUE"
+msgstr "Wert erhöhen"
+
 msgid "Samory"
 msgstr ""
 
@@ -1359,9 +1367,17 @@ msgstr "Ich wünsche dir frohe Ostern %YEAR%"
 msgid "EASTERN_EVENT_HEADLINE"
 msgstr "Frohe Ostern"
 
+#: shared/resources/translations/assets/EnglishLanguage.tres
+msgid "LANGUAGE_ENGLISH"
+msgstr "Englisch"
+
 #: shared/resources/translations/assets/ErrorNoNameWasEntered.tres
 msgid "NO_NAME_WAS_ENTERED"
 msgstr "Der Spielername wird benötigt"
+
+#: shared/resources/translations/assets/GermanLanguage.tres
+msgid "LANGUAGE_GERMAN"
+msgstr "Deutsch"
 
 #. TRANSLATORS: Can contain a "%CURRENT_YEAR%" variable, getting replaced by the current year
 #: shared/resources/translations/assets/HalloweenEventBody.tres
@@ -1520,12 +1536,6 @@ msgstr "Ja"
 
 #~ msgid "BODY"
 #~ msgstr "Körper"
-
-#~ msgid "UI_SCALE_DECREASE"
-#~ msgstr "UI Skalierung verkleinern"
-
-#~ msgid "UI_SCALE_INCREASE"
-#~ msgstr "UI Skalierung vergrößern"
 
 #~ msgid "SETTINGS"
 #~ msgstr "Einstellungen"

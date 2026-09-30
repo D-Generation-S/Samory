@@ -18,7 +18,7 @@ script = ExtResource("1_ostgm")
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-tooltip_text = "UI_SCALE_DECREASE"
+tooltip_text = "SLIDEBAR_DECREASE_VALUE"
 icon = ExtResource("1_ahyx3")
 script = ExtResource("2_ostgm")
 
@@ -41,7 +41,7 @@ script = ExtResource("3_bbsmu")
 [node name="Increase" type="Button" parent="." unique_id=820432779]
 layout_mode = 2
 size_flags_horizontal = 8
-tooltip_text = "UI_SCALE_INCREASE"
+tooltip_text = "SLIDEBAR_INCREASE_VALUE"
 icon = ExtResource("4_e2lyj")
 script = ExtResource("2_ostgm")
 

@@ -50,7 +50,7 @@ tooltip_text = "INITIAL_GAME_SETUP_DESCRIPTION"
 mouse_filter = 1
 text = "INITIAL_GAME_SETUP"
 
-[node name="LanguageSelection" type="OptionButton" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1842188978]
+[node name="LanguageSelection" type="OptionButton" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=83047164]
 layout_mode = 2
 tooltip_text = "SELECT_LANGUAGE_SETTING_TOOLTIP"
 selected = 0
@@ -61,6 +61,7 @@ popup/item_1/text = "GERMAN"
 popup/item_1/id = 1
 script = ExtResource("3_qevmq")
 should_grab_focus = true
+metadata/_custom_type_script = "uid://b3rk5o6ceqblf"
 
 [node name="LoadCustomDecks" type="CheckButton" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=911210284]
 layout_mode = 2

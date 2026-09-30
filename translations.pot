@@ -37,6 +37,7 @@
 # res://entities/ui/audio_settings/scene/AudioScene.tscn
 # res://entities/ui/graphic_settings/scenes/GraphicSettings.tscn
 # res://entities/ui/changelog_viewer/scenes/ChangelogViewer.tscn
+# res://entities/ui/button_scroll_bar/scene/ButtonScrollBar.tscn
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -755,6 +756,14 @@ msgstr ""
 msgid "CLOSE_CHANGELOG_TOOLTIP"
 msgstr ""
 
+#: entities/ui/button_scroll_bar/scene/ButtonScrollBar.tscn
+msgid "SLIDEBAR_DECREASE_VALUE"
+msgstr ""
+
+#: entities/ui/button_scroll_bar/scene/ButtonScrollBar.tscn
+msgid "SLIDEBAR_INCREASE_VALUE"
+msgstr ""
+
 msgid "Samory"
 msgstr ""
 
@@ -1132,8 +1141,16 @@ msgstr ""
 msgid "EASTERN_EVENT_HEADLINE"
 msgstr ""
 
+#: shared/resources/translations/assets/EnglishLanguage.tres
+msgid "LANGUAGE_ENGLISH"
+msgstr ""
+
 #: shared/resources/translations/assets/ErrorNoNameWasEntered.tres
 msgid "NO_NAME_WAS_ENTERED"
+msgstr ""
+
+#: shared/resources/translations/assets/GermanLanguage.tres
+msgid "LANGUAGE_GERMAN"
 msgstr ""
 
 #. TRANSLATORS: Can contain a "%CURRENT_YEAR%" variable, getting replaced by the current year
