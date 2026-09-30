@@ -10,6 +10,10 @@ var _last_think_speed: float = 1
 
 func _ready() -> void:
 	_initial_text = text
+	LanguageManager.language_changed.connect(_update_language_changed)
+
+func _update_language_changed() -> void:
+	_update_text_table(_last_think_speed)
 
 func set_new_value(new_value: float) -> void:
 	_last_think_speed = new_value
@@ -24,9 +28,6 @@ func _convert_value(new_value: float) -> float:
 
 func _update_text_table(new_value: float) -> void:
 	text = tr(_initial_text) % (new_value * 100.0)
-
-func language_changed(_language_code: String) -> void:
-	_update_text_table(_last_think_speed)
 
 func settings_updated(settings: SettingsResource) -> void:
 	var base_value: float = settings.ai_think_time * max_allowed_value

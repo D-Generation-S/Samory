@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GameLanguage" format=3 uid="uid://dodq562igmyie"]
+
+[ext_resource type="Resource" uid="uid://ccwucckg38050" path="res://shared/resources/translations/assets/GermanLanguage.tres" id="1_bl17c"]
+[ext_resource type="Script" uid="uid://cvwa0g8rbugqx" path="res://shared/resources/languages/GameLanguage.gd" id="1_ltg32"]
+
+[resource]
+script = ExtResource("1_ltg32")
+order_id = 1
+display_name = ExtResource("1_bl17c")
+iso_code = "de_DE"
+metadata/_custom_type_script = "uid://cvwa0g8rbugqx"

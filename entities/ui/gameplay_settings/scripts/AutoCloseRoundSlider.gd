@@ -7,6 +7,12 @@ signal update_slider_value(new_value: float)
 
 var _last_stored_value: float = 0
 
+func _ready() -> void:
+	LanguageManager.language_changed.connect(_language_changed)
+
+func _language_changed() -> void:
+	set_translated_text(_last_stored_value)
+
 func settings_loaded(settings: SettingsResource) -> void:
 	set_translated_text(settings.close_round_after_seconds)
 	update_slider_value.emit(settings.close_round_after_seconds)
@@ -21,6 +27,3 @@ func toggle_visibility(new_state: bool) -> void:
 func slider_changed(value: float) -> void:
 	_last_stored_value = value
 	set_translated_text(value)
-
-func language_changed(_language_code: String) -> void:
-	set_translated_text(_last_stored_value)

@@ -37,6 +37,7 @@ var _deck_reload_connected: bool = false
 var _was_started_before: bool = false
 
 func _ready() -> void:
+	LanguageManager.language_changed.connect(translate_built_in_decks)
 	_calculate_resolution_values()
 	get_viewport().content_scale_size = _viewport_size
 	
@@ -106,8 +107,8 @@ func initial_settings_setup() -> void:
 	AudioServer.set_bus_volume_db(master_bus_id, linear_to_db(settings.master_volume))
 	AudioServer.set_bus_volume_db(effect_bus_id, linear_to_db(settings.effect_volume))
 	AudioServer.set_bus_volume_db(music_bus_id, linear_to_db(settings.music_volume))
-		
-	TranslationServer.set_locale(settings.language_code)
+	
+	LanguageManager.change_language(settings.language_code)
 
 func translate_built_in_decks() -> void:
 	translated_build_in_decks = []
