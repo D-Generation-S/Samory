@@ -33,7 +33,6 @@
 [ext_resource type="PackedScene" uid="uid://0m4c62oqj4ih" path="res://entities/game/card_collider/scene/CardCollider.tscn" id="28_7ou1n"]
 [ext_resource type="AudioStream" uid="uid://x7uoopn87syx" path="res://assets/audio/effect/card-shove-1.ogg" id="28_ycubg"]
 [ext_resource type="AudioStream" uid="uid://bc2asc1ycehsj" path="res://assets/audio/effect/card-shove-2.ogg" id="29_i3opb"]
-[ext_resource type="Script" uid="uid://drr3p4wba2ys3" path="res://entities/game/memory_game/scripts/systems/NetworkHandler.gd" id="29_kihnp"]
 [ext_resource type="AudioStream" uid="uid://klup7a1js5u1" path="res://assets/audio/effect/card-shove-3.ogg" id="30_6mfqr"]
 [ext_resource type="AudioStream" uid="uid://d2smrpmt773ak" path="res://assets/audio/effect/card-shove-4.ogg" id="31_hms3o"]
 [ext_resource type="PackedScene" uid="uid://laeqw1xjwd1b" path="res://entities/game/debug_tool/scenes/DebugPanel.tscn" id="33_j82c0"]
@@ -121,11 +120,6 @@ metadata/_custom_type_script = "uid://bxrsfyvew4ysu"
 script = ExtResource("21_dv4ao")
 popup_target = NodePath("../../UI/PopupHook")
 metadata/_custom_type_script = "uid://6fa28680utd5"
-
-[node name="NetworkHandlerSystem" type="Node" parent="Systems" unique_id=407048212]
-script = ExtResource("29_kihnp")
-finished_game_template = ExtResource("4_6f670")
-metadata/_custom_type_script = "uid://drr3p4wba2ys3"
 
 [node name="UiInformationSystem" type="Node" parent="Systems" unique_id=1812178848]
 unique_name_in_owner = true
@@ -270,7 +264,6 @@ debug_functions = Array[ExtResource("34_4hsit")]([SubResource("Resource_8rpam"),
 [connection signal="state_changed" from="Systems/GameStateSystem" to="Systems/PlayerSystem" method="game_state_changed"]
 [connection signal="state_changed" from="Systems/GameStateSystem" to="Systems/AiAgentSystem" method="game_state_changed"]
 [connection signal="state_changed" from="Systems/GameStateSystem" to="Systems/PlayerInputSystem" method="game_state_changed"]
-[connection signal="state_changed" from="Systems/GameStateSystem" to="Systems/NetworkHandlerSystem" method="game_state_changed"]
 [connection signal="state_changed" from="Systems/GameStateSystem" to="World/CardBoard" method="game_state_changed"]
 [connection signal="state_changed" from="Systems/GameStateSystem" to="World/CardBoard/CardInteractionField" method="game_state_changed"]
 [connection signal="state_changed" from="Systems/GameStateSystem" to="World/Camera2D" method="game_state_changed"]
@@ -281,7 +274,6 @@ debug_functions = Array[ExtResource("34_4hsit")]([SubResource("Resource_8rpam"),
 [connection signal="player_resource_changed" from="Systems/PlayerSystem" to="Systems/TutorialStateSystem" method="player_changed"]
 [connection signal="player_resource_changed" from="Systems/PlayerSystem" to="Systems/AiAgentSystem" method="player_changed"]
 [connection signal="player_resource_changed" from="Systems/PlayerSystem" to="Systems/PlayerInputSystem" method="player_changed"]
-[connection signal="player_resource_changed" from="Systems/PlayerSystem" to="Systems/NetworkHandlerSystem" method="player_changed"]
 [connection signal="player_resource_changed" from="Systems/PlayerSystem" to="World/CardBoard" method="player_changed"]
 [connection signal="player_resource_changed" from="Systems/PlayerSystem" to="World/CardBoard/CardInteractionField" method="player_changed"]
 [connection signal="player_resource_changed" from="Systems/PlayerSystem" to="World/Camera2D" method="player_changed"]
@@ -293,13 +285,6 @@ debug_functions = Array[ExtResource("34_4hsit")]([SubResource("Resource_8rpam"),
 [connection signal="game_menu_requested" from="Systems/PlayerInputSystem" to="." method="show_game_menu"]
 [connection signal="continue_game" from="Systems/PopupSystem" to="." method="unpause_game"]
 [connection signal="pause_game" from="Systems/PopupSystem" to="." method="pause_game"]
-[connection signal="card_was_clicked" from="Systems/NetworkHandlerSystem" to="World/CardBoard" method="trigger_card_at_position"]
-[connection signal="game_has_been_finished" from="Systems/NetworkHandlerSystem" to="UI/PlayersOverlay" method="game_ended"]
-[connection signal="game_state_has_changed" from="Systems/NetworkHandlerSystem" to="Systems/PlayerInputSystem" method="game_state_changed"]
-[connection signal="game_state_has_changed" from="Systems/NetworkHandlerSystem" to="World/CardBoard" method="game_state_changed"]
-[connection signal="player_has_changed" from="Systems/NetworkHandlerSystem" to="Systems/PlayerSystem" method="set_player_by_id"]
-[connection signal="player_has_scored" from="Systems/NetworkHandlerSystem" to="Systems/PlayerSystem" method="set_player_score"]
-[connection signal="remove_card" from="Systems/NetworkHandlerSystem" to="World/CardBoard" method="remove_card_from_board"]
 [connection signal="animations_finished" from="World/CardBoard" to="Systems/GameStateSystem" method="animation_cleared"]
 [connection signal="animations_finished" from="World/CardBoard" to="Systems/PlayerSystem" method="card_animations_completed"]
 [connection signal="board_ready" from="World/CardBoard" to="Systems/GameStateSystem" method="board_ready"]

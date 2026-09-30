@@ -107,7 +107,6 @@ msgstr ""
 
 #: entities/game/players_overlay/scenes/PlayersOverlay.tscn
 #: entities/ui/game_lobby/scenes/GameLobby.tscn
-#: entities/ui/multiplayer_lobby/scenes/MultiplayerLobby.tscn
 msgid "PLAYER_LIST"
 msgstr ""
 
@@ -145,7 +144,6 @@ msgstr ""
 
 #: entities/ui/credits/scenes/Credits.tscn
 #: entities/ui/deck_viewer/scenes/DeckViewer.tscn
-#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
 #: entities/ui/settings_menu/scenes/SettingsMenu.tscn
 #: entities/ui/changelog_viewer/scenes/ChangelogViewer.tscn
 msgid "CLOSE"
@@ -204,7 +202,6 @@ msgstr ""
 
 #: entities/ui/deck_viewer/scenes/DeckViewer.tscn
 #: entities/ui/game_lobby/scenes/GameLobby.tscn
-#: entities/ui/multiplayer_lobby/scenes/MultiplayerLobby.tscn
 msgid "FILTER_DECKS"
 msgstr ""
 
@@ -267,12 +264,10 @@ msgid "ADD_AI_PLAYER"
 msgstr ""
 
 #: entities/ui/game_lobby/scenes/GameLobby.tscn
-#: entities/ui/multiplayer_lobby/scenes/MultiplayerLobby.tscn
 msgid "START_GAME_TOOLTIP"
 msgstr ""
 
 #: entities/ui/game_lobby/scenes/GameLobby.tscn
-#: entities/ui/multiplayer_lobby/scenes/MultiplayerLobby.tscn
 msgid "START_GAME"
 msgstr ""
 
@@ -287,7 +282,6 @@ msgid "LOADING"
 msgstr ""
 
 #: entities/ui/loading_screen/scenes/LoadingScreen.tscn
-#: entities/ui/multiplayer_chat/scenes/MultiplayerChat.tscn
 msgid "MESSAGE"
 msgstr ""
 
@@ -297,14 +291,6 @@ msgstr ""
 
 #: entities/ui/main_menu/scenes/MainMenu.tscn
 msgid "CUSTOM_GAME"
-msgstr ""
-
-#: entities/ui/main_menu/scenes/MainMenu.tscn
-msgid "LOCAL_MULTIPLAYER_TOOLTIP"
-msgstr ""
-
-#: entities/ui/main_menu/scenes/MainMenu.tscn
-msgid "LOCAL_MULTIPLAYER"
 msgstr ""
 
 #: entities/ui/main_menu/scenes/MainMenu.tscn
@@ -360,75 +346,8 @@ msgstr ""
 msgid "GAME_SETTINGS"
 msgstr ""
 
-#: entities/ui/multiplayer_chat/scenes/MultiplayerChat.tscn
-msgid "SEND"
-msgstr ""
-
-#: entities/ui/multiplayer_connection_state_message/scenes/MultiplayerConnectionStateMessage.tscn
-#: shared/resources/translations/assets/MultiplayerConnectingToServer.tres
-msgid "CONNECTING_TO_SERVER"
-msgstr ""
-
-#: entities/ui/multiplayer_connection_state_message/scenes/MultiplayerConnectionStateMessage.tscn
-msgid "ABORT_CONNECTION_TOOLTIP"
-msgstr ""
-
-#: entities/ui/multiplayer_connection_state_message/scenes/MultiplayerConnectionStateMessage.tscn
-msgid "ABORT_CONNECTION"
-msgstr ""
-
-#: entities/ui/multiplayer_lobby/scenes/MultiplayerLobby.tscn
-msgid "ABORT_TOOLTIP"
-msgstr ""
-
-#: entities/ui/multiplayer_lobby/scenes/MultiplayerLobby.tscn
-#: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
-#: entities/ui/custom_deck_edit_card/scenes/CustomDeckEditCard.tscn
-#: entities/ui/edit_custom_deck/scenes/EditCustomDeck.tscn
-msgid "ABORT"
-msgstr ""
-
-#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
 #: entities/ui/new_player/scenes/NewPlayer.tscn
 msgid "PLAYER_NAME"
-msgstr ""
-
-#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
-msgid "AVAILABLE_SERVERS"
-msgstr ""
-
-#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
-msgid "SERVER_ADDRESS"
-msgstr ""
-
-#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
-msgid "CONNECT_TOOLTIP"
-msgstr ""
-
-#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
-#: entities/ui/multiplayer_server_entry/scenes/MultiplayerServerEntry.tscn
-msgid "CONNECT"
-msgstr ""
-
-#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
-msgid "HOST_TOOLTIP"
-msgstr ""
-
-#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
-msgid "HOST"
-msgstr ""
-
-#: entities/ui/multiplayer_server_browser/scenes/MultiplayerServerBrowser.tscn
-msgid "CLOSE_TOOLTIP"
-msgstr ""
-
-#: entities/ui/multiplayer_server_entry/scenes/MultiplayerServerEntry.tscn
-msgid "SERVER_NAME"
-msgstr ""
-
-#: entities/ui/multiplayer_server_entry/scenes/MultiplayerServerEntry.tscn
-#: shared/resources/translations/assets/Version.tres
-msgid "VERSION"
 msgstr ""
 
 #: entities/ui/new_player/scenes/NewPlayer.tscn
@@ -582,6 +501,12 @@ msgstr ""
 #: entities/ui/custom_deck_edit_card/scenes/CustomDeckEditCard.tscn
 #: entities/ui/edit_custom_deck/scenes/EditCustomDeck.tscn
 msgid "ABORT_DESCRIPTION"
+msgstr ""
+
+#: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
+#: entities/ui/custom_deck_edit_card/scenes/CustomDeckEditCard.tscn
+#: entities/ui/edit_custom_deck/scenes/EditCustomDeck.tscn
+msgid "ABORT"
 msgstr ""
 
 #: entities/ui/custom_deck_create/scenes/CreateCustomDeck.tscn
@@ -1235,41 +1160,6 @@ msgstr ""
 msgid "MIN_SIZE_VALIDATION"
 msgstr ""
 
-#. TRANSLATORS: Single placeholder %s required to add the ip address
-#: shared/resources/translations/assets/MultiplayerConnectionFailed.tres
-msgid "MUTLIPLAYER_CONNECTION_FAILED"
-msgstr ""
-
-#. TRANSLATORS: Requires a single %s placeholder to add the name of the new deck
-#: shared/resources/translations/assets/MultiplayerDeckHasBeenChanged.tres
-msgid "DECK_HAS_BEEN_CHANGED"
-msgstr ""
-
-#. TRANSLATORS: Requires a single %s placeholder conng the player nametaini
-#: shared/resources/translations/assets/MultiplayerPlayerJoined.tres
-msgid "MULTIPLAYER_PLAYER_JOINED"
-msgstr ""
-
-#. TRANSLATORS: Requires a single %s placeholder containing the player name
-#: shared/resources/translations/assets/MultiplayerPlayerKicked.tres
-msgid "MULTIPLAYER_PLAYER_KICKED"
-msgstr ""
-
-#. TRANSLATORS: Requires a single %s placeholder for player name
-#: shared/resources/translations/assets/MultiplayerPlayerLeft.tres
-msgid "MULTIPLAYER_PLAYER_LEFT"
-msgstr ""
-
-#. TRANSLATORS: Message client gets if he was kicked from the server
-#: shared/resources/translations/assets/MultiplayerServerKicked.tres
-msgid "MULTIPLAYER_KICKED_BY_SERVER"
-msgstr ""
-
-#. TRANSLATORS: Player got kicked from the server, because the game version is different, requires two %s placeholders for game versions of client and server
-#: shared/resources/translations/assets/MultiplayerWrongVersion.tres
-msgid "MULTIPLAYER_WRONG_VERSION"
-msgstr ""
-
 #. TRANSLATORS: Add "%CURRENT_DATE%" variable, to write down the current year
 #: shared/resources/translations/assets/NewYearEventBody.tres
 msgid "NEW_YEAR_EVENT_BODY"
@@ -1310,6 +1200,10 @@ msgstr[1] ""
 
 #: shared/resources/translations/assets/TurnEndBannerMessageNoAutoComplete.tres
 msgid "ROUND_END_BANNER_MESSAGE_NO_COMPLETE"
+msgstr ""
+
+#: shared/resources/translations/assets/Version.tres
+msgid "VERSION"
 msgstr ""
 
 #: shared/resources/translations/assets/Yes.tres
