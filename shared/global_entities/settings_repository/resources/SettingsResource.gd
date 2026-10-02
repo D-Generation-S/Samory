@@ -24,9 +24,5 @@ class_name SettingsResource extends Save
 @export_range(0,1) var effect_volume: float = 1
 @export_range(0,1) var music_volume: float = 0.15
 
-@export_group("Multiplayer")
-@export var default_multiplayer_name: String = ""
-@export var last_used_ip: String = "127.0.0.1"
-
 @export_group("AI")
 @export var ai_think_time: float = 1

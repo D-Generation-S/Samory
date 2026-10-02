@@ -39,8 +39,6 @@ func game_state_changed(game_state: GameEnum.State) -> void:
 
 func player_changed(current_player:PlayerResource) -> void:
 	current_ai_player = current_player.is_ai()
-	if multiplayer.get_peers().size() > 0 and current_player.id != multiplayer.get_unique_id():
-		current_ai_player = true
 
 func prevent_input(prevent: bool) -> void:
 	_prevent_input = prevent
