@@ -164,7 +164,6 @@ func _check_if_board_empty() -> void:
 	if _placed_cards.size() == 0:
 		board_empty.emit()
 
-
 func player_changed(current_player: PlayerResource) -> void:
 	_is_ai_player = current_player.is_ai()
 
