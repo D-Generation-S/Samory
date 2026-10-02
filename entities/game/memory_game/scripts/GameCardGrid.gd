@@ -108,8 +108,6 @@ func get_all_cards_currently_turned() -> Array[Vector2i]:
 
 func player_changed(current_player:PlayerResource) -> void:
 	currently_ai_player = current_player.is_ai()
-	if multiplayer.get_peers().size() > 0 and current_player.id != multiplayer.get_unique_id():
-		currently_ai_player = true
 
 func place_card(card: MemoryCardResource, grid_position: Vector2i, world_position: Vector2) -> void:
 	var card_template_node: CardTemplate = card_template.instantiate() as CardTemplate

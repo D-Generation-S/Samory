@@ -35,7 +35,6 @@ var ending_round: bool = false
 var auto_close_popup: PackedScene = preload("res://entities/game/auto_close_popup/scenes/AutoClosePopup.tscn")
 var last_message_banner_id: int = -1
 
-var _is_local_only: bool = true
 var _game_scene_group_name: String = "game_scene"
 var _systems: Systems:
 	get():
@@ -56,10 +55,6 @@ func set_card_deck(deck: MemoryDeckResource) -> void:
 func start_loading_data() -> void:
 	announce_deck.emit(_card_deck)
 	load_game.emit(_card_deck, card_separation, field_offset)
-
-func _process(_delta: float) -> void:
-	if !execute_logic():
-		return
 
 func show_initial_setup() -> bool:
 	var settings: SettingsResource = SettingsRepository.load_settings() as SettingsResource
@@ -98,15 +93,6 @@ func show_game_menu() -> void:
 	game_menu.popup_closed.connect(func() -> void: popup_menu_closed.emit())
 	popup_menu_shown.emit()
 
-func set_is_multiplayer() -> void:
-	_is_local_only = false
-
-func execute_logic() -> bool:
-	if _is_local_only:
-		return true
-	
-	return multiplayer.is_server()
-
 func game_state_has_changed(new_state: GameEnum.State) -> void:
 	if new_state == GameEnum.State.TURN_START:
 		_handle_initial_start()
@@ -115,10 +101,7 @@ func game_state_has_changed(new_state: GameEnum.State) -> void:
 		show_game_end_screen()
 
 ## This will be triggered if a new turn does start
-func turn_start_trigger() -> void:
-	if not execute_logic():
-		return
-	
+func turn_start_trigger() -> void:	
 	ending_round = false
 	print_debug("Start Round")
 	triggered_cards = 0

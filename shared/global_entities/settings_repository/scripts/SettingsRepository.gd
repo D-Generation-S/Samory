@@ -65,9 +65,6 @@ func load_legacy_setting() -> SettingsResource:
 	return_settings.master_volume = clampf(return_settings.master_volume, 0, 1)
 	return_settings.effect_volume = clampf(return_settings.effect_volume, 0, 1)
 	return_settings.music_volume = clampf(return_settings.music_volume, 0, 1)
-
-	return_settings.default_multiplayer_name = data.get_or_add("multiplayer_name", "")
-	return_settings.last_used_ip = data.get_or_add("last_used_ip", "127.0.0.1")
 	
 	loaded_settings = return_settings
 	
