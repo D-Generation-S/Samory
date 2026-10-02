@@ -20,7 +20,10 @@ func _ready() -> void:
 	state_changed.emit(_current_state)
 
 ## This will set the new state and broadcast the new state via signal
-func _change_state(new_state: GameEnum.State) -> void:	
+func _change_state(new_state: GameEnum.State) -> void:
+	if _current_state == GameEnum.State.ANIMATION_CLEARED:
+		print_debug("No more state changes allowed!")
+		return
 	_current_state = new_state
 	print_debug("State changed to %s" % str(_current_state))
 	state_changed.emit(_current_state)
@@ -63,19 +66,37 @@ func board_ready() -> void:
 func board_empty() -> void:
 	print_debug("board empty")
 	_change_state(GameEnum.State.PREPARE_TURN_END)
-	_change_state(GameEnum.State.GAME_END)
+	_change_state(GameEnum.State.WAIT_FOR_ANIMATION_FINISH)
 
 	var emergency_timer: Timer = Timer.new()
 	emergency_timer.one_shot = true
-	emergency_timer.timeout.connect(animation_cleared)
+	emergency_timer.timeout.connect(force_close_game)
 	add_child(emergency_timer)
-	emergency_timer.start(2)
+	emergency_timer.start(5)
 
-func animation_cleared() -> void:
+	await _animations_done
+	close_game()
+	emergency_timer.stop()
+	emergency_timer.queue_free()
+
+func force_close_game() -> void:
+	if _current_state == GameEnum.State.ANIMATION_CLEARED:
+		print_debug("force close triggered but prevented!")
+		return
+	push_warning("Force closing game now!")
+	close_game()
+
+func close_game() -> void:
+	_change_state(GameEnum.State.GAME_END)
+	## Make sure every other game end handler did run
+	await get_tree().physics_frame
+	animation_cleared(true)
+
+func animation_cleared(force_close: bool = false) -> void:
 	if _current_state == GameEnum.State.WAIT_FOR_ANIMATION_FINISH:
 		_animations_done.emit()
 	
-	if _current_state != GameEnum.State.GAME_END:
+	if _current_state != GameEnum.State.GAME_END and not force_close:
 		return
 	_change_state(GameEnum.State.ANIMATION_CLEARED)
 	game_has_ended.emit()
