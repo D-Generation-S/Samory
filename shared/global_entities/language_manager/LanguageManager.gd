@@ -14,7 +14,7 @@ func _load_game_languages() -> void:
 	if _available_languages.size() > 0:
 		return
 	assert(DirAccess.dir_exists_absolute(LANGUAGE_CONFIG_ROOT), "Missing dir \"%s\"" % LANGUAGE_CONFIG_ROOT)
-	for file_name: String in DirAccess.get_files_at(LANGUAGE_CONFIG_ROOT):
+	for file_name: String in ResourceLoader.list_directory(LANGUAGE_CONFIG_ROOT):
 		if not file_name.ends_with(".tres"):
 			continue
 		var full_path: String = "%s%s" % [LANGUAGE_CONFIG_ROOT, file_name]

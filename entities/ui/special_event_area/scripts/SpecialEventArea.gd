@@ -32,12 +32,12 @@ func _autoload_events() -> void:
 			continue
 		var full_path: String = autoload_path + file
 		var data: SpecialEvent = load(full_path)
-		if data == null:
+		if data == null or not data is SpecialEvent:
 			print_debug("Could not load %s because resource is not of type SpecialEvent" % full_path)
+			continue
 		all_events.append(data)
 
 	print_debug("Loaded %d events to database" % all_events.size())
-	print("Loaded %d events to database" % all_events.size())
 
 func get_valid_events() -> Array[SpecialEvent]:
 	var valid: Array[SpecialEvent] = []
