@@ -1114,6 +1114,14 @@ msgstr "Ein Kartendeck welches Gegenstände beinhaltet die mit PC Hardware zu tu
 msgid "BIRTHDAY_EVENT_HEADLINE"
 msgstr "Geburtstag"
 
+#: shared/resources/translations/assets/ChildDayEventBody.tres
+msgid "WORLD_CHILDREN_DAY_EVENT_BODY"
+msgstr "Alles Gute zum Weltkindertag! Heute feiern wir die Neugier, den Mut und die Träume aller Kinder auf der ganzen Welt. Zaubere heute jemandem ein Lächeln ins Gesicht."
+
+#: shared/resources/translations/assets/ChildDayText.tres
+msgid "WORLD_CHILDREN_DAY_TEXT"
+msgstr "Weltkindertag"
+
 #. TRANSLATORS: Can contain a "%CURRENT_YEAR%" variable, getting replaced by the current year
 #: shared/resources/translations/assets/ChristmasEventBody.tres
 msgid "CHRISTMAS_EVENT_BODY"

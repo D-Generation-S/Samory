@@ -1114,6 +1114,14 @@ msgstr "A deck containing items used in a office or with/within a pc"
 msgid "BIRTHDAY_EVENT_HEADLINE"
 msgstr "Birthday"
 
+#: shared/resources/translations/assets/ChildDayEventBody.tres
+msgid "WORLD_CHILDREN_DAY_EVENT_BODY"
+msgstr "Happy World Children's Day! Today we celebrate the curiosity, courage, and dreams of children everywhere. Make someone smile today."
+
+#: shared/resources/translations/assets/ChildDayText.tres
+msgid "WORLD_CHILDREN_DAY_TEXT"
+msgstr "World Children’s Day"
+
 #. TRANSLATORS: Can contain a "%CURRENT_YEAR%" variable, getting replaced by the current year
 #: shared/resources/translations/assets/ChristmasEventBody.tres
 msgid "CHRISTMAS_EVENT_BODY"
