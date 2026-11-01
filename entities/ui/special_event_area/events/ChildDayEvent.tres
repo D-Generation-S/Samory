@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="SpecialEvent" format=3 uid="uid://cn3hd7w0lbfdj"]
+
+[ext_resource type="Script" uid="uid://cbevbiicfyjvm" path="res://entities/ui/special_event_area/scripts/SpecialEvent.gd" id="1_hxbfh"]
+[ext_resource type="Resource" uid="uid://dnpbu5d0n74b2" path="res://shared/resources/translations/assets/ChildDayText.tres" id="1_kelag"]
+[ext_resource type="Resource" uid="uid://dpf2wonkm563d" path="res://shared/resources/translations/assets/ChildDayEventBody.tres" id="2_xom0r"]
+[ext_resource type="Script" uid="uid://h56nmivkqfys" path="res://entities/ui/special_event_area/scripts/validations/FixedDateValidation.gd" id="4_hdaf8"]
+
+[sub_resource type="Resource" id="Resource_i2rm2"]
+script = ExtResource("4_hdaf8")
+valid_month = 11
+valid_day = 20
+metadata/_custom_type_script = "uid://h56nmivkqfys"
+
+[resource]
+script = ExtResource("1_hxbfh")
+event_name = ExtResource("1_kelag")
+event_text = ExtResource("2_xom0r")
+validation = SubResource("Resource_i2rm2")
+metadata/_custom_type_script = "uid://cbevbiicfyjvm"
