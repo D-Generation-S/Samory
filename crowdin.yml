@@ -1,3 +1,8 @@
+"commit_message": "feat(crowdin): update game translation"
+"append_commit_message": false
+"pull_request_labels": [
+  "crowdin",
+]
 files:
   - source: /translations.pot
     translation: /locale/%two_letters_code%.po
