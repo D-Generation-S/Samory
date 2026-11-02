@@ -12,7 +12,7 @@ msgstr ""
 "X-Crowdin-File-ID: 61\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2026-11-01 21:45\n"
+"PO-Revision-Date: 2026-11-02 22:51\n"
 
 #: entities/game/auto_close_popup/scenes/AutoClosePopup.tscn
 msgid "AUTO_CLOSE_POPUP_BODY"
@@ -1113,6 +1113,14 @@ msgstr "Ein Kartendeck welches Gegenstände beinhaltet die mit PC Hardware zu tu
 #: shared/resources/translations/assets/BirthdayEventHeadline.tres
 msgid "BIRTHDAY_EVENT_HEADLINE"
 msgstr "Geburtstag"
+
+#: shared/resources/translations/assets/ChildDayEventBody.tres
+msgid "WORLD_CHILDREN_DAY_EVENT_BODY"
+msgstr "Alles Gute zum Weltkindertag! Heute feiern wir die Neugier, den Mut und die Träume aller Kinder auf der ganzen Welt. Zaubere heute jemandem ein Lächeln ins Gesicht."
+
+#: shared/resources/translations/assets/ChildDayText.tres
+msgid "WORLD_CHILDREN_DAY_TEXT"
+msgstr "Weltkindertag"
 
 #. TRANSLATORS: Can contain a "%CURRENT_YEAR%" variable, getting replaced by the current year
 #: shared/resources/translations/assets/ChristmasEventBody.tres
