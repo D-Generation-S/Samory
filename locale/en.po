@@ -12,7 +12,7 @@ msgstr ""
 "X-Crowdin-File-ID: 61\n"
 "Language-Team: English\n"
 "Language: en_US\n"
-"PO-Revision-Date: 2026-11-01 21:45\n"
+"PO-Revision-Date: 2026-11-03 23:04\n"
 
 #: entities/game/auto_close_popup/scenes/AutoClosePopup.tscn
 msgid "AUTO_CLOSE_POPUP_BODY"
