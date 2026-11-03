@@ -12,7 +12,7 @@ msgstr ""
 "X-Crowdin-File-ID: 61\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
-"PO-Revision-Date: 2026-11-02 22:51\n"
+"PO-Revision-Date: 2026-11-03 23:04\n"
 
 #: entities/game/auto_close_popup/scenes/AutoClosePopup.tscn
 msgid "AUTO_CLOSE_POPUP_BODY"
@@ -1184,6 +1184,14 @@ msgstr "Ein frohes neues Jahr %CURRENT_YEAR%"
 #: shared/resources/translations/assets/NewYearEventHeadline.tres
 msgid "NEW_YEAR_EVENT_HEADLINE"
 msgstr "Neujahr"
+
+#: shared/resources/translations/assets/PrideDayEventBody.tres
+msgid "PRIDE_DAY_EVENT_BODY"
+msgstr "Liebe kommt immer zu zweit – genau wie unsere Karten. Frohen Pride Day!"
+
+#: shared/resources/translations/assets/PrideDayText.tres
+msgid "PRIDE_DAY_TEXT"
+msgstr "Pride Day"
 
 #: shared/resources/translations/assets/RegexOnlyLettersAndNumbers.tres
 msgid "ONLY_LETTERS_AND_NUMBERS_ALLOWED"
