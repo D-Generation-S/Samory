@@ -33,8 +33,12 @@ func _autoload_events() -> void:
 		var full_path: String = autoload_path + file
 		var data: SpecialEvent = load(full_path)
 		if data == null or not data is SpecialEvent:
-			print_debug("Could not load %s because resource is not of type SpecialEvent" % full_path)
+			push_error("Could not load %s because resource is not of type SpecialEvent" % full_path)
 			continue
+		if not data.is_valid_event():
+			push_error("Event %s is invalid and must be checked, it wasn't loaded. Check the event folder for invalid events!" % full_path)
+			continue
+		print_debug("Event %s loaded" % data.event_name.key)
 		all_events.append(data)
 
 	print_debug("Loaded %d events to database" % all_events.size())
