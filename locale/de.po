@@ -1185,6 +1185,14 @@ msgstr "Ein frohes neues Jahr %CURRENT_YEAR%"
 msgid "NEW_YEAR_EVENT_HEADLINE"
 msgstr "Neujahr"
 
+#: shared/resources/translations/assets/PrideDayEventBody.tres
+msgid "PRIDE_DAY_EVENT_BODY"
+msgstr "Liebe kommt immer zu zweit – genau wie unsere Karten. Frohen Pride Day!"
+
+#: shared/resources/translations/assets/PrideDayText.tres
+msgid "PRIDE_DAY_TEXT"
+msgstr "Pride Day"
+
 #: shared/resources/translations/assets/RegexOnlyLettersAndNumbers.tres
 msgid "ONLY_LETTERS_AND_NUMBERS_ALLOWED"
 msgstr "Nur Buchstaben und Zahlen sind erlaubt"

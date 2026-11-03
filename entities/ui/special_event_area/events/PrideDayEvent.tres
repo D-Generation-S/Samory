@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="SpecialEvent" format=3 uid="uid://cb4vhjxgk4cwa"]
+
+[ext_resource type="Resource" uid="uid://bvr34564irgd0" path="res://shared/resources/translations/assets/PrideDayText.tres" id="1_ctt8l"]
+[ext_resource type="Resource" uid="uid://r2i6cwk2a40f" path="res://shared/resources/translations/assets/PrideDayEventBody.tres" id="2_3dcuu"]
+[ext_resource type="Script" uid="uid://cbevbiicfyjvm" path="res://entities/ui/special_event_area/scripts/SpecialEvent.gd" id="3_sqgp5"]
+[ext_resource type="Script" uid="uid://bif3i3fmlcgem" path="res://entities/ui/special_event_area/scripts/validations/NthDayInMonth.gd" id="4_ctt8l"]
+
+[sub_resource type="Resource" id="Resource_0rtik"]
+script = ExtResource("4_ctt8l")
+valid_month = 7
+target_weekday = 2
+metadata/_custom_type_script = "uid://bif3i3fmlcgem"
+
+[resource]
+script = ExtResource("3_sqgp5")
+event_name = ExtResource("1_ctt8l")
+event_text = ExtResource("2_3dcuu")
+validation = SubResource("Resource_0rtik")
+metadata/_custom_type_script = "uid://cbevbiicfyjvm"
