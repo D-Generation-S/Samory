@@ -9,6 +9,9 @@ var popupQueue: Array[PopupWindow] = []
 var current_popup_id: int = 0
 
 func add_and_show_popup(popup: PopupWindow) -> void:
+	if popup == null:
+		push_warning("Received null popup, this should not happen")
+		return
 	if !popup.popup_closed.is_connected(popup_closed):
 		popup.popup_closed.connect(popup_closed)
 	

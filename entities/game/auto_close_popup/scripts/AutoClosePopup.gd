@@ -20,8 +20,9 @@ func auto_complete_time_changed(new_time: float) -> void:
 
 func close_now() -> void:
 	var settings: SettingsResource = SettingsRepository.load_settings()
-	settings.auto_close_round =  auto_close_round
+	settings.auto_close_round = auto_close_round
 	settings.close_round_after_seconds = auto_complete_time
+	settings.auto_close_popup_shown = true
 	SettingsRepository.save_settings(settings)
 	visible = false
 	queue_free()
