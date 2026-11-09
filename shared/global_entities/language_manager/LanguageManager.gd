@@ -7,6 +7,8 @@ signal language_iso_changed(iso_code: String)
 
 var _available_languages: Array[GameLanguage] = []
 
+var active_language_index: int = 0
+
 func _ready() -> void:
 	_load_game_languages()
 
@@ -32,7 +34,7 @@ func get_available_languages() -> Array[GameLanguage]:
 	return _available_languages.duplicate()
 
 func _sort_languages(a: GameLanguage, b: GameLanguage) -> int:
-	return a.order_id - b.order_id
+	return a.order_id < b.order_id
 
 func change_language(new_iso: String) -> void:
 	for language: GameLanguage in _available_languages:
@@ -45,5 +47,11 @@ func _switch_language(language: GameLanguage) -> void:
 	if language == null or not language.is_valid():
 		return
 	TranslationServer.set_locale(language.iso_code)
+	var language_index: int = _available_languages.find(language)
+	active_language_index =  language_index if language_index > 0 else active_language_index
+	active_language_index = clampi(active_language_index, 0, _available_languages.size() - 1)
 	language_changed.emit()
 	language_iso_changed.emit(language.iso_code)
+
+func get_current_language() -> GameLanguage:
+	return _available_languages[active_language_index]

@@ -10,8 +10,8 @@ var _next_entry: int = 0
 
 func _ready() -> void:
 	super()
-	_create_entries()
 	LanguageManager.language_changed.connect(_update_item_names)
+	_create_entries()
 	if should_grab_focus:
 		grab_focus()
 
@@ -51,7 +51,6 @@ func _selection_changed(selection: int) -> void:
 
 		LanguageManager.change_language(language_code)
 		language_changed.emit(language_code)
-		
 func _update_item_names() -> void:
 	for index: int in item_count:
 		var id: int = get_item_id(index)
