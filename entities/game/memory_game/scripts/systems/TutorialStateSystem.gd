@@ -1,6 +1,7 @@
 class_name TutorialStateSystem extends Node
 
 @export var tutorial_window_scene: PackedScene = null
+@export var auto_close_round_tutorial: PackedScene = preload("res://entities/game/auto_close_popup/scenes/AutoClosePopup.tscn")
 @export var available_tutorials: Array[TutorialInformation] = []
 
 #signal trigger_tutorial(tutorial_state: Enums.Tutorial_State)
@@ -11,6 +12,8 @@ var _tutorial_scene: TutorialWindow = null
 var _settings: SettingsResource = null
 
 func _ready() -> void:
+	assert(tutorial_window_scene != null, "Missing tutorial window scene")
+	assert(auto_close_round_tutorial != null, "Missing auto close window scene")
 	_settings = SettingsRepository.load_settings() as SettingsResource
 	if tutorial_window_scene == null or _settings == null:
 		printerr("Missing template for tutorial window, or _settings not loaded")
@@ -25,9 +28,14 @@ func state_changed(new_state: GameEnum.State) -> void:
 		return
 	if new_state == GameEnum.State.TURN_START:
 		trigger_tutorial(Enums.Tutorial_State.PLAYER_TURN)
+		if not _settings.auto_close_popup_shown:
+			var instantiated: PopupWindow = auto_close_round_tutorial.instantiate() as PopupWindow
+			if instantiated == null:
+				push_error("Could not instantiate %s" % auto_close_round_tutorial.resource_path)
+			tutorial_requested.emit(instantiated)
+			instantiated.popup_closed.connect(func() -> void: _settings = SettingsRepository.load_settings() as SettingsResource)
 	if new_state == GameEnum.State.PREPARE_TURN_END:
 		trigger_tutorial(Enums.Tutorial_State.PLAYER_TURN_END)
-	pass
 
 func card_triggered() -> void:
 	if _is_ai_player():
