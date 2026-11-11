@@ -2,15 +2,27 @@ class_name AiDifficultyResource extends Resource
 
 @export var name: String
 ## Set to -1 if the memory should be unlimited
-@export_range(-1, 200) var card_memory: int = -1:
-	set(value):
-		card_memory = value
-		blackboard = Blackboard.new(card_memory)
+@export_range(-1, 200) var card_memory: int = -1
 
 @export var personalities: Array[AIPersonality]
 
 var blackboard: Blackboard
+
 var _personality: AIPersonality = null
+
+func initialize() -> void:
+	reset()
+	blackboard = Blackboard.new(_get_real_card_memory())
+
+func _get_real_card_memory() -> int:
+	if card_memory == -1:
+		print_debug("Using initial card memory as AI is set to unlimited memory")
+		return card_memory
+
+	var calculated_card_memory: int = card_memory + _get_personality().get_memory_change()
+	if calculated_card_memory < -1:
+		push_warning("The calculated card memory is below -1, check the personality %s" % _get_personality().resource_path)
+	return clampi(calculated_card_memory, -1 , 200)
 
 func get_personality_name() -> String:
 	return _get_personality().get_personality_name()
@@ -18,6 +30,7 @@ func get_personality_name() -> String:
 func _get_personality() -> AIPersonality:
 	if _personality == null:
 		_personality = personalities.pick_random()
+		print_debug("AI is using %s personality" % _personality.resource_path)
 
 	return _personality
 
@@ -36,3 +49,7 @@ func execute_action(grid: CardInteractionField) -> void:
 
 func get_translated_name() -> String:
 	return tr(name)
+
+func reset() -> void:
+	_personality = null
+	blackboard = null

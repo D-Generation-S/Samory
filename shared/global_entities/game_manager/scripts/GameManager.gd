@@ -178,7 +178,7 @@ func _game_was_started_before() -> bool:
 
 func play_game_with_position(players: Array[PlayerResource], deck: MemoryDeckResource, click_position: Vector2) -> void:
 	for player: PlayerResource in players:
-		player.score = 0
+		player.initialize()
 	load_game(deck, players, click_position)
 
 func play_game(players: Array[PlayerResource], deck: MemoryDeckResource) -> void:
