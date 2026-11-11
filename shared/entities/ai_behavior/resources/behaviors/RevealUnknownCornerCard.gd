@@ -14,6 +14,9 @@ func _blackboard_card_known(blackboard: Blackboard, position: Vector2i) -> bool:
 
 func _get_corner_positions(grid: CardInteractionField) -> Array[Vector2i]:
 	var field_size: Vector2i  = grid.get_field_size()
+	## Remove 1 as the field size contains the number of cards in a row, but we do need the index for that.
+	field_size.x = field_size.x - 1
+	field_size.y = field_size.y - 1
 	var allowed_positions: Array[Vector2i] = [
 		Vector2i.ZERO, # top left
 		Vector2i(field_size.x, 0), # top right
