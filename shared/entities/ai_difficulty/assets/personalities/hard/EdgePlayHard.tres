@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="AIPersonality" format=3 uid="uid://dbvddd3cfd1ur"]
+
+[ext_resource type="Script" uid="uid://c1te0iu0444y4" path="res://shared/entities/ai_behavior/resources/AiBehaviorNode.gd" id="1_v2s2b"]
+[ext_resource type="Script" uid="uid://7biix5hsjheq" path="res://shared/entities/ai_behavior/resources/behaviors/GetMatchingCard.gd" id="2_63gdk"]
+[ext_resource type="Script" uid="uid://d0vjenabf7c5i" path="res://shared/entities/ai_behavior/resources/behaviors/OpenLastRevealedCard.gd" id="3_sx7jh"]
+[ext_resource type="Script" uid="uid://cvnxi5g1235m6" path="res://shared/entities/ai_behavior/resources/behaviors/OpenRandomCard.gd" id="4_qmpco"]
+[ext_resource type="Script" uid="uid://bda4016im6e8w" path="res://shared/entities/ai_behavior/resources/behaviors/OpenRandomBlackboardCard.gd" id="5_nj7t2"]
+[ext_resource type="Script" uid="uid://cnc4s4mdqoccc" path="res://shared/entities/ai_behavior/resources/behaviors/OpenFirstMatchingCard.gd" id="6_sfxxk"]
+[ext_resource type="Script" uid="uid://b27mb346tnwgt" path="res://shared/entities/ai_behavior/resources/behaviors/OpenUnknownCard.gd" id="7_64fhj"]
+[ext_resource type="Script" uid="uid://ge0n5xow746e" path="res://entities/ui/quick_game_selection/resources/AIPersonality.gd" id="8_4kb8v"]
+[ext_resource type="Script" uid="uid://cpatt50glnh1y" path="res://shared/entities/ai_behavior/resources/behaviors/RevealUnknownCornerCard.gd" id="8_63gdk"]
+
+[sub_resource type="Resource" id="Resource_er0g6"]
+script = ExtResource("2_63gdk")
+probability = 120
+
+[sub_resource type="Resource" id="Resource_6c2om"]
+script = ExtResource("3_sx7jh")
+probability = 10
+
+[sub_resource type="Resource" id="Resource_q8pdn"]
+script = ExtResource("4_qmpco")
+
+[sub_resource type="Resource" id="Resource_5evvt"]
+script = ExtResource("5_nj7t2")
+backup_action = SubResource("Resource_q8pdn")
+probability = 10
+
+[sub_resource type="Resource" id="Resource_ud30y"]
+script = ExtResource("4_qmpco")
+probability = 1
+
+[sub_resource type="Resource" id="Resource_4gy06"]
+script = ExtResource("6_sfxxk")
+probability = 90
+
+[sub_resource type="Resource" id="Resource_6asb8"]
+script = ExtResource("7_64fhj")
+probability = 40
+
+[sub_resource type="Resource" id="Resource_tw1sb"]
+script = ExtResource("8_63gdk")
+probability = 160
+metadata/_custom_type_script = "uid://cpatt50glnh1y"
+
+[resource]
+script = ExtResource("8_4kb8v")
+_actions = Array[ExtResource("1_v2s2b")]([SubResource("Resource_er0g6"), SubResource("Resource_6c2om"), SubResource("Resource_5evvt"), SubResource("Resource_ud30y"), SubResource("Resource_4gy06"), SubResource("Resource_6asb8"), SubResource("Resource_tw1sb")])
+metadata/_custom_type_script = "uid://ge0n5xow746e"
