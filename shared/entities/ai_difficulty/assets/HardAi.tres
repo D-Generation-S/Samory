@@ -1,6 +1,8 @@
 [gd_resource type="Resource" script_class="AiDifficultyResource" format=3 uid="uid://gy5cebbq2aed"]
 
 [ext_resource type="Resource" uid="uid://buxwoogbx0we1" path="res://shared/entities/ai_difficulty/assets/personalities/hard/DefaultHard.tres" id="2_enud5"]
+[ext_resource type="Resource" uid="uid://cfcys6dkjs2h4" path="res://shared/entities/ai_difficulty/assets/personalities/hard/RevealHard.tres" id="3_njh8g"]
+[ext_resource type="Resource" uid="uid://dbvddd3cfd1ur" path="res://shared/entities/ai_difficulty/assets/personalities/hard/EdgePlayHard.tres" id="3_svi5m"]
 [ext_resource type="Script" uid="uid://cagpu6d10g55o" path="res://shared/entities/ai_difficulty/resources/AiDifficultyResource.gd" id="8_1jgkt"]
 [ext_resource type="Script" uid="uid://ge0n5xow746e" path="res://entities/ui/quick_game_selection/resources/AIPersonality.gd" id="8_omeps"]
 
@@ -8,4 +10,4 @@
 script = ExtResource("8_1jgkt")
 name = "HARD_AI"
 card_memory = 18
-personalities = Array[ExtResource("8_omeps")]([ExtResource("2_enud5")])
+personalities = Array[ExtResource("8_omeps")]([ExtResource("2_enud5"), ExtResource("3_njh8g"), ExtResource("3_svi5m")])
