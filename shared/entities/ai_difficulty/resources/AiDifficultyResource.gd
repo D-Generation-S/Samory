@@ -20,9 +20,9 @@ func _get_real_card_memory() -> int:
 		return card_memory
 
 	var calculated_card_memory: int = card_memory + _get_personality().get_memory_change()
-	if calculated_card_memory < -1:
-		push_warning("The calculated card memory is below -1, check the personality %s" % _get_personality().resource_path)
-	return clampi(calculated_card_memory, -1 , 200)
+	if calculated_card_memory < 0:
+		push_warning("The calculated card memory is below 0, the ai is now without any memory, check the personality %s" % _get_personality().resource_path)
+	return clampi(calculated_card_memory, 0 , 200)
 
 func get_personality_name() -> String:
 	return _get_personality().get_personality_name()
