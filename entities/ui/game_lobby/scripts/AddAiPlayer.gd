@@ -34,7 +34,7 @@ func dialog_closing() -> void:
 func add_new_ai_player(ai: AiDifficultyResource) -> void:
 	var player: PlayerResource = PlayerResource.new()
 	player.name = tr(ai.name)
-	player.ai_difficulty = ai
+	player.ai_difficulty = ai.duplicate_deep()
 
 	dialog_closed.emit()
 	player_added.emit(player)
