@@ -151,6 +151,7 @@ mouse_filter = 1
 text = "Axuree"
 icon = ExtResource("3_vnxeo")
 script = ExtResource("3_ntyq1")
+initial_visibility = false
 animation_resource = ExtResource("4_5w3yf")
 pressed_action = SubResource("Resource_ntyq1")
 
