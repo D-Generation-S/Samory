@@ -1,6 +1,6 @@
 [gd_resource type="StyleBoxTexture" format=3 uid="uid://c3fk04k2sgqqj"]
 
-[ext_resource type="Texture2D" uid="uid://bmxqeqo65xwt" path="res://assets/sprites/spritesheet-default.png" id="1_v5jsd"]
+[ext_resource type="Texture2D" uid="uid://bmxqeqo65xwt" path="res://assets/sprites/kenney_nl/spritesheet-default.png" id="1_v5jsd"]
 
 [resource]
 content_margin_top = 20.0

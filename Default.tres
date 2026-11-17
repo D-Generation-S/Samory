@@ -1,7 +1,7 @@
 [gd_resource type="Theme" format=3 uid="uid://cc8o60unw6oft"]
 
 [ext_resource type="StyleBox" uid="uid://bcjbxsifydvff" path="res://assets/styles/button/WoodButtonDisabled.tres" id="1_0uj4o"]
-[ext_resource type="Texture2D" uid="uid://bmxqeqo65xwt" path="res://assets/sprites/spritesheet-default.png" id="1_pdnn8"]
+[ext_resource type="Texture2D" uid="uid://bmxqeqo65xwt" path="res://assets/sprites/kenney_nl/spritesheet-default.png" id="1_pdnn8"]
 [ext_resource type="StyleBox" uid="uid://cth1ft7fq25dt" path="res://assets/styles/button/WoodButtonFocus.tres" id="2_gd7ud"]
 [ext_resource type="StyleBox" uid="uid://ce37fd2xdmsy7" path="res://assets/styles/button/WoodButtonHover.tres" id="3_ub3wj"]
 [ext_resource type="StyleBox" uid="uid://ba2oe55wfvhyo" path="res://assets/styles/button/WoodButton.tres" id="4_1h74s"]

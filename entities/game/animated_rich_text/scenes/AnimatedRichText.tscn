@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bpvtly15ln51t" path="res://entities/game/animated_rich_text/scripts/AnimatedText.gd" id="1_e40io"]
 [ext_resource type="Script" uid="uid://dlu1f0smtal4e" path="res://entities/game/animated_rich_text/scripts/AnimatedRichtText.gd" id="1_u65rn"]
 [ext_resource type="AudioStream" uid="uid://ctjq1ihqaqsqu" path="res://assets/audio/effect/letter_written.ogg" id="2_u65rn"]
-[ext_resource type="Texture2D" uid="uid://cg0l7tvqmtghr" path="res://assets/sprites/sheet_white1x.png" id="3_5qj5y"]
+[ext_resource type="Texture2D" uid="uid://cg0l7tvqmtghr" path="res://assets/sprites/kenney_nl/sheet_white1x.png" id="3_5qj5y"]
 [ext_resource type="Script" uid="uid://b1muqfd0npxnt" path="res://entities/game/animated_rich_text/scripts/TutorialContinueButton.gd" id="4_geyfo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ynyq3"]
