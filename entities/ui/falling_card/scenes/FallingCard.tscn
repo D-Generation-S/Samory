@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://8yxfao2fwwod"]
 
 [ext_resource type="Script" uid="uid://hiwp8p7e35oc" path="res://entities/ui/falling_card/scripts/FallingCard.gd" id="1_5pc70"]
-[ext_resource type="Texture2D" uid="uid://dpcfrsq40moii" path="res://assets/sprites/CardDefaultBack.png" id="1_f7o75"]
+[ext_resource type="Texture2D" uid="uid://dpcfrsq40moii" path="res://assets/sprites/xanatos/CardDefaultBack.png" id="1_f7o75"]
 [ext_resource type="Shader" uid="uid://du7kats6oltxl" path="res://assets/shaders/BurnFromPoint.gdshader" id="2_bndme"]
 [ext_resource type="Script" uid="uid://wjceg51tdv30" path="res://entities/ui/falling_card/scripts/FallingCardSprite.gd" id="2_hxqwv"]
 [ext_resource type="Texture2D" uid="uid://b0lfebra6adhv" path="res://assets/sprites/Axuree/back_card_1.png" id="5_723xn"]

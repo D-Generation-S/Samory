@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dv4h5xis22ax1"
-path="res://.godot/imported/genericItems_spritesheet_colored.png-3e78ebff3de59eeec06454d0876b69c5.ctex"
+uid="uid://d4nvcsyb0ehtb"
+path="res://.godot/imported/CardDefaultFront.png-de2bae030bcf4cdb8d794f29e6fb755c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/genericItems_spritesheet_colored.png"
-dest_files=["res://.godot/imported/genericItems_spritesheet_colored.png-3e78ebff3de59eeec06454d0876b69c5.ctex"]
+source_file="res://assets/sprites/xanatos/CardDefaultFront.png"
+dest_files=["res://.godot/imported/CardDefaultFront.png-de2bae030bcf4cdb8d794f29e6fb755c.ctex"]
 
 [params]
 

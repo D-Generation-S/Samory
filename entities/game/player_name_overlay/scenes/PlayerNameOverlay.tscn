@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cynb8xjpxqa6w"]
 
 [ext_resource type="Script" uid="uid://c04wthgck8mhp" path="res://entities/game/player_name_overlay/scripts/PlayerGameLabel.gd" id="1_d33rg"]
-[ext_resource type="Texture2D" uid="uid://bmxqeqo65xwt" path="res://assets/sprites/spritesheet-default.png" id="2_blt2s"]
+[ext_resource type="Texture2D" uid="uid://bmxqeqo65xwt" path="res://assets/sprites/kenney_nl/spritesheet-default.png" id="2_blt2s"]
 [ext_resource type="Texture2D" uid="uid://lj7phnlllstw" path="res://assets/icons/HumanIcon.tres" id="2_urml8"]
 [ext_resource type="Texture2D" uid="uid://wa0qa5dgmjgk" path="res://assets/icons/AiIcon.tres" id="3_nldki"]
 [ext_resource type="Resource" uid="uid://c0eqsic62hvl0" path="res://shared/resources/colors/assets/PlayerHighlightColor.tres" id="4_e0a06"]

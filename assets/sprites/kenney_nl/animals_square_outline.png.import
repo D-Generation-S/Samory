@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4nvcsyb0ehtb"
-path="res://.godot/imported/CardDefaultFront.png-2f862b9f86fbb3d5c60317486a2e8db0.ctex"
+uid="uid://dbyfwjxyhqou1"
+path="res://.godot/imported/animals_square_outline.png-3e55cc5d0167111b1244d0336f3cee06.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/CardDefaultFront.png"
-dest_files=["res://.godot/imported/CardDefaultFront.png-2f862b9f86fbb3d5c60317486a2e8db0.ctex"]
+source_file="res://assets/sprites/kenney_nl/animals_square_outline.png"
+dest_files=["res://.godot/imported/animals_square_outline.png-3e55cc5d0167111b1244d0336f3cee06.ctex"]
 
 [params]
 

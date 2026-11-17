@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="MemoryCardResource" format=3 uid="uid://b0ftbhsembri4"]
 
 [ext_resource type="Script" uid="uid://d3u4837pgjc3d" path="res://shared/resources/cards/MemoryCardResource.gd" id="1_id86w"]
-[ext_resource type="Texture2D" uid="uid://dbyfwjxyhqou1" path="res://assets/sprites/animals_square_outline.png" id="2_ejw0y"]
+[ext_resource type="Texture2D" uid="uid://dbyfwjxyhqou1" path="res://assets/sprites/kenney_nl/animals_square_outline.png" id="2_ejw0y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u4nfy"]
 atlas = ExtResource("2_ejw0y")
