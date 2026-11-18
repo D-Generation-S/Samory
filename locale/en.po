@@ -12,7 +12,7 @@ msgstr ""
 "X-Crowdin-File-ID: 61\n"
 "Language-Team: English\n"
 "Language: en_US\n"
-"PO-Revision-Date: 2026-11-03 23:04\n"
+"PO-Revision-Date: 2026-11-18 23:16\n"
 
 #: entities/game/auto_close_popup/scenes/AutoClosePopup.tscn
 msgid "AUTO_CLOSE_POPUP_BODY"
@@ -123,7 +123,11 @@ msgstr "[center][b]Credits[/b][/center]\n\n"
 "[center]To the Godot community for their incredible tools and support.[/center]\n\n"
 "[center][b]Powered By[/b][/center]\n"
 "[center][img=200x200,center,center]res://icon.svg[/img][/center]\n"
-"[center]Godot Game Engine 4.7[/center]"
+"[center]Godot Game Engine 4.7[/center]\n\n"
+"[center][b]Special Cameo[/b][/center]\n"
+"[center][img=128x128,center,center]res://assets/sprites/xanatos/okto.png[/img][/center]\n"
+"[center][b]Okto[/b][/center]\n"
+"[center]The first octopus, scared of water![/center]"
 
 #: entities/ui/credits/scenes/Credits.tscn
 #: entities/ui/deck_viewer/scenes/DeckViewer.tscn
